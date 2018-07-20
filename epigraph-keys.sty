@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{epigraph-keys}[2015/09/19 Epigraphs using key values]
+\RequirePackage{enumitem}
+\RequirePackage{pgfkeys}
+\RequirePackage{conditionals}
+\RequirePackage{epigraph}
+\RequirePackage{microtype}
+
+\ProcessOptions\relax
+
+\makeatletter
+{\catcode`\!=8 % funny catcode so ! will be a delimiter
+ \catcode`\Q=3 % funny catcode so Q will be a delimiter
+\long\gdef\given#1{88\fi\Ifbl@nk#1QQQ\empty!}
+\long\gdef\blank#1{88\fi\Ifbl@nk#1QQ..!}% if null or spaces
+\long\gdef\nil#1{\IfN@Ught#1* {#1}!}% if null
+\long\gdef\IfN@Ught#1 #2!{\blank{#2}}
+\long\gdef\Ifbl@nk#1#2Q#3!{\ifx#3}% same as above
+}
+\makeatother
+
+% The expression \if\expblank{...} x \else y \if gives x when ... expands out to be blank space.
+\def\expblank{\expandafter\blank\expandafter}
+\def\expgiven{\expandafter\given\expandafter}
+\def\expnil{\expandafter\nil\expandafter}
+
+\pgfkeys{
+ /epigraph/.is family, /epigraph,
+ default/.style = 
+  {author = {}, source = {}, etc = {}, translation = {}},
+ author/.store in = \epigraphauthor,
+ source/.store in = \epigraphsource,
+ etc/.store in = \epigraphetc,
+ translation/.store in = \epigraphtranslation,
+}
+
+\setlength{\beforeepigraphskip}{0pt}
+\setlength{\afterepigraphskip}{\baselineskip}
+\newlength{\epigraphtextindent}
+\setlength{\epigraphtextindent}{2cm}
+\newlength{\epigraphauthorsourceindent}
+\setlength{\epigraphauthorsourceindent}{1.5cm}
+\newlength{\epigraphtextwidth}
+\renewcommand{\epigraphsize}{\small}
+\newcommand{\epigraphdash}{---}
+\newcommand*{\epigraphtranslationfont}{}
+
+\renewcommand{\epigraph}[2][]{
+	\pgfkeys{/epigraph,default,#1}
+	\epigraphsize\vspace{\beforeepigraphskip}
+	\begin{enumerate}[leftmargin=\epigraphtextindent]
+		\item[]
+		\setlength{\epigraphtextwidth}{\linewidth}
+		{%%
+		\itshape{}%
+		\begin{minipage}{\epigraphtextwidth}%
+			#2%
+		\end{minipage}%
+		}%%
+		\if\expblank{\epigraphtranslation}
+		\else
+  			\item[]
+			\setlength{\epigraphtextwidth}{\linewidth}
+			{%
+			\epigraphtranslationfont%
+			{%%%%
+			\begin{minipage}{\epigraphtextwidth}%
+				\epigraphtranslation%
+			\end{minipage}
+			}%%%%
+			}%
+		\fi
+		\if\expblank{\epigraphauthor}
+			\if\expblank{\epigraphsource}
+				\if\expblank{\epigraphetc}
+				\else\epigraphetc
+				\fi
+			\else
+				\begin{enumerate}[leftmargin=\epigraphauthorsourceindent]%
+					\item[\epigraphdash]%
+					{%%
+					\smallerSmallCapsTracking{}\textsc{\epigraphsource}
+					}%%
+					\if\expblank{\epigraphetc}%
+					\else{}, \epigraphetc
+					\fi
+				\end{enumerate}
+			\fi
+		\else
+			\begin{enumerate}[leftmargin=\epigraphauthorsourceindent]%
+				\item[\epigraphdash] \epigraphauthor \\
+				\if\expblank{\epigraphsource}%
+					\if\expblank{\epigraphetc}%
+					\else\epigraphetc%
+					\fi%
+				\else%
+					\begingroup
+      				\smallerSmallCapsTracking{}\textsc{\epigraphsource}%
+					\endgroup
+			      	\if\expblank{\epigraphetc}%
+			      	\else%
+			      		\begingroup%
+			      		, \epigraphetc
+			      		\endgroup
+      				\fi
+				\fi
+			\end{enumerate}
+		\fi
+	\end{enumerate}
+	\vspace{\afterepigraphskip}
+	\par\noindent
+}
+
+\newcommand{\smallerSmallCapsTracking}%
+{%
+\SetTracking{encoding={*}, shape=sc}{20}
+}%
+
+\renewenvironment{epigraphs}{\begin{enumerate}}{\end{enumerate}}
+\renewcommand{\qitem}[2][]{\item[]\epigraph[#1]{#2}}
+

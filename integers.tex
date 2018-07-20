@@ -1,0 +1,588 @@
+\chapter{The integers}\label{chapter:integers}
+\epigraph[author={Leopold Kronecker}]{God made the integers; all else is the work of man.}\SubIndex{Kronecker, Leopold}
+
+
+
+
+\section{Notation}
+We will write numbers using notation like \(\num{1234567.12345}\), using a decimal point \({.}\) at the last integer digit, and using thin spaces to separate out every 3 digits before or after the decimal point.
+You might prefer \(\num[group-separator={,},output-decimal-marker={\cdot}]{1234567.12345}\) or \(\num[group-separator={,}]{1234567.12345}\), which are also fine.
+We reserve the \(\cdot\) symbol for multiplication, writing \(2 \cdot 3=6\) rather than \(2 \times 3 = 6\).
+
+
+
+
+
+\section{The laws of integer arithmetic}
+
+
+The integers are the numbers \(\dots, -2, -1, 0, 1, 2, \dots\).
+Let us distill their essential properties, using only the concepts of addition and multiplication.
+\smallskip
+\begin{itemize}
+\item[]\emph{Addition laws:}\define{addition laws}
+\begin{enumerate}
+\item The associative law:\define{associative law!addition} For any integers \(a, b, c\): \((a+b)+c=a+(b+c)\).
+\item The identity law:\define{identity law!addition} There is an integer \(0\) so that for any integer \(a\): \(a+0=a\).
+\item The existence of negatives:\define{existence of negatives} for any integer \(a\): there is an integer \(b\) (denoted by the symbol \(-a\)) so that \(a+b=0\).
+\item The commutative law:\define{commutative law!addition} For any integers \(a, b\): \(a+b=b+a\).
+\end{enumerate}
+\smallskip
+\item[]\emph{Multiplication laws:}\define{multiplication laws}
+\begin{enumerate}
+\item The associative law:\define{associative law!multiplication} For any integers \(a, b, c\): \((ab)c=a(bc)\).
+\item The identity law:\define{identity law!multiplication} There is an integer \(1\) so that for any integer \(a\): \(a1=a\).
+\item The zero divisors law: For any integers \(a,b\): if \(ab=0\) then \(a=0\) or \(b=0\).
+\item The commutative law:\define{commutative law!multiplication} For any integers \(a, b\): \(ab=ba\).
+\end{enumerate}
+\smallskip
+\item[]\emph{The distributive law:}\define{distributive law}
+\begin{enumerate}
+\item For any integers \(a, b, c\): \(a(b+c)=ab+ac\).
+\end{enumerate}
+\smallskip
+\item[]\emph{Sign laws:}\define{sign laws} \smallskip \\ 
+Certain integers are called \emph{positive}.\define{positive}
+\begin{enumerate}
+\item The succession law:\define{succession} An integer \(b\) is positive just when either \(b=1\) or \(b=c+1\) for a positive integer \(c\).
+\item Determinacy of sign:\define{determinacy of sign} Every integer \(a\) has precisely one of the following properties: \(a\) is positive, \(a=0\), or \(-a\) is positive.
+\end{enumerate}
+We write \(a<b\) to mean that there is a positive integer \(c\) so that \(b=a+c\). 
+\smallskip
+\item[]\emph{The law of well ordering:}\define{law of well ordering}\define{well ordering}
+\begin{enumerate}
+\item
+Any nonempty collection of positive integers has a least element; that is to say, an element \(a\) so that every element \(b\) satisfies \(a<b\) or \(a=b\).
+\end{enumerate}
+\end{itemize}
+\smallskip\noindent{}All of the other arithmetic laws we are familiar with can be derived from these.
+For example, the associative law for addition, applied twice, shows that \((a+b)+(c+d)=a+(b+(c+d))\), and so on, so that we can add up any finite sequence of integers, in any order, and get the same result, which we write in this case as \(a+b+c+d\).
+A similar story holds for multiplication.
+
+Of course, we write \(1+1\) as \(2\), and \(1+1+1\) as \(3\) and so on.
+Write \(a>b\) to mean \(b<a\).
+Write \(a\le b\) to mean \(a<b\) or \(a=b\). 
+Write \(a\ge b\) to mean \(b \le a\).
+Write \(|a|\)\define{absolute value} to mean \(a\), if \(a \ge 0\), and to mean \(-a\) otherwise, and call it the \emph{absolute value}\define{absolute value} of \(a\).
+An integer \(a\) is \emph{negative}\define{negative} if \(-a\) is positive.
+
+
+To understand mathematics, you have to solve a large number of problems.
+
+\epigraph[author={Frederick Douglass, statesman and escaped slave}]{I prayed for twenty years but received no answer until I prayed with my legs.}\SubIndex{Douglass, Frederick}
+
+\begin{problem}{integers:use.laws}
+For each equation below, what law above justifies it?
+\begin{enumerate}
+\item \(7(3+1)=7 \cdot 3 + 7 \cdot 1\)
+\item \(4(9 \cdot 2)=(4 \cdot 9)2\)
+\item \(2 \cdot 3=3 \cdot 2\)
+\end{enumerate}
+\end{problem}
+\begin{answer}{integers:use.laws}
+\begin{enumerate}
+\item distributive
+\item associative multiplication
+\item commutative multiplication
+\end{enumerate}
+\end{answer}
+
+\begin{problem}{integers:right.distrib}
+Use the laws above to prove that for any integers \(a, b, c\): \((a+b)c=ac+bc\).
+\end{problem}
+\begin{answer}{integers:right.distrib}
+By the commutative law of multiplication, \((a+b)c=c(a+b)\).
+By the distributive law, \(c(a+b)=ca+cb\).
+By two applications of the commutative law, \(ca+cb=ac+cb=ac+bc\).
+\end{answer}
+
+\begin{problem}{integers:zero.plus.zero}
+Use the laws above to prove that \(0+0=0\).
+\end{problem}
+\begin{answer}{integers:zero.plus.zero}
+For any integer \(a\): \(a+0=a\). Pick \(a\) to be \(a=0\).
+\end{answer}
+
+\begin{problem}{integers:zero.times.zero}
+Use the laws above to prove that \(0 \cdot 0=0\).
+\end{problem}
+\begin{answer}{integers:zero.times.zero}
+\begin{twocolumnproof}
+\pf{0}{0 + 0}[problem \ref{problem:integers:zero.plus.zero}] \\
+\pf{0 \cdot 0}{0 \cdot (0 + 0)}[multiplying by \(0\)] \\
+\pf{0 \cdot 0}{0 \cdot 0 + 0 \cdot 0}[the distributive law] \\
+\pf{\text{Let } b}{-(0 \cdot 0)} \\
+\pf{0 \cdot 0 + b}{(0 \cdot 0 + 0 \cdot 0) + b}[adding \(b\) to both sides] \\
+\pf{0 \cdot 0 + b}{0 \cdot 0 + (0 \cdot 0 + b)}[the associative law for addition] \\
+\pf{0}{0 \cdot 0 + 0}[the definition of \(b\)] \\
+\lastpf{0}{0 \cdot 0}[the definition of \(0\)] \\
+\end{twocolumnproof}
+\end{answer}
+
+\begin{problem}{integers:any.times.zero}
+Use the laws above to prove that, for any integer \(a\): \(a \cdot 0=0\).
+\end{problem}
+\begin{answer}{integers:any.times.zero}
+\begin{twocolumnproof}
+\pf{0}{0 + 0}[problem \ref{problem:integers:zero.plus.zero}] \\
+\pf{a \cdot 0}{a \cdot (0 + 0)}[multiplying by \(a\)] \\
+\pf{a \cdot 0}{a \cdot 0 + a \cdot 0}[the distributive law] \\
+\pf{\text{Let } b}{-(a \cdot 0)} \\
+\pf{a \cdot 0 + b}{(a \cdot 0 + a \cdot 0) + b}[adding \(b\) to both sides] \\
+\pf{a \cdot 0 + b}{a \cdot 0 + (a \cdot 0 + b)}[the associative law for addition] \\
+\pf{0}{a \cdot 0 + 0}[the definition of \(b\)] \\
+\lastpf{0}{a \cdot 0}[the definition of \(0\)]
+\end{twocolumnproof}
+\end{answer}
+
+\begin{problem}{integers:unique.minus}
+Use the laws above to prove that, for any integer \(a\): there is exactly one integer \(b\) so that \(a+b=0\); of course, we call this \(b\) by the name \(-a\).
+\end{problem}
+\begin{answer}{integers:unique.minus}
+There is at least one such \(b\), by the existence of negatives.
+Suppose that \(a+b=0\) and that \(a+c=0\).
+\begin{twocolumnproof}
+\pf{(a+b)+c}{0+c} \\
+\pf{}{c+0}[commutativity of addition] \\
+\pf{}{c}[the definition of \(0\)] \\
+\pf{}{(a+b)+c}[returning to the start again] \\
+\pf{}{a+(b+c)}[associativity of addition] \\
+\pf{}{a+(c+b)}[commutativity of addition] \\
+\pf{}{(a+c)+b}[associativity of addition] \\
+\pf{}{0+b}[the definition of \(c\)] \\
+\pf{}{b+0}[commutativity of addition] \\
+\lastpf{}{b}[the definition of \(0\)]
+\end{twocolumnproof}
+Hence \(b=c\).
+\end{answer}
+
+
+\begin{problem}{integers:minus.one.times}
+Use the laws above to prove that, for any integer \(a\): \((-1)a=-a\).
+\end{problem}
+\begin{answer}{integers:minus.one.times}
+\begin{twocolumnproof}
+\pf{a+(-1)a}{a+a(-1)}[commutativity of multiplication] \\
+\pf{}{a(1+(-1))}[the distributive law on the right hand side] \\
+\pf{}{a(0)}[the definition of \(-\)] \\
+\lastpf{}{0}[the definition of \(0\)] 
+\end{twocolumnproof}
+So \((-1)a\) fits the definition of \(-a\).
+By problem~\vref{problem:integers:unique.minus}, \((-1)a=-a\).
+\end{answer}
+
+
+\begin{problem}{integers:min.min}
+Use the laws above to prove that \((-1)(-1)=1\).
+\end{problem}
+\begin{answer}{integers:min.min}
+By problem~\vref{problem:integers:minus.one.times}, \((-1)(-1)=-(-1)\) is the unique integer which, added to \(-1\), gives zero, and we know that this integer is \(1\).
+\end{answer}
+
+
+\begin{problem}{integers:abs.product}
+Use the laws above to prove that, for any integers \(b,c\): \(|bc|=|b||c|\).
+\end{problem}
+
+\begin{problem}{integer:unique.zero}
+Our laws ensure that there is an integer \(0\) so that \(a+0=0+a=a\) for any integer \(a\).
+Could there be two different integers, say \(p\) and \(q\), so that \(a+p=p+a=a\) for any integer \(a\), and also so that \(a+q=q+a=a\) for any integer \(a\)?
+(Roughly speaking, we are asking if there is more than one integer which can ``play the role'' of zero.)
+\end{problem}
+
+\begin{problem}{integer:unique.one}
+Our laws ensure that there is an integer \(1\) so that \(a \cdot 1=1 \cdot a=a\) for any integer \(a\).
+Could there be two different integers, say \(p\) and \(q\), so that \(ap=pa=a\) for any integer \(a\), and also so that \(aq=qa=a\) for any integer \(a\)?
+\end{problem}
+
+\begin{theorem}[The equality cancellation law for addition\define{equality cancellation law!addition}]
+Suppose that \(a, b\) and \(c\) are integers and that \(a+c=b+c\).
+Then \(a=b\).
+\end{theorem}
+\begin{proof}
+By the existence of negatives, there is a integer \(-c\) so that \(c+(-c)=0\).
+Clearly \((a+c)+(-c)=(b+c)+(-c)\).
+Apply the associative law for addition: \(a+(c+(-c))=b+(c+(-c))\), so \(a+0=b+0\), so \(a=b\). 
+\end{proof}
+
+\begin{problem}{integers:m.b.p.c}
+Prove that \(-(b+c)=(-b)+(-c)\) for any integers \(b,c\).
+\end{problem}
+\begin{answer}{integers:m.b.p.c}
+We need to see that \((-b)+(-c)\) has the defining property of \(-(b+c)\): adding to \(b+c\) to give zero.
+\begin{twocolumnproof}
+\pf{(b+c)+((-b)+(-c))}{b+c+(-b)+(-c)}[as above: parentheses not needed] \\
+\pf{}{b+(-b)+c+(-c)}[commutativity of addition] \\
+\pf{}{0+0}[existence of negatives] \\
+\lastpf{}{0}[the definition of \(0\)]
+\end{twocolumnproof}
+\end{answer}
+
+We haven't mentioned subtraction\define{subtraction} yet.
+\begin{problem}{integers:define.subtraction}
+Suppose that \(a\) and \(b\) are integers.
+Prove that there is a unique integer \(c\) so that \(a=b+c\).
+Of course, from now on we write this integer \(c\) as \(a-b\).
+\end{problem}
+
+\begin{problem}{integers:minus.and.subtraction}
+Prove that, for any integers \(a,b\), \(a-b=a+(-b)\).
+\end{problem}
+
+\begin{problem}{integers:subtraction.distributive}
+Prove that subtraction \emph{distributes over multiplication}: for any integers \(a,b,c\), \(a(b-c)=ab-ac\).
+\end{problem}
+
+\begin{problem}{integers:define.subtraction.order}
+Prove that any two integers \(b\) and \(c\) satisfy just precisely one of the conditions \(b>c\), \(b=c\), \(b<c\).
+\end{problem}
+
+\begin{theorem} The equality cancellation law for multiplication:\define{equality cancellation law!multiplication} for an integers \(a,b,c\) if \(ab=ac\) and \(a\ne 0\) then \(b=c\).
+\end{theorem}
+\begin{proof}
+If \(ab=ac\) then \(ab-ac=ac-ac=0\).
+But \(ab-ac=a(b-c)\) by the distributive law.
+So \(a(b-c)=0\). By the zero divisors law, \(a=0\) or \(b=c\).
+\end{proof}
+
+\begin{problem}{integers:two.by.two}
+We know how to add and multiply \(2 \times 2\) matrices with integer entries.
+Of the various laws of addition and multiplication and signs for integers, which hold true also for such matrices?
+\end{problem}
+
+\begin{problem}{integers:successor}
+Use the laws above to prove that the sum of any two positive integers is positive.
+\end{problem}
+\begin{answer}{integers:successor}
+Suppose that there are positive integers \(b,c\) with \(b+c\) not positive.
+By the law of well ordering, there is a least possible choice of \(b\), and, for that given \(b\), a least possible choice of \(c\).
+If \(b=1\) then \(b+c=1+c=c+1\) is positive by the succession law.
+If \(b \ne 1\), then \(b=d+1\) for some positive \(d\) by the succession law, and then \(b+c=(d+1)+c=(d+c)+1\).
+This is not positive, so by the succession law, \(d+c\) is not positive.
+But then \(d\) is smaller than \(b\), so \(b\) is not the least possible choice.
+\end{answer}
+
+\begin{problem}{integers:pos.times.pos}
+Use the laws above to prove that the product of any two positive integers is positive.
+\end{problem}
+\begin{answer}{integers:successor}
+Suppose that there are positive integers \(b,c\) with \(bc\) not positive.
+By the law of well ordering, there is a least possible choice of \(b\), and, for that given \(b\), a least possible choice of \(c\).
+If \(b=1\) then \(bc=c\) is positive.
+If \(b \ne 1\), then \(b=d+1\) for some positive \(d\) by the succession law, and then \(bc=(d+1)c=dc+c\).
+This is not positive, so by problem~\vref{problem:integers:successor}, \(dc\) is not positive.
+But then \(d\) is smaller than \(b\), so \(b\) is not the least possible choice.
+\end{answer}
+
+\begin{problem}{integers:pos.product}
+Use the laws above to prove that the product of any two integers is positive just when (1) both are positive or (2) both are negative.
+\end{problem}
+\begin{answer}{integers:pos.product}
+If \(b,c >0\) or if \(b,c < 0\), we know that \(bc>0\).
+If \(b>0\) and \(c<0\), say \(c=-d\) with \(d>0\), then \(bc=b(-d\).
+If we add \(bd+b(-d))=b(d+(-d))=b0=0\).
+So \(b(-d)=-(bd)\) is negative.
+Similarly, if \(b<0\) and \(c>0\), \(bc=cb\) is negative.
+\end{answer}
+
+
+\begin{problem}{integers:neg.times.neg}
+Use the laws above to prove that the product of any two negative integers is positive.
+\end{problem}
+
+\begin{problem}{integers:cancel.plus}
+Prove the inequality cancellation law for addition:\define{inequality cancellation law!addition} For any integers \(a, b, c\): if \(a+c<b+c\) then \(a<b\).
+\end{problem}
+\begin{answer}{integers:cancel.plus}
+\begin{twocolumnproof}
+\pf{(b+c)-(a+c)}{b+c+(-(a+c))}[\(d-e=d+(-e)\) as above] \\
+\pf{}{b+c+(-a)+(-c)}[\(-(d+e)=(-d)+(-e)\) as above] \\
+\pf{}{b+c+(-c)+(-a)}[commutativity of addition] \\
+\pf{}{b+0+(-a)}[existence of negatives] \\
+\pf{}{b+(-a)}[definition of zero] \\
+\lastpf{}{b-a}[\(d+(-e)=d-e\) as above]
+\end{twocolumnproof}
+So \(a+c < b+c\) just when \(a<b\).
+\end{answer}
+
+\begin{problem}{integers:cancel.times}
+Prove the inequality cancellation law for multiplication:\define{inequality cancellation law!multiplication} For any integers \(a, b, c\): if \(a<b\) and if \(0<c\) then \(ac<bc\).
+\end{problem}
+\begin{answer}{integers:cancel.times}
+By distributivity of subtraction, proven in problem~\vref{problem:integers:subtraction.distributive}, \(bc-ac=(b-c)a\).
+Apply the solution of problem~\vref{problem:integers:pos.product}.
+\end{answer}
+
+
+
+
+\section{Division of integers}
+
+\epigraph[author={Lewis Carroll}, source={Through the Looking Glass}]{Can you do Division?  Divide a loaf by a knife---what's the answer to that?}\SubIndex{Carroll, Lewis}
+We haven't mentioned division\define{division} yet.
+\emph{Danger:} although \(2\) and \(3\) are integers, 
+\[
+\frac{3}{2}=1.5
+\]
+is \emph{not} an integer.
+
+\begin{problem}{integers:define.division}
+Suppose that \(a\) and \(b\) are integers and that \(b \ne 0\).
+Prove from the laws above that there is \emph{at most} one integer \(c\) so that \(a=bc\).
+Of course, from now on we write this integer \(c\) as \(\frac{a}{b}\) or \(a/b\).
+\end{problem}
+
+\begin{problem}{integers:division.by.zero}
+\emph{Danger:} why \emph{can't} we divide by zero\SubIndex{division!by zero}?
+\end{problem}
+\begin{answer}{integers:division.by.zero}
+Dividing a nonzero integer \(a\) by zero would mean find an integer \(c\) so that \(a=0 \, c\).
+But we have seen that \(0 \, c=0\), so \(a=0\), a contradiction.
+Dividing zero by zero would mean find an integer \(c\) so that \(0=0 \, c\).
+But any integer \(c\) satisfies this equation, so there is no way to pick out one value \(c\) to be \(0/0\).
+\end{answer}
+
+We already noted that \(3/2\) is \emph{not} an integer.
+At the moment, we are trying to work with integers only.
+An integer \(b\) \emph{divides} an integer \(c\) if \(c/b\) is an integer; we also say that \(b\) is a \emph{divisor}\define{divisor} of \(c\).
+
+\begin{problem}{integers:divide.zero}
+Explain why every integer divides into zero.
+\end{problem}
+
+\begin{problem}{integers:minus.divide}
+Prove that, for any two integers \(b\) and \(c\), the following are equivalent:
+\begin{enumerate}
+\item 
+\(b\) divides \(c\),
+\item 
+\(-b\) divides \(c\),
+\item 
+\(b\) divides \(-c\),
+\item 
+\(-b\) divides \(-c\),
+\item 
+\(|b|\) divides \(|c|\).
+\end{enumerate}
+\end{problem}
+
+\begin{proposition}\label{proposition:divisors.smaller}
+Take any two integers \(b\) and \(c\).
+If \(b\) divides \(c\), then \(|b| < |c|\) or \(b=c\) or \(b=-c\).
+\end{proposition}
+\begin{proof}
+By the solution of the last problem, we can assume that \(b\) and \(c\) are positive.
+If \(b=c\) the proposition holds, so suppose that \(b>c\); write \(b=c+k\) for some \(k>0\).
+Since \(b\) divides \(c\), say \(c=qb\) for some integer \(q\).
+Since \(b>0\) and \(c>0\), \(q>0\) by problem~\vref{problem:integers:pos.product}.
+If \(q=1\) then \(c=b\), so the proposition holds.
+If \(q>1\), then \(q=n+1\) for some positive integer \(n\).
+But then \(c=qb=(n+1)(c+k)=nc+c+nk+k\).
+Subtract \(c\) from both sides: \(0=nc+nk+k\), a sum of positive integers, hence positive (by problem~\vref{problem:integers:pos.times.pos}) a contradiction.
+\end{proof}
+
+\begin{problem}{integers:bounded}
+Suppose that \(S\) is a set of integers.
+A \emph{lower bound}\define{lower bound} on \(S\) is an integer \(b\) so that \(b\le c\) for every integer \(c\) from \(S\); if there is a lower bounded, \(S\) is \emph{bounded from below}.\define{bounded from below}
+Prove that a nonempty set of integers bounded from below contains a least element.
+\end{problem}
+
+\begin{theorem}[Euclid\SubIndex{Euclid}]
+Suppose that \(b\) and \(c\) are integers and \(c \ne 0\).
+Then there are unique integers \(q\) and \(r\) (the \emph{quotient}\define{quotient} and \emph{remainder}\define{remainder}) so that \(b=qc+r\) and so that \(0 \le r < |c|\).
+\end{theorem}
+\begin{proof}
+To make our notation a little easier, we can assume (by perhaps changing the signs of \(c\) and \(q\) in our statement above) that \(c>0\).
+
+Consider all integers of the form \(b-qc\), for various integers \(q\).
+If we were to take \(q=-|b|\), then \(b-qc = b+|b| + (c-1)|b| \ge 0\).
+By the law\SubIndex{law of well ordering} of well ordering, since there is an integer of the form \(b-qc \ge 0\), there is a smallest integer of the form \(b-qc \ge 0\); call it \(r\).
+If \(r \ge c\), we can replace \(r=b-qc\) by \(r-c=b-(q+1)c\), and so \(r\) was not smallest.
+
+We have proven that we can find a quotient \(q\) and remainder \(r\).
+We need to show that they are unique.
+Suppose that there is some other choice of integers \(Q\) and \(R\) so that \(b=Qc+R\) and \(0 \le R < c\).
+Taking the difference between \(b=qc+r\) and \(b=Qc+R\), we find \(0=(Q-q)c+(R-r)\).
+In particular, \(c\) divides into \(R-r\).
+Switching the labels as to which ones are \(q,r\) and which are \(Q,R\), we can assume that \(R \ge r\).
+So then \(0 \le r \le R < c\), so \(R-r < c\).
+By proposition~\vref{proposition:divisors.smaller}, since \(0 \le R-r < c\) and \(c\) divides into \(R-r\), we must have \(R-r=0\), so \(r=R\).
+Plug into \(0=(Q-q)c+(R-r)\) to see that \(Q=q\).
+\end{proof}
+
+\begin{example}
+How do we actually find quotient and remainder, by hand?
+Long division:
+\[
+\longdiv{249}{17}
+\]
+So if we start with \(b=249\) and \(c=17\), we carry out long division to find the quotient \(q=14\) and the remainder \(r=11\).
+\end{example}
+
+\begin{problem}{integers:quotient.and.remainder}
+Find the quotient and remainder for \(b,c\) equal to:
+\begin{enumerate}
+\item \(-180, 9\)
+\item \(-169, 11\)
+\item \(-982, -11\)
+\item \(279, -11\)
+\item \(247, -27\)
+\end{enumerate}
+\end{problem}
+
+
+\section{The greatest common divisor}
+
+A \emph{common divisor}\define{common divisor} of some integers is an integer which divides them all.
+
+\begin{problem}{integers:gcd.exists}
+Given any collection of one or more integers, not all zero, prove that they have a \emph{greatest common divisor}\define{greatest common divisor}, i.e. a largest positive integer divisor.
+\end{problem}
+
+Denote the greatest common divisor of integers \(m_1, m_2, \dots, m_n\) as
+\[
+\gcd{m_1,m_2,\dots,m_n}.%
+\Notation{gcd(m1,m2,...,mn)}{\gcd{m_1,m_2,\dots,m_n}}{greatest common divisor}
+\]
+If the greatest common divisor of two integers is \(1\), they are \emph{coprime}.\define{coprime}
+We will also define \(\gcd{0,0,\dots,0}\defeq 0\).
+
+\begin{lemma}
+Take two integers \(b, c\) with \(c\ne 0\) and compute the quotient \(q\) and remainder \(r\), so that \(b=qc+r\) and \(0 \le r < |c|\).
+Then the greatest common divisor of \(b\) and \(c\) is the greatest common divisor of \(c\) and \(r\).
+\end{lemma}
+\begin{proof}
+Any divisor of \(c\) and \(r\) divides the right hand of the equation \(b=qc+r\), so it divides the left hand side, and so divides \(b\) and \(c\).
+By the same reasoning, writing the same equation as \(r=b-qc\), we see that any divisor of \(b\) and \(c\) divides \(c\) and \(r\).
+\end{proof}
+
+\begin{example}
+This makes very fast work of finding the greatest common divisor by hand.
+For example, if \(b=249\) and \(c=17\) then we found that \(q=14\) and \(r=11\), so \(\gcd{249,17}=\gcd{17,11}\).
+Repeat the process: taking \(17\) and dividing out \(11\), the quotient and remainder are \(1,6\), so \(\gcd{17,11}=\gcd{11,6}\).
+Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
+Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
+In more detail, we divide the smaller integer (smaller in absolute value) into that the larger:
+\[
+\longdiv{249}{17}
+\]
+Throw out the larger integer, \(249\), and replace it by the remainder, \(11\), and divide again:
+\[
+\longdiv{17}{11}
+\]
+Again we throw out the larger integer (in absolute value), \(17\), and replace with the remainder, \(6\), and repeat:
+\[
+\longdiv{11}{6}
+\]
+and again:
+\[
+\longdiv{6}{5}
+\]
+and again:
+\[
+\longdiv{5}{1}
+\]
+The remainder is now zero.
+The greatest common divisor is therefore \(1\), the final nonzero remainder: 
+\(\gcd{249,17}=1\).
+\end{example}
+
+This method to find the greatest common divisor is called the \emph{Euclidean algorithm}.\define{Euclidean algorithm}\define{algorithm!Euclidean}
+
+\begin{example}
+If the final nonzero integer is negative, just change its sign to get the greatest common divisor.
+\[
+\gcd{-4,-2}=\gcd{-2,0}=\gcd{-2}=2.
+\]
+\end{example}
+
+\begin{problem}{integers:find.gcd}
+Find the greatest common divisor of
+\begin{enumerate}
+\item 4233, 884
+\item -191, 78
+\item 253, 29
+\item 84, 276
+\item -92, 876
+\item 147, 637
+\item \num{266664}, \num{877769} %(answer: \num{11111})
+\end{enumerate}
+\end{problem}
+\begin{answer}{integers:find.gcd}
+\begin{enumerate}
+\item \(\sage{gcd(4233, 884)}\)
+\item \(\sage{gcd(-191, 78)}\)
+\item \(\sage{gcd(253, 29)}\)
+\item \(\sage{gcd(84, 276)}\)
+\item \(\sage{gcd(-92, 876)}\)
+\item \(\sage{gcd(147, 637)}\)
+\item \(\sage{gcd(266664, 877769)}\).
+\end{enumerate}
+\end{answer}
+
+
+
+\section{The least common multiple}
+
+The \emph{least common multiple}\define{least common multiple} of a finite collection of integers \(m_1, m_2, \dots, m_n\) is the smallest positive integer \(\ell=\lcm{m_1, m_2, \dots, m_n}\)\Notation{lcm(m1,m2,...,mn)}{\lcm{m_1,m_2,\dots,m_n}}{least common multiple} so that all of the integers \(m_1, m_2, \dots, m_n\) divide \(\ell\).
+
+\begin{lemma}
+The least common multiple of any two integers \(b,c\) (not both zero) is
+\[
+\lcm{b,c}=\frac{|bc|}{\gcd{b,c}}.
+\]
+\end{lemma}
+\begin{proof}
+For simplicity, assume that \(b>0\) and \(c>0\); the cases of \(b\le 0\) or \(c \le 0\) are treated easily by flipping signs as needed and checking what happens when \(b=0\) or when \(c=0\) directly; we leave this to the reader.
+Let \(d\defeq \gcd{b,c}\), and factor \(b=Bd\) and \(c=Cd\).
+Then \(B\) and \(C\) are coprime.
+Write the least common multiple \(\ell\) of \(b,c\) as either \(\ell=b_1 b\) or as \(\ell=c_1 c\), since it is a multiple of both \(b\) and \(c\).
+So then \(\ell=b_1 Bd=c_1 C d\).
+Cancelling, \(b_1B = c_1 C\).
+So \(C\) divides \(b_1B\), but doesn't divide \(B\), so divides \(b_1\), say \(b_1=b_2 C\), so \(\ell=b_1 Bd = b_2 CBd\).
+So \(BCd\) divides \(\ell\).
+So \((bc)/d=BCd\) divides \(\ell\), and is a multiple of \(b\): \(BCd=(Bd)C=bC\), and is a multiple of \(c\): \(BCd=B(Cd)=Bc\).
+But \(\ell\) is the least such multiple.
+\end{proof}
+
+
+\section{Sage}
+
+\epigraph[author={Pablo Picasso}]{Computers are useless. They can only give you answers.}\SubIndex{Picasso, Pablo}%
+These lecture notes include optional sections explaining the use of the sage computer algebra system.
+At the time these notes were written, instructions to install sage on a computer are at \url{www.sagemath.org}, but you should be able to try out sage on \url{sagecell.sagemath.org} or even create worksheets in sage on \url{cocalc.com} over the internet without installing anything on your computer.
+If we type
+\begin{sageblock}
+gcd(1200,1040)
+\end{sageblock}
+and press \emph{shift--enter}, we see the greatest common divisor:  \(\sage{gcd(1200,1040)}\).
+Similarly type
+\begin{sageblock}
+lcm(1200,1040)
+\end{sageblock}
+and press \emph{shift--enter}, we see the least common multiple:
+\(\sage{lcm(1200,1040)}\).
+Sage can carry out complicated arithmetic operations.
+The multiplication symbol is \verb!*!:
+\begin{sageblock}
+12345*13579
+\end{sageblock}
+gives \(\sage{12345*13579}\).
+Sage uses the expression \verb!2^3! to mean \(2^3\).
+You can invent variables in sage by just typing in names for them.
+For example, ending each line with \emph{enter}, except the last which you end with \emph{shift--enter} (when you want sage to compute results):
+\begin{sageblock}
+x=4
+y=7
+x*y
+\end{sageblock}
+to print \(\sage{x*y}\).
+The expression \verb!15 % 4! 
+means the remainder of 15 divided by 4, while \verb!15//4! means the quotient of 15 divided by 4.
+We can calculate the greatest common divisor of several integers as
+\begin{sageblock}
+gcd([3800,7600,1900])
+\end{sageblock}
+giving us \(\sage{gcd([3800,7600,1900])}\).
+
+

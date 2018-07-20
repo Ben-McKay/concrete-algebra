@@ -1,0 +1,223 @@
+\chapter{Where plane curves intersect}
+
+\section{Resultants in many variables}
+
+\pgfplotsset{width=5cm}%
+
+\begin{lemma}\label{lemma:resultant.over.rings}
+Take two polynomials \(b(x), c(x)\) in a variable \(x\), with coefficients in a commutative ring \(S\), of degrees \(m, n\).
+Then the resultant\SubIndex{resultant} \(r=\resultant{b}{c}\) is expressible as \(r=u(x)b(x)+v(x)c(x)\) where \(u(x)\) and \(v(x)\) are polynomials, with coefficients in the same commutative ring \(S\), of degrees \(n-1, m-1\).
+\end{lemma}
+The proof is identical to the proof of lemma~\vref{lemma:resultant.over.integers}.
+
+Take two polynomials \(b(x,y)\) and \(c(x,y)\) and let \(r(x)\) be the resultant of \(b(x,y), c(x,y)\) in the \(y\) variable, so thinking of \(b\) and \(c\) as polynomials in \(y\), with coefficients being polynomials in \(x\).
+So \(r(x)\) is a polynomial in \(x\).
+\begin{example}
+If \(b(x,y)=y+x\), \(c(x,y)=y\), then \(r(x)=x\) vanishes just at the value \(x=0\) where there is a common factor: \(y\).
+\begin{center}
+\inputinexample{nondegenerate-resultant}
+\end{center}
+\end{example}
+\begin{example}
+Let \(b(x,y)\defeq xy^2+y\), \(c(x,y)\defeq xy^2+y+1\).
+\begin{center}
+\inputinexample{degenerate-resultant-2c}
+\end{center}
+Look at the picture at \(x=0\) and near \(x=0\): because the polynomials drop degrees, the number of roots of \(b(0,y)\) on the vertical line \(x=0\) is smaller than the number of roots of \(b(a,y)\) on the vertical line \(x=a\) for constants \(x=a\) near \(0\).
+We can see roots ``flying away'' to infinity on those lines.
+\begin{center}
+\inputinexample{degenerate-resultant-2b}
+\end{center}
+Finding the determinant of the associated \(4 \times 4\) matrix tells us that \(r(x)=x^2\), which vanishes just at the value \(x=0\) where \(b(0,y)=y\) and \(c(0,y)=y+1\) drop in degrees, \emph{not} due to a common factor.
+\begin{center}
+\inputinexample{degenerate-resultant-2}
+\end{center}
+The resultant of \(y\) and \(y+1\) is \emph{not} \(r(0)\) since the degrees drop, so we would compute resultant of \(y\) and \(y+1\) using a \(2 \times 2\) matrix, and find resultant \(-1\).
+\end{example}
+\begin{example}
+If \(b(x,y)=xy^2+y\) and \(c(x,y)=2xy^2+y+1\) then \(r(x)=x(x+1)\) vanishes at \(x=0\) and \(x=-1\).
+At \(x=0\), \(b(0,y)=y, c(0,y)=y+1\) have no common factor, but drop degrees.
+At \(x=-1\), \(b(-1,y)=-y(y-1)\), \(c(-1,y)=-2(y-1)(y-1/2)\) have a common factor, but they don't drop degrees. 
+\begin{center}
+\inputinexample{degenerate-resultant}
+\end{center}
+\end{example}
+\begin{example}
+If \(b(x,y)=x^2+y^2-1\) and \(c(x,y)=(x-1)^2+y^2-1\) then \(r(x)=(2x-1)^2\) vanishes at \(x=1/2\), where there are \emph{two} different intersection points, a double common factor:
+\[
+b(1/2,y)=c(1/2,y)=\pr{y-\frac{\sqrt{3}}{2}}\pr{y+\frac{\sqrt{3}}{2}}.
+\]
+\begin{center}
+\inputinexample{degenerate-resultant-4}
+\end{center}
+\end{example}
+%\begin{examples}
+%\item If \(b(x,y)=y+x\), \(c(x,y)=y\), then \(r(x)=x\) vanishes just at the value \(x=0\) where there is a common factor: \(y\).
+%\begin{center}
+%\inputinexample{nondegenerate-resultant}
+%\end{center}
+%\item Let \(b(x,y)=xy^2+y\), \(c(x,y)=xy^2+y+1\).
+%\begin{center}
+%\inputinexample{degenerate-resultant-2c}
+%\end{center}
+%Look at the picture at \(x=0\) and near \(x=0\): because the polynomials drop degrees, the number of roots of \(b(0,y)\) on the vertical line \(x=0\) is smaller than the number of roots of \(b(a,y)\) on the vertical line \(x=a\) for constants \(x=a\) near \(0\).
+%We can see roots ``flying away'' to infinity on those lines.
+%\begin{center}
+%\inputinexample{degenerate-resultant-2b}
+%\end{center}
+%Finding the determinant of the associated \(4 \times 4\) matrix tells us that \(r(x)=x^2\), which vanishes just at the value \(x=0\) where \(b(0,y)=y\) and \(c(0,y)=y+1\) drop in degrees, \emph{not} due to a common factor.
+%\begin{center}
+%\inputinexample{degenerate-resultant-2}
+%\end{center}
+%The resultant of \(y\) and \(y+1\) is \emph{not} \(r(0)\) since the degrees drop, so we would compute resultant of \(y\) and \(y+1\) using a \(2 \times 2\) matrix, and find resultant \(-1\).
+%\item If \(b(x,y)=xy^2+y\) and \(c(x,y)=2xy^2+y+1\) then \(r(x)=x(x+1)\) vanishes at \(x=0\) and \(x=-1\).
+%At \(x=0\), \(b(0,y)=y, c(0,y)=y+1\) have no common factor, but drop degrees.
+%At \(x=-1\), \(b(-1,y)=-y(y-1)\), \(c(-1,y)=-2(y-1)(y-1/2)\) have a common factor, but they don't drop degrees. 
+%\begin{center}
+%\inputinexample{degenerate-resultant}
+%\end{center}
+%\item
+%If \(b(x,y)=x^2+y^2-1\) and \(c(x,y)=(x-1)^2+y^2-1\) then \(r(x)=(2x-1)^2\) vanishes at \(x=1/2\), where there are \emph{two} different intersection points, a double common factor:
+%\[
+%b(1/2,y)=c(1/2,y)=\pr{y-\frac{\sqrt{3}}{2}}\pr{y+\frac{\sqrt{3}}{2}}.
+%\]
+%\begin{center}
+%\inputinexample{degenerate-resultant-4}
+%\end{center}
+%\end{examples}
+
+\begin{lemma}\label{lemma:linear.normalization}
+Suppose that \(k\) is a field and 
+\[
+x=\pr{x_1,x_2,\dots,x_n}
+\]
+are variables and \(y\) is a variable.
+Take \(b(x,y)\) and \(c(x,y)\) two nonconstant polynomials in \(k[x,y]\).
+Then in some finite degree extension of \(k\) there are constants 
+\[
+\lambda=\pr{\lambda_1, \lambda_2, \dots, \lambda_n}
+\]
+so that in the expressions \(b\of{x+\lambda y, y}, c\of{x+\lambda y,y}\), the coefficients of highest order in \(y\) are both nonzero constants.
+\end{lemma}
+\begin{example}
+Return to our earlier example of \(b(x,y)=xy^2+y\) and \(c(x,y)=2xy^2+y+1\) and let
+\begin{align*}
+B(x,y) \defeq b(x+\lambda y,y) &= \lambda y^3 + xy^2 + y, \\
+C(x,y) \defeq c(x+\lambda y,y) &= 2\lambda y^3 + 2xy^2 + y + 1.
+\end{align*}
+For any nonzero constant \(\lambda \ne 0\), the resultant of \(B(x,y), C(x,y)\) is 
+\[
+r(x)=
+\det
+\begin{pmatrix}
+0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 & 0 \\
+x & 1 & 0 & 2x & 1 & 1 \\
+l & x & 1 & 2\lambda & 2 \, x & 1 \\
+0 & l & x & 0 & 2\lambda & 2 \, x \\
+0 & 0 & l & 0 & 0 & 2\lambda
+\end{pmatrix}=-\lambda^2\pr{\lambda+1+x}.
+\]
+So the resultant now vanishes just when \(x=-(\lambda+1)\), which is precisely when \(B(x,y), C(x,y)\) have a common factor of \(y-1\).
+With a small value of \(\lambda \ne 0\), the picture changes very slightly: we change \(x,y\) to \(x+\lambda y,y\), a linear transformation which leaves the \(x\)-axis alone, but tilts the \(y\)-axis to the left.
+Crucially, we tilt the asymptotic line at which the two curves approached one another (where \(b(x,y)\) and \(c(x,y)\) dropped degrees), but with essentially no effect on the intersection point:
+\begin{center}
+\inputinexample{degenerate-resultant-3}
+\end{center}
+\end{example}
+\begin{example}
+If \(b(x,y)=x^2+y^2-1\) and \(c(x,y)=(x-1)^2+y^2-1\), then \(r(x)=(2x-1)^2\) vanishes at \(x=1/2\), where there are \emph{two} different intersection points.
+\begin{center}
+\inputinexample{degenerate-resultant-4}
+\end{center}
+If instead we pick any nonzero constant \(\lambda\) and let \(B(x,y)\defeq (x+\lambda y)^2+y^2-1\) and \(C(x,y)\defeq (x+\lambda y - 1)^2+y^2-1\) then the resultant
+\[
+r(x)=4
+\pr{\lambda^2 + 1}
+\pr{
+	x
+	-
+	\frac{1+\lambda\sqrt{3}}{2}
+}
+\pr{
+	x
+	-
+	\frac{1-\lambda\sqrt{3}}{2}
+}
+\]
+vanishes at two distinct values of \(x\) corresponding to the two distinct roots.
+In the picture, the two roots now lie on different vertical lines (different values of \(x\)).
+\begin{center}
+\inputinexample{nondegenerate-resultant-2}
+\end{center}
+\end{example}
+\begin{proof}
+Write \(b\) as a sum of homogeneous polynomials of degrees \(0, 1, 2, \dots, d\), say 
+\[
+b=b_0+b_1+\dots+b_d.
+\]
+It is enough to prove the result for \(b_d\), so assume that \(b\) is homogeneous of degree \(d\).
+The expression
+\[
+b\of{x,1}
+\]
+is a nonzero polynomial over an infinite field, so doesn't vanish everywhere by lemma~\vref{lemma:infinite.field.zeroes}.
+Pick \(\lambda\) to be a value of \(x\) for which \(b\of{\lambda,1}\ne 0\).
+Then
+\[
+b(x+\lambda y,y)=yb(x,1)+\dots+y^d b(\lambda,1).
+\]
+Similarly for two polynomials \(b(x,y), b(x,y)\), or even for any finite set of polynomials.
+\end{proof}
+
+\begin{corollary}\label{corollary:resultant.effective}
+Take one variable \(y\) and several variables \(x=\pr{x_1,x_2,\dots,x_n}\) and two polynomials \(b(x,y)\) and \(c(x,y)\) over a field.
+Let \(r(x)\) be the resultant of \(b(x,y), c(x,y)\) in the \(y\) variable.
+For any constant \(a\) in our field, if \(b(a,y)\) and \(c(a,y)\) have a common root in some algebraic extension of our field then \(r(a)=0\).
+
+If the coefficient of highest order in \(y\) of both \(b(x,y)\) and \(c(x,y)\) is constant in \(x\) (for example, perhaps after the normalization described in lemma~\vref{lemma:linear.normalization}) then \(r(a)=0\) at some value \(x=a\) in our field just exactly when \(b(a,y)\) and \(c(a,y)\) have a common factor.
+Moreover \(r(x)\) is then the zero polynomial just when \(b(x,y)\) and \(c(x,y)\) have a common factor which is a polynomial in \(x,y\) of positive degree in \(y\).
+\end{corollary}
+\begin{proof}
+If, at some value \(x=a\), both the degrees of \(b(x,y)\) and \(c(x,y)\) don't drop, then the resultant in \(y\) is expressed by the same expression whether we set \(x=a\) to a constant value or leave \(x\) as an abstract variable, compute resultant, and then set \(x=a\).
+
+Work over the ring of polynomials in \(y\), with coefficients rational in \(x\).
+The resultant in \(y\) being zero as a function of \(x\) forces a common factor in that ring, i.e.
+\begin{align*}
+b(x,y)&=d(x,y)B(x,y), \\
+c(x,y)&=d(x,y)C(x,y),
+\end{align*}
+where \(d(x,y), B(x,y)\) and \(C(x,y)\) are rational in \(x\) and polynomial in \(y\) and \(d(x,y)\) has positive degree in \(y\).
+In particular, \(c(x,y)\) factorises over that ring.
+By the Gauss lemma (proposition~\vref{proposition:Gauss.lemma}), \(c(x,y)\) factorises over the polynomials in \(x,y\).
+But \(c(x,y)\) is irreducible, so one factor is constant, and it isn't \(d(x,y)\), so it must be \(C(x,y)\), so we rescale by a nonzero constant to get \(d(x,y)=c(x,y)\), i.e. \(c(x,y)\) divides \(b(x,y)\).
+\end{proof}
+
+\begin{corollary}\label{corollary:Null}
+Given a finite collection of polynomial functions over a field \(k\), for \(x=\pr{x_1,x_2,\dots,x_n}\), either
+\begin{enumerate}
+\item
+in some finite extension of \(k\), there is at least one point on which all polynomials in the collection vanish or
+\item
+in some finite extension of \(k\), every polynomial lies in the ideal generated by this collection.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Suppose we just have two polynomials \(p_1(x)\) and \(p_2(x)\) in our collection.
+As above, after perhaps a finite extension, and a linear change of variables, we compute a resultant to find the values of one fewer of the variables on which there are simultaneous zeroes.
+The result follows by induction.
+Suppose instead that there are finitely many polynomials in our collection.
+We repeatedly replace pairs by such resultants, to eventually reduce the number of variables, and apply induction on the variables.
+In the end, when we have only one variable: all resultants are constants, and if they are not all zero, then there are no simultaneous solutions.
+Suppose that there is a nonzero resultant in among these.
+Rescale to get its value to be 1.
+That nonzero resultant is expressed as a linear combination as in lemma~\vref{lemma:resultant.over.rings}.
+By induction we construct polynomials \(q_j(x)\) so that 
+\[
+1 = q_1(x)p_1(x) + q_2 p_2(x) + \dots + q_s(x) p_s(x).
+\]
+So \(1\) lies in the ideal generated by these \(p_1(x), p_2(x), \dots, p_s(x)\).
+But then any polynomial \(f(x)\) has the form \(f(x)=f(x) \cdot 1\), so also lies in that ideal.
+\end{proof}
+
+

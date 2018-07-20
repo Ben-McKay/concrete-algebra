@@ -1,0 +1,286 @@
+\chapter{Field extensions}
+
+\epigraph[author={Bertrand Russell}]{Mathematics, rightly viewed, possesses not only truth, but supreme beauty---a beauty cold and austere, like that of sculpture, without appeal to any part of our weaker nature, without the gorgeous trappings of painting or music, yet sublimely pure, and capable of a stern perfection such as only the greatest art can show.}\SubIndex{Russell, Bertrand}
+
+
+If \(k\) and \(K\) are fields and \(k\) is contained in \(K\), with the same identity element, zero element, addition and multiplication operations, then \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
+\begin{example}
+The complex numbers form a field extension of the real numbers.
+\end{example}
+\begin{example}
+The real numbers form a field extension of the rational numbers.
+\end{example}
+Consider how we could write down field extensions.
+If \(k \subset K\) is a subfield, a \emph{basis}\define{basis} of \(K\) over \(k\) is a collection of elements \(\alpha_1, \alpha_2, \dots, \alpha_n\) of \(K\) so that every element of \(K\) has the form
+\[
+a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
+\]
+for some coefficients
+\[
+a_1, a_2, \dots, a_n
+\]
+from \(k\).
+The \emph{degree}\define{degree!of field extension} of \(K\) over \(k\) is the smallest number of elements in a basis.
+\begin{example}
+We can write every element of \(\C{}\) as \(x \cdot 1 + y \cdot i\), for some real coefficients \(x,y\).
+So \(\C{}\) is a degree 2 extension of \(\R{}\) with \(1,i\) as a basis.
+\end{example}
+\begin{example}
+Clearly \(1, \sqrt{2}\) is a basis for \(\Q{}\of{\sqrt{2}}\) over \(\Q{}\).
+\end{example}
+\begin{example}
+The real numbers \(\R{}\) as an extension of \(\Q{}\) has no basis; it is an infinite degree extension.
+\end{example}
+
+
+\section{Adding a root}
+
+\begin{example}
+Let's return to the example of page~\vpageref{factoring:split.it}.
+Look for roots of \(p(x)\defeq x^2+x+1\) over the finite field \(k\defeq\Zmod{2}\).
+Try \(x=0\):
+\[
+p(0)=0^2+0+1=1,
+\]
+no good.
+Try \(x=1\):
+\[
+p(1)=1^2+1+1=1+1+1=1,
+\]
+since \(1+1=0\).
+No good.
+So \(p(x)\) has no roots in \(k\).
+
+Let \(K\) be the ring of remainders modulo \(p(x)\).
+As before, we write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
+Modulo \(p(x)=x^2+x+1\), of course \(x^2=x+1\), i.e. \(\alpha^2=\alpha+1\).
+So any polynomial of degree 2 or more in \(\alpha\) reduces to one of degree 1, by replacing \(\alpha^2\) by \(\alpha+1\).
+So every element of \(K\) is a polynomial of degree 0 or 1 in \(\alpha\), with coefficients \(0\) or \(1\):
+\[
+\left\{0,1,\alpha,\alpha+1\right\} = K.
+\]
+Using only the fact that \(1+1=0\), compute out the addition table
+\[
+\begin{array}{@{}c|cccc@{}}
++ & 0 & 1 & \alpha & \alpha+1 \\
+\hline
+0 & 0 & 1 & \alpha & \alpha+1 \\
+1 & 1 & 0 & \alpha+1 & \alpha \\
+\alpha & \alpha & \alpha+1 & 0 & 1 \\
+\alpha+1 & \alpha+1 & \alpha & 1 & 0
+\end{array}
+\]
+Using only the fact that \(\alpha^2=\alpha+1\),  compute out thee multiplication table:
+\[
+\begin{array}{@{}c|cccc@{}}
+\cdot & 0 & 1 & \alpha & \alpha+1 \\
+\hline
+0 & 0 & 0 & 0 & 0 \\
+1 & 0 & 1 & \alpha & \alpha+1 \\
+\alpha & 0 & \alpha & \alpha+1 & 1 \\
+\alpha+1 & 0 & \alpha+1 & 1 & \alpha
+\end{array}
+\]
+Looking for reciprocals, we find that
+\begin{align*}
+\frac{1}{0} & \text{ does not exist}, \\
+\frac{1}{1} & =1, \\
+\frac{1}{\alpha} &=\alpha+1, \\
+\frac{1}{\alpha+1} &=\alpha. \\
+\end{align*}
+Every nonzero element has a reciprocal: \(K\) is a field.
+So \(K=\left\{0,1,\alpha,\alpha+1\right\}\) is an extension of \(k\).
+The polynomial \(p(x)\) splits over this field: \(p(x)=(x+\alpha)(x+1+\alpha)\).
+\end{example}
+
+\begin{theorem}
+Suppose that \(p(x)\) is a polynomial over a field \(k\),
+Let \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), and write \(k[\alpha]\) for the ring of remainders modulo \(p(x)\).
+Thinking of \(p(x)\) as a polynomial, \(p(x)\) has a root in \(k[\alpha]\): \(p(\alpha)=0\).
+The ring \(k[\alpha]\) is a field just when \(p(x)\) is irreducible over \(k\).
+If this happens, then \(k[\alpha]\) is an extension field of \(k\) and \(p(x)\) has a linear factor over the field \(k[\alpha]\).
+\end{theorem}
+\begin{proof}
+By definition, \(p(\alpha)\) means \(p(x)\) but with \(x\) replaced by \(\alpha\), i.e. by the remainder of \(x\) modulo \(p(x)\), i.e. by \(x\), but quotienting out any copies of \(p(x)\) from the resulting expression \(p(x)\), i.e. \(p(\alpha)\) is just \(0\).
+Every element of \(k[\alpha]\) is a polynomial \(b(\alpha)\) in \(\alpha\), but of degree less than the degree of \(p(x)\), since we can quotient out any higher order terms by \(p(x)\).
+So \(k[\alpha]\) is a field just when any nonzero \(b(\alpha)\) in \(k[\alpha]\) has a reciprocal in \(k[\alpha]\).
+
+Suppose that \(p(x)\) is  irreducible.
+Take B\'ezout coefficients for \(b(x),p(x)\): \(s(x)b(x)+t(x)p(x)=d(x)\), so \(d(x)\) is the greatest common factor of \(b(x),p(x)\).
+Then \(b(x),p(x)\) have greatest common divisor 1, i.e. \(d(x)=1\) (after perhaps a constant rescaling), so mod out \(p(x)\) to get \(s(\alpha)b(\alpha)=1\), i.e. \(b(\alpha)\) has a reciprocal.
+
+Suppose that \(p(x)\) is reducible, say \(p(x)=b(x)c(x)\), into lower degree factors, so \(0=b(\alpha)c(\alpha)\).
+We want to prove that \(b(\alpha)\) has no reciprocal.
+If \(b(\alpha)\) has a reciprocal, multiply both sides by it to get \(0=c(\alpha)\), i.e. \(c(x)\) is a multiple of \(p(x)\), but has degree less than that of \(p(x)\), so \(c(x)=0\), so \(p(x)=b(x)c(x)=0\), a contradiction.
+\end{proof}
+
+We say that the field \(k[\alpha]\) arises from \(k\) by ``adding a root'' \(\alpha\) to the polynomial \(p(x)\).
+Careful: the trick only works if \(p(x)\) is irreducible.
+If \(p(x)\) is reducible, split it into irreducible factors, and you can add roots as you like for each factor.
+
+\begin{example}
+This theorem explains why, in our last example, adding a root to \(p(x)=x^2+x+1\) over \(k=\Z{}/2\Z{}\) gave a field \(K=\set{0,1,\alpha,\alpha+1}\), not just a ring.
+\end{example}
+
+\section{Splitting fields}
+
+A polynomial \(p(x)\) with coefficients in a field \(k\) \emph{splits}\define{split polynomial} if it is a product of linear factors.
+If \(k \subset K\) is a subfield, a polynomial \(p(x)\) in \(k[x]\) \emph{splits over \(K\)} if it splits into a product of linear factors when we allow the factors to have coefficients from \(K\).
+
+\begin{example}
+The real-coefficient polynomial \(x^2+1\) splits over \(\C{}\):
+\[
+x^2+1=\left(x-i\right)\left(x+i\right).
+\]
+\end{example}
+
+\begin{problem}{fields:sqrt.2}
+Denote by \(\Q{}\of{\sqrt{2}}\) the field extension of \(\Q{}\) generated by \(\sqrt{2}\), i.e. the smallest subfield of \(\C{}\) containing \(\sqrt{2}\).
+Prove that \(\Q{}\of{\sqrt{2}}\) consists precisely of the numbers \(b+c\sqrt{2}\) for \(b, c\) rational.
+Prove that \(\Q{}\of{\sqrt{2}}\) is a splitting field for \(x^2-2\) over \(\Q{}\).
+\end{problem}
+
+An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field} of a polynomial \(p(x)\) over \(k\) if \(p(x)\) splits over \(K\) and every element of \(K\) is expressible as a rational function (with coefficients from \(k\)) of the roots of \(p(x)\).
+
+\begin{theorem}\label{theorem:splitting.field}
+Every polynomial \(p(x)\) over any field \(k\) has a splitting field \(K\).
+If \(p(x)\) has degree \(n\) then \(K\) has degree at most \(n!\) over \(k\).
+\end{theorem}
+\begin{proof}
+Split \(p(x)\) into irreducible factors, and add a root of one of them.
+When you add a root, the elements of the extension field are polynomials of degree less than \(n\), so the degree of extension is at most \(n\), equal to \(n\) just when \(p(x)\) is itself irreducible.
+In the extension, \(p(x)\) splits off a linear factor \(p(x)=(x-\alpha)q(x)\), so the next time you add a root, you are adding it to some \(q(x)\) of lower degree.
+By induction, the total degree is at worst \(n!\).
+\end{proof}
+
+The splitting field is more-or-less unique, but this is difficult to make precise; see theorem~\vref{theorem:splitting.fields.exist}.
+
+\begin{example}
+Over \(k=\R{}\) the polynomial \(p(x)=x^2+1\) has splitting field \(\C{}\):
+\[
+x^2+1=\left(x-i\right)\left(x+i\right).
+\]
+\end{example}
+\begin{example}
+Every polynomial over \(\C{}\) splits into linear factors, so for any subfield \(k \subset \C{}\) the splitting field \(K\) of any polynomial over \(k\) lies inside \(\C{}\), a field of complex numbers.
+\end{example}
+
+\begin{problem}{Fields:split.cubic}
+Consider the polynomial
+\[
+p(x)=x^3+x^2+1
+\]
+over the field \(k=\Zmod{2}\).
+Suppose that that splitting field \(K\) of \(p(x)\) contains a root \(\alpha\) of \(p(x)\).
+Prove that \(\alpha^2\) and \(1+\alpha+\alpha^2\) are the two other roots.
+Compute the addition table and the multiplication table of the 8 elements 
+\[
+0,1,\alpha,1+\alpha,\alpha^2,1+\alpha^2,\alpha+\alpha^2,1+\alpha+\alpha^2.
+\]
+Use this to prove that 
+\[
+K = \left\{0,1,\alpha,1+\alpha,\alpha^2,1+\alpha^2,\alpha+\alpha^2,1+\alpha+\alpha^2\right\}
+\]
+so \(K\) is a finite field with 8 elements.
+\end{problem}
+
+
+\section{Algebraic closure}
+
+An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field}\define{field!splitting} of a collection of polynomials over \(k\) if every one of those polynomials splits over \(K\) and \(K\) is generated by the roots of all of these polynomials put together.
+If that collection consists of \emph{all} of the polynomials defined over \(k\), then we say that \(K\) is an \emph{algebraic closure}\define{algebraic!closure} of \(k\).
+
+We won't prove:
+\begin{theorem}\label{theorem:algebraic.closure}
+Every field \(k\) has an algebraic closure, denoted \(\bar{k}\)\Notation{bk}{\bar{k}}{algebraic closure}, unique up to an isomorphism which is the identity map on \(k\).
+\end{theorem}
+
+\begin{example}
+Clearly \(\bar{\R{}}=\C{}\).
+\end{example}
+\begin{example}
+\emph{Danger:} \(\bar{\Q{}} \ne \C{}\). The number \(\pi=3.14\dots\) does not satisfy any polynomial with rational coefficients, so \(\pi\) belongs to \(\C{}\) but doesn't belong to \(\bar{\Q{}}\).
+However, \(\bar{\Q{}}\) is a subfield of \(\C{}\).
+Sit \(\Q{}\) inside \(\C{}\) as usual.
+Take the subfield of \(\C{}\) generated by all roots of all polynomials with rational coefficients, all roots of polynomials with all of those as coefficients, and so on, and take the union \(K\) of all such fields. 
+By the theorem, \(K\) is isomorphic to \(\bar{\Q{}}\), by an isomorphism fixing every rational number.
+\end{example}
+\begin{example}
+If \(k\) is any finite field, say with elements
+\[
+k=\Set{\alpha_1, \alpha_2, \dots, \alpha_n},
+\]
+then let
+\[
+p(x)\defeq 1 + \pr{x-\alpha_1} \pr{x-\alpha_2} \dots \pr{x-\alpha_n}.
+\]
+Clearly \(p(\alpha)=1\) for any \(\alpha \in k\).
+Therefore \(k\) is not algebraically closed: every algebraically closed field is infinite.
+\end{example}
+
+\begin{problem}{fields:how.big}
+Prove that, for any finite field, and any integer, there is a finite extension of that field which has more elements than that integer.
+\end{problem}
+
+
+\begin{proposition}
+Draw a curve
+\[
+x(t)=\frac{p(t)}{q(t)}, y(t)=\frac{u(t)}{v(t)},
+\]
+where \(p(t), q(t), u(t), v(t)\) are polynomials with coefficients in a field \(k\).
+The resultant\SubIndex{resultant} in the variable \(t\) of the polynomials
+\[
+p(t)-xq(t), u(t)-yv(t)
+\]
+vanishes along the points \((x,y)\) in the plane which lie along this curve, with coefficients in \(\bar{k}\).
+\end{proposition}
+\begin{proof}
+The proof is the same as that of proposition~\vref{proposition:resultant.equation}, using algebraic closure instead of complex coefficients.
+\end{proof}
+
+\begin{lemma}\label{lemma:resultant.splitting}
+Suppose that \(b(x)\) and \(c(x)\) are polynomials over a field.
+In the splitting field of \(b(x)\), take roots \(\beta_1, \beta_2, \dots, \beta_m\) of \(b(x)\) and in the splitting field of \(c(x)\), take roots \(\gamma_1, \gamma_2, \dots, \gamma_n\) of \(c(x)\).
+If the highest terms are \(b(x)=b_m x^m + \dots\) and \(c(x)=c_n x^n + \dots\) then
+\begin{align*}
+\resultant{b}{c} 
+&=
+b_m^n c_n^m \pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
+\\
+&=
+b_m^n 
+c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m},
+\\
+&=
+(-1)^{mn} c_n^m b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}.
+\end{align*}
+\end{lemma}
+\begin{proof}
+Our previous proof, in proposition~\vref{proposition:factored.resultants}, worked over any infinite field in which the polynomials split.
+That proof therefore works over the algebraic closure of any field, since the algebraic closure is infinite and contains all splitting fields.
+\end{proof}
+
+
+
+\section{Sage}
+Sage computes resultants of polynomials over any field.
+For example, let \(K\) be the splitting field of \(x^2+x+1\) over \(k=\Zmod{2}\), with generator \(a\).
+We compute the resultant and greatest common divisor of
+\[
+p(t) = (at+1)^2 (at-1)^2, \\
+q(t) = (at+1) (at+a^2)^2.
+\]
+via
+\begin{sageblock}
+R.<x> = PolynomialRing(GF(2))
+K.<a> = (x^2 + x + 1).splitting_field()
+S.<t> = PolynomialRing(K)
+p = S((a*t+1)^2*(a*t-1)^2)
+q = S((a*t+1)*(a*t+a^2)^2)
+print(p.gcd(q))
+print(p.resultant(q))
+\end{sageblock}
+yielding \(\sage{p.gcd(q)}\) and \(\sage{p.resultant(q)}\).
+
+

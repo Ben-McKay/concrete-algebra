@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\newcommand{\boxy}[1]{\begin{tikzpicture}[scale=.1]
+\foreach \i in {1,...,#1}
+{
+\foreach \j in {1,...,#1}
+{
+\draw[gray,fill=gray!40] ({\i-1},{\j-1}) rectangle ({\i},{\j});
+}
+}
+\end{tikzpicture}}
+\boxy{2} \ \boxy{4} \ \boxy{8} \ \boxy{16} \ \(\dots\)
+\end{document}

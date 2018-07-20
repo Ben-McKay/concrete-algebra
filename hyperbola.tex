@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.12}
+\begin{document}
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
+                    axis y line=middle,    % put the y axis in the middle
+                    axis line style={<->,color=blue}, % arrows on the axis
+                    xlabel={$x$},          % default put x on x-axis
+                    ylabel={$y$},          % default put y on y-axis
+            }}
+\begin{tikzpicture}
+    \begin{axis}[
+            xmin=-8,xmax=4,
+            ymin=-8,ymax=4,
+            grid=both,
+            ]
+            \addplot [domain=-3:-0.01,samples=50]({x},{1/x}); 
+            \addplot [domain=0.01:3,samples=50]({x},{1/x}); 
+    \end{axis} 
+\end{tikzpicture}
+\end{document}

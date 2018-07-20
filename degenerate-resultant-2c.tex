@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12,width=5cm}%
+\begin{document}
+\begin{tikzpicture}
+\newcommand{\mx}{7}
+\begin{axis}[hide axis,xmin=-\mx,xmax=\mx,ymin=-\mx,ymax=\mx]
+\newcommand{\fclr}{blue!30}
+\draw[\fclr] 
+	(-\mx,0) 
+-- (\mx,0) node[above left]{\(b=0\)};
+\newcommand{\gclr}{brown!30}
+  \addplot[domain=-\mx:-.1,\fclr,samples=200]{-1/x};%
+  \addplot[domain=.1:\mx,\fclr,samples=200]{-1/x};%
+  \addplot[domain=.1:\mx,\gclr,samples=200]({(-x-1)/(x*x)},{x});
+  \addplot[domain=-\mx:-.1,\gclr,samples=200]({(-x-1)/(x*x)},{x});
+  \node[\gclr,below right] at (-\mx,-.1) {\(c=0\)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

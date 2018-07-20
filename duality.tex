@@ -1,0 +1,129 @@
+\chapter{Projective duality}
+
+The set of lines in the projective plane \(P=\Proj[2]{k}\) is called the \emph{dual plane}\define{dual!projective plane} and denoted \(P^*=\Proj[2*]{k}\).
+Each line has a homogeneous linear equation \(0=ax+by+cz\), unique up to rescaling, and so the point \([a,b,c]\) is determined, allowing us to identify \(P^*\) with \(\Proj[2]{k}\) itself.
+The points of \(P^*\) correspond to lines in \(P\).
+Through each point of \(P\), there is a pencil of lines; for example if the point is \(\pr{x_0,y_0}\) in the affine chart \(z=1\), then the lines are \(a\pr{x-x_0} + b\pr{y-y0}=0\), or expanding out: \(ax+by+c=0\) where \(c=-ax_0-by_0\).
+Hence in \(P^*\) the pencil is the line consisting of those points \([a,b,c]\) so that \(ax_0+y_0+c=0\).
+So each point \(p\) of \(P\) is identified with a line \(p^*\) in \(P^*\), consisting of those lines in \(P\) passing through \(p\).
+Each line \(\lambda\) of \(P\) is identified with a point \(\lambda^*\) in \(P^*\).
+Given two points \(p, q\) of \(P\) and the line \(pq\) through them, the corresponding lines \(p^*\) and \(q^*\) in \(P^*\) intersect at the point corresponding to \((pq)^*\).
+We can drop all of this notation and just say that each point \(p\) of \(P\) is a line in \(P^*\), and vice versa.
+
+
+\section{Dual curves}
+
+Take a projective algebraic curve \(C\) in \(P=\Proj[2]{k}\) over a field \(k\) with algebraic closure \(\bar{k}\), with equation \(0=p(x,y)\) in some affine chart.
+
+\begin{problem}{duality:dual.equations}
+Denote partial derivatives as \(p_x \defeq \pderiv{p}{x}\), etc.
+Show that at any point \(\pr{x_0,y_0}\) of \(C\) at which \(p_x \ne 0\) or \(p_y \ne 0\), the equation of the tangent line is
+\[
+0=p_x\of{x_0,y_0}\pr{x-x_0}+p_y\of{x_0,y_0}\pr{y-y_0}.
+\]
+\end{problem}
+
+\begin{lemma}
+In homogeneous coordinates \([x,y,z]\) on \(P=\Proj{2}\), if the equation of a curve \(C\) is \(0=p(x,y,z)\) with \(p(x,y,z)\) homogeneous, then the tangent line at a point \(\left[x_0,y_0,z_0\right]\) of \(C\) has homogeneous equation
+\[
+0=
+x p_x\of{x_0,y_0,z_0}
++
+y p_y\of{x_0,y_0,z_0}
++
+z p_z\of{x_0,y_0,z_0}.
+\]
+\end{lemma}
+\begin{proof}
+Differentiate to get tangent line
+\[
+0=
+p_x\of{x_0,y_0,z_0}\pr{x-x_0}
++
+p_y\of{x_0,y_0,z_0}\pr{y-y_0}
++
+p_z\of{x_0,y_0,z_0}\pr{z-z_0}.
+\]
+Take the equation that says that \(p(x,y,z)\) is homogeneous of degree \(d\):
+\[
+p_x\of{\lambda x, \lambda y, \lambda z}
+=
+\lambda^d p(x,y,z),
+\]
+and differentiate it in \(\lambda\) to get
+\[
+x p_x\of{\lambda x, \lambda y, \lambda z}
++
+y p_y\of{\lambda x, \lambda y, \lambda z}
++
+z p_z\of{\lambda x, \lambda y, \lambda z}
+=
+d\lambda^{d-1}p(x,y,z).
+\]
+Now set \(\lambda=1\) to get
+\[
+x p_x
++
+y p_y
++
+z p_z
+=
+dp.
+\]
+Plug into the homogeneous equation for the tangent line to get
+\[
+0=
+x p_x\of{x_0,y_0,z_0}
++
+y p_y\of{x_0,y_0,z_0}
++
+z p_z\of{x_0,y_0,z_0}
+- dp\of{x_0,y_0,z_0}.
+\]
+But at \(\left[x_0,y_0,z_0\right]\) we know that \(p\of{x_0,y_0,z_0}=0\).
+\end{proof}
+
+Each line \([a,b,c]\) in \(P^*\) has homogeneous equation \(ax+by+cz=0\), so the equation of the tangent line at each point \(\left[x_0,y_0,z_0\right]\) of a curve with homogeneous equation \(0=p(x,y,z)\) is
+\[
+\begin{bmatrix}
+a \\
+b \\
+c
+\end{bmatrix}
+=
+\begin{bmatrix}
+p_x \\
+p_y \\
+p_z
+\end{bmatrix}.
+\]
+
+The \emph{dual curve}\define{dual!curve} of \(C\) is the smallest algebraic curve \(C^*\) in \(P^*\) containing the tangent lines of \(C\) with coordinates in \(\bar{k}\).
+
+\begin{corollary}
+Every curve has a dual curve, i.e. the map
+\[
+\begin{bmatrix}
+a \\
+b \\
+c
+\end{bmatrix}
+=
+\begin{bmatrix}
+p_x \\
+p_y \\
+p_z
+\end{bmatrix}
+\]
+taking the smooth points of \(C\) to \(P^*\) has image inside an algebraic curve.
+\end{corollary}
+\begin{proof}
+Assume that the field is algebraically closed.
+Suppose that the image contains finitely many points.
+The original curve has finitely many tangent lines, so is a finite union of lines. 
+Following Study's theorem (theorem~\vref{theorem:Study}) we can assume that \(C\) is irreducible, say \(C=(p(x,y,z)=0)\). 
+Take the four equations \(p=0\), \(a=p_x\), \(b=p_y\), \(c=p_z\), rescaling out any one of the \(x,y,z\) variables by homogeneity (or some linear combination of them), and compute resultants for them in one of the \(x,y,z\) variables, treating them as having coefficients rational in the other two \(x,y,z\) variables and in \(a,b,c\). Repeat until we get rid of \(x,y,z\) entirely. Since we have polynomial expressions to begin with in all of our variables, each resultant is also polynomial in those variables. By corollary~\vref{corollary:resultant.effective}, perhaps making a linear change of \(x,y,z\) variables before taking our first resultant, the resultants we end up are not all zero polynomials. 
+So the image of the duality map lies in an algebraic curve in the dual plane. But the resultant vanishes just precisely on the points in the image of the duality map, since these equations specify precisely those points \([a,b,c]\).
+\end{proof}
+
+

@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12,width=7cm}%
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
+\newcommand{\RRR}{1.8}
+\newcommand{\lineclr}{gray!30}
+\draw[\lineclr] 
+	(\RRR,0) 
+-- ({-\RRR},0);
+\newcommand{\curveclr}{gray}
+  \addplot[domain=-1:0,\curveclr,samples=200]{sqrt((x+1)*x*(x-1))};%
+  \addplot[domain=-1:0,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+  \addplot[domain=1:2,\curveclr,samples=200]{sqrt((x+1)*x*(x-1)))};%
+  \addplot[domain=1:2,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+  \fill[gray!20,draw=gray] (axis cs:0,0) circle (1.3pt);
+  \fill[gray!20,draw=gray] (axis cs:1,0) circle (1.3pt);
+  \fill[gray!20,draw=gray] (axis cs:-1,0) circle (1.3pt);
+\end{axis}
+\end{tikzpicture}
+\end{document}

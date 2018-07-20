@@ -1,0 +1,169 @@
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+
+@Book{Clemens:2003,
+  Title                    = {A scrapbook of complex curve theory},
+  Author                   = {Clemens, C. Herbert},
+  Publisher                = {American Mathematical Society, Providence, RI},
+  Year                     = {2003},
+  Edition                  = {Second},
+  Series                   = {Graduate Studies in Mathematics},
+  Volume                   = {55},
+
+  ISBN                     = {0-8218-3307-3},
+  Mrclass                  = {14-01 (14Hxx 30-01 30Fxx)},
+  Mrnumber                 = {1946768 (2003m:14001)},
+  Owner                    = {user},
+  Pages                    = {xii+188},
+  Timestamp                = {2015.09.11}
+}
+
+@Book{Dummit/Foote:2004,
+  Title                    = {Abstract algebra},
+  Author                   = {Dummit, David S. and Foote, Richard M.},
+  Publisher                = {John Wiley \& Sons, Inc., Hoboken, NJ},
+  Year                     = {2004},
+  Edition                  = {Third},
+
+  ISBN                     = {0-471-43334-9},
+  Mrclass                  = {00-01 (16-01 20-01)},
+  Mrnumber                 = {2286236 (2007h:00003)},
+  Owner                    = {user},
+  Pages                    = {xii+932},
+  Timestamp                = {2015.08.17}
+}
+
+@Book{Graham/Knuth/Patashnik:1994,
+  Title                    = {Concrete mathematics},
+  Author                   = {Graham, Ronald L. and Knuth, Donald E. and Patashnik, Oren},
+  Publisher                = {Addison-Wesley Publishing Company, Reading, MA},
+  Year                     = {1994},
+  Edition                  = {Second},
+  Note                     = {A foundation for computer science},
+
+  ISBN                     = {0-201-55802-5},
+  Mrclass                  = {68-01 (00-01 00A05 05-01 68Rxx)},
+  Mrnumber                 = {1397498 (97d:68003)},
+  Mrreviewer               = {Volker Strehl},
+  Owner                    = {user},
+  Pages                    = {xiv+657},
+  Timestamp                = {2015.08.17}
+}
+
+@Book{Hungerford:1980,
+  Title                    = {Algebra},
+  Author                   = {Hungerford, Thomas W.},
+  Publisher                = {Springer-Verlag, New York-Berlin},
+  Year                     = {1980},
+  Note                     = {Reprint of the 1974 original},
+  Series                   = {Graduate Texts in Mathematics},
+  Volume                   = {73},
+
+  ISBN                     = {0-387-90518-9},
+  Mrclass                  = {00A05 (15-01 16-01)},
+  Mrnumber                 = {600654 (82a:00006)},
+  Owner                    = {user},
+  Pages                    = {xxiii+502},
+  Timestamp                = {2015.08.17}
+}
+
+@Book{Shafarevich:2005,
+  Title                    = {Basic notions of algebra},
+  Author                   = {Shafarevich, Igor R.},
+  Publisher                = {Springer-Verlag, Berlin},
+  Year                     = {2005},
+  Note                     = {Translated from the 1986 Russian original by Miles Reid, Reprint of the 1997 English translation [MR1634541], Algebra, I},
+  Series                   = {Encyclopaedia of Mathematical Sciences},
+  Volume                   = {11},
+
+  Doi                      = {10.1007/b137643},
+  ISBN                     = {978-3-540-25177-4; 3-540-25177-4},
+  Mrclass                  = {00-01 (12-01 13-01 16-01 20-01)},
+  Mrnumber                 = {2164721},
+  Owner                    = {user},
+  Pages                    = {ii+ 258},
+  Timestamp                = {2015.09.02},
+  Url                      = {http://0-dx.doi.org.library.ucc.ie/10.1007/b137643}
+}
+
+@Book{Spivak:2006,
+  Title                    = {Calculus},
+  Author                   = {Spivak, Michael},
+  Publisher                = {Cambridge University Press},
+  Year                     = {2006},
+  Series                   = {Calculus},
+
+  ISBN                     = {9780521867443},
+  Owner                    = {user},
+  Timestamp                = {2015.10.22},
+  Url                      = {https://books.google.ie/books?id=7JKVu\_9InRUC}
+}
+
+@Manual{sagemath,
+  Title                    = {{S}ageMath, the {S}age {M}athematics {S}oftware {S}ystem ({V}ersion 7.5.1)},
+  Author                   = {{The Sage Developers}},
+  Note                     = {{\texttt{http://www.sagemath.org}}},
+  Year                     = {2018},
+
+  Key                      = {SageMath},
+  Owner                    = {user},
+  Timestamp                = {2018.02.28}
+}
+
+@Book{Vinberg:2003,
+  Title                    = {A course in algebra},
+  Author                   = {Vinberg, E. B.},
+  Publisher                = {American Mathematical Society, Providence, RI},
+  Year                     = {2003},
+  Note                     = {Translated from the 2001 Russian original by Alexander Retakh},
+  Series                   = {Graduate Studies in Mathematics},
+  Volume                   = {56},
+
+  Doi                      = {10.1090/gsm/056},
+  ISBN                     = {0-8218-3318-9},
+  Mrclass                  = {00-01 (00A05 13-01 15-01 16-01 20-01 22-01)},
+  Mrnumber                 = {1974508 (2004h:00001)},
+  Mrreviewer               = {Kenneth A. Brown},
+  Owner                    = {user},
+  Pages                    = {x+511},
+  Timestamp                = {2015.08.17},
+  Url                      = {http://0-dx.doi.org.library.ucc.ie/10.1090/gsm/056}
+}
+
+@Book{Walker:2000,
+  Title                    = {Codes and curves},
+  Author                   = {Walker, Judy L.},
+  Publisher                = {American Mathematical Society, Providence, RI; Institute for Advanced Study (IAS), Princeton, NJ},
+  Year                     = {2000},
+  Note                     = {IAS/Park City Mathematical Subseries},
+  Series                   = {Student Mathematical Library},
+  Volume                   = {7},
+
+  Doi                      = {10.1090/stml/007},
+  ISBN                     = {0-8218-2628-X},
+  Mrclass                  = {14G50 (11T71 94B27)},
+  Mrnumber                 = {1768485 (2001f:14046)},
+  Mrreviewer               = {R. F. Lax},
+  Owner                    = {user},
+  Pages                    = {xii+66},
+  Timestamp                = {2015.08.17},
+  Url                      = {http://0-dx.doi.org.library.ucc.ie/10.1090/stml/007}
+}
+
+@Book{Weil:1979,
+  Title                    = {Number theory for beginners},
+  Author                   = {Weil, Andr{\'e}},
+  Publisher                = {Springer-Verlag, New York-Heidelberg},
+  Year                     = {1979},
+  Note                     = {With the collaboration of Maxwell Rosenlicht},
+
+  ISBN                     = {0-387-90381-X},
+  Mrclass                  = {10-01 (12-01)},
+  Mrnumber                 = {532370 (80e:10004)},
+  Mrreviewer               = {J. B. Roberts},
+  Owner                    = {user},
+  Pages                    = {vii+70},
+  Timestamp                = {2015.08.17}
+}
+

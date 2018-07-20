@@ -1,0 +1,58 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{Clemens:2003}
+C.~Herbert Clemens, \emph{A scrapbook of complex curve theory}, second ed.,
+  Graduate Studies in Mathematics, vol.~55, American Mathematical Society,
+  Providence, RI, 2003. \MR{1946768 (2003m:14001)}
+
+\bibitem{Dummit/Foote:2004}
+David~S. Dummit and Richard~M. Foote, \emph{Abstract algebra}, third ed., John
+  Wiley \& Sons, Inc., Hoboken, NJ, 2004. \MR{2286236 (2007h:00003)}
+
+\bibitem{Graham/Knuth/Patashnik:1994}
+Ronald~L. Graham, Donald~E. Knuth, and Oren Patashnik, \emph{Concrete
+  mathematics}, second ed., Addison-Wesley Publishing Company, Reading, MA,
+  1994, A foundation for computer science. \MR{1397498 (97d:68003)}
+
+\bibitem{Hungerford:1980}
+Thomas~W. Hungerford, \emph{Algebra}, Graduate Texts in Mathematics, vol.~73,
+  Springer-Verlag, New York-Berlin, 1980, Reprint of the 1974 original.
+  \MR{600654 (82a:00006)}
+
+\bibitem{Shafarevich:2005}
+Igor~R. Shafarevich, \emph{Basic notions of algebra}, Encyclopaedia of
+  Mathematical Sciences, vol.~11, Springer-Verlag, Berlin, 2005, Translated
+  from the 1986 Russian original by Miles Reid, Reprint of the 1997 English
+  translation [MR1634541], Algebra, I. \MR{2164721}
+
+\bibitem{Spivak:2006}
+Michael Spivak, \emph{Calculus}, Calculus, Cambridge University Press, 2006.
+
+\bibitem{sagemath}
+{The Sage Developers}, \emph{{S}agemath, the {S}age {M}athematics {S}oftware
+  {S}ystem ({V}ersion 7.5.1)}, 2018, {\texttt{http://www.sagemath.org}}.
+
+\bibitem{Vinberg:2003}
+E.~B. Vinberg, \emph{A course in algebra}, Graduate Studies in Mathematics,
+  vol.~56, American Mathematical Society, Providence, RI, 2003, Translated from
+  the 2001 Russian original by Alexander Retakh. \MR{1974508 (2004h:00001)}
+
+\bibitem{Walker:2000}
+Judy~L. Walker, \emph{Codes and curves}, Student Mathematical Library, vol.~7,
+  American Mathematical Society, Providence, RI; Institute for Advanced Study
+  (IAS), Princeton, NJ, 2000, IAS/Park City Mathematical Subseries. \MR{1768485
+  (2001f:14046)}
+
+\bibitem{Weil:1979}
+Andr{\'e} Weil, \emph{Number theory for beginners}, Springer-Verlag, New
+  York-Heidelberg, 1979, With the collaboration of Maxwell Rosenlicht.
+  \MR{532370 (80e:10004)}
+
+\end{thebibliography}

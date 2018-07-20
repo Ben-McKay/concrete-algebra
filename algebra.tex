@@ -1,0 +1,52 @@
+% !TEX TS-program = latexmk
+% !TEX encoding = UTF-8 Unicode
+
+% This is a book in LaTeX 2e. 
+% See below for various notes.  
+% To compile the file, you need to use the following command line commands in Linux:  
+%	pdflatex --shell-escape -synctex=1  -recorder algebra.tex
+%	bibtex algebra  
+%	makeindex -s notation.gst -o not.gls not.glo 
+%	makeindex algebra    
+%   sage algebra.sagetex.sage
+% and repeat each of these many times.
+\input{preamble}
+
+\begin{document}%
+\includegraphics[width=.94\textwidth]{brunnian-ring.pdf}
+\input{preface}
+\afterpreface
+% The chapters
+\input{integers}
+\input{induction}
+\input{euclidean-algorithm}
+\input{primes}
+\input{modular-arithmetic} 
+\input{rsa} 
+\input{rationals}
+\input{polynomials}
+\input{real-polynomials}
+\input{factoring}
+\input{resultants}
+\input{groups}
+\input{permuting-roots}
+\input{fields}
+\input{extensions}
+\input{rings}
+\input{galois}
+\input{algebraic-curves}
+\input{intersecting-curves}
+\input{quotient-rings}
+\input{varieties}
+\input{projective-plane} 
+\input{projective-curves}
+\input{families}
+\input{elliptic-curves}
+\input{tangents}
+\input{inflection-points}
+\input{conics}
+\input{duality}
+\input{nullstellensatz}
+\input{more-projective-planes}
+\nocite{*}
+\end{document}

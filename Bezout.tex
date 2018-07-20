@@ -1,0 +1,37 @@
+\chapter{Intersections} 
+
+%Take two projective algebraic curves \(C\) and \(D\), with no component in common, say of degrees \(\degree{C}\) and \(\degree{D}\).
+%There are only finitely intersection points of these two curves, at most \(\degree{C} \degree{D}\) by Bezout's theorem (theorem~\vref{theorem:Bezout}).
+%By perhaps replacing the underlying field \(k\) by a larger (perhaps infinite) field containing it, we can draw a generic triangle for the two curves and compute the associated resultant \(r_{C,D}(x,y)\) in the variable \(z\).
+%ensure (using lemma~\vref{lemma:finitely.many.lines}) that there is some point not lying on \(C\) or \(D\) and not lying on any of the lines between the intersection points and not lying on the tangent lines to \(C\) or \(D\) at any of the intersection points.
+%We arrange by projective automorphism that \((x,y)=(0,0)\) is such a point, in an affine chart.
+%Write the homogeneous equations of \(C\) and \(D\) as \(0=f(x,y,z)\) and \(0=g(x,y,z)\).
+%Let \(r_{C,D}(x,y)\defeq\resultant{f}{g}(x,y)\) be the resultant in the variable \(z\), treating \(f\) and \(g\) as polynomials in \(z\) with coefficients polynomial in \(x, y\).
+%The \emph{intersection number}\define{intersection number} of \(C\) and \(D\) at a point \(p=(x,y)\), denoted 
+%\(\multiplicity{p}{C}{D}\),\Notation{CDp}{\multiplicity{p}{C}{D}}{multiplicity of intersection of curves \(C\) and \(D\) at point \(p\)} is the multiplicity of \(x,y\) as a zero of \(r_{C,D}(x,y)\). 
+
+%If \(p\) is not a point of both \(C\) and \(D\) then 
+%\(
+%\multiplicity{p}{C}{D}=0.
+%\)
+%If \(p\) lies on a common component of \(C\) and \(D\) then let
+%\(
+%\multiplicity{p}{C}{D}=\infty.
+%\)
+%\begin{theorem}[Bezout again]\label{theorem:Bezout.again}
+%Two projective algebraic curves \(C\) and \(D\) over a field \(k\) with no common component over \(\bar{k}\) have intersection multiplicities over \(\bar{k}\) 
+%with
+%\[
+%1 \le \multiplicity{p}{C}{D} \le \degree{C}\degree{D}
+%\]
+%just when \(p\) lies on \(C \cap D\), summing to
+%\[
+%\sum_{p \in \Proj[2]{\bar{k}}} \multiplicity{p}{C}{D}=\degree{C}\degree{D}.
+%\]
+%\end{theorem}
+%\begin{proof}
+%Since \(r_{C,D}(x,y)\) has degree at most \(\degree{C}\degree{D}\), and is not zero, \(C\) and \(D\) share no common component just when the intersection multiplicity is finite.
+%From corollary~\vref{corollary:resultant.effective}, the resultant \(r_{C,D}(x,y)\) has degree precisely \(mn\).
+%\end{proof}
+
+

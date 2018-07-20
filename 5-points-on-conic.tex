@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begingroup
+\newcommand*{\drawEllipse}
+{
+\draw[gray!50] (0,0) ellipse (2cm and 1cm);
+}
+\newcommand*{\drawHexagon}
+{
+\foreach \i in {0,...,4}
+	{
+	\newcommand*{\dd}{8}
+		\node at ({2*cos(20*\i+\dd*\i*\i)},{sin(20*\i+\dd*\i*\i)}) (p\i) {};
+		\fill[gray,opacity=.5] (p\i) circle (1.5pt);
+	}
+}
+\begin{tikzpicture}[scale=.5, rotate=40]
+\drawEllipse
+\drawHexagon
+\end{tikzpicture}
+\endgroup
+\end{document}

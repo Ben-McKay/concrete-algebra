@@ -1,0 +1,724 @@
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:use.laws}.}
+\begin{enumerate}
+\item distributive
+\item associative multiplication
+\item commutative multiplication
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:right.distrib}.}
+By the commutative law of multiplication, \((a+b)c=c(a+b)\).
+By the distributive law, \(c(a+b)=ca+cb\).
+By two applications of the commutative law, \(ca+cb=ac+cb=ac+bc\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:zero.plus.zero}.}
+For any integer \(a\): \(a+0=a\). Pick \(a\) to be \(a=0\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:zero.times.zero}.}
+\begin{twocolumnproof}
+\pf{0}{0 + 0}[problem \ref{problem:integers:zero.plus.zero}] \\
+\pf{0 \cdot 0}{0 \cdot (0 + 0)}[multiplying by \(0\)] \\
+\pf{0 \cdot 0}{0 \cdot 0 + 0 \cdot 0}[the distributive law] \\
+\pf{\text{Let } b}{-(0 \cdot 0)} \\
+\pf{0 \cdot 0 + b}{(0 \cdot 0 + 0 \cdot 0) + b}[adding \(b\) to both sides] \\
+\pf{0 \cdot 0 + b}{0 \cdot 0 + (0 \cdot 0 + b)}[the associative law for addition] \\
+\pf{0}{0 \cdot 0 + 0}[the definition of \(b\)] \\
+\lastpf{0}{0 \cdot 0}[the definition of \(0\)] \\
+\end{twocolumnproof}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:any.times.zero}.}
+\begin{twocolumnproof}
+\pf{0}{0 + 0}[problem \ref{problem:integers:zero.plus.zero}] \\
+\pf{a \cdot 0}{a \cdot (0 + 0)}[multiplying by \(a\)] \\
+\pf{a \cdot 0}{a \cdot 0 + a \cdot 0}[the distributive law] \\
+\pf{\text{Let } b}{-(a \cdot 0)} \\
+\pf{a \cdot 0 + b}{(a \cdot 0 + a \cdot 0) + b}[adding \(b\) to both sides] \\
+\pf{a \cdot 0 + b}{a \cdot 0 + (a \cdot 0 + b)}[the associative law for addition] \\
+\pf{0}{a \cdot 0 + 0}[the definition of \(b\)] \\
+\lastpf{0}{a \cdot 0}[the definition of \(0\)]
+\end{twocolumnproof}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:unique.minus}.}
+There is at least one such \(b\), by the existence of negatives.
+Suppose that \(a+b=0\) and that \(a+c=0\).
+\begin{twocolumnproof}
+\pf{(a+b)+c}{0+c} \\
+\pf{}{c+0}[commutativity of addition] \\
+\pf{}{c}[the definition of \(0\)] \\
+\pf{}{(a+b)+c}[returning to the start again] \\
+\pf{}{a+(b+c)}[associativity of addition] \\
+\pf{}{a+(c+b)}[commutativity of addition] \\
+\pf{}{(a+c)+b}[associativity of addition] \\
+\pf{}{0+b}[the definition of \(c\)] \\
+\pf{}{b+0}[commutativity of addition] \\
+\lastpf{}{b}[the definition of \(0\)]
+\end{twocolumnproof}
+Hence \(b=c\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:minus.one.times}.}
+\begin{twocolumnproof}
+\pf{a+(-1)a}{a+a(-1)}[commutativity of multiplication] \\
+\pf{}{a(1+(-1))}[the distributive law on the right hand side] \\
+\pf{}{a(0)}[the definition of \(-\)] \\
+\lastpf{}{0}[the definition of \(0\)]
+\end{twocolumnproof}
+So \((-1)a\) fits the definition of \(-a\).
+By problem~\vref{problem:integers:unique.minus}, \((-1)a=-a\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:min.min}.}
+By problem~\vref{problem:integers:minus.one.times}, \((-1)(-1)=-(-1)\) is the unique integer which, added to \(-1\), gives zero, and we know that this integer is \(1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:m.b.p.c}.}
+We need to see that \((-b)+(-c)\) has the defining property of \(-(b+c)\): adding to \(b+c\) to give zero.
+\begin{twocolumnproof}
+\pf{(b+c)+((-b)+(-c))}{b+c+(-b)+(-c)}[as above: parentheses not needed] \\
+\pf{}{b+(-b)+c+(-c)}[commutativity of addition] \\
+\pf{}{0+0}[existence of negatives] \\
+\lastpf{}{0}[the definition of \(0\)]
+\end{twocolumnproof}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:successor}.}
+Suppose that there are positive integers \(b,c\) with \(b+c\) not positive.
+By the law of well ordering, there is a least possible choice of \(b\), and, for that given \(b\), a least possible choice of \(c\).
+If \(b=1\) then \(b+c=1+c=c+1\) is positive by the succession law.
+If \(b \ne 1\), then \(b=d+1\) for some positive \(d\) by the succession law, and then \(b+c=(d+1)+c=(d+c)+1\).
+This is not positive, so by the succession law, \(d+c\) is not positive.
+But then \(d\) is smaller than \(b\), so \(b\) is not the least possible choice.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:successor}.}
+Suppose that there are positive integers \(b,c\) with \(bc\) not positive.
+By the law of well ordering, there is a least possible choice of \(b\), and, for that given \(b\), a least possible choice of \(c\).
+If \(b=1\) then \(bc=c\) is positive.
+If \(b \ne 1\), then \(b=d+1\) for some positive \(d\) by the succession law, and then \(bc=(d+1)c=dc+c\).
+This is not positive, so by problem~\vref{problem:integers:successor}, \(dc\) is not positive.
+But then \(d\) is smaller than \(b\), so \(b\) is not the least possible choice.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:pos.product}.}
+If \(b,c >0\) or if \(b,c < 0\), we know that \(bc>0\).
+If \(b>0\) and \(c<0\), say \(c=-d\) with \(d>0\), then \(bc=b(-d\).
+If we add \(bd+b(-d))=b(d+(-d))=b0=0\).
+So \(b(-d)=-(bd)\) is negative.
+Similarly, if \(b<0\) and \(c>0\), \(bc=cb\) is negative.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:cancel.plus}.}
+\begin{twocolumnproof}
+\pf{(b+c)-(a+c)}{b+c+(-(a+c))}[\(d-e=d+(-e)\) as above] \\
+\pf{}{b+c+(-a)+(-c)}[\(-(d+e)=(-d)+(-e)\) as above] \\
+\pf{}{b+c+(-c)+(-a)}[commutativity of addition] \\
+\pf{}{b+0+(-a)}[existence of negatives] \\
+\pf{}{b+(-a)}[definition of zero] \\
+\lastpf{}{b-a}[\(d+(-e)=d-e\) as above]
+\end{twocolumnproof}
+So \(a+c < b+c\) just when \(a<b\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:cancel.times}.}
+By distributivity of subtraction, proven in problem~\vref{problem:integers:subtraction.distributive}, \(bc-ac=(b-c)a\).
+Apply the solution of problem~\vref{problem:integers:pos.product}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:division.by.zero}.}
+Dividing a nonzero integer \(a\) by zero would mean find an integer \(c\) so that \(a=0 \, c\).
+But we have seen that \(0 \, c=0\), so \(a=0\), a contradiction.
+Dividing zero by zero would mean find an integer \(c\) so that \(0=0 \, c\).
+But any integer \(c\) satisfies this equation, so there is no way to pick out one value \(c\) to be \(0/0\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:find.gcd}.}
+\begin{enumerate}
+\item \(\sage{gcd(4233, 884)}\)
+\item \(\sage{gcd(-191, 78)}\)
+\item \(\sage{gcd(253, 29)}\)
+\item \(\sage{gcd(84, 276)}\)
+\item \(\sage{gcd(-92, 876)}\)
+\item \(\sage{gcd(147, 637)}\)
+\item \(\sage{gcd(266664, 877769)}\).
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:euclidean.algorithm:try.Bezout}.}
+\begin{enumerate}
+\item
+\sagestr{bezpretty(2468,180)}
+\item
+\sagestr{bezpretty(79,-22)}
+\item
+\sagestr{bezpretty(45,16)}
+\item
+\sagestr{bezpretty(-1000,2002)}
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:primes:Eratosthenes}.}
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:multiple.of.two}.}
+%\sagestr{bgcd(4864,3458)}
+\begin{align*}
+\gcd{4864,3458}&=2\gcd{2432,1729},\\&=2\gcd{1216,1729},\\&=2\gcd{608,1729},\\&=2\gcd{304,1729},\\&=2\gcd{152,1729},\\&=2\gcd{76,1729},\\&=2\gcd{38,1729},\\&=2\gcd{19,1729},\\&=2\gcd{19,1710},\\&=2\gcd{19,855},\\&=2\gcd{19,836},\\&=2\gcd{19,418},\\&=2\gcd{19,209},\\&=2\gcd{19,190},\\&=2\gcd{19,95},\\&=2\gcd{19,76},\\&=2\gcd{19,38},\\&=2\gcd{19,19},\\&=2\gcd{19,0},\\&=38\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:nine}.}
+A 1-digit positive integer has the form \(b=b_0\) with \(0 \le b_0 \le 9\) its first digit.
+A 2-digit positive integer has the form \(b=b_0+10 \, b_1\) with \(0 \le b_0,b_1 \le 9\).
+In general, an \(n\)-digit positive integer has the form
+\[
+b=b_0+10 \, b_1 + 10^2 \, b_2 + \dots + 10^{n-1} b_{n-1}.
+\]
+Modulo \(9\), \(\congmod[9]{10}{1}\), so modulo 9
+\begin{align*}
+\congmod[9]{b&}{b_0+10 \, b_1 + 10^2 \, b_2 + \dots + 10^{n-1} b_{n-1}},
+\\
+\congmod[9]{&}{b_0+b_1+b_2 + \dots + b_{n-1}}.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:reciprocals}.}
+\begin{enumerate}
+\item
+\sagestr{bezpretty(13,59)}
+Answer:\(13^{-1} = \sage{inverse_mod(13,59)}\) modulo \(59\)
+\item
+\sagestr{bezpretty(10,11)}
+Answer:\(10^{-1} = \sage{inverse_mod(10,11)}\) modulo \(11\)
+\item
+\sagestr{bezpretty(2,193)}
+Answer:\(2^{-1} = \sage{inverse_mod(2,193)}\) modulo \(193\)
+\item
+\sagestr{bezpretty(6003722857,77695236973)}
+Answer:\(6003722857^{-1} = \sage{inverse_mod(6003722857,77695236973)}\) modulo \(77695236973\)
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:army.2}.}
+We want to find remainders \((1,2,3)\) modulo \((3,7,19)\).
+We let
+\begin{align*}
+u_1 &= 7 \cdot 19 = 133, \\
+u_2 &= 3 \cdot 19 = 57, \\
+u_3 &= 3 \cdot 7 = 21.
+\end{align*}
+Modulo \(3,7,19\) these are
+\begin{align*}
+u_1 &= 1 \mod{3}, \\
+u_2 &= 1 \mod{7}, \\
+u_3 &= 2 \mod{19}.
+\end{align*}
+The multiplicative inverses of these, modulo \(3,7,19\), are obvious by reducing and inspection:
+\begin{align*}
+v_1 &= 1, \\
+v_2 &= 1, \\
+v_3 &= 10.
+\end{align*}
+By the Chinese remainder theorem, the answer, up to multiples of \(3 \cdot 7 \cdot 19=399\), is
+\begin{align*}
+r_1 u_1 v_1 + r_2 u_2 v_2 + r_3 u_3 v_3
+&=
+1 \cdot 133 \cdot 1
++
+2 \cdot 57 \cdot 1
++
+3 \cdot 21 \cdot 10,
+\\
+&=
+133+114+630,
+\\
+&=877,
+\\
+&=79+2 \cdot 399.
+\end{align*}
+So there are at least 79 soldiers in Han Xin's army.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:use.totient}.}
+Factor \(120 =2^3 \, 3^1 \, 5^1\).
+So Euler's totient is \(\phi(120)=(2^3-2^2)(3^1-3^0)(5^1-5^0)=32\).
+Since \(127\) is prime, it is coprime to \(120\).
+The theorem of Euler's totient function says that \(127^{\phi(120)}=1\) modulo \(120\).
+So \(127^{32}=1\) modulo \(120\).
+In other words, every time you multiply together \(32\) copies of \(127\), modulo \(120\), it is as if you multiplied together no copies.
+Check that \(162 = 5\cdot 32+2\).
+So modulo 120, \(127^{162}=127^{5 \cdot 32+2}=127^2\).
+This is not quite the answer.
+But we know that \(127=7\) modulo \(120\).
+So modulo 120, \(127^{162}=7^2=49\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rationals:lowest.terms}.}
+\(224/82=112/41\), \(324/-72=-9/2\), \(-\num{1000}/\num{8800}=-5/44\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rationals:define.ops}.}
+We can start by defining, for any pair of integers \((b,c)\) with \(c \ne 0\), and any pair of integers \((B,C)\) with \(C \ne 0\), a rational number
+\[
+\frac{\beta}{\gamma}=(Cb+cB,cC).
+\]
+This is well defined, since \(cC \ne 0\).
+If we replace \((b,c)\) by \((ab,ac)\) and replace \((B,C)\) by \((AB,AC)\), then we get rational number
+\[
+\frac{ACab+acAB}{acAC}=\frac{(Aa)(Cb+cB)}{(Aa)(Cc)}=\frac{Cb+cB}{Cc}
+\]
+unchanged.
+So the resulting \(\beta/\gamma\) is independent of the choices of pairs, depending only on the rational numbers \(b/c\) and \(B/C\).
+The other proofs are very similar.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rationals:arithmetic}.}
+By hand, showing your work, simplify
+\[
+\frac{2}{3}-\frac{1}{2}=\frac{1}{6}, \frac{324}{49} \cdot \frac{392}{81}=32,
+\frac{4}{5}+\frac{7}{4}=\frac{51}{20}.
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rationals:square.roots.2}.}
+If \(\sqrt{3}=x+y\sqrt{2}\), square both sides to get
+\[
+3 = x^2+2xy\sqrt{2}+2y^2.
+\]
+If \(y\ne 0\), we can solve for \(\sqrt{2}\) as a rational expression in \(x,y\), so a rational number, a contradiction.
+Hence \(y=0\) and \(\sqrt{3}=x\) is rational, a contradiction.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rationals:factorization}.}
+By definition, every positive rational number is a ratio \(b/c\) with \(b\) and \(c\) positive.
+We can divide out their greatest common divisor to arrange that \(b,c\) are coprime.
+Take the prime factorization of \(b\), and that of \(c\).
+As they are coprime, no prime occurs in both factorizations.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:int.values}.}
+Take the polynomial \(b(x)=(1/2)x(x+1)=(1/2)x^2+(1/2)x\).
+If \(x\) is an odd integer, then \(x+1\) is even, and vice versa, so \(b(x)\) is an integer for any integer \(x\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:not.prime.characteristic}.}
+roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:bound}.}
+If \(p(x)=0\) then
+\[
+a_n x^n + \dots + a_0 = 0.
+\]
+Subtract off all but the first term,
+\[
+a_n x^n = - a_{n-1} x^{n-1} - \dots - a_0.
+\]
+Divide by \(a_n\):
+\[
+x^n = -\frac{a_{n-1} x^{n-1}}{a_n} - \dots - \frac{a_0}{a_n}.
+\]
+Divide by \(x^{n-1}\):
+\[
+x = -\frac{a_{n-1}}{a_n} - \frac{a_{n-2}}{a_n x} - \dots - \frac{a_0}{a_n x^{n-1}}.
+\]
+So
+\begin{align*}
+|x|
+&=
+\left|-\frac{a_{n-1}}{a_n} - \frac{a_{n-2}}{a_n x} - \dots - \frac{a_0}{a_n x^{n-1}}\right|,
+\\
+&\le
+\left|\frac{a_{n-1}}{a_n}\right|
++
+\left|\frac{a_{n-2}}{a_n x}\right|
++ \dots +
+\left|\frac{a_0}{a_n x^{n-1}}\right|.
+\end{align*}
+So if \(|x|> 1\),
+\[
+|x| \le
+\left|\frac{a_{n-1}}{a_n}\right|
++
+\left|\frac{a_{n-2}}{a_n}\right|
++ \dots +
+\left|\frac{a_0}{a_n}\right|.
+\]
+Hence every root lies in either \(|x|\le 1\) or this interval, i.e. we can take \(c\) to be either \(c=1\) or
+\[
+c=
+\frac{\left|a_{n-1}\right| + \left|a_{n-2}\right|
++ \dots + \left|a_0\right|}{|a_n|},
+\]
+whichever is larger.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:roots.of.1}.}
+\begin{center}
+\input{5th-roots}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:prime.outputs}.}
+We can flip the sign to get \(p(x)\) to have a positive leading coefficient.
+After \(x\) is made larger than any of the (finitely many) roots of \(p(x)\), we know that \(p(x)>0\).
+Pick any integer \(N\) larger than any of the roots of \(p(x)\).
+In particular, \(p(N)>0\).
+For any integer \(\ell\), if we set \(x=N+\ell p(N)\), then expanding out \(x^k=N^k+\dots\), the \(\dots\) terms all contain a factor of \(p(N)\), so \(p(x)=p(N)+\dots\), where again the \(\dots\) terms all contain a factor of \(p(N)\).
+So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell p(N)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:quot.poly}.}
+\[
+\begin{array}{c|ccccccccc}
+          &
+0         &
+1         &
+2         &
+\alpha    &
+2\alpha   &
+1+\alpha  &
+2+\alpha  &
+1+2\alpha &
+2+2\alpha \\
+\hline
+0         & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\\
+1         &
+0         &
+1         &
+2         &
+\alpha    &
+2\alpha   &
+1+\alpha  &
+2+\alpha  &
+1+2\alpha &
+2+2\alpha \\
+2         &
+0         &
+2         &
+1         &
+2\alpha    &
+\alpha   &
+2+2\alpha  &
+1+2\alpha  &
+2+\alpha &
+1+\alpha
+\\
+\alpha    &
+0         &
+\alpha    &
+2\alpha   &
+2\alpha   &
+ \alpha   &
+0  &
+\alpha  &
+2\alpha &
+0 \\
+2\alpha   &
+0         &
+2\alpha   &
+\alpha    &
+\alpha    &
+0         &
+2\alpha   &
+2\alpha   &
+\alpha    &
+0 \\
+1+\alpha   &
+0          &
+1+\alpha   &
+2+2\alpha  &
+0          &
+2\alpha    &
+1+\alpha   &
+2+2\alpha  &
+1+\alpha   &
+2+2\alpha \\
+2+\alpha   &
+0          &
+2+\alpha   &
+1+2\alpha  &
+\alpha          &
+2\alpha    &
+2+2\alpha   &
+1  &
+2   &
+1+\alpha \\
+1+2\alpha   &
+0          &
+1+2\alpha   &
+2+\alpha  &
+2\alpha         &
+\alpha  &
+1+\alpha   &
+2 &
+1  &
+2+2\alpha \\
+2+2\alpha   &
+0          &
+2+2\alpha   &
+1+\alpha  &
+0          &
+0    &
+2+2\alpha   &
+1+\alpha  &
+2+2\alpha   &
+1+\alpha   \\
+\end{array}
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:inverse.mod.3.and.p}.}
+\(2x^8+x\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:euclid.that.mofo}.}
+\[
+b(x)=x^2 \, c(x) + 2x+1,
+\]
+so
+\begin{align*}
+\resultant{b(x)}{c(x)}
+&=
+\resultant{2x+1}{c(x)},
+\\
+&=
+\resultant{2x+1}{x^6+4},
+\\
+&=
+2^6
+\resultant{x+\frac{1}{2}}{x^6+4},
+\\
+&=
+2^6
+\left.\pr{x^6+4}\right|_{x=-\frac{1}{2}},
+\\
+&=
+2^6\pr{\frac{1}{2^6} + 4},
+\\
+&=
+1+2^6 \cdot 4,
+\\
+&=257.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:discriminants}.}
+\begin{enumerate}
+\item
+The derivative of \(ax^2+bx+c\) is \(2ax+b\).
+The discriminant of \(ax^2+bx+c\) is
+\[
+\det
+\begin{pmatrix}
+c & b & 0 \\
+b & 2a & b \\
+a & 0 & 2a
+\end{pmatrix}
+=
+-a(b^2-4ac)
+\]
+which is surprisingly \emph{not} the usual expression.
+So a quadratic polynomial has a common factor with its derivative just when \(b^2=4ac\).
+\item
+For \(p(x)=x^3+x^2\), \(p'(x)=3x^2+2x\), so
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 2 & 0 & 0 \\
+1 & 0 & 3 & 2 & 0 \\
+1 & 1 & 0 & 3 & 2 \\
+0 & 1 & 0 & 0 & 3
+\end{pmatrix}
+=0
+\]
+due to the row of zeroes, or to the double root at \(x=0\).
+\item
+For \(p(x)=x^3+x^2+1\), \(p'(x)=3x^2+2x\), so
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 2 & 0 & 0 \\
+1 & 0 & 3 & 2 & 0 \\
+1 & 1 & 0 & 3 & 2 \\
+0 & 1 & 0 & 0 & 3
+\end{pmatrix}
+=31
+\]
+so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
+\item
+For \(p(x)=x^3+2x-1\), \(p'(x)=3x^2+2\) so
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+-1 &  0 & 2 & 0 & 0 \\
+ 2 & -1 & 0 & 2 & 0 \\
+ 0 &  2 & 3 & 0 & 2 \\
+ 3 &  0 & 0 & 3 & 0 \\
+ 0 &  3 & 0 & 0 & 3
+\end{pmatrix}=27
+\]
+so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate}.}
+Write these equations as polynomials in increasing powers of \(t\), with coefficients rational in \(x,y\):
+\begin{align*}
+0 &= -x + 0t + t^2, \\
+0 &= -y -t + 0t^2 +t^3.
+\end{align*}
+The resultant is
+\[
+\det
+\begin{pmatrix}
+  -x &   0 &   0 &   -y &   0 \\
+   0 &  -x &   0 &   -1 &  -y \\
+   1 &   0 &  -x &    0 &  -1 \\
+   0 &   1 &   0 &    1  &  0 \\
+   0 &   0 &   1 &    0  &  1
+\end{pmatrix}
+\]
+You can simplify this determinant by adding \(x(\text{row 3})\) to row 1, and similar tricks, to compute it out:
+\(
+y^2-(x-1)x(x+1)
+\).
+So the equation of the curve is \(y^2=(x-1)x(x+1)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate.3}.}
+\(x^2+(1-x)y^2\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:bijection.finite}.}
+Denote by \(\cardinality{S}\) the number of elements in a set \(S\).
+We use the basic fact that if \(S \subseteq T\) is a subset of a finite set \(T\), then \(\cardinality{S} \le \cardinality{T}\), with equality just when \(S=T\).
+The image of \(f\) is \(f(X) \subseteq X\), equality just when \(f\) is surjective, i.e. just when \(\cardinality{f(X)}=\cardinality{X}\).
+Each element maps somewhere, i.e. lies in \(f^{-1}(x)\) for some \(x \in f(X)\):
+\[
+\cardinality{X} = \sum_{x \in f(X)} \cardinality{f^{-1}\set{x}}
+\ge \sum_{x \in f(X)} 1 = \cardinality{f(X)},
+\]
+with equality, i.e. \(f\) surjective, just when \(f^{-1}\set{x}\) has one element for every \(x \in f(X)\), i.e. just when \(f\) is injective.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:polynomial.group}.}
+Suppose first that \(x_0=0\).
+For any \(y \in \R{}\), let \(p_y\) be the polynomial \(p(x,y)\).
+Let \(y'\) be the inverse of \(y\) in the group.
+Then \(p_y \circ p_{y'}(x) = x\), so that \(\degree{p_y} \degree{p_{y'}} = 1\).
+So \(p(x,y)\) has degree \(1\) in \(x\), and by the same argument has degree 1 in \(y\).
+So \(p(x,y)=a+bx+cy+dxy\) for some numbers \(a,b,c,d\).
+Since \(p(x,0)=x\) and \(p(0,y)=y\), \(a=0\) and \(b=c=1\).
+
+If \(d\ne 0\), then pick \(x_0\) to be the unique solution to \(1+dx=0\), i.e. \(x_0\defeq-1/d\).
+Let \(x_0'\) be the inverse of \(x_0\) in the group.
+The map taking \(y\) to \(x_0*y = p(x_0,y)\) has inverse map \(y \mapsto x_0'*y\), so is a bijection.
+But
+\begin{align*}
+x_0*y&=p(x_0,y),\\
+&=x_0+y+dx_0y,\\
+&=x_0+y(1+dx_0),\\
+&=x+0,
+\end{align*}
+is constant, not a bijection, a contradiction, so \(d=0\), i.e. \(p(x,y)=x+y\).
+
+If the identity element is \(x_0\) instead, then the operation \(x\otimes y=p(x+x_0,y+x_0)-x_0\) is a new group operation with identity element \(0\), so \(p(x+x_0,y+y_0)=x+y+x_0\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:express.in.s}.}
+\begin{enumerate}
+\item \(4xyz^3+4xzy^3+4yzx^3=4e_3(e_1^2-2e_2)\)
+\item \(x^4y^4z^4=e_3^4\)
+\item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
+\item \(x^3y^3z + x^3yz^z+xy^3z^3=e_3\pr{e_2^2-2e_3e_1}\)
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:SymmetricFunctions:Two}.}
+\begin{align*}
+\chi_A{\lambda}
+&=
+\left(t_1-\lambda\right)\left(t_2-\lambda\right)
+\dots \left(t_n-\lambda\right)\\
+&=(-1)^n P_{t}\left(\lambda\right)\\
+&=
+e_n(t) - e_{n-1}(t) \lambda + e_{n-2}(t) \lambda^2 + \dots + (-1)^n \lambda^n.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:inverse.Cramer}.}
+Cramer's rule says that the inverse \(A^{-1}\) has entries
+\[
+A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
+\]
+so rational functions of the entries of \(A\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:kernel.subring}.}
+If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
+So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
+Zero belongs to \(K\) because \(f(0)=0\).
+So \(K\) is a subring.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:rational.ideals}.}
+If \(I \subset \Q{}\) is an ideal, containing some nonzero element \(b \in \Q{}\), then \(I\) also contains \((1/b)b=1\), and so, for any rational number \(c\), \(I\) contains \(c \cdot 1 = c\), i.e. \(I=\Q{}\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:preserve.minus}.}
+If \(z=x-y\) then \(f(x)=f(y+z)=f(y)+f(z)\) so \(f(z)=f(x)-f(y)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:simplify.integral}.}
+\begin{align*}
+2 \int \pr{t^2-1}^2 \, dt
+&=
+2 \int \pr{t^4-2t^2+1} \, dt,
+\\
+&=
+2\pr{\frac{t^5}{5}-\frac{2}{3} t^3 + t},
+\\
+&=
+2\pr{\frac{1}{5}\pr{\frac{y}{x}}^5 - \frac{2}{3}\pr{\frac{y}{x}}^3+\frac{y}{x}},
+\\
+&=
+2\pr{\frac{1}{5}\frac{y^5}{x^5} - \frac{2}{3}\frac{y^3}{x^3}+\frac{y}{x}},
+\\
+&=
+\frac{2y}{15x^5}\pr{3\pr{y^2}^2-10x^2y^2+15x^4},
+\\
+&=
+\frac{2y}{15x^5}\pr{3\pr{x^3+x^2}^2-10x^2(x^3+x^2)+15x^4},
+\\
+&=
+\frac{2y}{15x}\pr{3x^2-4x+8},
+\\
+&=
+\frac{2\sqrt{x^2+x^3}}{15x}\pr{3x^2-4x+8}.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:trig.integrals}.}
+The substition
+\begin{align*}
+\cos \theta&=(1-t^2)/(1+t^2), \\
+\sin \theta&=2t/(1+t^2), \\
+\end{align*}
+rewrites the integral in terms of \(t\).
+(In fact, this substitution is just the famous substition \(t=\tan(\theta/2)\) which you can find in the calculus textbooks.)
+\begin{align*}
+\int f(\cos \theta,\sin \theta) d\theta
+&=
+\int \frac{f(\cos \theta,\sin \theta)}{-\sin \theta}(-\sin \theta) d \theta,
+\\
+&=
+\int \frac{f(\cos \theta,\sin \theta)}{-\sin \theta}d \cos \theta,
+\\
+&=
+\int \frac{f(x,y)}{-y}dx,
+\\
+&=
+\int f\left(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}\right)\frac{1+t^2}{-2t}d(\frac{1-t^2}{1+t^2}),
+\\
+&=
+\int f\left(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}\right)\frac{1+t^2}{-2t}\frac{(-4t)}{(1+t^2)^2} dt,
+\\
+&=
+\int f\left(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}\right)\frac{2}{1+t^2}dt.
+\end{align*}
+Take a partial fraction decomposition as in the proof of corollary~\vref{corollary:rational.function.integral}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:double}.}
+Let \(k_1 \subset k_2 \subset k_3 \dots\) be finite fields or orders \(2,4,8\) and so on.
+Our result is clear if \(k=k_1=\Zmod{2}\).
+By induction, suppose that our result is true for \(k_1, k_2, \dots, k_{n-1}\).
+All of the elements \(\alpha\) of \(k_n\) that are not elements of \(k_{n-1}\) satisfy \(\alpha^2+\alpha+c=0\) for some \(c\) in \(k_{n-1}\), as we saw above.
+By induction, \(c=b^2\) for some element \(b\) of \(k_{n-1}\).
+So \(\alpha^2+\alpha+b^2=0\), i.e. \(\alpha^2+b^2=\alpha\).
+Expand out \((\alpha+b)^2\) to find \((\alpha+b)^2=\alpha\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:degree.one}.}
+Take a basis consisting of one element \(\alpha \in K\).
+Then \(1 \in K\) is somehow a multiple \(1=a \alpha\) for some \(a \in k\) so \(\alpha=1/a \in k\).
+Any element \(\beta\) of \(K\) is \(\beta=c \alpha\) for some \(c \in k\) so \(\beta \in k\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:find.degree}.}
+Let \(n\) be the degree of \(p(x)\).
+We write each element \(b(x)\) in  \(k[x]\) as a polynomial, but if the polynomial has degree \(n\) or more, rewrite it as \(b(x)=q(x)p(x)+r(x)\), quotient and remainder. Then every element of \(K\) is written as the remainder term, i.e. as a polynomial of degree at most \(n-1\).  Hence the elements \(1,x,\dots,x^{n-1}\) in \(k[x]\) map to a spanning set inside \(K\). If not a basis, then there must be some linear relation between them, i.e. a lower degree polynomial in \(x\) vanishing in \(K\), i.e. vanishing modulo \(p(x)\).
+But then taking quotient and remainder, we see that this is not possible.
+Hence \(K\) has a basis over \(k\) consisting of the images of \(1,x,x^2,\dots,x^{n-1}\) in \(k[x]\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points}.}
+Homogenize to \(x^3+x^2y+xy^2+y^3+x^2z=z^3\), and then set \(z=0\) to get the homogeneous equation \(x^3+x^2y+xy^2+y^3=0\).
+Factor: \((x+y)(x^2+y^2)=0\).
+So \(x+y=0\), i.e. \([x,-x,0]=[1,-1,0]\), or \(x^2+y^2=0\), which factors over any field \(k\) which contains an element \(i\) so that \(i^2=-1\), as \((x-iy)(x+iy)=0\), i.e. \(y=\pm ix\), so \([x,ix,0]=[1,i,0]\) and \([x,-ix,0]=[1,-i,0]\).
+Hence the points of our curve that lie on the line at infinity are \([1,-1,0], [1,i,0], [1,-i,0]\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points}.}
+Start with the affine plane.
+Remember (from problem~\vref{problem:polynomials:quadratic.formula}) that you can use the quadratic formula:
+\[
+y=\frac{-1\pm\sqrt{1-4(-x^3-x-1)}}{2}.
+\]
+Simplify, using \(2^{-1}=3\) and \(4=-1\), to:
+\[
+y=3(-1\pm\sqrt{-x^3-x})
+\]
+Note that \(0^2=0, 1^2=1, 2^2=4, 3^2=9=4, 4^2=16=1\), so only \(0,1,4\) have square roots.
+\begin{itemize}
+\item
+\(x=0\): \(-x^3-x=0\), \(y=-3=2\), \([x,y,z]=[0,2,1]\).
+\item
+\(x=1\): \(-x^3-x=3\), no square root of \(3\), no solution.
+\item
+\(x=2\): \(-x^3-x=-8-2=0\), \(y=-3=2\), \([x,y,z]=[2,2,1]\).
+\item
+\(x=3\): \(-x^3-x=-27-3=0\), \(y=-3=2\), \([x,y,z]=[3,2,1]\).
+\item
+\(x=4\): \(-x^3-x=-68=2\), no square root of \(2\) no solution.
+\end{itemize}
+We still need the points ``at infinity''.
+Homogenize: \(y^2z+yz^2=x^3+xz^2+z^3\), and set \(z=0\): \(0=x^3\), so \(x=0\), i.e. \([x,y,z]=[0,y,0]\), and rescale \(y\) to \([0,1,0]\).
+Final answer: \([0,2,1], [2,2,1], [3,2,1], [0,1,0]\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellensatz:closed.image}.}
+\(p(x,y)=(1-xy)^2+x^2\) over the field \(k=\R{}\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:more.projective.planes:zero.div}.}
+To have a nonzero element \(a+\ii b\) being a zero divisor on the left, we would need to have
+\begin{align*}
+0
+&=
+(a+\ii b)(c+\ii d),
+\\
+&=
+ac-\bar{d}b+\ii\pr{da+b\bar{c}}.
+\end{align*}
+Therefore \(ac=\bar{d}b\) and \(da=-b\bar{c}\).
+Multiplying suitably, \(dac=d\bar{d}b\) and \(dac=-c\bar{c}b\).
+So \(0=\pr{d\bar{d}+c\bar{c}}b\) and thus \(b=0\) or else \(c=d=0\).
+But if \(b=0\) then \(ac=0\) and \(da=0\), so \(a=0\) or else \(c=d=0\).
+
+To have a nonzero element \(a+\ii b\) being a zero divisor on the right, we would need to have
+\begin{align*}
+0
+&=
+(c+\ii d)(a + \ii b),
+\\
+&=
+ca-\bar{b}d+\ii\pr{bc+d\bar{a}}.
+\end{align*}
+Therefore \(ca=\bar{b}d\) and \(bc=-d\bar{a}\).
+Multiplying suitably, \(bca=b\bar{b}d\) and \(bca=-da\bar{a}\).
+So therefore \(d=0\) or else \(a=b=0\).
+But if \(d=0\) then \(ca=0\) and \(bc=0\), so \(c=0\).

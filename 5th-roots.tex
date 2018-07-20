@@ -1,0 +1,11 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}[scale=.5]
+\fill[gray!20] (-5,-5) rectangle (5,5);
+\draw[very thick,white] (-5,0) -- (5,0);
+\draw[very thick,white] (0,-5) -- (0,5);
+\foreach \i in {0,...,4}{
+\draw[black,fill=white] ({4*cos(360*\i/5)},{4*sin(360*\i/5)}) circle (3pt);
+}
+\end{tikzpicture}
+\end{document}

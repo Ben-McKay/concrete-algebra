@@ -1,0 +1,239 @@
+\chapter{Conics and quadratic forms}\label{chapter:conics}
+
+\epigraph[author={Bertrand Russell}]{I like mathematics because it is not human and has nothing particular to do with this planet or with the whole accidental universe---because, like Spinoza's god, it won't love us in return.}\SubIndex{Russell, Bertrand}
+
+
+
+\section{Quadratic forms}
+
+A \emph{quadratic form}\define{quadratic!form}\define{form!quadratic} is a homogeneous polynomial of degree 2.
+
+\begin{proposition}[Sylvester's Law of Inertia\define{Sylvester's law of inertia}\SubIndex{Sylvester, James}\SubIndex{inertia}]
+Every quadratic form in \(n\) variables over the real numbers is identified, by some linear change of variables, with precisely one of
+\[
+x_1^2 + x_2^2 + \dots + x_p^2 
+-
+\pr{y_1^2 + y_2^2 + \dots + y_q^2}
+\]
+where \(p+q \le n\).
+The triple of numbers \((p,q,r)\) so that \(p+q+r=n\) is called the \emph{signature}\define{signature} of the quadratic form.
+\end{proposition}
+\begin{proof}
+Write the quadratic form as 
+\[
+q(x)=a_{11} x_1^2 + a_{12} x_1 x_2 + \dots + a_{nn} x_n^2,
+\]
+or in other words as \(q(x)=\left<Ax,x\right>\) for a symmetric matrix \(A\).
+Apply an orthogonal change of variables which diagonalizes the matrix \(A\).
+Then rescale each variable to get the eigenvalues of the matrix to be \(\pm 1\) or zero.
+\end{proof}
+
+\begin{lemma}
+Every quadratic form in \(n\) variables over a field \(k\) of characteristic not 2 can be brought to the ``diagonal'' form
+\[
+q(x) = \sum a_i x_i^2
+\]
+by a linear change of variables.
+The \(a_i\) are uniquely determined up to multiplying by squares \(a_i b_i^2\) of nonzero elements \(b_i\) of \(k\).
+\end{lemma}
+\begin{proof}
+Take a vector \(x\) for which \(q(x)\ne 0\).
+Make a linear change of variables to get \(x=e_1\), so that \(q\of{e_1} \ne 0\).
+Hence after rescaling
+\[
+q(x) = c_1 x_1^2 + \dots,
+\]
+say
+\[
+q(x) = c_1 x_1^2 + c_2 x_1 x_2 + \dots + c_n x_1 x_n + \dots 
+\]
+where \(x_1\) does not appear in the remaining terms.
+Replace \(x_1, x_2, \dots, x_n\) with \(X_1, x_2, \dots, x_n\) where
+\[
+X_1 \defeq x_1 - \frac{c_2}{2 c_1} x_2 - \dots - \frac{c_n}{2 c_1} x_2
+\]
+and check that now 
+\[
+q(x) = c_1 X_1^2 + \dots
+\]
+where the \(\dots\) don't involve \(X_1\), so we can apply induction.
+\end{proof}
+
+\begin{example}
+For the real numbers, any positive real number has a square root, so we recover the previous lemma.
+\end{example}
+\begin{example}
+For \(k=\C{}\), any complex number has a square root, so every quadratic form in \(n\) complex variables becomes
+\[
+q(z)=z_1^2 + z_2^2 + \dots + z_p^2,
+\]
+for a unique \(p \le q\).
+\end{example}
+\begin{example}
+For \(k=\Q{}\), any rational number, up to multiplying by a nonzero square of a rational number, is a \emph{square-free}\define{square-free} integer, i.e. has the form
+\[
+\alpha = \pm p_1 p_2 \dots p_s
+\]
+where all of the primes
+\[
+p_1, p_2, \dots, p_s
+\]
+are distinct.
+So every quadratic form over \(k\) has the form
+\[
+q(x)=\sum \alpha_i x_i^2
+\]
+for square-free integers \(\alpha_i\).
+In the associated conic curve, we can rescale the coefficients, so we can assume that the square-free integers \(\alpha_i\) have no common factor.
+We can also assume, by changing all signs if needed, that there are at least as many positive \(\alpha_i\) as negative.
+\end{example}
+\begin{example}
+Since every element of any field obtains a square root in some extension, the quadratic forms over any algebraically closed field have the form
+\[
+q(z)=z_1^2 + z_2^2 + \dots + z_p^2,
+\]
+for a unique \(p \le q\).
+\end{example}
+
+\begin{theorem}
+Over a field \(k\), take a quadratic form \(q\), say in \(n\) variables.
+Then after perhaps repeatedly replacing \(k\) by a quadratic extension of \(k\), finitely many times, and a linear change of variables, we can arrange that either
+\[
+q(x_1,\dots,x_n)=x_1x_2 + x_3 x_4 + x_5 x_6 + \dots + x_{m-1} x_m
+\]
+or
+\[
+q(x_1,\dots,x_n)=x_1^2+x_2 x_3 + x_4 x_5 + \dots + x_{m-1} x_m,
+\]
+for some integer \(m\).
+\end{theorem}
+\begin{proof}
+A \emph{null vector} of \(q\) is a vector \(v\) so that \(q(v+x)=q(x)\), i.e. translating \(q\) by a null vector doesn't change the value of \(q\).
+The \emph{null space} of \(q\) is the set of all null vectors.
+The null space is a linear subspace of \(k^n\) since if \(v_1\) and \(v_2\) belong to the null space, then \(q(v_1+v_2+x)=q(v_1+x)=q(x)=q(v_2+x)\), and if \(v\) belongs to the null space, and \(c\) is any constant in \(k\), then \(q(cv+x)=c^2 \, q(v+x/c)=c^2 \, q(x/c)=q(x)\).
+
+Make a linear change of variables to get various of the variables to parameterize this subspace, i.e. the subspace is given by setting the first \(j\) variables \(x_1,x_2,\dots,x_j\) to zero and the last \(n-j\) variables \(x_{j+1},\dots,x_n\) to any values.
+So \(q\) is a function of those first \(j\) variables only.
+We can reduce our problem to the study of those first \(j\) variables, i.e. we can assume that the null space is zero.
+
+If \(n=1\), \(q=ax^2\), we only need to ensure that \(a\) has a square root in \(k\).
+If \(n=2\), \(q=ax^2+bxy+cy^2\), we only need to ensure that \(ax^2+bx+c\) has a root in \(k\), and then \(q\) factors into linear factors, and we change variables to arrange that \(q=xy\).
+So suppose that \(n \ge 3\).
+
+A \emph{plane} is a 2-dimensional linear subspace of \(k^n\).
+On any plane \(P\), we can arrange that \(q=0\) or \(q=x_1x_2\) or \(q=x_1^2\), as above, after some linear change of variables.
+For the moment, suppose that there is a plane \(P\) on which we can arrange that \(q=x_1x_2\), after perhaps a quadratic extension of \(k\).
+
+Consider the subset \(Q\) of \(k^n\) consisting of those vectors \(w\) so that \(q(v+w)=q(v)+q(w)\) for all \(v\) in \(P\).
+Expand out this equation to see that this is a linear equation in \(w\), so \(Q\) is a linear subspace.
+Moreover, we only need to check the equation \(q(v_i+w)=q(v_i)+q(w)\) for any two vectors \(v_i\) forming a basis of \(P\), so \(Q\) is cut out by two linear equations, so has dimension at least \(n-2\).
+Check that \(P \cap Q=\set{0}\), because on \(P\), \(q=x_1 x_2\).
+So \(Q\) is a linear subspace of \(k^n\) of dimension \(n-2\) exactly.
+
+Make a linear change of variables so that \(P\) is spanned by the first two basis vectors (i.e. by setting any values to \(x_1\) and \(x_2\) while setting all remaining variables equal to zero) and \(Q\) by the remaining \(n-2\) basis vectors: \(k^n=P \oplus Q = k^2 \oplus k^{n-2}\).
+Change the first two variables if needed to arrange that \(q=x_1 x_2\) on \(P\), as we saw is possible.
+By induction, we can arrange that on \(Q\), either
+\[
+q(0,0,x_3,\dots,x_n)=x_3 x_4 + x_5 x_6 + \dots + x_{n-1} x_n
+\]
+or
+\[
+q(0,0,x_3,\dots,x_n)=x_3 x_4 + x_5 x_6 + \dots + x_{n-2} x_{n-1}+x_n^2.
+\]
+and so
+\[
+q(x_1,\dots,x_n)=x_1 x_2 + x_3 x_4 + x_5 x_6 + \dots + x_{n-1} x_n
+\]
+or
+\[
+q(x_1,\dots,x_n)=x_1 x_2 + x_3 x_4 + x_5 x_6 + \dots + x_{n-2} x_{n-1}+x_n^2.
+\]
+
+Now suppose that there is no plane \(P\) in \(k^n\) on which we can arrange that \(q\) has the form \(x_1 x_2\).
+Suppose that this remains true even after taking finitely many quadratic extensions.
+So on any plane \(P\) in \(k^n\), either \(q=0\) or we can arrange that \(q=x_1^2\).
+
+Let \(U\) be the set of all vectors in \(k^n\) on which \(q\) vanishes.
+Take two linearly independent vectors on which \(q\) vanishes, i.e. two points of \(U\).
+On the plane they span, \(q\) vanishes on at least two lines, so \(q\) vanishes everywhere on that plane.
+So \(U\) is a linear subspace of \(k^n\).
+Arrange by linear change of variables that \(U\) is given by the linear equations \(0=x_{s+1}=\dots=x_n\).
+If \(s \ge 2\), then the plane parameterized by \((x_1,x_2,0,\dots,0)\) intersects \(U\) only at the origin, i.e. \(q=0\) on that plane only at the origin.
+After a quadratic extension, as we have seen, we can arrange that \(q=x_1 x_2\), a contradiction.
+Hence \(s=0\) or \(s=1\).
+But \(s=0\) just when \(U=k^n\), i.e. just when \(q=0\) everywhere.
+So we can assume that \(s=1\), i.e. \(0=q(0,x_2,\dots,x_n)\), i.e. \(q=0\) whenever \(x_1=0\), i.e. \(q\) has a factor of \(x_1\), and so splits into a product of linear factors.
+\end{proof}
+
+
+
+
+\section{Plane conics}
+
+\begin{example}
+Look at the curves \(x^2=y^2\) and the curves \(x^2+y^2=0\), defined over \(k=\R{}\); each is a singular plane conic.
+The first is a pair of lines \(x=\pm y\) while the second, a circle of radius zero, has the origin as its only real point, but splits into \(x=\pm i y\) over \(\bar{k}=\C{}\).
+\end{example}
+
+\begin{lemma}
+If a plane conic over a field \(k\) has a singular point with coordinates in \(k\) then it is either 
+\begin{enumerate}
+\item
+a pair of lines defined over \(k\) or else
+\item
+a pair of lines defined over a quadratic extension \(k(\sqrt{\alpha})\) meeting at a single point defined over \(k\), the singular point, and no other point of the curve is defined over \(k\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+At a singular point of a plane conic, in an affine chart in which the singular point is the origin, the equation of the conic becomes a quadratic form in \(x,y\).
+This factors over \(k\) or over a quadratic extension of \(k\), i.e. the conic is a pair of lines in a quadratic extension.
+If any point (except the origin) on one of those lines has coordinates in \(k\), then the line does, and so does the associated linear factor, and then by dividing that linear factor in, we see that the other linear factor is also defined over \(k\).
+Suppose on the other hand that the linear factors don't exist over \(k\), only over the quadratic extension.
+Then no other point of the affine plane with coordinates in \(k\) belongs to the curve, except the singular point.
+Write out the equation of the curve as \(ax^2+bxy+cy^2=0\), say.
+Switch to the affine chart \(y=1\) where the curve is \(ax^2+bx+c\).
+Since the homogeneous equation has no roots in \(\Proj[1]{k}\), this quadratic equation has no root in \(k\), so there is no point in this affine chart \(y=1\).
+Therefore the projective conic has precisely one point with coordinates in \(k\).
+\end{proof}
+
+\begin{proposition}
+If a conic in the projective plane over a field \(k\) has a regular point with coordinates in \(k\), it is either a pair of distinct lines, and taken to the conic \(xy=0\) by some projective automorphism, or is irreducible and taken to the conic \(y=x^2\) by some projective automorphism.
+\end{proposition}
+\begin{proof}
+Suppose that our conic is not a pair of lines.
+It has a regular point with coordinates in \(k\), and is not a pair of lines, so it has no singular points, and so is irreducible.
+Arrange by projective automorphism that the regular point lies at the origin of the affine chart \(z=1\) with tangent line \(y=0\), so the curve has the form
+\[
+y=ax^2+bxy+cy^2.
+\]
+If \(a=0\), we get a factor of \(y\) on both sides, so the equation is reducible.
+Rescale \(y\) to arrange \(a=1\), and write the equation as
+\(x^2=y\pr{1-bx-cy}\).
+Change variables by a projective automorphism \(X=x, Y=y, Z=z-bx-cy\) to get to \(x^2=y\).
+\end{proof}
+
+\begin{corollary}
+If an irreducible conic in the projective plane over a field \(k\) has a regular point with coordinates in \(k\) then it is birational to a line.
+\end{corollary}
+\begin{proof}
+Suppose that the conic, call it \(C\), has equation \(x^2=y\), i.e. \(x^2=yz\) homogeneously.
+Map 
+\[
+[s,t] \in \Proj[1]{k} \mapsto \left[st,s^2,t^2\right] \in C \subset \Proj[2]{k}.
+\]
+The inverse map is
+\[
+[x,y,z] \in C \mapsto 
+\begin{cases}
+[x,y], & \text{ if } y \ne 0, \\
+[z,y], & \text{ if } z \ne 0.
+\end{cases}
+\]
+Clearly this identifies the rational functions.
+
+More geometrically, pick a regular point \(p_0\) on the curve, and arrange that it is the origin in an affine chart.
+Then take a line \(\ell\) in the plane, and identify each point \(p \in \ell\) of that line with the intersection point of the line \(pp_0\) with \(C\).
+We leave the reader to check that this gives the same map. 
+\end{proof}
+
+

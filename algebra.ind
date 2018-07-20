@@ -1,0 +1,555 @@
+\begin{theindex}
+
+  \item \(*\)-ring, \FancyIndexEntry{250}
+    \subitem real, \FancyIndexEntry{251}
+
+  \indexspace
+
+  \item abelian, \FancyIndexEntry{94}
+  \item absolute value, \FancyIndexEntry{2}
+  \item addition laws, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{241}, \FancyIndexEntry{249}
+  \item affine space, \FancyIndexEntry{233}
+  \item affine variety, \FancyIndexEntry{235}
+  \item algebra, \FancyIndexEntry{139}
+  \item algebraic
+    \subitem closure, \FancyIndexEntry{132}
+    \subitem curve, \FancyIndexEntry{146, 147}
+  \item algorithm
+    \subitem Euclidean, \FancyIndexEntry{7}
+    \subitem extended Euclidean, \FancyIndexEntry{17}
+  \item alphabet, \FancyIndexEntry{105}
+  \item alternative ring, \FancyIndexEntry{251}
+  \item Armstrong, Mark, \hyperpage{89}
+  \item associative law
+    \subitem addition, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{249}
+    \subitem multiplication, \FancyIndexEntry{1}, \FancyIndexEntry{124}
+  \item associator, \FancyIndexEntry{251}
+  \item automorphism, \FancyIndexEntry{141}
+    \subitem group, \FancyIndexEntry{141}
+    \subitem projective plane, \FancyIndexEntry{244}
+    \subitem ring, \FancyIndexEntry{136}
+
+  \indexspace
+
+  \item B\'ezout
+    \subitem coefficients, \FancyIndexEntry{17}
+    \subitem theorem, \FancyIndexEntry{187}, \FancyIndexEntry{189}
+  \item basis, \FancyIndexEntry{129}, \FancyIndexEntry{242}
+  \item bijection, \FancyIndexEntry{89}
+  \item birational, \FancyIndexEntry{149}
+  \item biregular, \FancyIndexEntry{147}
+  \item Blake, William, \hyperpage{173}
+  \item Boole, George, \hyperpage{9}
+  \item bounded from below, \FancyIndexEntry{5}
+  \item Brahma's correct system, \hyperpage{33}
+  \item Brahma-Sphuta-Siddhanta, \hyperpage{33}
+  \item Brahmagupta, \hyperpage{33}
+  \item broken Desargues configuration, \FancyIndexEntry{247}
+  \item Brothers Karamazov, \hyperpage{174}
+
+  \indexspace
+
+  \item Carroll, Lewis, \hyperpage{4}
+  \item Cayley graph, \FancyIndexEntry{100}
+  \item Cayley, Arthur, \hyperpage{173}
+  \item characteristic, \FancyIndexEntry{127}
+  \item characteristic polynomial, \FancyIndexEntry{119}
+  \item Chasles theorem, \FancyIndexEntry{203}
+  \item Chinese remainder theorem, \hyperpage{136}
+  \item closed set, \FancyIndexEntry{235}
+  \item closure, \FancyIndexEntry{235}
+  \item coefficient
+    \subitem of polynomial, \FancyIndexEntry{51}
+  \item common divisor, \FancyIndexEntry{5}
+  \item commutative law
+    \subitem addition, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{250}
+    \subitem multiplication, \FancyIndexEntry{1}, \FancyIndexEntry{125}, 
+		\FancyIndexEntry{250}
+  \item commuting, \FancyIndexEntry{94}
+  \item complex conjugation, \FancyIndexEntry{49}
+  \item component, \FancyIndexEntry{147}
+    \subitem multiple, \FancyIndexEntry{184}
+  \item concatentation, \FancyIndexEntry{105}
+  \item cone, \FancyIndexEntry{179}
+  \item configuration, \FancyIndexEntry{243}
+    \subitem broken Desargues, \FancyIndexEntry{247}
+    \subitem dual, \FancyIndexEntry{245}
+    \subitem standard Desargues, \FancyIndexEntry{247}
+    \subitem trivalent, \FancyIndexEntry{249}
+  \item conic, \FancyIndexEntry{146}
+  \item conjugation, \FancyIndexEntry{250}
+  \item coordinates
+    \subitem homogeneous, \FancyIndexEntry{176}
+  \item coprime, \FancyIndexEntry{6}
+  \item cubic
+    \subitem curve, \FancyIndexEntry{146}
+    \subitem polynomial, \FancyIndexEntry{54}
+  \item curve
+    \subitem algebraic, \FancyIndexEntry{146}
+    \subitem cubic, \FancyIndexEntry{146}
+    \subitem degree, \FancyIndexEntry{146}
+    \subitem elliptic, \FancyIndexEntry{204}
+    \subitem irreducible, \FancyIndexEntry{147}
+    \subitem projective plane, \FancyIndexEntry{180}
+    \subitem quartic, \FancyIndexEntry{146}
+    \subitem quintic, \FancyIndexEntry{146}
+    \subitem rational, \FancyIndexEntry{150}
+    \subitem reducible, \FancyIndexEntry{147}
+    \subitem regular, \FancyIndexEntry{210}
+    \subitem smooth, \FancyIndexEntry{210}
+  \item cycle, \FancyIndexEntry{92}
+    \subitem disjoint, \FancyIndexEntry{92}
+  \item cyclic, \FancyIndexEntry{97}
+
+  \indexspace
+
+  \item Dawson, Les, \hyperpage{45}
+  \item De Morgan, Augustus, \hyperpage{51}
+  \item degree
+    \subitem of algebraic curve, \FancyIndexEntry{146}
+    \subitem of field extension, \FancyIndexEntry{129}, \hyperpage{170}
+    \subitem of polynomial, \FancyIndexEntry{51}
+  \item denominator, \FancyIndexEntry{46}
+  \item derivative, \FancyIndexEntry{84}
+  \item Desargues
+    \subitem configuration
+      \subsubitem broken, \FancyIndexEntry{247}
+      \subsubitem standard, \FancyIndexEntry{247}
+    \subitem projective plane, \FancyIndexEntry{246}
+  \item Descartes
+    \subitem theorem, \FancyIndexEntry{59}
+  \item descriptive geometry, \FancyIndexEntry{173}
+  \item determinacy of sign, \FancyIndexEntry{2}
+  \item determinant, \hyperpage{91}
+  \item dihedral group, \FancyIndexEntry{97}
+  \item Dijkstra, Edsger, \hyperpage{21}
+  \item dimension, \FancyIndexEntry{243}
+  \item discriminant, \FancyIndexEntry{84}
+  \item distributive law, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{250}
+  \item division, \FancyIndexEntry{4}
+    \subitem by zero, \hyperpage{4}
+  \item divisor, \FancyIndexEntry{4}
+  \item Dostoyevsky, Fyodor, \hyperpage{174}
+  \item Douglass, Frederick, \hyperpage{2}
+  \item dragon, \hyperpage{255}
+  \item dual
+    \subitem configuration, \FancyIndexEntry{245}
+    \subitem curve, \FancyIndexEntry{232}
+    \subitem projective plane, \FancyIndexEntry{197}, 
+		\FancyIndexEntry{231}, \FancyIndexEntry{238}
+
+  \indexspace
+
+  \item elliptic curve, \FancyIndexEntry{204}
+  \item equality cancellation law
+    \subitem addition, \FancyIndexEntry{3}
+    \subitem multiplication, \FancyIndexEntry{3}
+  \item Euclid, \hyperpage{5}, \hyperpage{17}, \hyperpage{24}
+  \item Euclidean algorithm, \FancyIndexEntry{7}
+    \subitem extended, \FancyIndexEntry{17, 18}
+  \item Euler
+    \subitem lemma, \hyperpage{217}
+  \item Euler's totient function, \FancyIndexEntry{36}, \hyperpage{42}
+  \item Euler, Leonhard, \hyperpage{25}
+  \item even integer, \FancyIndexEntry{24}
+  \item existence of negatives, \FancyIndexEntry{1}, 
+		\FancyIndexEntry{124}, \FancyIndexEntry{250}
+  \item expected number of distinct roots, \FancyIndexEntry{62}
+  \item extended Euclidean algorithm, \FancyIndexEntry{17, 18}
+  \item extension
+    \subitem Galois, \FancyIndexEntry{143}
+    \subitem simple, \FancyIndexEntry{143}
+
+  \indexspace
+
+  \item Fano plane, \FancyIndexEntry{177}, \hyperpage{243, 244}
+  \item Fermat's Last Theorem, \FancyIndexEntry{146}
+  \item Fibonacci sequence, \hyperpage{13}, \hyperpage{15}
+  \item field, \FancyIndexEntry{53}, \FancyIndexEntry{126}
+    \subitem of fractions, \FancyIndexEntry{138}
+    \subitem splitting, \FancyIndexEntry{132}
+  \item fixed point, \FancyIndexEntry{105}
+  \item flex, \FancyIndexEntry{217}
+  \item form
+    \subitem quadratic, \FancyIndexEntry{225}
+  \item free
+    \subitem group, \FancyIndexEntry{105}
+    \subitem product, \FancyIndexEntry{110}
+  \item Frobenius morphism, \FancyIndexEntry{166}
+  \item Frost, Robert, \hyperpage{135}
+  \item function
+    \subitem rational, \FancyIndexEntry{124}, \FancyIndexEntry{149}
+    \subitem recursive, \FancyIndexEntry{13}
+    \subitem regular, \FancyIndexEntry{147}
+
+  \indexspace
+
+  \item Galois extension, \FancyIndexEntry{143}
+  \item Galois group, \FancyIndexEntry{142}
+  \item Gauss's lemma, \FancyIndexEntry{69}
+  \item Gauss, Carl Friedrich, \hyperpage{27}
+  \item general position, \FancyIndexEntry{197}
+  \item generate
+    \subitem projective plane, \FancyIndexEntry{248}
+  \item generators, \FancyIndexEntry{99}
+  \item generic
+    \subitem triangle, \FancyIndexEntry{185}
+      \subsubitem very, \FancyIndexEntry{185}
+  \item Graves, Robert, \hyperpage{209}
+  \item greatest common divisor, \FancyIndexEntry{5}
+  \item group, \FancyIndexEntry{94}
+    \subitem automorphism, \FancyIndexEntry{141}
+    \subitem Galois, \FancyIndexEntry{142}
+    \subitem isomorphism, \FancyIndexEntry{96}
+    \subitem transformation, \FancyIndexEntry{90}
+
+  \indexspace
+
+  \item Haddon, Mark, \hyperpage{23}
+  \item hair
+    \subitem red, \hyperpage{9}
+  \item heaven, \hyperpage{vi}
+  \item hell, \hyperpage{vi}
+  \item Hessian
+    \subitem curve, \FancyIndexEntry{217}
+  \item Hilbert basis theorem, \FancyIndexEntry{233}
+  \item homogeneous
+    \subitem coordinates, \FancyIndexEntry{176}
+    \subitem polynomial, \FancyIndexEntry{120}, \FancyIndexEntry{179}
+  \item homomorphism, \FancyIndexEntry{135}
+  \item horse, \hyperpage{12}
+  \item hyperplane
+    \subitem linear, \FancyIndexEntry{73}
+
+  \indexspace
+
+  \item ideal, \FancyIndexEntry{137}
+    \subitem maximal, \FancyIndexEntry{163}
+    \subitem prime, \FancyIndexEntry{162}
+  \item identity law
+    \subitem addition, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{250}
+    \subitem multiplication, \FancyIndexEntry{1}, \FancyIndexEntry{125}, 
+		\FancyIndexEntry{250}
+  \item identity transformation, \FancyIndexEntry{89}
+  \item image, \FancyIndexEntry{107}, \FancyIndexEntry{243}
+  \item incidence geometry, \FancyIndexEntry{243}
+  \item independent conditions, \FancyIndexEntry{199}
+  \item induction, \FancyIndexEntry{10}
+  \item inequality cancellation law
+    \subitem addition, \FancyIndexEntry{4}
+    \subitem multiplication, \FancyIndexEntry{4}
+  \item inertia, \hyperpage{225}
+  \item inflection point, \FancyIndexEntry{217}
+  \item injective, \FancyIndexEntry{89}
+    \subitem morphism, \FancyIndexEntry{136}
+  \item intermediate value theorem, \FancyIndexEntry{59}
+  \item interpolation, \FancyIndexEntry{57}
+  \item intersection number, \FancyIndexEntry{186}
+  \item invariant
+    \subitem of square matrix, \FancyIndexEntry{119}
+  \item inverse, \FancyIndexEntry{89}
+  \item invertible
+    \subitem transformation, \FancyIndexEntry{89}
+  \item irreducible
+    \subitem curve, \FancyIndexEntry{147}
+    \subitem polynomial, \FancyIndexEntry{53}, \FancyIndexEntry{70}, 
+		\hyperpage{171}
+  \item isomorphic
+    \subitem rings, \FancyIndexEntry{136}
+  \item isomorphism
+    \subitem of groups, \FancyIndexEntry{96}
+    \subitem projective plane, \FancyIndexEntry{244}
+    \subitem ring, \FancyIndexEntry{136}
+
+  \indexspace
+
+  \item Karenina, Anna, \hyperpage{193}
+  \item kernel, \FancyIndexEntry{107}, \FancyIndexEntry{243}
+    \subitem ring morphism, \FancyIndexEntry{135}
+  \item Kirillov, A. A., \hyperpage{54}
+  \item kite, \FancyIndexEntry{244}
+  \item Klein, Felix, \hyperpage{145}
+  \item Kronecker, Leopold, \hyperpage{1}
+
+  \indexspace
+
+  \item Lagrange, Joseph-Louis, \hyperpage{104}
+  \item Lang, Serge, \hyperpage{203}
+  \item law of well ordering, \FancyIndexEntry{2}, \hyperpage{5}, 
+		\hyperpage{10}
+  \item least common multiple, \FancyIndexEntry{7}
+  \item left coset, \FancyIndexEntry{101}
+  \item left translate, \FancyIndexEntry{101}
+  \item lemma
+    \subitem Euler, \hyperpage{217}
+  \item line, \FancyIndexEntry{146}
+  \item linear
+    \subitem function, \FancyIndexEntry{73}
+    \subitem hyperplane, \FancyIndexEntry{73}
+    \subitem projective automorphism, \FancyIndexEntry{244}
+    \subitem system, \FancyIndexEntry{197}
+  \item linear combination, \FancyIndexEntry{242}
+  \item linear map, \FancyIndexEntry{243}
+  \item linear relation, \FancyIndexEntry{242}
+  \item linear transformation, \FancyIndexEntry{91}
+  \item linearly independent, \FancyIndexEntry{242}
+  \item list, \FancyIndexEntry{14}
+  \item lower bound, \FancyIndexEntry{5}
+  \item L\"uroth's theorem, \FancyIndexEntry{171}
+
+  \indexspace
+
+  \item Malraux, Andr\IeC {\'e}, \hyperpage{41}
+  \item Marx, Chico, \hyperpage{182}
+  \item mathematical induction, \FancyIndexEntry{10}
+  \item maximal ideal, \FancyIndexEntry{163}
+  \item Mencken, H.\nobreakspace  {}L., \hyperpage{64}
+  \item modulus, \FancyIndexEntry{49}
+  \item monic polynomial, \FancyIndexEntry{53}, \FancyIndexEntry{111}
+  \item morphism
+    \subitem Frobenius, \FancyIndexEntry{166}
+    \subitem injective, \FancyIndexEntry{136}
+    \subitem of groups, \FancyIndexEntry{106}
+    \subitem one-to-one, \FancyIndexEntry{136}
+    \subitem onto, \FancyIndexEntry{136}
+    \subitem rational, \FancyIndexEntry{149}
+    \subitem regular, \FancyIndexEntry{147}
+    \subitem ring, \FancyIndexEntry{135}
+    \subitem surjective, \FancyIndexEntry{136}
+  \item multiplication laws, \FancyIndexEntry{1}, \FancyIndexEntry{124}, 
+		\FancyIndexEntry{241}, \FancyIndexEntry{250}
+  \item multiplication table, \FancyIndexEntry{96}
+  \item multiplicative inverse, \FancyIndexEntry{31}
+
+  \indexspace
+
+  \item negative, \FancyIndexEntry{2}
+  \item neighborhood, \FancyIndexEntry{235}
+  \item Newton, Isaac, \hyperpage{118}
+  \item norm, \FancyIndexEntry{49}
+  \item nullstellensatz, \FancyIndexEntry{234}
+  \item number
+    \subitem rational, \FancyIndexEntry{45}
+  \item number line, \FancyIndexEntry{48}
+  \item numerator, \FancyIndexEntry{46}
+
+  \indexspace
+
+  \item octave projective plane, \FancyIndexEntry{254}
+  \item octaves, \FancyIndexEntry{251}
+  \item octonions, \FancyIndexEntry{251}
+  \item odd integer, \FancyIndexEntry{24}
+  \item one-to-one, \FancyIndexEntry{89}
+    \subitem morphism, \FancyIndexEntry{136}
+  \item onto, \FancyIndexEntry{89}
+    \subitem morphism, \FancyIndexEntry{136}
+  \item open set, \FancyIndexEntry{235}
+  \item optics, \hyperpage{vi}
+  \item orbit, \FancyIndexEntry{104}
+  \item order, \FancyIndexEntry{96}
+    \subitem group element, \FancyIndexEntry{98}
+    \subitem of point on curve, \FancyIndexEntry{209}
+
+  \indexspace
+
+  \item Painlev\'e, Paul, \hyperpage{48}
+  \item papyrus
+    \subitem Rhind, \hyperpage{45}
+  \item partial fraction, \FancyIndexEntry{65}, \hyperpage{150}
+    \subitem decomposition, \FancyIndexEntry{65}
+  \item pencil, \FancyIndexEntry{174}, \FancyIndexEntry{193}, 
+		\hyperpage{197}
+  \item perfect square, \FancyIndexEntry{47}
+  \item permutation, \FancyIndexEntry{89}
+  \item perspective, \FancyIndexEntry{245}
+  \item Philips, Emo, \hyperpage{13}
+  \item Picasso, Pablo, \hyperpage{8}
+  \item plane, \FancyIndexEntry{239}
+    \subitem Fano, \FancyIndexEntry{177}
+  \item plane curve
+    \subitem projective, \FancyIndexEntry{180}
+  \item Plath, Sylvia, \hyperpage{41}
+  \item Poincar\'e, Henri, \hyperpage{89}
+  \item point
+    \subitem regular, \FancyIndexEntry{209}
+    \subitem singular, \FancyIndexEntry{210}
+    \subitem smooth, \FancyIndexEntry{209}
+  \item polygon, \FancyIndexEntry{195}, \FancyIndexEntry{243}
+  \item polynomial, \FancyIndexEntry{51}, \FancyIndexEntry{124}
+    \subitem cubic, \FancyIndexEntry{54}
+    \subitem homogeneous, \FancyIndexEntry{120}, \FancyIndexEntry{179}
+    \subitem irreducible, \FancyIndexEntry{53}, \FancyIndexEntry{70}, 
+		\hyperpage{171}
+    \subitem monic, \FancyIndexEntry{53}, \FancyIndexEntry{111}
+    \subitem quadratic, \FancyIndexEntry{54}
+    \subitem reducible, \FancyIndexEntry{53}, \FancyIndexEntry{70}, 
+		\hyperpage{171}
+  \item positive, \FancyIndexEntry{2}
+    \subitem rational number, \FancyIndexEntry{47}
+  \item presentation, \FancyIndexEntry{105}
+  \item prime, \FancyIndexEntry{23}
+  \item prime ideal, \FancyIndexEntry{162}
+  \item product, \FancyIndexEntry{96}
+  \item projective
+    \subitem automorphism, \FancyIndexEntry{176}, \FancyIndexEntry{178}
+    \subitem line, \FancyIndexEntry{176}
+    \subitem plane, \FancyIndexEntry{175}, \FancyIndexEntry{177}, 
+		\FancyIndexEntry{237}
+      \subsubitem automorphism, \FancyIndexEntry{244}
+      \subsubitem Desargues, \FancyIndexEntry{246}
+      \subsubitem dual, \FancyIndexEntry{197}, \FancyIndexEntry{238}
+      \subsubitem generation, \FancyIndexEntry{248}
+      \subsubitem isomorphism, \FancyIndexEntry{244}
+    \subitem plane curve, \FancyIndexEntry{180}
+    \subitem space, \FancyIndexEntry{178}, \FancyIndexEntry{239}
+    \subitem subspace, \FancyIndexEntry{240}
+  \item projective plane
+    \subitem quaternionic, \FancyIndexEntry{241}
+
+  \indexspace
+
+  \item quadratic
+    \subitem form, \FancyIndexEntry{225}
+    \subitem polynomial, \FancyIndexEntry{54}
+  \item quadrilateral, \FancyIndexEntry{195}
+  \item quartic
+    \subitem curve, \FancyIndexEntry{146}
+  \item quaternionic projective plane, \FancyIndexEntry{241}
+  \item quaternions, \FancyIndexEntry{240}
+  \item quintic
+    \subitem curve, \FancyIndexEntry{146}
+  \item quotient, \FancyIndexEntry{5}
+  \item quotient ring, \FancyIndexEntry{162}
+
+  \indexspace
+
+  \item rational
+    \subitem curve, \FancyIndexEntry{150}
+    \subitem function, \FancyIndexEntry{124}, \FancyIndexEntry{149}
+    \subitem morphism, \FancyIndexEntry{149}
+    \subitem number, \FancyIndexEntry{45}
+  \item real
+    \subitem \(*\)-ring, \FancyIndexEntry{251}
+  \item recursive function, \FancyIndexEntry{13}
+  \item red hair, \hyperpage{9}
+  \item reduce, \FancyIndexEntry{105}
+  \item reducible
+    \subitem curve, \FancyIndexEntry{147}
+    \subitem polynomial, \FancyIndexEntry{53}, \FancyIndexEntry{70}, 
+		\hyperpage{171}
+  \item regular
+    \subitem curve, \FancyIndexEntry{210}
+    \subitem function, \FancyIndexEntry{147}
+    \subitem point, \FancyIndexEntry{209}
+  \item regular point, \FancyIndexEntry{149}
+  \item remainder, \FancyIndexEntry{5}, \hyperpage{42}
+  \item resultant, \FancyIndexEntry{78}, \hyperpage{132}, 
+		\hyperpage{155}
+  \item Rhind papyrus, \hyperpage{45}
+  \item right coset, \FancyIndexEntry{101}
+  \item right translate, \FancyIndexEntry{101}
+  \item ring, \FancyIndexEntry{123}, \FancyIndexEntry{249}
+    \subitem alternative, \FancyIndexEntry{251}
+  \item roots
+    \subitem expected number, \FancyIndexEntry{62}
+
+  \indexspace
+
+  \item scalar multiplication, \FancyIndexEntry{139}
+  \item Shakespeare, William, \hyperpage{237}
+  \item sign laws, \FancyIndexEntry{2}
+  \item signature, \FancyIndexEntry{225}
+  \item simple extension, \FancyIndexEntry{143}
+  \item singular point, \FancyIndexEntry{210}
+  \item skew field, \FancyIndexEntry{241}
+  \item smooth
+    \subitem curve, \FancyIndexEntry{210}
+    \subitem point, \FancyIndexEntry{209}
+  \item span, \FancyIndexEntry{242}
+  \item split polynomial, \FancyIndexEntry{131}
+  \item splitting field, \FancyIndexEntry{131, 132}
+  \item square-free, \FancyIndexEntry{226}
+  \item St. Vincent Millay, Edna, \hyperpage{17}
+  \item standard Desargues configuration, \FancyIndexEntry{247}
+  \item Study
+    \subitem theorem, \FancyIndexEntry{184}
+  \item Sturm
+    \subitem sequence, \FancyIndexEntry{61}
+  \item subgroup, \FancyIndexEntry{100}
+  \item subspace, \FancyIndexEntry{242}
+    \subitem projective, \FancyIndexEntry{240}
+  \item subtraction, \FancyIndexEntry{3}
+  \item succession, \FancyIndexEntry{2}
+  \item surjective, \FancyIndexEntry{89}
+    \subitem morphism, \FancyIndexEntry{136}
+  \item Swift, Jonathan, \hyperpage{9}
+  \item Sylvester's law of inertia, \FancyIndexEntry{225}
+  \item Sylvester, James, \hyperpage{225}
+  \item symmetric
+    \subitem function, \FancyIndexEntry{114}
+  \item symmetric group, \FancyIndexEntry{91}
+
+  \indexspace
+
+  \item tangent line, \FancyIndexEntry{207}
+  \item temperature, \hyperpage{vi}
+  \item ternary ring, \FancyIndexEntry{253}
+  \item theorem
+    \subitem B\'ezout, \FancyIndexEntry{187}, \FancyIndexEntry{189}
+    \subitem Chasles, \FancyIndexEntry{203}
+    \subitem Descartes, \FancyIndexEntry{59}
+    \subitem Hilbert basis, \FancyIndexEntry{233}
+    \subitem intermediate value, \FancyIndexEntry{59}
+    \subitem L\"uroth, \FancyIndexEntry{171}
+    \subitem nullstellensatz, \FancyIndexEntry{234}
+    \subitem Study, \FancyIndexEntry{184}
+  \item Thom, Ren\IeC {\'e}, \hyperpage{255}
+  \item Tolstoy, Leo, \hyperpage{193}, \hyperpage{237}
+  \item totient function, \FancyIndexEntry{36}
+  \item trace, \hyperpage{119}
+  \item transformation, \FancyIndexEntry{89}
+    \subitem group, \FancyIndexEntry{90}
+    \subitem identity, \FancyIndexEntry{89}
+    \subitem invertible, \FancyIndexEntry{89}
+    \subitem linear, \FancyIndexEntry{91}
+  \item triangle, \FancyIndexEntry{195}
+    \subitem generic, \FancyIndexEntry{185}
+    \subitem very generic, \FancyIndexEntry{185}
+  \item trivalent configuration, \FancyIndexEntry{249}
+  \item Twelfth Night, \hyperpage{237}
+
+  \indexspace
+
+  \item unit, \FancyIndexEntry{31}
+    \subitem ring, \FancyIndexEntry{126}
+
+  \indexspace
+
+  \item variety
+    \subitem affine, \FancyIndexEntry{235}
+  \item very generic
+    \subitem triangle, \FancyIndexEntry{185}
+  \item Viet\'e, Francois, \hyperpage{112}
+
+  \indexspace
+
+  \item War and Peace, \hyperpage{237}
+  \item weight, \FancyIndexEntry{115}, \FancyIndexEntry{121}
+  \item well ordering, \FancyIndexEntry{2}
+  \item Weyl, Hermann, \hyperpage{111}
+  \item Williams, Tennessee, \hyperpage{69}
+  \item Wittgenstein, Ludwig, \hyperpage{v}
+  \item word, \FancyIndexEntry{105}, \FancyIndexEntry{110}
+
+  \indexspace
+
+  \item zero divisor, \FancyIndexEntry{127}
+  \item Zhou, Zhuang, \hyperpage{255}
+  \item Zhuangzi, \hyperpage{255}
+
+\end{theindex}

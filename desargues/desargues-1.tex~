@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage{xstring}
+\usepackage{tikz}
+\usetikzlibrary{
+arrows,
+backgrounds,
+decorations.pathmorphing,
+fit,
+intersections,
+petri,
+positioning,
+through}
+\begin{document}
+
+% highest x value of any coordinate of any point in the picture:
+\newcommand*{\maxX}{5.5}
+% lowest x value of any coordinate of any point in the picture:
+\newcommand*{\minX}{0}
+\newcommand*{\tikzscale}{.5}
+\newcommand*{\dotr}{2pt}
+\newcommand*{\Aone}{0,6}
+\newcommand*{\Atwo}{2,5.5}
+\newcommand*{\Athree}{1.5,4}
+\newcommand*{\Pnought}{0,8}
+
+\newcommand*{\drawOrigin}
+{
+\fill[blue!40] (\Pnought) circle (\dotr) node (p) {};
+}
+
+\newcommand*{\drawFirstTriangle}
+{
+\fill[cyan!5,opacity=.75] (\Aone) -- (\Atwo) -- (\Athree) -- cycle;
+\fill[cyan!40] (\Aone) circle (\dotr) node (a1) {};
+\fill[cyan!40] (\Atwo) circle (\dotr) node (a2) {};
+\fill[cyan!40] (\Athree) circle (\dotr) node (a3) {};
+}
+
+
+\newcommand*{\Bone}{0,0}
+\newcommand*{\Btwo}{2.75*2,8-2.75*2.5}
+\newcommand*{\Bthree}{1.5*1.5,8-1.5*4}
+
+\newcommand*{\drawSecondTriangle}
+{
+\fill[brown!15] (\Bone) -- (\Btwo) -- (\Bthree) -- cycle;
+\fill[brown!50] (\Bone) circle (\dotr) node (b1) {};
+\fill[brown!50] (\Btwo) circle (\dotr) node (b2) {};
+\fill[brown!50] (\Bthree) circle (\dotr) node (b3) {};
+}
+
+\newcommand*{\connectVantageAndFirstTwoTriangles}
+{
+\draw[gray,opacity=.5] (p) -- (a1) -- (b1);
+\draw[gray,opacity=.5] (p) -- (a2) -- (b2);
+\draw[gray,opacity=.5] (p) -- (a3) -- (b3);
+}
+
+\newcommand*{\findFirstIntersection}
+{
+\node (c1) at (intersection of a2--a3 and b2--b3) {};
+}
+\newcommand*{\findSecondIntersection}
+{
+\node (c2) at (intersection of a1--a3 and b1--b3) {};
+}
+\newcommand*{\findThirdIntersection}
+{
+\node (c3) at (intersection of a1--a2 and b1--b2) {};
+}
+
+\newcommand*{\findAllIntersections}
+{
+\findFirstIntersection
+\findSecondIntersection
+\findThirdIntersection
+}
+
+\newcommand*{\showFirstIntersectionPoint}
+{
+%\draw[white] (c1) circle (1.4pt);
+\fill[gray!30] (c1) circle (\dotr);
+}
+
+\newcommand*{\showSecondIntersectionPoint}
+{
+%\draw[white] (c2) circle (1.4pt);
+\fill[gray!30] (c2) circle (\dotr);
+}
+
+\newcommand*{\showThirdIntersectionPoint}
+{
+%\draw[white] (c3) circle (1.4pt);
+\fill[gray!30] (c3) circle (\dotr);
+}
+
+
+\newcommand*{\showAllIntersectionPoints}
+{
+\showFirstIntersectionPoint
+\showSecondIntersectionPoint
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowFirstIntersectionIsConstructed}
+{
+\draw[gray] (a3) -- (c1); % line through c1
+\draw[gray] (b3) -- (c1); % line through c1
+\showFirstIntersectionPoint
+}
+
+\newcommand*{\showHowSecondIntersectionIsConstructed}
+{
+\draw[gray] (a3) -- (c2); % line through c1
+\draw[gray] (b3) -- (c2); % line through c1
+\showSecondIntersectionPoint
+}
+
+\newcommand*{\showHowThirdIntersectionIsConstructed}
+{
+\draw[gray] (a2) -- (c3); % line through c1
+\draw[gray] (b2) -- (c3); % line through c1
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowAllIntersectionsAreConstructed}
+{
+\showHowFirstIntersectionIsConstructed
+\showHowSecondIntersectionIsConstructed
+\showHowThirdIntersectionIsConstructed
+}
+
+\newcommand*{\showTheLine}
+{
+\draw[green!50!gray] (c1) -- (c2);
+\draw[green!50!gray] (c2) -- (c3);
+\showAllIntersectionPoints
+}
+
+\newcommand*{\showThirdTriangle}
+{
+\fill[green!50!gray,opacity=.1] (c1) to[bend left=45] (c2) to[bend right=45] (c3) to[bend left=90] (c1);
+%\draw[green!50!gray] (c1) to[bend left=45] (c2);
+%\draw[green!50!gray] (c2) to[bend right=45] (c3);
+%\draw[green!50!gray] (c3) to[bend left=90] (c1);
+\showAllIntersectionPoints
+}
+
+\newcommand*{\firstPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+}
+
+\newcommand*{\secondPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\drawFirstTriangle
+\drawSecondTriangle
+}
+
+\newcommand*{\thirdPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findFirstIntersection
+\showHowFirstIntersectionIsConstructed
+}
+
+\newcommand*{\fourthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findSecondIntersection
+\showHowSecondIntersectionIsConstructed
+}
+
+\newcommand*{\fifthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findThirdIntersection
+\showHowThirdIntersectionIsConstructed
+}
+
+\newcommand*{\sixthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showTheLine
+}
+
+\newcommand*{\seventhPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}
+
+\newcommand*{\eighthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showThirdTriangle
+}
+
+\newcommand{\Desargue}[1]{%
+\begin{center}
+\begin{tikzpicture}[scale=\tikzscale]
+% Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
+\draw[white] (\minX,0) -- (\maxX,0); 
+\IfStrEqCase{#1}{%
+{1}%
+{%%
+\firstPicture
+}%%
+{2}%
+{%
+\secondPicture
+}%
+{3}%
+{%%
+\thirdPicture
+}%%
+{4}%
+{%%
+\fourthPicture
+}%%
+{5}%
+{%%
+\fifthPicture
+}%%
+{6}%
+{%%
+\sixthPicture
+}%%
+{7}%
+{%%
+\seventhPicture
+}%%
+{8}%
+{%%
+\eighthPicture
+}%%
+}%% end IfStrEqCase
+\end{tikzpicture}
+\end{center}
+}
+
+\end{document}
+

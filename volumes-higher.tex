@@ -1,0 +1,453 @@
+\chapter{Volumes in higher dimensions}
+
+\optionalSection{Framings}
+
+A collection of linearly independent vector fields on a manifold \(M\) forming a basis of \(T_p M\) at each point \(p\) is called a \emph{framing}.%
+\define{framing}
+In \(\R{n}\), the standard basis vector fields \(e_1, e_2, \dots, e_n\) are a framing.
+\begin{marginfigure}
+\centering
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+%\fbox{%
+\includegraphics[width=3cm,trim=20mm 0mm 20mm 0mm,clip]{framing-sphere}%
+%}%
+\legend{A framing of an open subset of the sphere}
+\end{marginfigure}
+
+For each point of any manifold, there is a framing defined on a open set around that point: pick a chart \(h\) and use \(h_*\) to take the standard basis vector fields to a framing on an open subset of \(M\).
+
+Take any framing \(X_1, X_2, \dots, X_n\) on an open set in \(\R{n}\).
+Write each vector field in the standard basis, say
+\[
+X_1 = \sum a_{1j} e_j, X_2 = \sum a_{2j} e_j, \dots, X_n = \sum a_{nj} e_j.
+\]
+Let \(A=\left(a_{ij}\right)\).
+A framing on \(\R{n}\) is \emph{positively oriented} if \(\det A > 0\),\SubIndex{determinant} and \emph{negatively oriented} otherwise.
+We can swap the sign of any one of the vector fields in a framing, and the framing will change from positively oriented to negatively oriented or vice versa.
+
+On an oriented manifold \(M\) of dimension \(p\), a framing is \emph{positively oriented}% 
+\define{framing!positively oriented}
+\define{positively oriented!framing}
+if it is locally identified with a positively oriented framing on an open set in \(\R{p}\) by some positively oriented chart.
+A basis \(v_1, v_2, \dots, v_n\) for a tangent space \(T_x M\) is \emph{positively oriented}%
+\define{basis!positively oriented} 
+\define{positively oriented!basis}
+if it extends somehow to a positively oriented framing in some open set.
+
+Once we have a framing, we can apply Gram--Schmidt orthogonalization to it to produce an orthonormal framing.
+\begin{problem}{volume:Gram.Schmidt}
+If \(X_1, X_2, \dots, X_n\) is a framing of continuously differentiable vector fields, and \(Y_1, Y_2, \dots, Y_n\) are the result of applying Gram--Schmidt orthogonalization to \(X_1, X_2, \dots, X_n\), prove that \(Y_1, Y_2, \dots, Y_n\) are continuously differentiable.
+\end{problem}
+Near each point on an oriented manifold, there is positively oriented orthonormal framing.
+Any two framings, say \(X_1, X_2, \dots, X_n\) and \(Y_1, Y_2, \dots, Y_n\) are expressible in terms of one another, say as \(Y_i = \sum_j a_{ji} X_j\), for some functions \(a_{ij}\). 
+For any two positively oriented orthonormal framings, the matrix \(A\) is a rotation matrix.
+
+If \(X_1, X_2, \dots, X_n\) is a framing, the \emph{dual coframing}%
+\define{coframing!dual}
+\(\omega_1, \omega_2, \dots, \omega_n\) are the 1-forms so that 
+\[
+\omega_i\of{X_j}=
+\begin{cases}
+1 & \text{ if \(i=j\)}, \\
+0 & \text{ otherwise.}
+\end{cases}
+\]
+Clearly each framing has a unique dual coframing, and vice versa.
+
+\begin{problem}{volume:orthonormality}
+A coframing \(\omega_1, \omega_2, \dots, \omega_n\) is orthonormal (in other words, for any tangent vector \(v\), \(\sum \omega_j(v)^2=\norm{v}^2\)) just when its dual framing is orthonormal. 
+\end{problem}
+\begin{answer}{volume:orthonormality}
+Take the dual framing \(X_1, X_2, \dots, X_n\), and write out your vector \(v\) as a linear combination, say \(v=\sum a_i X_i\).
+Then \(\omega_i(v)=a_i\) so \(\sum_i \omega_i(v)^2=\sum a_i^2\).
+If \(X_i\) are orthonormal, then \(\ip{v}{X_i}=a_i\) and \(\norm{v}^2=\ip{v}{v}=\sum_i a_i \ip{v}{X_i} = \sum_i a_i a_i = \sum_i \omega_i(v)^2\).
+On the other hand, if \(\sum_i \omega_i(v)^2=\norm{v}^2\) for all \(v\), then taking \(v=X_j\) we find \(\norm{X_j}=1\), and taking \(v=X_i \pm X_j\) for \(i \ne j\): \(\norm{X_i \pm X_j}^2=2=\norm{X_i}^2+\norm{X_j}^2\pm 2\ip{X_i}{X_j}=2 \pm 2 \ip{X_i}{X_j}\), so \(\ip{X_i}{X_j}=0\).
+\end{answer}
+
+The framing is \emph{positively oriented}\define{coframing!positively oriented}\define{positively oriented!coframing}
+if its dual framing is.
+Coframings will be more useful to us than framings.
+
+Take two framings, say \(X_1, X_2, \dots, X_p\) and \(Y_1, Y_2, \dots, Y_p\), with dual coframings \(\omega_1, \omega_2, \dots, \omega_p\) and \(\eta_1, \eta_2, \dots, \eta_p\).
+\begin{problem}{volume:change.coframing}
+If we change framings, say to \(Y_i = \sum a_{ji} X_j\), we change dual coframings as \(\omega_i = \sum_j a_{ij} \eta_j\) and wedge products as
+\[
+\omega_1 \wedge \omega_2 \wedge \dots \wedge \omega_p 
+=
+\det A \eta_1 \wedge \eta_2 \wedge \dots \wedge \eta_p
+\]
+where \(A=\pr{a_{ij}}\).
+\end{problem}
+
+
+
+
+\optionalSection{Normal vector fields}
+
+Why did we say that an orientable surface was one which has ``two sides''? 
+A \emph{normal vector}% 
+\define{normal vector}
+to a manifold \(M \subset \R{n}\) at a point \(x \in M\) is a vector \(v \in \R{n}\) which is perpendicular to \(M\) at \(x\), by which we mean perpendicular to every tangent vector in \(T_x M\), like \input{normal-vector-to-circle}.
+A \emph{normal vector field}% 
+\define{normal vector!field}
+on a manifold \(M\) is a continuous map \(X \colon M \to \R{n}\) so that \(X(x)\) is a normal vector, for each \(x \in M\).
+It is a \emph{unit} normal vector field if \(\norm{X}=1\) at every point.
+\begin{center}
+\includegraphics[width=.6\linewidth]{moebius-strip-normal}
+\legend{We try, but fail, to put a unit normal vector field on the M\"obius strip.}%
+\SubIndex{Moebius strip@M\"obius strip}
+\end{center}
+
+\begin{marginfigure}
+\centering
+\input{sphere-of-unit-vectors}
+\end{marginfigure}
+
+\begin{problem}{volumes:normal.sphere}
+It is standard to write \(S^n \subset \R{n+1}\)%
+\Notation{Sn}{S^n}{the \(n\)-dimensional unit sphere about \(0\) in \(\R{n+1}\)} to mean the unit sphere around the origin in \(\R{n+1}\). 
+(Careful: the superscript \({}^{n-1}\) means that the sphere has dimension \(n-1\).
+It doesn't mean \((n-1)\)-fold product of things called \(S\).)
+Prove that on the unit sphere \(S^n \subset \R{n+1}\), the vector field \(X(x)=x\) is a normal vector field.
+\end{problem}
+
+A manifold \(M \subset \R{n+1}\) of dimension \(n\) (in other words, of one less dimension than the ambient space) is a \emph{hypersurface}.%
+\define{hypersurface}
+
+\begin{lemma}
+For any hypersurface \(M \subset \R{n+1}\), and any point \(x \in M\), there is a collection \(X_1, X_2, \dots, X_{n+1}\) of vector fields defined in an open subset of \(M\) around \(x\), orthonormal and with \(X_1\) normal and \(X_2, X_3, \dots, X_{n+1}\) tangent.
+If \(M\) is oriented, we can arrange that \(X_1, X_2, X_3, \dots, X_{n+1}\) is positively oriented (as a basis of \(\R{n+1}\)) at each point, and that \(X_2, X_3, \dots, X_{n+1}\) is positively oriented (as a framing of \(M\)).
+\end{lemma}
+\begin{proof}
+At least one of the vector fields \(e_1, e_2, \dots e_{n+1}\) is not tangent to \(M\) at or near \(x\); they can't all be tangent, since the tangent space has dimension \(n\).
+If not tangent at \(x\), then by continuity not tangent near \(x\).
+So we can let \(X_1\) be some vector field not tangent to \(M\) near \(x\).
+Along \(M\) pick an orthonormal framing \(X_2, X_3, \dots, X_{n+1}\) (defined only along \(M\), not everywhere near \(M\)).
+Following Gram--Schmidt, replace \(X_1\) by
+\[
+X_1 - \ip{X_1}{X_2} X_2 - \ip{X_1}{X_3} X_3 - \dots - \ip{X_1}{X_{n+1}}X_{n+1}.
+\]
+so that we can assume that \(X_1\) is perpendicular to \(X_2, X_3, \dots, X_{n+1}\).
+Replace \(X_1\) by \(X_1/\norm{X_1}\) to arrange that \(X_1\) in unit length.
+If \(M\) is oriented, we could already pick \(X_2, X_3, \dots, X_{n+1}\) a positively oriented orthonormal framing, and replace \(X_1\) by \(-X_1\) if needed to arrange that \(X_1, X_2, \dots, X_{n+1}\) is a positively oriented basis of \(\R{n+1}\) at each point of \(M\) where it is defined.
+Smoothly extend these vector fields any way at all to be defined nearby.
+\end{proof}
+
+\begin{theorem}
+A hypersurface is orientable just when it admits a continuous nowhere vanishing normal
+vector field. 
+This occurs just when it admits a continuously differentiable unit normal vector field, which is then unique up to \(\pm\).
+For each orientation there is a unique unit normal vector field \(\nu\) so that, for any positively oriented framing \(X_2, X_3, \dots, X_{n+1}\) on an open subset of \(M\), \(\nu, X_2, X_3, \dots, X_{n+1}\) is positively oriented.
+Conversely, every unit normal vector field \(\nu\) determines a unique orientation of \(M\) by the same requirement.
+\end{theorem}
+\begin{proof}
+Suppose that \(M\) is orientable.
+As above, cover \(M\) by open sets on each of which we have a positively oriented orthonormal framing \(X_2, X_3, \dots, X_{n+1}\) with associated unit normal field \(X_1\) so that \(X_1, X_2, \dots, X_{n+1}\) is positively oriented.
+Suppose that we have two such: \(X_1, X_2, X_3, \dots, X_{n+1}\) and \(Y_1, Y_2, Y_3, \dots, Y_{n+1}\).
+Any two positively oriented orthonormal bases are obtained one from the other by a rotation of \(\R{n+1}\).
+That rotation preserves the tangent space \(T_x M\), since \(T_x M\) is the span of \(X_2, X_3, \dots, X_{n+1}\) and also of \(Y_2, Y_3, \dots, Y_{n+1}\).
+Because these are positively oriented orthonormal bases for \(T_x M\), they are just rotations of one another, so the rotation of \(\R{n+1}\) splits into a rotation of \(T_x M\) and a rotation of the normal vectors.
+But the normal vectors lie in a 1-dimensional normal space.
+The only rotation of a 1-dimensional space is the identity transformation.
+Therefore \(X_1=Y_1\), so we can define \(\nu=X_1\) where \(X_1\) is defined, and define \(\nu=Y_1\) where \(Y_1\) is defined.
+
+Suppose on the other hand that \(M\) admits a nonvanishing normal vector field \(X\).
+Replace \(X\) by \(\nu=X/\norm{X}\) to arrange a unit normal vector field.
+Pick any orthonormal framing \(X_2, X_3, \dots, X_{n+1}\) on \(M\) and change the sign of any one of the vector fields in the framing if needed to arrange that \(\nu, X_2, \dots, X_{n+1}\) is positively oriented.
+If we take any two such orthonormal framings, each is a rotation of the other, by a rotation fixing \(\nu\).
+Hence they are positively oriented with respect to one another.
+Consider all charts for which these framings are positively oriented in those charts; these charts are an orientation of \(M\).
+\end{proof}
+
+\begin{problem}{volume:find.normal}
+Suppose that \(M \subset \R{n}\) is the set of zeroes of a function:
+\[
+M = \Set{x \in \R{n}|f(x)=0}
+\]
+where \(f \colon \op{\R{n}} \to \R{}\) is continuously differentiable and the gradient doesn't vanish: \(\nabla f \ne 0\) at every point of \(M\). 
+Prove that \(M\) is a manifold and that \(\nu = \frac{\nabla f}{\norm{\nabla f}}\) is a unit normal vector field to \(M\).
+\end{problem}
+
+\begin{problem}{volume:find.normal.ellipsoid}
+Use the result of problem~\ref{problem:volume:find.normal} to find the unit normal vector field to the ellipsoid
+\[
+\sum_i \left(\frac{x_i}{a_i}\right)^2 = 1
+\]
+in \(\R{n}\), where \(a_1, a_2, \dots, a_n > 0\) are constants.
+\end{problem}
+
+\begin{problem}{volume:find.normal.graph}
+Suppose that \(M \subset \R{n+1}\) is the graph of a function:
+\[
+M = \Set{(x,y) \in \R{n+1}|y=f(x)}
+\]
+where \(f \colon \op{\R{n}} \to \R{}\) is continuously differentiable.
+Prove that \(M\) is a manifold and that the vector field
+\[
+\nu = \frac{1}{\sqrt{1+\sum_i \left(\pd{f}{x_i}\right)^2}}
+\begin{pmatrix}[\tallmatrix]
+\pd{f}{x_1} \\
+\pd{f}{x_2} \\
+\vdots \\
+\pd{f}{x_{n}} \\
+-1
+\end{pmatrix}
+\]
+is a unit normal vector field to \(M\).
+\end{problem}
+
+\begin{problem*}{volume:oriented.covering.space}
+Suppose that \(M \subset \R{n+1}\) is an \(n\)-dimensional manifold. 
+Let \(M_1 \subset \R{2n}\) be the set of pairs \((x,v)\) where \(x \in M\) and \(v\) is a unit length vector normal to \(M\) at \(x\). 
+Prove that \(M_1\) is an \(n\)-dimensional manifold. 
+Define an orientation on \(M_1\). 
+Prove that the map \((x,v) \in M_1 \mapsto x \in M\) is a 2-1 local diffeomorphism.
+If \(M\) is connected, prove that either (1) \(M\) is unorientable and \(M_1\) is connected or (2) \(M\) is orientable and \(M_1\) is not connected.
+\end{problem*}
+
+\optionalSection{The volume form on an oriented hypersurface}
+
+\begin{problem}{volume:hypersurf}
+If \(M\) is an oriented hypersurface, say with unit normal vector field \(\nu\), prove that
+\[
+dV_M = \nu \hook dV_{\R{n+1}}.
+\]
+\end{problem}
+\begin{answer}{volume:hypersurf}
+Take an orthonormal coframing, which we write as \(\omega_2, \omega_3, \dots, \omega_{n+1}\) on \(M\) near some point of \(M\).
+Take the dual orthonormal framing \(X_2, X_2, \dots, X_{n+1}\) and let \(\nu\) be the unit normal.
+Then extend the orthonormal vector fields \(\nu, X_2, X_3, \dots, X_{n+1}\) to some vector fields defined in an open subset of \(\R{n}\) near our point of \(M\), and apply Gram--Schmidt orthogonalization to them.
+Since they were already orthonormal along \(M\), their values at each point of \(M\) don't change, but they might change away from \(M\).
+Now make the dual orthonormal coframing, say \(\omega_1, \omega_2, \dots, \omega_{n+1}\).
+Then
+\[
+dV_{\R{n+1}} = \omega_1 \wedge \omega_2 \wedge \dots \wedge \omega_{n+1},
+\]
+while 
+\[
+\nu \hook dV_{\R{n+1}} = \omega_2 \wedge \dots \wedge \omega_{n+1} = dV_M.
+\]
+\end{answer}
+
+\begin{example} 
+On the unit sphere \(S^{n-1}\), we saw the volume form already: \(dV_{S^{n-1}}=\Omega\), the solid angle form restricted to the unit sphere. 
+Our polar coordinate formula is thus 
+\[
+∫_{\R{n}} f(x) \, dV = 
+∫_0^{\infty} \left(∫_{S^{n-1}} f(ru) dV_{S^{n-1}} \right) r^{n-1} \, dr.
+\]
+For example, a very important integral:
+\[
+∫_{\R{n}} e^{-\norm{x}^2} \, dV
+=
+\area{S^{n-1}} ∫_0^{\infty} e^{-r^2} r^{n-1} \, dr.
+\]
+Another way to calculate that integral: write each vector \(x \in \R{n}\) as \(x=(s,t)\), for some \(s \in \R{2}\) and \(t \in \R{n-2}\).
+Clearly
+\[
+\norm{x}^2=\norm{s}^2+\norm{t}^2,
+\]
+so
+\[
+∫_{\R{n}} e^{-\norm{x}^2} \, dV
+=
+∫_{\R{2}}  e^{-\norm{s}^2} \,
+∫_{\R{n-2}} e^{-\norm{t}^2}
+\]
+giving a relationship between areas of spheres, which we can use inductively to find the 
+area of a sphere in any dimension from the length of the unit circle.
+We leave the reader to prove:
+\[
+\area{S^n}
+=
+\begin{cases}
+\frac%%
+{%
+\left(2 \pi\right)^{n/2}
+}%
+{%
+2 \cdot 4 \cdot \dots \cdot (n-2)
+}%
+, & \text{ if \(n\) is even}, \\
+\frac%%
+{%
+2 \left(2 \pi\right)^{(n-1)/2}
+}%
+{%
+1 \cdot 3 \cdot \dots \cdot (n-2)
+}%
+, & \text{ if \(n\) is odd}.
+\end{cases}
+\]
+\end{example}
+
+\begin{problem}{volume:ellipsoid.volume}
+Use the result of problem~\vref{problem:volume:find.normal.ellipsoid}
+to find the volume form of the ellipsoid
+\[
+\sum_i \left(\frac{x_i}{a_i}\right)^2 = 1
+\]
+in \(\R{n}\), where \(a_1, a_2, \dots, a_n > 0\) are constants.
+\end{problem}
+\begin{answer}{volume:ellipsoid.volume}
+\[
+dV_{\text{ellipsoid}}
+=
+\frac{1}{\sqrt{\sum_i \left(\frac{x_i}{a_i}\right)^2}}
+\sum_j \frac{x_j}{a_j}
+dx_1 \wedge dx_2 \wedge \dots \wedge \widehat{dx}_j \wedge
+\dots \wedge dx_n.
+\]
+\end{answer}
+
+\begin{problem}{volume:surface}
+Suppose that \(M \subset \R{3}\) is an oriented surface, with unit normal vector
+\[
+\nu
+=
+\begin{pmatrix}
+\nu_x \\
+\nu_y \\
+\nu_z
+\end{pmatrix}.
+\]
+Prove that the area form of \(M\) is
+\[
+dA_M = \nu_x dy \wedge dz + \nu_y dz \wedge dx + \nu_z dx \wedge dy.
+\]
+\end{problem}
+
+\begin{problem}{volume:product}
+Prove that \(\vol{M \times N}=\vol{M} \vol{N}\).
+\end{problem}
+
+
+
+\optionalSection{Tricks to find lengths, areas and volumes}
+
+\begin{lemma}
+If \(X\) is a vector field defined near an oriented hypersurface \(M\) then
+\[
+X \hook dV_{\R{n}} = \ip{X}{\nu} dV_M
+\]
+\end{lemma}
+\begin{proof}
+Along any oriented hypersurface \(M\) we can split any vector field \(X\) into 
+\[
+X = \ip{X}{\nu} \nu + Y
+\]
+where \(Y\) is the orthogonal projection of \(X\) to the tangent plane to \(M\), so \(Y\) is a tangent vector field to \(M\).
+By definition \(\nu \hook dV_{\R{n}} = dV_M\), so
+\begin{align*}
+X \hook dV_{\R{n}} 
+&= 
+\ip{X}{\nu} \nu \hook dV_{\R{n}} + Y \hook dV_{\R{n}},
+\\
+&=
+\ip{X}{\nu} dV_M + Y \hook dV_{\R{n}}.
+\end{align*}
+On \(M\), \(0=Y \hook dV_{\R{n}}\) since this \((n-1)\)-form eats a basis of tangent vector fields on \(M\), but then \(Y\) is already tangent, giving \(n\) tangent vector fields on an \((n-1)\)-dimensional manifold, so not linearly independent, so giving zero when plugged into \(dV_{\R{n}}\).
+\end{proof}
+
+\begin{lemma}
+Suppose that \(h \colon U \to M\) is a positively oriented chart for an oriented manifold \(M\), perhaps with boundary and corners. 
+If we write \(h\) as \(x=h(u)\), say for \(u \in U\), then\SubIndex{determinant}
+\[
+h^* dV_M = 
+\sqrt{\det G} \, dV_{\R{n}}
+\]
+where \(G\) is the matrix
+\[
+G = 
+\begin{pmatrix}[\tallmatrix]
+\left<\pd{x}{u_1},\pd{x}{u_1}\right> & 
+\left<\pd{x}{u_1},\pd{x}{u_2}\right> & 
+\dots &
+\left<\pd{x}{u_1},\pd{x}{u_n}\right> \\
+\left<\pd{x}{u_2},\pd{x}{u_1}\right> & 
+\left<\pd{x}{u_2},\pd{x}{u_2}\right> & 
+\dots &
+\left<\pd{x}{u_2},\pd{x}{u_n}\right> \\
+\vdots &
+\vdots &
+\vdots &
+\vdots \\
+\left<\pd{x}{u_n},\pd{x}{u_1}\right> & 
+\left<\pd{x}{u_n},\pd{x}{u_2}\right> & 
+\dots &
+\left<\pd{x}{u_n},\pd{x}{u_n}\right>
+\end{pmatrix}.
+\]
+\end{lemma}
+\begin{proof}
+Let \(Y_i = \pd{h}{u_i}\). 
+So \(Y_1, Y_2, \dots, Y_n\) is a basis for \(T_m M\) at each \(m \in M\), if \(M\) is \(n\)-dimensional. 
+Apply the Gram--Schmidt process to get an orthonormal basis, say \(X_1, X_2, \dots, X_n\),
+for \(T_m M\). 
+Somehow write the \(Y_i\) as a linear combination of the \(X_i\):
+\[
+Y_i = \sum_j a_{ij} X_j.
+\]
+Let \(A = \left(a_{ij}\right)\), so
+\[
+ω\left(Y_1,Y_2,\dots,Y_n\right)=\det A.
+\]
+Take inner products:
+\begin{align*}
+\left<Y_i,Y_j\right>
+&=
+\left<\sum_k a_{ik} X_k,  \sum_{\ell} a_{j\ell} X_{\ell}\right>,
+\\
+&=
+\sum_k a_{ik} a_{k\ell},
+\\
+&=
+\left(AA^t\right)_{ij}.
+\end{align*}
+So \(G = AA^t\) and \(G\) is a positive definite symmetric matrix with \(\det G = \det A \det A^t\). 
+But \(\det A^t = \det A\), so 
+\begin{align*}
+\sqrt{\det G} &= \det A,
+\\
+&= ω\left(Y_1,Y_2,\dots,Y_n\right),
+\\
+&=
+ω\left(h_* e_1, h_* e_2, \dots, h_* e_n\right),
+\\
+&=
+h^* ω \left(e_1, e_2, \dots, e_n\right).
+\end{align*}
+\end{proof}
+
+\begin{problem}{intrinsic:length}
+Use this to find an integral expression for the length of the curve \(y=f(x)\) in the plane \(\R{2}\) for \(f \colon [a,b] \to \R{}\) a function, \(a < b \in \R{}\).
+\end{problem}
+
+
+\begin{example} 
+Take a curve \(M\) in the \((x,y)\)-plane and a chart \(h(t)=\left(x(t),y(t)\right)\):
+\begin{align*}
+G 
+&= 
+\begin{pmatrix}
+\left<\pd{(x,y)}{t},\pd{(x,y)}{t}\right>
+\end{pmatrix},
+\\
+&=
+\left(\pd{x}{t}\right)^2 + \left(\pd{y}{t}\right)^2,
+\end{align*}
+so that
+\[
+h^* ds = 
+\sqrt{ \left(\pd{x}{t}\right)^2 + \left(\pd{y}{t}\right)^2 } \, dt,
+\]
+and the length of the curve is
+\[
+\bigints \sqrt{ \left(\pd{x}{t}\right)^2 + \left(\pd{y}{t}\right)^2 } \, dt,
+\]
+the usual formula for length of a plane curve.
+\end{example}
+
+
+

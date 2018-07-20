@@ -1,0 +1,358 @@
+\chapter{Rings}
+
+\epigraph[author={Robert Frost}, source={The Secret Sits, A Witness Tree, 1942}]{We dance round in a ring and suppose, but the secret sits in the middle and knows.}\SubIndex{Frost, Robert}
+
+\section{Morphisms}
+
+A \emph{morphism}\define{morphism!ring} of rings \(f \colon R \to S\) is a map \(f\) taking elements of a ring \(R\) to elements of a ring \(S\), so that \(f(a+b)=f(a)+f(b)\) and \(f(ab)=f(a)f(b)\) for all elements \(b, c\) of \(R\).
+(Morphisms are also often called \emph{homomorphisms}.\define{homomorphism})
+
+\begin{example}
+The map \(f \colon \Z{} \to \Zmod{m}\), \(f(b)=\bar{b}\), remainder modulo \(m\), is a morphism.
+\end{example}
+
+\begin{problem}{rings:check.morphism}
+Prove that the map \(f \colon \Zmod{3} \to \Zmod{6}\), \(f(b)=4b\) is a morphism.
+Draw pictures to explain it.
+\end{problem}
+
+\begin{problem}{rings:find.morphisms}
+Find all morphisms \(f \colon \Zmod{p} \to \Zmod{q}\), where \(p\) and \(q\) are prime numbers and \(p \ne q\).
+\end{problem}
+
+\section{Sage}
+We define \(R=\Q{}[x,y]\) and \(T=\Q{}[z]\) and define a morphism \(\phi \colon R \to S\) by \(\phi(x)=z^3\) and \(\phi(y)=0\):
+\begin{sageblock}
+R.<x,y> = PolynomialRing(QQ)
+T.<z> = PolynomialRing(QQ)
+phi = R.hom([z^3, 0],T)
+phi(x^2+y^2)
+\end{sageblock}
+yielding \(\phi(x^2+y^2)=\sage{phi(x^2+y^2)}\).
+
+\section{Kernel and image of a morphism}
+
+If \(f \colon R \to S\) is a morphism of rings, the \emph{kernel}\define{kernel!ring morphism} of \(f\) is the set 
+\[
+\ker{f} \defeq \Set{r \in R|f(r)=0}.\Notation{ker f}{\ker{f}}{kernel of a ring morphism}
+\]
+The \emph{image} of \(f\) is the set
+\[
+f(R) \defeq \Set{s \in S|s=f(r) \text{ for some } r \in R}.
+\]
+
+\begin{example}
+The morphism \(x \in \R{} \mapsto x+0i \in \C{}\) has kernel \(\Set{0}\) and image the set of all numbers \(x+0i\).
+(We often write \(0\) to mean \(\Set{0}\) in algebra.)
+\end{example}
+
+\begin{example}
+The morphism \(a \in \Z{} \mapsto \bar{a} \in \Zmod{m}\) has kernel \(m\Z{}\).
+\end{example}
+
+\begin{problem}{rings:kernel.subring}
+Prove that the kernel of a morphism \(f \colon R \to S\) of rings is a subring of \(R\), while the image is a subring of \(S\).
+\end{problem}
+\begin{answer}{rings:kernel.subring}
+If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
+So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
+Zero belongs to \(K\) because \(f(0)=0\).
+So \(K\) is a subring.
+\end{answer}
+
+\begin{problem}{rings:find.C.kernel}
+Prove that the morphism \(p(x) \in \R{}[x] \mapsto p(i) \in \C{}\) has kernel consisting of all polynomials of the form 
+\[
+\pr{1+x^2}p(x),
+\]
+for any polynomial \(p(x)\).
+\end{problem}
+
+\begin{problem}{rings:rational.morphism}
+Suppose that \(R\) is a ring and that \(f, g \colon \Q{} \to R\) are morphisms and that \(f(1)=g(1)\).
+Prove that \(f=g\).
+\end{problem}
+
+A morphism \(f \colon R \to S\) with kernel \(0\) is \emph{injective}\define{injective!morphism}\define{morphism!injective}, also called \emph{one-to-one}\define{one-to-one!morphism}\define{morphism!one-to-one}, while a morphism \(f \colon R \to S\) with image \(f(R)=S\) is \emph{surjective}\define{surjective!morphism}\define{morphism!surjective} or \emph{onto}\define{morphism!onto}\define{onto!morphism}.
+
+A surjective and injective morphism is an \emph{isomorphism}\define{isomorphism!ring}.
+If there is an isomorphism between rings \(R\) and \(S\), they are \emph{isomorphic}\define{isomorphic!rings}, denoted \(R \cong S\).\Notation{R=S}{R \cong S}{isomorphic rings}
+If two rings are isomorphic, then they are identical for all practical purposes.
+An isomorphism \(f \colon R \to  R\) from a ring to itself is an \emph{automorphism}.\define{automorphism!ring}
+
+\begin{example}
+Take some positive integers \(m_1, m_2, \dots, m_n\).
+Let 
+\[
+m\defeq m_1 m_2 \dots m_n.
+\]
+For each \(k \in \Zmod{m}\), write its remainder modulo \(m_1\) as \(\bar{k}_1\), and so on.
+Write \(\bar{k}\) to mean 
+\[
+\bar{k} \defeq \pr{\bar{k}_1, \bar{k}_2, \dots, \bar{k}_n}.
+\]
+Let
+\[
+S\defeq\pr{\Zmod{m_1}} \oplus \pr{\Zmod{m_2}} \oplus \dots \oplus  \pr{\Zmod{m_n}}.
+\]
+Map
+\(
+f \colon \Zmod{m} \to S
+\)
+by 
+\(
+f(k)=\bar{k}.
+\)
+It is clear that \(f\) is a ring morphism.
+The Chinese\SubIndex{Chinese remainder theorem} remainder theorem states that \(f\) is a ring \emph{isomorphism} precisely when any two of the integers 
+\[
+m_1, m_2, \dots, m_n
+\]
+are coprime.
+For example, if \(m=3030=2\cdot3\cdot5\cdot101\), then
+\[
+\Zmod{3030}
+\cong
+\pr{\Zmod{2}}
+\oplus
+\pr{\Zmod{3}}
+\oplus
+\pr{\Zmod{5}}
+\oplus
+\pr{\Zmod{101}}.
+\]
+\end{example}
+
+\begin{problem}{rings:z.four}
+Prove that \(\Zmod{4}\) is \emph{not} isomorphic to \(\pr{\Zmod{2}}\oplus\pr{\Zmod{2}}\).
+\end{problem}
+
+\begin{problem}{rings:zero.ring}
+Prove that any two rings that contains exactly one element are isomorphic, by a unique isomorphism.
+\end{problem}
+
+
+
+\section{Kernels}
+
+The main trick to understand complicated rings is to find morphisms to them from more elementary rings, and from them to more elementary rings.
+
+\begin{problem}{rings:images}
+Prove that every subring of any given ring is the image of some morphism of rings.
+\end{problem}
+
+It is natural to ask which subrings of a ring are kernels of morphisms.
+An \emph{ideal}\define{ideal} of a commutative ring \(R\) is a nonempty subset \(I\) of \(R\) so that, if \(i, j\) are in \(I\) then \(i-j\) is in \(I\) and if \(i\) is in \(I\) and \(r\) is in \(R\) then \(ri\) is in \(I\): an ideal is \emph{sticky} under multiplication. 
+\begin{example}
+The even integers form an ideal \(2\Z{}\) inside the integers.
+\end{example}
+\begin{example}
+The integers do \emph{not} form an ideal inside the rational numbers.
+They are not sticky, because \(i=2\) is an integer and \(r=\frac{1}{3}\) is rational, but \(ri=\frac{2}{3}\) is \emph{not} an integer.
+\end{example}
+\begin{example}
+The real polynomials in a variable \(x\) vanishing to order \(3\) or more at the origin form an ideal \(x^3 \R{}[x]\) inside \(\R{}[x]\).
+Note why they are sticky: if \(i=x^3 p(x)\) and \(r=q(x)\) then \(ri=x^3p(x)q(x)\) has a factor of \(x^3\) still, so also vanishes to order \(3\) or more.
+This is a good way to think about ideals: they remind us of the ideal of functions vanishing to some order somewhere, inside some ring of functions.
+\end{example}
+
+\begin{problem}{rings:rational.ideals}
+Prove that the only ideals in \(\Q{}\) are \(0\) and \(\Q{}\).
+\end{problem}
+\begin{answer}{rings:rational.ideals}
+If \(I \subset \Q{}\) is an ideal, containing some nonzero element \(b \in \Q{}\), then \(I\) also contains \((1/b)b=1\), and so, for any rational number \(c\), \(I\) contains \(c \cdot 1 = c\), i.e. \(I=\Q{}\).
+\end{answer}
+
+\begin{lemma}
+The kernel of any morphism of rings is an ideal.
+\end{lemma}
+\begin{proof}
+Take a ring morphism \(f \colon R \to S\) and let \(I \defeq \ker{f}\).
+Then if \(i,j\) are in \(I\), this means precisely that \(f\) kills \(i\) and \(j\), so \(f(i)=0\) and \(f(j)=0\). 
+But then \(f(i-j)=f(i)-f(j)=0-0=0\).
+So \(f\) kills \(i-j\), or in other words \(i-j\) lies in \(I\).
+
+Pick any \(i\) in \(I\) and any \(r\) in \(R\).
+We need to prove that \(ir\) is in \(I\), i.e. that \(f\) kills \(ir\), i.e. that \(0=f(ir)\).
+But \(f(ir)=f(i)f(r)=0f(r)=0\). 
+\end{proof}
+
+We will soon see that kernels of morphisms are precisely the same as ideals.
+
+\begin{problem}{rings:integer.ideals}
+Prove that the ideals of \(\Z{}\) are precisely \(0, \Z{}\) and the subsets \(m\Z{}\) for any integer \(m \ge 2\).
+(Of course, we could just say that the ideals are the sets \(m\Z{}\) for any integer \(m\ge 0\).)
+\end{problem}
+
+\begin{lemma}
+Given a ring \(R\) and any set \(A\) of elements of \(R\), there is a unique smallest ideal containing \(A\), denoted \((A)\).\Notation{(A)}{(A)}{ideal generated by a set \(A\) in a ring \(R\)}
+To be precise, \((A)\) is the set of all finite sums
+\[
+r_1 a_1 + r_2 a_2 + \dots + r_n a_n
+\]
+for any elements
+\[
+r_1, r_2, \dots, r_n 
+\]
+of \(R\) and any elements
+\[
+a_1, a_2, \dots, a_n
+\]
+of \(A\).
+\end{lemma}
+\begin{proof}
+Let \((A)\) be that set of finite sums.
+Clearly \(A\) lies in \((A)\), and \((A)\) is an ideal.
+On the other hand, if \(A\) lies in some ideal, that ideal must contain all elements of \(A\), and be sticky, so contain all products \(ra\) for \(r\) in \(R\) and \(a\) in \(A\), and so contains all finite sums of such, and so contains \(I\).
+\end{proof}
+
+\begin{example}
+The ideal \(I\defeq(A)\) generated by \(A\defeq\Set{12,18}\) inside \(R\defeq\Z{}\) is precisely \(6\Z{}\), because we use B\'ezout coefficients \(r_1, r_2\) to write \(6\) as \(6=r_1 \cdot 12 + r_2 \cdot 18\), and so \(6\) lies in \(I=(12,18)\).
+But then \(I=(12,18)=(6)\).
+\end{example}
+\begin{example}
+More generally, the ideal \(I\defeq \pr{m_1,m_2,\dots,m_n}\) generated by some integers \(m_1, m_2, \dots, m_n\) is precisely \(I=(m)=m\Z{}\) generated by their greatest common divisor.
+So we can think of ideals in rings as a replacement for the concept of greatest common divisor.
+\end{example}
+\begin{example}
+The same idea works for polynomials, instead of integers.
+Working, for example, over the rational numbers, the ideal \(I\defeq\pr{p_1(x),p_2(x),\dots,p_n(x)}\) inside the ring \(R=\Q{}[x]\) is just \(I=p(x)\Q{}[x]\) where 
+\[
+p(x)=\gcd{p_1(x),p_2(x),\dots,p_n(x)}.
+\]
+\end{example}
+\begin{example}
+In \(R\defeq\Q{}[x,y]\), the story is more complicated.
+The ideal \(I\defeq\pr{x,y^2}\) is not expressible as \(p(x,y)R\), because \(I\) cannot be expressed using only one generator \(p(x,y)\).
+If there were such a generator \(p(x,y)\), then \(x\) and \(y^2\) would have to be divisible by \(p(x,y)\), forcing \(p(x,y)\) to be constant, so not generating \(I\).
+\end{example}
+
+
+\section{Sage}
+
+In sage we construct ideals, for example inside the ring \(R=\Q{}[x,y]\), as:
+\begin{sageblock}
+R.<x,y>=PolynomialRing(QQ)
+R.ideal( [x^3,y^3+x^3] )
+\end{sageblock}
+We can then test whether two ideals are equal: 
+\begin{sageblock}
+R.ideal( [x^3,y^3+x^3] )==R.ideal( [x^3,y^3] )
+\end{sageblock}
+yields \(\sage{R.ideal( [x^3,y^3+x^3] )==R.ideal( [x^3,y^3] )}\).
+
+
+
+\section{Fractions}
+
+
+\begin{theorem}
+A commutative ring \(R\) lies inside a field \(k\) as a subring just when the product of any two nonzero elements of \(R\) is nonzero.
+After perhaps replacing \(k\) by the subfield generated by \(R\), the field \(k\) is then uniquely determined up to isomorphism, and called the \emph{field of fractions}\define{field!of fractions} of \(R\).
+Every ring morphism \(R \to K\) to a field \(K\) extends uniquely to an injective field morphism \(k \to K\).
+\end{theorem}
+\begin{proof}
+If a commutative ring \(R\) lies in a field \(k\), then clearly any two nonzero elements have nonzero product, as they both have reciprocals.
+Take two pairs \((a,b)\) and \((c,d)\) with \(a,b,c,d\) in \(R\), and \(0 \ne b\) and \(d \ne 0\).
+Declare them equivalent if \(ad=bc\).
+Write the equivalence class of \((a,b)\) as \(\frac{a}{b}\).
+Define, as you might expect, 
+\begin{align*}
+\frac{a}{b}+\frac{c}{d}&=\frac{ad+bc}{bd}, \\
+\frac{a}{b}-\frac{c}{d}&=\frac{ad-bc}{bd}, \\
+\frac{a}{b} \cdot \frac{c}{d} &= \frac{ac}{bd}, \\
+\end{align*}
+Tedious checking shows that these are well defined, and yield a field \(k\).
+The crucial step is that the denominators can't vanish.
+The reciprocal in \(k\) is easy to find:
+\[
+\pr{\frac{a}{b}}^{-1} = \frac{b}{a}
+\]
+if \(a \ne 0\) and \(b \ne 0\).
+Map \(R\) to \(k\) by \(a \mapsto \frac{a}{1}\).
+Check that this map is injective.
+Given a ring morphism \(f \colon R \to K\) to a field, extend by 
+\[
+f\of{\frac{a}{b}} = \frac{f(a)}{f(b)}.
+\]
+Again tedious checking ensures that this is defined.
+Every field morphism is injective.
+\end{proof}
+
+\begin{example}
+The field of fractions of \(\Z{}\) is \(\Q{}\).
+\end{example}
+\begin{example}
+The field of fractions of the ring 
+\[
+\Z{}\left[\frac{1}{2}\right]
+\]
+of half integers is also \(\Q{}\).
+\end{example}
+\begin{example}
+The field of fractions of a field \(k\) is \(k\).
+\end{example}
+\begin{example}
+The field of fractions of \(\Z{}[x]\) is \(\Q{}(x)\).
+\end{example}
+\begin{example}
+The field of fractions of \(\Q{}[x]\) is also \(\Q{}(x)\).
+\end{example}
+
+\begin{problem}{rings:field.of.fracs.1}
+Prove that these examples above are correct.
+\end{problem}
+
+
+\section{Sage}
+
+Sage constructs fields of fractions out of any ring with no zero divisors.
+For example, let \(F\defeq \Zmod{7}\) and \(R\defeq F[x,y]\) and let \(k\) be the fraction field of \(R\), and then \(S=k[t]\) and then compute the resultant of two polynomials \(p(t), q(t) \in S\):
+\begin{sageblock}
+R.<x,y> = PolynomialRing(GF(7))
+k=R.fraction_field()
+S.<t> = PolynomialRing(k)
+p=S(x*t+t^2/t)
+q=S(y*t+1)
+p.resultant(q)
+\end{sageblock}
+
+
+
+\section{Algebras}
+
+Almost every ring we encounter allows us to multiply by elements from some field.
+\begin{example}
+Matrices over a field \(k\) can be multiplied by elements of \(k\).
+\end{example}
+\begin{example}
+Polynomials over a field \(k\) can be multiplied by elements of \(k\).
+\end{example}
+\begin{example}
+Rational functions over a field \(k\) can be multiplied by elements of \(k\).
+\end{example}
+An \emph{algebra}\define{algebra} \(A\) over a field \(k\) is a ring with an operation \(s \in k, a \in A \mapsto sa \in A\), called \emph{scalar multiplication}\define{scalar multiplication} so that
+\begin{enumerate}
+\item \(s(a+b)=(sa)+(sb)\), 
+\item \((r+s)a=(ra)+(sa)\), 
+\item \((rs)a=r(sa)\), 
+\item \(s(ab)=(sa)b=a(sb)\),
+\item \(1a=a\),
+\end{enumerate}
+for \(r,s \in k\), \(a, b \in A\).
+
+\begin{example}
+The field \(k\) is an algebra over itself.
+\end{example}
+\begin{example}
+If \(k \subset K\) is a subfield, then \(K\) is an algebra over \(k\).
+\end{example}
+\begin{example}
+If \(A\) is an algebra over \(k\), then the \(n \times n\) matrices with entries in \(A\) are an algebra over \(k\).
+\end{example}
+\begin{example}
+If \(A\) is an algebra over \(k\), then the polynomials \(A[x]\) with coefficients in \(A\) are an algebra over \(k\).
+\end{example}
+
+
+

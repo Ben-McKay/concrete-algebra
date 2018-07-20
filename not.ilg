@@ -1,0 +1,7 @@
+This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
+Scanning style file ./notation.gst.........done (9 attributes redefined, 0 ignored).
+Scanning input file not.glo....done (28 entries accepted, 0 rejected).
+Sorting entries....done (121 comparisons).
+Generating output file not.gls....done (58 lines written, 0 warnings).
+Output written in not.gls.
+Transcript written in not.ilg.

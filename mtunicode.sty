@@ -1,0 +1,159 @@
+
+% This package provides support for many unicode
+% characters and shortcuts
+%
+% Marco Tomamichel, Feb. 2011
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mtunicode}[2011/02/14 - QIT Tools - by Marco Tomamichel / requires qittools.sty!]
+
+\usepackage[utf8]{inputenc}  % UTF-8 input encoding
+% improved macro syntax
+\usepackage{ifthen}
+\usepackage{xparse}
+
+\makeatletter
+
+% UNICODE conversion
+% greek letters
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}
+\DeclareUnicodeCharacter{0393}{\ensuremath{\Gamma}}
+\DeclareUnicodeCharacter{03B4}{\ensuremath{\delta}}
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
+\DeclareUnicodeCharacter{03B5}{\ensuremath{\varepsilon}}
+\DeclareUnicodeCharacter{03B6}{\ensuremath{\zeta}}
+\DeclareUnicodeCharacter{03B7}{\ensuremath{\eta}}
+\DeclareUnicodeCharacter{03B8}{\ensuremath{\vartheta}}
+\DeclareUnicodeCharacter{0398}{\ensuremath{\Theta}}
+\DeclareUnicodeCharacter{03BA}{\ensuremath{\kappa}}
+\DeclareUnicodeCharacter{03BB}{\ensuremath{\lambda}}
+\DeclareUnicodeCharacter{039B}{\ensuremath{\Lambda}}
+\DeclareUnicodeCharacter{00B5}{\ensuremath{\mu}}      % micron sign
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}
+\DeclareUnicodeCharacter{03BD}{\ensuremath{\nu}}
+\DeclareUnicodeCharacter{03BE}{\ensuremath{\xi}}
+\DeclareUnicodeCharacter{039E}{\ensuremath{\Xi}}
+\DeclareUnicodeCharacter{03B9}{\ensuremath{\iota}}
+\DeclareUnicodeCharacter{03C0}{\ensuremath{\pi}}
+\DeclareUnicodeCharacter{03A0}{\ensuremath{\Pi}}
+\DeclareUnicodeCharacter{03C1}{\ensuremath{\rho}}
+\DeclareUnicodeCharacter{03C3}{\ensuremath{\sigma}}
+\DeclareUnicodeCharacter{03A3}{\ensuremath{\Sigma}}
+\DeclareUnicodeCharacter{03C4}{\ensuremath{\tau}}
+\DeclareUnicodeCharacter{03C6}{\ensuremath{\varphi}}
+\DeclareUnicodeCharacter{03A6}{\ensuremath{\Phi}}
+\DeclareUnicodeCharacter{03C7}{\ensuremath{\chi}}
+\DeclareUnicodeCharacter{03C8}{\ensuremath{\psi}}
+\DeclareUnicodeCharacter{03A8}{\ensuremath{\Psi}}
+\DeclareUnicodeCharacter{03C9}{\ensuremath{\omega}}
+\DeclareUnicodeCharacter{03A9}{\ensuremath{\Omega}}
+\DeclareUnicodeCharacter{03C5}{\ensuremath{\upsilon}}
+\DeclareUnicodeCharacter{03A5}{\ensuremath{\Upsilon}}
+
+% some modified characters
+\DeclareUnicodeCharacter{1FF6}{\ensuremath{\tilde{\omega}}}
+
+% special subscript using the logical not character '¬'
+% must follow a character!
+\DeclareUnicodeCharacter{00AC}{\@specialsub}
+% special characters for equations (align environment)
+% with and without labels '⁂'
+\DeclareUnicodeCharacter{2042}{\@align}
+\newcommand{\@align}[2][\@empty]
+{\ifx\@empty#1%
+  \begin{align*}#2\end{align*}%
+\else
+  \ifthenelse{\equal{#1}{}}%
+  {\begin{align}#2\end{align}}%
+  {\begin{align}#2\gdef\last@label{eq:#1}\label{eq:#1}\end{align}}
+\fi}
+% special characters for equation labels '¶'
+% this character is put at the end of each equation line except
+% for the last one (note that labels for the last line are
+% defined in the '⁂' command)
+\DeclareUnicodeCharacter{00B6}{\@eqlabel}
+\newcommand*{\@eqlabel}[1][\@empty]
+{ \ifx\@empty#1
+    { \nonumber } 
+  \else
+    { \gdef\last@label{eq:#1} \label{eq:#1} }
+  \fi
+}
+% special character for equation reference '§'
+% if no argument is given, a reference to the
+% last equation is assumed
+\DeclareUnicodeCharacter{00A7}{\@eqref}
+\newcommand*{\@eqref}[1][\@empty]
+{\ifx\@empty#1{\eqref{\last@label} }\else{\eqref{eq:#1}}\fi}
+
+% useful math symbols
+\DeclareUnicodeCharacter{221A}{\sqrt}
+\DeclareUnicodeCharacter{2264}{\leq}
+\DeclareUnicodeCharacter{2265}{\geq}
+\DeclareUnicodeCharacter{221E}{\infty}
+\DeclareUnicodeCharacter{2211}{\sum}
+\DeclareUnicodeCharacter{2208}{\in}
+\DeclareUnicodeCharacter{2209}{\notin}
+\DeclareUnicodeCharacter{2202}{\partial}
+\DeclareUnicodeCharacter{222B}{\int}
+\DeclareUnicodeCharacter{2148}{\id}  
+\DeclareUnicodeCharacter{2248}{\approx}  
+\DeclareUnicodeCharacter{2260}{\neq}  
+\DeclareUnicodeCharacter{00B1}{\pm}  
+\DeclareUnicodeCharacter{2A02}{\otimes}
+\DeclareUnicodeCharacter{2A01}{\oplus}
+\DeclareUnicodeCharacter{00BD}{\nicefrac{1}{2}}
+\DeclareUnicodeCharacter{00D7}{\times}
+\DeclareUnicodeCharacter{00B7}{\cdot}
+% the prime
+\DeclareUnicodeCharacter{2032}{\ensuremath{'}}
+% daggers don't need to be preceded by a '^' anymore
+\DeclareUnicodeCharacter{2020}{^{\dagger}}
+\DeclareUnicodeCharacter{1D40}{^{\textnormal{\tiny{T}}}}
+\DeclareUnicodeCharacter{00B2}{^{2}}
+\DeclareUnicodeCharacter{00B3}{^{3}}
+% bars and hats on top
+\DeclareUnicodeCharacter{203E}{\@bar}
+\newcommand{\@bar}{\bar}
+\DeclareUnicodeCharacter{2040}{\@hat}
+\newcommand{\@hat}{\hat}
+% bracket heaven
+\DeclareUnicodeCharacter{2329}{\langle}
+\DeclareUnicodeCharacter{232A}{\rangle}
+\DeclareUnicodeCharacter{27E8}{\langle}
+\DeclareUnicodeCharacter{27E9}{\rangle}
+\DeclareUnicodeCharacter{2016}{\|}
+% fun with arrows
+\DeclareUnicodeCharacter{2192}{\to}
+\DeclareUnicodeCharacter{21D2}{\implies}
+\DeclareUnicodeCharacter{21A6}{\mapsto}
+% specialized math letters
+\DeclareUnicodeCharacter{2113}{\ell}
+\DeclareUnicodeCharacter{210B}{\h}
+\DeclareUnicodeCharacter{2115}{\bN}
+\DeclareUnicodeCharacter{211D}{\bR}
+\DeclareUnicodeCharacter{2102}{\bC}
+\DeclareUnicodeCharacter{2119}{\Pr}
+\DeclareUnicodeCharacter{2130}{\sE}
+\DeclareUnicodeCharacter{2133}{\cM}
+% just to make live a little bit more colorful
+\DeclareUnicodeCharacter{261B}{\item} % '☛'
+
+% missing unicode letters
+\DeclareUnicodeCharacter{00E1}{\'a}
+
+% indexing made easy
+% this also enforces that the words appearing in the index
+% are emphasized
+\DeclareUnicodeCharacter{263C}{\@multiindex} % '☼' 
+\NewDocumentCommand{\@multiindex}{s o m}
+{\IfBooleanTF#1%
+{\index{#3}}%
+{\IfNoValueTF{#2}%
+{\emph{#3}\index{#3}}%
+{\emph{#2}\index{#3}}}}
+
+\makeatother
+

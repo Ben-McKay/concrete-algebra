@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12,width=5cm}%
+\begin{document}
+{
+\newcommand{\lmbda}{1}
+\newcommand{\thta}{atan( (1/2)*(\lmbda+sqrt(\lmbda^2+4)) )}
+\newcommand{\major}{1/(sqrt(1+(\lmbda/2)*(\lmbda+sqrt(\lmbda^2+4))))}
+\newcommand{\minor}{1/(sqrt(1+(\lmbda/2)*(\lmbda-sqrt(\lmbda^2+4))))}
+\begin{tikzpicture}
+\newcommand{\mx}{2}
+\draw[green!30] ({(1-(sqrt(3)*\lmbda))/2},-\mx) -- ({(1-(sqrt(3)*\lmbda))/2},\mx);
+\draw[green!30] ({(1+(sqrt(3)*\lmbda))/2},-\mx) -- ({(1+(sqrt(3)*\lmbda))/2},\mx);
+%\draw[green!30] (-\mx,{-sqrt(3)/2}) -- (\mx,{-sqrt(3)/2});
+%\draw[green!30] (-\mx,{sqrt(3)/2}) -- (\mx,{sqrt(3)/2});
+\begin{scope}[rotate=\thta]
+\newcommand{\fclr}{blue!30}
+\draw[\fclr] (0,0) ellipse ({\major} and {\minor});
+\node[above left,\fclr] at (-.7,1.2) {\(B=0\)};
+\end{scope}
+\begin{scope}
+\begin{scope}[rotate=\thta]
+\newcommand{\gclr}{brown!30}
+\draw[\gclr] ({cos(-\thta)},{sin(-\thta)}) ellipse ({\major} and {\minor});
+\node[below right,\gclr] at (1.5,-1) {\(C=0\)};
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+}
+\end{document}

@@ -1,0 +1,789 @@
+\chapter{Resultants and discriminants}\label{chapter:resultants}
+
+\section{The resultant}
+
+For any polynomial 
+\[
+b(x) = b_0 + b_1 x + \dots + b_m x^m,
+\]
+denote its vector of coefficients as
+\[
+\vec{b}=
+\begin{pmatrix}
+b_0 \\
+b_1 \\
+\vdots \\
+b_m
+\end{pmatrix}.
+\]
+Clearly the vector of coefficients of \(xb(x)\) is the same, with an extra row added to the top, with a zero in that row.
+When we multiply two polynomials \(b(x)\) and
+\[
+c(x) = c_0 + c_1 x + \dots + c_n x^n
+\] 
+the vector of coefficients of \(b(x)c(x)\) is
+\[
+\begin{pmatrix}
+b_0 \\
+b_1 & b_0 \\
+\vdots & \ddots & \ddots \\
+b_m & \ddots & \ddots & b_0 \\
+    & b_m & \ddots & b_1 \\
+    &     & \ddots & \vdots \\
+    &    &        & b_m
+\end{pmatrix}
+\begin{pmatrix}
+c_0 \\
+c_1 \\
+\vdots \\
+c_n
+\end{pmatrix},
+\]
+(with zeroes represented as blank spaces) and this \((m+n+1) \times (n+1)\) matrix we denote by
+\[
+[b]=
+\begin{pmatrix}
+b_0 \\
+b_1 & b_0 \\
+\vdots & \ddots & \ddots \\
+b_m & \ddots & \ddots & b_0 \\
+    & b_m & \ddots & b_1 \\
+    &     & \ddots & \vdots \\
+    &     &        & b_m
+\end{pmatrix}.
+\]
+So the vectors of coefficient are related by \(\overrightarrow{bc}=[b]\vec{c}\).
+
+The \emph{resultant}\define{resultant} of two polynomials
+\begin{align*}
+b(x) &= b_0 + b_1 x + \dots + b_m x^m \text{ and } \\
+c(x) &= c_0 + c_1 x + \dots + c_n x^n,
+\end{align*}
+denoted \(\resultant{b}{c}\)\Notation{res(b,c)}{\resultant{b}{c}}{resultant of polynomials \(b(x), c(x)\)}, is the determinant of the matrix \(\begin{pmatrix}\relax [b] & [c] \end{pmatrix}\), given by stacking the matrices \([b]\) and \([c]\) of suitable sizes beside one another, to get a square matrix of size \((m+n) \times (m+n)\).
+To remember the sizes: the number of columns in \([b]\) is the degree of \(c\), while the number of columns in \([c]\) is the degree of \(b\).
+
+\begin{example}
+If
+\begin{align*}
+b(x) &= 4 -x + 7x^2 + x^3, \\
+c(x) &= -6+2x,
+\end{align*}
+then \(\resultant{b}{c}\) is the determinant of the \(4 \times 4\) matrix
+\[
+\begin{pmatrix}
+  4 & -6 & 0 & 0 \\
+ -1 & 2 & -6 & 0 \\
+  7 & 0 &  2 & -6 \\
+  1 & 0 &  0 & 2
+\end{pmatrix},
+\]
+which is \(\resultant{b}{c}=-712\).
+\end{example}
+\begin{example}
+If we swap \(b\) and \(c\), we swap columns, so clearly \(\resultant{c}{b}=(-1)^{mn}\resultant{b}{c}\).
+\end{example}
+\begin{example}
+Take \(b(x)=x^2+4x+7\) and \(c(x)=x^3\) and compute
+\[
+\resultant{b}{c} = 
+\det
+\begin{pmatrix}
+7 & 0 & 0 & 0 & 0 \\
+4 & 7 & 0 & 0 & 0 \\
+1 & 4 & 7 & 0 & 0 \\
+0 & 1 & 4 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1
+\end{pmatrix}=7^3.
+\]
+\end{example}
+\begin{example}
+The easiest examples of arbitrary degrees arise when we take any \(b(x)\) but try \(c(x)=x^n\):
+\[
+\resultant{b}{c} = 
+\det
+\begin{pmatrix}
+b_0 \\
+\vdots  & b_0 \\
+\vdots  & \ddots  & \ddots & \\
+      b_m & \ddots  & \ddots &  b_0 &  \\
+        & b_m      &  \ddots  &  \vdots  &   1 \\
+        &         & \ddots &  \vdots  &     & \ddots \\ 
+        &         &        &  b_m       &     &         & 1  
+\end{pmatrix}=b_0^n.
+\]
+\end{example}
+
+
+\section{Sage}
+
+Computing resultants in sage requires us to tell sage what sort of numbers arise as the coefficients of our polynomials.
+\begin{sageblock}
+P.<x> = PolynomialRing(QQ)
+a=x^3+x+7
+b=x^2+2
+a.resultant(b) 
+\end{sageblock}
+yields \(\sage{a.resultant(b)}\).
+The expression \verb!P.<x> = PolynomialRing(QQ)! tells sage that we are working with polynomials with rational coefficients (\verb!QQ! means rational) in a variable \verb!x!.
+
+We could write our own resultant function, just to see how it might work:
+\begin{sageblock}
+def resultant(b,c):
+    B=b.list()
+    C=c.list()
+    m=len(B)-1
+    n=len(C)-1
+    A=matrix(m+n,m+n)
+    for j in range(0,n):    
+        for i in range(0,m+n):
+            if (0<=i-j) and (i-j<=m):
+                A[i,j]=B[i-j]
+            else:
+                A[i,j]=0
+    for j in range(n,m+n):    
+        for i in range(0,m+n):
+            if (0<=i-j+n) and (i-j+n<=n):
+                A[i,j]=C[i-j+n]
+            else:
+                A[i,j]=0
+    return det(A)
+\end{sageblock}
+Try it out:
+\begin{sageblock}
+t=var('t')
+p = t^2+2*t+1
+q = t+1
+resultant(p,q)
+\end{sageblock}
+yields \(\sage{resultant(p,q)}\).
+
+
+\section{Common factors and resultants}
+
+\begin{lemma}\label{lemma:common.factor.polys}
+Two polynomials \(b(x)\) and \(c(x)\) of degrees \(m\) and \(n\), over any field, have a nonconstant common factor just when
+\[
+0 = u(x)b(x)+v(x)c(x)
+\]
+for two polynomials \(u(x)\) and \(v(x)\) of degrees \(n-1\) and \(m-1\) at most, not both zero.
+\end{lemma}
+\begin{proof}
+Two polynomials \(b(x)\) and \(c(x)\) of degrees \(m\) and \(n\) have a nonconstant common factor just when we can write the polynomials factored, say as \(b(x)=v(x)d(x)\) and \(c(x)=-u(x)d(x)\).
+But then
+\[
+0 = u(x)b(x)+v(x)c(x).
+\]
+On the other hand, suppose that
+\[
+0 = u(x)b(x)+v(x)c(x)
+\]
+for two polynomials \(u(x)\) and \(v(x)\) of degrees \(n-1\) and \(m-1\) at most.
+Suppose that \(b(x)\) and \(c(x)\) have no common factor, so their greatest common divisor is \(1\).
+Write out B\'ezout coefficients
+\[
+1=s(x)b(x)+t(x)c(x)
+\]
+and compute
+\begin{align*}
+v
+&=
+vsb+vtc,
+\\
+&=
+vsb+tvc,
+\\
+&=
+vsb-tub,
+\\
+&=
+b\pr{vs-tu}.
+\end{align*}
+But the degree of \(v\) is smaller than that of \(b\), so \(v=0\).
+Swapping roles of \(b,c\) and of \(u,v\) and of \(s,t\), we get \(u=0\).
+\end{proof}
+
+\begin{proposition}\label{proposition:resultant.zero}
+Two polynomials, over any field, have a nonconstant common factor just when their resultant vanishes.
+\end{proposition}
+\begin{proof}
+Take two polynomials
+\begin{align*}
+u(x)&=u_0 + u_1 x + \dots + u_{n-1} x^{n-1}, \\
+v(x)&=v_0 + v_1 x + \dots + v_{m-1} x^{m-1}.
+\end{align*}
+The vector of coefficients of \(u(x)b(x)+v(x)c(x)\) is 
+\[
+\overrightarrow{bu+cv}=
+\begin{pmatrix}
+\relax [b] & [c]
+\end{pmatrix}
+\begin{pmatrix}
+\vec{u} \\
+\vec{v}
+\end{pmatrix}
+\]
+By linear algebra, the determinant vanishes just when the matrix has a nonzero null vector, i.e. a nonzero vector in its kernel.
+So the resultant vanishes just when there is a choice of coefficients
+\[
+u_0, u_1, \dots, v_0, v_1, \dots,
+\]
+not all zero,  so that \(u(x)b(x)+v(x)c(x)=0\).
+In other words, there are polynomials \(u(x)\) and \(v(x)\) of required degrees so that \(u(x)b(x)+v(x)c(x)=0\).
+The theorem now follows from lemma~\vref{lemma:common.factor.polys}.
+\end{proof}
+
+The resultant is brutal to compute, even for polynomials of fairly small degree.
+Its importance, like that of the determinant of a matrix, arises from its theoretical power.
+
+\begin{problem}{polynomials:resultant}
+Find the resultants, and use them to decide if there are nonconstant common factors.
+\begin{enumerate}
+\item \(x^2-5x+6, x^3-3x^2+x-3\)
+\item \(x^2+1,x-1\)
+\end{enumerate} 
+\end{problem}
+
+\begin{problem}{resultants:mod.2}
+Over the field of remainders modulo 2, calculate the resultant of \(b(x)=x^3+x^2+x+1, c(x)=x^3+x\).
+\emph{Warning}: the \(6 \times 6\) determinant you get is actually easier than it looks at first, so look for tricks to find it without any hard calculation.
+\end{problem}
+
+\begin{lemma}\label{lemma:resultant.over.integers}
+Take two polynomials \(b(x), c(x)\) in a variable \(x\) of degrees \(m, n\).
+The resultant \(r=\resultant{b}{c}\) is expressible as \(r=u(x)b(x)+v(x)c(x)\) where \(u(x)\) and \(v(x)\) are polynomials of degrees \(n-1, m-1\).
+One can make a particular choice of \(u(x), v(x)\) so that the coefficients of \(u(x)\) and of \(v(x)\) are expressible as polynomial expressions in the coefficients of \(b(x)\) and \(c(x)\), and those polynomial expressions have integer coefficients.
+\end{lemma}
+\begin{proof}
+Look at our matrix:
+\[
+r
+=
+\det
+\begin{pmatrix}
+b_0    &        &        &        & c_0 \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
+b_m    & \ddots & \ddots  & b_0    & c_n   & \ddots & \ddots  & c_0 \\
+       & b_m    & \ddots  & b_1    &       & c_n    & \ddots  & c_1 \\
+       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n
+\end{pmatrix}
+\]
+Add to the first row the second multiplied by \(x\) and then the third multiplied by \(x^2\) and so on, which doesn't change the determinant:
+\[
+r
+=
+\det
+\begin{pmatrix}
+b(x)   & xb(x)  & \dots  & x^{n-1}b(x)& c(x)   & xc(x) & \dots & x^{m-1} c(x) \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
+b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
+       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
+       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n
+\end{pmatrix}.
+\]
+Expand the determinant across the top row to see that
+\[
+r=u(x)b(x)+v(x)c(x)
+\]
+where
+\[
+u(x)
+=
+\det
+\begin{pmatrix}
+1      & x      & \dots  & x^{n-1}  \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
+b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
+       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
+       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n
+\end{pmatrix}
+\]
+and
+\[
+v(x)
+=
+\det
+\begin{pmatrix}
+       &        &        &        & 1      & x      & \dots  & x^{m-1}  \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
+b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
+       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
+       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n
+\end{pmatrix}
+\]
+Note that we can expand out any determinant using only multiplication and addition of entries and some \(\pm\) signs.
+\end{proof}
+
+
+
+If we scale up \(b(x)\) by a factor \(\lambda\) and look at the matrix whose determinant is our resultant, we see that the resultant of \(b(x),c(x)\) scales by \(\lambda^n\), where \(n\) is the degree of \(c(x)\).
+So practically we only need to compute resultants of monic polynomials.
+
+\begin{proposition}\label{proposition:factored.resultants}
+Given two monic polynomials over any field, each factored into linear factors,
+\begin{align*}
+b(x) &= \pr{x-\beta_1} \pr{x-\beta_2} \dots \pr{x-\beta_m}, \\
+c(x) &= \pr{x-\gamma_1} \pr{x-\gamma_2} \dots \pr{x-\gamma_n}, \\
+\end{align*}
+then the resultant is
+\begin{align*}
+\resultant{b}{c} 
+&=
+\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
+\\
+&=
+c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m},
+\\
+&=
+(-1)^{mn}b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}.
+\end{align*}
+In particular, the resultant vanishes just when \(b(x)\) and \(c(x)\) have a common root.
+\end{proposition}
+\begin{proof}
+We will only give the proof here for polynomials over an infinite field.
+We will give the proof over finite fields in chapter~\ref{chapter:fields}.
+If we expand out the expression for \(b(x)\) into a sum of monomials, with coefficients being expressed in terms of these \(\beta_i\), and similarly for \(c(x)\), then the resultant is a huge polynomial expression in terms of the various \(\beta_i\) and \(\gamma_j\).
+This polynomial vanishes whenever \(\beta_i=\gamma_j\).
+Thinking of \(\beta_i\) and \(\gamma_j\) as abstract variables, the expression \(\beta_i-\gamma_j\) is a linear function.
+Assume for the moment that our field is infinite.
+Then the resultant is divisible by \(\beta_i-\gamma_j\), for any \(i\) and \(j\), by lemma~\vref{lemma:linear.factor}.
+Therefore the resultant is divisible by
+\[
+\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n}.
+\]
+From our examples above, we see that the total number of such factors is \(mn\), and therefore each one arises just once, so our resultant is as described 
+\[
+\resultant{b}{c} 
+=
+\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
+\]
+except perhaps for a constant factor, which we check by looking at our examples.
+For a finite field, we will fix up this proof in chapter~\ref{chapter:fields}; for the moment, the reader will have to accept that this can be done somehow.
+\end{proof}
+
+\begin{example}
+If \(b(x)\defeq x^7+2x+1\) and \(c(x)\defeq x-1\), then \(c(x)\) has root \(x=1\), and both are monic, so 
+\[
+\resultant{b}{c} = (-1)^{7 \cdot 1} b(1) = (-1)(1^7+2+1)=-4.
+\]
+\end{example}
+
+\begin{problem}{resultants:nonmonic}
+Suppose that \(b(x)\) is monic and \(c(x)\) is not and that they both split into linear factors.
+Prove that 
+\[
+\resultant{b}{c} 
+=c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m}.
+\]
+\end{problem}
+
+\begin{lemma}\label{lemma:resultants.multiply}
+For any polynomials \(b(x), c(x), d(x)\),
+\[
+\resultant{b}{cd}=\resultant{b}{c}\resultant{b}{d}.
+\]
+\end{lemma}
+\begin{proof}
+If all of the polynomials split into linear factors, the result is clear:
+\begin{align*}
+\resultant{b}{cd}
+&=
+c\of{\beta_1}d\of{\beta_1}\dots c\of{\beta_m}d\of{\beta_m},
+\\
+&=c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m}
+d\of{\beta_1}d\of{\beta_2}\dots d\of{\beta_m},
+\\
+&=
+\resultant{b}{c}\resultant{b}{d}.
+\end{align*}
+We will see eventually (in theorem~\vref{theorem:splitting.field}) that, given any polynomials \(b(x),c(x),d(x)\), we can always replace our field by a larger field in which all of the polynomials \(b(x),c(x),d(x)\) split into linear factors.
+\end{proof}
+
+\begin{problem}{resultants:add.stuff}
+Suppose that \(b(x)\) is a monic polynomial which splits into linear factors.
+Prove that 
+\[
+\resultant{b}{c+db}=\resultant{b}{c}
+\]
+for any polynomials \(c(x)\) and \(d(x)\).
+A surprise: note that the degree of \(c(x)+d(x)b(x)\) could be either that of \(c(x)\) or that of \(d(x)b(x)\), or something smaller than either, as any number of terms in \(c(x)+d(x)b(x)\) might cancel one another.
+But surprisingly, we don't need to know the degree of \(c(x)+d(x)b(x)\).
+\end{problem}
+
+\begin{problem}{resultants:euclid.that.mofo}
+A fast trick to find resultants: use the result of the previous problem to compute
+\(\resultant{b}{c}\) where
+\begin{align*}
+b(x) &= x^8+4x^2+2x+1, \\
+c(x) &= x^6+4.
+\end{align*}
+\end{problem}
+\begin{answer}{resultants:euclid.that.mofo}
+\[
+b(x)=x^2 \, c(x) + 2x+1,
+\]
+so
+\begin{align*}
+\resultant{b(x)}{c(x)}
+&=
+\resultant{2x+1}{c(x)},
+\\
+&=
+\resultant{2x+1}{x^6+4},
+\\
+&=
+2^6
+\resultant{x+\frac{1}{2}}{x^6+4},
+\\
+&=
+2^6
+\left.\pr{x^6+4}\right|_{x=-\frac{1}{2}},
+\\
+&=
+2^6\pr{\frac{1}{2^6} + 4},
+\\
+&=
+1+2^6 \cdot 4,
+\\
+&=257.
+\end{align*}
+\end{answer}
+
+We can make sage code for our fast trick:
+\begin{sageblock}
+R.<x> = PolynomialRing(QQ)
+def fastresultant(b,c):
+    m=b.degree()
+    n=c.degree()
+    if m<n:
+        return (-1)^(m*n)*fastresultant(c,b)
+    if n==0:
+        if m==0:
+            return 1
+        return c(0)^m
+    lb=b.leading_coefficient()
+    lc=c.leading_coefficient()
+    B=b/lb
+    C=c/lc
+    r=B % C
+    if (r==0):
+        return 0
+    return (-1)^(m*n)*lb^n*lc^m*fastresultant(C,r)
+\end{sageblock}
+so that \verb!fastresultant(x^3+x+7,x^2+2)! yields \(\sage{fastresultant(x^3+x+7,x^2+2)}\).
+
+
+\subsection{The discriminant}
+
+For any polynomial \(p(x)\), with any sort of coefficients, say
+\[
+p(x) = a_0 + a_1 x + \dots + a_n x^n,
+\] 
+we define the \emph{derivative}\define{derivative}\Notation{pd(x)}{p'(x)}{derivative of polynomial}
+\[
+p'(x) = a_1 + 2a_2 x + 3 a_3 x^2 + \dots + n a_n x^n,
+\]
+just imitating calculus.
+There is no interpretation of this as a ``rate of change'', since the coefficients could be remainders modulo some integer, or something much stranger.
+
+The \emph{discriminant}\define{discriminant} \(\discriminant{p}\) of a polynomial \(p(x)\) is the resultant with the derivative: \(\discriminant{p} \defeq  \resultant{p}{p'}\).
+By definition, the discriminant vanishes just when the polynomial has a common factor with its derivative.
+For example, over the complex numbers, the discriminant vanishes just when the polynomial has a ``multiple root'', i.e. a repeated linear factor:
+\[
+p(z)=\pr{z-z_0}^2 \dots.
+\]
+
+\begin{problem}{resultants:discriminants}
+Find the discriminants of (a) \(ax^2+b+c\), (b) \(x^3+x^2\), (c) \(x^3+x^2+1\), (d) \(x^3+2x-1\) and explain what they tell you about these polynomials.
+\end{problem}
+\begin{answer}{resultants:discriminants}
+\begin{enumerate}
+\item
+The derivative of \(ax^2+bx+c\) is \(2ax+b\).
+The discriminant of \(ax^2+bx+c\) is
+\[
+\det
+\begin{pmatrix}
+c & b & 0 \\
+b & 2a & b \\
+a & 0 & 2a
+\end{pmatrix}
+=
+-a(b^2-4ac)
+\]
+which is surprisingly \emph{not} the usual expression.
+So a quadratic polynomial has a common factor with its derivative just when \(b^2=4ac\).
+\item
+For \(p(x)=x^3+x^2\), \(p'(x)=3x^2+2x\), so
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 2 & 0 & 0 \\
+1 & 0 & 3 & 2 & 0 \\
+1 & 1 & 0 & 3 & 2 \\
+0 & 1 & 0 & 0 & 3
+\end{pmatrix}
+=0
+\]
+due to the row of zeroes, or to the double root at \(x=0\).
+\item
+For \(p(x)=x^3+x^2+1\), \(p'(x)=3x^2+2x\), so
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 2 & 0 & 0 \\
+1 & 0 & 3 & 2 & 0 \\
+1 & 1 & 0 & 3 & 2 \\
+0 & 1 & 0 & 0 & 3
+\end{pmatrix}
+=31
+\]
+so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
+\item
+For \(p(x)=x^3+2x-1\), \(p'(x)=3x^2+2\) so 
+\[
+\Delta_p
+=
+\det
+\begin{pmatrix}
+-1 &  0 & 2 & 0 & 0 \\
+ 2 & -1 & 0 & 2 & 0 \\
+ 0 &  2 & 3 & 0 & 2 \\
+ 3 &  0 & 0 & 3 & 0 \\
+ 0 &  3 & 0 & 0 & 3
+\end{pmatrix}=27
+\]
+so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
+\end{enumerate}
+\end{answer}
+
+\begin{example}
+The polynomial \(f(x)=1+2x^2+x^4\) over the real numbers has no real roots.
+Its derivative is \(f'(x)=4x+4x^3\), so its discriminant is
+\[
+\Delta_f =
+\det
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 4 & 0 & 0 & 0 \\
+2 & 0 & 1 & 0 & 4 & 0 & 0 \\
+0 & 2 & 0 & 4 & 0 & 4 & 0 \\
+1 & 0 & 2 & 0 & 4 & 0 & 4 \\
+0 & 1 & 0 & 0 & 0 & 4 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 4
+\end{pmatrix}
+=0
+\]
+(after a long calculation).
+So \(f(x)\) has a common factor with \(f'(x)\).
+We can see the common factor more clearly if we factor:
+\begin{align*}
+f(x) &= 1+2x^2+x^4 = \pr{1+x^2}^2, \\
+f'(x) &= 4x+4x^3 = 4x\pr{1+x^2}.
+\end{align*}
+So \(f(x), f'(x)\) share a common factor of \(1+x^2\).
+They don't share a root over the real numbers, but over the complex numbers
+\begin{align*}
+f(x) &= \pr{x-i}^2\pr{x+i}^2, \\
+f'(x) &= 4x(x-i)(x+i),
+\end{align*}
+so they share roots at \(x=\pm i\), the double roots of \(f(x)\).
+\end{example}
+\begin{example}
+The polynomial \(p(x)=x^3+2x^2+2x+2\) is irreducible over the rational numbers by Eisenstein's criterion, so has no rational roots.
+It has odd degree so at least one real root.
+There is no positive real root since all terms are positive.
+The derivative is \(p'(x)=3x^2+4x+2\).
+By the quadratic formula, the zeroes of \(p'(x)\) are at 
+\[
+x=-\frac{2}{3} \pm \frac{2 \sqrt{2}}{3} i,
+\]
+not real.
+Clearly \(p'(x)>0\) for all values of \(x\).
+Therefore \(p(x)\) is increasing, so has precisely one real root, irrational and negative.
+The two remaining complex roots are nonreal conjugates.
+The discriminant of \(p(x)\) is
+\[
+\Delta
+=
+\det
+\begin{pmatrix}
+2 & 0 & 2 & 0 & 0 \\
+2 & 2 & 4 & 2 & 0 \\
+2 & 2 & 3 & 4 & 2 \\
+1 & 2 & 0 & 3 & 4 \\
+0 & 1 & 0 & 0 & 3
+\end{pmatrix}=-44.
+\]
+Since \(\Delta \ne 0\), we see that there are no double roots over the complex numbers, which is already clear.
+\end{example}
+
+\begin{problem}{resultants:cubic.discriminant}
+Prove that the sign of the discriminant \(\Delta\) of a monic cubic polynomial tells us that the number of roots is:
+\[
+\begin{array}{@{}rl@{}}
+\Delta > 0 & \text{3 distinct roots} \\
+\Delta = 0 & \text{a triple root or 1 real double root and 1 real single root} \\
+\Delta < 0 & \text{1 real and 2 complex roots}.
+\end{array}
+\]
+\end{problem}
+
+\section{Sage}
+Sage computes discriminants:
+\begin{sageblock}
+R.<t> = PolynomialRing(QQ)
+(t^2-t+7).discriminant()
+\end{sageblock}
+yields \(\sage{(t^2-t+7).discriminant()}\).
+
+
+\section{Parameterisation}
+
+\begin{example}
+Take the curve in the plane parameterised by
+\[
+\pr{x(t),y(t)}=\pr{t^2-1,t\pr{t^2-1}}:
+\]
+\inputinexample{cubic-curve-1}
+We want to find an equation for this curve, as a polynomial in \(x\) and \(y\).
+\end{example}
+
+\begin{proposition}\label{proposition:resultant.equation}
+Draw a curve
+\[
+x(t)=\frac{p(t)}{q(t)}, y(t)=\frac{u(t)}{v(t)},
+\]
+where \(p(t), q(t), u(t), v(t)\) are polynomials with complex coefficients.
+The resultant in the variable \(t\) of the polynomials
+\[
+p(t)-xq(t), u(t)-yv(t)
+\]
+vanishes along the points \((x,y)\) in the plane which lie along this curve. \end{proposition}
+\begin{proof}
+The resultant vanishes just at those points \((x,y)\) where the two polynomials have a common factor.
+If there is a common factor of two polynomials, that factor has a root over the complex numbers, so there is a common root \(t\) of both polynomials, in other words a value of \(t\) where \(x=p(t)/q(t)\) and \(y=u(t)/v(t)\).
+On the other hand, a common root gives a common linear factor. 
+So the resultant vanishes just along the image of the curve in the ``plane''. This ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
+\end{proof}
+
+\begin{example}
+For the curve in the plane parameterised by
+\[
+\pr{x(t),y(t)}=\pr{t^2-1,t\pr{t^2-1}},
+\]
+we have to take the resultant of
+\[
+t^2-1-x, t\pr{t^2-1}-y,
+\]
+as a polynomial in \(t\); treat \(x\) and \(y\) as constants:
+\[
+\det 
+\begin{pmatrix}
+-(1+x) &        &        & -y \\ 
+0      & -(1+x) & 0      & -1 & -y \\
+1      & 0      & -(1+x) & 0 & -1 \\
+       & -1     & 0      & 1 & 0 \\
+       &        & -1     &   & 1
+\end{pmatrix}=y^2-x^2-x^3
+\]
+So the curve is precisely the set of points \((x,y)\) so that \(y^2=x^2+x^3\).
+\end{example}
+\begin{example}
+For real variables, the curve \(x=t^2, y=t^4\) has both \(x \ge 0\) and \(y \ge 0\) since \(t^2 \ge 0\) and \(t^4\ge 0\).
+So the curve is the right half of the parabola \(y=x^2\) on which \(x \ge 0\).
+The resultant comes out as
+\[
+\det
+\begin{pmatrix}
+-x &  0 &  0 &  0 & -y &  0 \\
+ 0 & -x &  0 &  0 &  0 & -y \\
+ 1 &  0 & -x &  0 &  0 &  0 \\
+ 0 &  1 &  0 & -x &  0 &  0 \\
+ 0 &  0 &  1 &  0 &  1 &  0 \\
+ 0 &  0 &  0 &  1 &  0 &  1  
+\end{pmatrix}
+=\pr{x^2-y}^2.
+\]
+So the resultant vanishes along \(y=x^2\), the whole parabola.
+So we don't quite get what we wanted: we get the algebraic equation \(y=x^2\) that that curve satisfies, but we miss out on the inequality \(x \ge 0\).
+\end{example}
+
+\begin{problem}{resultants:eliminate}
+Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
+\[
+x(t)=t^2, y(t)=t^3-t.
+\]
+\end{problem}
+\begin{answer}{resultants:eliminate}
+Write these equations as polynomials in increasing powers of \(t\), with coefficients rational in \(x,y\):
+\begin{align*}
+0 &= -x + 0t + t^2, \\
+0 &= -y -t + 0t^2 +t^3.
+\end{align*}
+The resultant is
+\[
+\det
+\begin{pmatrix}
+  -x &   0 &   0 &   -y &   0 \\
+   0 &  -x &   0 &   -1 &  -y \\
+   1 &   0 &  -x &    0 &  -1 \\
+   0 &   1 &   0 &    1  &  0 \\
+   0 &   0 &   1 &    0  &  1
+\end{pmatrix}
+\]
+You can simplify this determinant by adding \(x(\text{row 3})\) to row 1, and similar tricks, to compute it out:
+\(
+y^2-(x-1)x(x+1)
+\).
+So the equation of the curve is \(y^2=(x-1)x(x+1)\).
+\end{answer}
+
+
+\begin{problem}{resultants:eliminate.2}
+Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
+\[
+x(t)=t^2+t, y(t)=\frac{1}{t}.
+\]
+\end{problem}
+
+\begin{problem}{resultants:eliminate.3}
+Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
+\[
+x(t)=t^2+1, y(t)=t+\frac{1}{t}.
+\]
+\end{problem}
+\begin{answer}{resultants:eliminate.3}\(x^2+(1-x)y^2\)\end{answer}
+
+
+\section{Sage}
+
+Sage handles 2 variable polynomials:
+\begin{sageblock}
+P.<x,y> = PolynomialRing(QQ)
+a = x + y
+b = x^3 - y^3
+a.resultant(b)
+\end{sageblock}
+yields \(\sage{a.resultant(b)}\).
+If we want to use the resultant in the other variable, we specify which variable to get rid of: \verb!a.resultant(b, y)! yields \(\sage{a.resultant(b, y)}\).
+Sage will take a parameterisation of a curve and give us the equation of the curve.
+Our example above becomes:
+\begin{sageblock}
+R.<x,y,t> = PolynomialRing(QQ)
+(t^2-1-x).resultant(t*(t^2-1)-y,t)
+\end{sageblock}
+yields \(\sage{(t^2-1-x).resultant(t*(t^2-1)-y,t)}\).

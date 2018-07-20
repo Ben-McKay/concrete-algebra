@@ -1,0 +1,1306 @@
+\chapter{More projective planes}
+
+\epigraph[author={William Shakespeare}, source={Twelfth Night}]{So full of shapes is fancy \\
+That it alone is high fantastical.}%
+\SubIndex{Shakespeare, William}\SubIndex{Twelfth Night}
+
+\epigraph[author={Bertrand Russell}]{The pure mathematician, like the musician, is a free creator of his world of ordered beauty}\SubIndex{Russell, Bertrand}
+
+\epigraph[author={Leo Tolstoy}, source={War and Peace}]{
+We know that man has the faculty of becoming completely absorbed in a subject however trivial it may be, and that there is no subject so trivial that it will not grow to infinite proportions if one's entire attention is devoted to it.}
+\SubIndex{Tolstoy, Leo}\SubIndex{War and Peace}
+
+\section{Projective planes}
+
+A \emph{projective plane}\define{projective!plane} (in a more general sense of the term than we have used previously) is a set \(P\), whose elements are called \emph{points}, together with a set \(L\), whose elements are called \emph{lines}, and a defined notion of incidence, i.e. of a point being ``on'' a line (or we could say that a line is ``on'' or ``through'' a point) so that
+\begin{enumerate}
+\item
+Any two distinct points both lie on a unique line.
+\item
+Any two distinct lines both lie on a unique point.
+\item
+There are 4 points, with no 3 on the same line.
+\end{enumerate}
+We usually denote a projective plane as \(P\), leaving its set \(L\) of lines understood, and its notion of incidence understood.
+
+\begin{lemma}\label{lemma:proj.plane.over.field}
+The projective plane \(\Proj[2]{k}\) over any field is a projective plane in this more general sense. 
+\end{lemma}
+\begin{proof}
+Given any two distinct points of \(\Proj[2]{k}\), they arise from two distinct vectors in \(k^3\), determined up to rescaling.
+Such vectors lie in a basis of \(k^3\), and span a plane in \(k^3\) through the origin.
+The lines in that plane lying through the origin consitute a projective line through the two points.
+Similarly, any two distinct projective lines are the lines through the origin of two distinct planes through the origin.
+Those planes are each cut out by a linear equation, and the linear equations have linearly independent coefficients, because they are distinct planes.
+But then the simultaneous solutions of the two equations in three variables form a line through the origin, a projective point.
+To find 4 points, with no 3 on the same line, consider the 3 points
+\[
+\begin{bmatrix}
+1 \\
+a \\
+b
+\end{bmatrix}, 
+\begin{bmatrix}
+0 \\
+1 \\
+c
+\end{bmatrix}, 
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+\]
+for any constants \(a, b, c\) from \(k\).
+For these points to be on the same projective line, the corresponding vectors
+\[
+\begin{pmatrix}
+1 \\
+a \\
+b
+\end{pmatrix}, 
+\begin{pmatrix}
+0 \\
+1 \\
+c
+\end{pmatrix}, 
+\begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+\]
+must lie on the same plane, i.e. satisfying the same linear equation with not all coefficients zero.
+But these vectors are linearly independent.
+Now take the 4 points
+\[
+\begin{bmatrix}
+1 \\
+1 \\
+0
+\end{bmatrix}, 
+\begin{bmatrix}
+1 \\
+0 \\
+1
+\end{bmatrix}, 
+\begin{bmatrix}
+0 \\
+1 \\
+0
+\end{bmatrix}, 
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+\]
+and check that any 3 do not lie in a projective line.
+\end{proof}
+
+
+\begin{problem}{more.projective.planes:3.points}
+Prove that every line in a projective plane contains at least three points.
+\end{problem}
+
+
+
+\section{Duality}
+
+We defined polygons in projective planes over fields in section~\vref{section:polygons}; we employ the same definitions in any projective plane.
+If \(P\) is a projective plane with set of lines \(L\), the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}, denoted \(P^*\),\Notation{P*}{P^*}{dual projective plane} has \(L\) as its set of ``points'' and \(P\) as its set of ``lines'', and the same incidence notion, i.e. we use interchange the words ``point'' and ``line''.
+
+\begin{lemma}
+The dual \(P^*\) of a projective plane \(P\) is a projective plane, and \(P^{**}=P\).
+\end{lemma}
+\begin{proof}
+We have only to check that there is a quadrilateral in \(P^*\).
+Pick a quadrilateral in \(P\), and we need to see that its 4 edges, in the obvious cyclic ordering, are the vertices of a quadrilateral in \(P^*\).
+Three of those vertices in \(P^*\) lie on a line in \(P^*\) just when three of the lines of the original quadrilateral lie through the same point, say \(p\).
+So we need to prove that no quadrilateral has three of its edges 
+through the same point.
+Taking the remaining edge as the fourth edge, the first three edges of the quadrilateral pass through the same point, so that point is the first and the second vertex.
+But then the third vertex lies on a line with the first two.
+\end{proof}
+
+For example, if \(V\) is a 3-dimensional vector space over a field \(k\), the associated projective plane \(\mathbb{P}V\) is the set of lines through the origin of \(V\).
+A line in \(\mathbb{P}V\) is a plane through the origin of \(V\).
+Every plane through the origin is the set of solutions of a linear equation, i.e. is the set of zeroes of a linear function \(f \colon V \to k\), i.e. of an element \(0 \ne f \in V^*\) of the dual vector space.
+Such a function is uniquely determined by its zeroes, up to rescaling.
+So each line in \(\mathbb{P}V\) is identified with a 2-plane through the origin of \(V\) and thereby with a linear function \(f \in V^*\) defined up to rescaling, and thereby with a line \(k \cdot f \subset V^*\) through the origin of \(V^*\), and thereby with a point of \(\mathbb{P}V^*\): \(\mathbb{P}\of{V^*}=\mathbb{P}(V)^*\).
+
+\section{Projective spaces}
+
+A \emph{projective space}\define{projective!space} is a pair of sets, called the sets of \emph{points} and \emph{lines}, together with a definition of \emph{incidence} of points on lines, so that
+\begin{enumerate}
+  \item\label{item:pq} Any two distinct points \(p, q\) are on exactly one line \(pq\).
+  \item\label{item:pqr} Every line contains at least three points.
+  \item\label{item:pqrs} For any four points \(p, q, r, s\), with no three on the same line, if \(pq\) intersects \(rs\) then \(pr\) intersects \(qs\).
+\end{enumerate}
+Points are \emph{collinear} if they lie on a line, and lines \emph{intersect} at a point if they both lie on that point.
+By \ref{item:pq} and \ref{item:pqr}, every line of a projective space is determined uniquely by the set of points lying on it.
+Therefore it is safe to think of lines as sets of points.
+
+\begin{problem}{more.projective.planes:define.p.n.r}
+Prove that \(\Proj[n]{k}\) is a projective space, for any field \(k\).
+\end{problem}
+
+
+
+Given a point \(p\) and a line \(\ell\), let \(p\ell\), the \emph{plane}\define{plane} spanned by \(p\) and \(\ell\), be the set of points \(q\) so that \(q=p\) or \(pq\) intersects \(\ell\).
+A \emph{line} of a plane \(P=p\ell\) in a projective space is a line of the projective space which intersects two or more points of \(P\).
+
+\begin{lemma}
+Every plane in a projective space is a projective plane.
+\end{lemma}
+\begin{proof}
+Take a projective space \(S\), and a plane \(P=p\ell\) in \(S\).
+Looking at the definition of projective space, the first requirement ensures the first requirement of a projective plane: any two distinct points line in a unique line.
+Take two distinct lines \(m, n\).
+We need to show they intersect at a unique point, and that this point also lies in \(P\).
+
+First, suppose that \(m=\ell\) and that \(p\) lies on \(n\).
+We need to prove that \(n\) intersects \(\ell\).
+By definition of lines in a plane, there are at least two points of \(P\) on each line of \(P\). 
+Pick a point \(q \ne p\) from \(P\) on \(n\).
+Then \(n=pq\) intersects \(m=\ell\) at a point of \(\ell\), by definition of a plane.
+
+Next, suppose that \(m=\ell\) but that \(p\) does not lie on \(n\).
+We need to prove that \(n\) intersects \(\ell\).
+By definition of \(n\) being a line on the plane \(P\), \(n\) contains two points of \(P\).
+Pick two points \(q, q'\) of \(P\) lying on \(n\).
+If either point lies on \(\ell\), we are done.
+Let \(r, r'\) be the intersection points of \(pq, pq'\) with \(\ell\), which exist by definition of a plane.
+Then \(pq=qr\) and \(pq'=q'r'\) so \(qr\) and \(q'r'\) intersect at \(p\).
+Suppose that three of \(q, q', r, r'\) lie on the same line.
+But \(n=qq'\) so that line is \(n\).
+But then \(r\) is on \(n\), so \(n\) intersects \(\ell\), and we are done.
+So we can assume that \(q, q', r, r'\) are not collinear.
+By property~\vref{item:pqrs}, since \(qr\) and \(q'r'\) intersect (at \(p\)), \(qq'=n\) intersects \(rr'=\ell\).
+
+Next, suppose that \(m \ne \ell\).
+Repeating the above if \(n=\ell\), we can assume that \(n \ne \ell\).
+From the above, \(m\) and \(n\) both intersect \(\ell\), say at points \(a\) and \(b\).
+If \(a=b\) then \(m\) and \(n\) intersection and we are done.
+If \(a \ne b\), take points \(a' \ne a\) in \(m\) and \(b' \ne b\) in \(n\) both lying in \(P\).
+Repeating the above, \(a'b'\) intersects \(\ell\).
+So either three of \(a, a', b, b'\) are collinear, or \(aa'=m\) intersects \(bb'=n\).
+Suppose that three of \(a, a', b, b'\) are collinear.
+Then one of \(b\) or \(b'\) lies in \(m\), or one of \(a, a'\) lies in \(n\), so \(m\) and \(n\) intersect at a point of \(P\).
+Therefore we can assume that no three of \(a, a', b, b'\) are collinear.
+By property~\vref{item:pqrs}, since \(a'b'\) and \(ab\) intersect, \(aa'=m\) intersects \(bb'=n\).
+We have established that any two lines of \(P\) intersect in \(S\).
+We have to prove that this intersection point \(c\) lies in the plane \(P\).
+The line \(pa\) is a line of \(P\), and so intersects \(\ell\), \(m\) and \(n\).
+The line \(n=bc\) is also a line of \(P\).
+If three of \(p, a, b, c\) are collinear, then \(p\) lies in \(n\) or \(a\) lies in \(n\), and we are done as above.
+By property~\vref{item:pqrs}, since \(pa\) and \(bc\) intersect, \(pc\) intersects \(ab=\ell\).
+By definition of a plane, the point \(c\) belongs to \(P\).
+So we have established that any two distinct lines of \(P\) lie on a unique point of \(P\).
+
+Finally, take two distinct points \(a,b\) on \(\ell\) and \(a' \ne a\) on \(pa\) and \(b' \ne b\) on \(pb\).
+By definition, \(a, b, a', b'\) all lie on \(P\).
+Collinearity of any three of these points would, by the same argument, force \(a=b\).
+\end{proof}
+
+
+\begin{corollary}
+If a line lies in a plane in a projective space, then every point lying on that lie lies on that plane.
+\end{corollary}
+
+A \emph{projective subspace}\define{projective!subspace}\define{subspace!projective} of a projective space \emph{of dimension \(-\infty\)} means an empty set, \emph{of dimension zero} means a point, and inductively of dimension \(n+1\) means the union of all points on all lines through a projective subspace of dimension \(n\) and a disjoint point.
+A line of a projective subspace is a line of the projective space containing two or more points of the subspace.
+Clearly every projective subspace is itself a projective space, by induction from the proof that every plane in a projective space is a projective plane.
+
+\begin{lemma}
+In any 3-dimensional projective space, every line meets every plane.
+\end{lemma}
+\begin{proof}
+Pick a plane \(P\).
+We want to see that every line \(\ell\) meets \(P\).
+Suppose that \(\ell=ab\) for two points \(a, b\).
+If either of \(a, b\) are on \(P\), then \(\ell\) meets \(P\), so suppose otherwise.
+
+Pick a point \(q_0\) not in \(P\).
+Suppose that \(a \ne q_0\) and \(b \ne q_0\).
+Each of \(a, b\) lies on a line \(q_0 a'\), \(q_0 b'\), for some \(a', b'\) on \(P\), since our projective space has dimension 3.
+If \(a=a'\) then \(a\) is on \(P\) and \(\ell\) so \(\ell\) meets \(P\).
+Similarly if \(b=b'\).
+Therefore we can suppose that \(a \ne a'\) and \(b \ne b'\).
+So \(aa'\) and \(bb'\) intersect at \(q_0\).
+Suppose that three of \(a, a', b, b'\) lie on a line. 
+Then \(aa'=q_0 a'\) contains \(b\) or \(b'\), so equals \(ab=\ell\) or \(a'b'\) lying on \(P\).
+In the first case, \(ab=\ell\) then contains \(a'\), which lies on \(P\), so \(\ell\) meets \(P\).
+In the second case, \(a'b'\) lies in \(P\) and contains \(a\) which lies on \(\ell\), so \(\ell\) meets \(P\).
+So we can assume that no three of \(a, a', b, b'\) lie on a line. 
+By \ref{item:pqrs}, \(ab\) intersects \(a'b'\), so \(\ell\) intersects a line in \(P\).
+\end{proof}
+
+\begin{lemma}
+Any two distinct planes in a 3-dimensional projective space meet along a unique line.
+\end{lemma}
+\begin{proof}
+Take planes \(P \ne P'\).
+Take a point \(p_0\) in \(P\) but not \(P'\).
+Pick two distinct lines \(\ell, m\) in \(P\) through \(p_0\).
+Let \(a\) be the intersection of \(\ell\) and \(P'\), and \(b\) the intersection of \(m\) and \(P'\).
+The line \(ab\) lies in \(P'\) and \(P\).
+If some common point \(c\) of \(P\) and \(P'\) does not lie in \(ab\), then the plane \(abc\) lies in \(P\) and \(P'\), so \(P=P'\).
+\end{proof}
+
+
+
+\section{The quaternionic projective spaces}
+
+The \emph{quaternions}\define{quaternions}\Notation{H}{\Quat{}}{quaternions} over a commutative ring \(R\) are the quadruples \(a=\pr{a_0,a_1,a_2,a_3}\) of elements of \(R\), each written as
+\[
+a=a_0  + a_1 i + a_2 j + a_3 k.
+\]
+They form the ring \(\Quat{}_R\) with addition component by component and multiplication given by the rules
+\[
+i^2=j^2=k^2=-1, ij=k, jk=i, ki=j, ji=-k, kj=-i, ik=-j,
+\]
+and conjugation defined by 
+\[
+\bar{a} = a_0 - a_1 i - a_2 j - a_3 k.
+\]
+The \emph{quaternions} \(\Quat{}\) (with no underlying commutative ring specified) are the quaternions over \(R=\R{}\).
+
+\begin{problem}{more.projective.planes:quats.assoc}
+Prove that \(\Quat{}_R\) is associative, by a direct computation.
+\end{problem}
+
+A \emph{skew field}\define{skew field} is an associative ring with identity, not necessarily commutative, in which every element \(a\) has a multiplicative inverse: \(a^{-1}a=aa^{-1}=1\).
+
+\begin{problem}{more.projective.planes:quats}
+Check that
+\[
+a\bar{a}=\bar{a}a = a_0^2 + a_1^2 + a_2^2 + a_3^2.
+\]
+In particular, if \(k\) is a field in which sums of squares are never zero unless all elements are zero (as when \(k=\R{}\)), prove that \(\Quat{}_k\) is a skew field.
+\end{problem}
+
+\begin{problem}{more.projective.planes:R}
+Suppose that \(k\) is a skew field.
+Define \(\Proj[2]{k}\) by analogy with the definition for a field.
+Explain why \(\Proj[2]{k}\) is then a projective plane.
+\end{problem}
+
+The \emph{quaternionic projective plane}\define{quaternionic projective plane}\define{projective plane!quaternionic} \(\Proj[2]{\Quat{}}\) is the projective plane of the \emph{quaternions}.
+
+Take a skew field \(k\).
+Add vectors \(x\) in \(k^n\) as usual component by component, but multiply by elements \(ra\) in \(k\) on the right:
+\[
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+a
+=
+\begin{pmatrix}
+x_1 a \\
+x_2 a \\
+\vdots \\
+x_n a
+\end{pmatrix}.
+\]
+Multiply by matrices on the left as usual.
+
+A \emph{vector space} \(V\) over a skew field \(k\) is a set \(V\) equipped with an operation \(u+v\) and an operationa \(va\) so that
+\begin{enumerate}
+\item[]\emph{Addition laws:}\define{addition laws}
+    \begin{enumerate}
+        \item $u+v$ is in $V$
+        \item $(u+v)+w=u+(v+w)$
+        \item $u+v=v+u$
+    \end{enumerate}
+    for any vectors $u,v,w$ in $V$,
+    \item[] \emph{Zero laws:}
+    \begin{enumerate}
+        \item There is a vector $0$ in $V$ so that $0+v=v$ for any vector $v$ in $V$.
+        \item For each vector $v$ in $V$, there is a vector $w$ in $V$, for which $v+w=0$.
+    \end{enumerate}
+    \item[]\emph{Multiplication laws:}\define{multiplication laws}
+    \begin{enumerate}
+        \item $va$ is in $V$
+        \item $v \cdot 1 = v$
+        \item $v(ab)=(va)b$
+        \item $v(a+b)v=va+vb$
+        \item $(u+v)a=ua+va$
+    \end{enumerate}
+    for any numbers $a, b \in k$, and any vectors $u$ and $v$ in $V$.
+\end{enumerate}
+For example, \(V=k^n\) is a vector space, with obvious componentwise addition and scaling.
+A \emph{subspace}\define{subspace} of a vector space \(V\) is a nonempty subset \(U\) of \(V\) so that when we apply the same scaling and addition operations to elements of \(U\) we always get elements of \(U\).
+In particular, \(U\) is also a vector space.
+
+A \emph{linear relation}\define{linear relation} between vectors \(v_1, v_2, \dots, v_p \in V\) is an equation
+\[
+0=v_1 a_1 + v_2 a_2 + \dots + v_p a_p
+\]
+satisfied by these vectors, in which not all of the coefficients \(a_1, a_2, \dots, a_p\) vanish.
+Vectors with no linear relation are \emph{linearly independent}.\define{linearly independent}
+A \emph{linear combination}\define{linear combination} of vectors \(v_1, v_2, \dots, v_p \in V\) is vector
+\[
+v_1 a_1 + v_2 a_2 + \dots + v_p a_p
+\]
+for some elements \(a_1, a_2, \dots, a_p\) from \(k\).
+One weird special case: we consider the vector \(0\) in \(V\) to be a linear combination of an \emph{empty} set of vectors.
+The \emph{span}\define{span} of a set of vectors is the set of all of their linear combinations.
+A \emph{basis}\define{basis} for \(V\) is a set of vectors so that every vector in \(V\) is a unique linear combination of these vectors.
+Note that some vector spaces might not have any basis.
+Also, if \(V=\set{0}\) then the empty set is a basis of \(V\).
+
+\begin{theorem}
+Any two bases of a vector space over a skew field have the same number of elements.
+\end{theorem}
+\begin{proof}
+If \(V=\set{0}\), the reader can check this special case and see that the empty set is the only basis.
+Take two bases \(u_1, u_2, \dots, u_p\) and \(v_1, v_2, \dots, v_q\) for \(V\).
+If needed, swap bases to arrange that \(p \le q\). 
+Write the vector \(v_1\) as a linear combination 
+\[
+v_1 = u_1 a_1 + u_2 a_2 + \dots + u_p a_p.
+\]
+If all of the elements \(a_1, a_2, \dots, a_p\) vanish then \(v_1=0\), and then zero can be written as more than one linear combination, a contradiction.
+By perhaps reordering our basis vectors, we can suppose that \(a_1 \ne 0\).
+Solve for \(u_1\):
+\[
+u_1 = \pr{v_1 + u_2 \pr{-a_2} + \dots + u_p \pr{-a_p}} a_1^{-1}.  
+\]
+We can write every basis vector \(u_1, u_2, \dots, u_p\) as a linear combination of \(v_1, u_2, \dots, u_p\), and so the span of \(v_1, u_2, \dots, u_p\) is \(V\).
+If there is more than one way to write a vector in \(V\) as such a linear combination, say
+\[
+v_1 b_1 + u_2 b_2 + \dots + u_p b_p 
+=
+v_1 c_1 + u_2 c_2 + \dots + u_p c_p 
+\]
+then the difference between the left and right hand sides is a linear relation
+\[
+0 = v_1 d_1 + u_2 d_2 + \dots + u_p d_p.
+\]
+Solve for \(v_1\) in terms of \(u_1\) and plug in:
+\[
+0
+=
+u_1 a_1 d_1 + u_2 \pr{d_2 + a_2 d_1} + \dots + u_p \pr{d_p + a_p d_1}.
+\]
+Since these \(u_1, u_2, \dots, u_p\) form a basis,
+\[
+0
+=a_1 d_1 = d_2+a_2 d_1 = \dots = d_p + a_p d_1.
+\]
+Multiplying the first equation by \(a_1^{-1}\) gives \(d_1=0\), and then that gives \(0=d_2=\dots=d_p\), a contradiction.
+Therefore \(v_1, u_2, \dots, u_p\) is a basis.
+By induction, repeating this process, we can get more and more of the vectors \(v_1, v_2, \dots, v_q\) to replace the vectors \(u_1, u_2, \dots, u_p\) and still have a basis.
+Finally, we will find a basis \(u_1, u_2, \dots, u_p\) consisting of a subset of \(p\) of the vectors \(v_1, v_2, \dots, v_q\).
+But then every vector is a unique linear combination of some subset of these vectors, a contradiction unless that subset is all of them, i.e. \(p=q\).
+\end{proof}
+
+The \emph{dimension}\define{dimension} of a vector space is the number of elements in a basis, or \(\infty\) if there is no basis.
+A \emph{linear map}\define{linear map} \(f \colon V \to W\) between vector spaces \(V,W\) over a skew field \(k\) is a map so that \(f\of{v_1+v_2}=f\of{v_1}+f\of{v_2}\) for any \(v_1, v_2\) in \(V\) and \(f(va)=f(v)a\) for any \(v\) in \(V\) and \(a\) in \(k\). 
+\begin{problem}{more.projective.planes:matrices.over.div.rings}
+Prove that for any linear map
+\(
+f \colon V \to W
+\)
+between vector space \(V=k^q\) and \(W=k^p\), there is a unique \(p \times q\) matrix \(A\) with entries from \(k\) so that \(f(v)=Av\) for any \(v\) in \(V\).
+\end{problem}
+
+The \emph{kernel}\define{kernel} of a linear map \(f \colon V \to W\) is the set of all vectors \(v\) in \(V\) so that \(f(v)=0\).
+The \emph{image}\define{image} of a linear map \(f \colon V \to W\) is the set of all vectors \(w\) in \(W\) of the form \(w=f(v)\) for some \(v\) in \(V\). 
+\begin{problem}{more.projective.planes:kernel.div.ring}
+Prove that the kernel and image of a linear map \(f \colon V \to W\) are subspaces of \(V\) and of \(W\) and that their dimensions add up to the dimension of \(V\).
+\end{problem}
+
+\begin{problem}{more.projective.planes:bases.div.ring}
+Prove that for any basis \(v_1, v_2, \dots, v_n\) for a vector space \(V\), there is a unique linear map \(f \colon V \to W\) with has any given values \(f\of{v_i}=w_i\).
+\end{problem}
+
+\begin{problem}{more.projective.planes:skew.proj.plane}
+Imitating the proof of lemma~\vref{lemma:proj.plane.over.field}, prove that \(\Proj[2]{k}\) is a  projective plane for any skew field \(k\).
+\end{problem}
+
+\begin{problem}{more.projective.planes:skew.proj.space}
+Prove that \(\Proj[n]{k}\) is a  projective space for any skew field \(k\).
+\end{problem}
+
+
+\section{Incidence geometries}
+
+We want to consider more general configurations of points and lines than projective planes or spaces.
+An \emph{incidence geometry}\define{incidence geometry}, also called a \emph{configuration}\define{configuration}, is set \(P\), whose elements are called \emph{points}, together with a set \(L\), whose elements are called \emph{lines}, and a defined notion of incidence, i.e. of a point being ``on'' a line (or we could say that a line is ``on'' or ``through'' a point).
+\begin{example}
+As points, take \(P\defeq\Zmod{m}\) and as lines takes \(L\defeq\Zmod{m}\) and then say that a point \(p\) is on a line \(\ell\) if \(p=\ell\) or \(p=\ell+1\).
+Call this a \emph{polygon}\define{polygon} or an \(m\)-gon.
+If \(m=3\), call it a \emph{triangle}, and if \(m=4\) a \emph{quadrilateral}.
+\end{example}
+\begin{example}
+Any projective plane or projective space is a configuration.
+\end{example}
+\begin{example}
+The affine plane is a configuration.
+\end{example}
+\begin{example}
+If we just draw any picture on a piece of paper of some dots (``points'') and some squiggly curves (``lines'', not necessarily straight), with some indication which lines intersect which points, that describes a configuration.
+For example, we can draw the Fano\SubIndex{Fano plane} plane as:
+\begin{center}
+\inputinexample{fano-triangle}
+\end{center}
+where the ``points'' are the numbered vertices and the ``lines'' are the straight lines, including the three straight lines through the center, and the circle.
+\end{example}
+
+A \emph{morphism} of configurations
+\[
+f \colon \pr{P_0,L_0} \to \pr{P_1,L_1}
+\]
+is a pair of maps, both called \(f\), \(f \colon P_0 \to P_1\) and \(f \colon L_0 \to L_1\) so that if a point \(p\) lies on a line \(\ell\), then \(f(p)\) lies on \(f(\ell)\).
+
+\begin{example}
+Every projective plane contains a quadrilateral, so has a morphism from the quadrilateral \(P=\Zmod{4}\).
+\end{example}
+\begin{example}
+Take the Fano\SubIndex{Fano plane} plane, using our diagram, and delete the one line corresponding to the circle; call the result the \emph{kite}.\define{kite}
+Every projective plane \(\Proj[2]{k}\) over a field \(k\) contains the points
+\([x,y,z]\) for \(x,y,z\) among \(0,1\) and not all zero, and contains the various lines between them, i.e. contains the kite.
+So there is a morphism, injective on points and lines, from the kite to every projective plane over any field.
+In fact, if we start off with any quadrilateral in any projective plane, and we draw from it all lines through any two of its vertices, and then all of the intersections of those lines, and then all lines through any two vertices of that configuration, and so on, we end up with the kite.
+\end{example}
+\begin{example}
+If \(k\) has a field extension \(K\), then the obvious map \(\Proj[2]{k} \to \Proj[2]{K}\) is a morphism.
+\end{example}
+An \emph{isomorphism}\define{isomorphism!projective plane}\define{projective!plane!isomorphism} is a morphism whose inverse is also a morphism, so that a point lies on a line just exactly when the corresponding point lies on the corresponding line.
+An \emph{automorphism}\define{automorphism!projective plane}\define{projective!plane!automorphism} of a configuration is an isomorphism from the configuration to itself.
+A \emph{monomorphism} is a morphism injective on points and on lines, so that a point lies on a line after we apply the morphism just when it did before.
+
+\begin{example}
+By definition, every projective plane admits a monomorphism from a quadrilateral.
+\end{example}
+\begin{example}
+The map \(\Proj[2]{\R{}} \to \Proj[2]{\C{}}\) is \emph{not} an isomorphism, as it is not onto on either points or lines, so has no inverse, but it is a monomorphism.
+\end{example}
+\begin{example}
+The map \(f \colon \Proj[n]{k} \to \Proj[n+1]{k}\) taking 
+\[
+f\left[x_0,x_1,\dots,x_n\right] = \left[x_0,x_1,\dots,x_n,0\right]
+\]
+is a monomorphism.
+\end{example}
+\begin{example}
+Invertible matrices with entries in a field \(k\) act as projective automorphisms on \(\Proj[2]{k}\), and similarly in all dimensions; call these \emph{linear}\define{linear!projective automorphism} projective automorphisms or \(k\)-projective automorphisms.
+\end{example}
+\begin{example}
+Let \(k\defeq \Q{}(\sqrt{2})\) and let \(f \colon k \to k\) be the automorphism 
+\[
+f\of{a+b\sqrt{2}}
+=
+a-b\sqrt{2}
+\]
+for any \(a, b\) in \(\Q{}\).
+Then clearly \(f\) extends to \(k^{n+1}\) for any integer \(n\), and so extends to \(\Proj[n]{k}\), giving an automorphism which is \emph{not} linear.
+\end{example}
+
+
+\begin{problem}{more.projective.planes:quad.morphism}
+Any two quadrilaterals in the projective plane \(\Proj[2]{k}\) over any field \(k\) can be taken one to the other by a linear automorphism.
+Hint: think about the linear algebra in \(k^3\), get the first three vectors where you want them to go, and think about rescaling them to get the last vector in place.
+\end{problem}
+
+The \emph{dual}\define{dual!configuration}\define{configuration!dual} of a configuration has as line the points and as points the lines and the same incidence relation.
+If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual morphism} to be the same maps on points and lines, but interpreted as lines and points respectively. 
+
+
+\section{Desargues' theorem}
+\epigraph[author={G. H. Hardy}]{Beauty is the first test: there is no permanent place in the world for ugly mathematics}\SubIndex{Hardy, G. H.}
+\begingroup
+% highest x value of any coordinate of any point in the picture:
+\newcommand*{\maxX}{5.5}
+% lowest x value of any coordinate of any point in the picture:
+\newcommand*{\minX}{0}
+\newcommand*{\tikzscale}{.5}
+\newcommand*{\dotr}{2pt}
+
+\newcommand*{\AoneX}{0}
+\newcommand*{\AoneY}{6}
+\newcommand*{\Aone}{\AoneX,\AoneY}
+\newcommand*{\AtwoX}{2}
+\newcommand*{\AtwoY}{5.5}
+\newcommand*{\Atwo}{\AtwoX,\AtwoY}
+\newcommand*{\AthreeX}{1.5}
+\newcommand*{\AthreeY}{4.5}
+\newcommand*{\Athree}{\AthreeX,\AthreeY}
+\newcommand*{\PnoughtX}{0}
+\newcommand*{\PnoughtY}{8}
+\newcommand*{\Pnought}{\PnoughtX,\PnoughtY}
+\newcommand*{\Tone}{4}
+\newcommand*{\Ttwo}{2}
+\newcommand*{\Tthree}{3}
+
+\newcommand*{\drawOrigin}
+{
+\fill[blue!40] (\Pnought) circle (\dotr) node (p) {};
+}
+
+\newcommand*{\drawFirstTriangle}
+{
+\fill[cyan!5,opacity=.75] (\Aone) -- (\Atwo) -- (\Athree) -- cycle;
+\fill[cyan!40] (\Aone) circle (\dotr) node (a1) {};
+\fill[cyan!40] (\Atwo) circle (\dotr) node (a2) {};
+\fill[cyan!40] (\Athree) circle (\dotr) node (a3) {};
+}
+
+
+\newcommand*{\Bone}{{\Tone*(\AoneX-\PnoughtX)+\PnoughtX},{\Tone*(\AoneY-\PnoughtY)+\PnoughtY}}
+\newcommand*{\Btwo}{{\Ttwo*(\AtwoX-\PnoughtX)+\PnoughtX},{\Ttwo*(\AtwoY-\PnoughtY)+\PnoughtY}}
+\newcommand*{\Bthree}{{\Tthree*(\AthreeX-\PnoughtX)+\PnoughtX},{\Tthree*(\AthreeY-\PnoughtY)+\PnoughtY}}
+
+\newcommand*{\drawSecondTriangle}
+{
+\fill[brown!15,opacity=.5] (\Bone) -- (\Btwo) -- (\Bthree) -- cycle;
+\fill[brown!50,opacity=.5] (\Bone) circle (\dotr) node (b1) {};
+\fill[brown!50,opacity=.5] (\Btwo) circle (\dotr) node (b2) {};
+\fill[brown!50,opacity=.5] (\Bthree) circle (\dotr) node (b3) {};
+}
+
+\newcommand*{\connectVantageAndFirstTwoTriangles}
+{
+\draw[gray,opacity=.5] (p) -- (a1) -- (b1);
+\draw[gray,opacity=.5] (p) -- (a2) -- (b2);
+\draw[gray,opacity=.5] (p) -- (a3) -- (b3);
+}
+
+\newcommand*{\findFirstIntersection}
+{
+\node (c1) at (intersection of a2--a3 and b2--b3) {};
+}
+\newcommand*{\findSecondIntersection}
+{
+\node (c2) at (intersection of a1--a3 and b1--b3) {};
+}
+\newcommand*{\findThirdIntersection}
+{
+\node (c3) at (intersection of a1--a2 and b1--b2) {};
+}
+
+\newcommand*{\findAllIntersections}
+{
+\findFirstIntersection
+\findSecondIntersection
+\findThirdIntersection
+}
+
+\newcommand*{\showFirstIntersectionPoint}
+{
+%\draw[white] (c1) circle (1.4pt);
+\fill[gray!30] (c1) circle (\dotr);
+}
+
+\newcommand*{\showSecondIntersectionPoint}
+{
+%\draw[white] (c2) circle (1.4pt);
+\fill[gray!30] (c2) circle (\dotr);
+}
+
+\newcommand*{\showThirdIntersectionPoint}
+{
+%\draw[white] (c3) circle (1.4pt);
+\fill[gray!30] (c3) circle (\dotr);
+}
+
+
+\newcommand*{\showAllIntersectionPoints}
+{
+\showFirstIntersectionPoint
+\showSecondIntersectionPoint
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowFirstIntersectionIsConstructed}
+{
+\draw[red!50!white] (a3) -- (c1); % line through c1
+\draw[red!50!white] (b3) -- (c1); % line through c1
+\showFirstIntersectionPoint
+}
+
+\newcommand*{\showHowSecondIntersectionIsConstructed}
+{
+\draw[blue] (a3) -- (c2); % line through c1
+\draw[blue] (b3) -- (c2); % line through c1
+\showSecondIntersectionPoint
+}
+
+\newcommand*{\showHowThirdIntersectionIsConstructed}
+{
+\draw[brown] (a2) -- (c3); % line through c1
+\draw[brown] (b2) -- (c3); % line through c1
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowAllIntersectionsAreConstructed}
+{
+\showHowFirstIntersectionIsConstructed
+\showHowSecondIntersectionIsConstructed
+\showHowThirdIntersectionIsConstructed
+}
+
+\newcommand*{\showTheLine}
+{
+\draw[green!50!gray] (c1) -- (c2);
+\draw[green!50!gray] (c2) -- (c3);
+\showAllIntersectionPoints
+}
+
+\newcommand*{\showThirdTriangle}
+{
+\fill[green!50!gray,opacity=.1] (c1) to[bend left=45] (c2) to[bend right=45] (c3) to[bend left=90] (c1);
+%\draw[green!50!gray] (c1) to[bend left=45] (c2);
+%\draw[green!50!gray] (c2) to[bend right=45] (c3);
+%\draw[green!50!gray] (c3) to[bend left=90] (c1);
+\showAllIntersectionPoints
+}
+
+\newcommand*{\firstPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+}
+
+\newcommand*{\secondPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\drawFirstTriangle
+\drawSecondTriangle
+}
+
+\newcommand*{\thirdPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findFirstIntersection
+\showHowFirstIntersectionIsConstructed
+}
+
+\newcommand*{\fourthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findSecondIntersection
+\showHowSecondIntersectionIsConstructed
+}
+
+\newcommand*{\fifthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findThirdIntersection
+\showHowThirdIntersectionIsConstructed
+}
+
+\newcommand*{\ninthPicture}
+{
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}
+
+\newcommand*{\sixthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showTheLine
+}
+
+\newcommand*{\seventhPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}
+
+\newcommand*{\eighthPicture}
+{
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showThirdTriangle
+}
+
+\newcommand{\Desargue}[1]{%
+\begin{center}
+\begin{tikzpicture}[scale=\tikzscale]
+% Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
+\draw[white] (\minX,0) -- (\maxX,0); 
+\IfStrEqCase{#1}{%
+{1}%
+{%%
+\firstPicture
+}%%
+{2}%
+{%
+\secondPicture
+}%
+{3}%
+{%%
+\thirdPicture
+}%%
+{4}%
+{%%
+\fourthPicture
+}%%
+{5}%
+{%%
+\fifthPicture
+}%%
+{6}%
+{%%
+\sixthPicture
+}%%
+{7}%
+{%%
+\seventhPicture
+}%%
+{8}%
+{%%
+\eighthPicture
+}%%
+{9}%
+{%%
+\ninthPicture
+}%%
+}%% end IfStrEqCase
+\end{tikzpicture}
+\end{center}
+}
+
+%Take a quadrilateral of points, but picture them as consisting of a triangle, and a point not lying on any side of that triangle, which we call the origin.
+%\Desargue{1}
+%For each of the 3 vertices, draw the lines through the origin and that vertex.
+%Pick any 3 points on those lines, forming some triangle.
+Two triangles with a chosen correspondence between their vertices are \emph{in perspective}\define{perspective} from a point \(p\) if the lines through corresponding vertices pass through \(p\).
+\Desargue{2}
+The two triangles are \emph{in perspective}\define{perspective} from a line \(\ell\) if corresponding edges intersect on \(\ell\).
+\Desargue{9}
+%See how the vertices of the original triangle correspond, via these lines, with those of the new triangle.
+%We say that the two triangles are \emph{in perspective} from the origin point.
+%Given two triangles, with a correspondence between their vertices, we can always find the origin, if it exists, by intersecting the lines through corresponding vertices.
+%Declare sides to correspond if they pass through corresponding vertices.
+%(We could easily generalise this story to consider complicated drawings being ``in perspective'' from a point.)
+
+%Take intersections of each pair of corresponding sides: draw the intersection of the first pair
+%\Desargue{3}
+%and of the second pair
+%\Desargue{4}
+%and of the third pair, giving us three intersection points.
+%\Desargue{5}
+
+%\Desargue{6}
+Every projective plane has a quadrilateral, so contains a pair of triangles in perspective from a point.
+The dual of a pair of triangles in perspective from a point is a pair of triangles in perspective from a line.
+A configuration is \emph{Desargue}\define{Desargues!projective plane}\define{projective!plane!Desargues} if every pair of triangles in perspective from some point is also in perspective from some line.
+If we draw the picture very carefully, it appears that the real projective plane is Desargues.
+The incidence geometry
+\Desargue{7}
+is the \emph{standard Desargues configuration}\define{standard Desargues configuration}\define{Desargues!configuration!standard}\define{configuration!standard Desargues}.
+The same configuration with three curves added through those 3 points to determine a triangle is the \emph{broken Desargues configuration}\define{broken Desargues configuration}\define{Desargues!configuration!broken}\define{configuration!broken Desargues}.
+\Desargue{8}
+A configuration is thus Desargues just when every morphism to it from the configuration of a pair of triangles in perspective extends to a morphism from a standard Desargue configuration, or equivalently the configuration admits no monomorphisms from the broken Desargues configuration.
+Not every projective plane is Desargues, as we will see.
+\endgroup
+ 
+\begin{problem}{more.projective.planes:desargues}
+Prove that a projective plane is Desargues precisely when, for any pair of triangles in perspective, their dual triangles in the dual projective plane are also in perspective.
+\end{problem}
+ 
+\begin{lemma}
+Every 3-dimensional projective space is Desargues.
+\end{lemma}
+\begin{proof}
+Looking back at our drawings of triangles in perspective, suppose that the two triangles lie on different planes.
+Then these two planes intersect along a single line.
+The lines drawn along the sides of either triangle lie in one or the other of those two different planes, and intersect along that line.
+Therefore the intersection points lie on that line, i.e. the intersection points are collinear.
+
+But so far we have assumed that the two triangles in perspective lie in different planes.
+Suppose that they lie in the same plane.
+We want to ``perturb'' the triangles out of that plane.
+Pick a point outside that plane, which exists by axiom \ref{item:pqrs}, and call it the \emph{perturbed origin} \(o'\).
+On the line \(o'a\) from the perturbed origin \(o'\) to one of the vertices \(a\) of the first triangle, pick a point, the \emph{perturbed vertex} \(a'\) of the first triangle, not lying in the original plane.
+Take the vertex \(A\) in the second triangle corresponding to \(a\).
+The points \(o, a, A\) are collinear by definition of triangles in perspective.
+The points \(o, o', a, A\) therefore are coplanar.
+The point \(a'\) by construction lines in this plane.
+So the lines \(oa'\) and \(o'A\) lie in that plane, and intersect in a point \(A'\), the \emph{perturbed vertex} of the second triangle.
+The triangles with perturbed vertices are now in perspective from the origin \(o\) (\emph{not} from the perturbed origin).
+The perturbed triangles lie in different planes, since otherwise the entire perturbed picture lies in a single plane, which contains the other vertices of our two triangles, so lies in the original plane.
+
+Essentially we just perturbed a vertex of the first triangle, and then suitably perturbed the corresponding one in the second triangle to get a noncoplanar pair of triangles in perspective.
+The intersection points \(p', q', r'\) of the perturbed standard Desargues configuration lie in a line \(p'q'r'\) by the previous reasoning.
+Take the plane containing that line \(p'q'r'\) and the perturbed origin \(o'\).
+That plane intersects the plane \(P\) of the original unperturbed triangles along a line \(\ell\).
+The lines \(o'p', o'q', o'r'\) intersect the plane \(P\) at the three intersection points \(p, q, r\) of the unperturbed configuration, so these lie in \(\ell\).
+\end{proof}
+
+\begin{theorem}
+Every projective space of dimension 3 or more is Desargue.
+\end{theorem}
+\begin{proof}
+Start with any triangle: it lies on a plane.
+Add one more point: the picture still lies in a 3-dimensional projective space.
+But then we can start our sequence of pictures above constructing the two triangles in perspective, and then the entire Desargues configuration, inside that 3-dimensional projective space.
+\end{proof}
+
+For example, projective space \(\Proj[n]{k}\) of any dimension \(n \ge 3\) over any skew field \(k\) is Desargues.
+
+ 
+\begin{corollary}
+If a projective plane embeds into a projective space of some dimension \(n \ge 3\), then the projective plane is Desargues.
+\end{corollary}
+ 
+For example, projective space \(\Proj[n]{k}\) of any dimension \(n \ge 2\) over any field \(k\) is Desargues.
+
+
+
+\section{Generating projective planes}
+
+A monomorphism \(A \to P\) from a configuration to a projective plane \(P\) is \emph{universal} if every monomorphism \(A \to Q\) to a projective plane \(Q\) factors through a morphism \(P \to Q\), i.e. \(A \to P \to Q\).
+A configuration is \emph{planar} if any two distinct points of \(A\) lie on at most one line.
+A planar configuration is \emph{spanning} if there are 4 points with no three collinear.
+
+\begin{lemma}
+A configuration is planar if and only if it has a monomorphism to a projective plane.
+A planar configuration is spanning if and only if it has a universal monomorphism to a projective plane; this projective plane, the plane \emph{generated}\define{projective!plane!generation}\define{generate!projective plane} by the configuration, is then unique up to a unique isomorphism.
+\end{lemma}
+\begin{proof}
+Note that any two lines of a planar configuration \(A\) intersect at, at most, one point, since otherwise they would contain two distinct points lying  on two different lines.
+
+For any configuration \(B\), let \(B_+\) have the same points as \(B\), but add in a new line for each pair of points that don't lie on a line.
+To be more precise, we can let the lines of \(B_+\) be the lines of \(B\) together with the unordered pairs of points \(\left\{p,q\right\}\) of \(B\) that don't lie on a line of \(B\).
+
+For any configuration \(B\), let \(B^+\) have the same lines as \(B\), but add in a new point for each pair of lines that don't lie on a point.
+To be more precise, we can let the points of \(B^+\) be the points of \(B\) together with the unordered pairs of lines \(\left\{m,n\right\}\) of \(B\) that don't lie on a point of \(B\).
+Inductively, let \(A_0 \defeq A\), \(A_{2j+1} \defeq A_{2j,+}\) and \(A_{2j+2} \defeq A_{2j+1}^+\).
+
+Let \(P\) be the configuration whose points are all points of \(A_1, A_2, \dots\), and whose lines are the lines of \(A_1, A_2, \dots\).
+Clearly any two distinct points of \(P\) lie on a unique line, and any two distinct lines of \(P\) lie on a unique point.
+Suppose that \(A\) is spanning.
+Three noncollinear points of \(A\) will remain noncollinear in \(A_+\), because we only add new points.
+They will also remain noncollinear in \(A^+\), because we only add new lines through pairs of points, not through triples.
+Therefore they remain noncollinear in \(P\), so that \(P\) is a projective plane.
+
+If \(f \colon A \to Q\) is a monomorphism to a projective plane, define \(f \colon A_+ \to Q\) by \(f\left\{p,q\right\}=f(p)f(q)\), and similarly for \(A^+ \to Q\), to define a morphism \(f \colon P \to Q\).
+
+Given another universal morphism \(f' \colon A \to P'\), both monomorphisms must factor via \(A \to P \to P'\) and \(A \to P' \to P\).
+These factoring maps \(P \to P'\) and \(P' \to P\) are isomorphisms, as one easily checks, by looking step by step at how they act on points and lines.
+\end{proof}
+
+A \emph{trivalent configuration}\define{configuration!trivalent}\define{trivalent configuration} is one in which every point is on at least three lines and every line is on at least three points.
+
+\begin{lemma}
+Take a spanning planar configuration \(A\) and its universal morphism to a projective plane \(A \to P\).
+Every monomorphism \(T \to P\) from a finite trivalent configuration factors through \(T \to A \to P\).
+\end{lemma}
+\begin{proof}
+At each stage of constructing \(P\), we never put in a new line passing through more than two points.
+So among the lines of \(T\), the last to appear in the construction of \(P\) contains only two points, a contradiction, unless \(T\) lies in \(A\).
+\end{proof}
+
+\begin{example}
+Let \(A\) have 4 points and no lines, like ::, which is clearly spanning and planar. 
+Take \(P\) to be the projective plane generated by \(A\).
+By the lemma, no line in \(P\) contains 3 points.
+As every line in the Desargues configuration contains 3 points, \(P\) does not contain the Desargues configuration.
+Start with the quadrilateral given by the points of \(A\), thought of as one point and one triangle of \(P\).
+Since every line in any projective plane contains at least 3 points, we can then build a pair of triangles in perspective in \(P\) out of our triangle and point, as in our pictures of the Desargues configuration.
+Therefore \(P\) is not Desargues. 
+\end{example}
+
+\section{Octonions}
+
+In this section, we will allow the use of the word \emph{ring} in a somewhat more general context.
+A \emph{ring}\define{ring} is a set of objects \(S\) together with two operations called \emph{addition} and \emph{multiplication}, and denoted by \(b+c\) and \(bc\), so that if \(b\) and \(c\) belong to \(S\), then \(b+c\) and \(bc\) also belong to \(S\), and so that:
+\smallskip
+\begin{itemize}
+\item[]\emph{Addition laws:}\define{addition laws}
+\begin{enumerate}
+\item The associative law:\define{associative law!addition} For any elements \(a, b, c\) in \(S\): \((a+b)+c=a+(b+c)\).
+\item The identity law:\define{identity law!addition} There is an element \(0\) in \(S\) so that for any element \(a\) in \(S\), \(a+0=a\).
+\item The existence of negatives:\define{existence of negatives} for any element \(a\) in \(S\), there is an element \(b\) in \(S\) (denote by the symbol \(-a\)) so that \(a+b=0\).
+\item The commutative law:\define{commutative law!addition} For any elements \(a, b\) in \(S\), \(a+b=b+a\).
+\end{enumerate}
+\smallskip
+\item[]\emph{Multiplication laws:}\define{multiplication laws}
+\item[]\emph{The Distributive Law:}\define{distributive law}
+\begin{enumerate}
+\item For any elements \(a, b, c\) in \(S\): \(a(b+c)=ab+ac\).
+\end{enumerate}
+\end{itemize}
+We do \emph{not} require the associative law for multiplication; if it is satisfied the ring is \emph{associative}.
+
+A ring is \emph{a ring with identity} if it satisfies
+the \emph{identity law}:\define{identity law!multiplication} There is an element \(1\) in \(S\) so that for any element \(a\) in \(S\), \(a1=a\).
+We will only ever consider rings with identity.
+
+A ring is \emph{a division ring} if it satisfies the zero divisors law: for any elements \(a, b\) of \(S\), if \(ab=0\) then \(a=0\) or \(b=0\).
+
+A ring is \emph{commutative} if it satisfies the \emph{commutative law}:\define{commutative law!multiplication} for any elements \(a, b\) of \(S\), \(ab=ba\).
+
+The associative law for addition, applied twice, shows that \((a+b)+(c+d)=a+(b+(c+d))\), and so on, so that we can add up any finite sequence, in any order, and get the same result, which we write in this case as \(a+b+c+d\).
+A similar story holds for multiplication \emph{if} \(R\) is associative.
+
+Any skew field \(k\) has a projective space \(\Proj[n]{k}\) for any integer \(n\), defined as the set of tuples 
+\[
+x=\pr{x_0,x_1,\dots,x_n}
+\]
+with \(x_0, x_1, \dots, x_n \in k\), but with two such tuples equivalent just when the second equals the first scaled by a nonzero element:
+\[
+x=\pr{x_0,x_1,\dots,x_n}
+\cong
+xc=\pr{x_0c,x_1c,\dots,x_nc}.
+\]
+This approach doesn't work for nonassociative rings, because it might be that \((xa)b\) can not be written as \(x(ab)\) or even as \(xc\) for any \(c\).
+It turns out to be a very tricky problem to define a meaning for the expression \(\Proj[n]{R}\) if \(R\) is a nonassociative ring, a problem which does not have a general solution.
+
+A \emph{conjugation}\define{conjugation} on a ring \(R\) is a map taking each elements \(b\) of \(R\) to an element, denoted \(\bar{b}\), of \(R\), so that
+\begin{enumerate}
+\item \(\overline{b+c}=\bar{b}+\bar{c}\),
+\item \(\overline{bc}=\bar{c}\bar{b}\),
+\item \(\bar{1}=1\) if \(R\) has a chosen multiplicative identity element \(1\),
+\item \(\overline{\bar{b}}=b\),
+\end{enumerate}
+for any elements \(b,c\) of \(R\).
+A ring with a conjugation is a \emph{\(*\)-ring}.\define{\(*\)-ring}
+If \(R\) is a \(*\)-ring, let \(R^+\) be the set of pairs \((a,b)\) for \(a,b\) in \(R\); write such a pair as \(a+\ii b\), and write \(a+\ii  0\) as \(a\), so that \(R \subset R^+\).
+Endow \(R^+\) with multiplication 
+\[
+\pr{a+\ii  b}\pr{c + \ii  d}
+\defeq
+ac-d\bar{b}+\ii \pr{\bar{a}d+cb}
+\]
+with conjugation 
+\[
+\overline{a+\ii  b}\defeq\bar{a}-\ii  b
+\]
+and with identity \(1\) and zero \(0\) from \(R \subset R^+\).
+For example, \(\mathbb{R}^+=\C{}\), \(\Quat{}\defeq\mathbb{C}^+\) is the \emph{quaternions} and \(\Oct{}\defeq \mathbb{H}^+\) is the \emph{octaves}\define{octaves}, also called the \emph{octonions}.\define{octonions}
+A \emph{normed ring} is a \(*\)-ring for which the vanishing of a finite sum
+\[
+0=a\bar{a}+b\bar{b}+\dots+c\bar{c}
+\]
+implies \(0=a=b=\dots=c\).
+\begin{problem}{more.projective.planes:normed}
+If \(R\) is a normed ring then prove that \(R^+\) also a normed ring.
+\end{problem}
+\begin{problem}{more.projective.planes:zero.div}
+If \(R\) is associative, normed and has no zero divisors, then prove that \(R^+\) has no zero divisors.
+\end{problem}
+\begin{answer}{more.projective.planes:zero.div}
+To have a nonzero element \(a+\ii b\) being a zero divisor on the left, we would need to have
+\begin{align*}
+0
+&=
+(a+\ii b)(c+\ii d),
+\\
+&=
+ac-\bar{d}b+\ii\pr{da+b\bar{c}}.
+\end{align*}
+Therefore \(ac=\bar{d}b\) and \(da=-b\bar{c}\).
+Multiplying suitably, \(dac=d\bar{d}b\) and \(dac=-c\bar{c}b\).
+So \(0=\pr{d\bar{d}+c\bar{c}}b\) and thus \(b=0\) or else \(c=d=0\).
+But if \(b=0\) then \(ac=0\) and \(da=0\), so \(a=0\) or else \(c=d=0\).
+
+To have a nonzero element \(a+\ii b\) being a zero divisor on the right, we would need to have
+\begin{align*}
+0
+&=
+(c+\ii d)(a + \ii b),
+\\
+&=
+ca-\bar{b}d+\ii\pr{bc+d\bar{a}}.
+\end{align*}
+Therefore \(ca=\bar{b}d\) and \(bc=-d\bar{a}\).
+Multiplying suitably, \(bca=b\bar{b}d\) and \(bca=-da\bar{a}\).
+So therefore \(d=0\) or else \(a=b=0\).
+But if \(d=0\) then \(ca=0\) and \(bc=0\), so \(c=0\).
+\end{answer}
+
+A \(*\)-ring is \emph{real}\define{real!\(*\)-ring}\define{\(*\)-ring!real} if \(a=\bar{a}\) for every \(a\).
+\begin{problem}{more.projective.planes:real}
+Prove that \(R^+\) is not real for any \(*\)-ring \(R\).
+\end{problem}
+\begin{problem}{more.projective.planes:commutative}
+Prove that every real \(*\)-ring is commutative.
+\end{problem}
+\begin{problem}{more.projective.planes:not.comm}
+Prove that \(R^+\) is not real, for any \(*\)-ring \(R\), and is therefore not commutative.
+\end{problem}
+\begin{problem}{more.projective.planes:not.comm.2}
+Prove that \(R\) is real just when \(R^+\) is commutative.
+\end{problem}
+\begin{problem}{more.projective.planes:not.comm.3}
+Prove that \(R\) is commutative and associative just when \(R^+\) is associative.
+\end{problem}
+The \emph{associator}\define{associator} of a ring \(R\) is the expression
+\[
+\left[a,b,c\right]=(ab)c-a(bc).
+\]
+Clearly a ring is associative just when its associator vanishes.
+A ring is \emph{alternative}\define{alternative ring}\define{ring!alternative} when its associator alternates, i.e. changes sign when we swap any two of \(a,b,c\).
+\begin{problem}{more.projective.planes:pair.assoc}
+Prove that any alternative ring satisfies \(b(cb)=(bc)b\) for any elements \(b,c\).
+We denote these expressions both as \(bcb\), without ambiguity.
+\end{problem}
+\begin{problem}{more.projective.planes:not.comm.4}
+Prove that \(R\) is normed and associative just when \(R^+\) is normed and alternative.
+\end{problem}
+\begin{problem}{more.projective.planes:not.comm.5}
+Prove that \(R\) is normed and associative and every nonzero element of the form
+\[
+a\bar{a}+b\bar{b}
+\]
+in \(R\) has a left inverse \(c\) then every element \(a+\ii b\) in \(R^+\) has a left inverse: \(c\bar{a}- \ii cb\).
+\end{problem}
+In particular, \(\Oct{}\) is a normed alternative division ring and every element of \(\Oct{}\) has a left inverse.
+
+
+\section{Coordinates}
+
+Given a projective plane \(P\), take a quadrilateral:
+\newcommand{\dt}[2]{\fill[gray!50] (#1,#2) circle (4pt);}
+\newcommand{\lne}[4]{\draw[gray!50] (#1,#2) -- (#3,#4);}
+\newenvironment{ppdiagram}%
+{%%
+\begin{center}
+\begin{tikzpicture}[scale=.4]
+%\draw[white] (-0.5,-0.5) grid (3.5,3.5); 
+%\draw [style=help lines] (0,0) grid (3,3); 
+}%%
+{%%
+\end{tikzpicture}
+\end{center}
+}%%
+\begin{ppdiagram}
+\dt{0}{0}
+\dt{0}{3} 
+\dt{3}{0}  
+\dt{1}{1}
+\end{ppdiagram}
+Call this:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{0}{3} 
+\dt{3}{0} 
+\dt{1}{1} 
+\lne{0}{3}{3}{0}
+\end{ppdiagram}
+the \emph{line at infinity}. Henceforth, draw it far away.
+Two lines:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{1}{1} 
+\lne{1.5}{0}{1.5}{3}
+\lne{2.5}{0}{2.5}{3}
+\end{ppdiagram}
+are \emph{parallel} if they meet at the line at infinity.
+One of the two ``finite'' points of our quadrilateral we designate the \emph{origin}.
+We draw lines from it out to the two ``far away'' points: the \emph{axes}:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{1}{1} 
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+Map any point \(p\) not on the line at infinity to points on the two axes:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{2}{1} 
+\lne{2}{3}{2}{0}
+\draw (2,1) node[right]{\(p\)};
+\draw (2,0) node[below]{\(p_x\)};
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+and
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{2}{1} 
+\lne{3}{1}{0}{1}
+\draw (2,1) node[right]{\(p\)};
+\draw (0,1) node[left]{\(p_y\)};
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+%\begin{ppdiagram}
+%\dt{0}{0} 
+%\dt{2}{1} 
+%\draw (2,1) node[right]{\(p\)};
+%\draw (2,0) node[below]{\(p_x\)};
+%\draw (0,1) node[left]{\(p_y\)};
+%\draw (2,-0.3) node{$\,$}; 
+%%\draw [line width=2pt, color=black] (0,0) -- (3,0);
+%%\draw [line width=2pt, color=black] (0,0) -- (0,3); \draw [->,line
+%%width=2pt, color=black] (1.8,1) -- (0,1); \draw [line width=2pt,
+%%color=black] (2.2,1) -- (3,1);
+%\end{ppdiagram}
+The map
+\[
+p \mapsto \left(p_x,p_y\right)
+\]
+is invertible: if we denote the ``far away'' points \(\infty_x\) and \(\infty_y\):
+\[
+\left(p_x,p_y\right) \mapsto p=\left(p_x \infty_x\right)\left(p_y \infty_y\right),
+\]
+This map takes the finite points \(p\) (i.e. not on the line at infinity) to their ``coordinates'' \(p_x\) and \(p_y\) on the axes, and takes finite points on the axes to points in the plane.
+So we write the point \(p\) as \(\pr{p_x,p_y}\).
+We still haven't used the fourth point of the quadrilateral:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{1}{1} 
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+Draw lines through it parallel to the axes:
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{1}{1} 
+\lne{3}{1}{0}{1}
+\lne{1}{3}{1}{0}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+Call the points where these lines hit the axes \((1,0)\) and \((0,1)\).
+Take any point on one axis and draw the line through it parallel to the line \((1,0)(0,1)\):
+\begin{ppdiagram}
+\dt{0}{0} 
+\dt{1}{1} 
+\lne{1}{0}{0}{1}
+\lne{2}{0}{0}{2}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\end{ppdiagram}
+Identify two points of the two axes if they lie on one of these parallels, but of course we write them as \((x,0)\) or \((0,x)\).
+
+The points of the line at infinity we think of as slopes.
+Any point of the line at infinity, except the one on the vertical axis, is a ``finite slope''.
+Draw lines through the origin.
+\begin{ppdiagram}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\lne{1}{0}{3}{0}
+\lne{0}{0}{3}{1}
+\lne{0}{0}{3}{2}
+\lne{0}{0}{3}{3}
+\dt{0}{0}
+\end{ppdiagram}
+Each line (except the vertical axis) passes through a point \((1,m)\)  and a point on the line at infinity, which we label as \(m\).
+\begin{ppdiagram}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\lne{1}{0}{3}{0}
+\lne{0}{0}{3}{1}
+\lne{0}{0}{3}{2}
+\lne{0}{0}{3}{3}
+\lne{1}{0}{1}{3}
+\dt{0}{0}
+\dt{1}{1}
+\end{ppdiagram}
+A line in the finite plane has \emph{slope} \(m\) if it hits the line at infinity in this point labelled \(m\).
+If it strikes the vertical axis at \((0,b)\), we call \(b\) its intercept.
+Given points \(x,m,b\) on the finite horizontal axis, we write \(mx+b\) to mean the point \(y\) on the finite horizontal axis so that the point with coordinates \((x,y)\) lies on the line with slope \(m\) and vertical intercept \(b\).
+This defines an operation \(x,m,b \mapsto mx+b\), which depends on three arguments \(x,m,b\) on the finite horizontal line.
+
+A \emph{ternary ring}\define{ternary ring} (sometimes called a \emph{planar ternary ring} is 
+\begin{enumerate}
+\item
+an operation taking three elements \(x,m,b\) of a set \(R\) to an element, denoted \(mx+b\), of the set \(R\), 
+\item
+together with a choice of two elements \(0,1\) of \(R\), so that for any \(x,y,m,n,b,c\) in \(X\):
+\begin{enumerate}
+\item\label{enum:A} \(m0+b=0x+b=b\),
+\item \(m1+0=m\),
+\item \(1x+0=x\),
+\item \(mx+b=y\) has a unique solution \(b\) for any given \(x,m,y\),
+\item \(mx+b=y\) has a unique solution \(x\) for any given \(b,m,y\) if \(m \ne 0\),
+\item \(m x+b = n x + c\) has a unique solution \(x\) if \(m \ne n\),
+\item The pair of equations \(m x_1 + b = y_1\), \(m x_2 + b = y_2\) has a unique solution \(m,b\) if \(x_1 \ne x_2\) and \(y_1 \ne y_2\).
+\end{enumerate}
+\end{enumerate}
+
+\emph{Warning:} a ternary ring is \emph{not} necessarily a ring.
+Given a ternary ring, we can define \(a+b\) to mean \(1a+b\), and define \(ab\) to mean \(ab+0\), defining an addition and multiplication operation, but these do not necessarily satisfy the axioms of a ring.
+\emph{Warning:} even worse, with these definitions of addition and multiplication, it might turn out that \((mx)+b\) is not equal to the ternary operation \(mx+b\), so we will be safe: we avoid reference to the addition and multiplication operations henceforth.
+
+\begin{theorem}
+For any quadrilateral in any projective plane, the operation \(mx+b\) defined above yields a ternary ring.
+Every ternary ring arises this way from a unique projective plane with quadrilateral.
+\end{theorem}
+\begin{proof}
+Start with a projective plane, and follow our steps above to define \(mx+b\).
+To be precise, \(y=mx+b\) holds just when \((x,y)\) lies on the line with slope \(m\) and intercept \((0,b)\).
+We need to check that this operation satisfies the identities of a ternary ring.
+The identity \(m0+b=b\) says that the point \((0,b)\) lies on the line of slope \(m\) through \((0,b)\), for example.
+All of the other statements have equally banal proofs, which the reader can fill in.
+
+Start with a ternary ring \(R\).
+Let's construct a projective plane.
+The \emph{finite points} of the projective plane are the points of the set \(R \times R\).
+The \emph{finite slopes} of the projective plane are the points of a copy of the set \(R\).
+The \emph{infinite slope point} of the projective plane is some point \(\infty_y\), just a symbol we invent which is not an element of \(R\).
+The \emph{line at infinity} is the set \(R \cup \set{\infty_y}\).
+The \emph{points} of our projective plane are the elements of the set 
+\[
+P \defeq R \times R \cup R \cup \set{\infty_y}.
+\]
+For any \(m, b\) from \(R\), the \emph{line} with slope \(m\) and intercept \(b\) is the set
+\[
+\Set{(x,y)|y=mx+b} \cup \set{m}.
+\]
+A \emph{line} of our projective plane is either (1) the line at infinity or (2) a line with some slope \(m\) and intercept \(b\).
+Again, boring steps show that the axioms of a projective plane are satisfied, with \((0,0),(1,1),0,\infty_y\) as quadrilateral.
+\end{proof}
+
+For example, every ring with identity (not necessarily associative) in which every element has a left inverse becomes a ternary ring by taking \(mx+b\) to mean using multiplication and addition in the ring.
+In particular, the octaves have a projective plane \(\Proj[2]{\Oct{}}\)\Notation{P2O}{\Proj[2]{\Oct{}}}{the octave projective plane}, the \emph{octave projective plane}.\define{octave projective plane}
+
+\bigskip
+
+\bigskip
+
+\begin{epigraphs}
+\qitem[author={\Chinese{庄周} (Zhuang Zhou)}, source={\Chinese{莊子} (Zhuangzi), \Chinese{列御寇} (Lie Yu-kou)}]%
+{
+\Chinese{朱泙漫學屠龍於支離益，}\\ 
+\Chinese{單千金之家，}\\
+\Chinese{三年技成，}\\
+\Chinese{而無所用其巧。}\\
+\\
+There once lived a man \\
+who learned how to slay dragons \\
+and gave all he possessed \\
+to mastering the art. \\
+\\
+After three years \\
+he was fully prepared but, \\
+alas, he found no opportunity \\
+to practise his skills.}
+\qitem[author={René Thom}]{As a result he began \\
+to teach how to slay dragons.}
+\end{epigraphs}\SubIndex{Zhou, Zhuang}\SubIndex{dragon}\SubIndex{Zhuangzi}\SubIndex{Thom, René}

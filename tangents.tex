@@ -1,0 +1,556 @@
+\chapter{The tangent line}\label{chapter:tangent.line}
+
+\section{Lines crossing a curve}
+
+\begin{proposition}
+Pick an irreducible plane algebraic curve \(C\) of degree \(d\) and a point \(p\) of the plane not lying on \(C\).
+Among all of the lines through \(p\), every one of them strikes \(C\) in exactly \(d\) distinct points, except for at most \(d(d-1)\) lines.
+\end{proposition}
+\begin{proof}
+First assume that \(C\) is irreducible.
+Arrange that the point \(p\) lies at the origin in an affine chart, so that the lines through \(p\) are those of the form \(y=mx\) or \(x=0\).
+Also arrange that \(C\) is not entirely on the line at infinity, so contains some finite points.
+From the equation \(q(x,y)=0\) of the curve \(C\), the intersections lie on \(q(x,mx)=0\), a polynomial of degree at most \(d\) in \(x\).
+This polynomial is not the zero polynomial, because the origin does not lie on \(C\).
+Therefore the number of intersections is \(d\).
+The multiplicities will all be 1 except at values of \(m\) where the discriminant (as a polynomial in \(x\)) of \(q(x,mx)=0\) vanishes.
+The discriminant is an equation of degree at most \(d(d-1)\) in \(m\).
+If the discriminant vanishes as a polynomial in \(m\), it vanishes as a rational function of \(m\), and so \(q(x,mx)\) has a zero of higher multiplicity as a polynomial in \(x\) with rational coefficients in \(m\): \(q(x,mx)=(x-f(m))^2 Q(x,m)\).
+But replacing \(m\) by \(y/x\) we find that \(q(x,y)\) is reducible as a polynomial in \(x\) with coefficients rational in \(y\), and so by the Gauss' lemma \(q(x,y)\) is reducible as a polynomial in \(x,y\), a contradiction.
+So the discriminant is a nonzero polynomial, and if it is constant we can homogenise and dehomogenise to get it to be nonconstant.
+\end{proof}
+
+
+Given a curve in the projective plane, we can take any of the three homogeneous coordinate variables \([x,y,z]\) and rescale to 1, say to \(x=1\), and see the curve as lying on the affine plane.
+As we have seen, changing the choice of variable, say to \(y=1\) or to \(z=1\), involves rehomogenising the equation and then plugging in \(y=1\) or \(z=1\), giving us a birational curve.
+
+Looking at our curve in the affine plane, by setting \(x=1\), the curve ``homogenises'' into its cone in \(k^3\), by homogenising the equation. 
+The tangent line in the affine plane \(x=1\) homogenises into a plane through the origin, the tangent plane to the cone.
+When we set \(y=1\) or \(z=1\), or more generally we look at how our homogenised cone surface passes through some plane not containing the origin, the tangent plane to the cone becomes a tangent line to the resulting curve.
+Therefore we can speak of a \emph{tangent line}\define{tangent line} to an algebraic plane curve in the projective plane, by which we mean the projective line which corresponds to the tangent plane to the cone.
+
+To calculate that tangent line, we can either operate directly in some affine plane, say \(x=1\), and just differentiate implicitly as usual, or we can homogenise, and then differentiate the equation of the surface via partial derivatives.
+
+\begin{example}
+The curve \(y^2=x^2+x^3\) has tangent line given by differentiating implicitly:
+\[
+2yy' = 2x + 3x^2,
+\]
+so that at the point \((x,y)=(3,6)\), we have
+\[
+2(6)y'=2(3)+3(3)^2,
+\]
+i.e. the slope of the tangent line is
+\[
+y'=\frac{11}{4},
+\]
+giving the tangent line
+\[
+y-6=\frac{11}{4}(x-3),
+\]
+at the point \((x,y)=(3,6)\).
+\end{example}
+\begin{example}
+For the same curve, we could instead homogenise to the cone
+\[
+y^2z=x^2z+x^3,
+\]
+and then treat any one of the variables as a function of the other two, say treating \(z=z(x,y)\), so take partial derivatives:
+\begin{align*}
+y^2\pderiv{z}{x} &= 2xz+x^2\pderiv{z}{x} + 3x^2, \\
+2yz+y^2\pderiv{z}{y} &= x^2\pderiv{z}{y}.
+\end{align*}
+We are interested in the point \((x,y)=(3,6)\) in the affine plane \(z=1\), so the point \((x,y,z)=(3,6,1)\).
+We plug in these values to our equations:
+\begin{align*}
+6^2\pderiv{z}{x} &= 2(3)(1)+3^2\pderiv{z}{x} + 3(3)^2, \\
+2(6)(1)+6^2\pderiv{z}{y} &= 3^2\pderiv{z}{y}.
+\end{align*}
+Solve these to find
+\begin{align*}
+\pderiv{z}{x} &= \frac{11}{9}, \\
+\pderiv{z}{y} &= -\frac{4}{9},
+\end{align*}
+giving an equation of the tangent plane:
+\[
+z-1 = \frac{11}{9}(x-3)-\frac{4}{9}(y-6),
+\]
+which simplifies to
+\[
+z = \frac{11}{9}x -\frac{4}{9} y.
+\]
+This is the same solution, because along the affine plane \(z=1\) it gives
+\[
+1=\frac{11}{9}x -\frac{4}{9} y,
+\]
+which, solving for \(y\), is
+\[
+y-6=\frac{11}{4}(x-3),
+\]
+exactly the same solution we had above.
+\end{example}
+\begin{example}
+At the point \((x,y)=(0,0)\), the process above fails to yield a tangent line to the curve \(y^2=x^2+x^3\) since differentiating implicitly:
+\[
+2yy' = 2x + 3x^2,
+\]
+and plugging in the point \((x,y)=(3,6)\), we have \(0=0\), no equation at all.
+In general, our procedure yields a tangent line to an irreducible curve precisely at the points \((x,y)\) where the polynomial \(p(x,y)\) in the equation \(p(x,y)=0\) of the curve has at least one nonzero partial derivative, so that we can solve for \(y'(x)\) or for \(x'(y)\) implicitly.
+In this example, 
+\inputinexample{cubic-curve-1}
+there are clearly 2 different lines tangent to the curve.
+We find these by taking the homogeneous terms of lowest degree in \(x,y\), \(y^2=x^2\), dropping the \(x^3\) because it has higher order, and then factoring into \(y=\pm x\).
+We can justify this over the real numbers (or the complex numbers), by saying that our equation \(y^2=x^2+x^3\) has solutions \(y=\pm \sqrt{x^2+x^3} \cong \pm x^2\), asymptotically as \(x \to 0\). 
+\end{example}
+
+
+
+
+
+\section{Singular points}
+
+\epigraph[author={Robert Graves}, source={Conversations with Robert Graves}]{That's what love is. It's a recognition of singularity.}\SubIndex{Graves, Robert}
+
+Take any algebraic curve \(C\) in the projective plane, and any point \(p_0\) of \(C\).
+Write out an affine chart in which \(p_0\) is the origin \((x,y)=(0,0)\), and write out the equation \(0=p(x,y)\) of the curve.
+We can take \(p(x,y)\) to be a product of irreducibles \(p_i(x,y)\).
+Since the origin belongs to \(C\), at least one of the factors \(p_i(x,y)\) vanishes there.
+Expand each \(p_i(x,y)\) into sums of constants times monomials.
+Without loss of generality, we can work over an infinite field.
+Rescale \((x,y)\) by a nonzero constant, and then let that constant ``get small'', i.e. look at the powers of that constant, thinking of higher powers as ``smaller''.
+Each monomial term rescales by some power of that factor.
+Rescale both sides of the equation \(0=p(x,y)\) to get rid of the lowest power.
+For example if \(C\) is \(0=x(y^2-x^2-x^3)\), rescaling by a factor \(\lambda\) gives
+\[
+0=\lambda x\pr{\lambda^2 y^2 - \lambda^2 x^2 - \lambda^3 x^3}.
+\]
+Divide out the lowest power of \(\lambda\), in this case \(\lambda^2\), to get
+\[
+0 = x\pr{y^2 - x^2 - \lambda^3 x^3}.
+\]
+The invariant terms give a homogeneous polynomial \(x\pr{y^2-x^2}\).
+The zeroes of this polynomial form the tangent lines to the curve.
+By homogeneity, the number of tangent lines is the degree of the homogeneous polynomial, which is at most the degree of the curve.
+The \emph{order}\define{order!of point on curve} of a point \(p_0\) on a curve \(C\) is the number of tangent lines, counted with multiplicity.
+A \emph{regular point}\define{point!smooth}\define{regular!point}\define{point!regular} (also called a \emph{smooth point})\define{point!smooth}\define{smooth!point} of an algebraic curve is a point of order \(1\); any other point is a \emph{singular point}.\define{singular point}\define{point!singular}
+A curve without singular points (over the algebraic closure of the field) is \emph{smooth}\define{smooth!curve}\define{curve!smooth} or \emph{regular}.\define{regular!curve}\define{curve!regular}
+
+\begin{example}
+At any point of order \(1\), make a projective change of variables to put the point at the origin, and the line to be the horizontal line \(y=0\).
+So our curve has equation \(p(x,y)=0\) with \(\pderiv{p}{y}\ne 0\) and with \(\pderiv{p}{x}=0\) at the origin.
+After a constant rescaling, our equation is \(y=ax^2+bxy+cy^2+\dots\).
+Note that we cannot rid our equation of these higher order terms in \(y\).
+\end{example}
+\begin{example}
+The curve \(y^3=x^4\) over the real numbers is the graph of a differentiable (but not polynomial) function \(y=x^{4/3}\).
+Its tangent lines at the origin arise from keeping the lowest degree homogeneous terms: \(y^3=0\), i.e. there is a unique tangent line \(y=0\).
+Nonetheless, over the complex numbers this curve is \emph{not} the graph of a differentiable complex function of a complex variable.
+\end{example}
+\begin{example}
+The singular points of an affine algebraic curve \(C\) with equation \(0=p(x,y)\) are precisely the points where 
+\[
+0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y},
+\]
+by definition.
+Similarly, the singular points of a projective algebraic curve are the singular points of one of its representatives in an affine chart.
+\end{example}
+\begin{example}
+Take a reducible curve and write it as a union of irreducible component curves.
+Correspondingly, write its equation as a product of two polynomials.
+Any two of the irreducible components intersect somewhere (at least in the points defined over the algebraic closure of the field), say at a point \(p\).
+Take affine coordinates in which \(p\) is the origin.
+Each of the two components has equation given by a polynomial vanishing at the origin, so the original curve is a product of such polynomials.
+Therefore the equation of the reducible curve vanishes to at least second order.
+Therefore every reducible curve is singular.
+Consequently, every nonsingular curve is irreducible.
+\end{example}
+\begin{example}
+The curve \(y=x^n\) in the affine chart \(z=1\) has no singularities in that chart, if \(n \ge 1\) is an integer.
+In the chart \(x=1\) it becomes \(z^{n-1}y=1\) which has singularities just when 
+\[
+z^{n-1}y=1 \text{ and } z^{n-1}=0 \text{ and } (n-1)z^{n-2} y = 0,
+\]
+which never happen simultaneously.
+Therefore over any field, the curve \(y=x^n\) is regular for every \(n=1, 2, \dots\).
+In particular, there are regular curves of all degrees.
+\end{example}
+
+\begin{problem}{projective.curves:singularities}
+Suppose that every intersection point of two projective algebraic plane curves \(B\) and \(C\), over an algebraically closed field, has multiplicity one.
+Prove that \(B\) and \(C\) are regular at these points.
+\end{problem}
+
+\begin{problem}{projective.curves:singularities.2}
+Prove that every regular projective algebraic plane curve is irreducible.
+Give an example of reducible regular affine algebraic plane curve.
+\end{problem}
+
+
+\begin{lemma}
+The number of singular points of an irreducible algebraic curve of degree \(d\) is at most \(d(d-1)\).
+\end{lemma}
+\begin{proof}
+The singular points are the solutions of 
+\[
+0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y}.
+\]
+If one or both of these partial derivatives vanishes, then \(p(x,y)\) is a function of one variable only, and the result is trivial to prove.
+If the two functions 
+\[
+p(x,y), \pderiv{p}{x}
+\]
+have a common factor, then since \(p(x,y)\) is irreducible, this factor must be \(p(x,y)\).
+But \(\pderiv{p}{x}\) is a polynomial of lower degree in \(x\) than \(p(x,y)\), a contradiction.
+\end{proof}
+
+\begin{problem}{tangents.any.order}
+What are the singularities, and their orders, of \(y^p=x^{p+q}\) for \(1 \le p, q\)?
+\end{problem}
+
+\begin{theorem}\label{theorem:tangent.intersection}
+The tangent line to a projective plane algebraic curve at a regular point is the unique line that has intersection number 2 or more at that point.
+More generally, the intersection number of a line \(\ell\) and a curve \(C=(0=f)\) at a point \(p\) is the multiplicity of the zero of \(p\) as a zero of the restriction of \(f\) to \(\ell\).
+\end{theorem}
+\begin{proof}
+We can arrange that our coordinates axes form a generic triangle as usual, and that our intersection point is at \((x,y)=\pr{1,1}\).
+We can assume that our projective plane algebraic curve is
+\[
+0=f(x,y)=\sum_j f_j(x)y^j.
+\]
+We can arrange that our line is \(y=1\).
+The intersection number is the multiplicity of \(x=1\) as a zero of the resultant
+\begin{align*}
+&\det
+\begin{pmatrix}
+-1 &      &        &        &     & f_0(x) \\
+1  &   -1 &        &        &     & f_1(x) \\
+   &    1 & -1     &        &     & f_2(x) \\
+   &      & \ddots & \ddots &     & \vdots \\
+   &      &        &    1   &  -1 & f_{n-1}(x) \\  
+   &      &        &        &  1  & f_n(x)
+\end{pmatrix},
+\\
+\intertext{and we add each row to the next}
+&=
+\det
+\begin{pmatrix}
+-1 &      &        &        &          & f_0(x) \\
+   &   -1 &        &        &          & f_0(x) + f_1(x) \\
+   &      &    -1  &        &          & f_0(x) + f_1(x) + f_2(x) \\
+   &      &        & \ddots &          & \vdots  \\
+   &      &        &        &       -1 & f_0(x) + f_1(x) + \dots +  f_{n-1}(x) \\  
+   &      &        &        &            &  f_0(x) + f_1(x) + \dots + f_n(x)
+\end{pmatrix},
+\\
+&=(-1)^n \pr{f_0(x)+f_1(x)+\dots+f_n(x)},
+\\
+&=
+(-1)^n f(x,1).
+\end{align*}
+So the intersection number of the line and the curve is the multiplicity of vanishing of \(f(x,1)\) at \(x=1\).
+Since \(f(1,1)=1\), the intersection number is positive, and is two or more just when 
+\[
+\left.\frac{d}{dx}\right|_{x=1} f(x,1)=0,
+\]
+i.e. just when \(y=1\) is a tangent line.
+\end{proof}
+
+\begin{theorem}\label{theorem:multiplicity.submultiplicative}
+Denote by \(\order{p}{C}\) the order of a projective algebraic plane curve \(C\) at a point \(p\).
+Then for any point \(p\) and projective algebraic plane curves \(C, D\):
+\[
+\order{p}{C}\order{p}{D} \le \multiplicity{p}{C}{D},
+\]
+with equality just when no line defined over any extension field is tangent to both curves at \(p\).
+\end{theorem}
+\begin{proof}
+If \(C\) or \(D\) is a line, our result is precisely theorem~\vref{theorem:tangent.intersection}.
+If either \(C\) or \(D\) is reducible, our result follows from induction on the degrees of the components and adding up multiplicities.
+
+After perhaps replacing our field by a finite degree extension, pick a generic triangle for the two curves, and arrange that its vertices are \((0,0), (\infty,0), (0,\infty)\) as usual.
+It is easier to compute tangent lines if we shift the axes by adding constants to \(x\) and \(y\) to arrange that the vertices are at \((-1,-1), (\infty,-1), (-1,\infty)\).
+We can then arrange that our point \(p\) is \((x,y)=(0,0)\).
+Write the equations of our curves as \(C=(f=0)\) and \(D=(g=0)\).
+Then \(\multiplicity{p}{C}{D}\) is the order of \(x=0\) as a zero of the resultant \(r(x)=\resultant{f}{g}(x)\) in \(y\).
+Let \(r\defeq \order{p}{C}\), \(s\defeq \order{p}{D}\). 
+The lowest order homogeneous polynomial terms have order equal to the order of the point on the curve, so we can write out
+\begin{align*}
+f(x,y)&= f_0(x) x^r + f_1(x) x^{r-1} y + \dots + f_r(x) y^r \\
+      & \quad + f_{r+1}(x) y^{r+1} + \dots + f_m(x) y^m, \\
+g(x,y)&= g_0(x) x^s + g_1(x) x^{s-1} y + \dots + g_s(x) y^s \\
+      & \quad + g_{s+1}(x) y^{s+1} + \dots + g_n(x) y^n.
+\end{align*}
+The tangent lines are the zero lines of the homogeneous terms of lowest order in \(x,y\):
+\begin{align*}
+0&= f_0(0) x^r + f_1(0) x^{r-1} y + \dots + f_r(0) y^r, \\
+0&= g_0(0) x^s + g_1(0) x^{s-1} y + \dots + g_s(0) y^s.
+\end{align*}
+We can assume that our axes are chosen so that the horizontal and vertical axes are not tangent to either curve at the origin, i.e. to arrange that neither of these equations are satisfied by \((x,y)=(1,0)\) or by \((x,y)=(0,1)\), i.e. none of
+\[
+f_0(0), g_0(0), f_r(0), g_s(0)
+\]
+vanishes.
+Since these tangent line equations are homogeneous, to find tangent lines we can restrict to \(y=1\):
+\begin{align*}
+0&= f_0(0) x^r + f_1(0) x^{r-1} + \dots + f_r(0), \\
+0&= g_0(0) x^s + g_1(0) x^{s-1} + \dots + g_s(0).
+\end{align*}
+The resultant of these two polynomials doesn't vanish just when these polynomials have no common factor, i.e. just when the curves \(C\) and \(D\) have no common tangent line; called this resultant \(R_1\).
+
+The point \((x,y)=(0,0)\) is by assumption an intersection point of \(C\) and \(D\).
+We can arrange, making our triangle generic enough, again perhaps using a field extension, that the lines \(x=0\) and \(y=0\) do not contain any other intersection points of \(C\) and \(D\) other than \((x,y)=(0,0)\).
+This is precisely saying that our polynomials
+\begin{align*}
+f(x,y)&= f_0(x) x^r + f_1(x) x^{r-1} y + \dots + f_r(x) y^r \\
+      & \quad + f_{r+1}(x) y^{r+1} + \dots + f_m(x) y^m, \\
+g(x,y)&= g_0(x) x^s + g_1(x) x^{s-1} y + \dots + g_s(x) y^s \\
+      & \quad + g_{s+1}(x) y^{s+1} + \dots + g_n(x) y^n.
+\end{align*}
+do not both vanish when we substitute \(x=0\), except at \(y=0\), and vice versa.
+Plugging in \(x=0\):
+\begin{align*}
+f(0,y)&= f_r(0) y^r + f_{r+1}(0) y^{r+1} + \dots + f_m(0) y^m, \\
+g(0,y)&= g_s(0) y^s + g_{s+1}(0) y^{s+1} + \dots + g_n(0) y^n.
+\end{align*}
+Dividing out common factors of \(y\):
+\begin{align*}
+\frac{f(0,y)}{y^r}&= f_r(0) + f_{r+1}(0) y + \dots + f_m(0) y^{m-r}, \\
+\frac{g(0,y)}{y^s}&= g_s(0) + g_{s+1}(0) y + \dots + g_n(0) y^{n-s}.
+\end{align*}
+These are both polynomials and don't vanish at \(y=0\), since \(f\) and \(g\) vanish exactly to orders \(r\) and \(s\) at \(y=0\).
+These two polynomials also can't both vanish anywhere else, since there are no common roots of \(f\) and \(g\) on \(x=0\) except at \(y=0\).
+Hence the resultant of these two doesn't vanish; call this resultant \(R_2\).
+
+We next claim that \(\resultant{f}{g}(x)=x^{rs} R_1 R_2 + \dots\) has lowest order term given by these two resultants.
+Before we prove our claim, note that if our claim is true, then \(\multiplicity{p}{C}{D}\) is given by the order of this resultant, so is at least \(rs\), proving the theorem.
+Moreover this order is \(rs\) just when \(R_1 \ne 0\) (since we know that \(R_2 \ne 0\)), i.e. just when there are no common tangent lines.
+
+We are left to justify this claim, i.e. to compute out the lowest order term of
+\[
+\resultant{f}{g}(x)
+=
+\det
+\begin{pmatrix}
+f_0(x) x^r     &        & g_0(x) x^s     &  \\
+f_1(x) x^{r-1} & \ddots & g_1(x) x^{s-1} & \ddots \\
+\vdots         & \ddots & \vdots           & \ddots \\
+f_m(x)         & \ddots & g_n(x) & \ddots \\
+0              & \ddots & 0      & \ddots
+\end{pmatrix}.
+\]
+The lowest order term in \(x\) is the same as the lowest order term of what happens when we plug \(x=0\) in all of the polynomials:
+\[
+\det
+\begin{pmatrix}
+f_0(0) x^r     &        & g_0(0) x^s     &  \\
+f_1(0) x^{r-1} & \ddots & g_1(0) x^{s-1} & \ddots \\
+\vdots         & \ddots & \vdots           & \ddots \\
+f_m(0)         & \ddots & g_n(0) & \ddots \\
+0              & \ddots & 0      & \ddots
+\end{pmatrix}.
+\]
+So it suffices to prove our result for the special case that all \(f_j(x)\) and \(g_j(x)\) are constants, say:
+\begin{align*}
+f(x,y)&= a_0 x^r + a_1 x^{r-1} y + \dots + a_r y^r \\
+      & \quad + a_{r+1} y^{r+1} + \dots + a_m y^m, \\
+g(x,y)&= b_0 x^s + b_1 x^{s-1} y + \dots + b_s y^s \\
+      & \quad + b_{s+1} y^{s+1} + \dots + b_n y^n.
+\end{align*}
+Then the resultant is
+\[
+\resultant{f}{g}(x)
+=
+\det
+\begin{pmatrix}
+a_0 x^r        &        & b_0 x^s     &  \\
+a_1 x^{r-1}    & \ddots & b_1 x^{s-1} & \ddots \\
+\vdots         & \ddots & \vdots        & \ddots \\
+a_m            & \ddots & b_n         & \ddots \\
+0              & \ddots & 0           & \ddots
+\end{pmatrix}.
+\]
+We need to prove that this is \(x^{rs} R_1 R_2 + \dots\).
+Write out
+\[
+R_1
+=
+\det
+\begin{pmatrix}
+a_0             &          & b_0         &  \\
+a_1            & \ddots    & b_1         & \ddots \\
+\vdots         & \ddots     & \vdots       & \ddots \\
+a_r            & \ddots    & b_s         & \ddots \\
+0              & \ddots    & 0           & \ddots
+\end{pmatrix}
+\]
+and
+\[
+R_2
+=
+\det
+\begin{pmatrix}
+a_r              &        & b_s          &  \\
+a_{r+1}          & \ddots & b_{s+1}      & \ddots \\
+\vdots           & \ddots  & \vdots        & \ddots \\
+a_m              & \ddots & b_n          & \ddots \\
+0                & \ddots & 0            & \ddots
+\end{pmatrix}.
+\]
+
+Let's try a simple case: if \(r=2, s=1, m=3, n=2\), the resultant is
+\[
+\resultant{f}{g}(x)
+=
+\det
+\begin{pmatrix}
+a_0 x^2        & 0       & b_0 x       &  0       & 0 \\
+a_1 x          & a_0 x^2 & b_1         &  b_0 x   & 0 \\
+a_2            & a_1 x   & b_2         &  b_1     & b_0 x \\
+a_3            & a_2     & 0           &  b_2     & b_1 \\
+0              & a_3     & 0           &  0       & b_2
+\end{pmatrix}.
+\]
+Sadly, when we expand out this determinant, we get a huge mess:
+\begin{align*}
+\resultant{f}{g}(x)
+&=
+x^2 R_1 R_2
+\\
+& 
+\qquad
++ x^3 (a_{3}^{2} b_{0}^{3} 
+- 2 \, a_{1} a_{3} b_{0}^{2} b_{2} 
++ 3 \, a_{0} a_{3} b_{0} b_{1} b_{2} 
++ a_{1}^{2} b_{0} b_{2}^{2} 
+- 2 \, a_{0} a_{2} b_{0} b_{2}^{2} 
+- a_{0} a_{1} b_{1} b_{2}^{2} )
+\\
+&
+\qquad
++ x^4 a_{0}^{2} b_{2}^{3}
+\end{align*}
+where
+\[
+R_1 = a_{2} b_{0}^{2} - a_{1} b_{0} b_{1} + a_{0} b_{1}^{2}
+\]
+and
+\[
+R_2 = a_{2} b_{2}-a_{3} b_{1}.
+\]
+Nevertheless, the lowest term (as expected) is \(\resultant{f}{g}(x) = x^2 R_1 R_2 + \dots\).
+
+%Then the resultant is
+%\[
+%\resultant{f}{g}(x)
+%=
+%\det
+%\begin{pmatrix}
+%a_0 x^r        &        & b_0 x^s     &  \\
+%a_1 x^{r-1}    & \ddots & b_1 x^{s-1} & \ddots \\
+%\vdots         & \dots & \dots        & \dots \\
+%a_m            & \ddots & b_n         & \ddots \\
+%0              & \ddots & 0           & \ddots
+%\end{pmatrix}.
+%\]
+%Multiply the first column by \(x^s\), the second by \(x^{s-1}\), and so on down to \(x^1\).
+%Multiply column \(n+1\) by \(x^r\), the next by \(x^{r-1}\), and so on down to \(x^1\).
+%Now divide the first row by \(x^{r+s}\), the second by \(x^{r+s-1}\), and so on down to \(x^1\).
+%In all, you change the determinant by a bunch of \(x\) factors, but the coefficient of the lowest term doesn't change.
+%To be precise, we multiply the determinant by
+%\[
+%x^{s+(s-1)+\dots+1} x^{r+(r-1)+\dots+1}
+%\]
+%and then divide by
+%\[
+%x^{(r+s)+(r+s-1)+\dots+1}.
+%\]
+%The reader can check by induction that the result of the multiplications and divisions all put together is a division by\(x^{rs}\).
+%
+%In our example, all of this work gives
+%\[
+%\resultant{f}{g}(x)
+%=
+%x^{rs}
+%\det
+%\begin{pmatrix}
+%a_0            & 0       & b_0         &  0       & 0 \\
+%a_1            & a_0     & b_1         &  b_0     & 0 \\
+%a_2            & a_1     & b_2  x      &  b_1     & b_0 \\
+%a_3 x          & a_2     & 0           &  b_2 x   & b_1 \\
+%0              & a_3     & 0           &  0       & b_2
+%\end{pmatrix}.
+%\]
+%In general, for any size of matrix, another induction proof shows that each of our divisions by powers of \(x\) always results in a matrix with polynomial entries, since the multiplications put in high enough powers in every entry.
+%Our claim is that the constant term in the determinant of this matrix is \(R_1 R_2\).
+%The constant term doesn't change if we set \(x=0\):
+%\[
+%\resultant{f}{g}(x)
+%=
+%x^{rs}
+%\det
+%\begin{pmatrix}
+%a_0            & 0       & b_0         &  0       & 0 \\
+%a_1            & a_0     & b_1         &  b_0     & 0 \\
+%a_2            & a_1     & 0           &  b_1     & b_0 \\
+%0              & a_2     & 0           &  0       & b_1 \\
+%0              & a_3     & 0           &  0       & b_2
+%\end{pmatrix} + \dots
+%\]
+%Shift columns over to the right to arrange a block matrix:
+%\begin{align*}
+%\resultant{f}{g}(x)
+%&=
+%x^{rs}
+%\det
+%\begin{pmatrix}
+%a_0            & b_0         &  0       & 0       & 0 \\
+%a_1            & b_1         &  b_0     & a_0     & 0 \\
+%a_2            & 0           &  b_1     & a_1     & b_0 \\
+%0              & 0           &  0       & a_2     & b_1 \\
+%0              & 0           &  0       & a_3     & b_2
+%\end{pmatrix} + \dots
+%\\
+%&=x^{rs}R_1 R_2 + \dots.
+%\end{align*}
+%
+Returning to the general problem: luckily, we don't really need to compute any of these resultants at all.
+Suppose that \(r \le s\).
+After rescaling \(f\), \(x\) and \(y\) we can assume that \(a_r=1\) and that \(a_m=1\).
+Every term in \(g-b_s x^{s-r} f\) contains a factor of \(y\), so write it as
+\(g-b_s x^{s-r} f = y \tilde{g}\).
+We will see that replacing \(g\) by \(\tilde{g}\), the three resultants we have to calculate then all compute the same values.
+By problem~\vref{problem:resultants:add.stuff}:
+\begin{align*}
+\resultant{f(x,y)}{g(x,y)}(x)
+&=
+\resultant{f(x,y)}{y\tilde{g}(x,y)}(x),
+\\
+&=
+\resultant{f(x,y)}{y}(x)\resultant{f(x,y)}{\tilde{g}(x,y)}(x),
+\\
+&=
+f(x,0)\resultant{f(x,y)}{\tilde{g}(x,y)}(x),
+\\
+&=
+x^r\resultant{f(x,y)}{\tilde{g}(x,y)}(x)
+\end{align*}
+while, if we let \(F\) be the lowest order part of \(f\), 
+\(G\) the lowest order part of \(g\), and \(\tilde{G}\) the lowest order part of \(\tilde{g}\),
+\[
+R_1=\resultant{F(x,1)}{G(x,1)}=\resultant{F(x,1)}{\tilde{G}(x,1)}
+\]
+and
+\[
+R_2
+=
+\resultant{\frac{f(0,y)}{y^r}}{\frac{y\tilde{g}(0,y)}{y^s}}
+=
+\resultant{\frac{f(0,y)}{y^r}}{\frac{\tilde{g}(0,y)}{y^{s-1}}}.
+\]
+Hence our claim is true for \(f,g\) just when it is true for \(f,\tilde{g}\).
+Similarly, if \(r < s\), swap the roles of \(f\) and \(g\) and repeat.
+Apply induction on \(r\) and \(s\), driving at least one of them to become smaller at each step, with the other staying the same.
+The induction stops when one of them is zero, and \(C\) and \(D\) cease to intersect at \(p\).
+\end{proof}
+
+

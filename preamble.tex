@@ -1,0 +1,160 @@
+\documentclass[ContainsChinese]{mckaybook}
+
+\Title{Concrete Algebra}
+\Subtitle{With a View Toward Abstract Algebra}
+\Author{\texorpdfstring{Benjamin \scotsMc{}Kay}{Benjamin McKay}}
+\Location{University College Cork}
+\BibliographyFile{algebra}
+
+\usepackage{standalone}
+\usepackage{xstring}
+\usepackage{amsmath}
+\usepackage{mathrsfs}		% the \mathscr command for script fonts
+\usepackage{mleftright}		% fixes problems with \left and \right
+\usepackage{verbatim}		% For verbatim quotation of programming code.
+\usepackage{asymptote}
+\usepackage{siunitx}
+\input{longdiv}
+\usepackage{cool}
+\usepackage{tikz}			% TiKZ graphics packages
+\usetikzlibrary{%
+arrows,
+backgrounds,
+calc,
+decorations.pathmorphing,
+fit,
+intersections,
+petri,
+positioning,
+through
+}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{tikz-3dplot}
+\usepackage{stackengine}
+\usepackage{tensor}
+\usepackage{epigraph-keys}	% Handles epigraphs at the start of each chapter.
+\usepackage{sagetex}
+\vrefwarning
+\usepackage{morewrites}
+\usepackage{bookmark}% http://ctan.org/pkg/bookmark  
+
+%%.....Mathematics Commands
+\def\cprime{\('\)} 			% For Russian names
+
+\newcommand*{\defeq}%		% for definitions, A \defeq B means A is defined to be B.
+{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     =}
+% I don't like the default \Re and \Im for complex numbers.
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}} 
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+
+% Various sets
+\newcommand*{\Z}[1]{\ensuremath{\mathbb{Z}^{#1}}}
+\newcommand*{\N}[1]{\ensuremath{\mathbb{N}^{#1}}}
+\newcommand*{\R}[1]{\ensuremath{\mathbb{R}^{#1}}}
+\newcommand*{\Q}[1]{\ensuremath{\mathbb{Q}^{#1}}}
+\newcommand*{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
+\NewDocumentCommand\Zmod{sm}{\ensuremath{\mathbb{Z}\!/{\IfBooleanTF{#1}{\pr{#2}}{#2}}\mathbb{Z}}}
+
+% Brackets
+\newcommand*{\pr}[1]{\ensuremath{\left(#1\right)}}
+\newcommand*{\curly}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand*{\of}[1]{\ensuremath{\!\pr{#1}}}
+\newcommand*{\equalquestion}{\stackrel{?}{=}}
+
+% greatest common divisor
+\renewcommand*{\gcd}[1]{\ensuremath{\operatorname{gcd}	\left\{{#1}\right\}}}
+\newcommand*{\lcm}[1]{\ensuremath{\operatorname{lcm}\left\{{#1}\right\}}}
+
+\usepackage{calc}
+
+\newcommand{\longdivision}[2]{
+    \settowidth{\dividendlength}{#1}
+    \settowidth{\divisorlength}{#2}
+    \settoheight{\dividendheight}{#1}
+    \settoheight{\maxheight}{#1#2}
+    \settoheight{\divisorheight}{#2}
+
+    \begin{tikzpicture} [baseline=.5pt]
+        \node at (-.5*\divisorlength-1pt,.5*\divisorheight) {#2};
+        \node at (.5*\dividendlength+5pt,.5*\dividendheight) {#1};
+        \draw [thick]  (0pt,-.22*\dividendheight) arc (-70:60:\maxheight*.41 and \maxheight*.82) -- ++(\dividendlength+7pt,0pt);
+    \end{tikzpicture}
+}
+
+\newlength{\dividendlength}
+\newlength{\divisorlength}
+\newlength{\dividendheight}
+\newlength{\divisorheight}
+\newlength{\maxheight}
+
+%% Two columns proofs:
+% Usage:
+%\begin{twocolumnproof}
+%\pf{0}{0 + 0}[problem~1] \\
+%\pf{a \cdot 0}{a \cdot (0 + 0)}[multiplying by \(a\)] \\
+%\pf{a \cdot 0}{a \cdot 0 + a \cdot 0}[the distributive law] \\
+%\pf{\text{Let } b}{-(a \cdot 0)} \\
+%\pf{a \cdot 0 + b}{(a \cdot 0 + a \cdot 0) + b}[adding \(b\) to both sides] \\
+%\pf{a \cdot 0 + b}{a \cdot 0 + (a \cdot 0 + b)}[the associative law for addition] \\
+%\pf{0}{a \cdot 0 + 0}[the definition of \(b\)] \\
+%\lastpf{0}{a \cdot 0}[the definition of \(0\)]
+%\end{twocolumnproof}
+\NewDocumentEnvironment{twocolumnproof}{}{\csname align*\endcsname}{\csname endalign*\endcsname}
+\NewDocumentCommand\mainproofstep{mO{=}mom}{#1&#2#3\IfValueT{#4}{&{\quad}&\text{by #4}}#5}
+\NewDocumentCommand\pf{mO{=}mo}{\mainproofstep{#1}[#2]{#3}[#4]{,}}
+\NewDocumentCommand\lastpf{mO{=}mo}{\mainproofstep{#1}[#2]{#3}[#4]{.}}
+
+
+\NewDocumentCommand\cardinality{sm}%
+{%
+\IfBooleanTF{#1}%
+{\tensor[^{\#}]{(#2)}{}}%
+{\tensor[^{\#}]{{#2}}{}}%
+}%
+
+
+% \congmod[p]{b}{c} means b=c (mod p).
+\NewDocumentCommand\congmod{omm}{\IfValueTF{#1}{#2 \equiv #3 \pmod{#1}}{#2 \equiv #3}}
+
+%\Proj[2]{k}
+%or
+%\Proj{2}
+\NewDocumentCommand\Proj{om}{\IfValueTF{#1}{\mathbb{P}^{#1}\!\of{#2}}{\mathbb{P}^{#2}}}
+
+\newcommand{\resultant}[2]{%
+\ensuremath{\operatorname{res}_{#1,#2}}
+}%
+
+\newcommand{\discriminant}[1]{%
+\ensuremath{\Delta_{#1}}
+}%
+
+\newcommand*{\tr}[1]{\operatorname{tr} #1}
+
+\newcommand*{\degree}[1]{\operatorname{deg} #1}
+
+\setstackgap{L}{.7\baselineskip}
+
+\newcommand*{\multiplicity}[3]%\multiplicity{point}{curve}{curve}
+{\ensuremath{#2#3_{#1}}}
+
+\newcommand*{\order}[2]%\order{point}{curve}
+{\ensuremath{{#2}_{#1}}}
+
+\newcommand*{\intersectionnumber}[2]%\intersectionnumber{curve}{curve}
+{\ensuremath{\deg{#1#2}}}
+
+\NewDocumentCommand\Gal{mm}{\operatorname{Aut}{#2/#1}}
+
+% quaternions
+\newcommand*{\Quat}[1]{\ensuremath{\mathbb{H}^{#1}}}
+
+% octonions
+\newcommand*{\Oct}[1]{\ensuremath{\mathbb{O}^{#1}}}
+
+\newcommand*{\ii}{\ensuremath{\iota}}
+
+\NewDocumentCommand\Hessian{m}{\ensuremath{\det #1''}}

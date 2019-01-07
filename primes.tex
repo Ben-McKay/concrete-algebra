@@ -1,13 +1,10 @@
 \chapter{Prime numbers}
 \epigraph[author={Mark Haddon},source={The Curious Incident of the Dog in the Night-Time}]{I think prime numbers are like life. They are very logical but you could never work out the rules, even if you spent all your time thinking about them.}\SubIndex{Haddon, Mark}
-
 \section{Prime numbers}
 A positive integer \(p \ge 2\) is \emph{prime}\define{prime} if the only positive integers which divide \(p\) are \(1\) and \(p\).
-
 \begin{problem}{integers:two.prime}
 Prove that \(2\) is prime and that \(3\) is prime and that \(4\) is not prime.
 \end{problem}
-
 \begin{lemma}
 If \(b,c,d\) are integers and \(d\) divides \(bc\) and \(d\) is coprime to \(b\) then \(d\) divides \(c\).
 \end{lemma}
@@ -17,11 +14,9 @@ Since \(d\) and \(b\) are coprime, their greatest common divisor is \(1\).
 So there are B\'ezout coefficients \(s,t\) for \(b,d\), so \(sb+td=1\).
 So then \(sbc+tdc=c\), i.e. \(sqd+tdc=c\), or \(d(sq+dc)=c\), i.e. \(d\) divides \(c\).
 \end{proof}
-
 \begin{corollary}
 A prime number divides a product \(bc\) just when it divides one of the factors \(b\) or \(c\).
 \end{corollary}
-
 An expression of a positive integer as a product of primes, such as \(12=2 \cdot 2 \cdot 3\), written down in increasing order, is a \emph{prime factorization}.
 \marginpar
 {\small
@@ -63,7 +58,7 @@ So every positive integer has at least one prime factorization.
 
 Let \(p\) be the smallest integer so that \(p \ge 2\) and \(p\) divides \(n\).
 Clearly \(p\) is prime.
-Since \(p\) divides the product of the primes in any prime factorization of \(n\), so \(p\) must divide one of the primes in the factorization.
+Since \(p\) divides the product of the primes in any prime factorization of \(n\), \(p\) divides one of the primes in the factorization.
 But then \(p\) must equal one of these primes, and must be the smallest prime in the factorization.
 This determines the first prime in the factorization. 
 So write \(n=pn_1\) for a unique integer \(n_1\), and by induction we can assume that \(n_1\) has a unique prime factorization, and so \(n\) does as well.
@@ -103,16 +98,13 @@ Use this to write down all prime numbers less than \(120\).
 \end{answer}
 
 \section{Greatest common divisors}
-
 We speed up calculation of the greatest common divisor by factoring out any obvious common factors: \(\gcd{46,12}=\gcd{2 \cdot 23,2 \cdot 6}=2 \gcd{23,6}=2\).
 For example, this works well if both numbers are even, or both are multiples of ten, or both are multiples of 5, or even if both are multiples of 3.
-
 \begin{problem}{integer:multiples.of.three}
 Prove that an integer is a multiple of 3 just when its digits sum up to a multiple of 3.
 Use this to see if \(12345\) is a multiple of \(3\).
 Use this to find \(\gcd{12345,123456}\).
 \end{problem}
-
 \begin{problem}{integers:multiple.of.two}
 An \emph{even integer}\define{even integer} is a multiple of \(2\); an \emph{odd integer}\define{odd integer} is \emph{not} a multiple of \(2\).
 Prove that if \(b,c\) are positive integers and 
@@ -171,13 +163,39 @@ Use this to find the greatest common divisor of \(4864, 3458\) without using lon
 \begin{align*}
 \gcd{4864,3458}&=2\gcd{2432,1729},\\&=2\gcd{1216,1729},\\&=2\gcd{608,1729},\\&=2\gcd{304,1729},\\&=2\gcd{152,1729},\\&=2\gcd{76,1729},\\&=2\gcd{38,1729},\\&=2\gcd{19,1729},\\&=2\gcd{19,1710},\\&=2\gcd{19,855},\\&=2\gcd{19,836},\\&=2\gcd{19,418},\\&=2\gcd{19,209},\\&=2\gcd{19,190},\\&=2\gcd{19,95},\\&=2\gcd{19,76},\\&=2\gcd{19,38},\\&=2\gcd{19,19},\\&=2\gcd{19,0},\\&=38\end{align*}
 \end{answer}
-
-
+\begin{problem}{integers:gcd.divided}
+Prove that any integer divides some integers just when it divides their greatest common divisor.
+\end{problem}
+\begin{answer}{integers:gcd.divided}
+Let \(d\) be the greatest common divisor of some collection of integers.
+So each of the integers in the collection is a multiple of \(d\).
+If some integer \(d'\) divides into \(d\), i.e. \(d\) is a multiple of \(d'\), then each of the integers in the collection is a multiple of \(d\), so a multiple of \(d'\).
+On the other hand, suppose that \(d'\) is an integer which divides into all integers in our collection.
+Let \(g\defeq\gcd{d,d'}\), so \(d'=D'g\) and \(d=Dg\). 
+Clearly \(D,D'\) are coprime.
+Note: \(d'\) divides \(d\) just when \(D'\) divides \(D\).
+Moreover, all integers in our collection are divisible by \(g\).
+So we make a new collection of these integers, dividing each integer in the old collection by \(g\).
+Replacing the old collection by the new, we can assume that \(d,d'\) are coprime.
+So \(d'\) divides all integers in our collection, but is coprime to \(d\).
+Each integer in the collection has the form \(dm\), so \(d'\) \(m\), say \(dm=dd'm'\).
+So \(dd'\) is a positive common divisor, larger than \(d\) if \(|d'|>1\), a contradiction, so \(d'=\pm 1\) divides into \(d\).
+\end{answer}
+\begin{problem}{integers:gcd.divisor}
+Prove that, for any positive integer \(m\) and integers \(b,c\), not both zero, \(m\gcd{b,c}=\gcd{mb,mc}\).
+\end{problem}
+\begin{answer}{integers:gcd.divisor}
+Let \(d\defeq\gcd{b,c}\), so \(b=Bd\) and \(c=Cd\).
+If \(B,C\) have a positive common divisor \(k\), say \(B=kB'\) and \(C=kC'\), then \(b=B'kd\) and \(c=C'kd\) so \(kd\) divides \(b\) and \(c\), but \(d\) is the greatest common divisor so \(k=1\).
+Therefore \(\gcd{B,C}=1\).
+Multiple by \(m\): \(mb=B(md)\) and \(mc=C(md)\), so \(md\) divides \(mb\) and \(mc\).
+By problem~\vref{problem:integers:gcd.divided}, \(md\) divides \(D\), say \(D=md\ell\).
+Then \(mb=md\ell b'\) and \(mc=md\ell c'\) so \(b=d\ell b'=Bd\) so \(\ell b'=B\) and similarly \(\ell c'=C\).
+But \(B\) and \(C\) are coprime, so \(\ell=1\).
+\end{answer}
 
 \section{Sage}
-
 \epigraph[author={Leonhard Euler}]{Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, and we have reason to believe that it is a mystery into which the human mind will never penetrate.}\SubIndex{Euler, Leonhard}
-
 Sage can factor numbers into primes: \verb!factor(1386)! gives \(2 \cdot 3^2 \cdot 7 \cdot 11\).
 Sage can find the next prime number larger than a given number: \verb!next_prime(2005)!\(=\sage{next_prime(2005)}\).
 You can test if the number \(4\) is prime with \verb!is_prime(4)!, which returns \verb!False!.
@@ -204,7 +222,6 @@ which displays:
 \begin{center}
 \includegraphics[width=10cm]{prime-pi}
 \end{center}
-
 \begin{problem}{integers:code}
 Write code in sage to find the greatest common divisor of two integers, using the ideas of problem~\vref{problem:integers:multiple.of.two}.
 \end{problem}

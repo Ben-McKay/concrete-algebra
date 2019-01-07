@@ -1,11 +1,8 @@
 \chapter{Rational, real and complex numbers}\label{chapter:rationals}
 {\small\includegraphics{Rhind_Mathematical_Papyrus.jpg}
 A fragment of the Rhind papyrus, 1650BCE, containing ancient Egyptian calculations using rational numbers}\SubIndex{papyrus!Rhind}\SubIndex{Rhind papyrus}
-
-\epigraph[author={Les Dawson}]{There is a remote tribe that worships the number zero. Is nothing sacred?}\SubIndex{Dawson, Les}
-
+\epigraph[author={Les Dawson}]{There is a remote tribe that worships the number zero. Is nothing sacred?}\SubIndex{Dawson, Les}\SubIndex{zero}
 \section{Rational numbers}
-
 A \emph{rational number}\define{rational!number}\define{number!rational} is a ratio of two integers, like
 \[
 \frac{2}{3}, \quad \frac{-7}{9}, \quad \frac{22}{-11}, \quad \frac{0}{2}.
@@ -33,14 +30,12 @@ and factor out
 Write any rational number \(\frac{b}{1}\) as simply \(b\), and in this way see the integers sitting among the rational numbers.
 
 More generally, any rational number \(b/c\) can be simplified by dividing \(b\) and \(c\) by their greatest common divisor, and then changing the sign of \(b\) and of \(c\) if needed, to ensure that \(c > 0\); the resulting rational number is \emph{in lowest terms}.
-
 \begin{problem}{rationals:lowest.terms}
 Bring these rational numbers to lowest terms: \(224/82\), \(324/-72\), \(-\num{1000}/\num{8800}\).
 \end{problem}
 \begin{answer}{rationals:lowest.terms}
 \(224/82=112/41\), \(324/-72=-9/2\), \(-\num{1000}/\num{8800}=-5/44\).
 \end{answer}
-
 Multiply rational numbers by
 \[
 \frac{b}{c} \frac{B}{C} = \frac{bB}{cC}.
@@ -61,7 +56,6 @@ But if the denominators don't match up, we rescale to make them match up:
 \[
 \frac{b}{c} + \frac{B}{C} = \frac{bC}{cC} + \frac{cB}{cC}.
 \]
-
 \begin{problem}{rationals:define.ops}
 If we replace \(\frac{b}{c}\) by \(\frac{ab}{ac}\) and we replace \(\frac{B}{C}\) by \(\frac{AB}{AC}\), for some nonzero integers \(a,A\), prove that the result of computing out \(\frac{b}{c}+\frac{B}{C}\), \(\frac{b}{c}-\frac{B}{C}\) or \(\frac{b}{c}\frac{B}{C}\) only changes by scaling both numerator and denominator by the same nonzero integer.
 Hence the arithmetic operations don't contradict our agreement that we declare \(\frac{b}{c}\) to equal \(\frac{ab}{ac}\).
@@ -80,7 +74,6 @@ unchanged.
 So the resulting \(\beta/\gamma\) is independent of the choices of pairs, depending only on the rational numbers \(b/c\) and \(B/C\).
 The other proofs are very similar.
 \end{answer}
-
 \begin{problem}{rationals:arithmetic}
 By hand, showing your work, simplify
 \[
@@ -95,7 +88,6 @@ By hand, showing your work, simplify
 \frac{4}{5}+\frac{7}{4}=\frac{51}{20}.
 \]
 \end{answer}
-
 \begin{lemma}
 The number \(\sqrt{2}\) is irrational.
 (To be more precise, no rational number squares to \(2\).)
@@ -106,12 +98,10 @@ Every prime factor in \(b\) occurs twice in \(b^2\), so the prime factorization 
 But the left hand side has an odd number of factors of \(2\), since \(c^2\) has an even number, but there is another factor of \(2\) on the left hand side.
 This contradicts uniqueness of prime factorization.
 \end{proof}
-
 \begin{problem}{rationals:square.roots}
 Suppose that \(N\) is a positive integer.
 Prove that either \(\sqrt{N}\) is irrational or \(N\) is a \emph{perfect square}\define{perfect square}, i.e. \(N=n^2\) for some integer \(n\).
 \end{problem}
-
 \begin{problem}{rationals:square.roots.2}
 Prove that there are no rational numbers \(x\) and \(y\) satisfying \(\sqrt{3}=x+y\sqrt{2}\).
 \end{problem}
@@ -123,11 +113,8 @@ If \(\sqrt{3}=x+y\sqrt{2}\), square both sides to get
 If \(y\ne 0\), we can solve for \(\sqrt{2}\) as a rational expression in \(x,y\), so a rational number, a contradiction.
 Hence \(y=0\) and \(\sqrt{3}=x\) is rational, a contradiction.
 \end{answer}
-
-
 A rational number is \emph{positive}\define{positive!rational number} if it is a ratio of positive integers.
 We write \(x > y\) to mean that \(x-y\) is positive, and similarly define \(x<y\), \(x\le y\), and so on.
-
 \begin{problem}{rationals:factorization}
 Prove that every positive rational number has a unique expression in the form
 \[
@@ -155,19 +142,13 @@ We can divide out their greatest common divisor to arrange that \(b,c\) are copr
 Take the prime factorization of \(b\), and that of \(c\).
 As they are coprime, no prime occurs in both factorizations. 
 \end{answer}
-
 \begin{problem}{rationals:properties}
 Of the various laws of addition and multiplication and signs for integers, which hold true also for rational numbers?
 \end{problem}
-
 The most important property that rational numbers have, that integers don't, is that we can divide any rational number by any nonzero rational number.
 
-
-
 \section{Real numbers}
-
 \epigraph[author={J.A.~Froude}]{Order is an exotic in Ireland. It has been imported from England but will not grow. It suits neither soil nor climate.}
-
 Think of the rational numbers geometrically, so that \(b/c\) is the length of each piece when a rod of length \(b\) is cut into \(c\) equal lengths.
 Draw an straight line, infinite in both directions, and mark a point \(0\) on it.
 Then mark at point \(1\) at 1 unit of distance from \(0\), and so on marking all of the integers to form a \emph{number line}.\define{number line}
@@ -178,17 +159,11 @@ The rational numbers are insufficient for algebra: they have no \(\sqrt{2}\).
 Imagine taking all positive rational numbers \(b/c\) for which \(b^2/c^2 > 2\).
 Thinking geometrically, drawing a number line:
 \begin{center}
-\begin{tikzpicture}
-\draw[gray](-1,0) -- (3,0);
-\draw[thick]({sqrt(2)},0) -- (3,0);
-\fill[white,draw=black] ({sqrt(2)},0) circle (1.2pt);
-\node[below] at ({sqrt(2)},0) {\(\sqrt{2}\)};
-\end{tikzpicture}
+\input{sqrt2}
 \end{center}
 Our rational numbers sit along the line getting very close to the circled point of the line, which should be the point \(\sqrt{2}\).
 But there is no rational number there.
 From now on, we assume that the reader is familiar with the real numbers and their basic properties; see \cite{Spivak:2006} for the complete story of real numbers.
-
 
 \section{Complex numbers}
 \epigraph[author={Paul Painlev\'e}, source={Analyse des travaux scientifiques}, translation={The shortest and easiest path between any two facts about the real domain often passes through the complex domain.}]{Entre deux vérités du domaine réel, le chemin le plus facile et le plus court passe bien souvent par le domaine complexe.}%
@@ -230,8 +205,6 @@ Just like with rational numbers, if a complex number \(z=x+yi\) is not zero, or 
 Check that this is a reciprocal.
 Why is it defined?
 \end{problem}
-
-
 \emph{Complex conjugation}\define{complex conjugation} is the operation taking \(z=x+yi\) to \(\bar{z}\defeq x-iy\).
 \begin{problem}{rationals:conjugate.real}
 Prove that a complex number \(z\) is a real number just when \(z=\bar{z}\). 
@@ -251,16 +224,14 @@ Explain by induction why, for any polynomial \(p(z)\) with real number coefficie
 \]
 for any complex number \(z\).
 \end{problem}
-
 The \emph{norm}\define{norm} or \emph{modulus}\define{modulus} of a complex number \(z=x+yi\) is the real number \(|z|\defeq\sqrt{x^2+y^2}\)\Notation{(z)}{\lengthForNotationIndex{z}}{modulus of a complex number}.
-
 \begin{problem}{rationals:norm}
 Prove that \(z\bar{z}=|z|\) for any complex number \(z\).
 \end{problem}
 
-
 \section{Sage}
-
+\epigraph[author={Friedrich Nietzsche}, source={\"Uber Wahrheit und L\"uge im aussermoralischen Sinne}, translation={What, then, is truth? A mobile army of metaphors, metonyms, and anthropomorphisms---in short, a sum of human relations, which have been enhanced, transposed, and embellished poetically and rhetorically, and which after long use seem firm, canonical, and obligatory to a people: truths are illusions about which one has forgotten that this is what they are; metaphors which are worn out and without sensuous power; coins which have lost their pictures and now matter only as metal, no longer as coins.}]{Was ist also Wahrheit? Ein bewegliches Heer von Metaphern, Metonymien, Anthropomorphismen, kurz eine Summe von menschlichen Relationen, die, poetisch und rhetorisch gesteigert, \"ubertragen, geschm\"uckt wurden, und die nach langem Gebrauch einem Volke fest, kanonisch und verbindlich d\"unken: die Wahrheiten sind Illusionen, von denen man vergessen hat, da\ss sie welche sind, Metaphern, die abgenutzt und sinnlich kraftlos geworden sind, M\"unzen, die ihr Bild verloren haben und nun als Metall, nicht mehr als M\"unzen, in Betracht kommen.}%
+\SubIndex{Nietzsche, Friedrich}\SubIndex{Uber Wahrheit und Luge im aussermoralischen Sinne@\"Uber Wahrheit und L\"uge im aussermoralischen Sinne}%
 Sage represents numbers in two different ways: as exact symbolic expressions, or as a finite decimal approximation (often called a \emph{numeric} or \emph{floating point} representation). 
 For example we compute \(\frac{7}{2}+\frac{5}{3}\) symbolically as
 \begin{sageblock}

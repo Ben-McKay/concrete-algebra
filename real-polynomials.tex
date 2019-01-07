@@ -97,6 +97,7 @@ By induction, the number of positive roots of \(c(x)\) is equal to the number of
 Since \(b(x)\) has one more positive root, and one more sign change or three more or five more, etc., the result holds by induction on degree.
 \end{proof}
 
+\section{Sage}
 The number of sign changes in a polynomial is easy to spot by eye, but we can also write sage code.
 Each polynomial \verb!p! has associated list of coefficients \verb!p.list()!.
 This list has the coefficients in order, but with zero entries in the list at zero coefficients.
@@ -145,20 +146,18 @@ Let \(p_0(x)\) be just another name for \(p(x)\).
 Let \(p_1(x)\defeq p'(x)\).
 From then on, compute quotients and remainders: \(p_2(x)\) is the negative of the remainder of \(p_0(x)\) divided by \(p_1(x)\), and so on: \(p_{j+1}(x)\) is the negative of the remainder of \(p_{j-1}(x)\) divided by \(p_j(x)\), until you get to have no remainder, say \(p_m(x)\) divides into \(p_{m-1}(x)\).
 The \emph{Sturm sequence}\define{Sturm!sequence} of \(p(x)\) is the sequence \(p_0(x), p_1(x), \dots, p_m(x)\).
-
 \begin{example}
-The Sturm sequence of \(p(x)=x^5 + 2x^4 - 2x^2 - x\) is:
+The Sturm sequence of \(p(x)=x^6 - 12x + 10\) is:
 \[\def\arraystretch{1.5}
 \begin{array}{@{}l@{}l@{}l@{}}
-p_0(x)&=&x^5 + 2x^4 - 2x^2 - x, \\
-p_1(x)&=&5x^4 + 8x^3 - 4x - 1, \\
-p_2(x)&=&\frac{16}{25} x^{3} + \frac{6}{5} x^{2} + \frac{12}{25} x - \frac{2}{25}, \\
-p_3(x)&=&\frac{75}{64} x^{2} + \frac{75}{32} x + \frac{75}{64}.
+p_0(x)&=&x^6 - 12x + 10, \\
+p_1(x)&=&6x^5 - 12, \\
+p_2(x)&=&10x - 10, \\
+p_3(x)&=&6.
 \end{array}
 \]
-Check that \(p_3(x)\) divides into \(p_2(x)\).
+Note that \(p_3(x)\) divides into \(p_2(x)\), because \(p_3(x)\) is a nonzero constant.
 \end{example}
-
 Take a polynomial \(p(x)\), and its Sturm sequence \(p_0(x), p_1(x), \dots, p_m(x)\).
 For any real number \(x\), let \(s(x)\) be the number of sign changes (ignoring zeroes) in the sequence of numbers
 \[
@@ -167,16 +166,17 @@ p_0(x), p_1(x), \dots, p_m(x).
 The \emph{expected number of distinct roots}\define{roots!expected number}\define{expected number of distinct roots} of \(p(x)\) in the interval \(a < x \le b\) is \(s(a)-s(b)\).
 
 \begin{example}
-To find the expected number of distinct roots of \(p(x)=x^5 + 2x^4 - 2x^2 - x\) over \(0 < x \le 1\):
+To find the expected number of distinct roots of \(p(x)=x^6 - 12x + 10\) over \(0 < x \le 1\), first note that \(p(0)=10\) and \(p(1)=-1\) are not roots, so not multiple roots.
+The 
 \[\def\arraystretch{1.4}
 \begin{array}{@{}r@{}l@{\quad}@{}r@{}l@{}}
-p_0(0)&=0,               &  p_0(1)&=0, \\
-p_1(0)&=-1,              &  p_1(1)&=8, \\ 
-p_2(0)&=-\frac{2}{25},   &  p_2(1)&=\frac{56}{25},\\ 
-p_3(0)&=\frac{75}{64},   &  p_3(1)&=\frac{75}{16},\\
+p_0(0)&=10,      &  p_0(1)&=-1, \\
+p_1(0)&=-12,     &  p_1(1)&=-6, \\ 
+p_2(0)&=-10,     &  p_2(1)&=0,\\ 
+p_3(0)&=6,       &  p_3(1)&=6,\\
 \end{array}
 \]
-so \(s(0)=1\) sign change, and \(s(1)=0\) sign changes, with expected number of roots \(1-0=1\).
+so \(s(0)=2\) sign changes, and \(s(1)=1\) sign changes, with expected number of roots \(2-1=1\), i.e. we expect that \(p(x)\) has all 1 of its roots in the interval \(0 < x \le 1\).
 \end{example}
 
 \begin{theorem}[Sturm]
@@ -189,7 +189,8 @@ The same idea works backwards: if \(p_{i+1}(x)\) and \(p_i(x)\) have a common ro
 Hence the common roots of any two successive polynomials in the Sturm sequence lie at precisely the multiple roots of \(p(x)\).
 
 Suppose that \(x=x_0\) is a root of \(p_m(x)\).
-By definition, \(p_m(x)\) divides into \(p_{m-1}(x)\), so its zeroes are already zeroes of \(p_{m-1}(x)\), and so \(x=x_0\) is a root of all of \(p_0(x), p_1(x), \dots, p_m(x)\) and a multiple root of \(p(x)\).
+By definition, \(p_m(x)\) is the greatest common divisor (up to \(\pm\) sign) of \(p(x)\) and \(p'(x)\), so divides into all of the \(p_0(x), p_1(x), \dots, p_m(x)\).
+So its zeroes are already zeroes of all of those, and so \(x=x_0\) is a root of all of \(p_0(x), p_1(x), \dots, p_m(x)\) and so a multiple root of \(p(x)\).
 
 Take a root \(x=x_0\) of one of the polynomials \(p_i(x)\) in the Sturm sequence.
 Suppose that \(p_i(x)\) is not \(p_0(x)\) or \(p_m(x)\), at the two ends of the sequence, but just one of the polynomials in middle of the sequence.
@@ -198,40 +199,149 @@ From the above reasoning, \(x=x_0\) is not a root of either \(p_{i-1}(x)\) or of
 Take quotient and remainder: \(p_{i-1}(x) = q(x) p_i(x) - p_{i+1}(x)\) and plug in to see that 
 \(p_{i-1}(x_0)=-p_{i+1}(x_0)\).
 So if \(x=x_0\) is not a root of all of the polynomials in the chain, but a root of one of them, \(p_i\), then his neighbours \(p_{i-1}, p_{i+1}\) disagree in their sign at this point \(x=x_0\), and so also disagree near \(x=x_0\).
+\begin{center}
+\input{sturm-pic-1}\qquad
+\input{sturm-pic-2}\qquad
+\input{sturm-pic-5}\qquad
+\input{sturm-pic-6}
+\end{center}
 
 Suppose in addition that \(p_i(x)\) has an odd number of roots at \(x=x_0\).
-Picture the Sturm sequence
-\[
-p_0(x), p_1(x), \dots, p_m(x)
-\]
-as \(x\) travels from a little less than \(x=x_0\) to a little more than \(x=x_0\).
-The sign of \(p_i(x)\) changes across this gap, but that of \(p_{i-1}(x)\) and \(p_{i+1}(x)\) stay the same.
+As \(x\) travels from a little less than \(x=x_0\) to a little more than \(x=x_0\), the sign of \(p_i(x)\) changes across this gap, but that of \(p_{i-1}(x)\) and \(p_{i+1}(x)\) stay the same.
 So they together contribute the same total number of sign changes for \(x>x_0\) as they did for \(x<x_0\).
+\begin{center}
+\input{sturm-pic-3}\qquad
+\input{sturm-pic-4}
+\end{center}
 
 Suppose instead in addition that \(p_i(x)\) has an even number of roots at \(x=x_0\).
-Picture the Sturm sequence
-\[
-p_0(x), p_1(x), \dots, p_m(x)
-\]
-as \(x\) travels from a little less than \(x=x_0\) to a little more.
-The sign of all of \(p_{i-1}(x), p_i(x), p_{i+1}(x)\) stay the same across this gap.
+As \(x\) travels from a little less than \(x=x_0\) to a little more, the sign of all of \(p_{i-1}(x), p_i(x), p_{i+1}(x)\) stay the same across this gap.
 So they together contribute the same total number of sign changes for \(x>x_0\) as they did for \(x<x_0\).
+\begin{center}
+\input{sturm-pic-7}\qquad
+\input{sturm-pic-8}
+\end{center}
 
 Lets go back to the start of the Sturm sequence.
 If \(p(x)\) has an odd number of roots at some point \(x=x_0\), then \(p'(x)\) has an even number, and so \(p(x)\) changes sign as \(x\) goes from \(x < x_0\) to \(x > x_0\), while \(p'(x)\) doesn't change sign.
-Moreover, if \(p(x)\) increases across this gap, then \(p'(x)>0\) on either side, so the number of sign changes contributed by \(p_0(x), p_1(x)\) decreases.
-Similarly if \(p(x)\) decreases.
-Similarly if \(p(x)\) has an even number of roots.
+\begin{center}
+\input{sturm-pic-10}\qquad
+\input{sturm-pic-9}
+\end{center}
+If \(p(x)\) increases across this gap, then \(p'(x)>0\) on either side, so the number of sign changes contributed by \(p_0(x), p_1(x)\) decreases:
+\begin{center}
+\input{sturm-pic-10}
+\end{center}
+Similarly if \(p(x)\) decreases:
+\begin{center}
+\input{sturm-pic-9}
+\end{center}
+Similarly if \(p(x)\) has an even number of roots:
+\begin{center}
+\input{sturm-pic-11}\qquad
+\input{sturm-pic-12}
+\end{center}
 Hence as \(x\) pass through any root of \(p(x)\), the terms \(p_0(x), p_1(x)\) contribute different numbers of sign changes in the Sturm sequence by at least one.
 \end{proof}
+\begin{problem}{real.polynomials:Sturm.test}
+Explain why, at each step in the Sturm sequence, we can allow ourselves to divide or multiply each polynomial \(p_i(x)\) by any positive constant number. (That can help to simplify the computation.)
+\end{problem}
+\begin{problem}{real.polynomials:Sturm.test.example}
+Apply the Sturm theorem to the polynomial \(p(x)=4x^4+2x^2-1\) to find the number of roots between \(x=0\) and \(x=1\).
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.example}
+To get you started: \(p_0(x)=4x^4+2x^2-1\), \(p'(x)=16x^3+4x=4(4x^3+x)\), so we can rescale by \(1/4\) to simplify to \(p_1(x)=4x^3+x\), \(p_2(x)=1-x^2\), \(p_3(x)=-5x\) which you can rescale by \(1/5\) to get \(p_3(x)=-x\), \(p_4(x)=-1\).
+You should find that there is one root in that interval. You can check by letting \(x^2=t\), write as a quadratic equation in \(t\), solve with the quadratic formula, and also look at the graph:
+\begin{center}
+\begin{sagesilent}
+x=var(`x`)
+\end{sagesilent}
+\sageplot[width=6cm]{plot(4*x^4+2*x^2-1,(x,0,1))}
+\end{center}
+\end{answer}
+\begin{problem}{real.polynomials:Sturm.test.example.2}
+Apply the Sturm theorem to the polynomial \(p(x)=x^4+4x^3-1\) to find the number of roots between \(x=0\) and \(x=1\).
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.example.2}
+To get you started: \(p_0(x)=x^4+4x^3-1\), \(p'(x)=4x^3 + 12x^2=4(x^3+3x^2)\), so we can rescale by \(1/4\) to simplify to \(p_1(x)=x^3+3x^2\), \(p_2(x)=3x^2 + 1\), \(p_3(x)=\frac{4}{3}x + 4\), \(p_4(x)= -28\).
+There is one root in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(x^4+4*x^3-1,(x,0,1))}
+\end{center}
+\end{answer}
+\begin{problem}{real.polynomials:Sturm.test.example.3}
+Apply the Sturm theorem to the polynomial \(p(x)=x^6+4x^3-2\) to find the number of roots between \(x=0\) and \(x=1\).
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.example.3}
+The sequence is \(x^6+4x^3-2, 6x^5+12x^2, -2x^3+2, -18x^2, -2\). 
+These have values at \(x=0\) of \(-2, 0, 2, -2\), and at \(x=1\) they have \(3, 18, -18, -2\).
+There is one root in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(x^6+4*x^3-2,(x,0,1))}
+\end{center}
+\end{answer}
+\begin{problem}{real.polynomials:Sturm.test.example.4}
+Apply the Sturm theorem to the polynomial \(p(x)=2x^4+4x^3+2x^2-1\) to find the number of roots between \(x=-2\) and \(x=1\).
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.example.4}
+The sequence is \(2x^4+4x^3+2x^2-1, 8x^3 + 12x^2 + 4x, (1/2)x^2+(1/2)x+1, 16x+8, -7/8\).
+These have values at \(x=-2\) of \(7, -24, 2, -24, -7/8\), and at \(x=1\) they have \(7, 24, 2, 24, -7/8\).
+There are two roots in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(2*x^4+4*x^3+2*x^2-1,(x,-2,1))}
+\end{center}
+\end{answer}
 
+\NewDocumentCommand\parab{mmmm}%
+{%
+\begin{tikzpicture}[scale=.3,baseline=-0.5ex]
+\fill[rounded corners,gray!10,very thick,draw=white] (-2,-2) rectangle (2,2);
+\draw[very thick,gray!50] (-1,0) -- (1,0);
+\draw[thick,gray] (-1,#1) parabola bend (0,#2) (1,#1); \fill[gray] (#3,#4) circle (5pt);
+\end{tikzpicture}
+}%
+\NewDocumentCommand\smil{m}%
+{%
+\IfStrEqCase{#1}
+{%%
+{---}{\parab{-2}{-1}{-.5}{-1.25}}%
+{--+}{\parab{-2}{-1}{-.5}{-1.25}&\parab{2}{-1}{-.5}{-.25}}%
+{-+-}{\parab{-2}{-1}{.5}{-1.25}}%
+{-++}{\parab{2}{-1}{.5}{-.25}&\parab{-2}{1}{.5}{-.25}}%
+{+--}{\parab{2}{1}{-.5}{1.25}}%
+{+-+}{\parab{2}{-1}{-.5}{.25}&\parab{-2}{1}{-.5}{.25}}%
+{++-}{\parab{2}{1}{.5}{1.25}}%
+{+++}{\parab{2}{-1}{.75}{.83}&\parab{-2}{1}{.25}{.75}}%
+}%%
+}%
+\begin{problem}{real.polynomials:Sturm.test.quadratic}
+What do the signs in a Sturm sequence say when you plug in a quadratic function \(p(x)=ax^2+bx+c\), say with \(a\ne 0\)?
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.quadratic}
+Each pattern of signs in the Sturm sequence, followed by a picture of parabolas with that pattern, indicating whether the point where we calculate the Sturm sequence gives a positive or negative value of the quadratic function, whether the point is to the left or right of the vertex of the parabola, and whether the discriminant is positive or negative:
+\[
+\begin{array}{@{}c@{}@{}c@{}@{}c@{}@{}c@{}@{}c@{}@{}c@{}}
+-&-&-&\smil{---}\\
+-&-&+&\smil{--+}\\
+-&+&-&\smil{-+-}\\
+-&+&+&\smil{-++}\\
++&-&-&\smil{+--}\\
++&-&+&\smil{+-+}\\
++&+&-&\smil{++-}\\
++&+&+&\smil{+++}\\
+\end{array}
+\]
+\end{answer}
 
 To count out zeroes:
 \begin{sageblock}
 def count_sign_changes(L):
     n=0
-    for i in range(0,len(L)-1):
-        if L[i]*L[i+1]<0:
+    # Collect up only the nonzero elements of the list L
+    M=[ x for x in L if x!= 0 ]
+    for i in range(0,len(M)-1):
+        p=M[i]*M[i+1]
+        if p<0:
             n=n+1
     return n
 def expected_number_of_zeroes(p,a,b):
@@ -248,12 +358,8 @@ def expected_number_of_zeroes(p,a,b):
         n=n+1
         q,r=L[n-2].quo_rem(L[n-1])
     # Make a list A of values of the Sturm sequence polynomials at x=a.
-    A=[]
-    # Make a list B of values of the Sturm sequence polynomials at x=b.
-    B=[]
-    for i in range(0,n):
-        A.append(L[i].subs(x=a))
-        B.append(L[i].subs(x=b))
+    A=[ t.subs(x=a) for t in L ]
+    B=[ t.subs(x=b) for t in L ]
     return count_sign_changes(A)-count_sign_changes(B)
 \end{sageblock}
 Then the code:
@@ -315,6 +421,8 @@ c=
 \]
 whichever is larger.
 \end{answer}
+
+
 
 \section{Factoring complex polynomials}
 \epigraph[author={H.~L.~Mencken}]{For every complex problem there is an answer that is clear, simple, and wrong.}\SubIndex{Mencken, H.~L.}

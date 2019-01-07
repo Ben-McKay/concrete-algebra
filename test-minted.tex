@@ -1,0 +1,18 @@
+\documentclass{amsart}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,xparse}
+\usepackage{minted}
+\newcommand{\sagebox}[2]{
+\begin{tcolorbox}[sidebyside,bicolor,colbacklower=gray!10%,breakable
+]
+\begin{minted}{python}#1\end{minted}
+\tcblower
+#2
+\end{tcolorbox}%
+}
+\begin{document}
+\tcbset
+{colback=gray!5,colframe=gray!7%,pad at break*=1mm
+}
+\sagebox{12345*13579}{12387123798}
+\end{document}

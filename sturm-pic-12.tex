@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\input{ColorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw[curveZero] (-1,0) -- (1,0);
+\draw[very thick,curveTwo,domain=-1:1] plot (\x,{-.7*\x*\x*\x*\x});
+\draw[very thick,curveOne,domain=-1:1] plot (\x,{-.3*\x*\x*\x});
+\draw[very thick,curveZero,<->] (-.9,.176) -- (-.9,-.32); 
+\fill[curveTwo] (0,0) circle (2pt);
+\draw[very thick,curveOne] (0,0) circle (2pt);
+\end{tikzpicture}
+\end{document}

@@ -60,24 +60,24 @@ b(x) &= b_0 + b_1 x + \dots + b_m x^m \text{ and } \\
 c(x) &= c_0 + c_1 x + \dots + c_n x^n,
 \end{align*}
 denoted \(\resultant{b}{c}\)\Notation{res(b,c)}{\resultant{b}{c}}{resultant of polynomials \(b(x), c(x)\)}, is the determinant of the matrix \(\begin{pmatrix}\relax [b] & [c] \end{pmatrix}\), given by stacking the matrices \([b]\) and \([c]\) of suitable sizes beside one another, to get a square matrix of size \((m+n) \times (m+n)\).
-To remember the sizes: the number of columns in \([b]\) is the degree of \(c\), while the number of columns in \([c]\) is the degree of \(b\).
+To remember the sizes: the number of columns in \([b]\) is the degree of \(c\), and vice versa.
 
 \begin{example}
 If
 \begin{align*}
-b(x) &= 4 -x + 7x^2 + x^3, \\
-c(x) &= -6+2x,
+b(x) &= 4 +3x + 7x^2 + x^3, \\
+c(x) &= 5+2x,
 \end{align*}
 then \(\resultant{b}{c}\) is the determinant of the \(4 \times 4\) matrix
 \[
 \begin{pmatrix}
-  4 & -6 & 0 & 0 \\
- -1 & 2 & -6 & 0 \\
-  7 & 0 &  2 & -6 \\
-  1 & 0 &  0 & 2
+  4 & 5 & 0 & 0 \\
+  3 & 2 & 5 & 0 \\
+  7 & 0 & 2 & 5 \\
+  1 & 0 & 0 & 2
 \end{pmatrix},
 \]
-which is \(\resultant{b}{c}=-712\).
+which is \(\resultant{b}{c}=197\).
 \end{example}
 \begin{example}
 If we swap \(b\) and \(c\), we swap columns, so clearly \(\resultant{c}{b}=(-1)^{mn}\resultant{b}{c}\).
@@ -234,7 +234,8 @@ The theorem now follows from lemma~\vref{lemma:common.factor.polys}.
 
 The resultant is brutal to compute, even for polynomials of fairly small degree.
 Its importance, like that of the determinant of a matrix, arises from its theoretical power.
-
+At this point, the reader should be annoyed: we already know how to find common divisors, even the greatest common divisor, by a fast calcuation, so we surely don't need a slow resultant calculation to see if there is a common divisor of positive degree, since we can already actually find that divisor, and more quickly.
+The reader is right, but surprisingly we will find many uses for the resultant.
 \begin{problem}{polynomials:resultant}
 Find the resultants, and use them to decide if there are nonconstant common factors.
 \begin{enumerate}
@@ -242,16 +243,69 @@ Find the resultants, and use them to decide if there are nonconstant common fact
 \item \(x^2+1,x-1\)
 \end{enumerate} 
 \end{problem}
-
 \begin{problem}{resultants:mod.2}
 Over the field of remainders modulo 2, calculate the resultant of \(b(x)=x^3+x^2+x+1, c(x)=x^3+x\).
 \emph{Warning}: the \(6 \times 6\) determinant you get is actually easier than it looks at first, so look for tricks to find it without any hard calculation.
 \end{problem}
+\begin{answer}{resultants:mod.2}
+Either note the common factor of \(x+1\): \(b(x)=(x+1)(x^2+x+1)\), \(c(x)=(x+1)^2x\), or compute the determinant of 
+\[
+\begin{pmatrix}
+1&0&0&0&0&0\\
+1&1&0&1&0&0\\
+1&1&1&0&1&0\\
+1&1&1&1&0&1\\
+0&1&1&0&1&0\\
+0&0&1&0&0&1
+\end{pmatrix}
+\]
+by expanding across the first row:
+\[
+\begin{pmatrix}
+1&0&1&0&0\\
+1&1&0&1&0\\
+1&1&1&0&1\\
+1&1&0&1&0\\
+0&1&0&0&1
+\end{pmatrix}
+\]
+and note that two rows are the same so the determinant (and the resultant) is zero.
+\end{answer}
 
+\begin{problem}{resultants:modp.example}
+Calculate a resultant to prove that, for any prime integer \(p\ge 2\), when we work over the field of remainders modulo \(p\), the polynomials \(x^2+1\) and \(x^2+3x\) have a common factor just exactly when \(p=2\) or \(p=5\).
+\end{problem}
+\begin{answer}{resultants:modp.example}
+The resultant is
+\[
+\resultant{x^2+1}{x^2+3x}
+=
+\det
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 3 & 0 \\
+1 & 0 & 1 & 3 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+=10.
+\]
+But \(10\) only has \(2\) and \(5\) as prime factors, so this resultant vanishes just exactly when \(p=2\) or \(p=5\).
+If \(p=2\) the factors are \(x^2+1=(x+1)^2\) and \(x^2+3x=x^2+x=x(x+1)\), so a common factor of \(x+1\).
+If \(p=5\) the factors are \(x^2+1=(x-2)(x-3)\) and \(x^2+3x=x(x-2)\), so a common factor of \(x-2\).
+\end{answer}
+\begin{problem}{resultants:even.terms}
+Suppose that \(b(x)\) and \(c(x)\) are polynomials in one variable \(x\), with coefficients in the field of integer remainders modulo 2. 
+Suppose that \(b(x)\) is a sum of 1126 nonzero terms, while \(c(x)\) is a sum of 8080 nonzero terms. 
+Note: we don't say anything about the degree of either one. 
+Prove that they have a common factor of positive degree.
+\end{problem}
+\begin{answer}{resultants:even.terms}
+The resultant is the determinant of a matrix whose every column has an even number of nonzero entries, so sum equal to zero. So the sum of the rows is zero, a linear relation among rows, hence zero determinant. 
+\end{answer}
 \begin{lemma}\label{lemma:resultant.over.integers}
 Take two polynomials \(b(x), c(x)\) in a variable \(x\) of degrees \(m, n\).
 The resultant \(r=\resultant{b}{c}\) is expressible as \(r=u(x)b(x)+v(x)c(x)\) where \(u(x)\) and \(v(x)\) are polynomials of degrees \(n-1, m-1\).
-One can make a particular choice of \(u(x), v(x)\) so that the coefficients of \(u(x)\) and of \(v(x)\) are expressible as polynomial expressions in the coefficients of \(b(x)\) and \(c(x)\), and those polynomial expressions have integer coefficients.
+One can make a particular choice of \(u(x), v(x)\) so that the coefficients of \(u(x)\) and of \(v(x)\) are expressible as polynomial expressions in the coefficients of \(b(x)\) and \(c(x)\), and those polynomial expressions have only \(1\) or \(-1\) as coefficient in each term.
 \end{lemma}
 \begin{proof}
 Look at our matrix:
@@ -262,11 +316,12 @@ r
 \begin{pmatrix}
 b_0    &        &        &        & c_0 \\
 b_1    & b_0    &        &        & c_1    & c_0 \\
-\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
-b_m    & \ddots & \ddots  & b_0    & c_n   & \ddots & \ddots  & c_0 \\
-       & b_m    & \ddots  & b_1    &       & c_n    & \ddots  & c_1 \\
-       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
-       &        &        & b_m    &        &        &        & c_n
+\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+\vdots & \ddots & \ddots  & b_0   & \vdots & \ddots & \ddots & c_0 \\
+b_m    & \ddots & \ddots  & b_1   & c_n    & \ddots & \ddots & c_1 \\
+       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
 \end{pmatrix}
 \]
 Add to the first row the second multiplied by \(x\) and then the third multiplied by \(x^2\) and so on, which doesn't change the determinant:
@@ -275,13 +330,14 @@ r
 =
 \det
 \begin{pmatrix}
-b(x)   & xb(x)  & \dots  & x^{n-1}b(x)& c(x)   & xc(x) & \dots & x^{m-1} c(x) \\
+b(x)   & xb(x)  & \dots  & x^{n-1}b(x) & c(x) & xc(x) & \dots & x^{m-1}c(x) \\
 b_1    & b_0    &        &        & c_1    & c_0 \\
-\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
-b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
-       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
-       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
-       &        &        & b_m    &        &        &        & c_n
+\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+\vdots & \ddots & \ddots & b_0   & \vdots & \ddots & \ddots & c_0 \\
+b_m    & \ddots & \ddots & b_1   & c_n    & \ddots & \ddots & c_1 \\
+       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
 \end{pmatrix}.
 \]
 Expand the determinant across the top row to see that
@@ -294,13 +350,14 @@ u(x)
 =
 \det
 \begin{pmatrix}
-1      & x      & \dots  & x^{n-1}  \\
-b_1    & b_0    &        &        & c_1    & c_0 \\
-\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
-b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
-       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
-       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
-       &        &        & b_m    &        &        &        & c_n
+1      & x      & \dots  & x^{n-1} \\
+b_1    & b_0    &        &         & c_1    & c_0 \\
+\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+\vdots & \ddots & \ddots & b_0   & \vdots & \ddots & \ddots & c_0 \\
+b_m    & \ddots & \ddots & b_1   & c_n    & \ddots & \ddots & c_1 \\
+       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
 \end{pmatrix}
 \]
 and
@@ -309,21 +366,23 @@ v(x)
 =
 \det
 \begin{pmatrix}
-       &        &        &        & 1      & x      & \dots  & x^{m-1}  \\
+       &        &        &        & 1      & x      & \dots & x^{m-1} \\
 b_1    & b_0    &        &        & c_1    & c_0 \\
-\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
-b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
-       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
-       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
-       &        &        & b_m    &        &        &        & c_n
-\end{pmatrix}
+\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+\vdots & \ddots & \ddots & b_0    & \vdots & \ddots & \ddots & c_0 \\
+b_m    & \ddots & \ddots & b_1    & c_n    & \ddots & \ddots & c_1 \\
+       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
+\end{pmatrix}.
 \]
 Note that we can expand out any determinant using only multiplication and addition of entries and some \(\pm\) signs.
 \end{proof}
 
 
 
-If we scale up \(b(x)\) by a factor \(\lambda\) and look at the matrix whose determinant is our resultant, we see that the resultant of \(b(x),c(x)\) scales by \(\lambda^n\), where \(n\) is the degree of \(c(x)\).
+If we scale up \(b(x)\) by a factor \(\lambda\), the matrix gets a \(\lambda\) in each column in the left \(n\) columns, where \(n\) is the degree of \(c(x)\).
+The resultant of \(b(x),c(x)\) scales by \(\lambda^n\).
 So practically we only need to compute resultants of monic polynomials.
 
 \begin{proposition}\label{proposition:factored.resultants}
@@ -336,87 +395,79 @@ then the resultant is
 \begin{align*}
 \resultant{b}{c} 
 &=
-\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
+\pr{\gamma_1-\beta_1}\pr{\gamma_1-\beta_2}\dots\pr{\gamma_n-\beta_m},
 \\
 &=
-c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m},
+b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}.
 \\
 &=
-(-1)^{mn}b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}.
+(-1)^{mn}c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m},
 \end{align*}
 In particular, the resultant vanishes just when \(b(x)\) and \(c(x)\) have a common root.
 \end{proposition}
 \begin{proof}
-We will only give the proof here for polynomials over an infinite field.
-We will give the proof over finite fields in chapter~\ref{chapter:fields}.
 If we expand out the expression for \(b(x)\) into a sum of monomials, with coefficients being expressed in terms of these \(\beta_i\), and similarly for \(c(x)\), then the resultant is a huge polynomial expression in terms of the various \(\beta_i\) and \(\gamma_j\).
 This polynomial vanishes whenever \(\beta_i=\gamma_j\).
-Thinking of \(\beta_i\) and \(\gamma_j\) as abstract variables, the expression \(\beta_i-\gamma_j\) is a linear function.
+Thinking of \(\beta_i\) and \(\gamma_j\) as abstract variables, the expression \(\gamma_j-\beta_i\) is a linear function.
 Assume for the moment that our field is infinite.
-Then the resultant is divisible by \(\beta_i-\gamma_j\), for any \(i\) and \(j\), by lemma~\vref{lemma:linear.factor}.
-Therefore the resultant is divisible by
+Then the resultant is divisible by \(\gamma_j-\beta_i\), for any \(i\) and \(j\), by lemma~\vref{lemma:linear.factor}.
+Therefore the resultant is divisible by the product
 \[
-\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n}.
+\pr{\gamma_1-\beta_1}\pr{\gamma_1-\beta_2}\dots\pr{\gamma_n-\beta_m}.
 \]
-From our examples above, we see that the total number of such factors is \(mn\), and therefore each one arises just once, so our resultant is as described 
-\[
-\resultant{b}{c} 
-=
-\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
-\]
-except perhaps for a constant factor, which we check by looking at our examples.
-For a finite field, we will fix up this proof in chapter~\ref{chapter:fields}; for the moment, the reader will have to accept that this can be done somehow.
+Imagine expanding out the resultant as a determinant, with \(b(x),c(x)\) monic.
+Each term in the determinant contains exactly \(n\) of the various \(b_j\), and each \(b_j\) has \(m-j\) \(\beta\)'s.
+So the highest term in the \(\beta\)'s is the one from the diagonal.
+The diagonal has \(b_0,b_0,\dots,b_0,1,1,\dots,1\), giving a term \(b_0^n\) in the determinant.
+Expand in \(\beta\)'s as \(b_0=(-1)^m\beta_1\dots\beta_m\) to give a term \((-1)^{mn}\beta^n_1\dots\beta^n_m\) in the resultant.
+But the product gives exactly the same highest term in \(\beta\)'s.
+By swapping columns, we see that our product and resultant also give exactly the same highest term in \(\gamma\)'s, and so the resultant equals the product.
+For a finite field, embed into an infinite field, as in chapter~\ref{chapter:fields}.
 \end{proof}
-
 \begin{example}
 If \(b(x)\defeq x^7+2x+1\) and \(c(x)\defeq x-1\), then \(c(x)\) has root \(x=1\), and both are monic, so 
 \[
-\resultant{b}{c} = (-1)^{7 \cdot 1} b(1) = (-1)(1^7+2+1)=-4.
+\resultant{b}{c} = b(1) = 1^7+2+1=4.
 \]
 \end{example}
-
 \begin{problem}{resultants:nonmonic}
-Suppose that \(b(x)\) is monic and \(c(x)\) is not and that they both split into linear factors.
+Suppose that \(b(x)\) is monic.
 Prove that 
 \[
 \resultant{b}{c} 
-=c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m}.
+=(-1)^{mn}c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m}.
 \]
 \end{problem}
-
 \begin{lemma}\label{lemma:resultants.multiply}
 For any polynomials \(b(x), c(x), d(x)\),
 \[
-\resultant{b}{cd}=\resultant{b}{c}\resultant{b}{d}.
+\resultant{bd}{c}=\resultant{b}{c}\resultant{d}{c}.
 \]
 \end{lemma}
 \begin{proof}
-If all of the polynomials split into linear factors, the result is clear:
+Split all of the polynomials into linear factors (over a splitting field):
 \begin{align*}
-\resultant{b}{cd}
+\resultant{bd}{c}
 &=
-c\of{\beta_1}d\of{\beta_1}\dots c\of{\beta_m}d\of{\beta_m},
+b\of{\gamma_1}d\of{\gamma_1}\dots b\of{\gamma_n}d\of{\gamma_n},
 \\
-&=c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m}
-d\of{\beta_1}d\of{\beta_2}\dots d\of{\beta_m},
+&=b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}
+d\of{\gamma_1}d\of{\gamma_2}\dots d\of{\gamma_n},
 \\
 &=
-\resultant{b}{c}\resultant{b}{d}.
+\resultant{b}{c}\resultant{d}{c}.
 \end{align*}
-We will see eventually (in theorem~\vref{theorem:splitting.field}) that, given any polynomials \(b(x),c(x),d(x)\), we can always replace our field by a larger field in which all of the polynomials \(b(x),c(x),d(x)\) split into linear factors.
 \end{proof}
-
 \begin{problem}{resultants:add.stuff}
-Suppose that \(b(x)\) is a monic polynomial which splits into linear factors.
+Suppose that \(c(x)\) is a monic polynomial.
 Prove that 
 \[
-\resultant{b}{c+db}=\resultant{b}{c}
+\resultant{b+dc}{c}=\resultant{b}{c}
 \]
 for any polynomials \(c(x)\) and \(d(x)\).
-A surprise: note that the degree of \(c(x)+d(x)b(x)\) could be either that of \(c(x)\) or that of \(d(x)b(x)\), or something smaller than either, as any number of terms in \(c(x)+d(x)b(x)\) might cancel one another.
-But surprisingly, we don't need to know the degree of \(c(x)+d(x)b(x)\).
+A surprise: note that the degree of \(b+dc\) could be either that of \(b\) or that of \(dc\), or something smaller than either, as any number of terms in \(b+dc\) might cancel one another.
+But surprisingly, we don't need to know the degree of \(b+dc\).
 \end{problem}
-
 \begin{problem}{resultants:euclid.that.mofo}
 A fast trick to find resultants: use the result of the previous problem to compute
 \(\resultant{b}{c}\) where
@@ -481,7 +532,6 @@ so that \verb!fastresultant(x^3+x+7,x^2+2)! yields \(\sage{fastresultant(x^3+x+7
 
 
 \subsection{The discriminant}
-
 For any polynomial \(p(x)\), with any sort of coefficients, say
 \[
 p(x) = a_0 + a_1 x + \dots + a_n x^n,
@@ -641,6 +691,69 @@ Prove that the sign of the discriminant \(\Delta\) of a monic cubic polynomial t
 \end{array}
 \]
 \end{problem}
+\begin{problem}{resultants:discriminant.as.product}
+Prove that, for any monic polynomial \(p(x)\) with roots \(x_1,x_2,\dots,x_n\), 
+\[
+\Delta_{p(x)} = (-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2.
+\]
+\end{problem}
+\begin{answer}{resultants:discriminant.as.product}
+Write out
+\[
+p(x)=(x-x_1)(x-x_2)\dots(x-x_n).
+\]
+Differentiate:
+\begin{align*}
+p'(x)
+&=(x-x_2)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
+&+(x-x_1)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
+&+\vdots\\
+&+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_n)\\
+&+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_{n-1})
+\end{align*}
+Every term but the first has a factor of \(x-x_1\), so if we plug in \(x=x_1\):
+\[
+p'(x_1)=(x_1-x_2)(x_1-x_3)\dots(x_1-x_{n-1})(x_1-x_n)=\prod_{j \ne 1} (x_1-x_j).
+\]
+By the same reasoning, replacing \(x_1\) by any other root \(x_i\):
+\[
+p'(x_i)=\prod_{j \ne i} (x_i-x_j).
+\]
+So the discriminant is
+\begin{align*}
+\Delta_{p(x)}
+&=
+\resultant{p(x)}{p'(x)},
+\\
+&=
+(-1)^{n(n-1)}\resultant{p'(x)}{p(x)},
+\end{align*}
+Note that either \(n\) is even or \(n-1\) is even, so \((-1)^{n(n-1)}=1\):
+\begin{align*}
+\Delta_{p(x)}
+&=
+\resultant{p'(x)}{p(x)},
+\\
+&=
+\prod_i p'(x_i),
+\\
+&=
+\prod_i \prod_{j\ne i}(x_i-x_j),
+\\
+&=
+\prod_{i\ne j}(x_i-x_j).
+\end{align*}
+So now, for example, \(x_1-x_2\) occurs here, as does \(x_2-x_1\), so putting those together into one factor \(-(x_1-x_2)\):
+\[
+\Delta_{p(x)}
+=
+\prod_{i<j}(-1)(x_i-x_j)^2.
+\]
+There are \(n(n-1)/2)\) choices of \(i < j\), so finally
+\[
+\Delta_{p(x)}=(-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2.
+\]
+\end{answer}
 
 \section{Sage}
 Sage computes discriminants:
@@ -650,9 +763,7 @@ R.<t> = PolynomialRing(QQ)
 \end{sageblock}
 yields \(\sage{(t^2-t+7).discriminant()}\).
 
-
 \section{Parameterisation}
-
 \begin{example}
 Take the curve in the plane parameterised by
 \[
@@ -661,25 +772,25 @@ Take the curve in the plane parameterised by
 \inputinexample{cubic-curve-1}
 We want to find an equation for this curve, as a polynomial in \(x\) and \(y\).
 \end{example}
-
 \begin{proposition}\label{proposition:resultant.equation}
 Draw a curve
 \[
 x(t)=\frac{p(t)}{q(t)}, y(t)=\frac{u(t)}{v(t)},
 \]
-where \(p(t), q(t), u(t), v(t)\) are polynomials with complex coefficients.
+where \(p(t), q(t), u(t), v(t)\) are polynomials with coefficients in a field \(k\).
 The resultant in the variable \(t\) of the polynomials
 \[
 p(t)-xq(t), u(t)-yv(t)
 \]
-vanishes along the points \((x,y)\) in the plane which lie along this curve. \end{proposition}
+vanishes along the points \((x,y)\) in the plane which lie along this curve; we can allow the values of \(x\) and \(y\) to be in the algebraic closure \(\bar{k}\).
+\end{proposition}
 \begin{proof}
 The resultant vanishes just at those points \((x,y)\) where the two polynomials have a common factor.
-If there is a common factor of two polynomials, that factor has a root over the complex numbers, so there is a common root \(t\) of both polynomials, in other words a value of \(t\) where \(x=p(t)/q(t)\) and \(y=u(t)/v(t)\).
+If there is a common factor of two polynomials, that factor has a root over \(\bar{k}\), so there is a common root \(t\) of both polynomials, in other words a value of \(t\) where \(x=p(t)/q(t)\) and \(y=u(t)/v(t)\).
 On the other hand, a common root gives a common linear factor. 
-So the resultant vanishes just along the image of the curve in the ``plane''. This ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
+So the resultant vanishes just along the image of the curve in the ``plane''. 
+Careful: \(k=\R{}\) then this ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
 \end{proof}
-
 \begin{example}
 For the curve in the plane parameterised by
 \[
@@ -721,7 +832,6 @@ The resultant comes out as
 So the resultant vanishes along \(y=x^2\), the whole parabola.
 So we don't quite get what we wanted: we get the algebraic equation \(y=x^2\) that that curve satisfies, but we miss out on the inequality \(x \ge 0\).
 \end{example}
-
 \begin{problem}{resultants:eliminate}
 Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
 \[
@@ -751,15 +861,12 @@ y^2-(x-1)x(x+1)
 \).
 So the equation of the curve is \(y^2=(x-1)x(x+1)\).
 \end{answer}
-
-
 \begin{problem}{resultants:eliminate.2}
 Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
 \[
 x(t)=t^2+t, y(t)=\frac{1}{t}.
 \]
 \end{problem}
-
 \begin{problem}{resultants:eliminate.3}
 Find a nonconstant polynomial equation \(f(x,y)=0\) satisfied by the points of the curve 
 \[
@@ -767,10 +874,29 @@ x(t)=t^2+1, y(t)=t+\frac{1}{t}.
 \]
 \end{problem}
 \begin{answer}{resultants:eliminate.3}\(x^2+(1-x)y^2\)\end{answer}
-
+\begin{problem}{resultants:eliminate.4}
+With coefficients over the field of remainders modulo 2, find a polynomial equation \(0=p(x,y)\), with \(p(x,y)\) not constant, satisfied by the parameterized plane curve \((x(t),y(t))=(t^3+t,1/t)\).
+\end{problem}
+\begin{answer}{resultants:eliminate.4}
+The equations, in powers of \(t\), are
+\begin{align*}
+0 &= x+t+t^3, \\
+0 &= 1+yt.
+\end{align*}
+The resultant is
+\begin{align*}
+\begin{vmatrix}
+x & 1 & 0 & 0 \\
+1 & y & 1 & 0 \\
+0 & 0 & y & 1 \\
+1 & 0 & 0 & y
+\end{vmatrix}
+=xy^3+y^2+1.
+\end{align*}
+So \(p(x,y)=xy^3+y^2+1\).
+\end{answer}
 
 \section{Sage}
-
 Sage handles 2 variable polynomials:
 \begin{sageblock}
 P.<x,y> = PolynomialRing(QQ)
@@ -787,3 +913,24 @@ R.<x,y,t> = PolynomialRing(QQ)
 (t^2-1-x).resultant(t*(t^2-1)-y,t)
 \end{sageblock}
 yields \(\sage{(t^2-1-x).resultant(t*(t^2-1)-y,t)}\).
+
+Sage computes resultants of polynomials over any field.
+\begin{example}
+Let \(K\) be the splitting field of \(x^2+x+1\) over \(k=\Zmod{2}\), with generator \(a\).
+We compute the resultant and greatest common divisor of
+\[
+p(t) = (at+1)^2 (at-1)^2, \\
+q(t) = (at+1) (at+a^2)^2.
+\]
+via
+\begin{sageblock}
+R.<x> = PolynomialRing(GF(2))
+K.<a> = (x^2 + x + 1).splitting_field()
+S.<t> = PolynomialRing(K)
+p = S((a*t+1)^2*(a*t-1)^2)
+q = S((a*t+1)*(a*t+a^2)^2)
+print(p.gcd(q))
+print(p.resultant(q))
+\end{sageblock}
+yielding \(\sage{p.gcd(q)}\) and \(\sage{p.resultant(q)}\).
+\end{example}

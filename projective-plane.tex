@@ -34,63 +34,51 @@ meet somewhere in infinity.}\SubIndex{Dostoyevsky, Fyodor}\SubIndex{Brothers Kar
 
 
 We would like a more precise mathematical definition of points ``at infinity''.
-A \emph{pencil}\define{pencil} of parallel lines is the collection of all lines parallel to a given line:
-\[
-\begin{tikzpicture}
-\clip (0,0) rectangle (1,1);
-\foreach \i in {-1,-0.9,...,1} 
-{
-	\draw (0,{\i}) -- (1,{\i+1});
-}
-\end{tikzpicture}
-\]
-A simple approach: just say that a ``point at infinity'' means nothing more than a choice of pencil of parallel lines.
-
-There is another completely different way to give a precise mathematical definition of the projective plane, which is more geometric and more powerful.
 Place yourself at a vantage point above the plane.
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-vantage}
+\includegraphics[width=5cm]{above-the-plane-vantage}
 \end{center}
 Every ``finite'' point of the plane lies on a line through your vantage point: the line of sight.
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-connect}
+\includegraphics[width=5cm]{above-the-plane-connect}
 \end{center}
 You can also look out to the points at infinity, along lines:
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-off-to-infinity}
+\includegraphics[width=5cm]{above-the-plane-off-to-infinity}
 \end{center}
 For example, there is such a line  parallel to the lines of our train track:
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-3}
+\includegraphics[width=5cm]{above-the-plane-3}
 \end{center}
 
 On the other hand, if we take any line through the vantage point, either it hits a ``finite'' point of the plane:
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-connect}
+\includegraphics[width=5cm]{above-the-plane-connect}
 \end{center}
 or it is parallel to the plane
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-off-to-infinity}
+\includegraphics[width=5cm]{above-the-plane-off-to-infinity}
 \end{center}
 so that it is pointed along the direction of some train tracks (lines) in the plane, to some ``point at infinity''.
 \begin{center}
-\includegraphics[width=4cm]{above-the-plane-3}
+\includegraphics[width=5cm]{above-the-plane-3}
 \end{center}
 The points of the projective plane, finite points together with infinite points at infinity, are in 1-1 correspondence with lines through the vantage point.
 
 This picture gives us a rigorous definition of points at infinity: the \emph{projective plane}\define{projective!plane} is the set of all lines through a chosen point of 3-dimensional space, called the vantage point.
 The \emph{points} of the projective plane (using this definition) are the lines through the vantage point.
 The ``finite points'' are the lines not parallel to the horizontal plane, while the ``infinite points'' are the lines which are parallel the horizontal plane.
+The set of finite points is the \emph{affine plane},\define{affine plane} which we think of as just the usual \(xy\)-plane.
 The \emph{lines}\define{projective!line}, also called \emph{projective lines}, of the projective plane are the planes through the vantage point.
-
-
-
+\begin{center}
+\includegraphics[width=5cm]{above-the-plane-projective-line}
+\end{center}
 
 \section{Homogeneous coordinates}
 We can make this more explicit by writing each point of 3-dimensional space \(\R{3}\) as a triple \((x,y,z)\).
 Draw the plane not as the usual \(xy\)-plane, but as the plane \(z=z_0\), for some nonzero constant \(z_0\).
 Take the vantage point to be the origin.
-Any linear change of the 3 variables \(x,y,z\) takes lines (and planes) through the origin to one another: there are more symmetries of the projective plane than we encountered before.
+Any linear change of the 3 variables \(x,y,z\) takes lines (and planes) through the origin to one another: there are more symmetries of the projective plane than we have ever encountered in the finite plane.
 
 Every point of 3-dimensional space not at the origin lies on a unique line through the origin.
 So every point \((x,y,z)\) with not all of \(x,y,z\) zero lines on a unique line through the origin.
@@ -284,9 +272,7 @@ We can also draw this diagram as a cube; for each point, you draw the correspond
 %}
 \end{tikzpicture}
 \end{center}
-with one vertex not marked.
-The unmarked vertex 
-If we let \(k\defeq\Zmod{2}\), then the cube is the set of points in \(k^3\), or more precisely, since the unlabelled point is the origin and is deleted, the cube is the Fano plane.
+with one vertex not marked; the unmarked vertex is at the origin, so doesn't represent any point of the Fano plane.
 Every line in the Fano plane has three vertices.
 Take two numbers from 1 to 7, say \(1, 5\), and write out their binary digits under one another:
 \[

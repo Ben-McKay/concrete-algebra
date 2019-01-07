@@ -1,30 +1,72 @@
 \chapter{Polynomials}
-
 \epigraph[author={Augustus De Morgan (when asked his age)}]{I was \(x\) years old in the year \(x^2\).}\SubIndex{De Morgan, Augustus}
-
 A \emph{polynomial}\define{polynomial} in a variable \(x\) is an expression like
 \[
-1, x+1, 5+3x^2-2x,
+1, x+1, 5+3x^2-2x.
 \]
-a finite sum of terms, each the product of a number (the \emph{coefficient}\define{coefficient!of polynomial} of the term), and a nonnegative integer power of \(x\) (the \emph{degree} of the term).
-We define the degree of a constant to be \(0\), except that the degree of \(0\) is defined to be \(-\infty\).
-We can add together coefficients of terms of the same degree:
+Let us be more precise.
+\begin{center}
+\begingroup
+\tikzstyle{every picture}+=[remember picture]
+\tikzstyle{na} = [baseline=-.5ex]
+\tikz[na] \draw node[fill=blue!20] (n1) {coefficient};
+\tikz[na] \draw node[fill=red!20] (n2) {variable};
+\tikz[na] \node[fill=green!20] (n3) {degree};
+
+\medskip
+
+\qquad\qquad\qquad
+\(
+        \tikz[baseline]{
+            \node[inner sep=1pt,fill=blue!20,anchor=base] (t1)
+            {$75$};
+        }
+        \tikz[baseline]{
+            \node[inner sep=1pt,fill=red!20, %ellipse,
+            anchor=base] (t2)
+            {$x$};
+        }
+        \tikz[baseline]{
+            \node[inner sep=0pt,fill=green!20,anchor=base] (t3)
+            {${}^{18}$};
+        }
+\)
+\begin{tikzpicture}[overlay]
+        \path[-stealth] (n1) edge [bend right] (t1);
+        \path[-stealth] (n2) edge (t2);
+        \path[-stealth] (n3) edge [bend left] (t3);
+\end{tikzpicture}
+\endgroup
+\end{center}
+A \emph{monomial}\define{monomial} in a variable \(x\) is the product of a number (the \emph{coefficient}\define{coefficient!of polynomial} of the term) with a nonnegative integer power of \(x\) (the \emph{degree} of the term).
+Write \(x^1\) as \(x\).
+Write \(x^0\) as \(1\), and so write any monomial of degree zero as just its coefficient, and call it a \emph{constant}.
+If the coefficient of a monomial is \(1\), write it without a coefficient: \(1 \, x^{57}=x^{57}\).
+
+A \emph{polynomial} is a finite sum of monomials, its \emph{terms}.\define{term}
+We can write the sum in any order, and drop any terms with zero coefficient, without changing the polynomial.
+If the sum has no terms, write the polynomial as \(0\).
+A \emph{constant} is a polynomial which has only a constant term or is \(0\).
+Add polynomials by adding coefficients of terms of the same degree:
 \[
 2x^2+7x^2+x=(2+7)x^2+x=9x^2+x.
 \]
-We usually arrange that the terms decrease in degree, writing \(1+5x+x^2\) as \(x^2+5x+1\).
-When we write a polynomial this way, the \emph{degree}\define{degree!of polynomial} is the largest degree of any term.
-We might ask the coefficients to be integers, rational numbers, real numbers, or complex numbers (in which case, we usually use \(z\) as the name of the variable, instead of \(x\)).
-Bizarrely, we might even allow the coefficients to be remainders modulo some integer.
-As soon as we fix on any of these choices of coefficients, the addition laws, multiplication laws, and distributive law (familiar from chapter~\ref{chapter:integers}) are immediately obvious, just writing \(b(x)\) as a polynomial, instead of an integer \(b\), and so on, and changing the word \emph{integer} to \emph{polynomial}.
-We will ignore the sign laws and the law of well ordering.
-
+Hence we can write any polynomial so that all terms have different degree, say decreasing in degree, or increasing in degree: \(1+x^3+5x=1+5x+x^3=x^3+5x+1\), and drop all terms with zero coefficient.
+Two polynomials written this way are equal just when they have the same coefficient in every degree.
+The \emph{degree}\define{degree!of polynomial} is the largest degree of any term.
+The degree of \(0\) is defined to be \(-\infty\).
+Multiply monomials like \((7x^2)(5x^3)=(7 \cdot 5)x^{2+3}\), multiplying coefficients and adding degrees.
+Multiply polynomials by the distributive law, term by term.
+The coefficients can be integers, rational numbers, real numbers, or complex numbers (in which case, we usually use \(z\) as the name of the variable, instead of \(x\)).
+They can even be remainders modulo some integer.
+As soon as we fix our choice of coefficients, the addition laws, multiplication laws, and distributive law (familiar from chapter~\ref{chapter:integers}) follow: write \(b(x)\) as a polynomial, instead of an integer \(b\), and so on, and change the word \emph{integer} to \emph{polynomial}.
+Ignore the sign laws and the law of well ordering.
 \begin{example}
 Let's work modulo \(2\), in honour of George Boole.
 Let \(p(x)\defeq x^2+x\).
 We write \(x^2+x\) to mean \(\bar{1} x^2 + \bar{1} x\), i.e. the coefficients are remainders.
 This polynomial is not zero, because its coefficients are not zero.
-\emph{Danger:} if we ask that \(x\) also be a remainder modulo \(2\), we might want to think of this polynomial as a \emph{function} of a variable \(x\).
+\emph{Danger:} we might want to think of this polynomial as a \emph{function} of a variable \(x\), and ask that \(x\) also be a remainder modulo \(2\).
 But then that function \emph{is} zero, because if we let \(x=\bar{0}\) then
 \[
 p\of{\bar{0}}=\bar{1}\cdot\bar{0}^2+\bar{1}\cdot\bar{0}=\bar{0}
@@ -34,15 +76,13 @@ and if we let \(x=\bar{1}\) then
 p\of{\bar{1}}=\bar{1}\cdot\bar{1}^2+\bar{1}\cdot\bar{1}=\bar{0}
 \]
 modulo \(2\).
-So a polynomial with coefficients in remainders modulo an integer is \emph{not} just a function.
-It is a purely algebraic object.
+So a polynomial is \emph{not} just a function: the function can be zero while the polynomial is not.
+A polynomial is a purely algebraic object.
 \end{example}
-
 \begin{problem}{polynomials:squares}
 Work modulo \(5\): for which remainders \(a\) can we find a remainder \(b\) so that \(a=b^2\)?
 In other words, which elements have square roots?
 \end{problem}
-
 \begin{problem}{polynomials:int.values}
 Give an example of a polynomial \(b(x)\) none of whose coefficients are integers, so that, if we set \(x\) to an integer value, then \(b(x)\) takes an integer value.
 \end{problem}
@@ -51,9 +91,7 @@ Take the polynomial \(b(x)=(1/2)x(x+1)=(1/2)x^2+(1/2)x\).
 If \(x\) is an odd integer, then \(x+1\) is even, and vice versa, so \(b(x)\) is an integer for any integer \(x\).
 \end{answer}
 
-
 \section{The extended Euclidean algorithm}
-
 You are familiar with long division of polynomials.
 For example, to divide \(x-4\) into \(x^4-3x+5\), we have to order the terms in decreasing degrees as usual, and add in zero terms to get all degrees to show up then\label{equation:extended.Euclid.example}
 \[
@@ -88,21 +126,16 @@ Therefore from now on, we will restrict the choice of coefficients to ensure tha
 For example, we can carry out long division of any two polynomials with rational coefficients, and we always end up with a quotient and a remainder, which are themselves polynomials with rational coefficients.
 The same is true if we work with real number coefficients, or complex number coefficients.
 But if we work with integer coefficients, the resulting quotient and remainder might only have rational coefficients.
-
 \begin{problem}{polynomials:B\'ezout}
 Determine the greatest common divisor of \(b(x) = x^3 +4x^2+x-6\) and \(c(x) = x^5-6x+5\) and the associated B\'ezout coefficients \(s(x), t(x)\).
 \end{problem}
-
 It is trickier to specify the restrictions on coefficients if they are to be remainders modulo an integer.
 From now on, we will only work with remainders modulo a prime.
 The reason is that every nonzero remainder modulo a prime has a reciprocal, so we can always divide coefficients.
-
 \begin{problem}{polynomials:prime.field}
 Prove that every nonzero remainder modulo a prime has a reciprocal modulo that prime.
 \end{problem}
-
 With these restrictions on coefficients, we can immediately generalize the Euclidean and extended Euclidean algorithms, and compute B\'ezout coefficients and least common multiples, using the same proofs, so we won't repeat them.
-
 \begin{example}
 Take the polynomials \(b(x)=3+2x-x^2\) and \(c(x)=12-x-x^2\).
 We want to find the B\'ezout coefficients and the greatest common divisor among polynomials over the rational numbers.
@@ -133,9 +166,8 @@ The equation of the B\'ezout coefficients is therefore
 1\pr{3+2x-x^2} -1\pr{12-x-x^2} = -9+3x = 3(x-3).
 \]
 The greatest common divisor, once we divide away any coefficient in front of the highest term, is \(x-3\).
-A \emph{monic polynomial}\define{monic polynomial}\define{polynomial!monic} is one whose highest order term has coefficient \(1\): the greatest common divisor will always be taken to be a monic polynomial, and then there is a unique greatest common divisor.
+A \emph{monic polynomial}\define{monic polynomial}\define{polynomial!monic} is one whose highest degree term has coefficient \(1\): the greatest common divisor will always be taken to be a monic polynomial, and then there is a unique greatest common divisor.
 \end{example}
-
 Fix a choice of whether we are working with rational, real or complex coefficients or if our coefficients will be remainders modulo a prime.
 We will say this choice is a choice of \emph{field}\define{field}, and our polynomials are said to live \emph{over} that field.
 A polynomial over a chosen field is \emph{irreducible}%
@@ -145,7 +177,6 @@ A polynomial over a chosen field is \emph{irreducible}%
 \define{polynomial!reducible}
 if it does not split into a product \(a(x)b(x)\) of polynomials over the same field, except for having \(a(x)\) or \(b(x)\) constant.
 The same proof for prime numbers proves that a polynomial over a field admits a factorization into a product of irreducibles over that field, unique up to reordering the factors and perhaps multiplying any of the factors by a nonzero constant.
-
 \begin{example}
 Let's working over the remainders modulo 2.
 Notice that \(2x=0x=0\), and similarly that \(-1=1\) so \(-x^2=x^2\).
@@ -171,18 +202,51 @@ The B\'ezout coefficients are \(1, x\), and the greatest common divisor is \(x\)
 1\pr{x^3+x} + x\pr{x^2} = x.
 \]
 \end{example}
-
+\begin{problem}{polynomials:Bezout.mod.3}
+Find the B\`ezout coefficients of \(b(x)=x^3+x\), \(c(x)=x^4+1\) with coefficients in remainders modulo 3.
+\end{problem}
+\begin{answer}{polynomials:Bezout.mod.3}
+Keep in mind that, modulo \(3\), \(-1=2,-2=1\), \(1^{-1}=1\), \(2^{-1}=2\), so
+\begin{align*}
+&
+\begin{pmatrix}
+1 & 0 & x^3+x \\
+0 & 1 & x^4+1
+\end{pmatrix} \text{ add \(-x\)(row 1) to row 2},
+\\
+&
+\begin{pmatrix}
+1 & 0 & x^3+x \\
+-x & 1 & -x^2+1
+\end{pmatrix} \text{ add \(x\)(row 2) to row 1},
+\\
+&
+\begin{pmatrix}
+1-x^2 & x & 2x \\
+-x & 1 & -x^2+1
+\end{pmatrix} \text{ add \(2x\)(row 1) to row 2},
+\\
+&
+\begin{pmatrix}
+1-x^2 & x & 2x \\
+x^3+x & 1+2x^2 & 1
+\end{pmatrix}
+\end{align*}
+So the B\'ezout coefficients are \(x^3+x,1+2x^2\) and the gcd is \(1\).
+We can check: expand out
+\[
+(x^3+x)(x^3+x)+(1+2x^2)(x^4+1)=(x^6+2x^4+x^2)+(2x^6+x^4+2x^2+1)=1.
+\]
+\end{answer}
 
 
 
 
 \section{Factoring}
-
 \epigraph[author={A. A. Kirillov}, source={What are Numbers?}]
 {{}-{} What is a multiple root of a polynomial? \\
 {}-{} Well, it is when we substitute a number in the polynomial and get zero. Then do it again and again
 get zero and so \(k\) times \dots. But on the \((k+1)\)-st time the zero does not appear.}\SubIndex{Kirillov, A. A.}
-
 \begin{proposition}
 Take any constant \(c\) and any polynomial \(p(x)\) over any field.
 Then \(p(x)\) has remainder \(p(c)\) when divided by \(x-c\).
@@ -192,15 +256,13 @@ Take quotient and remainder: \(p(x)=(x-c)q(x)+r(x)\), using the Euclidean algori
 The degree of the remainder is smaller than the degree of \(x-c\), so the remainder is a constant, say \(r_0\).
 Plug in \(x=c\): \(p(c)=(c-c)q(c)+r_0=r_0\).
 \end{proof}
-
 A \emph{root} of a polynomial \(p(x)\) is a number \(c\) in whichever field we work over so that \(p(c)=0\).
-
 \begin{corollary}\label{corollary:divide.poly}
 A polynomial \(p(x)\) over any field has a root at \(x=c\), i.e. \(p(c)=0\), for some constant \(c\) in the field, just when the linear polynomial \(x-c\) divides into \(p(x)\).
 \end{corollary}
-
-
-
+\begin{problem}{polynomials:sqrts}
+Over the field of real numbers, or the field of rational numbers, or the field of complex numbers, or the field of remainders modulo any odd prime number: show that every constant \(d\) has either two square roots, which we denote as \(\pm \sqrt{d}\), or one square root (if \(2=0\) in our field or if \(d=0\)) or has no square roots.
+\end{problem}
 \begin{problem}{polynomials:quadratic.formula}
 Work over the field of real numbers, or the field of rational numbers, or the field of complex numbers, or the field of remainders modulo any odd prime number.
 Show that the solutions of the quadratic equation
@@ -211,30 +273,24 @@ Show that the solutions of the quadratic equation
 \[
 \pr{x+\frac{b}{2a}}^2 = \frac{b^2}{2a^2}-\frac{c}{a}.
 \]
-Show that every constant \(d\) has either two square roots, which we denote as \(\pm \sqrt{d}\), or one square root (if \(2=0\) in our field or if \(d=0\)) or has no square roots.
-Conclude that the solution of the quadratic equation, over any field, are
+Prove that the solutions of the quadratic equation, over any field, are
 \[
 x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
 \]
 just when the required square roots exist.
 \end{problem}
-
-
 \begin{problem}{polynomials:factor.quadratic}
 Prove that a quadratic\define{quadratic!polynomial}\define{polynomial!quadratic} or cubic\define{cubic!polynomial}\define{polynomial!cubic} polynomial (in other words of degree 2 or 3) over any field is reducible just when it has a root.
 \end{problem}
-
 \begin{problem}{polynomials:find.root.binary}
 Prove that the polynomial \(x^3+x+1\) is irreducible over the field of remainders modulo \(2\).
 By writing down all quadratic polynomials over that field, and factoring all of them but this one, show that this is the only irreducible quadratic polynomial over that field.
 \end{problem}
-
 \begin{example}
 The polynomial \(x^3+x+1\) is irreducible over the field of remainders modulo \(2\), as we saw in the previous problem.
 But then, if it is reducible over the integers, say \(a(x)b(x)\), then quotient out the coefficients modulo \(2\) to get a factorization \(\bar{a}(x)\bar{b}(x)\) over the field of remainders modulo \(2\), a contradiction.
 Therefore \(x^3+x+1\) is irreducible over the integers.  
 \end{example}
-
 \begin{corollary}
 Every polynomial over any field has at most one factorisation into linear factors, up to reordering the factors.
 \end{corollary}
@@ -242,12 +298,10 @@ Every polynomial over any field has at most one factorisation into linear factor
 The linear factors are determined by the roots.
 Divide off one linear factor from each root, and apply induction on the degree of the polynomial to see that the number of times each linear factor appears is uniquely determined.
 \end{proof}
-
 \begin{problem}{polynomials:roots.determine}
 Suppose that \(p(x)\) and \(q(x)\) are polynomials over some field, both of degree at most \(n\), and that \(p(c)=q(c)\) for \(n+1\) different numbers \(c\) from the field.
 Prove that \(p(c)=q(c)\) for all numbers \(c\) from the field.
 \end{problem}
-
 \begin{problem}{polynomials:not.prime.characteristic}
 Why are we working over fields?
 Working modulo \(6\), consider the polynomial \(b(x)=x^2+5x\).
@@ -257,7 +311,6 @@ How many factorizations can you make for it, working modulo \(6\)?
 \begin{answer}{polynomials:not.prime.characteristic}
 roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
 \end{answer}
-
 A root \(c\) of a polynomial \(p(x)\) has \emph{multiplicity \(k\)} if \((x-c)^k\) divides \(p(x)\).
 \begin{corollary}
 Over any field, the degree of a polynomial is never less than the sum of the multiplicities of its roots, with equality just when the polynomial is a product of linear factors.
@@ -266,9 +319,7 @@ Over any field, the degree of a polynomial is never less than the sum of the mul
 Degrees add when polynomials multiply, by looking at the leading term.
 \end{proof}
 
-
 \section{Rational roots}
-
 A powerful trick for guessing rational roots of integer coefficient polynomials:
 \begin{lemma}\label{lemma:guess.roots}
 If a polynomial \(p(x)\) with integer coefficients has a rational root \(x=n/d\), with \(n\) and \(d\) coprime integers, then the numerator \(n\) divides the coefficient of the lowest term of \(p(x)\), while the denominator \(d\) divides the coefficient of the highest term of \(p(x)\).
@@ -292,13 +343,11 @@ But \(n\) and \(d\) are coprime, so \(n\) divides into \(a_0\).
 The same trick backwards: all terms but the first term contain a factor of \(d\), so \(d\) divides into the first term.
 But \(n\) and \(d\) are coprime, so \(d\) divides into \(a_k\).
 \end{proof}
-
 \begin{example}\label{example:x.cubed}
 The polynomial \(p(x)=x^3-3x-1\), if it had a rational root \(n/d\), would need to have \(n\) divide into \(-1\), while \(d\) would divide into \(1\).
 So the only possibilities are \(n/d=1\) or \(n/d=-1\).
 Plug in to see that these are not roots, so \(x^3-3x-1\) has no rational roots.
 \end{example}
-
 \begin{problem}{polynomials:rat.roots}
 Using lemma~\vref{lemma:guess.roots}, find all rational roots of 
 \begin{enumerate}
@@ -316,7 +365,7 @@ Using lemma~\vref{lemma:guess.roots}, find all rational roots of
 
 
 \section{Sage}
-
+\epigraph[author={Norbert Wiener}, source={The Human Use Of Human Beings: Cybernetics And Society}]{The world of the future will be an even more demanding struggle against the limitations of our intelligence, not a comfortable hammock in which we can lie down to be waited upon by our robot slaves.}\SubIndex{Wiener, Norbert}\SubIndex{The Human Use Of Human Beings: Cybernetics And Society}%
 To construct polynomials in a variable \(x\), we first define the variable, using the strange expression:
 \begin{sageblock}
 x = var('x')
@@ -395,11 +444,10 @@ returns
 \(\sage{bezpoly(f,g)}\).
 
 
-
 \section{Interpolation}
-
+\epigraph[author={Henri Poincar\'e}, source={La Science et L'Hypoth\`ese},translation={Analyse data just so far as to obtain simplicity and no further.}]{Il faut bien s'arr\^eter quelque part, et pour que la science soit possible, il faut s'arr\^eter quand on a trouv\'e la simplicité.}\SubIndex{Poincar\'e, Henri}\SubIndex{La Science et L'Hypoth\`ese}
 \begin{theorem}
-Over any field, if we specify values \(x_0, \dots, x_n\) and \(y_0, \dots, y_n\), there is a unique polynomial \(p(x)\) of degree \(n\) so that \(p(x_i)=y_i\).
+Over any field, if we specify distinct values \(x_0, \dots, x_n\) and arbitrary values \(y_0, \dots, y_n\), there is a unique polynomial \(p(x)\) of degree \(n\) so that \(p(x_i)=y_i\).
 \end{theorem}
 The polynomial \(p(x)\) \emph{interpolates}\define{interpolation} the values \(y_i\) at the points \(x_i\).
 \begin{proof}
@@ -419,7 +467,6 @@ is our required polynomial.
 To check that it is unique, if there are two such polynomials, say \(p(x)\) and \(q(x)\), both of degree at most \(n\), both equal to \(y_i\) at \(x=x_i\), their difference \(p(x)-q(x)\) vanishes at \(x=x_i\), so is divisible by \((x-x_0)(x-x_1)\dots(x-x_n)\), which has degree \(n+1\).
 But their difference has degree at most \(n\), so is zero.
 \end{proof}
-
 \begin{problem}{polynomials:interpolation}
 What can go wrong with interpolation if the numbers are drawn from the remainders modulo 6?
 \end{problem}

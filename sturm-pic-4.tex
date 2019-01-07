@@ -1,0 +1,14 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\input{ColorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw[curveZero] (-1,0) -- (1,0);
+\draw[very thick,curveOne,domain=-1:1] plot (\x,{.5+.5*\x*\x});
+\draw[very thick,curveTwo,domain=-1:1] plot (\x,{.5*\x*\x*\x});
+\fill[curveTwo] (0,0) circle (2pt);
+\draw[very thick,curveThree,domain=-1:1] plot (\x,{-1+.25*\x*\x*\x});
+\draw[very thick,curveZero,<->] (-.9,.85) -- (-.9,-.3);
+\draw[very thick,curveZero,<->] (.9,.3) -- (.9,-.77);
+\end{tikzpicture}
+\end{document}

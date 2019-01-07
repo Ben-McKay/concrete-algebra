@@ -1,0 +1,10 @@
+\documentclass[tikz]{standalone}
+\usepackage{xparse}
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw[axisColor](-1,0) -- (3,0);
+\draw[very thick,axisColor]({sqrt(2)},0) -- (3,0);
+\DrawDot[\sqrt{2}]{sqrt(2)}{0}
+\end{tikzpicture}
+\end{document}

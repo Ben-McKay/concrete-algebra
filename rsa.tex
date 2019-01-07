@@ -1,26 +1,24 @@
 \chapter{Secret messages}\label{chapter:RSA}
 \begin{epigraphs}
-\qitem[author={Sylvia Plath}, source={The Unabridged Journals of Sylvia Plath}]{And when at last you find someone to whom you feel you can pour out your soul, you stop in shock at the words you utter— they are so rusty, so ugly, so meaningless and feeble from being kept in the small cramped dark inside you so long.}\SubIndex{Plath, Sylvia}
+\qitem[author={Sylvia Plath}, source={The Unabridged Journals of Sylvia Plath}]{And when at last you find someone to whom you feel you can pour out your soul, you stop in shock at the words you utter— they are so rusty, so ugly, so meaningless and feeble from being kept in the small cramped dark inside you so long.}\SubIndex{Plath, Sylvia}\SubIndex{The Unabridged Journals of Sylvia Plath}
 \qitem[author={André Malraux}]{Man is not what he thinks he is, he is what he hides.}\SubIndex{Malraux, André} 
 \end{epigraphs}
 \begin{center}
 \begin{minipage}{6cm}
 \includegraphics[width=6cm]{Enigma.jpg}
 \\
-\emph{Enigma}, Nazi secret code machine
+\emph{Enigma},\SubIndex{enigma} Nazi secret code machine
 \end{minipage}
 \end{center}
-\section{RSA:  the Cocks, Rivest, Shamir and Adleman algorithm}
-
+\section{RSA: the Cocks, Rivest, Shamir and Adleman algorithm}\SubIndex{RSA algorithm}
 \begin{example}
-Alice wants to send a message to Bob, but she doesn't want Eve to read it.
+Alice\SubIndex{Alice} wants to send a message to Bob,\SubIndex{Bob} but she doesn't want Eve\SubIndex{Eve} to read it.
 She first writes the message down in a computer, as a collection of 0's and 1's.
 She can think of these 0's and 1's as binary digits of some large integer \(x\), or as binary digits of some \emph{remainder}\SubIndex{remainder} \(x\) modulo some large integer \(m\).
 Alice takes her message \(x\) and turns it into a secret coded message by sending Bob not the original \(x\), but instead sending him \(x^d\) modulo \(m\), for some integer \(d\).
 This will scramble up the digits of \(x\) unrecognizably, if \(d\) is chosen ``at random''.
 For random enough \(d\), and suitably chosen positive integer \(m\), Bob can unscramble the digits of \(x^d\) to find \(x\).
 \end{example}
-
 \begin{example}
 For example, take \(m\defeq 55\) and let \(d\defeq 17\) and \(y\defeq x^{17} \operatorname{mod} 55\):
 \[
@@ -99,7 +97,6 @@ x & y & x & y & x & y & x & y \\
 \]
 If Alice sends Bob the secret message \(y=x^{17}\), then Bob decodes it by \(x=y^{33}\), as we will see.
 \end{example}
-
 \begin{theorem}\label{theorem:RSA}
 Pick two different prime numbers \(p\) and \(q\) and let \(m\defeq pq\).
 Recall Euler's totient\SubIndex{Euler's totient function} function \(\phi(m)\).
@@ -121,8 +118,6 @@ Since \(d\) and \(e\) are positive integers, \(de-1\) is not negative, so \(k \g
 So we can assume that \(k>0\).
 The result follows from theorem~\vref{theorem:generalized.Euler}.
 \end{proof}
-
-
 \begin{problem}{rsa:encode}
 Take each letter in the alphabet, ordered 
 \[
@@ -171,11 +166,8 @@ Warning: you might want to factor \(e\) first and then compute the power \(y^e\)
 \end{enumerate}
 \end{problem}
 
-
 \section{Sage}
-
 Sage shines because we can't do any of the computations of this chapter by hand.
-
 \subsection{Alice}
 To encode a single letter as a number, sage has a function \verb!ord()!:
 \begin{sageblock}

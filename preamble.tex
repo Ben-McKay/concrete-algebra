@@ -26,13 +26,27 @@ fit,
 intersections,
 petri,
 positioning,
+trees,
 through
 }
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}
 \usepackage{tikz-3dplot}
+\usepackage{genyoungtabtikz}
+\newlength{\YoungBoxSize}
+\setlength{\YoungBoxSize}{10pt}
+\Yboxdim{\YoungBoxSize}
+\Ylinecolour{gray!75}
+%\Ynodecolour{green!50!black}
+\Yfillcolour{gray!20}
+\NewDocumentCommand\emphYoungBox{}{\Yfillcolour{blue!30}}
+\NewDocumentCommand\otherEmphYoungBox{}{\Yfillcolour{red!30}}
+\NewDocumentCommand\regYoungBox{}{\Yfillcolour{gray!20}}
 \usepackage{stackengine}
 \usepackage{tensor}
+\DeclarePairedDelimiter\braDelim{\langle}{\rvert}
+\DeclarePairedDelimiter\ketDelim{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braketDelim[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
 \usepackage{epigraph-keys}	% Handles epigraphs at the start of each chapter.
 \usepackage{sagetex}
 \vrefwarning
@@ -149,6 +163,9 @@ through
 
 \NewDocumentCommand\Gal{mm}{\operatorname{Aut}{#2/#1}}
 
+\newcounter{squareBoxCounter}
+
+
 % quaternions
 \newcommand*{\Quat}[1]{\ensuremath{\mathbb{H}^{#1}}}
 
@@ -158,3 +175,7 @@ through
 \newcommand*{\ii}{\ensuremath{\iota}}
 
 \NewDocumentCommand\Hessian{m}{\ensuremath{\det #1''}}
+
+\NewDocumentCommand\pres{mo}{\ensuremath{\IfValueTF{#2}{\braketDelim{#1}{#2}}{\left<#1\right>}}}
+
+\input{colorScheme}

@@ -2,20 +2,21 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.12,width=5cm}%
+\input{ColorScheme}
 \begin{document}
 {
 \newcommand{\lmbda}{0}
 \newcommand{\thta}{acos(1/sqrt(1+(\lmbda)^2))}
 \begin{tikzpicture}[rotate=-\thta]
 \newcommand{\mx}{1.5}
-\draw[green!30] (1/2,-\mx) -- (1/2,\mx);
-\newcommand{\fclr}{blue!30}
-\draw[\fclr] 
-	(0,0) ellipse ({1} and {sqrt(1+(\lmbda)^2)});
-\node[above left,\fclr] at (-.65,.65) {\(b=0\)};
-\newcommand{\gclr}{brown!30}
-\draw[\gclr] (1,0) ellipse ({1} and {sqrt(1+(\lmbda)^2)});
-\node[below right,\gclr] at (1.65,-.65) {\(c=0\)};
+\colorlet{f}{curveOne}
+\colorlet{g}{curveTwo}
+\colorlet{h}{curveThree}
+\draw[very thick,h] (1/2,-\mx) -- (1/2,\mx);
+\draw[very thick,f] (0,0) ellipse ({1} and {sqrt(1+(\lmbda)^2)});
+\node[above left,f] at (-.65,.65) {\(b=0\)};
+\draw[very thick,g] (1,0) ellipse ({1} and {sqrt(1+(\lmbda)^2)});
+\node[below right,g] at (1.65,-.65) {\(c=0\)};
 \end{tikzpicture}
 }
 \end{document}

@@ -1,13 +1,11 @@
 \chapter{Galois theory}\label{chapter:galois.theory}
-
+\epigraph[author={Sim\'eon-Denis Poisson}]{We have made every effort to understand Galois's proof. His reasoning is not sufficiently clear, sufficiently developed, for us to judge its correctness and we can give no idea of it in this report.}%
+\SubIndex{Poisson, Sim\'eon-Denis}
 \section{Automorphisms}
-
 An \emph{automorphism}\define{automorphism} of a ring \(R\) is a morphism \(f \colon R \to R\) which has an inverse \(f^{-1} \colon R \to R\), which is also a morphism.
-
 \begin{problem}{galois:aut.gp}
 Prove that the set of all automorphisms of any ring \(R\) is a group, the \emph{automorphism group}\define{automorphism!group}\define{group!automorphism} of \(R\).
 \end{problem}
-
 \begin{example}
 The set of rational numbers of the form \(b+c\sqrt{2}\), for \(b,c \in \Q{}\), forms a field, usually denoted \(\Q{}(\sqrt{2})\).
 Indeed, when we add such numbers
@@ -43,25 +41,21 @@ f(b+c\sqrt{2})=b-c\sqrt{2}
 is an automorphism, i.e. a morphism of the field to itself.
 Note that \(f^{-1}=f\).
 \end{example}
-
 \begin{problem}{galois:preserve.minus}
 Prove that every morphism \(f \colon R \to S\) of rings preserves subtraction.
 \end{problem}
 \begin{answer}{galois:preserve.minus}
 If \(z=x-y\) then \(f(x)=f(y+z)=f(y)+f(z)\) so \(f(z)=f(x)-f(y)\).
 \end{answer}
-
 Suppose that \(R\) is a ring.
 Suppose that, for any elements \(b,c\) of \(R\) with \(c\ne 0\), there is a unique element \(d\) of \(R\) so that \(dc=b\).
 Write this element as \(d=b/c\) and say that \(R\) has \emph{right inverses}.
-
 \begin{lemma}
 Every morphism \(f \colon R \to S\) of rings with right inverses preserves right inverses.
 \end{lemma}
 \begin{proof}
 If \(d=b/c\) then \(dc=b\) so \(f(dc)=f(b)=f(d)f(c)\) so \(f(d)=f(b)/f(c)\).
 \end{proof}
-
 \begin{lemma}
 Every automorphism of a ring preserves \(0\).
 Every automorphism of a ring with identity preserves the identity element.
@@ -79,7 +73,6 @@ Since \(h\) has an inverse, \(h\) is one-to-one and onto, so every element \(c\)
 So \(c=h(1)c=ch(1)\) for all \(c\) in \(R\).
 In particular, taking \(c=1\), \(1=h(1)1=h(1)\).
 \end{proof}
-
 \begin{lemma}
 The only automorphism of any of the fields \(\Q{},\R{}\) or \(\Zmod{p}\) is the identity map \(b \mapsto b\).
 \end{lemma}
@@ -105,7 +98,6 @@ Take any real number \(x\) and approximate \(x\) from below by rational numbers 
 Then \(r_i < x < s_i\) so applying \(f\): \(r_i < f(x) < s_i\).
 It follows that \(f(x)=x\), as real numbers as completely determined by their digits, i.e. by approximation by rationals.
 \end{proof}
-
 \begin{lemma}
 There are two automorphisms of \(\Q{}(\sqrt{2})\): the identity map \(\iota(b+c\sqrt{2})=b+c\sqrt{2}\) and the map
 \[
@@ -118,9 +110,11 @@ So \(h(b+c\sqrt{2})=h(b)+h(c)h(\sqrt{2})=b+ch(\sqrt{2})\): it suffices to determ
 Note that \(\sqrt{2}^2=2\), so apply \(h\) to get \(h(\sqrt{2})^2=2\), i.e. \(h(\sqrt{2})=\pm \sqrt{2}\).
 \end{proof}
 
+\section{Galois groups}
 The \emph{Galois group}\define{Galois group}\define{group!Galois} of a field extension \(k \subset K\), denoted \(\Gal{k}{K}\) is the group of automorphisms of \(K\) which are the identity on \(k\).
-So we have found above that \(\Gal{\Q{}}{\Q{}(\sqrt{2})}=\set{\pm 1}\) where we let \(-1\) denote the transformation \(b+c\sqrt{2}=b-c\sqrt{2}\).
-
+\begin{example}
+We found above that \(\Gal{\Q{}}{\Q{}(\sqrt{2})}=\set{\pm 1}\) where we let \(-1\) denote the transformation \(b+c\sqrt{2}=b-c\sqrt{2}\).
+\end{example}
 If \(b(x)\) is a polynomial with coefficients in \(k\), and \(g\) is a automorphism of \(K\) fixing all elements of \(k\), then \(g(b(x))=b(x)\), i.e. \(g\) fixes all coefficients.
 Therefore if \(\alpha\) is a root of \(b(x)\) lying in \(K\), then so is \(g\alpha\):
 \(
@@ -132,15 +126,12 @@ so
 \]
 Hence the Galois group \(\Gal{k}{K}\) of a field extension \(K/k\) acts on the roots in \(K\) of all polynomials over \(k\).
 If a polynomial splits into factors over \(k\), then clearly the Galois group \(\Gal{k}{K}\) permutes the \(K\)-roots of each factor individually.
-
 \begin{example}
 The Galois group of \(\Q{}(\sqrt{2})/\Q{}\) permutes \(\sqrt{2},-\sqrt{2}\), the roots of \(x^2-2\).
 Note that the elements of \(\Q{}(\sqrt{2})\) have the form \(a+b\sqrt{2}\), for \(a,b\) rational.
 Hence the elements of \(\Q{}(\sqrt{2}\) fixed by the Galois group are precisely the elements of \(\Q{}\).
 \end{example}
-
 A \emph{Galois extension}\define{Galois extension}\define{extension!Galois} is an extension \(K/k\) so that the elements of \(K\) fixed by \(\Gal{k}{K}\) are precisely the elements of \(k\).
-
 \begin{example}
 In chapter~\ref{chapter:fields} we checked that the field \(K\defeq\Q{}(\sqrt[3]{2})\) consists of the numbers \(a+b2^{1/3}+c2^{2/3}\) for \(a,b,c\) rational.
 Note that \(K\) is a subfield of the field of real numbers.
@@ -150,7 +141,6 @@ So every automorphism of \(K\) sends \(2^{1/3}\) to itself.
 The Galois group of \(K/\Q{}\) is \(\Gal{\Q{}}{K}=\set{1}\).
 The extension \(\Q{}(\sqrt[3]{2})/\Q{}\) is \emph{not} a Galois extension; the Galois group is too small, fixing everything.
 \end{example}
-
 \begin{example}
 Let \(K\) be the splitting field of \(p(x)=x^3-2\) over \(k=\Q{}\).
 There are 3 complex cube roots of \(2\): the real number \(2^{1/3}\), and its two rotations by a third of a revolution around the origin: call them \(\alpha\) and \(\bar\alpha\).
@@ -162,7 +152,7 @@ In particular, \(K/k\) is a Galois extension.
 \end{example}
 
 \section{Adding roots}
-
+\begin{example}
 Start with a field \(k\), and take two elements \(b,c \in k\).
 The roots of the equation \(0=x^2+bx+c\) lie in some extension \(K\).
 To be specific, the quadratic formula
@@ -171,34 +161,13 @@ x=\frac{-b \pm \sqrt{b^2-4ac}}{2}
 \]
 shows that the roots of our quadratic equation lie in the field \(K=k(\sqrt{b^2-4ac})\), as long as \(k\) has characteristic not equal to \(2\).
 In fields of characteristic \(2\), the quadratic formula doesn't hold, and the splitting field is more complicated.
-
-A \emph{simple extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(K\), denoted \(k(\alpha)\), with an element \(\alpha\) of \(K\), so that every element of \(K\) is a rational function \(b(\alpha)/c(\alpha)\) with coefficients in \(k\).
-A \emph{simple radical extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(k(\alpha)\) for which \(\alpha\) satisfies an equation \(\alpha^n=c\) for some element \(c\) of \(k\); we usually write such an extension as \(k(\sqrt[n]{c})\).
-A \emph{radical extension} is the result of repeated simple radical extensions \(k(\alpha_1)(\alpha_2)\dots(\alpha_n)\).
-\begin{example}
-If we allow repeated radical extensions, we might as well extend by a prime root each time, since \(\sqrt[6]{\alpha}\) can be added by first adding \(\beta=\sqrt[2]{\alpha}\) and then adding \(\sqrt[3]{\beta}\).
 \end{example}
-\begin{example}
-The extension \(\Q{}(x,y)/\Q{}\) (adding two abstract variables) admits an automorphism \(x \mapsto y\), \(y \mapsto x\).
-But the extension \(\Q{}(\sqrt{x},y)/\Q{}\) doesn't admit this automorphism, since we have no \(\sqrt{y}\).
-This is easy to fix: just add a \(\sqrt{y}\).
-\end{example}
-\begin{lemma}
-Suppose that \(K\) is an extension of a field \(k\), and that \(\Gal{k}{K}\) is a finite group.
-For every radical extension \(E\) of \(K\), there is a radical extension \(F\) of \(E\) so that the action of \(\Gal{k}{K}\) on \(K\) extends to an action on \(F\).
-\end{lemma}
-\begin{proof}
-If we have some element \(\alpha\) of \(K\) and some radical \(\sqrt[m]{\alpha}\), we just need to add some element \(\sqrt[m]{g\alpha}\) for every \(g\) in \(\Gal{k}{K}\), and repeat as needed.
-\end{proof}
-
-
-\begin{theorem}
+\begin{theorem}\label{theorem:splitting.Galois}
 Suppose that \(K\) is a splitting field of an irreducible polynomial \(p(x)\) over a field \(k\).
 If \(\alpha,\beta \in K\) are roots of \(p(x)\) then the Galois group of \(K\) over \(k\) has an element which takes \(\alpha\) to \(\beta\).
 In particular, \(K\) is a Galois extension of \(k\).
 \end{theorem}
 We will prove this result in chapter~\ref{chapter:quotient.rings}.
-
 \begin{example}
 Return to our previous example: in chapter~\ref{chapter:fields} we checked that the field \(K\defeq\Q{}(\sqrt[3]{2})\) consists of the numbers \(a+b2^{1/3}+c2^{2/3}\) for \(a,b,c\) rational.
 Above, we saw that \(K\) has trivial Galois group over \(k=\Q{}\).
@@ -224,4 +193,78 @@ That map then must leave the other root alone, as it must remain a root.
 So we can identify two automorphisms in the Galois group.
 Composing these two, we see that every permutation of the roots \(\sqrt[3]{2}, \omega \sqrt[3]{2}\) and \(\bar\omega \sqrt[3]{2}\) is obtained by a unique automorphism in the Galois group of \(L\) over \(k\), i.e. \(\Gal{k}{L}\) is the symmetric group on three letters.
 \end{example}
+\begin{example}
+Pick a prime \(p\).
+Over \(k=\Q{}\), factor \(x^p-1=(x-1)(x^{p-1}+x^{p-2}+\dots+x+1)\).
+The second factor is irreducible by problem~\vref{problem:polynomials:Eisenstein.cyclotomic}.
+The Galois group then takes any \(p\)-th root of \(1\) to any other (except for \(1\) itself, which is fixed).
+Once we take the root \(\omega=e^{2\pi i/5}\) to some other root, \(\omega^n\), this determines the automorphism, as all other roots are powers of \(\omega\).
+The Galois group is thus given by automorphisms \(\phi_n(\omega)=\omega^n\), which clearly commute, forming the cyclic group of order 5.
+\end{example}
+\begin{example}
+For abstract variables \(x_1,\dots,x_n\) and any field \(k\), the field \(L=k(x_1,\dots,x_n)\) contains the subfield \(K=k(e_1,\dots,e_n)\) generated by the elementary symmetric polynomials in \(x_1,\dots,x_n\).
+By problem~\vref{problem:permuting.roots:rationals}, this subfield is precisely the elements invariant under permutations of the variables.
+Hence its Galois group \(\Gal{K}{L}\) is the symmetric group on \(n\) letters.
+\end{example}
+\begin{problem}{galois:symmetric.polynomials}
+Suppose that \(p(x)\) is a polynomial with coefficients in a field \(k\), and with roots in some extension \(K\) of \(k\), say \(\alpha_1,\alpha_2,\dots,\alpha_n\).
+Prove that, for any symmetric polynomial \(q\) with coefficients in \(k\), \(q(\alpha_1,\dots,\alpha_n)\) belongs to \(k\).
+\end{problem}
+\begin{answer}{galois:symmetric.polynomials}
+The elementary symmetric polynomials of the roots are the coefficients of \(p(x)\).
+All symmetric functions are polynomials in the elementary symmetric polynomials.
+A different proof: all of \(\alpha_1,\dots,\alpha_n\) belong to the splitting field of \(p(x)\) inside \(K\).
+So we can assume without loss of generality that \(K\) is the splitting field of \(p(x)\).
+The Galois group of \(K/k\) acts as permutations of \(\alpha_1,\dots,\alpha_n\), fixing \(k\), so fixes \(q(\alpha_1,\dots,\alpha_n)\).
+But \(K\) is a Galois extension of \(k\), so the fixed elements under the Galois group are precisely the elements of \(k\).
+\end{answer}
+\begin{theorem}
+Suppose that \(K\) is the splitting field of an irreducible monic polynomial \(p(x)\) over a field \(k\).
+Let \(d\) be the discriminant of \(p(x)\), i.e. the resultant of \(p(x),p'(x)\).
+Then \((-1)^{n(n-1)/2}d\) is a square in \(K\), say \(\alpha^2\), so has a square root \(\alpha\) in \(K\).
+The field extension \(k(\alpha) \subset K\) has Galois group \(\Gal{k(\alpha)}{K} \subset \Gal{k}{K}\) consisting precisely of the even permutations of the roots in \(\Gal{k}{K}\).
+\end{theorem}
+\begin{proof}
+Problem~\vref{problem:resultants:discriminant.as.product} shows that
+\[
+d=(-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2,
+\]
+so we can take
+\[
+\alpha=\prod_{i<j}(x_i-x_j),
+\]
+or any multiple by any square of \(-1\), or the same expression after any permutation of roots.
+This \(\alpha\) is precisely the polynomial we encountered in lemma~\vref{lemma:sign.of.permutation}, which changes sign when we permute roots, according to the sign of the permutation.
+
+Every automorphism of \(K\) fixing all elements of \(k(\alpha)\) fixes all elements of \(k \subset k(\alpha)\), so \(\Gal{k(\alpha)}{K} \subset \Gal{k}{K}\).
+Given an automorphism \(g\) in \(\Gal{k}{K}\), it permutes the roots of \(p(x)\), so acts on \(\alpha\) as the sign of that permutation, so fixes \(\alpha\) just when it is even as a permutation.
+But it fixes \(k\) in any case, so fixes \(k(\alpha)\) just when it fixes \(\alpha\).
+\end{proof}
+\begin{example}
+Return to the splitting field \(K\) of \(x^3-2\) over \(k=\Q{}\).
+We saw that \(\Gal{k}{K}\) is the symmetric group on three letters.
+We compute the discriminant \(\Delta=\Delta_{x^3-2}=108\).
+So \(d=(-1)^{3(2)/2}\Delta=-108\), which has no square root in \(k=\Q{}\).
+We adjoin a square root to \(-108\), or equivalently to \(-3\) since \(-108=2^2 3^2 (-3)\) , so \(\alpha=\sqrt{-3}\), and \(\Gal{k(\alpha)}{K}\) is the alternating group on three letters.
+\end{example}
+
+\section{Radical extensions}
+A \emph{simple extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(K\), denoted \(k(\alpha)\), with an element \(\alpha\) of \(K\), so that every element of \(K\) is a rational function \(b(\alpha)/c(\alpha)\) with coefficients in \(k\).
+A \emph{simple radical extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(k(\alpha)\) for which \(\alpha\) satisfies an equation \(\alpha^n=c\) for some element \(c\) of \(k\); we usually write such an extension as \(k(\sqrt[n]{c})\).
+A \emph{radical extension} is the result of repeated simple radical extensions \(k(\alpha_1)(\alpha_2)\dots(\alpha_n)\).
+\begin{example}
+If we allow repeated radical extensions, we might as well extend by a prime root each time, since \(\sqrt[6]{\alpha}\) can be added by first adding \(\beta=\sqrt[2]{\alpha}\) and then adding \(\sqrt[3]{\beta}\).
+\end{example}
+\begin{example}
+The extension \(\Q{}(x,y)/\Q{}\) (adding two abstract variables) admits an automorphism \(x \mapsto y\), \(y \mapsto x\).
+But the extension \(\Q{}(\sqrt{x},y)/\Q{}\) doesn't admit this automorphism, since we have no \(\sqrt{y}\).
+This is easy to fix: just add a \(\sqrt{y}\).
+\end{example}
+\begin{lemma}
+Suppose that \(K\) is an extension of a field \(k\), and that \(\Gal{k}{K}\) is a finite group.
+For every radical extension \(E\) of \(K\), there is a radical extension \(F\) of \(E\) so that the action of \(\Gal{k}{K}\) on \(K\) extends to an action on \(F\).
+\end{lemma}
+\begin{proof}
+If we have some element \(\alpha\) of \(K\) and some radical \(\sqrt[m]{\alpha}\), we just need to add some element \(\sqrt[m]{g\alpha}\) for every \(g\) in \(\Gal{k}{K}\), and repeat as needed.
+\end{proof}
 

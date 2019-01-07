@@ -1,10 +1,7 @@
 \chapter{Factoring polynomials}
-
 \epigraph[author={Tennessee Williams}, source={Baby Doll and Tiger Tail}, etc={Act I, Scene 2}]{\emph{Silva:} You've got many refinements. I don't think you need to worry about your failure at long division.
 I mean, after all, you got through short division, and short division is all that a lady ought to cope with.}\SubIndex{Williams, Tennessee}
-
 \section{Factoring with integer coefficients}
-
 \begin{problem}{factoring:prime.outputs}
 Suppose that \(p(x)\) is a nonconstant polynomial with integer coefficients.
 Prove that there are infinitely many positive integers \(x\) at which \(p(x)\) is not prime.
@@ -17,21 +14,18 @@ In particular, \(p(N)>0\).
 For any integer \(\ell\), if we set \(x=N+\ell p(N)\), then expanding out \(x^k=N^k+\dots\), the \(\dots\) terms all contain a factor of \(p(N)\), so \(p(x)=p(N)+\dots\), where again the \(\dots\) terms all contain a factor of \(p(N)\).
 So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell p(N)\).
 \end{answer}
-
 \begin{proposition}\label{proposition:F.p.polynomial.factorization}
-Working with coefficients remainders modulo a prime, if \(0=a(x)b(x)\) for two polynomials \(a(x), b(x)\), then either \(a(x)=0\) or \(b(x)=0\).
+Working with coefficients remainders modulo a prime, if \(0=b(x)c(x)\) for two polynomials \(b(x), c(x)\), then either \(b(x)=0\) or \(c(x)=0\).
 \end{proposition}
 \begin{proof}
 The highest term of the product is the product of the highest terms, so has coefficient the product of the coefficients of the highest terms.
 In problem~\vref{problem:modular.arithmetic:prime.field}, we saw that if a product of remainders modulo a prime vanishes (modulo that prime), then one of the factors is zero.
-So the coefficient of the highest term of either \(a(x)\) or of \(b(x)\) is zero.
+So the coefficient of the highest term of either \(b(x)\) or of \(c(x)\) is zero.
 But then by definition that isn't the highest term.
 \end{proof}
-
-
 \begin{lemma}[Gauss's lemma\define{Gauss's lemma}]
-Take a polynomial \(p(x)\) with integer coefficients.
-Suppose that we can factor it as \(p(x)=b(x)c(x)\) into polynomials \(b(x)\), \(c(x)\) with rational coefficients.
+Any polynomial \(p(x)\) with integer coefficients factors over rational numbers just when it factors over integers.
+In other words, suppose that we can factor it as \(p(x)=b(x)c(x)\) into polynomials \(b(x)\), \(c(x)\) with rational coefficients.
 Then we can rescale each of \(b(x)\) and \(c(x)\), by multiplying by nonzero rational numbers, to arrange that \(p(x)=b(x)c(x)\) still but now \(b(x)\) and \(c(x)\) have integer coefficients.
 \end{lemma}
 \begin{proof}
@@ -48,7 +42,6 @@ Say, for example, \(\bar{b}(x)=0\).
 But then \(p_1\) divides into all coefficients of \(b(x)\), so we can divide both sides of \(d \, p(x)=b(x)c(x)\) by \(p_1\).
 Repeat until you have divided away all of the prime factors in \(d\).
 \end{proof}
-
 A polynomial with integer coefficients is \emph{irreducible}%
 \define{irreducible!polynomial}%
 \define{reducible!polynomial}% 
@@ -56,7 +49,6 @@ A polynomial with integer coefficients is \emph{irreducible}%
 \define{polynomial!reducible}
 if it does not split into a product \(b(x)c(x)\) except for having \(b(x)=\pm 1\).
 (Note that this notion of irreducibility is different from being irreducible over a field.)
-
 \begin{corollary}\label{corollary:coprime.coeffs}
 Suppose that \(p(x)\) is a polynomial with coprime integer coefficients.
 Then it is irreducible as an integer coefficient polynomial just when it is irreducible as an rational coefficient polynomial.
@@ -65,40 +57,35 @@ Then it is irreducible as an integer coefficient polynomial just when it is irre
 By Gauss' Lemma above, if \(p(x)\) factors into rational polynomials, then it factors into integer polynomials.
 Conversely, since \(p(x)\) has coprime coefficients, if \(p(x)\) factors into integer polynomials \(p(x) = b(x)c(x)\) then neither \(b(x)\) nor \(c(x)\) can be constant polynomials. 
 \end{proof}
-
 \begin{example}
-We saw on page~\vpageref{example:x.cubed} that \(x^3-3x-1\) has no rational roots.
+We saw~\vpageref{example:x.cubed} that \(x^3-3x-1\) has no rational roots.
 If it is reducible over the field of rational numbers, then it has a rational root; see problem~\vref{problem:polynomials:factor.quadratic}.
 So therefore it is irreducible over the field of rational numbers.
 Its coefficients are coprime, so it is irreducible over the integers.
 \end{example}
-
 \begin{theorem}
 Every nonzero integer coefficient polynomial has a factorization into irreducible integer coefficient polynomials, unique up to the order in which we write down the factors and up to perhaps multiplying factors by \(-1\).
 \end{theorem}
 \begin{proof}
-Clearly we can assume that \(p(x)\) is not constant.
-
 Let \(d\) be the greatest common divisor of the coefficients of \(p(x)\), so that \(p(x) = d \, P(x)\), where the coefficients of \(P(x)\) are coprime. 
 Since \(d\) factors uniquely into primes, it suffices to prove that
 \(P(x)\) can be factored uniquely into irreducibles. 
 Thus we may assume that coefficients of \(p(x)\) are coprime. 
 
 Factor \(p(x)\) into irreducibles over the field of rational numbers.
-By Gauss' Lemma, such a factorization yields a factorization of \(p(x)\) into integer coefficient factors, whose factors are constant rational number multiples of the rational coefficient factors. 
-But we want to check that the factors remain irreducible.
+By Gauss' Lemma, such a factorization yields a factorization of \(p(x)\) into integer coefficient factors, each a constant rational number multiple of the rational coefficient factors. 
+We want to check that the factors remain irreducible.
 Since the coefficients of \(p(x)\) are coprime, the coefficients in each of these factors are also coprime: a common divisor would pull out of the whole factorization.
 By corollary~\vref{corollary:coprime.coeffs}, each factor is irreducible over the integers.
 
 Suppose that we have two factorizations of \(p(x)\) into irreducible integer coefficient polynomials.
-Recall that the factorization over the field of rationals is unique up to reordering factors and scaling factors by nonzero constant rational numbers.
+Recall that the factorization over rationals is unique up to reordering factors and scaling factors by nonzero constant rationals.
 Therefore our two factorizations are each obtained from the other by such tricks.
 So if we take out one of the factors \(P(x)\) from one factorization, and the corresponding factor \(Q(x)\) from the other, then \(Q(x)=\frac{a}{b}P(x)\) where \(a, b\) are integers, so \(bQ(x)=aP(x)\).
 The coefficients of \(P(x)\) are coprime integers, and so are those of \(Q(x)\).
 Taking greatest common divisor, we find \(b = \pm a\).
 So \(P(x)=\pm Q(x)\).
 \end{proof}
-
 Sage can test to see if a polynomial is irreducible:
 \begin{sageblock}
 R.<x> = PolynomialRing(QQ)
@@ -115,14 +102,11 @@ b.is_irreducible()
 \end{sageblock}
 yields \(\sage{b.is_irreducible()}\), while \verb!factor(b)! yields \(\sage{factor(b)}\).
 
-
-
 \section{Eisenstein's criterion: checking that there are no more factors}
-
-\begin{proposition}[Eisenstein's criterion]
+\begin{proposition}[Eisenstein's criterion]\define{criterion!Eisenstein}\define{Eisenstein's criterion}
 Take a polynomial
 \[
-q(x) = a_n x^n + a_{m-1} x^{m-1} + \dots + a_1 x + a_0.
+q(x) = a_n x^n + a_{m-1} x^{m-1} + \dots + a_1 x + a_0
 \]
 with integer coefficients \(a_0, a_1, \dots, a_n\).
 Suppose that there is a prime \(p\) so that
@@ -171,22 +155,49 @@ b_0, b_1, \dots, b_r.
 \]
 This contradicts the condition that \(p\) does not divide \(a_n\).
 \end{proof}
-
 \begin{example}
 The polynomial \(x^9+14x+7\) is irreducible by Eisenstein's criterion.
 \end{example}
-
 \begin{example}
 For any prime \(p\) and positive integer \(d\), the polynomial \(x^d-p\) satisfies Eisenstein's criterion.
 Therefore there are no rational number square roots, cube roots, and so on, of any prime number \(p\).
 \end{example}
-
 \begin{problem}{polynomials:Eisenstein}
 Give some examples of polynomials to which Eisenstein's criterion applies.
 \end{problem}
+\begin{problem}{polynomials:Eisenstein.2}
+Explain why the lowest terms in \(y\) of a product \(b(x,y)c(x,y)\) are obtained by expanding the product of the lowest \(y\) terms in each of \(b(x,y)\) and \(c(x,y)\).
+Use this to prove that
+\[
+p(x,y)=5+25x+8x^2+7xy+19y^3
+\]
+is irreducible.
+\end{problem}
+\begin{problem}{polynomials:Eisenstein.3}
+Explain why the highest terms in \(y\) of a product \(b(x,y)c(x,y)\) are obtained by expanding the product of the highest \(y\) terms in each of \(b(x,y)\) and \(c(x,y)\).
+Use this to prove that
+\[
+q(x,y)=2+9xy+40x^3y^2+5y^3+25xy^3+8x^2y^3
+\]
+is irreducible.
+\end{problem}
+\begin{problem}{polynomials:Eisenstein.cyclotomic}
+Suppose that \(p\) is a prime number.
+Prove that the polynomial \(c(x)\defeq x^{p-1}+x^{p-2}+\dots+x+1\) is irreducible.
+Hint: problem~\vref{problem:induction:cyclotomic}.
+\end{problem}
+\begin{answer}{polynomials:Eisenstein.cyclotomic}
+By problem~\vref{problem:induction:cyclotomic}, 
+\begin{align*}
+c(x+1)
+&=\binom{p}{1}+\binom{p}{2}x+\binom{p}{3}x^2+\dots+\binom{p}{p-1}x^{p-2}+\binom{p}{p}x^{p-1},
+\\
+&=p+\frac{p!}{2!(p-2)!}x+\frac{p!}{3!(p-3)!}x^2+\dots+\frac{p!}{(p-1)!1!}x^{p-2}+x^{p-1}.
+\end{align*}
+Clearly there is a factor of \(p\) in each term, and no \(p^2\) factor in the constant term.
+\end{answer}
 
 \section{Eisenstein's criterion in sage}
-
 To check Eisenstein's criterion, tell sage to work with integer coefficient polynomials:
 \begin{sageblock}
 R.<x> = PolynomialRing(ZZ)
@@ -227,87 +238,7 @@ The expression \verb!c=b.coefficients()! yields a list of coefficients of the po
 The expression \verb!c.pop()! returns the last element in the list, and at the same time deletes that element from the list.
 If \verb!Eisenstein(p)! is not \verb![]!, then \verb!p! is irreducible by Eisenstein's criterion.
 
-
-
-
-\section{Several variables}
-
-Over any finite field, the polynomial
-\[
-q(t) = \prod_c (t-c)
-\]
-(where the product is over all constants \(c\) in the field)
-vanishes for any value of the variable \(t\) in that field.
-
-\begin{lemma}\label{lemma:infinite.field.zeroes}
-Take a nonzero polynomial in several variables, over a field \(k\), that vanishes for all values of those variables.
-Then the field \(k\) is finite and the polynomial is expressible as
-\[
-p(x)
-=
-\sum_{i=1}^n p_i(x) q\of{x_i}
-\]
-where \(x=\pr{x_1,x_2,\dots,x_n}\) and each \(p_i(x)\) is a polynomial and
-\[
-q(t)=\prod_c \pr{t-c}
-\]
-is our polynomial that vanishes for all values of \(t\) in \(k\).
-In particular, \(p(x)\) has degree at least equal to the number of elements in the field in at least one of the variables.
-\end{lemma}
-\begin{proof}
-In one variable, we can factor each root as in corollary~\vref{corollary:divide.poly}.
-Suppose we have two variables \(x,y\) and a polynomial \(p(x,y)\).
-Set \(y\) to zero, and find that by induction, the resulting polynomial \(p(x,0)\) is divisible as required by \(q(x)\), say \(p(x,0)=q(x)p_1(x)\).
-So \(p(x,y)=q(x)p_1(x) + y h(x,y)\), say.
-It is good enough to prove the result for \(y h(x,y)\) and add to \(q(x)p_1(x)\).
-So we can assume that \(p(x,y)=y h(x,y)\).
-Moreover, since \(p(x,y)\) vanishes for all \(x,y\) values in our field, \(h(x,y)\) vanishes for all \(x,y\) values in our field as long as \(y\ne 0\). 
-
-Define a polynomial \(\delta(t)\) by
-\[
-\delta(t)=\prod_{c\ne 0}\pr{1-\frac{t}{c}},
-\]
-where the product is over all nonzero constant elements \(c\) in our field.
-Check that \(\delta(0)=1\) while \(\delta(b)=0\) for any nonzero element \(b\) of our field.
-Therefore
-\[
-h(x,y)-\delta(y)h(x,0)
-\]
-vanishes for all values of \(x,y\) in our field.
-By induction on degree, we can write 
-\[
-h(x,y)-\delta(y)h(x,0)=h_1(x,y)q(x)+h_2(x,y)q(y).
-\]
-Plugging back into \(p(x,y)\) gives the result.
-\end{proof}
-
-
-A \emph{linear function}\define{linear!function} is a polynomial of the form
-\[
-f\of{x_1,x_2,\dots,x_n} = a_1 x_1 + a_2 x_2 + \dots + a_n x_n.
-\]
-If not all of the coefficients \(a_1, a_2, \dots, a_n\) are zero, the set of points \(x=\pr{x_1,x_2,\dots,x_n}\) at which \(f(x)=0\) is called a \emph{linear hyperplane}.\define{linear!hyperplane}\define{hyperplane!linear}
-
-
-\begin{lemma}\label{lemma:linear.factor}
-Suppose that in variables \(x=\pr{x_1,x_2,\dots,x_n}\)
-\begin{enumerate}
-  \item \(p(x)\) is a polynomial and
-  \item \(f(x)\) is a nonzero linear function and
-  \item \(p(x)=0\) at every point \(x\) where \(f(x)=0\) and
-  \item the field we are working over contains more elements than the degree of \(p(x)\) in any variable.
-\end{enumerate}
-Then \(f(x)\) divides \(p(x)\), i.e. there is a polynomial \(q(x)\) so that \(p(x)=q(x)f(x)\).
-\end{lemma}
-\begin{proof}
-By a linear change of variables, we can arrange that \(f(x)=x_1\).
-Expand \(p(x)\) in powers of \(x_1\).
-If there is a ``constant term'', i.e. a monomial in \(x_2, x_3, \dots, x_n\), then setting \(x_1=0\) we will still have some nonzero polynomial in the variables \(x_2, x_3, \dots, x_n\).
-But this polynomial vanishes for all values of these variables, so is zero by lemma~\vref{lemma:infinite.field.zeroes}.
-\end{proof}
-
 \section{Factorization over rational functions and over polynomials}
-
 \begin{proposition}[Gauss' lemma]\label{proposition:Gauss.lemma}
 Suppose that \(p(x,y)\) is a polynomial in two variables over a field, and that \(p(x,y)\) factors as \(p(x,y)=b(x,y)c(x,y)\), where \(b(x,y)\) and \(c(x,y)\) are polynomial in \(x\) with coefficients rational functions of \(y\).
 Then \(p(x,y)\) also factors in polynomials in \(x,y\).
@@ -351,195 +282,76 @@ d(y)p(x,y) = B(x,y)C(x,y)
 \]
 and proceed by induction on the degree of \(d(y)\).
 \end{proof}
-
-
-\section{Quotienting a polynomial}
-
-We write that \(b(x)=c(x)\) modulo a polynomial \(p(x)\) to mean that \(b(x)-c(x)\) is a multiple of \(p(x)\).
-Just as for integers, we add modulo \(p(x)\), subtract modulo \(p(x)\), and multiply modulo \(p(x)\), all of which makes sense since mutiples of \(p(x)\) add, subtract, and multiply to give multiples of \(p(x)\).
-When we work modulo \(p(x)\), write \(b(x)^{-1}\) to mean a remainder so that \(b(x)b(x)^{-1}=1\) modulo \(p(x)\).
-To find \(b(x)^{-1}\), we use B\'ezout coefficients, just as for the integers.
-
+\begin{proposition}[Eisenstein's criterion]\define{criterion!Eisenstein}\define{Eisenstein's criterion}
+Take a polynomial \(q(x,y)\) over a field.
+Expand in powers of \(x\):
+\[
+q(x,y) = a_n(y) x^n + a_{m-1}(y) x^{m-1} + \dots + a_1(y) x + a_0(y),
+\]
+so that each \(a_0(y),a_1(y),\dots,a_n(y)\) is a polynomial.
+Suppose that there is an irreducible polynomial \(p(y)\) so that
+\begin{enumerate}
+\item 
+\(p(y)\) does not divide the highest degree term \(a_n(y)\) and
+\item
+\(p(y)\) divides all of the other terms \(a_0(y),\dots,a_{n-1}(y)\) and
+\item
+\(p(y)^2\) does not divide the lowest coefficient \(a_0(y)\).
+\end{enumerate}
+Then \(q(x,y)\) is irreducible.
+\end{proposition}
+The proof is identical to the previous proof of Eisenstein's criterion.
 \begin{example}
-Let \(p(x)\defeq x^3+2x+1\) over the field of rational numbers.
-Modulo \(p(x)\), clearly \(x^3=-2x-1\).
-It is common to use a Greek letter, like \(\alpha\), for the remainder of \(x\) modulo \(p(x)\), instead of calling it \(x\).
-So remainders modulo \(p(x)\) are just expressions like \(\alpha,7-4\alpha,\alpha^2/3\), but when we compute, we reduce modulo \(\alpha^3+2\alpha+1\), i.e. we change any \(\alpha^3\) to \(\alpha^3=-2\alpha-1\).
-So, for example,
-\begin{align*}
-(\alpha^2+1)(\alpha^2+\alpha+1)
-&=
-\alpha^4+\alpha^3+2\alpha^2+\alpha+1,
-\\
-&=
-\alpha^3 \alpha + \alpha^3 + 2\alpha^2+\alpha+1,
-\\
-&=
-(-2\alpha-1)\alpha+(-2\alpha-1)+2\alpha^2+\alpha+1,
-\\
-&=
--2\alpha^2-\alpha-2\alpha-1+2\alpha^2+\alpha+1,
-\\
-&=
--2\alpha.
-\end{align*}
+\(x^{13}+xy+y\) is irreducible, as it has a factor of \(y\) in each term in \(x\), except the highest term.
 \end{example}
 
-\begin{example}\label{factoring:split.it}
-Let \(p(x)\defeq x^2+x+1\) with coefficients over the field of remainders modulo 2.
-Write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
-To find \(\alpha^{-1}\), compute B\'ezout coefficients:
-\begin{align*}
-&\begin{pmatrix}
-1 & 0 & x \\
-0 & 1 & x^2+x+1
-\end{pmatrix}, \text{ add \(x+1\)(row 1) to row 2},
-\\
-&\begin{pmatrix}
-1 & 0 & x \\
-x+1 & 1 & 1
-\end{pmatrix}, \text{ add \(x\)(row 2) to row 1},
-\\
-&\begin{pmatrix}
-x^2+x+1 & x & 0 \\
-x+1 & 1 & 1
-\end{pmatrix}.
-\end{align*}
-So the B\'ezout coefficients are
-\[
-(x+1)(x)+(1)(x^2+x+1)=1.
-\]
-Modulo \(x^2+x+1\), we find
-\[
-(\alpha+1)\alpha = 1
-\]
-or in other words \(\alpha^{-1}=\alpha+1\).
-\end{example}
-
-\begin{problem}{factoring:quot.poly}
-Work out the complete multiplication table for the remainders of polynomials in \(x\) when we quotient out by \(x^2+x\) over the field of remainders modulo 3.
-Which elements have reciprocals?
+\section{Homogeneous polynomials}
+A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same total degree, i.e. sum of degrees in all variables.
+\begin{problem}{permuting:homog.test}
+Prove that a polynomial \(b(x)\) of degree \(m\) in some variables \(x_1,x_2,\dots,x_n\) over an infinite field is homogeneous just when \(b(tx)=t^mb(x)\) for every \(t\).
+Give a counterexample over a finite field.
 \end{problem}
-\begin{answer}{factoring:quot.poly}
+\begin{lemma}
+Over any field, every factor of a homogeneous polynomial is homogeneous.
+\end{lemma}
+\begin{proof}
+Write the polynomial factorized, as
+\(
+b(x)c(x)
+\).
+The highest degree term in \(b(x)\) multiplies by the highest degree term in \(c(x)\) to give the highest degree term in \(b(x)c(x)\), and the same for the lowest degree terms.
+Since all terms in \(b(x)c(x)\) have the same degree, so do all terms in \(b(x)\) and in \(c(x)\).
+\end{proof}
+
+
+\section{Factoring in many variables}
+\begin{theorem}\label{theorem:ufd}
+Every polynomial \(p(x_1,\dots,x_n)\) with coefficients in a field admits a unique factorization
 \[
-\begin{array}{c|ccccccccc}
-          &
-0         &
-1         &
-2         & 
-\alpha    &
-2\alpha   &
-1+\alpha  &
-2+\alpha  &
-1+2\alpha &
-2+2\alpha \\
-\hline
-0         & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
-\\
-1         &
-0         &
-1         &
-2         & 
-\alpha    &
-2\alpha   &
-1+\alpha  &
-2+\alpha  &
-1+2\alpha &
-2+2\alpha \\
-2         &
-0         &
-2         &
-1         & 
-2\alpha    &
-\alpha   &
-2+2\alpha  &
-1+2\alpha  &
-2+\alpha &
-1+\alpha 
-\\
-\alpha    &
-0         &
-\alpha    &
-2\alpha   & 
-2\alpha   &
- \alpha   &
-0  &
-\alpha  &
-2\alpha &
-0 \\
-2\alpha   &
-0         &
-2\alpha   &
-\alpha    & 
-\alpha    &  
-0         &
-2\alpha   &
-2\alpha   &
-\alpha    &
-0 \\
-1+\alpha   &
-0          &
-1+\alpha   &
-2+2\alpha  & 
-0          &  
-2\alpha    &
-1+\alpha   &
-2+2\alpha  &
-1+\alpha   &
-2+2\alpha \\
-2+\alpha   &
-0          &
-2+\alpha   &
-1+2\alpha  & 
-\alpha          &  
-2\alpha    &
-2+2\alpha   &
-1  &
-2   &
-1+\alpha \\
-1+2\alpha   &
-0          &
-1+2\alpha   &
-2+\alpha  & 
-2\alpha         &  
-\alpha  &
-1+\alpha   &
-2 &
-1  &
-2+2\alpha \\
-2+2\alpha   &
-0          &
-2+2\alpha   &
-1+\alpha  & 
-0          &  
-0    &
-2+2\alpha   &
-1+\alpha  &
-2+2\alpha   &
-1+\alpha   \\
-\end{array}
+p(x_1,\dots,x_n)=p_1(x_1,\dots,x_n)\dots p_N(x_1,\dots,x_n)
 \]
+into irreducible factors.
+\end{theorem}
+\begin{proof}
+We prove the result for two variables \(x,y\), but the same proof works for any number of variables.
+Take two factorisations:
+\[
+p(x,y)=p_1(x,y)\dots p_M(x,y)=q_1(x,y)\dots q_N(x,y).
+\]
+If the highest order term in one of these \(p_j(x,y)\) or \(q_j(x,y)\) is in the \(x\) variable, then replace \(x,y\) by \(x+\lambda y,y\), for some constant \(\lambda\).
+But for a poor choice of \(\lambda\), this might knock out the highest order term in \(y\) in another \(p_j(x,y)\) or \(q_j(x,y)\).
+To avoid this, we replace our field by the field of rational functions in an abstract variable \(\lambda\), so no cancellations can take place.
+We can reverse the process by replacing \(x,y\) by \(x-\lambda y,y\), so factorisations are preserved and reflected.
+If we can prove unique factorisation in this larger field, then any factorisation in the original field will still be unique in the original field.
+In particular, we can suppose that none of the factors is constant in \(y\), and that the highest order term in \(y\) is constant in \(x\).
+Thinking of \(p\) as a polynomial in \(y\), with coefficients rational in \(x\), by induction the factorisation in such functions is unique.
+So after perhaps reordering, each \(p_j(x,y)\) is equal to some \(q_j(x,y)\) up to some rational function \(b_j(x)/c_j(x)\), with no common factor in numerator and denominator.
+But then \(c_j(x)p_j(x,y)=b_j(x)q_j(x,y)\), and we expand out in powers of \(y\) to get \(c_j(x)\) dividing into every coefficient in \(q_j(x,y)\), so into the highest coefficient, which has no \(x\) in it.
+\end{proof}
+
+\begin{problem}{factoring:rationals}
+Every rational function over a field has an expression \(b(x_1,\dots,x_n)/c(x_1,\dots,x_n)\) as a ratio of polynomials with no common nonconstant factor, unique up to rescaling by the same nonzero constant.
+\end{problem}
+\begin{answer}{factoring:rationals}
+Take two such, cross multiply, and use unique factorisation of polynomials.
 \end{answer}
-
-\begin{problem}{factoring:inverse.mod.3.and.p}
-With coefficients being integers modulo 3, find \(x^{-1}\) modulo \(x^9+2x^2+1\).
-\end{problem}
-\begin{answer}{factoring:inverse.mod.3.and.p}
-\(2x^8+x\)
-\end{answer}
-
-\begin{problem}{factoring:crt.mod.poly}
-Guess: what do you think the Chinese remainder theorem might be for remainders modulo polynomials, instead of working with remainders modulo integers?
-\end{problem}
-
-
-\begin{example}
-If \(p(x)=x^2\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), since \(\alpha^2=0\).
-The remainder \(\alpha\) is very much like the ``very small quantities'' that physicists talk about, so small that the square is negligibly small and can be dropped from calculations.
-\end{example}
-
-\begin{example}
-If \(p(x)=x(x-1)\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), but with \(\alpha(\alpha-1)=0\), so \(\alpha^2=\alpha\).
-Think of \(\alpha\) as a number which can't decide whether it wants to be zero or one, and is somehow behaving like both zero and one at the same time.
-\end{example}
-

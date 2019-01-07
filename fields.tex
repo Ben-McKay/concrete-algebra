@@ -1,7 +1,8 @@
 \chapter{Fields}\label{chapter:fields}
 
-\section{Names for our favourite sets}
+\epigraph[author={Stefan Banach}]{A mathematician is a person who can find analogies between theorems; a better mathematician is one who can see analogies between proofs and the best mathematician can notice analogies between theories. One can imagine that the ultimate mathematician is one who can see analogies between analogies.}\SubIndex{Banach, Stefan}
 
+\section{Names for our favourite sets}
 The following are the standard names for various collections of numbers (or remainders):
 \[
 \begin{array}{@{}l>{$}l<{$}@{}}
@@ -10,30 +11,31 @@ The following are the standard names for various collections of numbers (or rema
 \R{} & the set of all real numbers, \\
 \C{} & the set of all complex numbers, \\
 m\Z{} & the set of all integer multiples of some number \(m\), \\
-\Zmod{m} & the set of remainders modulo a positive integer \(m\).
+\Zmod{m} & the set of all remainders modulo a positive integer \(m\).
 \end{array}
 \]
 We can draw \(\R{}\) as the number line, 
 \[
 \begin{tikzpicture}
-\draw[-latex,gray!40](-3,0) -- (3,0);
+\draw[-latex,axisColor,very thick](-3,0) -- (3,0);
 \end{tikzpicture}
 \]
 and draw \(\Z{}\) as equispaced dots on the number line,
 \[
 \begin{tikzpicture}
-\draw[-latex,gray!40](-3,0) -- (3,0);
+\draw[-latex,axisColor,very thick](-3,0) -- (3,0);
 \foreach \i in {-2,...,2}
 {
-  \fill[gray!30] ({\i},0) circle(1.2pt);
+\DrawDot{\i}{0}
 }
 \end{tikzpicture}
 \]
 and \(\C{}\) as the plane:
 \[
 \begin{tikzpicture}
-\draw[-latex,gray!40](-1,0) -- (1,0);
-\draw[-latex,gray!40](0,-1) -- (0,1);
+\draw[-latex,curveZero](-1,0) -- (1,0);
+\draw[-latex,curveZero](0,-1) -- (0,1);
+\fill[axisColor,opacity=.3] (-1,-1) rectangle (1,1);
 \end{tikzpicture}
 \]
 We could also draw the elements of \(\Zmod{m}\) much like we would draw a clock:
@@ -46,7 +48,13 @@ We could also draw the elements of \(\Zmod{m}\) much like we would draw a clock:
 \foreach \s in {0,...,\nminusone}
 {
   \node[draw=white, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$};
-  \draw[->, >=latex,gray!40] ({360/\n * (\s - 1)+\margin}:\radius) 
+%  \draw[->, >=latex,axisColor,very thick] ({360/\n * (\s - 1)+\margin}:\radius) 
+%    arc ({360/\n * (\s - 1)+\margin}:{360/\n * (\s)-\margin}:\radius);
+}
+\foreach \s in {0,...,\nminusone}
+{
+%  \node[draw=white, circle] at ({360/\n * (\s - 1)}:\radius) {$\s$};
+  \draw[->, >=latex,axisColor,very thick] ({360/\n * (\s - 1)+\margin}:\radius) 
     arc ({360/\n * (\s - 1)+\margin}:{360/\n * (\s)-\margin}:\radius);
 }
 \end{tikzpicture}
@@ -59,7 +67,6 @@ Explain how to multiply complex numbers using these pictures.
 
 
 \section{Rings}
-
 All of the above sets are examples of rings.
 A \emph{ring}\define{ring} is a set of objects \(S\) together with two operations called \emph{addition} and \emph{multiplication}, and denoted by \(b+c\) and \(bc\), so that if \(b\) and \(c\) belong to \(S\), then \(b+c\) and \(bc\) also belong to \(S\), and so that:
 \smallskip
@@ -157,7 +164,6 @@ For example, \(\Z{}\) is a subring of \(\Q{}\), which is subring of \(\R{}\), wh
 
 
 \section{Special types of rings}
-
 A ring is \emph{a ring with identity} if it satisfies
 the \emph{identity law}:\define{identity law!multiplication} There is an element \(1\) in \(S\) so that for any element \(a\) in \(S\), \(a1=a\).
 
@@ -178,42 +184,39 @@ Prove that \(S\) is a ring with identity, but \emph{not} commutative.
 Let \(2\Z{}\) be the set of all even integers using the usual laws of integer addition and multiplication as the addition and multiplication in \(2\Z{}\).
 Prove that \(2\Z{}\) is a commutative ring but without identity.
 \end{problem}
-
 \begin{problem}{fields:matrices.even}
 Let \(2S\) be the set of all \(2 \times 2\) matrices with even integer coefficients, using the usual laws of matrix addition and multiplication as the addition and multiplication in \(2S\).
-Prove that \(2S\) is a noncommmutative ring without identity.
+Prove that \(2S\) is a noncommutative ring without identity.
 \end{problem}
-
 \begin{problem}{rings:zero.equals.one}
 Suppose that \(S\) is a ring with identity in which \(0=1\).
 Prove that \(S=\set{0}\).
 \end{problem}
-
 From here on, we will only be interested in commutative rings with identity.
 
-
-
 \section{Fields}
-
 A \emph{unit}\define{unit!ring} in a ring is an element that has a multiplicative inverse, i.e. a reciprocal.
-For example, in \(\Zmod{7}\) every nonzero element is a unit, because \(7\) is a prime number.
+\begin{example}
+In \(\Zmod{7}\) every nonzero element is a unit, because \(7\) is a prime number.
+\end{example}
+\begin{example}
 In \(\Z{}\) the units are \(\pm 1\).
+\end{example}
 If \(S\) is a ring, we denote by \(S^{\times}\) the set of units of \(S\).
-For example, for any ring \(S\), \(\pr{S[x]}^{\times}=S^{\times}\): no polynomial of positive degree has a reciprocal polynomial.
-On the other hand, every nonzero rational function is a unit in \(S(x)\): \(\pr{S(x)}^{\times}=S(x)-\set{0}\).
-
+\begin{example}
+\(\pr{\mathbb{Q}[x]}^{\times}=\mathbb{Q}^{\times}\): no polynomial of positive degree has a reciprocal polynomial.
+\end{example}
+\begin{example}
+Every nonzero rational function is a unit in \(\mathbb{Q}(x)\): \(\pr{\mathbb{Q}(x)}^{\times}=\mathbb{Q}(x)-\set{0}\).
+\end{example}
 \begin{problem}{fields:units}
 Prove that, for any ring \(S\) with identity, if \(b\) and \(c\) are units then \(bc\) is a unit.
 \end{problem}
-
 \begin{problem}{rings:zero.divisor.units}
 Suppose that \(R\) is a ring and that \(b \in R\) is both a zero divisor and a unit.
 Prove that \(R\) has exactly one element, the element zero.
 \end{problem}
-
-
 A \emph{field}\define{field} is a commutative ring with identity, in which every nonzero element is a unit, i.e. has a multiplicative inverse, and in which \(1\ne0\).
-
 \begin{lemma}
 For any positive integer \(m\), \(\Zmod{m}\) is a field if and only if \(m\) is prime.
 \end{lemma}
@@ -221,7 +224,6 @@ For any positive integer \(m\), \(\Zmod{m}\) is a field if and only if \(m\) is 
 If \(m\) factors, say as \(m=bc\), with \(b, c\ge 2\), then \(b \ne 0\) modulo \(m\), but \(bc=0\) modulo \(m\), so both \(b\) and \(c\) are zero divisors, and therefore are not units.
 If \(m\) does not factor, then \(m\) is prime, and we know that every nonzero element of \(\Zmod{m}\) is a unit; we even have a recipe to find its multiplicative inverse.
 \end{proof}
-
 \begin{example}
 The set \(\Q{}\) of rational numbers is a field, as is the set \(\R{}\) of real numbers and the set \(\C{}\) of complex numbers.
 \end{example}
@@ -229,16 +231,12 @@ The set \(\Q{}\) of rational numbers is a field, as is the set \(\R{}\) of real 
 Any field \(k\) lies inside the field \(k(x)\) of rational functions with coefficients in \(k\).
 In particular, every field is contained inside an infinite field.
 \end{example}
-
-We can easily finish the proof of proposition~\vref{proposition:factored.resultants} over any field, because any field \(k\) lies inside an infinite field \(k(x)\).
-
 \begin{problem}{fields:characteristic}
 Note that in the field \(k=\Zmod{13}\), we have the peculiar equation \(13=0\).
 The \emph{characteristic}\define{characteristic} of a ring with identity \(R\) is the smallest positive integer \(c>0\) so that \(c\) is zero in \(R\) (or in other words, if \(e \in R\) is the identity element, then the element \(c \cdot e = 0 \in R\)).
 If there is no such positive number \(c\), we say that \(R\) has characteristic zero.
 Prove that the characteristic of a division ring \(R\) is prime, say \(p\), and that there is a unique map \(\Zmod{p} \to R\) which takes \(0\) to \(0\), \(1\) to \(1\), and sums to sums and products to products.
 \end{problem}
-
 \begin{problem}{fields:zero.divisors}
 A \emph{zero divisor}\define{zero divisor} \(r\) in a ring \(R\) is an element so that \(rs=0\) for some element s of \(R\).
 Suppose that \(k\) is a field.
@@ -250,7 +248,6 @@ Find the (i) zero divisors and (ii) the units in
 \item \(k[x] \oplus k[y]\).
 \end{enumerate}
 \end{problem}
-
 \begin{example}
 Let \(k\) be the set of all real numbers of the form \(a+b2^{1/3}+c2^{2/3}\) for any \(a,b,c\) rational.
 Clearly all rational numbers (in particular \(0\) and \(1\)) have this form.
@@ -326,9 +323,7 @@ Hence we conclude that \(k\) is a field.
 \end{example}
 
 \section{Linear algebra}
-
 Most of linear algebra works identically over any field: matrices, Gaussian elimination, invertibility, solvability of equations, determinants, and the theory of eigenvalues and eigenvectors.
-
 \begin{problem}{fields:invert.matrix}%
 Let \(k\) be the Boolean numbers \(k\defeq \Zmod{2}\), and \(A\) the
 matrix
@@ -348,13 +343,10 @@ If so, find \(A^{-1}\).
     If \(A\) is a matrix whose entries are rational functions of a
     variable \(t\) over a field \(k\), prove that the rank of \(A\) is constant in \(t\), except for finitely many values of \(t\).
 \end{problem}
-
 \begin{problem}{fields:rank.mod.p}
     If \(A\) is a matrix whose entries are integers, let \(A_p\) be the same matrix, but with coefficients taken modulo a prime \(p\).
     Prove that \(A\) is invertible over the rational numbers (i.e. has an inverse matrix with rational number entries) just when, for all but finitely many primes \(p\), the matrix \(A_p\) is invertible over \(\Zmod{p}\).
     Prove that \(A\) is not invertible over the rational numbers just when, for every prime number \(p\), \(A_p\) is not invertible over \(\Zmod{p}\).
     Prove that \(A\) is invertible over the integers just when, for every prime number \(p\), the matrix \(A_p\) is invertible over \(\Zmod{p}\).
 \end{problem}
-
-
 

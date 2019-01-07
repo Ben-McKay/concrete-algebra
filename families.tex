@@ -29,6 +29,9 @@ Moreover the degree of \(C_r\) is the same as that of \(B\) and \(C\).
 
 \begin{example}
 The lines through a point form a pencil: if \(B=(x=0)\) and \(C=(y=0)\) then \(C_r =(x=ry)\).
+\begin{center}
+\input{lines-thru-a-point}
+\end{center}
 \end{example}
 \begin{example}
 The pencil of conics containing the circle \(x^2+y^2=1\) and the reducible conic \(x^2=y^2\) (which is a pair of lines \(x=\pm y\)):
@@ -93,17 +96,17 @@ In a projective plane, we have a concept of line, but not of line segment, or of
 In a projective plane a \emph{triangle}\define{triangle} is a triple of points not all on the same line, together with the lines that connect them.
 So a triangle looks like
 \[
-\begin{tikzpicture}[scale=.3]
-\clip (-1,-2) rectangle (4,2);
-\draw[gray!30] (-1,-1/2) -- (4,2);
-\draw[gray!30] (-1,7) -- (4,-3);
-\draw[gray!30] (-1,1/3) -- (4,-4/3);
+\begin{tikzpicture}
+\clip (-1/3,-2/3) rectangle (4/3,2/3);
+\draw[very thick,curveZero] (-1/3,-1/6) -- (4/3,2/3);
+\draw[very thick,curveZero] (-1/3,7/3) -- (4/3,-1);
+\draw[very thick,curveZero] (-1/3,1/9) -- (4/3,-4/9);
 \end{tikzpicture}
 \]
 rather than
 \[
-\begin{tikzpicture}[scale=.3]
-\draw[gray!30] (0,0) -- (2,1) -- (3,-1) -- cycle;
+\begin{tikzpicture}
+\draw[very thick,curveZero] (0,0) -- (2/3,1/3) -- (1,-1/3) -- cycle;
 \end{tikzpicture}
 \]
 Similarly, a \emph{quadrilateral}\define{quadrilateral} is a quadruple of points, called the \emph{vertices}, no three on the same line, with a chosen ordering defined up to cyclically permuting, so there is no first point or second point, but if you pick a point from the quadruple, there is a next point, and a next, and so on until you come back to the point you started with.
@@ -119,7 +122,7 @@ We can't define the notion of a square or rectangle since there is no notion of 
 
 \newcommand*{\drawEllipse}
 {
-\draw[gray,opacity=.5] (0,0) ellipse (2cm and 1cm);
+\draw[very thick,curveZero] (0,0) ellipse (1cm and .5cm);
 }
 
 \newcommand*{\drawHexagon}
@@ -127,22 +130,22 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \foreach \i in {0,...,5}
 	{
 	\newcommand*{\dd}{8}
-		\node at ({2*cos(20*\i+\dd*\i*\i)},{sin(20*\i+\dd*\i*\i)}) (p\i) {};
-		\fill[gray,opacity=.5] (p\i) circle (1.5pt);
+		\coordinate (p\i) at ({cos(20*\i+\dd*\i*\i)},{.5*sin(20*\i+\dd*\i*\i)}) {};
+		\DrawNode{p\i}
 	}
 }
 
 \newcommand*{\findFirstIntersection}
 {
-\node (c1) at (intersection of p0--p1 and p3--p4) {};
+\coordinate (c1) at (intersection of p0--p1 and p3--p4) {};
 }
 \newcommand*{\findSecondIntersection}
 {
-\node (c2) at (intersection of p1--p2 and p4--p5) {};
+\coordinate (c2) at (intersection of p1--p2 and p4--p5) {};
 }
 \newcommand*{\findThirdIntersection}
 {
-\node (c3) at (intersection of p2--p3 and p5--p0) {};
+\coordinate (c3) at (intersection of p2--p3 and p5--p0) {};
 }
 
 \newcommand*{\findAllIntersections}
@@ -154,16 +157,17 @@ We can't define the notion of a square or rectangle since there is no notion of 
 
 
 % highest x value of any coordinate of any point in the picture:
-\newcommand*{\maxX}{10}
+\newcommand*{\maxX}{3.5}
 % lowest x value of any coordinate of any point in the picture:
-\newcommand*{\minX}{0}
-\newcommand*{\tikzscale}{.5}
+\newcommand*{\minX}{-1}
 
 
 \newcommand*{\showTheLine}
 {
-\draw[green!50!gray] (c1) -- (c3);
-\draw[green!50!gray] (c3) -- (c2);
+\begin{scope}[on background layer]
+\draw[curveThree,very thick] (c1) -- (c3);
+\draw[curveThree,very thick] (c3) -- (c2);
+\end{scope}
 }
 
 
@@ -171,54 +175,64 @@ We can't define the notion of a square or rectangle since there is no notion of 
 {
 \drawEllipse
 \drawHexagon
-\draw[cyan!40] (p1) -- (p2);
-\draw[cyan!40] (p2) -- (p3);
-\draw[cyan!40] (p3) -- (p4);
-\draw[cyan!40] (p4) -- (p5);
-\draw[cyan!40] (p5) -- (p0);
-\draw[cyan!40] (p0) -- (p1);
+\begin{scope}[on background layer]
+\draw[curveOne,very thick] (p1) -- (p2);
+\draw[curveOne,very thick] (p2) -- (p3);
+\draw[curveOne,very thick] (p3) -- (p4);
+\draw[curveOne,very thick] (p4) -- (p5);
+\draw[curveOne,very thick] (p5) -- (p0);
+\draw[curveOne,very thick] (p0) -- (p1);
+\end{scope}
 }
 
 \newcommand*{\secondPicture}
 {
 \firstPicture
 \findFirstIntersection
-\draw[gray,opacity=.5] (p1) -- (c1);
-\draw[gray,opacity=.5] (p3) -- (c1);
-\fill[brown!50] (c1) circle (1.5pt);
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick,opacity=.5] (p1) -- (c1);
+\draw[curveTwo,very thick,opacity=.5] (p3) -- (c1);
+\end{scope}
+\DrawNode{c1}
 }
 
 \newcommand*{\thirdPicture}
 {
 \firstPicture
 \findSecondIntersection
-\draw[gray,opacity=.5] (p1) -- (c2);
-\draw[gray,opacity=.5] (p5) -- (c2);
-\fill[brown!50] (c2) circle (1.5pt);
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick,opacity=.5] (p1) -- (c2);
+\draw[curveTwo,very thick,opacity=.5] (p5) -- (c2);
+\end{scope}
+\DrawNode{c2}
 }
 
 \newcommand*{\fourthPicture}
 {
 \firstPicture
 \findThirdIntersection
-\draw[gray,opacity=.5] (p2) -- (c3);
-\draw[gray,opacity=.5] (p0) -- (c3);
-\fill[brown!50] (c3) circle (1.5pt);
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick,opacity=.5] (p2) -- (c3);
+\draw[curveTwo,very thick,opacity=.5] (p0) -- (c3);
+\end{scope}
+\DrawNode{c3}
 }
 
 \newcommand*{\fifthPicture}
 {
 \firstPicture
 \findAllIntersections
-\draw[gray,opacity=.5] (p1) -- (c1);
-\draw[gray,opacity=.5] (p3) -- (c1);
-\fill[brown!50] (c1) circle (1.5pt);
-\draw[gray,opacity=.5] (p1) -- (c2);
-\draw[gray,opacity=.5] (p5) -- (c2);
-\fill[brown!50] (c2) circle (1.5pt);
-\draw[gray,opacity=.5] (p2) -- (c3);
-\draw[gray,opacity=.5] (p0) -- (c3);
-\fill[brown!50] (c3) circle (1.5pt);
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick,opacity=.5] (p1) -- (c1);
+\draw[curveTwo,very thick,opacity=.5] (p3) -- (c1);
+\draw[curveTwo,very thick,opacity=.5] (p1) -- (c2);
+\draw[curveTwo,very thick,opacity=.5] (p5) -- (c2);
+\draw[curveTwo,very thick,opacity=.5] (p2) -- (c3);
+\draw[curveTwo,very thick,opacity=.5] (p0) -- (c3);
+\end{scope}
+\DrawNode{c1}
+\DrawNode{c2}
+\DrawNode{c3}
 }
 
 \newcommand*{\sixthPicture}
@@ -227,11 +241,17 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \showTheLine
 }
 
+
+
 \newcommand{\Pascal}[1]{%
+\par\noindent%
 \begin{center}
-\begin{tikzpicture}[scale=\tikzscale]
+\begin{tikzpicture}
 % Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
-\draw[white] (\minX,0) -- (\maxX,0); 
+%\begin{scope}[on background layer]
+\draw[white,opacity=0] (\minX,0) -- (\maxX,0); 
+%\fill[gray!20,draw=black] (\minX,-3) rectangle (\maxX,4.5);
+%\end{scope}
 \IfStrEqCase{#1}{%
 {1}%
 {%%
@@ -271,7 +291,7 @@ We can't define the notion of a square or rectangle since there is no notion of 
 }
 
 Draw a hexagon with vertices sitting inside a conic. \Pascal{1}
-Since each side has a ``successor'', and there is an even number of sides, each side has an ``opposite'' side, half way around the hexagon.
+Since there is an even number of sides, each side has an ``opposite'' side, half way around the hexagon.
 Pick a side and its opposite, and draw lines joining them. \Pascal{2}
 The same for the next pair of opposite sides. \Pascal{3}
 And finally for the third pair of opposite sides. \Pascal{4}
@@ -363,7 +383,12 @@ If we take away any points, say down to some number \(n\) of point, then the dim
 \end{proof}
  
 \begin{example}
-Through any 2 points there is precisely one line: \begin{tikzpicture}[scale=.5] \draw[gray!50] (0,0) -- (1,0); \fill[gray!50] (0,0) circle (1.3pt); \fill[gray!50] (1,0) circle (1.3pt); \end{tikzpicture}
+Through any 2 points there is precisely one line: 
+\begin{tikzpicture} 
+\draw[axisColor,very thick] (0,0) -- (1,0); 
+\DrawDot{0}{0} 
+\DrawDot{1}{0} 
+\end{tikzpicture}
 \end{example}
 \begin{example}
 Through any 5 points in general position, there is precisely one conic.

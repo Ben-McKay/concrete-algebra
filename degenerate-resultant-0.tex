@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12,width=5cm}%
+\usepackage{xparse}
+\input{ColorScheme}
+\begin{document}
+{
+\newcommand{\lmbda}{0}
+\newcommand{\thta}{acos(1/sqrt(1+(\lmbda)^2))}
+\begin{tikzpicture}[rotate=-\thta]
+\newcommand{\mx}{1.5}
+\colorlet{f}{curveOne}
+\colorlet{g}{curveTwo}
+\colorlet{h}{curveThree}
+\draw[very thick,h] (-\mx,1/2) -- (\mx,1/2);
+\draw[very thick,f] (0,0) ellipse ({sqrt(1+(\lmbda)^2)} and {1});
+\node[above left,f] at (.65,-.8) {\(b=0\)};
+\draw[very thick,g] (0,1) ellipse ({sqrt(1+(\lmbda)^2)} and {1});
+\node[below right,g] at (-.65,1.8) {\(c=0\)};
+\end{tikzpicture}
+}
+\end{document}

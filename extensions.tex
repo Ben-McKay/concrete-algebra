@@ -1,14 +1,194 @@
 \chapter{Field extensions}
-
-\epigraph[author={Bertrand Russell}]{Mathematics, rightly viewed, possesses not only truth, but supreme beauty---a beauty cold and austere, like that of sculpture, without appeal to any part of our weaker nature, without the gorgeous trappings of painting or music, yet sublimely pure, and capable of a stern perfection such as only the greatest art can show.}\SubIndex{Russell, Bertrand}
-
-
-If \(k\) and \(K\) are fields and \(k\) is contained in \(K\), with the same identity element, zero element, addition and multiplication operations, then \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
+\epigraph[author={Bertrand Russell}]{Mathematics, rightly viewed, possesses not only truth, but supreme beauty---a beauty cold and austere, like that of sculpture, without appeal to any part of our weaker nature, without the gorgeous trappings of painting or music, yet sublimely pure, and capable of a stern perfection such as only the greatest art can show.}\SubIndex{Russell, Bertrand}%
+\section{Quotienting a polynomial}
+We return to polynomials in a single variable \(x\).
+We write that \(b(x)=c(x)\) modulo a polynomial \(p(x)\) to mean that \(b(x)-c(x)\) is a multiple of \(p(x)\).
+Just as for integers, we add modulo \(p(x)\), subtract modulo \(p(x)\), and multiply modulo \(p(x)\), all of which makes sense since multiples of \(p(x)\) add, subtract, and multiply to give multiples of \(p(x)\).
+When we work modulo \(p(x)\), write \(b(x)^{-1}\) to mean a remainder so that \(b(x)b(x)^{-1}=1\) modulo \(p(x)\).
+To find \(b(x)^{-1}\), we use B\'ezout coefficients.
 \begin{example}
-The complex numbers form a field extension of the real numbers.
+Let \(p(x)\defeq x^3+2x+1\) over the field of rational numbers.
+Modulo \(p(x)\), clearly \(x^3=-2x-1\).
+It is common to use a Greek letter, like \(\alpha\), for the remainder of \(x\) modulo \(p(x)\), instead of calling it \(x\).
+So remainders modulo \(p(x)\) are just expressions like \(\alpha,7-4\alpha,\alpha^2/3\), but when we compute, we reduce modulo \(\alpha^3+2\alpha+1\), i.e. we change any \(\alpha^3\) to \(\alpha^3=-2\alpha-1\).
+So, for example,
+\begin{align*}
+(\alpha^2+1)(\alpha^2+\alpha+1)
+&=
+\alpha^4+\alpha^3+2\alpha^2+\alpha+1,
+\\
+&=
+\alpha^3 \alpha + \alpha^3 + 2\alpha^2+\alpha+1,
+\\
+&=
+(-2\alpha-1)\alpha+(-2\alpha-1)+2\alpha^2+\alpha+1,
+\\
+&=
+-2\alpha^2-\alpha-2\alpha-1+2\alpha^2+\alpha+1,
+\\
+&=
+-2\alpha.
+\end{align*}
+\end{example}
+\begin{example}\label{factoring:split.it}
+Let \(p(x)\defeq x^2+x+1\) with coefficients over the field of remainders modulo 2.
+Write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
+To find \(\alpha^{-1}\), compute B\'ezout coefficients:
+\begin{align*}
+&\begin{pmatrix}
+1 & 0 & x \\
+0 & 1 & x^2+x+1
+\end{pmatrix}, \text{ add \(x+1\)(row 1) to row 2},
+\\
+&\begin{pmatrix}
+1 & 0 & x \\
+x+1 & 1 & 1
+\end{pmatrix}, \text{ add \(x\)(row 2) to row 1},
+\\
+&\begin{pmatrix}
+x^2+x+1 & x & 0 \\
+x+1 & 1 & 1
+\end{pmatrix}.
+\end{align*}
+So the B\'ezout coefficients are
+\[
+(x+1)(x)+(1)(x^2+x+1)=1.
+\]
+Modulo \(x^2+x+1\), we find
+\[
+(\alpha+1)\alpha = 1
+\]
+or in other words \(\alpha^{-1}=\alpha+1\).
+\end{example}
+\begin{problem}{factoring:quot.poly}
+Work out the complete multiplication table for the remainders of polynomials in \(x\) when we quotient out by \(x^2+x\) over the field of remainders modulo 3.
+Which elements have reciprocals?
+\end{problem}
+\begin{answer}{factoring:quot.poly}
+\[
+\begin{array}{c|ccccccccc}
+          &
+0         &
+1         &
+2         & 
+\alpha    &
+2\alpha   &
+1+\alpha  &
+2+\alpha  &
+1+2\alpha &
+2+2\alpha \\
+\hline
+0         & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+1         &
+0         &
+1         &
+2         & 
+\alpha    &
+2\alpha   &
+1+\alpha  &
+2+\alpha  &
+1+2\alpha &
+2+2\alpha \\
+2         &
+0         &
+2         &
+1         & 
+2\alpha    &
+\alpha   &
+2+2\alpha  &
+1+2\alpha  &
+2+\alpha &
+1+\alpha 
+\\
+\alpha    &
+0         &
+\alpha    &
+2\alpha   & 
+2\alpha   &
+ \alpha   &
+0  &
+\alpha  &
+2\alpha &
+0 \\
+2\alpha   &
+0         &
+2\alpha   &
+\alpha    & 
+\alpha    &  
+0         &
+2\alpha   &
+2\alpha   &
+\alpha    &
+0 \\
+1+\alpha   &
+0          &
+1+\alpha   &
+2+2\alpha  & 
+0          &  
+2\alpha    &
+1+\alpha   &
+2+2\alpha  &
+1+\alpha   &
+2+2\alpha \\
+2+\alpha   &
+0          &
+2+\alpha   &
+1+2\alpha  & 
+\alpha          &  
+2\alpha    &
+2+2\alpha   &
+1  &
+2   &
+1+\alpha \\
+1+2\alpha   &
+0          &
+1+2\alpha   &
+2+\alpha  & 
+2\alpha         &  
+\alpha  &
+1+\alpha   &
+2 &
+1  &
+2+2\alpha \\
+2+2\alpha   &
+0          &
+2+2\alpha   &
+1+\alpha  & 
+0          &  
+0    &
+2+2\alpha   &
+1+\alpha  &
+2+2\alpha   &
+1+\alpha   \\
+\end{array}
+\]
+\end{answer}
+\begin{problem}{factoring:inverse.mod.3.and.p}
+With coefficients being integers modulo 3, find \(x^{-1}\) modulo \(x^9+2x^2+1\).
+\end{problem}
+\begin{answer}{factoring:inverse.mod.3.and.p}
+\(2x^8+x\)
+\end{answer}
+\begin{problem}{factoring:crt.mod.poly}
+Guess: what do you think the Chinese remainder theorem might be for remainders modulo polynomials, instead of working with remainders modulo integers?
+\end{problem}
+\begin{example}
+If \(p(x)=x^2\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), since \(\alpha^2=0\).
+The remainder \(\alpha\) is very much like the ``very small quantities'' that physicists talk about, so small that the square is negligibly small and can be dropped from calculations.
 \end{example}
 \begin{example}
-The real numbers form a field extension of the rational numbers.
+If \(p(x)=x(x-1)\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), but with \(\alpha(\alpha-1)=0\), so \(\alpha^2=\alpha\).
+Think of \(\alpha\) as a number which can't decide whether it wants to be zero or one, and is somehow behaving like both zero and one at the same time.
+\end{example}
+
+\section{Field extensions}
+If \(k\) and \(K\) are fields and \(k\) is contained in \(K\), with the same identity element, zero element, addition and multiplication operations, then \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
+\begin{example}
+The complex numbers are a field extension of the real numbers.
+\end{example}
+\begin{example}
+The real numbers are a field extension of the rational numbers.
 \end{example}
 Consider how we could write down field extensions.
 If \(k \subset K\) is a subfield, a \emph{basis}\define{basis} of \(K\) over \(k\) is a collection of elements \(\alpha_1, \alpha_2, \dots, \alpha_n\) of \(K\) so that every element of \(K\) has the form
@@ -34,9 +214,8 @@ The real numbers \(\R{}\) as an extension of \(\Q{}\) has no basis; it is an inf
 
 
 \section{Adding a root}
-
 \begin{example}
-Let's return to the example of page~\vpageref{factoring:split.it}.
+Let's return to the example~\vpageref{factoring:split.it}.
 Look for roots of \(p(x)\defeq x^2+x+1\) over the finite field \(k\defeq\Zmod{2}\).
 Try \(x=0\):
 \[
@@ -70,7 +249,7 @@ Using only the fact that \(1+1=0\), compute out the addition table
 \alpha+1 & \alpha+1 & \alpha & 1 & 0
 \end{array}
 \]
-Using only the fact that \(\alpha^2=\alpha+1\),  compute out thee multiplication table:
+Using only the fact that \(\alpha^2=\alpha+1\),  compute out the multiplication table:
 \[
 \begin{array}{@{}c|cccc@{}}
 \cdot & 0 & 1 & \alpha & \alpha+1 \\
@@ -92,7 +271,6 @@ Every nonzero element has a reciprocal: \(K\) is a field.
 So \(K=\left\{0,1,\alpha,\alpha+1\right\}\) is an extension of \(k\).
 The polynomial \(p(x)\) splits over this field: \(p(x)=(x+\alpha)(x+1+\alpha)\).
 \end{example}
-
 \begin{theorem}
 Suppose that \(p(x)\) is a polynomial over a field \(k\),
 Let \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), and write \(k[\alpha]\) for the ring of remainders modulo \(p(x)\).
@@ -113,35 +291,28 @@ Suppose that \(p(x)\) is reducible, say \(p(x)=b(x)c(x)\), into lower degree fac
 We want to prove that \(b(\alpha)\) has no reciprocal.
 If \(b(\alpha)\) has a reciprocal, multiply both sides by it to get \(0=c(\alpha)\), i.e. \(c(x)\) is a multiple of \(p(x)\), but has degree less than that of \(p(x)\), so \(c(x)=0\), so \(p(x)=b(x)c(x)=0\), a contradiction.
 \end{proof}
-
 We say that the field \(k[\alpha]\) arises from \(k\) by ``adding a root'' \(\alpha\) to the polynomial \(p(x)\).
 Careful: the trick only works if \(p(x)\) is irreducible.
 If \(p(x)\) is reducible, split it into irreducible factors, and you can add roots as you like for each factor.
-
 \begin{example}
 This theorem explains why, in our last example, adding a root to \(p(x)=x^2+x+1\) over \(k=\Z{}/2\Z{}\) gave a field \(K=\set{0,1,\alpha,\alpha+1}\), not just a ring.
 \end{example}
 
 \section{Splitting fields}
-
 A polynomial \(p(x)\) with coefficients in a field \(k\) \emph{splits}\define{split polynomial} if it is a product of linear factors.
 If \(k \subset K\) is a subfield, a polynomial \(p(x)\) in \(k[x]\) \emph{splits over \(K\)} if it splits into a product of linear factors when we allow the factors to have coefficients from \(K\).
-
 \begin{example}
 The real-coefficient polynomial \(x^2+1\) splits over \(\C{}\):
 \[
 x^2+1=\left(x-i\right)\left(x+i\right).
 \]
 \end{example}
-
 \begin{problem}{fields:sqrt.2}
 Denote by \(\Q{}\of{\sqrt{2}}\) the field extension of \(\Q{}\) generated by \(\sqrt{2}\), i.e. the smallest subfield of \(\C{}\) containing \(\sqrt{2}\).
 Prove that \(\Q{}\of{\sqrt{2}}\) consists precisely of the numbers \(b+c\sqrt{2}\) for \(b, c\) rational.
 Prove that \(\Q{}\of{\sqrt{2}}\) is a splitting field for \(x^2-2\) over \(\Q{}\).
 \end{problem}
-
 An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field} of a polynomial \(p(x)\) over \(k\) if \(p(x)\) splits over \(K\) and every element of \(K\) is expressible as a rational function (with coefficients from \(k\)) of the roots of \(p(x)\).
-
 \begin{theorem}\label{theorem:splitting.field}
 Every polynomial \(p(x)\) over any field \(k\) has a splitting field \(K\).
 If \(p(x)\) has degree \(n\) then \(K\) has degree at most \(n!\) over \(k\).
@@ -152,9 +323,7 @@ When you add a root, the elements of the extension field are polynomials of degr
 In the extension, \(p(x)\) splits off a linear factor \(p(x)=(x-\alpha)q(x)\), so the next time you add a root, you are adding it to some \(q(x)\) of lower degree.
 By induction, the total degree is at worst \(n!\).
 \end{proof}
-
 The splitting field is more-or-less unique, but this is difficult to make precise; see theorem~\vref{theorem:splitting.fields.exist}.
-
 \begin{example}
 Over \(k=\R{}\) the polynomial \(p(x)=x^2+1\) has splitting field \(\C{}\):
 \[
@@ -164,7 +333,6 @@ x^2+1=\left(x-i\right)\left(x+i\right).
 \begin{example}
 Every polynomial over \(\C{}\) splits into linear factors, so for any subfield \(k \subset \C{}\) the splitting field \(K\) of any polynomial over \(k\) lies inside \(\C{}\), a field of complex numbers.
 \end{example}
-
 \begin{problem}{Fields:split.cubic}
 Consider the polynomial
 \[
@@ -186,15 +354,14 @@ so \(K\) is a finite field with 8 elements.
 
 
 \section{Algebraic closure}
-
+A field \(k\) is \emph{algebraically closed}\define{algebraically closed}\define{field!algebraically closed} if every polynomial over \(k\) splits into linear factors in \(k\).
 An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field}\define{field!splitting} of a collection of polynomials over \(k\) if every one of those polynomials splits over \(K\) and \(K\) is generated by the roots of all of these polynomials put together.
 If that collection consists of \emph{all} of the polynomials defined over \(k\), then we say that \(K\) is an \emph{algebraic closure}\define{algebraic!closure} of \(k\).
-
 We won't prove:
 \begin{theorem}\label{theorem:algebraic.closure}
 Every field \(k\) has an algebraic closure, denoted \(\bar{k}\)\Notation{bk}{\bar{k}}{algebraic closure}, unique up to an isomorphism which is the identity map on \(k\).
+The field \(\bar{k}\) is algebraically closed.
 \end{theorem}
-
 \begin{example}
 Clearly \(\bar{\R{}}=\C{}\).
 \end{example}
@@ -217,70 +384,6 @@ p(x)\defeq 1 + \pr{x-\alpha_1} \pr{x-\alpha_2} \dots \pr{x-\alpha_n}.
 Clearly \(p(\alpha)=1\) for any \(\alpha \in k\).
 Therefore \(k\) is not algebraically closed: every algebraically closed field is infinite.
 \end{example}
-
 \begin{problem}{fields:how.big}
 Prove that, for any finite field, and any integer, there is a finite extension of that field which has more elements than that integer.
 \end{problem}
-
-
-\begin{proposition}
-Draw a curve
-\[
-x(t)=\frac{p(t)}{q(t)}, y(t)=\frac{u(t)}{v(t)},
-\]
-where \(p(t), q(t), u(t), v(t)\) are polynomials with coefficients in a field \(k\).
-The resultant\SubIndex{resultant} in the variable \(t\) of the polynomials
-\[
-p(t)-xq(t), u(t)-yv(t)
-\]
-vanishes along the points \((x,y)\) in the plane which lie along this curve, with coefficients in \(\bar{k}\).
-\end{proposition}
-\begin{proof}
-The proof is the same as that of proposition~\vref{proposition:resultant.equation}, using algebraic closure instead of complex coefficients.
-\end{proof}
-
-\begin{lemma}\label{lemma:resultant.splitting}
-Suppose that \(b(x)\) and \(c(x)\) are polynomials over a field.
-In the splitting field of \(b(x)\), take roots \(\beta_1, \beta_2, \dots, \beta_m\) of \(b(x)\) and in the splitting field of \(c(x)\), take roots \(\gamma_1, \gamma_2, \dots, \gamma_n\) of \(c(x)\).
-If the highest terms are \(b(x)=b_m x^m + \dots\) and \(c(x)=c_n x^n + \dots\) then
-\begin{align*}
-\resultant{b}{c} 
-&=
-b_m^n c_n^m \pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n},
-\\
-&=
-b_m^n 
-c\of{\beta_1}c\of{\beta_2}\dots c\of{\beta_m},
-\\
-&=
-(-1)^{mn} c_n^m b\of{\gamma_1}b\of{\gamma_2}\dots b\of{\gamma_n}.
-\end{align*}
-\end{lemma}
-\begin{proof}
-Our previous proof, in proposition~\vref{proposition:factored.resultants}, worked over any infinite field in which the polynomials split.
-That proof therefore works over the algebraic closure of any field, since the algebraic closure is infinite and contains all splitting fields.
-\end{proof}
-
-
-
-\section{Sage}
-Sage computes resultants of polynomials over any field.
-For example, let \(K\) be the splitting field of \(x^2+x+1\) over \(k=\Zmod{2}\), with generator \(a\).
-We compute the resultant and greatest common divisor of
-\[
-p(t) = (at+1)^2 (at-1)^2, \\
-q(t) = (at+1) (at+a^2)^2.
-\]
-via
-\begin{sageblock}
-R.<x> = PolynomialRing(GF(2))
-K.<a> = (x^2 + x + 1).splitting_field()
-S.<t> = PolynomialRing(K)
-p = S((a*t+1)^2*(a*t-1)^2)
-q = S((a*t+1)*(a*t+a^2)^2)
-print(p.gcd(q))
-print(p.resultant(q))
-\end{sageblock}
-yielding \(\sage{p.gcd(q)}\) and \(\sage{p.resultant(q)}\).
-
-

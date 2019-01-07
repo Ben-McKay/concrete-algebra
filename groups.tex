@@ -5,294 +5,6 @@
 \epigraph[author={Henri Poincar\'e}]{The theory of groups is, as it were, the whole of mathematics stripped of its matter 
 and reduced to pure form.}\SubIndex{Poincar\'e, Henri}
 
-\section{Transformation groups}
-
-Take a set \(X\), which could be a set of points in the plane, or a set of numbers, or a collection of various geometric figures, or the set of books in a library, or any other set of any sort of things.
-A \emph{transformation}\define{transformation} \(f\) of \(X\) associates to each element \(x\) of \(X\) some element \(f(x)\) also from \(X\).
-
-\begin{example}
-Take a square \(X\) in the plane, and rotate it around its centre by a right angle.
-Each point \(p\) of \(X\) is rotated into some point \(f(p)\).
-Note that the centre point of the square is ``fixed'', i.e. rotated into itself.
-\end{example}
-\begin{example}
-Take any set \(X\).
-The \emph{identity transformation}\define{transformation!identity}\define{identity transformation} is the transformation that leaves every point of \(X\) where it is: \(f(x)=x\).
-\end{example}
-\begin{example}
-Shuffle a deck of cards.
-If \(X\) is the set of cards, the shuffle is a transformation \(f\) of \(X\).
-\end{example}
-
-Two maps \(f \colon X \to Y\) and \(g \colon Y \to X\) between sets are \emph{inverses}\define{inverse} if \(f(g(x))=x\) and \(g(f(x))=x\) for any element \(x\) of \(X\).
-In other words, \(f \circ g\) and \(g \circ f\) are both the identity transformation.
-Recall that a map \(f\) is \emph{invertible}\define{invertible!transformation}\define{transformation!invertible}, also called a \emph{bijection}\define{bijection} or a \emph{permutation}\define{permutation} if it has an inverse.
-A bijection transformation is a \emph{permutation}.\define{permutation}
-
-\begin{problem}{groups:bijection}
-A map \(f \colon X \to Y\) of a set \(X\) is \emph{injective}\define{injective} (also called \emph{one-to-one}\define{one-to-one}) if \(f(p)=f(q)\) only when \(p=q\).
-It is \emph{surjective}\define{surjective} (also called \emph{onto}\define{onto}) if every element \(y\) of \(Y\) has the form \(y=f(x)\) for some element \(x\) of \(X\).
-Prove that a map is a bijection just when it is injective and surjective.
-\end{problem}
-
-\begin{problem}{groups:bijection.finite}
-Prove that a transformation \(f\) of a \emph{finite} set \(X\) is injective just when it is surjective, and hence just when it is a bijection.
-\end{problem}
-\begin{answer}{groups:bijection.finite}
-Denote by \(\cardinality{S}\) the number of elements in a set \(S\).
-We use the basic fact that if \(S \subseteq T\) is a subset of a finite set \(T\), then \(\cardinality{S} \le \cardinality{T}\), with equality just when \(S=T\).
-The image of \(f\) is \(f(X) \subseteq X\), equality just when \(f\) is surjective, i.e. just when \(\cardinality{f(X)}=\cardinality{X}\).
-Each element maps somewhere, i.e. lies in \(f^{-1}(x)\) for some \(x \in f(X)\):
-\[
-\cardinality{X} = \sum_{x \in f(X)} \cardinality{f^{-1}\set{x}}
-\ge \sum_{x \in f(X)} 1 = \cardinality{f(X)},
-\]
-with equality, i.e. \(f\) surjective, just when \(f^{-1}\set{x}\) has one element for every \(x \in f(X)\), i.e. just when \(f\) is injective.
-\end{answer}
-
-\begin{problem}{groups:bijection.inverse}
-Prove that a bijection \(f\) has a unique inverse.
-\end{problem}
-The inverse of a bijection \(f\) is denoted \(f^{-1}\).
-
-A \emph{transformation group}\define{group!transformation}\define{transformation!group} \(G\) on a set \(X\) is a nonempty collection of permutations of \(X\) so that 
-\begin{enumerate}
-\item 
-if \(f\) and \(g\) are in \(G\) then \(f \circ g\) is in \(G\).
-\item
-if \(f\) is in \(G\) then \(f^{-1}\) is also in \(G\).
-\end{enumerate}
-
-\begin{example}
-Take \(X\) the Euclidean plane.
-Every rotation of the plane around the origin is by some angle, say \(\theta\).
-Conversely, every angle \(\theta\) is the angle of some rotation around the origin.
-So angles form a transformation group \(G\), the group of rotations of the plane \(X\) around the origin.
-\end{example}
-\begin{example}
-Take \(X\) to be three dimensional Euclidean space.
-Take a line \(\ell\) through the origin, with a chosen direction along that line.
-Hold the line in your hand, so that your thumb points up the chosen direction.
-Then your figures curl around the line in a certain direction.
-In additional, take an angle \(\theta\), and rotate the whole space \(X\) around in the direction of your fingers, by the angle \(\theta\).
-Every rotation of Euclidean space \(X\) arises in this way.
-(If you change the choice of direction to point your thumb, but keep the same axis of rotation \(\ell\), then you change \(\theta\) to \(-\theta\).)
-When you compose a rotation with another rotation, the result is yet a third rotation.
-The rotations of Euclidean space form a transformation group \(G\).
-\end{example}
-\begin{example}
-Take \(X\) to be the real number line. 
-Given any real number \(t\), we can define a transformation \(f(x)=x+t\).
-In this way, the real numbers \(t\) are associated to the elements of a group \(G\) of transformations of the real number line.
-\end{example}
-\begin{example}
-A \emph{rigid motion} of Euclidean space is a transformation that preserves distances.
-For example, rotations, mirror reflections: \((x,y) \mapsto (x,-y)\), and translations \((x,y) \mapsto (x+x_0,y+y_0)\) are rigid motions of the plane.
-The rigid motions form a transformation group.
-\end{example}
-\begin{example}
-Take a geometric figure \(X\) in the plane, or in space.
-A rigid motion preserving \(X\) is a \emph{symmetry} of \(X\); the symmetries of a figure constitute a transformation group.
-For example, if \(X\) is a square, every symmetry permutes the corners somehow, and we can easily see these symmetries:
-\begin{center}
-\input{square-rotations}
-\end{center}
-The symmetry group of a non-isosceles triangle consists just of the identity transformation.
-For an isosceles, but not equilateral, triangle, the symmetry group is the identity transformation and the reflection across the axis of symmetry.
-An equilateral triangle has as symmetries: the identity transformation, the rotation by \(120\si{\degree}\), the rotation by \(240\si{\degree}\), and the three reflections in the three axes of symmetry.
-\end{example}
-\begin{example}
-The symmetry group of an infinitely repeating sodium choride lattice
-\begin{center}
-\includegraphics[width=4cm]{Sodium-chloride-3D-ionic.png}
-\end{center}
-includes the translations of space that move each green chlorine atom and purple natrium atom to its neighbor, up, down, left, right, forward or back, and mirror reflections around the coordinate planes through the origin, where we put the origin in the middle of any one of these atoms, and also the transformations given by permuting the order of the variables \(x,y,z\) of each coordinate axis.
-\end{example}
-\begin{example}
-Every \(2 \times 2\) matrix 
-\[
-A=
-\begin{pmatrix}
-a & b \\
-c & d
-\end{pmatrix}
-\]
-(with entries from any chosen field) determines a \emph{linear transformation}\define{transformation!linear}\define{linear transformation}:
-\[
-\begin{pmatrix}
-x \\
-y
-\end{pmatrix}
-\mapsto
-A
-\begin{pmatrix}
-x \\
-y
-\end{pmatrix}
-=
-\begin{pmatrix}
-a & b \\
-c & d
-\end{pmatrix}
-\begin{pmatrix}
-x \\
-y
-\end{pmatrix}
-=
-\begin{pmatrix}
-ax + by \\
-cx + dy
-\end{pmatrix}
-\]
-of the plane.
-Similarly, a square matrix \(A\), say \(n \times n\), determines a linear transformation of \(n\)-dimensional Euclidean space.
-A linear transformation is a bijection just when the associated matrix \(A\) is invertible, i.e. just when \(A\) has nonzero determinant.\SubIndex{determinant}
-The invertible \(n \times n\) matrices form a transformation group \(G\), of linear transformations of \(n\)-dimensional Euclidean space.
-\end{example}
-\begin{example}
-Take \(X\) to be the set of numbers \(\set{1,2,3,4}\).
-The \emph{symmetric group}\define{symmetric group} on 4 letters is the group \(G\) of all permutations of \(X\).
-The terminology ``on 4 letters'' reminds us that we could just as well have taken \(X=\set{a,b,c,d}\) to consist of any 4 distinct elements, and then we would get essentially the same story, just relabelling.
-It is convenient notation to write a permutation of finite sets as, for example,
-\[
-\begin{pmatrix}
-1 & 2 & 3 & 4 \\
-2 & 3 & 1 & 4
-\end{pmatrix}
-\]
-to mean the map \(f\) so that \(f(1)=2\), \(f(2)=3\), \(f(3)=1\) and \(f(4)=4\), i.e. reading down from the top row as the input to \(f\) to the entry underneath as the output of \(f\).
-It is often understood that the first row is just \(1 \ 2 \ 3 \ 4\) or some such, so we can just write down the second row: \(2 \ 3 \ 1 \ 4\), to display the permutation.
-\end{example}
-
-\begin{problem}{groups:compose.permutation}
-What is are the permutations \(g \circ f\) and \(f \circ g\) where \(g\) is
-\[
-2 \ 3 \ 1 \ 4
-\]
-and \(f\) is
-\[
-3 \ 1 \ 2 \ 4?
-\]
-\end{problem}
-
-Another notation for permutations: the \emph{cycle}\define{cycle} \((1 3 4 2)\) means the permutation that takes \(1\) to \(3\), \(3\) to \(4\), \(4\) to \(2\) and \(2\) to \(1\), reading from left to right.
-More generally, the cycle \((a_1 a_2 \dots a_k)\) is the permutation taking \(a_1\) to \(a_2\), \(a_2\) to \(a_3\), and so on, and taking \(a_k\) to \(a_1\).
-So \((2 3 1 4)\) takes \(3\) to \(1\).
-By definition, if we have a number \(x\) which is not among these various \(a_1, a_2, \dots, a_k\), then the cycle \((a_1 a_2 \dots a_k)\) fixes the number \(x\):
-\((2 3 5 4)\) takes \(1\) to \(1\).
-Two cycles \((a_1 a_2 \dots a_k)\) and \((b_1 b_2 \dots b_{\ell})\) are \emph{disjoint}\define{cycle!disjoint} if none of the \(a_i\) occur among the \(b_j\) and vice versa.
-So 
-\[
-(1 4 5 2) \text{ is disjoint from } (3 6),
-\]
-but
-\[
-(1 3 5 2) \text{ is not disjoint from } (3 6)
-\]
-since they both have \(3\) in them.
-We can write the identity permutation as \(()\).
-Note that any cycle of length 1 is also the identity transformation: \((2)=(1)=()\), since \((2)\) takes \(2\) to \(2\), and fixes everything else.
-If two permutations \(f\) and \(g\) can be expressed as disjoint cycles, then \(fg=gf\), since each fixes all of the letters moved by the other.
-
-Sage knows how to multiply cycles:
-\begin{sageblock}
-G = SymmetricGroup(5)
-sigma = G("(1,3) (2,5,4)")
-rho = G([(2,4), (1,5)])
-rho^(-1) * sigma * rho
-\end{sageblock}
-prints \(\sage{rho^(-1) * sigma * rho}\).
-
-\begin{theorem}
-Every permutation of the elements of a finite set is expressed as a product of disjoint cycles, uniquely except for the order in which we write down the cycles, which can be arbitrary.
-\end{theorem}
-\begin{proof}
-Suppose our finite set is \(1,2,\dots,n\).
-Our permutation \(f\) takes \(1\) to some number \(f(1)\), takes that number to some other number \(f(f(1))\), and so on, and eventually (because there are finitely many), if we repeat it enough times we cycle back to a number we have seen before.
-Suppose that this first happens at the \(k\)-th step.
-Writing \(f^21\) to mean \(f \circ f(1)\), not multiplication but composition, we are saying that \(f^k 1\) must already be among \(1,f1,\dots,f^{k-1}1\), say \(f^k 1=f^{\ell} 1\) for some \(0 \le \ell < k\).
-Suppose that we pick \(k\) the smallest possible
-Since \(f\) is a bijection, if \(\ell > 0\) we apply \(f^{-1}\) to both sides of \(f^k 1=f^{\ell} 1\) to find a smaller value of \(k\), a contradiction.
-So \(\ell=0\), i.e. \(f^k1=1\) is our first repeat.
-So we have a cycle \((1 \ f1 \ \dots \ f^{k-1}1)\).
-But that cycle might not exhaust the whole of \(f\), since there might be some other numbers among \(1,2,\dots,n\) not among the elements of this cycle.
-
-Take the smallest one, say \(b\).
-Since \(f\) is a bijection, if any number from \(b,fb,f^2b,\dots\) is also in the cycle \((1 \ f1 \ f^21 \ \dots \ f^{k-1} 1\), we can apply \(f^{-1}\) to both sides as many times as we need to get that \(b\) is already in that cycle, a contradiction.
-By the same argument above, replacing \(1\) by \(b\), we get another cycle \((b \ fb \ \dots \ f^{\ell -1}b)\) disjoint from the first.
-Continue in this way by induction to express \(f\) as a product of disjoint cycles.
-This expression is unique, since each cycle is precisely built from applying \(f\) repeatedly to any element until a cycle forms, so any two such expressions have exactly the same cycle through any element.
-\end{proof}
-
-For example, in cycle notation
-\[
-\begin{pmatrix}
-1 & 2 & 3 & 4 \\
-2 & 3 & 1 & 4
-\end{pmatrix}
-=(1 2 3)
-\]
-and
-\[
-\begin{pmatrix}
-1 & 2 & 3 & 4 & 5 \\
-3 & 4 & 1 & 5 & 2 
-\end{pmatrix}
-=(1 3)(2 4 5).
-\]
-
-\begin{problem}{groups:count.perms}
-Prove that any set with \(n\) elements has \(n!\) permutations, in several ways: by counting 
-\begin{enumerate}
-\item how many places to move \(1\) to, and then how many places there are left to move \(2\) to, and so on,
-\item the number of places to stick object \(n\) in between the elements of any given permutation \(a_1 a_2 \dots a_{n-1}\) of the numbers \(1,2,\dots,n-1\), say as \(n a_1 a_2 \dots a_{n-1}\) or \(a_1 n a_2 \dots a_{n-1}\) or \(a_1 a_2 n \dots a_{n-1}\) and so on, for example: given the permutation
-\[
-3 \ 1 \ 2
-\]
-of the numbers \(1,2,3\), we can put \(4\) in there as
-\[
-4 \ 3 \ 1 \ 2, \quad 3 \ 4 \ 1 \ 2, \quad 3 \ 1 \ 4 \ 2, \text{ or } \quad 3 \ 1 \ 2 \ 4.
-\]
-\item the number of ways to put at the end of a given permutation \(a_1 a_2 \dots a_{n-1}\) some number \(b\) from among 
-\[
-b=\frac{1}{2}, 1+\frac{1}{2}, \dots, n-\frac{1}{2},
-\]
-for example into the permutation \(3 \ 1 \ 2\) we stick
-\[
-3 \ 1 \ 2 \ \frac{1}{2}, \quad \text{ or }
-3 \ 1 \ 2 \ \frac{3}{2}, \quad \text{ or }
-3 \ 1 \ 2 \ \frac{5}{2}, \quad \text{ or }
-3 \ 1 \ 2 \ \frac{7}{2}
-\]
-and then replace the numbers in the list by integers from \(1,2,\dots,n\), but in the same order:
-\[
-4 \ 2 \ 3 \ 1, \quad \text{ or }
-4 \ 1 \ 3 \ 2, \quad \text{ or }
-4 \ 1 \ 2 \ 3, \quad \text{ or }
-3 \ 1 \ 2 \ 4.
-\]
-\item
-the possible disjoint cycles.
-\end{enumerate}
-\end{problem}
-
-
-Sage knows all of the permutations of small symmetric groups, and will print them out for you in cycle notation:
-\begin{sageblock}
-H = DihedralGroup(6)
-H.list()
-\end{sageblock}
-yields
-\[
-\begin{array}{lll}
-               , & (1,6)(2,5)(3,4), & (1,2,3,4,5,6), \\ 
-     (1,5)(2,4), & (2,6)(3,5),      & (1,3,5)(2,4,6), \\ 
-(1,4)(2,3)(5,6), & (1,6,5,4,3,2),   & (1,4)(2,5)(3,6), \\ 
-(1,2)(3,6)(4,5), & (1,5,3)(2,6,4),  & (1,3)(4,6)
-\end{array}
-\]
-where the identity element is the blank space at the start.
-
 \section{Groups}
 
 Each symmetry of an equilateral triangle in the plane permutes the vertices.
@@ -385,7 +97,6 @@ Prove that the set of nonzero rational numbers, with product operation defined a
 
 
 \section{Additive notation}
-
 When a group is abelian, it is often preferred to write the group operation not as \(ab\) but instead as \(a+b\), and the identity element as \(0\) rather than \(1\), and the inverse as \(-a\) rather than \(a^{-1}\).
 
 \begin{example}
@@ -452,7 +163,6 @@ H.is_abelian()
 yields \(\sage{H.is_abelian()}\).
 
 \section{Multiplication tables}
-
 If a group \(G\) is finite (i.e. has finitely many elements), we let \(|G|\)\Notation{.G.}{\orderForNotationIndex{G}}{order of group} be the number of elements of \(G\), called the \emph{order}\define{order} of \(G\).
 We can then write a \emph{multiplication table}\define{multiplication table}, with rows representing some element \(x\), columns some element \(y\), and entries \(xy\)
 For example, if a group \(G\) has 2 elements, say \(1\) and \(a\), then it is easy to see that \(a^2=1\) so the multiplication table must be
@@ -464,6 +174,10 @@ a &  a & 1
 \end{array}
 \]
 
+\begin{problem}{groups:permuty}
+Prove that, for any group, on every row of its multiplication table, every element of the group occurs exactly once.
+Prove the same for columns instead of rows.
+\end{problem}
 \begin{problem}{groups:order.three}
 Prove that any group \(G\) of order 3 has (in some labelled of its elements) the multiplication table
 \[
@@ -540,6 +254,178 @@ So if \(G\) (in multiplication notation!) were isomorphic to \(H\), we would hav
 constitute the whole of \(G\).
 Check the multiplication table above to see that every \((x,y)\) in \(G\) satisfies \((x,y)^2=(1,1)\).
 \end{example}
+\begin{problem}{groups:order.four}
+How many groups of order four are there, up to isomorphism?
+\end{problem}
+\begin{answer}{groups:order.four}
+\tikzstyle{multtable}=[draw=gray!30,very thick,rounded corners]
+\newcommand{\mtbl}[5]{
+\begin{array}{c|cccc}
+#1 \\ \hline
+#2 \\
+#3 \\
+#4 \\
+#5
+\end{array}
+}
+
+\newcommand{\tbl}[5]{$\mtbl{#1}{#2}{#3}{#4}{#5}$}
+
+We start only knowing that \(1a=a\), and so on:
+\[
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }};
+\end{tikzpicture}
+\]
+In the first blank, entry, we have to put \(1,a,b\) or \(c\); we are choosing the value of \(a^2\).
+If you pick \(b\) and I pick \(c\), we could just swap the letters \(b\) and \(c\) in the alphabet to get your choice to agree with mine.
+If we pick \(a^2=a\) then cancel an \(a\) from both sides to get \(a=1\), not possible since our group has 4 distinct elements.
+So \(a^2=1, b\) or \(c\), and swap letters to get \(a^2=1\) or \(b\):
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}};
+\end{tikzpicture}
+\]
+Since every element of the group occurs exactly once in each row and column, in the left hand table, the next element across is \(b\) or \(c\).
+But there is already a \(b\) in the column, so \(c\), forcing the next entry to be \(b\).
+In the right hand table, the next element is either \(1\) or \(c\).
+But we have a \(c\) in the final column, so 
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b &   &   &  }
+{c &  c &   &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+};
+\end{tikzpicture}
+\]
+Going down the 2nd columns, we have (in the left hand table) already used \(a,1\), and in the 3rd row we already have a \(b\), so \(c\), and then \(b\).
+Similarly (in the right hand table), in the 2nd column, we have already used \(a,b\), and we have a \(c\) in the last row, so we must use \(1\) in the 2nd column, last row, and so a \(c\) above that.
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c &   &  }
+{c &  c & b &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c &   &  }
+{c &  c & 1 &   &  }}
+};
+\end{tikzpicture}
+\]
+On the left hand table, we can next pick a \(1\) or \(a\), b
+On the right hand, either a \(1\) or an \(a\), but we have a \(1\) in the last row, so we can't put another \(1\) in that row, so must be \(1,a\):
+\[
+\begin{tikzpicture}[sibling distance=1cm,level distance=5cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c &   &  }
+{c &  c & b &   &  }}
+[edge from parent fork down]
+child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & 1 & a}
+{c &  c & b & a & 1}}
+}
+child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & a & 1}
+{c &  c & b & 1 & a}}
+}}
+child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c & 1 & a}
+{c &  c & 1 & a & b}}
+};
+\end{tikzpicture}
+\]
+If we swap the letters \(a,b\), we find the second and third tables become the same, so drop the second one:
+\[
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & a & 1}
+{c &  c & b & 1 & a}};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c & 1 & a}
+{c &  c & 1 & a & b}};
+\end{tikzpicture}
+\]
+One then has to check that these are in fact groups, as they both turn out to be.
+\end{answer}
 
 Sage knows the multiplication tables of many groups.
 The \emph{dihedral group}\define{dihedral group} \(D_n\)\Notation{Dn}{D_n}{the dihedral group} is the symmetry group of a regular polygon with \(n\) equal sides and angles.
@@ -598,24 +484,36 @@ Hence \(K\) consists precisely of all multiples of \(n\), i.e. \(K=n\Z{}\), and 
 \end{proof}
 
 The \emph{order}\define{order!group element} of an element \(a\) of a group \(G\) is the order of the cyclic group consisting of the powers \(a^k\).
-
 \begin{problem}{groups:order.comm}
 Take any two elements \(a,b\) of some group.
 Prove that \(ab\) and \(ba\) have the same order.
 \end{problem}
-
-
 \begin{problem}{groups:order.two.comm}
 Take any two elements \(a,b\) of order two in some group.
 If \(ab\) also has order two, prove that \(a\) and \(b\) commute.
 \end{problem}
-
-
 \begin{problem}{groups:order.disjoint}
 Take a permutation \(f\) of \(n\) letters \(1,2,\dots,n\), expressed as a product of disjoint cycles.
 Prove that the order of \(f\) is the least common multiple of the orders of the disjoint cycles.
 \end{problem}
-
+\begin{problem}{groups:cyclic.subgroups}
+Prove that every subgroup of a cyclic group is cyclic.
+\end{problem}
+\begin{answer}{groups:cyclic.subgroups}
+Take a subgroup \(H\) of a cyclic group \(G\).
+Suppose that \(G\) is generated by an element \(x\), i.e. consists of the integer powers of \(x\).
+The elements of \(H\) consist only of certain powers of \(x\); let \(S \subset \Z{}\) be the set of integers \(k\) so that \(x^k\) belongs to \(H\).
+Clearly \(x^kx^{\ell}=x^{k+\ell}\) and \((x^k)^{-1}=x^{-k}\), and \(1=x^0\), so \(S\) is a subgroup of \(\Z{}\) under addition.
+If \(S=\set{0}\), clearly \(H=\set{1} \subset G\) is cyclic.
+But if \(S\ne\set{0}\), then \(S\) contains a least positive element, say \(n\).
+Then \(S\) contains all integer multiples of \(n\).
+If \(S\) contains some integer \(k\), then \(S\) contains \(uk+vn\) for any integers \(u,v\), and in particular (if \(u,v\) are the B\'ezout coefficients of \(k,n\)), \(S\) contains the greatest common divisor of \(k,n\), which is at most as large as \(n\).
+But \(n\) is the smallest positive integer in \(S\), so that greatest common divisor of \(k,n\) is \(n\), i.e. \(n\) divides \(k\).
+So \(n\) divides all elements of \(S\): \(S\) is the set of all integer multiples of \(n\), and so \(H\) is generated by \(x^n\), so cyclic.
+\end{answer}
+\begin{problem}{groups:cyclic.subgroups.2}
+What are all subgroups of the group \(\Z{}/102\Z{}\) of integer remainders modulo 102?
+\end{problem}
 Sage can compute the order of an element of a group:
 \begin{sageblock}
 G = SymmetricGroup(5)
@@ -624,10 +522,7 @@ sigma.order()
 \end{sageblock}
 yields \(\sage{sigma.order()}\).
 
-
-
 \section{Graphs}
-
 \begin{example}
 Take a hexagon \(X\) in the plane and let \(G\) be its symmetry group.
 Label the vertices of \(X\) in order as we travel around the vertices counterclockwise, say as \(1,2,3,4,5,6\).
@@ -669,6 +564,14 @@ we see the graph:
 \end{center}
 The graph is labelled by the cycles of each element, thought of as a permutation of the vertices of the hexagon.
 
+\begin{theorem}[Cayley]\SubIndex{Cayley, Arthur}
+Every group is a group of permutations.
+\end{theorem}
+\begin{proof}
+We drew the graph of the group above; now imagine more simply just drawing a dot for each element.
+Each element \(g\) of the group then moves each dot \(k\) to \(gk\), permuting the dots.
+\end{proof}
+
 \section{Subgroups}
 
 A subset \(H\) of a group \(G\) is a \emph{subgroup}\define{subgroup} if
@@ -695,6 +598,9 @@ If \(b\) is an element of any group \(G\), then the set of all elements of \(G\)
 \begin{example}
 The real \(2 \times 2\) matrices of unit determinant form a subgroup of the group of all invertible real \(2 \times 2\) matrices, since determinants multiply.
 \end{example}
+\begin{problem}{groups:hexagon.subgroups}
+What are all of the subgroups of the symmetry group of a hexagon?
+\end{problem}
 
 \section{Cosets}
 
@@ -786,22 +692,49 @@ So \(G/H\) is the set of remainders modulo \(7\).
 Each element of \(G/H\) represents ``gluing together'' all elements of \(G\) that differ by a multiple of \(H\).
 \end{example}
 
-\section{Actions}
+\begin{theorem}[Lagrange]\SubIndex{Lagrange, Joseph-Louis}
+If \(H\) is a finite subgroup of a group \(G\) then
+\[
+|G/H|=\frac{|G|}{|H|}.
+\]
+\end{theorem}
+\begin{proof}
+The set \(G\) is divided up into disjoint cosets, each of size \(|H|\).
+\end{proof}
 
+
+\begin{corollary}
+The order of any finite subgroup of a group divides the order of the group.
+\end{corollary}
+
+\begin{corollary}
+The order of any element of a group divides the order of the group.
+\end{corollary}
+
+\begin{corollary}
+Every finite group of prime order, say order \(p\), is cyclic, isomorphic to the group of remainders modulo \(p\) under addition.
+\end{corollary}
+\begin{proof}
+Take any element which is not the identity element, so cannot have order 1.
+Since \(G\) is finite, the order of the element is finite.
+Since \(|G|\) is prime, the order of the element divides this prime, so equals this prime.
+\end{proof}
+
+
+
+\section{Actions}
 A group \(G\) \emph{acts} on a set \(X\) if each element \(b\) of \(G\) has an associated transformation \(f_g\) of \(X\)  so that \(f_{bc} = f_b \circ f_c\) for any elements \(b, c\) of \(G\).
 So then \(G\) is a transformation group of \(X\), and write \(gx\) to mean \(f_g(x)\).
 The action is \emph{transitive} if any two points \(p, q\) of \(X\) are connected by some element of \(G\), i.e. \(q=gp\) for some \(g\) in \(G\).
 The \emph{stabilizer} of a point \(x_0\) of \(X\) is the subset \(G^{x_0}\) of \(G\) consisting of those \(g\) in \(G\) so that \(gx_0=x_0\).
 If a group \(G\) acts on two sets \(X\) and \(Y\), a map \(f \colon X \to Y\) is \emph{equivariant} if \(f(gx)=gf(x)\) for any \(x\) in \(X\) and \(g\) in \(G\).
 An equivariant bijection makes two actions practically identical.
-
 \begin{lemma}
 Given a group action of a group \(G\) on a set \(X\), and an element \(x_0\) of \(X\), the stabilizer \(G^{x_0}\) of each point is a subgroup.
 \end{lemma}
 \begin{proof}
 Clearly if \(bx_0=x_0\) and \(cx_0=x_0\) then \((bc)x_0=b(cx_0)=bx_0=x_0\) and so on.
 \end{proof}
-
 Subgroups correspond to transitive actions; geometrically it is always easier to think about actions, but algebraically it is easier to work with subgroups.
 \begin{theorem}
 If \(H\) is a subgroup of a group \(G\), and we let \(X=G/H\), then \(G\) acts on \(X\) transitively by \(b(cH)=(bc)H\) with stabilizer \(G^{x_0}=H\) where \(x_0\) is the coset \(1H\).
@@ -825,52 +758,140 @@ Since \(G\) acts transitively on \(X\), every element \(x\) of \(X\) has the for
 If \(f(bH)=f(cH)\) then \(bx_0=cx_0\) so \(c^{-1}bx_0 = x_0\) i.e. \(c^{-1} b\) lies in \(G^{x_0}\).
 But \(H\) is by definition \(G^{x_0}\), so \(c^{-1}b\) lies in \(H\), i.e. \(bH=cH\), so \(f\) is injective.
 \end{proof}
-
-
-
-\begin{theorem}[Lagrange]\SubIndex{Lagrange, Joseph-Louis}
-If \(H\) is a finite subgroup of a group \(G\) then
-\[
-|G/H|=\frac{|G|}{|H|}.
-\]
-\end{theorem}
-\begin{proof}
-The set \(G\) is divided up into disjoint cosets, each containing \(|H|\) elements.
-\end{proof}
-
-
-\begin{corollary}
-The order of any finite subgroup of a group divides the order of the group.
-\end{corollary}
-
-\begin{corollary}
-The order of any element of a group divides the order of the group.
-\end{corollary}
-
-\begin{corollary}
-Every finite group of prime order, say order \(p\), is cyclic, isomorphic to the group of remainders modulo \(p\) under addition.
-\end{corollary}
-\begin{proof}
-Take any element which is not the identity element, so cannot have order 1.
-Since \(G\) is finite, the order of the element is finite.
-Since \(|G|\) is prime, the order of the element divides this prime, so equals this prime.
-\end{proof}
-
-
+\begin{example}
+Take 49 seats, numbered, and 15 people standing, each with name tags.
+Sit all 15 of those people.
+Keep track of who sits where.
+So the group \(G\) of permutations of \(49\) seats acts on the possible seating plans of the \(49\) people, taking any seating plan to any other.
+But the seating plan of the 15 people (who sits where) doesn't change if we move around the empty seats: \(49-15=34\) seats.
+So the group \(H\) of permutations of \(34\) empty seats acts trivially on any given seating plan \(x_0\).
+So the set \(X\) of seating plans of \(15\) people into \(49\) chairs is \(X=G/H\), and so has order \(49!/34!\).
+\end{example}
+\begin{problem}{groups:combos}
+Explain how to count combinations, and how to count permutations, using group actions.
+\end{problem}
 Take a group \(G\) acting on a set \(X\).
 The \emph{orbit}\define{orbit} \(Gx\) of an element \(x\) of \(X\) is the set of all elements of \(X\) of the form \(gx\) for \(g\) in \(G\): it is where \(G\) takes \(x\).
 Every orbit is, by definition, acted on transitively by \(G\), so the map \(G/G^x \to Gx\) taking \(gG^x \mapsto gx\) is an equivariant bijection.
-
+Denote the set of all orbits as \(X/G\).
 \begin{problem}{groups:orbits.square}
 If \(X\) is a hexagon in the plane, and \(G\) is the symmetry group of \(X\), what are all of the orbits of \(G\)?
 \end{problem}
-
 A \emph{fixed point}\define{fixed point} of a group \(G\) acting on a set \(X\) is a point \(x\) fixed by all elements of \(G\), i.e. \(gx=x\) for any \(g\) in \(G\).
-
 \begin{problem}{groups:fixed.point}
 If a finite group \(G\) acts on a finite set \(X\), and the order of \(X\) is coprime to the order of \(G\), prove that \(X\) contains a fixed point of the \(G\)-action.
 \end{problem}
+\begin{theorem}[Burnside]
+Suppose that a finite group \(G\) acts on a finite set \(X\).
+To each element \(g\) of \(G\), let \(X^g\) be the set of elements of \(X\) fixed by \(g\).
+Write the number of elements of any set \(S\) as \(|S|\).
+Then the number of orbits is the average number of fixed points of group elements:
+\[
+|X/G|
+=
+\frac{\sum_{g \in G} |X^g|}{|G|}.
+\]
+\end{theorem}
+\begin{proof}
+Let \(S\) be the set of pairs \((g,x)\) with \(g\) in \(G\), \(x\) in \(X\), and \(gx=x\).
+Count the elements of \(S\) two ways: first by summing over all possible values of \(g\):
+\[
+|S|=\sum_{g \in G}|X^g|,
+\]
+and second by summing over all possible values of \(x\) instead:
+\[
+|S|=\sum_{x \in X} |G^x| = \sum_{x \in X} \frac{|G|}{|Gx|}.
+\]
+But if \(x\) and \(y\) belong to the same orbit, say \(o=Gx=Gy\), they have the same value of \(|o|=|Gx|=|Gy|\).
+There are \(|o|\) elements \(x\) in that orbit, so we write this as
+\begin{align*}
+|S|
+&=\sum_{x \in X} \frac{|G|}{|Gx|},
+\\
+&=\sum_{o \in X/G} \sum_{x \in o} \frac{|G|}{|Gx|},
+\\
+&=\sum_{o \in X/G} \sum_{x \in o} \frac{|G|}{|o|},
+\\
+&=\sum_{o \in X/G} \frac{|G|}{|o|} \sum_{x \in o} 1,
+\\
+&=\sum_{o \in X/G} \frac{|G|}{|o|} |o|,
+\\
+&=|G| \sum_{o \in X/G} 1,
+\\
+&=|G| |X/G|.
+\end{align*}
+\end{proof}
+\begin{theorem}
+Suppose that a finite group \(G\) acts on a finite set \(X\).
+Each element \(g\) of \(G\) acts as a permutation on \(X\), say with \(c_g\) cycles.
+Suppose we pick \(n\) different colours and try to paint \(X\) with those colours, but we declare two colourings to be equivalent if they agree after the action of some element of \(G\).
+Then the number of distinct colourings is
+\[
+\frac{1}{|G|} \sum_{g \in G} n^{c_g}.
+\]
+\end{theorem}
+\begin{proof}
+Let \(C\) be the set of all colourings of \(X\) into \(n\) colours, i.e. the set of maps \(X \to \set{1,2,\dots,n}\).
+Each \(G\)-orbit in \(C\) is one colouring of \(X\) up to equivalence.
+Let \(C'\) be the set of pairs \((c,g)\) where \(c \in C\) is a colouring and \(g \in G\) is an element preserving that colouring.
+On \(C'\), we have the action \(g_0(c,g)=(g_0c,g_0g)\) for any \(g_0 \in G\).
+So \(\phi\colon (c,g) \in C' \mapsto c \in C\) is onto and \(G\)-equivariant.
+So \(\phi\) takes \(G\)-orbits to \(G\)-orbits.
+But the \(G\)-stabilizer of any point of \(C'\) is trivial, so each \(G\)-orbit in \(C'\) is a copy of \(G/\set{1} \cong G\).
+Hence each \(G\)-orbit in \(C\) has preimage with \(|G|\) elements in \(C'\).
+Add up over all \(G\)-orbits to find all elements of \(C'\): \(|C'|=|G||C/G|\).
 
+Let \(\psi\colon (c,g) \in C' \mapsto g \in G\).
+Again \(\psi\) is \(G\)-equivariant.
+Each \(\psi^{-1}g\) is the set of all colourings invariant under \(g\), i.e. with the same colour in all \(g\)-orbits.
+There are \(n^{c(g)}\) such colourings:
+\[
+|C'|=\sum_{g \in G} n^{c(g)}.
+\]
+Put the two together:
+\[
+|C/G|=\frac{1}{|G|} \sum_{g \in G} n^{c(g)}.
+\]
+\end{proof}
+\begin{problem}{permutations:cube}
+Use the solution of problem~\vref{problem:permutations:cube} to find the number of distinct colourings of a cube (where we declare two colourings equivalent if they agree up to rotation) with 5 colours of paint.
+\end{problem}
+\begin{answer}{permutations:cube}
+We have numbers \(n\) of group elements \(g\) with various numbers \(c_g\) of cycles:
+\[
+\begin{array}{cc}
+\toprule
+n & c_g\\
+\midrule
+1 & 6\\
+3 & 4\\
+6 & 3\\
+8 & 2\\
+6 & 3\\
+\bottomrule
+\end{array}
+\]
+Hence 
+\[
+\frac{1}{|G|} \sum_{g \in G} n^{c_g} 
+= 
+\frac{1}{24} (n^6 + 3n^4 + 6n^3+8n^2+6n^3)=\frac{1}{24}n^2(n+1)(n^3-n^2+4n+8),
+\]
+so for various values of \(n\):
+\[
+\begin{array}{cc}
+\toprule
+n & |C| \\
+\midrule
+1 & 1\\
+2 & 10\\
+3 & 57\\
+4 & 240\\
+5 & 800\\
+\bottomrule
+\end{array}
+\]
+\end{answer}
 
 
 \section{Group presentations}
@@ -888,41 +909,37 @@ Hence the group is precisely
 \end{example}
 
 
-Take an abstract set \(S\).
-A \emph{word}\define{word} on the \emph{alphabet}\define{alphabet} \(S\) is a finite sequence of choices of element of \(S\) and integer power.
+Take an abstract set \(X\).
+A \emph{word}\define{word} on the \emph{alphabet}\define{alphabet} \(X\) is a finite sequence of choices of element of \(X\) and integer power.
 We write each word as a string of symbols
 \[
-s_1^{a_1} s_2^{a_2} \dots s_k^{a_k}.
+x_1^{a_1} x_2^{a_2} \dots x_k^{a_k}.
 \]
 We allow the empty string, and write it as \(1\).
-\emph{Reduce}\define{reduce} a word by deleting any \(s^0\) symbols and replacing any subword \(s^p s^q\) by \(s^{p+q}\).
-The \emph{free group}\define{free!group} \(\left<S\right>\) on an alphabet \(S\) is the collection of all reduced words on \(S\).
-The multiplication operation: multiply two words by writing down one after the other, called \emph{concatenation}\define{concatentation} and then reducing.
+\emph{Reduce}\define{reduce} a word by deleting any \(x^0\) symbols and replacing any subword \(x^p x^q\) by \(x^{p+q}\).
+The \emph{free group}\define{free!group} \(\pres{X}\) on an alphabet \(X\) is the collection of all reduced words on \(X\).
+The multiplication operation: multiply two words by writing down one after the other, called \emph{concatenation}\define{concatentation} and then reduce.
 The inverse operation: write down the word in reverse order, with opposite signs for the powers.
 
-Take an abstract set \(S\) with associated free group \(\left<S\right>\).
-Take a subset \(R \subset \left<S\right>\).
-The group \emph{generated} by \(S\) with \emph{relations} \(R\), denoted \(\left<S|R\right>\), is the quotient of \(\left<S\right>\) by the smallest normal subgroup containing \(R\).
-The expression of a group in the form \(\left<S|R\right>\) is a \emph{presentation}\define{presentation} of the group with \emph{generators} \(S\) and \emph{relations} \(R\).
-
-\begin{lemma}
-Every map of sets \(f \colon S \to G\) to a group extends uniquely to a morphism of groups \(f \colon \left<S\right> \to G\).
-It therefore extends to an injective morphism of groups \(\left<S|R\right> \to G\) where \(R\) is the set of all words 
-\[
-w=s_1^{a_1} s_2^{a_2} \dots s_k^{a_k}
-\]
-on the alphabet \(S\) for which
-\[
-f(s_1)^{a_1} \dots f(s_k)^{a_k} = 1.
-\]
-\end{lemma}
-
+Take an abstract set \(X\) with associated free group \(\pres{X}\).
+Take a set \(R\) of words in the alphabet \(X\).
+The group \emph{generated}\define{generation} by \(X\) with \emph{relations}\define{relation} \(R\), denoted \(\pres{X}[R]\), is the quotient of \(\pres{X}\) by the equivalence relation that two words are equivalent if we can repeatedly insert words from \(R\) or inverses of such, and then delete words from \(R\) or inverses of such, and eventually get from one word to another.
+The expression of a group in the form \(\pres{X}[R]\) is a \emph{presentation}\define{presentation} of the group with \emph{generators} \(S\) and \emph{relations} \(R\).
 In practice, we usually write the relations not as a set \(R\), but as a collection of equations like
 \[
 w_1 = w_2
 \]
 between words.
 This equation means that we require \(w_2^{-1} w_1 \in R\).
+A presentation \(\pres{X}[R]\) is \emph{finite}\define{finite presentation}\define{presentation!finite} if both \(X\) and \(R\) are finite sets.
+
+\begin{lemma}
+For any set \(X\) and set \(R\) of words in \(X\), \(\pres{X}[R]\) is a group.
+\end{lemma}
+\begin{proof}
+We can clearly multiply equivalence classes of words, and invert them.
+Associativity and existence of inverses are clear because they hold for words.
+\end{proof}
 
 \begin{example}
 The two transformations
@@ -933,16 +950,12 @@ and
 \[
 F \colon (x,y) \mapsto (x+1,-y)
 \]
-of the plane, a translation and a flip, satisfy \(TFT=F\), and generate some group \(H\), the symmetries of the wallpaper pattern:
+of the plane, a translation and a flip, satisfy \(TFT=F\), and generate some group \(H\), the symmetries of the infinite wallpaper pattern on the infinite plane:
 \begin{center}
-\includegraphics[width=4cm]{Wallpaper_group-pg-1.jpg}
+\input{zigzagcarpet}
 \end{center}
-Let \(G \defeq \left<f,t|tft=f\right>\); in other words \(G\) is the group generated by alphabet \(\set{t,f}\) with relation \(tft=t\), i.e. with \(R=\set{t^{-1}tft}\).
-So we have a surjective map
-\(
-G \to H
-\),
-mapping \(t \mapsto T\) and \(f \mapsto F\).
+Let \(G \defeq \pres{f,t}[tft=f]\); in other words \(G\) is the group generated by alphabet \(\set{t,f}\) with relation \(tft=t\), i.e. with \(R=\set{t^{-1}tft}\).
+So we have a surjective map \(G \to H\), mapping \(t \mapsto T\) and \(f \mapsto F\).
 Here \(t\) is a formal symbol, not an actual transformation of the plane, while \(T\) is the actual transformation.
 Take any word in \(G\).
 Wherever we find \(tf\) we replace it by \(ft^{-1}\).
@@ -957,10 +970,85 @@ So the only element of \(G\) mapping to the trivial transformation of the plane 
 We can see that \(G \to H\) is an isomorphism.
 \end{example}
 
+\begin{example}
+The group \(G\) of symmetries of a hexagon contains a rotation \(b\) by \(1/6\) of a revolution, and a reflection \(c\) through one vertex.
+Clearly \(b^6=1\) and \(c^2=1\).
+We let the reader check (by drawing a hexagon with labelled vertices and playing with it) that \(bcbc=1\).
+So we might guess that \(G\) is equal to the group \(H\defeq \pres{b,c}[1=b^6=c^2=bcbc]\).
+Using \(bcbc=1\), we can write this as \(cbc=b^{-1}=b^5\), so \(cb=b^5c\).
+Using this rule, any powers of \(b\) and \(c\) can be inductively rewritten so that \(b\) powers always come before \(c\) powers.
+For example, \(b^7c^2b^{-3}c^3b^2=b^2b^{-3}cb^2\) since \(c^2=1\).
+But then \(b^2b^{-3}cb^2=b^{-1}cb^2\) combining powers of \(b\).
+Next, \(b^{-1}cb^2=b^5cb^2\) since \(b^6=1\) so \(b^5=b^{-1}\).
+Next, \(cb=b^5c\) so \(b^5cb^2=b^5cbb=b^5b^5cb=b^5b^5b^5c=b^{15}c=b^3c\).
+So clearly \(H\) has at most \(12\) elements.
+But \(G\) has \(12\) elements, and satisfies the equations of \(H\), so we guess that \(G=H\).
+(We will prove this true soon.)
+\end{example}
 
+One group may have many presentations.
+A \emph{consequence} of relations \(R\) in a presentation \(\pres{X}[R]\) is a word in \(R\).
+A \emph{Tietze transformation}\define{Tietze transformation} of a presentation is one of the following:
+\begin{enumerate}
+\item
+\emph{Adding an irrelevant relation} to a presentation \(\pres{X}[R]\) means adding a consequence of \(R\): \(\pres{X}[R,r]\).
+\item
+Obversely, \emph{removing an irrelevant relation} from a presentation \(\pres{X}[R,r]\) means, if \(r\) is a consequence of \(R\), take it out: \(\pres{X}[R]\).
+\item
+\emph{Adding an irrelevant generator} to a presentation \(\pres{X}[R]\) means: 
+\[
+\pres{X,x}[R,x^{-1}w]
+\] 
+where \(x\) is some new variable, not already in \(X\), and \(w\) is a word on the alphabet \(X\), so \(x\) can be replaced wherever it appears by \(w\).
+\item
+\emph{Removing an irrelevant generator} to a presentation \(\pres{X,x}[R,x^{-1}w]\) with \(w\) a word in \(X\) means: \(\pres{X}[R]\).
+\end{enumerate}
+
+\begin{example}
+Adding an irrelevant relation: \(\pres{x,y}[x^2=y^3]\) can become \(\pres{x,y}[x^2=y^3,x^4=y^6]\).
+\end{example}
+
+\begin{example}
+Removing an irrelevant relation: \(\pres{x,y}[x^2=y^3,x^4=y^6]\) can become \(\pres{x,y}[x^2=y^3]\).
+\end{example}
+
+\begin{example}
+Adding an irrelevant generator: \(\pres{x,y}[x^2=y^3]\) can become \(\pres{x,y,z}[x^2=y^3,z=x^2y^5]\).
+\end{example}
+
+\begin{example}
+Removing an irrelevant generator: \(\pres{x,y,z}[x^2=y^3,z=x^2y^5]\) can become \(\pres{x,y}[x^2=y^3]\).
+\end{example}
+
+
+\begin{theorem}
+Any two finite presentations of the same group are related by a finite sequence of Tietze transformations.
+\end{theorem}
+\begin{proof}
+Take two finite presentations \(\pres{X}[R]\), \(\pres{Y}[S]\).
+To avoid confusion, we can suppose that the alphabets \(X\) and \(Y\) are represented by disjoints sets of symbols.
+Each \(y\) in \(Y\) represents some element in the group, given by some word in \(X\), say \(y=w(x)\) in the group.
+Take one such expression \(y^{-1}w(x)\) in the alphabet \(X \cup Y\) for each \(y\) in \(Y\).
+Let \(U\) be the set of all these expressions.
+Then \(\pres{X}[R]\) becomes, after adding irrelevant generators, \(\pres{X\cup Y}[R \cup U]\).
+
+Each \(x\) in \(X\) represents some element in the group, given by some word in \(Y\), say \(x=w(y)\) in the group.
+Take one such expression \(x^{-1}w(y)\) in the alphabet \(X \cup Y\) for each \(x\) in \(X\).
+Each such expression is a consequence of the relations, because it is true in the group.
+Let \(V\) be the set of all these expressions.
+Then \(\pres{X\cup Y}[R \cup U]\) becomes, after adding irrelevant relations, \(\pres{X\cup Y}[R \cup U \cup V]\).
+
+For each \(s \in S\), the relation \(s=1\) holds in the group, so adding irrelevant relations to \(\pres{X\cup Y}[R \cup U \cup V]\) gives \(\pres{X\cup Y}[R \cup U \cup V \cup S]\).
+
+By the same argument, starting again but reversing roles of \(\pres{X}[R]\), \(\pres{Y}[S]\), we can get from \(\pres{Y}[S]\) to 
+\[
+\pres{Y\cup X}[S \cup V \cup U \cup R]
+=
+\pres{X\cup Y}[R \cup U \cup V \cup S].
+\]
+\end{proof}
 
 \section{Morphisms}
-
 A \emph{morphism}\define{morphism!of groups} of groups is a map \(\phi \colon G \to H\) so that \(\phi(xy)=\phi(x)\phi(y)\): \(\phi\) preserves multiplication. 
 We have seen several of these.
 \begin{example}
@@ -983,8 +1071,48 @@ Every element \(g\) of any group \(G\) has associated a morphism
 \phi \colon \Z{} \mapsto G,
 \]
 given by \(\phi(k)=g^k\).
-This map is surjective just when \(G\) is cyclic, and injective just when \(g\) has infinite order.
+This map is surjective just when \(G\) is cyclic generated by \(g\), and injective just when \(g\) has infinite order.
 \end{example}
+
+\begin{problem}{groups:image.2}
+Prove that every subgroup \(G\) of any group \(H\) is the image of a morphism of groups \(\phi \colon G \to H\).
+\end{problem}
+
+We can already apply the concept of morphism to reexamine group presentations:
+\begin{lemma}\label{lemma:presentation.induced}
+Every map of sets \(f \colon X \to G\) to a group extends uniquely to a morphism of groups \(f \colon \pres{X} \to G\).
+If \(R \subset \pres{X}\) is a set consisting entirely of words 
+\[
+w=x_1^{a_1} x_2^{a_2} \dots x_k^{a_k}
+\]
+on the alphabet \(X\) for which
+\[
+f(x_1)^{a_1} \dots f(x_k)^{a_k} = 1,
+\]
+then there is a unique morphism of groups \(\pres{X}[R] \to G\) extending \(f\).
+In particular, if \(R\) generates of all such words, then \(f\) is injective.
+\end{lemma}
+\begin{proof}
+We extend \(f\) to words by  taking any word
+\[
+w=x_1^{a_1} x_2^{a_2} \dots x_k^{a_k}
+\]
+on the alphabet \(S\) to
+\[
+f(x_1)^{a_1} \dots f(x_k)^{a_k}.
+\]
+By induction, \(f\) is a group morphism.
+If \(R\) is as above, then \(f(w)=1\) for all \(w \in \pres{X}\) so we can unambiguously define \(f\) on equivalence classes of words, as altering a word by an element of \(R\) or its inverse has no effect on \(f(w)\).
+Finally, if \(R\) generates all words for which \(f(w)=1\)  then \(f(w_1)=f(w_2)\) just when \(f(w_1w_2^{-1})=1\), just when \(w_1w_2^{-1}\) is generated by \(R\) just when \(w_1w_2^{-1}=1\) in \(\pres{X}[R]\).
+\end{proof}
+
+\begin{example}
+We saw above that the presentation \(H\defeq \pres{b,c}[1=b^6=c^2=bcbc]\) gives a group which has at most 12 elements.
+We also saw that the group \(G\) of symmetries of a regular hexagon has exactly 12 elements.
+By lemma~\ref{lemma:presentation.induced}, there is a morphism \(H \to G\) taking \(b,c\) to \(b,c\), and hence onto \(G\).
+But then \(H\) maps onto \(G\), so has at least as many elements, and the morphism is therefore a bijection, so an isomorphism.
+\end{example}
+
 
 Almost everything we know about any group arises from looking at morphisms to that group and from that group.
 The \emph{kernel}\define{kernel} of a morphism \(\phi \colon G \to H\) is the set of all elements \(g\) of \(G\) for which \(\phi(g)=1\), i.e. the elements ``killed'' by \(\phi\).
@@ -1004,10 +1132,8 @@ Prove that the image of any morphism of groups \(\phi \colon G \to H\) is a subg
 
 It seems natural to ask which subgroups arise as kernels and as images.
 
-\begin{problem}{groups:image.2}
-Prove that every subgroup \(G\) of any group \(H\) is the image of a morphism of groups \(\phi \colon G \to H\).
-\end{problem}
 
+\section{Normal subgroups}
 A subgroup \(K\) of a group \(G\) is \emph{normal} if \(gKg^{-1}=K\) for any \(g\) in \(G\).
 
 \begin{problem}{groups:rigid.motion.normal}
@@ -1064,6 +1190,10 @@ But then taking \(K\)-cosets,
 Hence the resulting product \(\bar{bc}\) comes out the same for \(b,c\) and for \(bk_0\) and \(ck_1\), i.e. the operation is well defined.
 The kernel of this operation is the set of elements \(b\) of \(G\) for which \(\bar{b}=\bar{1}\) i.e. \(bK=K\) i.e. \(b\) in \(K\).
 \end{proof}
+
+\begin{example}
+In a group presentation \(\pres{X}[R]=\pres{X}/N\) where \(N \subset \pres{X}\) is the normal subgroup generated by \(R\).
+\end{example}
 
 Sage can tell you whether the subgroup \(H\) generated by some elements \(r_1,r_2,r_3\) is a normal subgroup:
 \begin{sageblock}
@@ -1136,32 +1266,31 @@ The kernel of this morphism consist of the \(gH\) so that \(\phi(g)\) lies in \(
 
 
 \section{Amalgamations}
-
 Suppose that \(G\) and \(H\) are two groups.
 We would like to define a group \(G*H\), which contains \(G\) and \(H\), and is otherwise ``as unconstrained as possible''.
 The product \(G \times H\) is not ``unconstrained'', because the elements of \(G\) commute with those of \(H\) inside \(G \times H\).
 
-First, note that any group \(G\) has an obvious group morphism \(\left<G\right> \to G\) given by \(g \mapsto g\).
+First, note that any group \(G\) has an obvious group morphism \(\pres{G} \to G\) given by \(g \mapsto g\).
 It will help to write out concatenations using some symbol like
 \[
-g_1 * g_2 * \dots * g_n \in \left<G\right>.
+g_1 * g_2 * \dots * g_n \in \pres{G}.
 \]
 Then we can write our group morphism as
 \[
-g_1 * g_2 * \dots * g_n \in \left<G\right> \mapsto g_1 g_2 \dots g_n \in G.
+g_1 * g_2 * \dots * g_n \in \pres{G} \mapsto g_1 g_2 \dots g_n \in G.
 \]
-This group morphism is clearly surjective, with kernel precisely the group \(N_G \subset \left<G\right>\) whose elements are the concatenations
+This group morphism is clearly surjective, with kernel precisely the group \(N_G \subset \pres{G}\) whose elements are the concatenations
 \[
 g_1 * g_2 * \dots * g_n
 \]
 for which \(g_1 g_2 \dots g_n=1\).
 So we can write
 \[
-G=\left<G|N_G\right>.
+G=\pres{G}[N_G].
 \]
 Think of \(N_G\) as encoding all of the equations satisfied inside the group \(G\).
 
-The \emph{free product}\define{free!product} \(G*H\)\Notation{G*H}{G*H}{amalgation} to be the group \(\left<G \sqcup H|N_G \sqcup N_H\right>\) generated by the elements of \(G\) and \(H\), subject to the relations consisting of all equations satisfied by elements of \(G\) together with all equations satisfied by elements of \(H\).
+The \emph{free product}\define{free!product} \(G*H\)\Notation{G*H}{G*H}{amalgation} to be the group \(\pres{G \sqcup H}[N_G \sqcup N_H]\) generated by the elements of \(G\) and \(H\), subject to the relations consisting of all equations satisfied by elements of \(G\) together with all equations satisfied by elements of \(H\).
 
 Another way to look at this: a \emph{word}\define{word} in \(G,H\) is a finite sequence of elements of \(G\) and of \(H\) (perhaps empty), written beside one another with \(*\) symbols inbetween, like
 \[
@@ -1175,11 +1304,20 @@ g_1 * g_2 \mapsto g_1 g_2.
 \]
 A word is \emph{reduced} if we cannot further reduce it.
 The group \(G*H\) is the set of reduced words, with multiplication being simply writing down one word after another and then reducing.
+In practice, we never write the \(*\) in expressions \(g_1*g_2\).
+
+\begin{problem}{groups:modular}
+Let \(G\) be the cyclic group of order 2 and \(H\) the cyclic group of order \(3\).
+Prove that every element of \(G*H\) has order \(1,2,3\) or \(\infty\).
+\end{problem}
 
 A further wrinkle: suppose that \(K \subset G\) is a subgroup which also appears as a subgroup of \(H\): \(K \subset H\).
-The \emph{amalgamation} of \(G\) and \(H\) over \(K\), denoted \(G*_K H\),\Notation{G*KH}{G*_K H}{amalgation over a subgroup}, is
+The \emph{amalgamation} of \(G\) and \(H\) over \(K\), denoted \(G*_K H\),\Notation{G*KH}{G*_K H}{amalgation over a subgroup} is
 \[
-G *_K H = \left<G \sqcup H|N_G \sqcup N_H \sqcup E\right>
+G *_K H = \pres{G \sqcup H}[N_G \sqcup N_H \sqcup E]
 \]
 where \(E\) is the collection of equations \(k_G=k_H\) where \(k_G\) is an element of \(K\) as a subgroup of \(G\), and \(k_H\) is the associated element of \(K \subset H\).
+
+Again, elements of \(G *_K H\) are written as words, but we allow ourselves, to treat any expression \(g*h\) as equal to \(gk*k^{-1}h\), and \(h*g\) as equal to \(hk^{-1}*kg\) for any \(k \in K\), and again we won't write explicitly the \(*\) symbol when we compute.
+
 

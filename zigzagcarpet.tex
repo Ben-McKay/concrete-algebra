@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\usepackage{xparse}
+\input{colorScheme}
+\usetikzlibrary{decorations,decorations.pathmorphing,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}
+\clip(.5,.5) rectangle (4.5,4.5);
+\foreach \i in {1,...,25}%
+{%
+\draw [decorate, decoration=zigzag,very thick,curveZero](0,{\i/5}) -- (5,{\i/5});%
+}%
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass{article}
+%\usepackage{xeboiboites}
+\usepackage{xparse}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
+
+\usepackage{lipsum} 
+
+%% Old examples code, using the tcolorbox package.
+\definecolor{example-color}{RGB}{252,249,243}
+\definecolor{example-border-color}{RGB}{242,238,232}
+\NewDocumentEnvironment{example}{}{
+\begin{tcolorbox}[enhanced,
+colback=example-color,colframe=example-border-color,
+interior style={top color=example-color,bottom color=white},
+breakable,pad at break*=1mm,
+toprule=1.3mm,bottomrule=1.3mm,leftrule=1mm,rightrule=1mm,toprule at break=-1mm,bottomrule at break=-1mm,
+before upper={\widowpenalties=3 10000 10000 150}]%
+}{\end{tcolorbox}}
+\NewDocumentEnvironment{examples}{}{
+\begin{tcolorbox}[enhanced,
+colback=example-color,colframe=example-border-color,
+breakable,pad at break*=1mm,
+toprule=1.2mm,bottomrule=1.2mm,leftrule=1mm,rightrule=1mm,toprule at break=-1mm,bottomrule at break=-1mm,
+before upper={\widowpenalties=3 10000 10000 150}]%
+\begin{itemize}
+}%
+{
+\end{itemize}
+\end{tcolorbox}}
+
+
+%\makeatletter
+%\newcommand{\newparchmentbox}[2][]{%
+%    \couleurs[#1]%
+%    \newenvironment{#2}[1][]{%
+%    \couleurs[#1]%
+%    \def\FrameCommand{\parchmentframe}%
+%    \def\FirstFrameCommand{\parchmentframetop}%
+%    \def\LastFrameCommand{\parchmentframebottom}%
+%    \def\MidFrameCommand{\parchmentframemiddle}%
+%    \vskip 1.2\baselineskip
+%    \MakeFramed{\hsize\size\FrameRestore}
+%    }%
+%    {%
+%        \endMakeFramed%
+%    }
+%}
+%\makeatother
+%
+%\newparchmentbox[small box style={draw=orange!30!black!20,%
+%fill=orange!10!black!2,decoration=penciline, decorate, thick},
+%big box style={color=orange!30!black!20,fill=orange!30!black!10,thick},
+%broken edges={draw=orange!30!black!20,thick,fill=orange!20!black!5,
+%decoration={random steps, segment length=.4cm,%
+%amplitude=1.7mm},decorate},%
+%other edges={decoration=penciline,decorate,thick}]%
+%{examplebox}
+
+
+\begin{document}
+\begin{example}
+\begin{center}
+\tcbox[colframe=example-border-color, colback=white]
+{\includegraphics[width=2cm]{reeb}}
+\end{center}
+\lipsum[11]
+\end{example}
+\lipsum[11]
+\begin{example}
+\begin{center}
+\includegraphics[width=2cm]{reeb}
+\end{center}
+\lipsum[11]
+\end{example}
+\lipsum[11]
+\begin{example}
+\lipsum[11]
+  \begin{itemize}
+    \item \lipsum[14]
+  \end{itemize}
+\lipsum
+\end{example}
+\end{document}

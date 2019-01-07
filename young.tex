@@ -1,0 +1,838 @@
+\chapter{Young diagrams}
+
+\section{Introduction}
+Every polynomial \(f(x,y)\) of two variables is a sum
+\[
+f(x,y) = f_+(x,y) + f_-(x,y),
+\]
+of a symmetric polynomial and an antisymmetric polynomial, where we let
+\begin{align*}
+f_+(x,y)&\defeq \frac{1}{2}\pr{f(x,y)+f(y,x)},\\
+f_-(x,y)&\defeq \frac{1}{2}\pr{f(x,y)-f(y,x)},
+\end{align*}
+be the symmetric and antisymmetric parts.
+We want to generalize to many variables.
+
+\section{Definition}
+A \emph{Young diagram}:\define{Young!diagram}\define{diagram!Young}
+\[
+\yng(4^2,3,2^3,1)
+\]
+is a collection of boxes, arranged in rows and columns, all rows aligned vertically along their left edges, so that each row is as long or shorter than any above it.
+Write down the number of boxes in each row in a sequence: \([4,4,3,2,2,2,2,1]\), called the \emph{partition}\define{partition} of the Young diagram, and denoted \(\lambda\).
+So we let \(\lambda_1\) be the number of boxes in row 1, \(\lambda_2\) the number in row 2, and so on, say up to \(r\) rows, and write \(\lambda\defeq [\lambda_1,\lambda_2,\dots,\lambda_r]\).
+If you know the partition, you can draw the Young diagram, and vice versa, so we could sometimes confuse the two, and write that they are equal:
+\[
+[4,4,3,2,2,2,1]=\yng(4^2,3,2^3,1).
+\]
+
+\begin{problem}{young:all}
+Draw all Young diagrams with at most 5 boxes.
+\end{problem}
+\begin{answer}{young:all}
+{
+\arraycolsep=1.4pt\def\arraystretch{2.2}
+\setlength{\arraycolsep}{10pt}
+\[
+\begin{array}{ccccccccccc}
+\yng(1)\\
+\yng(2)&\yng(1,1)\\
+\yng(3)&\yng(2,1)&\yng(1,1,1)\\
+\yng(4)&\yng(3,1)&\yng(2,2)&\yng(2,1,1)&\yng(1,1,1,1)\\
+\yng(5)&\yng(4,1)&\yng(3,2)&\yng(3,1,1)&\yng(2,2,1)&\yng(2,1,1,1)&\yng(1,1,1,1,1)
+\end{array}
+\]
+}
+\end{answer}
+
+Take a Young diagram \(\lambda\) with entries \(1,2,\dots,n\) put in order, and a permutation \(p\).
+Write \(\lambda^p\) to mean the application of \(p\) to all entries in \(\lambda\).
+\begin{example}
+\[
+\lambda=\young(1234,567,8,9),
+\]
+and \(p=52938971\) gives
+\[
+\lambda^p=\young(5293,847,6,1)
+\]
+\end{example}
+\begin{lemma}\label{lemma:moves.two}
+Take a Young diagram \(\lambda\), with entries \(1,2,\dots,n\) put in order, 
+\[
+\lambda=\young(1234,567,8,9),
+\]
+Each permutation \(p\) either 
+\begin{enumerate}
+\item
+moves two entries that lie in the same row into the same column or
+\item
+is uniquely expressed as product \(p=rc\) of a permutation \(r\) preserving the rows, and a permutation \(c\) preserving the columns.
+\end{enumerate}
+\end{lemma}
+\begin{example}
+\[
+\lambda=\young(1234,567,8,9),
+\]
+and \(p=52938971\) gives
+\[
+\lambda^p=\young(!\emphYoungBox5!\otherEmphYoungBox2!\regYoungBox93,8!\otherEmphYoungBox4!\regYoungBox7,!\emphYoungBox6,!\regYoungBox1)
+\]
+\end{example}
+\begin{proof}
+If \(p\) is expressed as such a permutation, suppose it arises two different ways: \(p=r_0c_0=r_1c_1\).
+Then \(r_1^{-1}r_0=c_1c_0^{-1}\).
+The left hand side preserves the rows, and the right hand the columns, so every element is taken to the same row and column, i.e. stays where it is: \(r_1^{-1}r_0=c_1c_0^{-1}=1\), and so \(r_0=r_1\) and \(c_0=c_1\).
+
+On the other hand, suppose that any two entries in the same row end up, after some permutation \(p\), in different columns.
+We want to prove that \(p\) is product of a row-preserving permutation and a column-preserving one.
+Apply \(p\), and look where the entries from the first row ended up, all in different columns.
+Take one transposition for each column, to get those entries back into the first row, perhaps in some strange order, and let \(q\) be the product of those transpositions.
+\begin{example}
+If
+\[
+\lambda^p=\young(!\emphYoungBox5!\regYoungBox293,847,6,!\emphYoungBox1)
+\]
+and we want to swap \(5\) and \(1\), these are in positions \(1\) and \(9\), so we take \(q=(19)\):
+\[
+\lambda^{pq}=\young(!\emphYoungBox1!\regYoungBox293,847,6,!\emphYoungBox5)
+\]
+\end{example}
+It suffices to prove that  \(pq\) is such a product \(rc\).
+So we can rename \(pq\) to call it \(p\), or in other words, we can assume that \(p\) preserves the first row.
+Look where the entries from the second row ended up, all in different columns.
+Take one transposition for each column, to get those entries back into the second row, perhaps in some strange order, say by some \(q\), and so on.
+\end{proof}
+
+
+Alphabetically order partitions: so \(\lambda=[6,6,5,\dots]\) is \emph{bigger} than \(\mu=[6,6,4,\dots\), because \(5 > 4\); if the first entries are equal, look at the second, and so on, until you hit a tie breaker.
+Order Young diagrams by order of partition, i.e. by number of boxes in the first row, and if there is a tie, pass to the second row, and so on.
+
+\begin{lemma}\label{lemma:scramble}
+If \(\lambda,\mu\) are Young diagrams with \(n\) boxes, and \(\lambda > \mu\) then, no matter how we place the numbers \(1,2,\dots,n\) into the boxes of \(\lambda\), and into the boxes of \(\mu\), there are always two integers which lie in the same row in \(\lambda\) and also lie in the same column in \(\mu\).
+\end{lemma}
+\begin{proof}
+For big enough \(k\), the first \(k\) rows of \(\lambda\) have more entries than the first \(k\) of rows of \(\mu\).
+As we go down a Young diagram, rows can get shorter but not longer.
+So the first \(k\) rows of \(\lambda\) have more entries than any \(k\) of rows of \(\mu\).
+Pick out the entries from those \(k\) rows of \(\lambda\), and paste them into the boxes of \(\mu\), in any order at all.
+We cannot distribute those entries over only \(k\) rows of \(\mu\); we need to use at least one more row.
+Suppose we distribute those entries into at most \(k\) in each column.
+Push them up into the uppermost boxes of those columns: they fit into \(k\) rows, impossible.
+So there are some \(k+1\) in the same column of \(\mu\).
+Some two of these must arise from the same row of \(\lambda\).
+\end{proof}
+
+
+\section{Young diagrams act on polynomials}
+Given a Young diagram, we think of it as if it had a variable in each box, and it will ``act on'' any polynomial \(f\) of these variables.
+So
+\[
+\young(abcd,efgh,ij,k)
+\]
+is a Young diagram acting on polynomials
+\[
+f(a,b,c,d,e,f,g,h,i,j,k).
+\] 
+
+\begin{example}
+The diagram \([3]=\yng(3)\) will act on polynomial of 3 variables, i.e. \(f(a,b,c)\), by symmetrically averaging:
+\[
+\yng(3) f(a,b,c)=\frac{f(a,b,c)+f(a,c,b)+f(b,a,c)+f(b,c,a)+f(c,a,b)+f(c,b,a)}{6}.
+\]
+\end{example}
+
+\begin{example}
+The diagram \([1,1,1]=\yng(1^3)\) will antisymmetrize in 3 variables, 
+\[
+[1,1,1]f(a,b,c)=\frac{f(a,b,c)-f(a,c,b)-f(b,a,c)+f(b,c,a)+f(c,a,b)-f(c,b,a)}{6}.
+\]
+\end{example}
+Soon we will explain how Young diagrams act in general. 
+
+\section{Permutations act on polynomials}
+Given a polynomial \(f(t)\) in variables \(t_1,t_2,\dots,t_n\), and a permutation \(p\) of \(n\) letters, we define \(pf(t)\) by the equation
+\[
+pf(t_1,\dots,t_n)=f(t_{q(1)},\dots,t_{q(n)}),
+\]
+where \(q\) is the inverse permutation to \(p\).
+\begin{example}
+If \(p=2314\) then \(q=3124\) so if we take
+\[
+f(t_1,t_2,t_3,t_4)\defeq t_1^6+8t_2t_4+t_3^9,
+\]
+then
+\[
+pf(t_1,t_2,t_1,t_4)=t_3^6+8t_1t_4+t_2^9.
+\]
+\end{example}
+\begin{problem}{young:permute.poly}
+If \(p=(123)(45)\) and \(f(t_1,t_2,t_3,t_4,t_5)=t_1^2 + t_2t_3+t_1t_4^5\), what is \(pf\)?
+\end{problem}
+\begin{answer}{young:permute.poly}
+\(p^{-1}=(132)(45)\), so \(pf(t_1,t_2,t_3,t_4,t_5)=t_3^2 + t_1t_2+t_3t_5^5\).
+\end{answer}
+To save space, we write \(p\) to mean the operation taking \(f\) to \(pf\) too.
+So when we write \((12)\), we could mean the cycle \((12)\), or the operation \((12)f(t_1,t_2)=f(t_2,t_1)\).
+\begin{lemma}\label{lemma:permutations.independent}
+The permutations of variables act as linearly independent operations on homogeneous polynomials of any fixed positive degree, with coefficients in any field.
+\end{lemma}
+\begin{proof}
+Fix a degree \(k\ge 0\) and a number of variables \(n\).
+If \(n=1\), the only permutation is the identity \(()\).
+We want to prove that there is no nonzero linear combination, say \(a()\), which acts as zero.
+But the action is \(()f=f\), so \(0=a()t^k=at^k=\) implies \(a=0\).
+
+Suppose by induction that the result is proven for all integers less than \(n\).
+Consider the action of some linear combination of permutations on polynomials in variables \(t_1,\dots,t_n\), say a linear combination 
+\[
+0 = \sum_p a_p p
+\]
+where the sum is over permutations, and the \(a_p\) are some coefficients from our field.
+In other words,
+\[
+0 = \sum_p a_p pf
+\]
+for any homogeneous polynomial \(f(t_1,\dots,t_n)\) of degree \(k\).
+Multiply \(f\) by a polynomial of any degree: the same equation
+\[
+0 = \sum_p a_p pf
+\]
+holds for all polynomials homogeneous of any degree at least \(k\).
+Let \(f\) be a monomial
+\[
+f(t_1,\dots,t_n)=t_1^{b_1}\dots t_{n-1}^{b_{n-1}},
+\]
+with no \(t_n\) factors, and positive degrees \(b_1,b_2,\dots,b_{n-1}>0\) adding to at least \(k\).
+For each permutation \(p\) of \(1,2,\dots,n\), consider the expression
+\[
+(pf)(t_1,\dots,t_{n-1},0).
+\]
+Clearly this vanishes just when \(t_n\) appears in \(pf\), i.e. just when \(p(n)\ne n\).
+So
+\[
+0 = \sum_p a_p (pf)(t_1,\dots,t_{n-1},0)
+\]
+and every term drops out unless \(p(n)=n\), i.e. \(p\) is a permutation of \(1,2,\dots,n-1\).
+Write \(\sum'\) for the sum of permutations of \(1,2,\dots,n-1\):
+\[
+0 = {\sum_p}' a_p (pf)(t_1,\dots,t_{n-1},0)
+\]
+The same holds for ratios of such monomials, and so for any monomial in \(t_1,\dots,t_{n-1}\), and therefore for any linear combination of monomials, i.e. for any polynomial \(f\) of \(n-1\) variables.
+By induction on \(n\), \(a_p=0\) for each coefficient \(a_p\) in front of any permutation \(p\) fixing \(n\).
+
+Take our relation \(0 = \sum a_p p\).
+Pick any permutation \(q\).
+Multiply the relation by \(q^{-1}\) to arrange that \(q=()\).
+But then \(q\) fixes \(n\) so \(a_q=0\).
+So all \(a_p\) vanish.
+\end{proof}
+
+
+\section{Sets give sums of permutations}
+Take any set \(A\) of numbers from \(1,\dots,n\), and any polynomial \(f\) of \(n\) variables. Let
+\[
+A_+f\defeq\sum_p pf,
+\]
+where the sum is over permutations \(p\) of \(1,\dots,n\) which fix every number not in \(A\).
+Similarly,
+\[
+A_-f\defeq\sum_p (-1)^p pf,
+\]
+with the sum over the same permutations.
+\begin{example}
+From among the numbers \(1,2,3,4\), take \(A\defeq\set{2,3}\).
+The permutations of \(1,2,3,4\) fixing every number outside \(A\) are \(p=(23)\) or \(p=()\), giving
+\[
+A_+ f(t_1,t_2,t_3,t_4) = f(t_1,t_2,t_3,t_4)+f(t_1,t_3,t_2,t_4),
+\]
+and
+\[
+A_- f(t_1,t_2,t_3,t_4) = f(t_1,t_2,t_3,t_4)-f(t_1,t_3,t_2,t_4),
+\]
+\end{example}
+\begin{problem}{young:permute.poly}
+If \(A=234\), as a subset of \(12345\), what is \(A_+\)? What is \(A_-\)?
+\end{problem}
+\begin{answer}{young:permute.poly}
+The permutations of \(234\) are 
+\[
+(),(23),(24),(34),(234),(243), 
+\]
+and each appears along with its inverse here, so we can write the inverses as 
+\[
+(),(23),(24),(34),(243),(234).
+\]
+So
+\begin{align*}
+234_+ f(t_1,t_2,t_3,t_4,t_5)
+&=
+f(t_1,t_2,t_3,t_4,t_5)+f(t_1,t_3,t_2,t_4,t_5)+f(t_1,t_4,t_3,t_2,t_5)\\
+&\qquad
++f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5)
+\end{align*}
+A transposition like \((23)\) has sign \(-1\), and more generally a cycle of even length has sign \(-1\), while a cycle of odd length has sign \(1\):
+\begin{align*}
+234_- f(t_1,t_2,t_3,t_4,t_5)
+&=
+f(t_1,t_2,t_3,t_4,t_5)-f(t_1,t_3,t_2,t_4,t_5)-f(t_1,t_4,t_3,t_2,t_5)\\
+&\qquad
+-f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5).
+\end{align*}
+\end{answer}
+It is convenient to think about permutations as operations on polynomials, and add permutations by adding their operations on polynomials, so we write
+\[
+A_+=\sum_p p,
+\]
+to mean
+\[
+A_+f\defeq\sum_p pf,
+\]
+and so on.
+\begin{example}
+From among the numbers \(1,2,3,4\), again take \(A\defeq\set{2,3}\).
+The permutations of \(1,2,3,4\) fixing every number outside \(A\) are \(p=(23)\) or \(p=()\), giving
+\[
+A_+ = () + (23),
+\]
+and
+\[
+A_- = () - (23).
+\]
+We write \(A\) as \(A=23\), and write this as
+\[
+23_+ = () + (23),
+\]
+and
+\[
+23_- = () - (23).
+\]
+Notice that if we multiply by \((23)\),
+\begin{align*}
+A_+ (23)
+&=
+23_+(23),
+\\
+&=
+\big(()+(23)\big)(23),
+\\
+&=(23)+(23)^2,
+\\
+&=(23)+(),
+\\
+&=23_+,
+\\
+&=A_+.
+\end{align*}
+Similarly, \(A_-q=qA_-=(-1)^qA_-\).
+\end{example}
+
+\begin{lemma}
+If \(p\) is a permutation fixing all numbers from \(1,\dots,n\) except in a set \(A\), then
+\(A_+ p = p A_+\) and \(A_- p = (-1)^p A_-\).
+\end{lemma}
+\begin{proof}
+In each case, we are just rewriting our permutations in a different order, as multiplying by \(p\) reorders the permutations in the sum.
+But in the case of \(A_-\), we are also messing up the signs by the sign of \(p\) in every permutation.
+\end{proof}
+
+\begin{lemma}\label{lemma:two.in.common}
+If \(A,B \subset \set{1,\dots,n}\) share two elements or more in common, then \(0=A_+ B_-=B_-A_+=A_-B_+=B_+A_-\).
+\end{lemma}
+\begin{proof}
+Suppose for simplicity that \(1\) and \(2\) belong to both \(A\) and \(B\).
+Then \(A_+B_-(12)=A_+(-1)B_-=(-1)A_+B_-\), so \(A_+B_-=0\), and similarly for the other cases.
+\end{proof}
+
+\section{How Young diagrams act}
+Given a Young diagram \(\lambda\), 
+\[
+\lambda = \yng(3,3,2,1)
+\]
+say with \(n\) boxes, write the integers \(1,2,\dots,n\) into the boxes in order:
+\[
+\young(123,456,78,9).
+\]
+Let \(\lambda_+\) be the product of the \({}_+\) operators of each row.
+In our example,
+\begin{align*}
+\lambda_+ 
+&= 
+123_+ 456_+ 78_+ 9_+,
+\\
+&=
+\big(()+(12)+(13)+(23)+(123)+(132)\big)
+\big(()+(45)+(46)+(56)+(456)+(465)\big)
+\big(()+(78)\big)
+\big(()\big),
+\end{align*}
+expands out to something very large.
+Similarly, \(\lambda_-\) is the product of the \({}_-\) operators of the columns.
+In our example,
+\[
+\lambda_-=1479_- 258_- 36_-,
+\]
+which expands out to something even larger.
+
+\begin{problem}{young:lambda.p}
+Writing \(\lambda^p_+\) to mean \((\lambda^p)_+\), prove that \(\lambda^p_+=p\lambda_+p^{-1}\) and \(\lambda^p_-=p\lambda_-p^{-1}\).
+\end{problem}
+\begin{answer}{young:lambda.p}
+Let \(\mu\defeq\lambda^p\).
+So \(\mu_+\) acts on polynomials by products of permutations of the rows of \(\mu\).
+But if \(\lambda\) has a row 
+\[
+a_1 a_2 \dots a_k,
+\]
+then \(\mu\) has corresponding row 
+\[
+p(a_1) p(a_2) \dots p(a_k).
+\]
+In \(\lambda_+\), this row produces permutations which are products of cycles of the form 
+\[
+(a_{i_1} \ a_{i_2} \ \dots \ a_{i_{\ell}}).
+\]
+As in problem~\vref{problem:groups:symmetric.conjugacy.1}, in \(\mu_+\), each such cycle yields a cycle of the form 
+\[
+(p(a_{i_1}) \ p(a_{i_2}) \ \dots \ p(a_{i_{\ell}})).
+\]
+Similarly for columns instead of rows and \(\lambda_-\) instead of \(\lambda_+\).
+\end{answer}
+
+Each Young diagram \(\lambda\) acts on polynomials as the operation
+\[
+\lambda = \frac{\sum_p \lambda^p_+ \lambda^p_-}{N^2_{\lambda}},
+\]
+where the sum is over all permutations and the positive integer \(N_{\lambda}\) is some integer which we will define later.
+Note: calculate the expression \(\lambda_+ \lambda_-\), and then wrapping it in \(p \dots p^{-1}\) just means permuting the order of variables inside each permutation in \(\lambda_+ \lambda_-\), as we will see in examples below.
+\begin{example}
+Consider the diagram
+\[
+\lambda=[3]=\yng(3).
+\]
+With integers put in place:
+\[
+\lambda=\young(123).
+\]
+The permutations of \(123\), in cycles, are \((), (12), (13), (23), (123), (132)\), so
+\[
+\lambda_+=123_+ = ()+(12)+(13)+(23)+(123)+(132), 
+\]
+while \(\lambda_-=()\).
+Since this adds up all permutations, clearly \(\lambda_+^p=\lambda_+\).
+Therefore finally the Young diagram is
+\[
+\lambda=\frac{()+(12)+(13)+(23)+(123)+(132)}{6}.
+\]
+(We still owe the reader an explanation of the 6 in the denominator.)
+This Young diagram symmetrizes any polynomial of 3 variables:
+\[
+[3]f(t_1,t_2,t_3)
+=
+\frac{f(t_1,t_2,t_3)+f(t_2,t_1,t_3)+f(t_3,t_2,t_1)+f(t_1,t_3,t_2)+f(t_3,t_1,t_2)+f(t_2,t_3,t_1)}{6}.
+\]
+\end{example}
+
+\begin{example}
+Consider the diagram
+\[
+\lambda=[1,1,1]=\yng(1^3).
+\]
+Now \(\lambda_+=()\), while the permutations of \(123\), in cycles, are \((), (12), (13), (23), (123), (132)\), so 
+\[
+\lambda_-=123_- = ()-(12)-(13)-(23)+(123)+(132).
+\]
+Therefore finally the Young diagram is
+\begin{align*}
+\lambda&=
+[1,1,1],
+\\
+&=
+\frac{()-(12)-(13)-(23)+(123)+(132)}{6}.
+\end{align*}
+(We still owe the reader an explanation of the 6 in the denominator.)
+This Young diagram antisymmetrizes any polynomial of 3 variables:
+\[
+[1,1,1]f(t_1,t_2,t_3)
+=
+\frac{f(t_1,t_2,t_3)-f(t_2,t_1,t_3)-f(t_3,t_2,t_1)-f(t_1,t_3,t_2)+f(t_3,t_1,t_2)+f(t_2,t_3,t_1)}{6}.
+\]
+\end{example}
+
+\begin{example}
+Consider the diagram
+\[
+\lambda=[2,1]=\yng(2,1).
+\]
+With integers added in:
+\[
+\lambda=\young(12,3).
+\]
+The permutations of \(12\), in cycles, are \((), (12)\), so \(\lambda_+=()+(12)\) while \(\lambda_-=()-(13)\), so \(\lambda_+\lambda_-=()-(13)+(12)-(132)\).
+We need to find \(\lambda_+^p\lambda_-^p\) for all \(p\);
+to do this, just rewrite every permutation in \(\lambda_+\lambda_-\) with its integers permuted according to \(p\).
+In other words, if \(p=(12)\), just take 
+\[
+\lambda_+\lambda_-=()-(13)+(12)-(132)
+\]
+and replace \(1\) by \(2\) and \(2\) by \(1\) everywhere:
+\[
+\lambda_+^p\lambda_-^p=()-(23)+(21)-(231).
+\]
+Doing this for all permutations \(p\):
+\[
+\begin{array}{cc}
+\toprule
+p & \lambda_+^p\lambda_-^p \\
+\midrule
+() & ()-(13)+(12)-(132)\\
+(12) & ()-(23)+(12)-(123)\\
+(13) & ()-(13)+(23)-(123)\\
+(23) & ()-(12)+(13)-(123)\\
+(123) & ()-(12)+(23)-(132)\\
+(132) & ()-(23)+(13)-(132)\\
+\bottomrule
+\end{array}
+\]
+Add up to get \(6()-3(123)-3(132)\). 
+We will divide by \(9\) and get
+\[
+\lambda=\frac{2()-(123)-(132)}{3}.
+\]
+We still owe the reader an explanation as to why we divide by \(9\).
+Let us begin working our way toward that explanation.
+First, recall how to multiply: \((123)^2=(132)\), \((132)^2=(123)\) and \((123)(132)=()\).
+Next, take the sum we computed, call it \(\alpha\defeq 6()-3(123)-3(132)\).
+If we carry out \(\alpha\) on a polynomial, and then carry out it one more time, we get
+\begin{align*}
+\alpha^2
+&=
+\big(6()-3(123)-3(132)\big)^2,
+\\
+&=
+36()-18(123)-18(132)
+\\
+&\qquad
+-18(123)+9(123)^2+9(123)(132)
+\\
+&\qquad
+-18(132)+9(123)(132)+9(132)^2,
+\\
+&=
+36()-18(123)-18(132)
+\\
+&\qquad
+-18(123)+9(132)+9()
+\\
+&\qquad
+-18(132)+9()+9(123),
+\\
+&=
+54()-9(123)-9(132),
+\\
+&=
+9(6()-3(123)-3(132)),
+\\
+&=
+9\alpha.
+\end{align*}
+So \(\alpha^2=9\alpha\), or if we let \(\lambda=\alpha/9\), then \(\lambda^2=\alpha^2/81=9\alpha/81=\alpha/9=\lambda\).
+We want an operation \(\lambda\) so that it picks out some sort of ``normal form'' for a polynomial \(f\), and so if we put the polynomial into the form, it stays that way when we apply \(\lambda\) again.
+\end{example}
+
+Each Young diagram acts with a denominator \(N_{\lambda}^2\).
+So to act on polynomials over a field, we need to ensure that \(N_{\lambda}\ne 0\) in that field.
+The \emph{characteristic} of a field is the smallest integer \(k>0\) so that \(k=0\) in the field; if there is no such integer, the characteristic is zero.
+When we are working with functions of \(n\) variables over a field, the field has \emph{large enough characteristic} when the characteristic is zero or larger than \(n\).
+
+\begin{problem}{young:expand}
+Prove that
+\[
+(\yng(3)+\yng(2,1)+\yng(1,1,1))f=f,
+\]
+i.e. we split any polynomial \(f=f(t_1,t_2,t_3)\) into a sum: symmetric part, \(\yng(2,1)\) part and antisymmetric part.
+\end{problem}
+The same idea works in general.
+
+\begin{theorem}
+Over a field of large enough characteristic, any polynomial \(f=f(t_1,\dots,t_n)\) is uniquely expressed as
+\[
+f=\sum_{\lambda} \lambda f,
+\]
+as a sum over Young diagrams with \(n\) boxes.
+\end{theorem}
+
+\begin{lemma}
+Take a partition \(\lambda=[\lambda_1,\lambda_2,\dots,\lambda_r]\).
+Then the formula
+\[
+\lambda=\frac{\sum_p \lambda^p_+\lambda^p_-}{N_{\lambda}^2}
+\]
+for the action of the associated Young diagram on polynomials satisfies \(\lambda^2=\lambda\) just exactly if we choose the integer \(N_{\lambda}\) to be
+\[
+N_{\lambda} 
+=
+\frac%
+{\prod_i\pr{\lambda_i+r-i}!}%
+{\prod_{i<j}\pr{\pr{\lambda_i-\lambda_j}+\pr{j-i}}}%
+.
+\]
+\end{lemma}
+We will only prove that \(\lambda^2\) is a nonzero multiple of \(\lambda\) (see proposition~\vref{prop:idempotent}).
+Finding the exact value of \(N_{\lambda}^2\) is too messy for us; see \cite{Rota:1971} for a complete proof.
+
+
+\begin{example}
+If \(\lambda=[n]\) then the Young diagram has \(r=1\) rows and the numerator of this expression is
+\[
+\prod_i\pr{\lambda_i+r-i}!=\prod_{i=1}^1\pr{\lambda_i+1-i}!=\pr{\lambda_1+1-1}!=n!.
+\]
+The denominator has \(i<j\) but \(1 \le i,j \le r\) since we need to compute \(\lambda_i\) and \(\lambda_j\).
+But then the denominator has no terms in it, i.e. is \(1\):
+\[
+N_{[n]} = n!,
+\]
+so
+\[
+N_{[n]}^2 = (n!)^2
+\]
+Recall that for this \(\lambda\), \(\lambda_-=()\) while \(\lambda_+=\sum_p p\) is the sum of all permutations.
+For any permutation \(q\),
+\[
+\lambda_+^q=\lambda_+, \lambda_-^q = \lambda_-,
+\]
+so 
+\[
+\sum_q \lambda^q_+\lambda^q_- = \sum_q \sum_p p = n! \sum_p p,
+\]
+giving
+\begin{align*}
+\lambda
+&=
+\frac{\sum_q \lambda^q_+\lambda^q_-}{N_{\lambda}^2},
+\\
+&=
+\frac{n^! \sum_p p}{(n!)^2},
+\\
+&=
+\frac{\sum_p p}{n!},
+\end{align*}
+is just the averaging operator over all permutations.
+\end{example}
+
+\begin{example}
+If \(\lambda=[2,2,1]\) then the Young diagram has \(r=3\) rows and the numerator of this expression is
+\begin{align*}
+\prod_i\pr{\lambda_i+r-i}!
+&=
+\prod_{i=1}^3\pr{\lambda_i+3-i}!,
+\\
+&=
+(2+3-1)!(2+3-2)!(1+3-3)!,
+\\
+&=4!3!1!,
+\\
+&=24 \cdot 6,\\
+&=144.
+\end{align*}
+The denominator has \(i<j\) but \(1 \le i,j \le 3\), so \(1<2\), \(1<3\) and \(2<3\):
+\begin{align*}
+\prod_{i<j}\pr{\pr{\lambda_i-\lambda_j}+\pr{j-i}}
+&=
+\pr{(2-2)+(2-1)}\pr{(2-1)+(3-1)}\pr{(2-1)+(3-2)},
+\\
+&=
+\pr{1}\pr{3}\pr{2},
+\\
+&=6.
+\end{align*}
+Hence
+\[
+N_{[2,2,1]}=\pr{\frac{144}{6}}^2=576.
+\]
+It is too messy to write out how \([2,2,1]\) acts on polynomials.
+\end{example}
+
+
+
+\begin{lemma}\label{lemma:1.coeff}
+Each Young diagram acts as a nonzero linear transformation on homogeneous polynomials of any degree, of any field of large enough characteristic.
+\end{lemma}
+\begin{proof}
+Look at some Young diagram, and just think about expanding out
+\[
+\lambda_+\lambda_-=(()+\dots)(()-\dots)=()-\dots.
+\]
+The \(\dots\) terms are all products of two cycles each, one from \(\lambda_+\) and one from \(\lambda_-\).
+Note that \(\lambda_+\) consist of permutations of row entries, while \(\lambda_-\) consists of permutations of column entries, and no row can have the same entries as a column, so when two cycles get multiplied, they are never inverses.
+Hence none of the \(\dots\) terms are multiples of \(()\).
+So \(\lambda_+\lambda_-\) has exactly one \(()\) term, and so does each \(\lambda_+^p \lambda_-^p\):
+\[
+\sum_p \lambda_+^p \lambda_-^p
+\]
+has exactly \(n!\) \(()\) terms.
+So 
+\[
+\lambda=\frac{\sum_p\lambda^p_+ \lambda^p_-}{N^2_{\lambda}}
+\]
+has \(n!/N^2_{\lambda}\) coefficient in front of \(()\), so is not zero.
+\end{proof}
+
+\begin{lemma}\label{lemma:trace.L}
+Fix a Young diagram \(\lambda\) and work over a field \(k\) of large enough characteristic.
+Consider the linear transformation \(L\) taking any linear combination \(\alpha = \sum a_p p\) of permutations to \(L\alpha\defeq \lambda \alpha\).
+The trace of \(L\) is \((n!)^2/N_{\lambda}^2\).
+\end{lemma}
+\begin{proof}
+Take the permutations on \(n\) letters, written down in any order, as a basis for the space \(k^{n!}\) of all linear combinations \(\alpha = \sum_p a_p p\).
+So we have to find the sum over all permutations \(p\) of the \(p\)-coefficient in the linear combination \(\lambda p\).
+But this is the \(()\)-coefficient in \(\lambda\), which we calculated in the proof of lemma~\vref{lemma:1.coeff} to be \(n!/N^2_{\lambda}\).
+\end{proof}
+
+
+\begin{lemma}
+Suppose that \(\lambda, \mu\) are two Young diagrams with \(\lambda > \mu\).
+Then \(0=\lambda^p_+\mu^q_-=\mu^q_- \lambda^p_+\) for any permutations \(p\) and \(q\).
+\end{lemma}
+\begin{proof}
+By lemma~\vref{lemma:scramble}, \(\lambda^p\) has two elements in some row, with \(\mu^q\) having the same elements in some column.
+By lemma~\vref{lemma:two.in.common}, \(0=\lambda^p_+\mu^q_-=\mu^q_-\lambda^p_+\).
+\end{proof}
+
+\begin{corollary}
+Suppose that \(\lambda, \mu\) are two Young diagrams with \(\lambda > \mu\).
+As operators on polynomials, \(0=\mu\lambda\).
+\end{corollary}
+\begin{proof}
+\[
+N^2_{\mu}N^2_{\lambda}\mu\lambda 
+= 
+\sum \mu_+^p \mu_-^p \lambda_+^q \lambda_-^q
+=0.
+\]
+\end{proof}
+
+\begin{problem}{young:central}
+Prove that any Young diagram \(\lambda\) and permutation \(q\) commute: \(\lambda q=q\lambda\), as operations on polynomials.
+\end{problem}
+\begin{answer}{young:central}
+\begin{align*}
+q \lambda q^{-1}
+&=
+q \frac{\sum_p p \lambda_+ \lambda_- p^{-1}}{N^2_{\lambda}} q^{-1},
+\\
+&=
+\frac{\sum_p (qp) \lambda_+ \lambda_- (qp)^{-1}}{N^2_{\lambda}},
+\end{align*}
+just rewrites the permutations \(p\) in a different order, as \(qp\) instead of \(p\), so \(q\lambda q^{-1}=\lambda\), i.e. \(q\lambda=\lambda q\).
+\end{answer}
+
+\begin{theorem}
+Suppose that \(\lambda, \mu\) are two Young diagrams.
+Either \(\lambda=\mu\) or, as operators on polynomials, \(0=\lambda\mu=\mu\lambda\).
+\end{theorem}
+\begin{proof}
+We can assume that \(\lambda > \mu\), so we know that \(0=\mu\lambda\).
+We have to prove that \(0=\lambda\mu\).
+
+One proof: by problem~\vref{problem:young:central}, \(\lambda\) commutes with any permutation, so with any linear combination of permutations, so with \(\mu\).
+
+Another proof:
+The map \(p \mapsto p^{-1}\) takes products \(pq\) to products \(q^{-1}p^{-1}\), reversing order.
+Applied twice, it takes us back again.
+It then takes any linear combination of permutations to another one, \(ap+bq\mapsto ap^{-1}+bq^{-1}\), reversing order of products in the same way, term by term when we multiply out.
+Applied to \(\lambda_+\), it replaces each permutation in \(\lambda_+\) by its inverse, which is also a permutation in the same \(\lambda_+\), so it gives precisely \(\lambda_+\).
+In the same way, applied to \(\lambda_-\), it gives \(\lambda_-\).
+So applied to \(\lambda_+\lambda_-\), it gives \(\lambda_-\lambda_+\).
+So applied to \(\lambda\mu\) it gives \(\mu\lambda\) and vice versa.
+\end{proof}
+
+
+
+
+\begin{corollary}\label{corollary:young.insertion}
+If \(\lambda\) is a Young diagram with \(n\) boxes and \(p\) a permutation of \(1,2,\dots,n\), then either
+\begin{enumerate}
+\item
+\(p\) is uniquely expressed as product \(st\) of a permutation \(s\) preserving the rows, and a permutation \(t\) preserving the columns of \(\lambda\) and \(\lambda_+p\lambda_-=(-1)^t\lambda_+\lambda_-\) or
+\item 
+\(0=\lambda_-p\lambda_+=\lambda_+p\lambda_-\).
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Suppose that \(p\) is expressed as such a product \(p=st\).
+By lemma~\vref{lemma:moves.two}, the expression is unique.
+Then \(\lambda_+p\lambda_-=\lambda_+st\lambda_-\).
+But \(t\) reorders the entries in the sum of \(\lambda_-\), and messes up signs by \((-1)^t\), while \(s\) simply reorders the entries in the sum of \(\lambda_+\).
+
+Suppose that \(p\) is not uniquely expressed as such a product.
+By lemma~\vref{lemma:moves.two}, \(p\) moves two entries that lie in the same row of \(\lambda\) into the same column in \(\lambda^p\).
+By lemma~\vref{lemma:two.in.common}, \(0=\lambda^p_-\lambda_+=\lambda_+\lambda^p_-\).
+By problem~\vref{problem:young:lambda.p}, \(0=p\lambda_-p^{-1}\lambda_+=\lambda_+p\lambda_-p^{-1}\).
+\end{proof}
+
+\begin{proposition}\label{prop:idempotent}
+If \(\lambda\) is a Young diagram with \(n\) boxes then, as an operation on polynomials, \(\lambda^2\) is a nonzero multiple of \(\lambda\), over any field of large enough characteristic.
+\end{proposition}
+\begin{proof}
+To each linear combination \(\sum a_p p\), we associate the linear function
+\[
+\phi\pr{\sum a_p p} = \sum_{st} (-1)^t a_{st},
+\]
+where the sum is over permutations \(s\) preserving the rows of \(\lambda\) and permutations \(t\) preserving the columns of \(\lambda\).
+Note that \(\phi\) takes linear combinations of permutations to elements of our field.
+By corollary~\vref{corollary:young.insertion}, for any linear combination
+\(
+\alpha=\sum a_p p,
+\)
+we have
+\[
+\lambda_+ \alpha \lambda_- = \phi(\alpha) \lambda_+ \lambda_-
+\]
+Conjugating with any permutation \(q\):
+\[
+\lambda^q_+ \alpha \lambda^q_- = q\lambda_+ q^{-1} \alpha q \lambda_- q^{-1} = \phi\of{\alpha^{q^{-1}}}\lambda^q_+ \lambda^q_-.
+\]
+
+In particular, if we plug in \(\lambda\) as our expression \(\alpha=\sum a_p p\), recall that \(\lambda\) commutes with all permutations, so \(\lambda^{q^{-1}}=\lambda\).
+Hence
+\begin{align*}
+\lambda \lambda^q_+ \lambda^q_- 
+&=
+\lambda^q_+ \lambda \lambda^q_-,
+\\
+&=
+\phi(\lambda) \lambda^q_+\lambda^q_-.
+\end{align*}
+So
+\begin{align*}
+\lambda^2
+&=
+\lambda 
+\frac{\sum_q\lambda^q_+\lambda^q_-}
+{N_{\lambda}^2},
+\\
+&=
+\frac{\sum_q\lambda \lambda^q_+ \lambda^q_-}
+{N_{\lambda}^2},
+\\
+&=
+\phi(\lambda) \frac{\sum_q\lambda^q_+\lambda^q_-}{N_{\lambda}^2},
+\\
+&=
+\phi(\lambda)\lambda.
+\end{align*}
+
+Taking the notation and the result of lemma~\vref{lemma:trace.L}, \(L^2=\phi(\lambda)L\), so \(0=L(L-\phi(\lambda)I)\).
+The minimal polynomial of \(L\) divides any polynomial that \(L\) satisfies, so divides this one.
+So the minimal polynomial of \(L\) is either \(L=0\) or \(L-\phi(L)I=0\) or \(0=L(L-\phi(L)I)\).
+Since we know that \(\tr L \ne 0\), \(L\) is not zero.
+\begin{enumerate}
+\item
+Suppose that \(L=\phi(L)I\).
+Then \(\phi(L)\) is proportional to the trace of \(L\), not zero.
+\item
+Suppose that the expression \(0=L(L-\phi(\lambda))\) is the minimal polynomial of \(L\).
+If \(\phi(L)=0\), then \(L^2=0\) so all eigenvalues of \(L\) are zero, and so \(\tr L=0\), contradicting lemma~\ref{lemma:trace.L}.
+Therefore \(\phi(L)\ne 0\).
+\end{enumerate}
+\end{proof}

@@ -1,8 +1,6 @@
 \chapter{Modular arithmetic}
 \epigraph[author={Carl Friedrich Gauss}]{Mathematics is the queen of the sciences and number theory is the queen of mathematics.}\SubIndex{Gauss, Carl Friedrich}
-
 \section{Definition}
-
 If we divide integers by \(7\), the possible remainders are
 \[
 0, 1, 2, 3, 4, 5, 6.
@@ -28,7 +26,6 @@ Similarly,
 \overline{65-7}=\overline{65}.
 \]
 
-
 If we add, or multiply, some numbers, what happens to their remainders?
 \begin{theorem}
 Take a positive integer \(m\) and integers \(a, A, b, B\).
@@ -38,6 +35,7 @@ a+b &\equiv A+B \pmod{m}, \\
 a-b &\equiv A-B \pmod{m}, \\
 \text{and } ab &\equiv AB \pmod{m}.
 \end{align*}
+\end{theorem}
 The bar notation is more elegant.
 If we agree that \(\bar{a}\) means remainder of \(a\) modulo the fixed choice of integer \(m\), we can write this as: if
 \[
@@ -49,7 +47,6 @@ then
 \overline{a-b}&=\overline{A-B}, \text{ and } \\
 \overline{ab}&=\overline{AB}.
 \end{align*}
-\end{theorem}
 \begin{example}
 Note that \(\congmod[7]{9}{2}\) and \(\congmod[7]{4}{11}\), so our theorem tells us that \(\congmod[7]{9 \cdot 4}{2 \cdot 11}\).
 Let's check this. 
@@ -88,11 +85,9 @@ ab-AB=(a-A)b+A(b-B)
 \]
 is a multiple of \(m\).
 \end{proof}
-
 \begin{problem}{modular.arithmetic:perfect.square}
 Prove by induction that every ``perfect square'', i.e. integer of the form \(n^2\), has remainder \(0, 1\) or \(4\) modulo \(8\).
 \end{problem}
-
 \begin{problem}{modular.arithmetic:nine}
 Take an integer like \(243098\) and write out the sum of its digits \(2+4+3+0+9+8\).
 Explain why every integer is congruent to the sum of its digits, modulo \(9\).
@@ -111,7 +106,6 @@ Modulo \(9\), \(\congmod[9]{10}{1}\), so modulo 9
 \congmod[9]{&}{b_0+b_1+b_2 + \dots + b_{n-1}}.
 \end{align*}
 \end{answer}
-
 \begin{problem}{modular.arithmetic:gcd}
 Take integers \(a,b,m\) with \(m \ne 0\).
 Let \(d\defeq\gcd{a,b,m}\).
@@ -119,7 +113,6 @@ Prove that \(\congmod[m]{a}{b}\) just when \(\congmod[m/d]{a/d}{b/d}\).
 \end{problem}
 
 \section{Arithmetic of remainders}
-
 We now \emph{define} an addition law on the numbers \(0,1,2,3,4,5,6\) by declaring that when we add these numbers, we then take remainder modulo \(7\).
 This is \emph{not} usual addition.
 To make this clear, we write the remainders with bars over them, always.
@@ -159,8 +152,6 @@ In our daring notation, modulo 17,
 &=
 4.
 \end{align*}
-
-
 \begin{problem}{modular.arithmetic:examples}
 Expand and simplify \(\bar{5}\cdot\bar{2} \cdot \pr{\bar{6}-\bar{9}}\) modulo \(7\).
 \end{problem}
@@ -185,21 +176,17 @@ The addition and multiplication tables for remainder modulo \(5\):
     4 & 0 & 4 & 3 & 2 & 1
 \end{array}
 \]
-
 \begin{problem}{modular.arithmetic:laws}
 Describe laws of modular arithmetic, imitating the laws of integer arithmetic.
 If we work modulo \(4\), explain why the zero divisors law fails.
 Why are there no sign laws?
 \end{problem}
-
 \begin{problem}{modular.arithmetic:remainder}
 Compute the remainder when dividing \(19\) into \(37^{200}\).
 \end{problem}
-
 \begin{problem}{modular.arithmetic:remainder.2}
 Compute the last two digits of \(9^{2000}\).
 \end{problem}
-
 \begin{problem}{modular.arithmetic:quad.eqn}
 Prove that the equation \(a^2 + b^2 = 3c^2\) has no solutions in nonzero integers \(a\), \(b\) and \(c\).
 Hint: start by proving that modulo \(4\), \(a^2=0\) or \(1\).
@@ -207,7 +194,6 @@ Then consider the equation modulo 4; show that \(a\), \(b\) and \(c\) are divisi
 Divide through by 4 to show that there would be a smaller set of solutions to the original equation.
 Apply induction.
 \end{problem}
-
 \begin{example}
 To carry a remainder to a huge power, say \(2^{2005}\) modulo \(13\), we can build up the power out of smaller ones.
 For example, \(2^2=4\) modulo \(13\), and therefore modulo \(13\),
@@ -293,14 +279,12 @@ Then we can compute out modulo \(13\):
 2.
 \end{align*}
 \end{example}
-
 \begin{problem}{modular:big.power}
 Compute \(2^{100}\) modulo \(125\).
 \end{problem}
 
 
 \section{Reciprocals}
-
 Every nonzero rational number \(b/c\) has a reciprocal: \(c/b\).
 Since we now have modular arithmetic defined, we want to know which remainders have ``reciprocals''.
 Working modulo some positive integer, say that a remainder \(x\) has a reciprocal \(y=x^{-1}\) if \(xy=1\).
@@ -327,16 +311,13 @@ So in this weird type of arithmetic, we can allow ourselves the freedom to write
 \end{align*}
 \end{example}
 A remainder that has a reciprocal is a \emph{unit}.\define{unit}
-
 \begin{problem}{modular.arithmetic:no.reciprocal}
 \emph{Danger:} If we work modulo \(4\), then prove that \(\bar{2}\) has \emph{no} reciprocal.
 Hint: \(\bar{2}^2=0\).
 \end{problem}
-
 \begin{problem}{modular.arithmetic:reciprocal}
 Prove that, modulo any integer \(m\), \((m-1)^{-1}=m-1\), and that modulo \(m^2\), \((m-1)^{-1}=m^2-m-1\).
 \end{problem}
-
 \begin{theorem}
 Take a positive integer \(m\) and a remainder \(\bar{r}\) modulo \(m\).
 Take the B\'ezout coefficients of \(r\) and \(m\): \(sr+tm=d\), so that \(d\) is the greatest common divisor of \(r\) and \(m\).
@@ -357,7 +338,6 @@ On the other hand, if
 \]
 then \(sr\) is congruent to \(1\) modulo \(m\), i.e. there is some quotient \(q\) so that \(sr=qm+1\), so \(sr-qm=1\), giving B\'ezout coefficients \(s=s,t=-q\), so the greatest common divisor of \(r,m\) is \(1\).
 \end{proof}
-
 \begin{example}
 Working modulo \(163\), let's compute \(14^{-1}\).
 First we carry out the long division
@@ -409,7 +389,6 @@ Add \(-4 \cdot \text{row 1}\) to row 2:
 Summing it all up: \(35 \cdot 14 + (-3) \cdot 163 = 1\).
 Quotient out by \(163\): modulo \(163\), \(35 \cdot 14 = 1\), so modulo \(163\), \(14^{-1}=35\).
 \end{example}
-
 \begin{problem}{modular.arithmetic:reciprocals}
 Use this method to find reciprocals:
 \begin{enumerate}
@@ -439,12 +418,10 @@ Answer:\(2^{-1} = \sage{inverse_mod(2,193)}\) modulo \(193\)
 Answer:\(6003722857^{-1} = \sage{inverse_mod(6003722857,77695236973)}\) modulo \(77695236973\)
 \end{enumerate}
 \end{answer}
-
 \begin{problem}{modular.arithmetic:prime.field}
 Suppose that \(b, c\) are remainders modulo a prime.
 Prove that \(bc=0\) just when either \(b=0\) or \(c=0\).
 \end{problem}
-
 \begin{problem}{modular.arithmetic:Fermats.Little.Theorem}
 Suppose that \(p\) is a prime number and \(n\) is an integer with \(n < p\).
 Explain why, modulo \(p\), the numbers \(0, n, 2n, 3n, \dots, (p-1)n\) consist in precisely the remainders \(0,1,2,\dots,p-1\), in some order.
@@ -461,10 +438,8 @@ Finally, explain why, for any integer \(k\),
 \end{problem}
 
 \section{The Chinese remainder theorem}
-
 \epigraph[author={Brahmagupta (580CE--670CE)}, source={Brahma-Sphuta-Siddhanta (Brahma's Correct System)}]{An old woman goes to market and a horse steps on her basket and  crushes the eggs. The rider offers to pay for the damages and asks  her how many eggs she had brought. She does not remember the 
 exact number, but when she had taken them out two at a time,  there was one egg left. The same happened when she picked them out three, four, five, and six at a time, but when she took them seven at a time, there were none left. What is the smallest number of eggs she could have had?}\SubIndex{Brahmagupta}\SubIndex{Brahma-Sphuta-Siddhanta}\SubIndex{Brahma's correct system}
-
 Take a look at some numbers and their remainders modulo \(3\) and \(5\):
 \[
 \begin{array}{@{}rrr@{}}
@@ -490,7 +465,6 @@ n & n \operatorname{mod} 3 & n \operatorname{mod} 5 \\ \midrule
 \end{array}
 \]
 Remainders modulo \(3\) repeat every \(3\), and remainders modulo \(5\) repeat every \(5\), but the pair of remainders modulo \(3\) and \(5\) together repeat every \(15\).
-
 \begin{example}
 How can you find an integer \(x\) so that 
 \begin{align*}
@@ -499,7 +473,6 @@ How can you find an integer \(x\) so that
 &\congmod[7]{x}{1}?
 \end{align*}
 \end{example}
-
 \begin{example}
 A recipe: how to find an unknown integer \(x\) given only the knowledge of its remainders modulo various integers.
 Suppose we know \(x\) has remainder \(r_1\) modulo \(m_1\), \(r_2\) modulo \(m_2\), and so on.
@@ -518,7 +491,6 @@ x\defeq r_1 u_1 v_1 + r_2 u_2 v_2 + \dots + r_n u_n v_n.
 \]
 We can simplify this a little: add or subtract multiples of \(m\) until \(x\) is in the range \(0 \le x \le m-1\).
 \end{example}
-
 \begin{theorem}
 Take some positive integers \(m_1, m_2, \dots, m_n\), so that any two of them are coprime.
 Suppose that we want to find an unknown integer \(x\) given only the knowledge of its remainders modulo \(m_1, m_2, \dots, m_n\); so we know its remainder modulo \(m_1\) is \(r_1\), modulo \(m_2\) is \(r_2\), and so on.
@@ -536,7 +508,6 @@ Then modulo \(m_i\), \(x=r_i\), and so on.
 So the recipe gives the required integer \(x\).
 If there are two, then their difference vanishes modulo all of the \(m_i\), so is a multiple of every one of the \(m_i\), which are coprime, so is a multiple of their product \(m\).
 \end{proof}
-
 \begin{example}
 Let's find an integer \(x\) so that 
 \begin{align*}
@@ -588,16 +559,13 @@ We can now check to be sure:
 The Chinese remainder theorem tells us also that \(106\) is the unique solution modulo \(3 \cdot 4 \cdot 7=84\).
 But then \(106-84=22\) is also a solution, the smallest positive solution.
 \end{example}
-
 \begin{problem}{modular.arithmetic:eggs}
 Solve the problem about eggs. Hint: ignore the information about eggs taken out six at a time.
 \end{problem}
-
 \begin{problem}{modular.arithmetic:army}
 Use the Chinese remainder theorem to determine the smallest number of soldiers possible in Han Xin's army if the following facts are true.
 When they parade in rows of 3 soldiers, two soldiers will be left. When they parade in rows of 5, 3 will be left, and in rows of 7, 2 will be left.
 \end{problem}
-
 \begin{problem}{modular.arithmetic:army.2}
 Use the Chinese remainder theorem to determine the smallest number of soldiers possible in Han Xin's army if the following facts are true.
 When they parade in rows of 3 soldiers, one soldier will be left. When they parade in rows of 7, 2 will be left, and in rows of 19, three will be left.
@@ -641,8 +609,6 @@ r_1 u_1 v_1 + r_2 u_2 v_2 + r_3 u_3 v_3
 \end{align*}
 So there are at least 79 soldiers in Han Xin's army.
 \end{answer}
-
-
 Given some integers \(m_1, m_2, \dots, m_n\), we consider sequences \(\pr{b_1, b_2, \dots, b_n}\) consisting of remainders: \(b_1\) a remainder modulo \(m_1\), and so on.
 Add sequences of remainders in the obvious way:
 \[
@@ -671,13 +637,11 @@ Modulo \(\pr{3,5}\), we multiply
 &=(0,3).
 \end{align*}
 \end{example}
-
 Let \(m \defeq m_1 m_2 \dots m_n\).
 To each remainder modulo \(m\), say \(b\), associate its remainder \(b_1\) modulo \(m_1\), \(b_2\) modulo \(m_2\), and so on.
 Associate the sequence \(\vec{b}\defeq\pr{b_1,b_2,\dots,b_n}\) of all of those remainders.
 In this way we make a map taking each remainder \(b\) modulo \(m\) to its sequence \(\vec{b}\) of remainders modulo all of the various \(m_i\).
 Moreover, \(\overrightarrow{b+c}=\vec{b}+\vec{c}\) and \(\overrightarrow{b-c}=\vec{b}-\vec{c}\) and \(\overrightarrow{bc}=\vec{b}\vec{c}\), since each of these works when we take remainder modulo anything.
-
 \begin{example}
 Take \(m_1,m_2,m_3\) to be \(3,4,7\).
 Then \(m=3 \cdot 4 \cdot 7 = 84\).
@@ -692,8 +656,6 @@ b_3 &= 8 \mod 7, \\
 \vec{b} &= \pr{b_1,b_2,b_3} = \pr{2,0,1}.  
 \end{align*}
 \end{example}
-
-
 \begin{corollary}\label{corollary:CRT}
 Take some positive integers \(m_1, m_2, \dots, m_n\), so that any two of them are coprime.
 The map taking \(b\) to \(\vec{b}\), from remainders modulo \(m\) to sequences of remainders modulo \(m_1, m_2, \dots, m_n\), is one-to-one and onto, identifies sums with sums, products with products, differences with differences, units with sequences of units.
@@ -701,10 +663,8 @@ The map taking \(b\) to \(\vec{b}\), from remainders modulo \(m\) to sequences o
 
 
 \section{Euler's totient function}
-
 \emph{Euler's totient function}\define{Euler's totient function}\define{totient function} \(\phi\)\Notation{phi(m)}{\phi(m)}{Euler's totient function} assigns to each positive integer \(m=2,3, \dots\) the number of all remainders modulo \(m\) which are units (in other words, coprime to \(m\)) [in other words, which have reciprocals].
 It is convenient to \emph{define} \(\phi(1)\defeq 1\) (even though there \emph{isn't} actually 1 unit remainder modulo 1).
-
 \begin{problem}{modular.arithmetic:totient.values}
 Explain by examining the remainders that the first few values of \(\phi\) are
 \[
@@ -723,11 +683,9 @@ m & \phi(m) \\
 \end{array}
 \]
 \end{problem}
-
 \begin{problem}{modular.arithmetic:prime.phi}
 Prove that a positive integer \(m \ge 2\) is prime just when \(\phi(m)=m-1\).
 \end{problem}
-
 \begin{theorem}\label{theorem:totient}
 Suppose that \(m\ge 2\) is an integer with prime factorizaton
 \[
@@ -755,7 +713,6 @@ We take these out and we are left with \(p^a-p^{a-1}\) remainders left, i.e. cop
 If \(b,c\) are coprime integers \(\ge 2\), then corollary~\vref{corollary:CRT} maps units modulo \(bc\) to pairs of a unit modulo \(b\) and a unit modulo \(c\), and is one-to-one and onto.
 Therefore counting units: \(\phi(bc)=\phi(b)\phi(c)\).
 \end{proof}
-
 \begin{theorem}[Euler]\label{theorem:Euler}
 For any positive integer \(m\) and any integer \(b\) coprime to \(m\), 
 \[
@@ -792,13 +749,11 @@ But multiplying by \(b\) just scrambles the order of the roots, so if we multipl
 \]
 Divide every unit \(u_1, u_2, \dots, u_q\) out of boths sides to find \(b^q=1\).
 \end{proof}
-
 \begin{problem}{modular.arithmetic:find.reciprocal}
 Take an integer \(m \ge 2\).
 Suppose that \(b\) is a unit in the remainders modulo \(m\).
 Prove that the reciprocal of \(b\) is \(b^{\phi(m)-1}\).
 \end{problem}
-
 Euler's theorem is important because we can use it to calculate quickly modulo prime numbers (and sometimes even modulo numbers which are not prime).
 \begin{example}
 Modulo \(19\), let's find \(123456789^{987654321}\).
@@ -831,7 +786,6 @@ We leave the reader to check that \(14^9=18\) modulo \(19\), so that finally, mo
 123456789^{987654321}=18.
 \]
 \end{example}
-
 \begin{problem}{modular:use.totient}
 By hand, using Euler's totient function, compute \(127^{162}\) modulo \(120\).
 \end{problem}
@@ -848,7 +802,6 @@ This is not quite the answer.
 But we know that \(127=7\) modulo \(120\). 
 So modulo 120, \(127^{162}=7^2=49\).
 \end{answer}
-
 \begin{lemma}\label{lemma:multiply.by.a}
 For any prime number \(p\) and integers \(b\) and \(k\), \(b^{1+k(p-1)}=b\) modulo \(p\).
 \end{lemma}
@@ -857,7 +810,6 @@ If \(b\) \emph{is} a multiple of \(p\) then \(b=0\) modulo \(p\) so both sides a
 If \(b\) is not a multiple of \(p\) then \(b^{p-1}=1\) modulo \(p\), by Euler's theorem.
 Take both sides to the power \(k\) and multiply by \(b\) to get the result.
 \end{proof}
-
 \begin{theorem}\label{theorem:generalized.Euler}
 Suppose that \(m=p_1 p_2 \dots p_n\) is a product of distinct prime numbers.
 Then for any integers \(b\) and \(k\) with \(k \ge 0\),
@@ -870,14 +822,11 @@ By lemma~\vref{lemma:multiply.by.a}, the result is true if \(m\) is prime.
 So if we take two prime numbers \(p\) and \(q\), then\(b^{1+k(p-1)(q-1)}=b\) modulo \(p\), but also modulo \(q\), and therefore modulo \(pq\).
 The same trick works if we start throwing in more distinct prime factors into \(m\).
 \end{proof}
-
 \begin{problem}{modular.arithmetic:example.not.Euler}
 Give an example of integers \(b\) and \(m\) with \(m \ge 2\) for which \(b^{1+\phi(m)} \ne b\) modulo \(m\).
 \end{problem}
 
-
 \section{Sage}
-
 In Sage, the quotient of \(71\) modulo \(13\) is \verb!mod(71,13)!.
 The tricky bit: it returns a ``remainder modulo 13'', so if we write
 \begin{sageblock}

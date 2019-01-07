@@ -11,7 +11,6 @@ We know that man has the faculty of becoming completely absorbed in a subject ho
 \SubIndex{Tolstoy, Leo}\SubIndex{War and Peace}
 
 \section{Projective planes}
-
 A \emph{projective plane}\define{projective!plane} (in a more general sense of the term than we have used previously) is a set \(P\), whose elements are called \emph{points}, together with a set \(L\), whose elements are called \emph{lines}, and a defined notion of incidence, i.e. of a point being ``on'' a line (or we could say that a line is ``on'' or ``through'' a point) so that
 \begin{enumerate}
 \item
@@ -106,7 +105,6 @@ Prove that every line in a projective plane contains at least three points.
 
 
 \section{Duality}
-
 We defined polygons in projective planes over fields in section~\vref{section:polygons}; we employ the same definitions in any projective plane.
 If \(P\) is a projective plane with set of lines \(L\), the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}, denoted \(P^*\),\Notation{P*}{P^*}{dual projective plane} has \(L\) as its set of ``points'' and \(P\) as its set of ``lines'', and the same incidence notion, i.e. we use interchange the words ``point'' and ``line''.
 
@@ -130,7 +128,6 @@ Such a function is uniquely determined by its zeroes, up to rescaling.
 So each line in \(\mathbb{P}V\) is identified with a 2-plane through the origin of \(V\) and thereby with a linear function \(f \in V^*\) defined up to rescaling, and thereby with a line \(k \cdot f \subset V^*\) through the origin of \(V^*\), and thereby with a point of \(\mathbb{P}V^*\): \(\mathbb{P}\of{V^*}=\mathbb{P}(V)^*\).
 
 \section{Projective spaces}
-
 A \emph{projective space}\define{projective!space} is a pair of sets, called the sets of \emph{points} and \emph{lines}, together with a definition of \emph{incidence} of points on lines, so that
 \begin{enumerate}
   \item\label{item:pq} Any two distinct points \(p, q\) are on exactly one line \(pq\).
@@ -251,7 +248,6 @@ If some common point \(c\) of \(P\) and \(P'\) does not lie in \(ab\), then the 
 
 
 \section{The quaternionic projective spaces}
-
 The \emph{quaternions}\define{quaternions}\Notation{H}{\Quat{}}{quaternions} over a commutative ring \(R\) are the quadruples \(a=\pr{a_0,a_1,a_2,a_3}\) of elements of \(R\), each written as
 \[
 a=a_0  + a_1 i + a_2 j + a_3 k.
@@ -429,7 +425,9 @@ Prove that \(\Proj[n]{k}\) is a  projective space for any skew field \(k\).
 
 
 \section{Incidence geometries}
-
+\epigraph[author={Ludwig Wittgenstein}, source={Tractatus Logico-Philosophicus}]{The world is all that is the case.
+\\ The world is the totality of facts, not of things.}%
+\SubIndex{Wittgenstein, Ludwig}\SubIndex{Tractatus Logico-Philosophicus}
 We want to consider more general configurations of points and lines than projective planes or spaces.
 An \emph{incidence geometry}\define{incidence geometry}, also called a \emph{configuration}\define{configuration}, is set \(P\), whose elements are called \emph{points}, together with a set \(L\), whose elements are called \emph{lines}, and a defined notion of incidence, i.e. of a point being ``on'' a line (or we could say that a line is ``on'' or ``through'' a point).
 \begin{example}
@@ -513,44 +511,48 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 
 
 \section{Desargues' theorem}
-\epigraph[author={G. H. Hardy}]{Beauty is the first test: there is no permanent place in the world for ugly mathematics}\SubIndex{Hardy, G. H.}
-\begingroup
-% highest x value of any coordinate of any point in the picture:
-\newcommand*{\maxX}{5.5}
-% lowest x value of any coordinate of any point in the picture:
-\newcommand*{\minX}{0}
-\newcommand*{\tikzscale}{.5}
-\newcommand*{\dotr}{2pt}
+\epigraph[author={G. H. Hardy}]{Beauty is the first test: there is no permanent place in the world for ugly mathematics}\SubIndex{Hardy, G. H.}%
+\epigraph[author={Mikhail Bulgakov}, source={The Master and Margarita}]{What would your good be doing if there were no evil, and what would the earth look like if shadows disappeared from it? After all, shadows are cast by objects and people. There is the shadow of my sword. But there are also shadows of trees and living creatures. Would you like to denude the earth of all the trees and all the living beings in order to satisfy your fantasy of rejoicing in the naked light?}\SubIndex{Bulgakov, Mikhail}
 
-\newcommand*{\AoneX}{0}
-\newcommand*{\AoneY}{6}
+% highest x value of any coordinate of any point in the picture:
+\newcommand*{\maxX}{6}
+% lowest x value of any coordinate of any point in the picture:
+\newcommand*{\minX}{0.1}
+
+\newcommand*{\AoneX}{2.99}
+\newcommand*{\AoneY}{0}
 \newcommand*{\Aone}{\AoneX,\AoneY}
-\newcommand*{\AtwoX}{2}
-\newcommand*{\AtwoY}{5.5}
+\newcommand*{\AtwoX}{4.22}
+\newcommand*{\AtwoY}{.6}
 \newcommand*{\Atwo}{\AtwoX,\AtwoY}
-\newcommand*{\AthreeX}{1.5}
-\newcommand*{\AthreeY}{4.5}
+\newcommand*{\AthreeX}{4.68}
+\newcommand*{\AthreeY}{1.41}
 \newcommand*{\Athree}{\AthreeX,\AthreeY}
-\newcommand*{\PnoughtX}{0}
-\newcommand*{\PnoughtY}{8}
+\newcommand*{\PnoughtX}{4.05}
+\newcommand*{\PnoughtY}{3.11}
 \newcommand*{\Pnought}{\PnoughtX,\PnoughtY}
-\newcommand*{\Tone}{4}
-\newcommand*{\Ttwo}{2}
-\newcommand*{\Tthree}{3}
+\newcommand*{\Tone}{1.5627}
+\newcommand*{\Ttwo}{2.1116}
+\newcommand*{\Tthree}{2.9353}
 
 \newcommand*{\drawOrigin}
 {
-\fill[blue!40] (\Pnought) circle (\dotr) node (p) {};
+\coordinate (p) at (\Pnought){};
+\DrawNode{p}
 }
 
 \newcommand*{\drawFirstTriangle}
 {
-\fill[cyan!5,opacity=.75] (\Aone) -- (\Atwo) -- (\Athree) -- cycle;
-\fill[cyan!40] (\Aone) circle (\dotr) node (a1) {};
-\fill[cyan!40] (\Atwo) circle (\dotr) node (a2) {};
-\fill[cyan!40] (\Athree) circle (\dotr) node (a3) {};
+\coordinate (a1) at (\Aone){};
+\DrawNode{a1}
+\coordinate (a2) at (\Atwo){};
+\DrawNode{a2}
+\coordinate (a3) at (\Athree){};
+\DrawNode{a3}
+\begin{scope}[on background layer]
+\fill[shapeOne] (a1) -- (a2) -- (a3) -- cycle;
+\end{scope}
 }
-
 
 \newcommand*{\Bone}{{\Tone*(\AoneX-\PnoughtX)+\PnoughtX},{\Tone*(\AoneY-\PnoughtY)+\PnoughtY}}
 \newcommand*{\Btwo}{{\Ttwo*(\AtwoX-\PnoughtX)+\PnoughtX},{\Ttwo*(\AtwoY-\PnoughtY)+\PnoughtY}}
@@ -558,30 +560,37 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 
 \newcommand*{\drawSecondTriangle}
 {
-\fill[brown!15,opacity=.5] (\Bone) -- (\Btwo) -- (\Bthree) -- cycle;
-\fill[brown!50,opacity=.5] (\Bone) circle (\dotr) node (b1) {};
-\fill[brown!50,opacity=.5] (\Btwo) circle (\dotr) node (b2) {};
-\fill[brown!50,opacity=.5] (\Bthree) circle (\dotr) node (b3) {};
+\coordinate (b1) at (\Bone){};
+\DrawNode{b1}
+\coordinate (b2) at (\Btwo){};
+\DrawNode{b2}
+\coordinate (b3) at (\Bthree){};
+\DrawNode{b3}
+\begin{scope}[on background layer]
+\fill[shapeTwo] (b1) -- (b2) -- (b3) -- cycle;
+\end{scope}
 }
 
 \newcommand*{\connectVantageAndFirstTwoTriangles}
 {
-\draw[gray,opacity=.5] (p) -- (a1) -- (b1);
-\draw[gray,opacity=.5] (p) -- (a2) -- (b2);
-\draw[gray,opacity=.5] (p) -- (a3) -- (b3);
+\begin{scope}[on background layer]
+\draw[curveZero,very thick] (p) -- (a1) -- (b1);
+\draw[curveZero,very thick] (p) -- (a2) -- (b2);
+\draw[curveZero,very thick] (p) -- (a3) -- (b3);
+\end{scope}
 }
 
 \newcommand*{\findFirstIntersection}
 {
-\node (c1) at (intersection of a2--a3 and b2--b3) {};
+\coordinate (c1) at (intersection of a2--a3 and b2--b3) {};
 }
 \newcommand*{\findSecondIntersection}
 {
-\node (c2) at (intersection of a1--a3 and b1--b3) {};
+\coordinate (c2) at (intersection of a1--a3 and b1--b3) {};
 }
 \newcommand*{\findThirdIntersection}
 {
-\node (c3) at (intersection of a1--a2 and b1--b2) {};
+\coordinate (c3) at (intersection of a1--a2 and b1--b2) {};
 }
 
 \newcommand*{\findAllIntersections}
@@ -593,20 +602,17 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 
 \newcommand*{\showFirstIntersectionPoint}
 {
-%\draw[white] (c1) circle (1.4pt);
-\fill[gray!30] (c1) circle (\dotr);
+\DrawNode{c1}
 }
 
 \newcommand*{\showSecondIntersectionPoint}
 {
-%\draw[white] (c2) circle (1.4pt);
-\fill[gray!30] (c2) circle (\dotr);
+\DrawNode{c2}
 }
 
 \newcommand*{\showThirdIntersectionPoint}
 {
-%\draw[white] (c3) circle (1.4pt);
-\fill[gray!30] (c3) circle (\dotr);
+\DrawNode{c3}
 }
 
 
@@ -619,22 +625,34 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 
 \newcommand*{\showHowFirstIntersectionIsConstructed}
 {
-\draw[red!50!white] (a3) -- (c1); % line through c1
-\draw[red!50!white] (b3) -- (c1); % line through c1
+\begin{scope}[on background layer]
+\draw[curveOne,very thick] (a3) -- (c1); % line through c1
+\draw[curveOne,very thick] (a2) -- (c1); % line through c1
+\draw[curveOne,very thick] (b2) -- (c1); % line through c1
+\draw[curveOne,very thick] (b3) -- (c1); % line through c1
+\end{scope}
 \showFirstIntersectionPoint
 }
 
 \newcommand*{\showHowSecondIntersectionIsConstructed}
 {
-\draw[blue] (a3) -- (c2); % line through c1
-\draw[blue] (b3) -- (c2); % line through c1
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick] (a3) -- (c2); % line through c2
+\draw[curveTwo,very thick] (a1) -- (c2); % line through c2
+\draw[curveTwo,very thick] (b1) -- (c2); % line through c2
+\draw[curveTwo,very thick] (b3) -- (c2); % line through c2
+\end{scope}
 \showSecondIntersectionPoint
 }
 
 \newcommand*{\showHowThirdIntersectionIsConstructed}
 {
-\draw[brown] (a2) -- (c3); % line through c1
-\draw[brown] (b2) -- (c3); % line through c1
+\begin{scope}[on background layer]
+\draw[curveThree,very thick] (a1) -- (c3); % line through c3
+\draw[curveThree,very thick] (a2) -- (c3); % line through c3
+\draw[curveThree,very thick] (b1) -- (c3); % line through c3
+\draw[curveThree,very thick] (b2) -- (c3); % line through c3
+\end{scope}
 \showThirdIntersectionPoint
 }
 
@@ -647,83 +665,82 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 
 \newcommand*{\showTheLine}
 {
-\draw[green!50!gray] (c1) -- (c2);
-\draw[green!50!gray] (c2) -- (c3);
+\begin{scope}[on background layer]
+\draw[curveZero,very thick] (c1) -- (c2);
+\draw[curveZero,very thick] (c1) -- (c3);
+\draw[curveZero,very thick] (c2) -- (c3);
+\end{scope}
 \showAllIntersectionPoints
 }
 
 \newcommand*{\showThirdTriangle}
 {
-\fill[green!50!gray,opacity=.1] (c1) to[bend left=45] (c2) to[bend right=45] (c3) to[bend left=90] (c1);
-%\draw[green!50!gray] (c1) to[bend left=45] (c2);
-%\draw[green!50!gray] (c2) to[bend right=45] (c3);
-%\draw[green!50!gray] (c3) to[bend left=90] (c1);
+\begin{scope}[on background layer]
+\fill[
+shapeThree,draw=curveThree,very thick
+%green!50!gray,opacity=.1
+] (c1) to[bend left=85] (c2) to[bend right=85] (c3) to[bend left=90] (c1);
+\end{scope}
 \showAllIntersectionPoints
 }
 
-\newcommand*{\firstPicture}
-{
+
+\newcommand{\Desargue}[1]{%
+\begin{center}
+\begin{tikzpicture}
+% Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
+\begin{scope}[on background layer]
+\draw[white] (\minX,0) -- (\maxX,0); 
+\end{scope}
+\IfStrEqCase{#1}{%
+{1}%
+{%%
 \drawOrigin
 \drawFirstTriangle
-}
-
-\newcommand*{\secondPicture}
-{
+}%%
+{2}%
+{%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
 \connectVantageAndFirstTwoTriangles
 \drawFirstTriangle
 \drawSecondTriangle
-}
-
-\newcommand*{\thirdPicture}
-{
+}%
+{3}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
 \findFirstIntersection
 \showHowFirstIntersectionIsConstructed
-}
-
-\newcommand*{\fourthPicture}
-{
+}%%
+{4}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
 \findSecondIntersection
 \showHowSecondIntersectionIsConstructed
-}
-
-\newcommand*{\fifthPicture}
-{
+}%%
+{5}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
 \findThirdIntersection
 \showHowThirdIntersectionIsConstructed
-}
-
-\newcommand*{\ninthPicture}
-{
-\drawFirstTriangle
-\drawSecondTriangle
-\findAllIntersections
-\showHowAllIntersectionsAreConstructed
-\showTheLine
-}
-
-\newcommand*{\sixthPicture}
-{
+}%%
+{6}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
 \findAllIntersections
 \showTheLine
-}
-
-\newcommand*{\seventhPicture}
-{
+}%%
+{7}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
@@ -731,10 +748,9 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 \findAllIntersections
 \showHowAllIntersectionsAreConstructed
 \showTheLine
-}
-
-\newcommand*{\eighthPicture}
-{
+}%%
+{8}%
+{%%
 \drawOrigin
 \drawFirstTriangle
 \drawSecondTriangle
@@ -742,79 +758,57 @@ If \(f \colon A \to B\) is a morphism of configurations, define the \emph{dual m
 \findAllIntersections
 \showHowAllIntersectionsAreConstructed
 \showThirdTriangle
-}
-
-\newcommand{\Desargue}[1]{%
-\begin{center}
-\begin{tikzpicture}[scale=\tikzscale]
-% Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
-\draw[white] (\minX,0) -- (\maxX,0); 
-\IfStrEqCase{#1}{%
-{1}%
-{%%
-\firstPicture
-}%%
-{2}%
-{%
-\secondPicture
-}%
-{3}%
-{%%
-\thirdPicture
-}%%
-{4}%
-{%%
-\fourthPicture
-}%%
-{5}%
-{%%
-\fifthPicture
-}%%
-{6}%
-{%%
-\sixthPicture
-}%%
-{7}%
-{%%
-\seventhPicture
-}%%
-{8}%
-{%%
-\eighthPicture
 }%%
 {9}%
 {%%
-\ninthPicture
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}%%
+{10}%
+{%%
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+\begin{scope}[on background layer]
+\draw[opacity=0] (c1) -- ++(6cm,0) node[black] (c4) {\(c_4\)};
+\draw[opacity=0] (c3) -- ++(6cm,0) node[brown] (c5) {\(c_5\)};
+\fill[shapeZero,draw=curveZero] (c4.center) -- (c5.center) -- (c3.center) -- (c1.center) -- cycle;
+\end{scope}
+\begin{scope}[on background layer]
+\draw[opacity=0] (c1) -- ++(6cm,4cm) node[black] (d1) {\(d_1\)};
+\draw[opacity=0] (c3) -- ++(6cm,4cm) node[brown] (d3) {\(d_3\)};
+\fill[shapeZero,draw=curveZero] (d1.center) -- (d3.center) -- (c3.center) -- (c1.center) -- cycle;
+\end{scope}
 }%%
 }%% end IfStrEqCase
 \end{tikzpicture}
 \end{center}
 }
 
-%Take a quadrilateral of points, but picture them as consisting of a triangle, and a point not lying on any side of that triangle, which we call the origin.
-%\Desargue{1}
-%For each of the 3 vertices, draw the lines through the origin and that vertex.
-%Pick any 3 points on those lines, forming some triangle.
-Two triangles with a chosen correspondence between their vertices are \emph{in perspective}\define{perspective} from a point \(p\) if the lines through corresponding vertices pass through \(p\).
+Two triangles with a chosen correspondence between their vertices are \emph{in perspective}\define{perspective} from a point if the lines through corresponding vertices pass through that point.
 \Desargue{2}
-The two triangles are \emph{in perspective}\define{perspective} from a line \(\ell\) if corresponding edges intersect on \(\ell\).
+\begin{problem}{more.projective.planes:Not.in.perspective}
+Prove that, on any projective plane in which every line has at least 4 points, there are two triangles which are \emph{not} in perspective from any point.
+\end{problem}
+
+The two triangles are \emph{in perspective}\define{perspective} from a line if corresponding edges intersect on that line.
 \Desargue{9}
-%See how the vertices of the original triangle correspond, via these lines, with those of the new triangle.
-%We say that the two triangles are \emph{in perspective} from the origin point.
-%Given two triangles, with a correspondence between their vertices, we can always find the origin, if it exists, by intersecting the lines through corresponding vertices.
-%Declare sides to correspond if they pass through corresponding vertices.
-%(We could easily generalise this story to consider complicated drawings being ``in perspective'' from a point.)
-
-%Take intersections of each pair of corresponding sides: draw the intersection of the first pair
-%\Desargue{3}
-%and of the second pair
-%\Desargue{4}
-%and of the third pair, giving us three intersection points.
-%\Desargue{5}
-
-%\Desargue{6}
-Every projective plane has a quadrilateral, so contains a pair of triangles in perspective from a point.
-The dual of a pair of triangles in perspective from a point is a pair of triangles in perspective from a line.
+\begin{problem}{more.projective.planes:desargues.dual}
+Prove that a pair of triangles in a projective plane are in perspective from a line just when the dual triangles are in perspective from a point.
+\end{problem}
+\begin{problem}{more.projective.planes:has.perspective}
+Prove that every projective plane has a pair of triangles in perspective from a point, and a pair of triangles in perspective from a line.
+\end{problem}
+\begin{answer}{more.projective.planes:has.perspective}
+Any projective plane already contains a quadrilateral; pick out any one of those 4 points to make a triangle, and then pick out another to make another triangle.
+They are in perspective from either of those two points.
+Taking duals gives perspective from a line.
+\end{answer}
 A configuration is \emph{Desargue}\define{Desargues!projective plane}\define{projective!plane!Desargues} if every pair of triangles in perspective from some point is also in perspective from some line.
 If we draw the picture very carefully, it appears that the real projective plane is Desargues.
 The incidence geometry
@@ -824,8 +818,7 @@ The same configuration with three curves added through those 3 points to determi
 \Desargue{8}
 A configuration is thus Desargues just when every morphism to it from the configuration of a pair of triangles in perspective extends to a morphism from a standard Desargue configuration, or equivalently the configuration admits no monomorphisms from the broken Desargues configuration.
 Not every projective plane is Desargues, as we will see.
-\endgroup
- 
+
 \begin{problem}{more.projective.planes:desargues}
 Prove that a projective plane is Desargues precisely when, for any pair of triangles in perspective, their dual triangles in the dual projective plane are also in perspective.
 \end{problem}
@@ -833,10 +826,13 @@ Prove that a projective plane is Desargues precisely when, for any pair of trian
 \begin{lemma}
 Every 3-dimensional projective space is Desargues.
 \end{lemma}
+\begin{center}
+\Desargue{10}
+\end{center}
 \begin{proof}
-Looking back at our drawings of triangles in perspective, suppose that the two triangles lie on different planes.
+Suppose that the two triangles lie on different planes.
 Then these two planes intersect along a single line.
-The lines drawn along the sides of either triangle lie in one or the other of those two different planes, and intersect along that line.
+The lines we drew along the sides of either triangle lie in one or the other of those two different planes, and can only intersect along that line.
 Therefore the intersection points lie on that line, i.e. the intersection points are collinear.
 
 But so far we have assumed that the two triangles in perspective lie in different planes.
@@ -875,12 +871,11 @@ For example, projective space \(\Proj[n]{k}\) of any dimension \(n \ge 3\) over 
 If a projective plane embeds into a projective space of some dimension \(n \ge 3\), then the projective plane is Desargues.
 \end{corollary}
  
-For example, projective space \(\Proj[n]{k}\) of any dimension \(n \ge 2\) over any field \(k\) is Desargues.
-
-
+\begin{example}
+Projective space \(\Proj[n]{k}\) of any dimension \(n \ge 2\) over any field \(k\) is Desargues.
+\end{example}
 
 \section{Generating projective planes}
-
 A monomorphism \(A \to P\) from a configuration to a projective plane \(P\) is \emph{universal} if every monomorphism \(A \to Q\) to a projective plane \(Q\) factors through a morphism \(P \to Q\), i.e. \(A \to P \to Q\).
 A configuration is \emph{planar} if any two distinct points of \(A\) lie on at most one line.
 A planar configuration is \emph{spanning} if there are 4 points with no three collinear.
@@ -934,7 +929,6 @@ Therefore \(P\) is not Desargues.
 \end{example}
 
 \section{Octonions}
-
 In this section, we will allow the use of the word \emph{ring} in a somewhat more general context.
 A \emph{ring}\define{ring} is a set of objects \(S\) together with two operations called \emph{addition} and \emph{multiplication}, and denoted by \(b+c\) and \(bc\), so that if \(b\) and \(c\) belong to \(S\), then \(b+c\) and \(bc\) also belong to \(S\), and so that:
 \smallskip
@@ -1082,16 +1076,15 @@ In particular, \(\Oct{}\) is a normed alternative division ring and every elemen
 
 
 \section{Coordinates}
-
 Given a projective plane \(P\), take a quadrilateral:
-\newcommand{\dt}[2]{\fill[gray!50] (#1,#2) circle (4pt);}
-\newcommand{\lne}[4]{\draw[gray!50] (#1,#2) -- (#3,#4);}
+%\newcommand{\dt}[2]{\fill[gray!50] (#1,#2) circle (4pt);}
+\NewDocumentCommand\dt{O{}mmO{}}{\DrawDot[#1]{#2/3}{#3/3}[#4]}
+%\newcommand{\dt}[2]{\DrawDot{#1}{#2}}
+\newcommand{\lne}[4]{\draw[curveZero,very thick] ({#1/3},{#2/3}) -- ({#3/3},{#4/3});}
 \newenvironment{ppdiagram}%
 {%%
 \begin{center}
-\begin{tikzpicture}[scale=.4]
-%\draw[white] (-0.5,-0.5) grid (3.5,3.5); 
-%\draw [style=help lines] (0,0) grid (3,3); 
+\begin{tikzpicture}
 }%%
 {%%
 \end{tikzpicture}
@@ -1105,48 +1098,50 @@ Given a projective plane \(P\), take a quadrilateral:
 \end{ppdiagram}
 Call this:
 \begin{ppdiagram}
+\lne{0}{3}{3}{0}
 \dt{0}{0} 
 \dt{0}{3} 
 \dt{3}{0} 
 \dt{1}{1} 
-\lne{0}{3}{3}{0}
 \end{ppdiagram}
 the \emph{line at infinity}. Henceforth, draw it far away.
 Two lines:
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{1}{1} 
 \lne{1.5}{0}{1.5}{3}
 \lne{2.5}{0}{2.5}{3}
+\dt{0}{0} 
+\dt{1}{1} 
 \end{ppdiagram}
 are \emph{parallel} if they meet at the line at infinity.
 One of the two ``finite'' points of our quadrilateral we designate the \emph{origin}.
 We draw lines from it out to the two ``far away'' points: the \emph{axes}:
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{1}{1} 
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\dt{0}{0} 
+\dt{1}{1} 
 \end{ppdiagram}
 Map any point \(p\) not on the line at infinity to points on the two axes:
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{2}{1} 
-\lne{2}{3}{2}{0}
-\draw (2,1) node[right]{\(p\)};
-\draw (2,0) node[below]{\(p_x\)};
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\lne{2}{3}{2}{0}
+\dt{0}{0}
+\dt[p]{2}{1}[right]
+\dt[p_x]{2}{0}[below]
+%\draw (2,1) node[right]{\(p\)};
+%\draw (2,0) node[below]{\(p_x\)};
 \end{ppdiagram}
 and
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{2}{1} 
-\lne{3}{1}{0}{1}
-\draw (2,1) node[right]{\(p\)};
-\draw (0,1) node[left]{\(p_y\)};
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\lne{3}{1}{0}{1}
+\dt{0}{0} 
+\dt[p]{2}{1}[above]
+\dt[p_y]{0}{1}[left]
+%\draw (2,1) node[right]{\(p\)};
+%\draw (0,1) node[left]{\(p_y\)};
 \end{ppdiagram}
 %\begin{ppdiagram}
 %\dt{0}{0} 
@@ -1172,29 +1167,29 @@ This map takes the finite points \(p\) (i.e. not on the line at infinity) to the
 So we write the point \(p\) as \(\pr{p_x,p_y}\).
 We still haven't used the fourth point of the quadrilateral:
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{1}{1} 
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\dt{0}{0} 
+\dt{1}{1} 
 \end{ppdiagram}
 Draw lines through it parallel to the axes:
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{1}{1} 
 \lne{3}{1}{0}{1}
 \lne{1}{3}{1}{0}
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\dt{0}{0} 
+\dt{1}{1} 
 \end{ppdiagram}
 Call the points where these lines hit the axes \((1,0)\) and \((0,1)\).
 Take any point on one axis and draw the line through it parallel to the line \((1,0)(0,1)\):
 \begin{ppdiagram}
-\dt{0}{0} 
-\dt{1}{1} 
 \lne{1}{0}{0}{1}
 \lne{2}{0}{0}{2}
 \lne{0}{0}{3}{0}
 \lne{0}{0}{0}{3}
+\dt{0}{0} 
+\dt{1}{1} 
 \end{ppdiagram}
 Identify two points of the two axes if they lie on one of these parallels, but of course we write them as \((x,0)\) or \((0,x)\).
 
@@ -1227,7 +1222,7 @@ If it strikes the vertical axis at \((0,b)\), we call \(b\) its intercept.
 Given points \(x,m,b\) on the finite horizontal axis, we write \(mx+b\) to mean the point \(y\) on the finite horizontal axis so that the point with coordinates \((x,y)\) lies on the line with slope \(m\) and vertical intercept \(b\).
 This defines an operation \(x,m,b \mapsto mx+b\), which depends on three arguments \(x,m,b\) on the finite horizontal line.
 
-A \emph{ternary ring}\define{ternary ring} (sometimes called a \emph{planar ternary ring} is 
+A \emph{ternary ring}\define{ternary ring} (sometimes called a \emph{planar ternary ring}) is 
 \begin{enumerate}
 \item
 an operation taking three elements \(x,m,b\) of a set \(R\) to an element, denoted \(mx+b\), of the set \(R\), 
@@ -1280,27 +1275,3 @@ Again, boring steps show that the axioms of a projective plane are satisfied, wi
 For example, every ring with identity (not necessarily associative) in which every element has a left inverse becomes a ternary ring by taking \(mx+b\) to mean using multiplication and addition in the ring.
 In particular, the octaves have a projective plane \(\Proj[2]{\Oct{}}\)\Notation{P2O}{\Proj[2]{\Oct{}}}{the octave projective plane}, the \emph{octave projective plane}.\define{octave projective plane}
 
-\bigskip
-
-\bigskip
-
-\begin{epigraphs}
-\qitem[author={\Chinese{庄周} (Zhuang Zhou)}, source={\Chinese{莊子} (Zhuangzi), \Chinese{列御寇} (Lie Yu-kou)}]%
-{
-\Chinese{朱泙漫學屠龍於支離益，}\\ 
-\Chinese{單千金之家，}\\
-\Chinese{三年技成，}\\
-\Chinese{而無所用其巧。}\\
-\\
-There once lived a man \\
-who learned how to slay dragons \\
-and gave all he possessed \\
-to mastering the art. \\
-\\
-After three years \\
-he was fully prepared but, \\
-alas, he found no opportunity \\
-to practise his skills.}
-\qitem[author={René Thom}]{As a result he began \\
-to teach how to slay dragons.}
-\end{epigraphs}\SubIndex{Zhou, Zhuang}\SubIndex{dragon}\SubIndex{Zhuangzi}\SubIndex{Thom, René}

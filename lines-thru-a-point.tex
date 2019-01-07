@@ -1,0 +1,16 @@
+\documentclass[11pt]{standalone}
+\usepackage{xparse}
+\usepackage{tikz}
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\newcommand{\RRR}{1.8}
+\foreach \i in {0,...,9}
+{
+\draw[axisColor] 
+		({\RRR*cos(3.1415*\i/10 r)},{\RRR*sin(3.1415*\i/10 r)}) 
+	-- ({-\RRR*cos(3.1415*\i/10 r)},{-\RRR*sin(3.1415*\i/10 r)});
+}
+\DrawDot{0}{0}
+\end{tikzpicture}
+\end{document}

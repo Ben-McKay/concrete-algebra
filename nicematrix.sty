@@ -1,0 +1,1116 @@
+%%
+%% This is file `nicematrix.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% nicematrix.dtx  (with options: `package')
+%% 
+%% Copyright (C) 2017-2018 by F. Pantigny
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3 of this license or (at your option) any later
+%% version.  The latest version of this license is in:
+%% 
+%%      http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+%% 
+\def\myfileversion{2.1.1}
+\def\myfiledate{2018/09/16}
+\RequirePackage{tikz}
+\usetikzlibrary{fit}
+\RequirePackage{l3keys2e}
+\ProvidesExplPackage
+  {nicematrix}
+  {\myfiledate}
+  {\myfileversion}
+  {Several features to improve the typesetting of mathematical matrices with TikZ}
+\RequirePackage{array}
+\RequirePackage{amsmath}
+\RequirePackage{xparse}
+\cs_new_protected:Nn \__nm_msg_error:n
+        {\msg_error:nn {nicematrix} {#1}}
+\cs_new_protected:Nn \__nm_msg_error:nn
+        {\msg_error:nn {nicematrix} {#1} {#2}}
+\cs_new_protected:Nn \__nm_bool_new:N
+      {\bool_if_exist:NTF #1
+         {\bool_set_false:N #1}
+         {\bool_new:N #1}}
+\ProvideDocumentCommand \iddots {}
+      {\mathinner{\mkern 1mu
+                  \raise \p@ \hbox{.}
+                  \mkern 2mu
+                  \raise 4\p@ \hbox{.}
+                  \mkern 2mu
+                  \raise 7\p@ \vbox{\kern 7pt
+                                    \hbox{.}}
+                  \mkern 1mu}}
+\int_new:N \g__nm_env_int
+\dim_new:N \l__nm_columns_width_dim
+\seq_new:N \g__nm_names_seq
+\int_new:N \l__nm_nb_first_row_int
+\int_set:Nn \l__nm_nb_first_row_int 1
+\bool_new:N \l__nm_exterior_column_bool
+\tl_new:N \l__nm_pos_env_tl
+\tl_set:Nn \l__nm_pos_env_tl c
+\bool_new:N \l__nm_exterior_arraycolsep_bool
+\bool_new:N \l__nm_parallelize_diags_bool
+\bool_set_true:N \l__nm_parallelize_diags_bool
+\bool_new:N \l__nm_nullify_dots_bool
+\bool_new:N \l__nm_auto_columns_width_bool
+\tl_new:N \l__nm_code_for_last_col_tl
+\tl_new:N \g__nm_name_tl
+\tl_new:N \l__nm_name_tl
+\bool_new:N \l__nm_extra_nodes_bool
+\bool_new:N \g__nm_extra_nodes_bool
+\dim_new:N \l__nm_left_margin_dim
+\dim_new:N \l__nm_right_margin_dim
+\dim_new:N \g__nm_left_margin_dim
+\dim_new:N \g__nm_right_margin_dim
+\dim_new:N \l__nm_extra_left_margin_dim
+\dim_new:N \l__nm_extra_right_margin_dim
+\dim_new:N \g__nm_extra_right_margin_dim
+\keys_define:nn {NiceMatrix/NiceMatrixOptions}
+     {parallelize-diags    .bool_set:N = \l__nm_parallelize_diags_bool,
+      parallelize-diags    .default:n  = true,
+      ParallelizeDiagonals .meta:n = parallelize-diags,
+      renew-dots        .bool_set:N = \l__nm_renew_dots_bool,
+      renew-dots        .default:n  = true,
+      RenewDots         .meta:n = renew-dots,
+      renew-matrix      .code:n     = \__nm_renew_matrix:,
+      renew-matrix      .value_forbidden:n = true,
+      RenewMatrix       .meta:n     = renew-matrix,
+      transparent       .meta:n     = {renew-dots,renew-matrix},
+      transparent       .value_forbidden:n = true,
+      Transparent       .meta:n     = transparent,
+      nullify-dots      .bool_set:N = \l__nm_nullify_dots_bool ,
+      nullify-dots      .default:n  = true,
+      NullifyDots       .meta:n     = nullify-dots,
+      code-for-last-col  .tl_set:N         = \l__nm_code_for_last_col_tl,
+      code-for-last-col  .value_required:n = true,
+   code-for-first-row   .tl_set:N   = \l__nm_code_for_first_row_tl,
+   code-for-first-row    .value_required:n = true,
+      exterior-arraycolsep .bool_set:N = \l__nm_exterior_arraycolsep_bool ,
+      exterior-arraycolsep .default:n  = true,
+      columns-width     .code:n    = \str_if_eq:nnTF {#1} {auto}
+                                     {\__nm_msg_error:n {Option~auto~for~columns-width}}
+                                     {\dim_set:Nn \l__nm_columns_width_dim {#1}},
+      create-extra-nodes  .bool_set:N   = \l__nm_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l__nm_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l__nm_right_margin_dim,
+      right-margin  .default:n  = \arraycolsep,
+      unknown .code:n  = \__nm_msg_error:n {Unknown~key~for~NiceMatrixOptions}}
+\msg_new:nnnn {nicematrix}
+              {Unknown~key~for~NiceMatrixOptions}
+              {The~key~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~command~
+               \token_to_str:N \NiceMatrixOptions.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~keys,~type~H~<return>.}
+              {The~available~keys~are~(in~alphabetic~order):~
+               code-for-last-col,~
+               exterior-arraycolsep,~
+               left-margin,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots,~
+               renew-matrix,~
+               right-margin,~
+               and~transparent}
+\msg_new:nnn {nicematrix}
+             {Option~auto~for~columns-width}
+             {You~can't~give~the~value~"auto"~to~the~option~"columns-width"~here.~
+              If~you~go~on,~the~option~will~be~ignored.}
+\NewDocumentCommand \NiceMatrixOptions {m}
+    {\keys_set:nn {NiceMatrix/NiceMatrixOptions} {#1}}
+\keys_define:nn {NiceMatrix/NiceMatrix}
+     {parallelize-diags .bool_set:N  = \l__nm_parallelize_diags_bool,
+      parallelize-diags .default:n   = true,
+      renew-dots        .bool_set:N  = \l__nm_renew_dots_bool,
+      renew-dots        .default:n   = true,
+      nullify-dots      .bool_set:N  = \l__nm_nullify_dots_bool ,
+      nullify-dots      .default:n   = true,
+      columns-width     .code:n      = \str_if_eq:nnTF {#1} {auto}
+                                           {\bool_set_true:N
+                                                \l__nm_auto_columns_width_bool}
+                                           {\dim_set:Nn \l__nm_columns_width_dim {#1}},
+      name    .code:n                = {\seq_if_in:NnTF \g__nm_names_seq {#1}
+                                           {\__nm_msg_error:nn {Duplicate~name} {#1}}
+                                           {\seq_gput_left:Nn \g__nm_names_seq {#1}}
+                                        \tl_set:Nn \l__nm_name_tl {#1}},
+      name    .value_required:n      = true,
+      code-after         .tl_set:N     = \l__nm_code_after_tl,
+      code-after         .initial:n    = \c_empty_tl,
+      code-after         .value_required:n = true,
+      create-extra-nodes  .bool_set:N   = \l__nm_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l__nm_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l__nm_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l__nm_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l__nm_extra_right_margin_dim,
+      unknown .code:n  = \__nm_msg_error:n {Unknown~option~for~NiceMatrix}}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceMatrix}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{NiceMatrix\}~and~its~variants.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left~margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots~
+               and~right-margin.}
+\msg_new:nnnn {nicematrix}
+              {Duplicate~name}
+              {The~name~"#1"~is~already~used~and~you~shouldn't~use~
+               the~same~environment~name~twice.~You~can~go~on,~but,~
+               maybe,~you~will~have~incorrect~results~especially~
+               if~you~use~"columns-width=auto".\\
+               For~a~list~of~the~names~already~used,~type~H~<return>.}
+              {The~names~already~defined~in~this~document~are:~
+               \seq_use:Nnnn~\g__nm_names_seq~{,~} {,~} {~and~}.}
+\keys_define:nn {NiceMatrix/NiceArray}
+     {parallelize-diags    .bool_set:N = \l__nm_parallelize_diags_bool,
+      parallelize-diags    .default:n  = true,
+      renew-dots           .bool_set:N = \l__nm_renew_dots_bool,
+      renew-dots           .default:n  = true,
+      nullify-dots         .bool_set:N = \l__nm_nullify_dots_bool ,
+      nullify-dots         .default:n  = true,
+      columns-width        .code:n = \str_if_eq:nnTF {#1} {auto}
+                                       {\bool_set_true:N \l__nm_auto_columns_width_bool}
+                                       {\dim_set:Nn \l__nm_columns_width_dim {#1}},
+      columns-width        .value_required:n = true,
+      name                 .code:n     = {\seq_if_in:NnTF \g__nm_names_seq {#1}
+                                            {\__nm_msg_error:nn {Duplicate~name} {#1}}
+                                            {\seq_gput_left:Nn \g__nm_names_seq {#1}}
+                                          \tl_set:Nn \l__nm_name_tl {#1}},
+      name                 .value_required:n = true,
+      c                  .code:n    = \tl_set:Nn \l__nm_pos_env_tl c,
+      t                  .code:n    = \tl_set:Nn \l__nm_pos_env_tl t,
+      b                  .code:n    = \tl_set:Nn \l__nm_pos_env_tl b,
+      code-after         .tl_set:N  = \l__nm_code_after_tl,
+      code-after         .initial:n = \c_empty_tl,
+      code-after         .value_required:n = true,
+      create-extra-nodes  .bool_set:N   = \l__nm_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l__nm_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l__nm_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l__nm_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l__nm_extra_right_margin_dim,
+      unknown .code:n  = \__nm_msg_error:n {Unknown~option~for~NiceArray}}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArray}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{NiceArray\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               b,~
+               c,~
+               code-after,~
+               create-extra-nodes,~
+               columns-width,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left-margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots,~
+               right-margin,~
+               and~t.}
+\cs_new_protected:Nn \__nm_Cell:
+   {
+    \int_gincr:N \g__nm_column_int
+    \int_compare:nNnT \g__nm_column_int = 1
+          {\int_gincr:N \g__nm_row_int}
+    \int_gset:Nn \g__nm_column_total_int
+                 {\int_max:nn \g__nm_column_total_int \g__nm_column_int}
+    \hbox_set:Nw \l_tmpa_box $ % $
+    \int_compare:nNnT \g__nm_row_int = 0
+             \l__nm_code_for_first_row_tl}
+\cs_new_protected:Nn \__nm_end_Cell:
+   {$ % $
+    \hbox_set_end:
+    \dim_gset:Nn \g__nm_max_cell_width_dim
+          {\dim_max:nn \g__nm_max_cell_width_dim {\box_wd:N \l_tmpa_box}}
+    \int_compare:nNnT \g__nm_row_int = 0
+       {\dim_gset:Nn \g__nm_max_dp_row_zero_dim
+            {\dim_max:nn \g__nm_max_dp_row_zero_dim {\box_dp:N \l_tmpa_box}}
+        \dim_gset:Nn \g__nm_max_ht_row_zero_dim
+            {\dim_max:nn \g__nm_max_ht_row_zero_dim {\box_ht:N \l_tmpa_box}}}
+    \int_compare:nNnT \g__nm_row_int = 1
+       {\dim_gset:Nn \g__nm_max_ht_row_one_dim
+            {\dim_max:nn \g__nm_max_ht_row_one_dim {\box_ht:N \l_tmpa_box}}}
+    \tikz[remember~picture, inner~sep = 0pt, minimum~width = 0pt, baseline]
+       \node [anchor = base,
+              name = nm-\int_use:N \g__nm_env_int-
+                        \int_use:N \g__nm_row_int-
+                        \int_use:N \g__nm_column_int,
+              alias = \tl_if_empty:NF \l__nm_name_tl
+                         {\tl_use:N \l__nm_name_tl-
+                          \int_use:N \g__nm_row_int-
+                          \int_use:N \g__nm_column_int} ]
+       \bgroup
+       \box_use:N \l_tmpa_box
+       \egroup ;}
+\NewDocumentEnvironment {NiceMatrix} {O{}}
+    {\keys_set:nn {NiceMatrix/NiceMatrix} {#1}
+     \tl_set:Nn \l__nm_pos_env_tl c
+     \bool_set_false:N \l__nm_exterior_arraycolsep_bool
+         \NiceArray{*\c@MaxMatrixCols{C}}
+      }
+    {\endarray
+     \skip_horizontal:n {-\arraycolsep}
+     \skip_horizontal:n {\g__nm_right_margin_dim + \g__nm_extra_right_margin_dim}}
+\cs_generate_variant:Nn \dim_set:Nn {Nx}
+\msg_new:nnn {nicematrix}
+             {We~are~yet~in~an~environment~NiceArray}
+             {Environments~\{NiceArray\}~(or~\{NiceMatrix\},~etc.)~can't~be~
+              nested.~We~can~go~on,~but,~maybe,~you~will~have~errors~or~an~incorrect~
+              result.}
+\NewDocumentEnvironment {NiceArray} {O{} m O{}}
+    {\cs_if_exist:NT \__nm_in_NiceArray:
+           {\__nm_msg_error:n {We~are~yet~in~an~environment~NiceArray}}
+     \ifcsname tikz@library@external@loaded\endcsname
+      \tikzset{external/export = false}
+     \fi
+     \cs_set:Npn \__nm_in_NiceArray: {--Void--}
+     \aftergroup \__nm_after_array:
+     \tl_gclear_new:N \g__nm_lines_to_draw_tl
+     \int_gincr:N \g__nm_env_int
+     \bool_if:NF \l__nm_block_auto_columns_width_bool
+              {\dim_gzero_new:N \g__nm_max_cell_width_dim}
+     \dim_gzero_new:N \g__nm_max_dp_row_zero_dim
+     \dim_gzero_new:N \g__nm_max_ht_row_zero_dim
+     \dim_gzero_new:N \g__nm_max_ht_row_one_dim
+     \keys_set:nn {NiceMatrix/NiceArray} {#1,#3}
+     \bool_if:NT \l__nm_auto_columns_width_bool
+         {\aftergroup \__nm_write_max_cell_width:
+          \cs_if_free:cTF {__nm_max_cell_width_\int_use:N \g__nm_env_int}
+                {\dim_set:Nn \l__nm_columns_width_dim \c_zero_dim}
+                {\dim_set:Nx \l__nm_columns_width_dim
+                     {\use:c {__nm_max_cell_width_\int_use:N \g__nm_env_int}}}
+          \tl_if_empty:NF \l__nm_name_tl
+            {\cs_if_free:cF {__nm_max_cell_width_\l__nm_name_tl}
+                {\dim_set:Nx \l__nm_columns_width_dim
+                     {\use:c {__nm_max_cell_width_\l__nm_name_tl}}}}
+         }
+     \bool_gset_eq:NN \g__nm_extra_nodes_bool \l__nm_extra_nodes_bool
+     \dim_gset_eq:NN \g__nm_left_margin_dim \l__nm_left_margin_dim
+     \dim_gset_eq:NN \g__nm_right_margin_dim \l__nm_right_margin_dim
+     \dim_gset_eq:NN \g__nm_extra_right_margin_dim \l__nm_extra_right_margin_dim
+     \tl_gset_eq:NN \g__nm_code_after_tl \l__nm_code_after_tl
+     \tl_gset_eq:NN \g__nm_name_tl \l__nm_name_tl
+     \cs_set:Npn \ialign
+          {\everycr{\noalign{\int_gzero:N \g__nm_column_int}}
+          \tabskip = \c_zero_skip
+          \cs_set:Npn \ialign {\everycr{}
+                               \tabskip = \c_zero_skip
+                               \halign}
+          \halign}
+     \dim_compare:nNnTF \l__nm_columns_width_dim = \c_zero_dim
+        {\newcolumntype{L}{>{\__nm_Cell:}l<{\__nm_end_Cell:}}
+         \newcolumntype{C}{>{\__nm_Cell:}c<{\__nm_end_Cell:}}
+         \newcolumntype{R}{>{\__nm_Cell:}r<{\__nm_end_Cell:}}}
+        {\newcolumntype{L}{wl{\dim_use:N \l__nm_columns_width_dim}}
+         \newcolumntype{C}{wc{\dim_use:N \l__nm_columns_width_dim}}
+         \newcolumntype{R}{wr{\dim_use:N \l__nm_columns_width_dim}}}
+     \cs_set_eq:NN \NC@find@w \relax
+     \cs_set_eq:NN \NC@find@W \relax
+     \newcolumntype{w}[2]
+       {>{\hbox_set:Nw \l_tmpa_box
+          \__nm_Cell:}
+        c
+        <{\__nm_end_Cell:
+          \hbox_set_end:
+          \makebox[##2][##1]{\box_use:N \l_tmpa_box}}}
+     \newcolumntype{W}[2]
+       {>{\hbox_set:Nw \l_tmpa_box
+          \__nm_Cell:}
+        c
+        <{\__nm_end_Cell:
+          \hbox_set_end:
+          \cs_set_eq:NN \hss \hfil
+          \makebox[##2][##1]{\box_use:N \l_tmpa_box}}}
+     \cs_set_eq:NN \Ldots \__nm_Ldots
+     \cs_set_eq:NN \Cdots \__nm_Cdots
+     \cs_set_eq:NN \Vdots \__nm_Vdots
+     \cs_set_eq:NN \Ddots \__nm_Ddots
+     \cs_set_eq:NN \Iddots \__nm_Iddots
+     \cs_set_eq:NN \Hspace \__nm_Hspace:
+     \cs_set_eq:NN \Hdotsfor \__nm_Hdotsfor
+     \cs_set_eq:NN \multicolumn \__nm_multicolumn:nnn
+     \bool_if:NT \l__nm_renew_dots_bool
+        {\cs_set_eq:NN \ldots \__nm_Ldots
+         \cs_set_eq:NN \cdots \__nm_Cdots
+         \cs_set_eq:NN \vdots \__nm_Vdots
+         \cs_set_eq:NN \ddots \__nm_Ddots
+         \cs_set_eq:NN \iddots \__nm_Iddots
+         \cs_set_eq:NN \dots \__nm_Ldots
+         \cs_set_eq:NN \hdotsfor \__nm_Hdotsfor}
+     \seq_gclear_new:N  \g__nm_empty_cells_seq
+     \seq_gclear_new:N \g__nm_multicolumn_cells_seq
+     \seq_gclear_new:N \g__nm_multicolumn_sizes_seq
+     \int_gzero_new:N \g__nm_row_int
+     \int_gset:Nn \g__nm_row_int {\l__nm_nb_first_row_int - 1}
+     \int_gzero_new:N \g__nm_column_int
+     \int_gzero_new:N \g__nm_column_total_int
+     \cs_set_eq:NN \@ifnextchar \new@ifnextchar
+     \bool_if:NF \l__nm_exterior_arraycolsep_bool
+         {\skip_horizontal:n {-\arraycolsep}}
+     \skip_horizontal:n {\l__nm_left_margin_dim + \l__nm_extra_left_margin_dim}
+     \array[\l__nm_pos_env_tl]{#2}}
+    {\endarray
+     \bool_if:NF \l__nm_exterior_arraycolsep_bool
+         {\skip_horizontal:n {-\arraycolsep}}
+     \skip_horizontal:n {\g__nm_right_margin_dim + \g__nm_extra_right_margin_dim}}
+\NewDocumentEnvironment {pNiceMatrix} {}
+   {\left(\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right)}
+\NewDocumentEnvironment {bNiceMatrix} {}
+   {\left[\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right]}
+\NewDocumentEnvironment {BNiceMatrix} {}
+   {\left\{\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\}}
+\NewDocumentEnvironment {vNiceMatrix} {}
+   {\left\lvert\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\rvert}
+\NewDocumentEnvironment {VNiceMatrix} {}
+   {\left\lVert\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\rVert}
+\cs_new_protected:Nn \__nm_write_max_cell_width:
+    {\bool_if:NF \l__nm_block_auto_columns_width_bool
+       {\iow_now:Nn \@mainaux {\ExplSyntaxOn}
+        \iow_now:Nx \@mainaux {\cs_gset:cpn
+                               {__nm_max_cell_width_\int_use:N \g__nm_env_int}
+                               {\dim_use:N \g__nm_max_cell_width_dim} }
+          \iow_now:Nx \@mainaux {\cs_gset:cpn {__nm_max_cell_width_\g__nm_name_tl}
+                                              {\dim_use:N \g__nm_max_cell_width_dim} }
+        \iow_now:Nn \@mainaux {\ExplSyntaxOff}}}
+\prg_set_conditional:Npnn \__nm_if_not_empty_cell:nn #1#2 {T,TF}
+       {\cs_if_exist:cTF {pgf@sh@ns@nm-\int_use:N \g__nm_env_int-
+                                       \int_use:N #1-
+                                       \int_use:N #2}
+          {\seq_if_in:NxTF \g__nm_empty_cells_seq
+                           {\int_use:N #1-\int_use:N #2}
+             {\prg_return_false:}
+             {\begin{pgfpicture}
+                \tl_set:Nx \l_tmpa_tl {nm-\int_use:N \g__nm_env_int-
+                                          \int_use:N #1-
+                                          \int_use:N #2}
+                \pgfpointanchor \l_tmpa_tl {east}
+                \dim_gset:Nn \g_tmpa_dim \pgf@x
+                \pgfpointanchor \l_tmpa_tl {west}
+                \dim_gset:Nn \g_tmpb_dim \pgf@x
+              \end{pgfpicture}
+              \dim_compare:nNnTF {\dim_abs:n {\g_tmpb_dim-\g_tmpa_dim}} < {0.5 pt}
+                    \prg_return_false:
+                    \prg_return_true:
+             }}
+          \prg_return_false:
+       }
+\cs_new_protected:Nn \__nm_instruction_of_type:n
+     {\tl_gput_right:Nx \g__nm_lines_to_draw_tl
+           {\exp_not:c {__nm_draw_#1:nn}
+                       {\int_use:N \g__nm_row_int}
+                       {\int_use:N \g__nm_column_int}}}
+\cs_new_protected:Nn \__nm_after_array:
+    {\group_begin:
+     \ifcsname tikz@library@external@loaded\endcsname
+         \tikzset{external/export = false}
+     \fi
+     \int_gset_eq:NN \g__nm_column_int \g__nm_column_total_int
+     \bool_if:NT \l__nm_exterior_column_bool {\int_gdecr:N \g__nm_column_int}
+     \seq_gclear_new:N \g__nm_yet_drawn_seq
+     \bool_if:NT \l__nm_parallelize_diags_bool
+          {\int_zero_new:N \l__nm_ddots_int
+           \int_zero_new:N \l__nm_iddots_int
+           \dim_zero_new:N \l__nm_delta_x_one_dim
+           \dim_zero_new:N \l__nm_delta_y_one_dim
+           \dim_zero_new:N \l__nm_delta_x_two_dim
+           \dim_zero_new:N \l__nm_delta_y_two_dim}
+     \bool_if:NT \g__nm_extra_nodes_bool \__nm_create_extra_nodes:
+     \tl_if_empty:NF \g__nm_lines_to_draw_tl
+           {\int_zero_new:N  \l__nm_initial_i_int
+            \int_zero_new:N  \l__nm_initial_j_int
+            \int_zero_new:N  \l__nm_final_i_int
+            \int_zero_new:N  \l__nm_final_j_int
+            \__nm_bool_new:N \l__nm_initial_open_bool
+            \__nm_bool_new:N \l__nm_final_open_bool
+            \g__nm_lines_to_draw_tl}
+     \tl_gclear:N \g__nm_lines_to_draw_tl
+     \tikzset{every~picture/.style = {overlay,
+                                      remember~picture,
+                                      name~prefix = nm-\int_use:N \g__nm_env_int-}}
+     \cs_set_eq:NN \line \__nm_line:nn
+     \g__nm_code_after_tl
+     \group_end:}
+\cs_new_protected:Nn \__nm_find_extremities_of_line:nnnn
+          {\int_set:Nn \l__nm_initial_i_int {#1}
+           \int_set:Nn \l__nm_initial_j_int {#2}
+           \int_set:Nn \l__nm_final_i_int {#1}
+           \int_set:Nn \l__nm_final_j_int {#2}
+           \bool_set_false:N \l__nm_initial_open_bool
+           \bool_set_false:N \l__nm_final_open_bool
+           \__nm_bool_new:N \l__nm_stop_loop_bool
+           \bool_do_until:Nn \l__nm_stop_loop_bool
+              {\int_add:Nn \l__nm_final_i_int {#3}
+               \int_add:Nn \l__nm_final_j_int {#4}
+               \bool_if:nTF { \int_compare_p:nNn
+                                  \l__nm_final_i_int < {\l__nm_nb_first_row_int - 1}
+                           || \int_compare_p:nNn
+                                  \l__nm_final_i_int > \g__nm_row_int
+                           || \int_compare_p:nNn
+                                  \l__nm_final_j_int < 1
+                           || \int_compare_p:nNn
+                                  \l__nm_final_j_int > \g__nm_column_total_int}
+                       {\bool_set_true:N \l__nm_final_open_bool
+                        \int_sub:Nn \l__nm_final_i_int {#3}
+                        \int_sub:Nn \l__nm_final_j_int {#4}
+                        \bool_set_true:N \l__nm_stop_loop_bool}
+                       {\__nm_if_not_empty_cell:nnT
+                              \l__nm_final_i_int
+                              \l__nm_final_j_int
+                              {\bool_set_true:N \l__nm_stop_loop_bool}}
+               }
+           \bool_set_false:N \l__nm_stop_loop_bool
+           \bool_do_until:Nn \l__nm_stop_loop_bool
+              {\int_sub:Nn \l__nm_initial_i_int {#3}
+               \int_sub:Nn \l__nm_initial_j_int {#4}
+               \bool_if:nTF
+                       {   \int_compare_p:nNn
+                               \l__nm_initial_i_int < \l__nm_nb_first_row_int
+                        || \int_compare_p:nNn
+                               \l__nm_initial_i_int > \g__nm_row_int
+                        || \int_compare_p:nNn
+                               \l__nm_initial_j_int < 1
+                        || \int_compare_p:nNn
+                               \l__nm_initial_j_int > \g__nm_column_total_int}
+                       {\bool_set_true:N \l__nm_initial_open_bool
+                        \int_add:Nn \l__nm_initial_i_int {#3}
+                        \int_add:Nn \l__nm_initial_j_int {#4}
+                        \bool_set_true:N \l__nm_stop_loop_bool}
+                       {\__nm_if_not_empty_cell:nnT
+                              \l__nm_initial_i_int
+                              \l__nm_initial_j_int
+                              {\bool_set_true:N \l__nm_stop_loop_bool}}
+               }
+           \bool_if:nT {\l__nm_initial_open_bool || \l__nm_final_open_bool}
+                       \__nm_create_extra_nodes: }
+\prg_set_conditional:Npnn \__nm_if_yet_drawn: {F}
+            {\tl_set:Nx \l_tmpa_tl {\int_use:N \l__nm_initial_i_int-
+                                    \int_use:N \l__nm_initial_j_int-
+                                    \int_use:N \l__nm_final_i_int-
+                                    \int_use:N \l__nm_final_j_int}
+             \seq_if_in:NVTF \g__nm_yet_drawn_seq \l_tmpa_tl
+              {\prg_return_true:}
+              {\seq_gput_left:NV \g__nm_yet_drawn_seq \l_tmpa_tl
+               \prg_return_false:}}
+\cs_new_protected:Nn \__nm_retrieve_coords:nn
+     {\dim_gzero_new:N \g__nm_x_initial_dim
+      \dim_gzero_new:N \g__nm_y_initial_dim
+      \dim_gzero_new:N \g__nm_x_final_dim
+      \dim_gzero_new:N \g__nm_y_final_dim
+      \begin{tikzpicture}[remember~picture]
+      \tikz@parse@node\pgfutil@firstofone
+             (nm-\int_use:N \g__nm_env_int-
+                 \int_use:N \l__nm_initial_i_int-
+                 \int_use:N \l__nm_initial_j_int #1)
+      \dim_gset:Nn \g__nm_x_initial_dim \pgf@x
+      \dim_gset:Nn \g__nm_y_initial_dim \pgf@y
+      \tikz@parse@node\pgfutil@firstofone
+             (nm-\int_use:N \g__nm_env_int-
+                 \int_use:N \l__nm_final_i_int-
+                 \int_use:N \l__nm_final_j_int #2)
+      \dim_gset:Nn \g__nm_x_final_dim \pgf@x
+      \dim_gset:Nn \g__nm_y_final_dim \pgf@y
+      \end{tikzpicture} }
+\cs_generate_variant:Nn \__nm_retrieve_coords:nn {xx}
+\cs_new_protected:Nn \__nm_draw_Ldots:nn
+      {\__nm_find_extremities_of_line:nnnn {#1} {#2} 0 1
+       \__nm_if_yet_drawn:F \__nm_actually_draw_Ldots:}
+\cs_new_protected:Nn \__nm_actually_draw_Ldots:
+          {\__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                                     {-medium.base~west}
+                                     {.base~east}}
+                                  {\bool_if:NTF \l__nm_final_open_bool
+                                     {-medium.base~east}
+                                     {.base~west}}
+           \bool_if:NT \l__nm_initial_open_bool
+                 {\dim_gset_eq:NN \g__nm_y_initial_dim \g__nm_y_final_dim }
+           \bool_if:NT \l__nm_final_open_bool
+                 {\dim_gset_eq:NN \g__nm_y_final_dim \g__nm_y_initial_dim }
+           \dim_gadd:Nn \g__nm_y_initial_dim {0.53pt}
+           \dim_gadd:Nn \g__nm_y_final_dim {0.53pt}
+           \__nm_draw_tikz_line:}
+\cs_new_protected:Nn \__nm_draw_Cdots:nn
+      {\__nm_find_extremities_of_line:nnnn {#1} {#2} 0 1
+       \__nm_if_yet_drawn:F
+            {\__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                                        {-medium.mid~west}
+                                        {.mid~east}}
+                                    {\bool_if:NTF \l__nm_final_open_bool
+                                        {-medium.mid~east}
+                                        {.mid~west}}
+             \bool_if:NT \l__nm_initial_open_bool
+                   {\dim_gset_eq:NN \g__nm_y_initial_dim \g__nm_y_final_dim }
+             \bool_if:NT \l__nm_final_open_bool
+                   {\dim_gset_eq:NN \g__nm_y_final_dim \g__nm_y_initial_dim }
+             \__nm_draw_tikz_line:}}
+\cs_new_protected:Nn \__nm_draw_Vdots:nn
+      {\__nm_find_extremities_of_line:nnnn {#1} {#2} 1 0
+       \__nm_if_yet_drawn:F
+       {\__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                                  {-medium.north~west}
+                                  {.south~west}}
+                               {\bool_if:NTF \l__nm_final_open_bool
+                                   {-medium.south~west}
+                                   {.north~west}}
+       \bool_set:Nn \l_tmpa_bool
+                    {\dim_compare_p:nNn \g__nm_x_initial_dim = \g__nm_x_final_dim}
+       \__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                                 {-medium.north}
+                                 {.south}}
+                              {\bool_if:NTF \l__nm_final_open_bool
+                                 {-medium.south}
+                                 {.north}}
+       \bool_set:Nn \l_tmpb_bool
+                    {\dim_compare_p:nNn \g__nm_x_initial_dim = \g__nm_x_final_dim}
+       \bool_if:NF \l_tmpb_bool
+            {\dim_gset:Nn \g__nm_x_initial_dim
+                         {\bool_if:NTF \l_tmpa_bool \dim_min:nn \dim_max:nn
+                                       \g__nm_x_initial_dim \g__nm_x_final_dim}
+             \dim_gset_eq:NN \g__nm_x_final_dim \g__nm_x_initial_dim}
+       \__nm_draw_tikz_line:}}
+\cs_new_protected:Nn \__nm_draw_Ddots:nn
+   {\__nm_find_extremities_of_line:nnnn {#1} {#2} 1 1
+    \__nm_if_yet_drawn:F
+    {\__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                                 {-medium.north~west}
+                                 {.south~east}}
+                            {\bool_if:NTF \l__nm_final_open_bool
+                                 {-medium.south~east}
+                                 {.north~west}}
+    \bool_if:NT \l__nm_parallelize_diags_bool
+       {\int_incr:N \l__nm_ddots_int
+        \int_compare:nNnTF \l__nm_ddots_int = 1
+          {\dim_set:Nn \l__nm_delta_x_one_dim {\g__nm_x_final_dim - \g__nm_x_initial_dim }
+           \dim_set:Nn \l__nm_delta_y_one_dim {\g__nm_y_final_dim - \g__nm_y_initial_dim }}
+          {\dim_gset:Nn \g__nm_y_final_dim
+                  {\g__nm_y_initial_dim +
+                      (\g__nm_x_final_dim - \g__nm_x_initial_dim)
+                      * \dim_ratio:nn \l__nm_delta_y_one_dim \l__nm_delta_x_one_dim }}}
+    \__nm_draw_tikz_line:}}
+\cs_new_protected:Nn \__nm_draw_Iddots:nn
+   {\__nm_find_extremities_of_line:nnnn {#1} {#2} 1 {-1}
+    \__nm_if_yet_drawn:F
+    {\__nm_retrieve_coords:xx {\bool_if:NTF \l__nm_initial_open_bool
+                              {-medium.north~east}
+                              {.south~west}}
+                           {\bool_if:NTF \l__nm_final_open_bool
+                              {-medium.south~west}
+                              {.north~east}}
+     \bool_if:NT \l__nm_parallelize_diags_bool
+        {\int_incr:N \l__nm_iddots_int
+         \int_compare:nNnTF \l__nm_iddots_int = 1
+           {\dim_set:Nn \l__nm_delta_x_two_dim {\g__nm_x_final_dim - \g__nm_x_initial_dim}
+            \dim_set:Nn \l__nm_delta_y_two_dim {\g__nm_y_final_dim - \g__nm_y_initial_dim}}
+           {\dim_gset:Nn \g__nm_y_final_dim
+                   {\g__nm_y_initial_dim +
+                       (\g__nm_x_final_dim - \g__nm_x_initial_dim)
+                       * \dim_ratio:nn \l__nm_delta_y_two_dim \l__nm_delta_x_two_dim }}}
+    \__nm_draw_tikz_line:}}
+\cs_new_protected:Nn \__nm_draw_tikz_line:
+                 {
+                   \dim_zero_new:N \l__nm_l_dim
+                   \dim_set:Nn \l__nm_l_dim
+                              { \fp_to_dim:n
+                                  { sqrt( (  \dim_use:N \g__nm_x_final_dim
+                                            -\dim_use:N \g__nm_x_initial_dim) ^2
+                                         +(  \dim_use:N \g__nm_y_final_dim
+                                            -\dim_use:N \g__nm_y_initial_dim) ^2 )}
+                              }
+                   \dim_compare:nNnF \l__nm_l_dim = \c_zero_dim
+                     {\bool_if:NTF \l__nm_initial_open_bool
+                       {\bool_if:NTF \l__nm_final_open_bool
+                           {\int_set:Nn \l_tmpa_int
+                                        {\dim_ratio:nn {\l__nm_l_dim} {0.45em}}}
+                           {\int_set:Nn \l_tmpa_int
+                                        {\dim_ratio:nn {\l__nm_l_dim - 0.3em} {0.45em}}}}
+                       {\bool_if:NTF \l__nm_final_open_bool
+                           {\int_set:Nn \l_tmpa_int
+                                        {\dim_ratio:nn {\l__nm_l_dim - 0.3em} {0.45em}}}
+                           {\int_set:Nn \l_tmpa_int
+                                        {\dim_ratio:nn {\l__nm_l_dim - 0.6em} {0.45em}}}}
+                      \dim_set:Nn \l_tmpa_dim {(\g__nm_x_final_dim - \g__nm_x_initial_dim)
+                                                 * \dim_ratio:nn {0.45em} \l__nm_l_dim}
+                      \dim_set:Nn \l_tmpb_dim {(\g__nm_y_final_dim - \g__nm_y_initial_dim)
+                                                 * \dim_ratio:nn {0.45em} \l__nm_l_dim}
+                      \int_set:Nn \l_tmpb_int
+                          {\bool_if:NTF \l__nm_initial_open_bool
+                             {\bool_if:NTF \l__nm_final_open_bool 1 0}
+                             {\bool_if:NTF \l__nm_final_open_bool 2 1}}
+                      \dim_gadd:Nn \g__nm_x_initial_dim
+                          {  (\g__nm_x_final_dim - \g__nm_x_initial_dim)
+                              * \dim_ratio:nn {\l__nm_l_dim - 0.45 em * \l_tmpa_int}
+                                              {\l__nm_l_dim * 2}
+                              * \l_tmpb_int}
+                      \dim_gadd:Nn \g__nm_y_initial_dim
+                          {   (\g__nm_y_final_dim - \g__nm_y_initial_dim)
+                             * \dim_ratio:nn {\l__nm_l_dim - 0.45 em * \l_tmpa_int}
+                                             {\l__nm_l_dim * 2}
+                             * \l_tmpb_int}
+                      \begin{tikzpicture}[overlay]
+                      \int_step_inline:nnnn 0 1 \l_tmpa_int
+                         { \pgfpathcircle{\pgfpoint{\g__nm_x_initial_dim}
+                                                   {\g__nm_y_initial_dim}}
+                                         {0.53pt}
+                           \pgfusepath{fill}
+                           \dim_gadd:Nn \g__nm_x_initial_dim \l_tmpa_dim
+                           \dim_gadd:Nn \g__nm_y_initial_dim \l_tmpb_dim }
+                      \end{tikzpicture}}
+}
+\cs_set_eq:NN \__nm_ldots \ldots
+\cs_set_eq:NN \__nm_cdots \cdots
+\cs_set_eq:NN \__nm_vdots \vdots
+\cs_set_eq:NN \__nm_ddots \ddots
+\cs_set_eq:NN \__nm_iddots \iddots
+\cs_new_protected:Nn \__nm_add_to_empty_cells:
+    {\seq_gput_right:Nx \g__nm_empty_cells_seq
+          {\int_use:N \g__nm_row_int-
+           \int_use:N \g__nm_column_int}}
+\NewDocumentCommand \__nm_Ldots {s}
+    {\bool_if:nF {#1} {\__nm_instruction_of_type:n {Ldots}}
+     \bool_if:NF \l__nm_nullify_dots_bool {\phantom \__nm_ldots}
+     \__nm_add_to_empty_cells:}
+\NewDocumentCommand \__nm_Cdots {s}
+    {\bool_if:nF {#1} {\__nm_instruction_of_type:n {Cdots}}
+     \bool_if:NF \l__nm_nullify_dots_bool {\phantom \__nm_cdots}
+     \__nm_add_to_empty_cells:}
+\NewDocumentCommand \__nm_Vdots {s}
+    {\bool_if:nF {#1} {\__nm_instruction_of_type:n {Vdots}}
+     \bool_if:NF \l__nm_nullify_dots_bool {\phantom \__nm_vdots}
+     \__nm_add_to_empty_cells:}
+\NewDocumentCommand \__nm_Ddots {s}
+    {\bool_if:nF {#1} {\__nm_instruction_of_type:n {Ddots}}
+     \bool_if:NF \l__nm_nullify_dots_bool {\phantom \__nm_ddots}
+     \__nm_add_to_empty_cells:}
+\NewDocumentCommand \__nm_Iddots {s}
+    {\bool_if:nF {#1} {\__nm_instruction_of_type:n {Iddots}}
+     \bool_if:NF \l__nm_nullify_dots_bool {\phantom \__nm_iddots}
+     \__nm_add_to_empty_cells:}
+\cs_new_protected:Nn \__nm_Hspace:
+  {\__nm_add_to_empty_cells:
+   \hspace}
+\cs_set_eq:NN \__nm_old_multicolumn \multicolumn
+\cs_new:Nn \__nm_multicolumn:nnn
+       {\__nm_old_multicolumn{#1}{#2}{#3}
+        \int_compare:nNnT #1 > 1
+            {\seq_gput_left:Nx \g__nm_multicolumn_cells_seq
+                               {\int_eval:n {\g__nm_row_int} -
+                                \int_use:N \g__nm_column_int}
+             \seq_gput_left:Nn \g__nm_multicolumn_sizes_seq {#1}}
+        \int_gadd:Nn \g__nm_column_int {#1-1}}
+\NewDocumentCommand {\__nm_Hdotsfor} {O{} m}
+     {\tl_gput_right:Nx \g__nm_lines_to_draw_tl
+           {\exp_not:N \__nm_draw_Hdotsfor:nnn
+                       {\int_use:N \g__nm_row_int}
+                       {\int_use:N \g__nm_column_int}
+                       {#2}}
+      \prg_replicate:nn {#2-1} {&}}
+\cs_new_protected:Nn \__nm_draw_Hdotsfor:nnn
+       {\bool_set_false:N \l__nm_initial_open_bool
+        \bool_set_false:N \l__nm_final_open_bool
+        \int_set:Nn \l__nm_initial_i_int {#1}
+        \int_set:Nn \l__nm_final_i_int {#1}
+        \int_compare:nNnTF #2 = 1
+              {\int_set:Nn \l__nm_initial_j_int 1
+               \bool_set_true:N \l__nm_initial_open_bool}
+              {\int_set:Nn \l_tmpa_int {#2-1}
+               \__nm_if_not_empty_cell:nnTF \l__nm_initial_i_int \l_tmpa_int
+                 {\int_set:Nn \l__nm_initial_j_int {#2-1}}
+                 {\int_set:Nn \l__nm_initial_j_int {#2}
+                  \bool_set_true:N \l__nm_initial_open_bool}}
+        \int_compare:nNnTF {#2+#3-1} = \g__nm_column_int
+              {\int_set:Nn \l__nm_final_j_int {#2+#3-1}
+               \bool_set_true:N \l__nm_final_open_bool}
+              {\int_set:Nn \l_tmpa_int {#2+#3}
+               \__nm_if_not_empty_cell:nnTF \l__nm_final_i_int \l_tmpa_int
+                 {\int_set:Nn \l__nm_final_j_int {#2+#3}}
+                 {\int_set:Nn \l__nm_final_j_int {#2+#3-1}
+                  \bool_set_true:N \l__nm_final_open_bool}}
+        \bool_if:nT {\l__nm_initial_open_bool || \l__nm_final_open_bool}
+                    \__nm_create_extra_nodes:
+        \__nm_actually_draw_Ldots:}
+\cs_new_protected:Nn \__nm_line:nn
+     {\dim_zero_new:N \g__nm_x_initial_dim
+      \dim_zero_new:N \g__nm_y_initial_dim
+      \dim_zero_new:N \g__nm_x_final_dim
+      \dim_zero_new:N \g__nm_y_final_dim
+      \__nm_bool_new:N \l__nm_initial_open_bool
+      \__nm_bool_new:N \l__nm_final_open_bool
+      \begin{tikzpicture}
+         \path~(#1)~--~(#2)~node[at~start]~(i)~{}~node[at~end]~(f)~{} ;
+         \tikz@parse@node\pgfutil@firstofone (i)
+         \dim_gset:Nn \g__nm_x_initial_dim \pgf@x
+         \dim_gset:Nn \g__nm_y_initial_dim \pgf@y
+         \tikz@parse@node\pgfutil@firstofone (f)
+         \dim_gset:Nn \g__nm_x_final_dim \pgf@x
+         \dim_gset:Nn \g__nm_y_final_dim \pgf@y
+      \end{tikzpicture}
+      \__nm_draw_tikz_line:}
+\bool_new:N \l__nm_block_auto_columns_width_bool
+\keys_define:nn {NiceMatrix/NiceMatrixBlock}
+      {auto-columns-width .code:n =
+                           {\bool_set_true:N \l__nm_block_auto_columns_width_bool
+                            \dim_gzero_new:N \g__nm_max_cell_width_dim
+                            \bool_set_true:N \l__nm_auto_columns_width_bool}}
+\NewDocumentEnvironment {NiceMatrixBlock} {O{}}
+    {\keys_set:nn {NiceMatrix/NiceMatrixBlock} {#1}
+     \int_zero_new:N \l__nm_first_env_block_int
+     \int_set:Nn \l__nm_first_env_block_int {\g__nm_env_int + 1}}
+    {\bool_if:NT \l__nm_block_auto_columns_width_bool
+          {\iow_now:Nn \@mainaux {\ExplSyntaxOn}
+           \int_step_inline:nnnn \l__nm_first_env_block_int 1 \g__nm_env_int
+               {\iow_now:Nx \@mainaux
+                   {\cs_gset:cpn {__nm_max_cell_width_##1}
+                                 {\dim_use:N \g__nm_max_cell_width_dim}}}
+           \iow_now:Nn \@mainaux {\ExplSyntaxOff}}}
+\keys_define:nn {NiceMatrix/NiceArrayC}
+     {parallelize-diags .bool_set:N       = \l__nm_parallelize_diags_bool,
+      parallelize-diags .default:n        = true,
+      renew-dots        .bool_set:N       = \l__nm_renew_dots_bool,
+      renew-dots        .default:n        = true,
+      nullify-dots      .bool_set:N       = \l__nm_nullify_dots_bool ,
+      nullify-dots      .default:n        = true,
+      code-for-last-col .tl_set:N         = \l__nm_code_for_last_col_tl,
+      code-for-last-col .value_required:n = true,
+      columns-width     .code:n           = \str_if_eq:nnTF {#1} {auto}
+                                            {\bool_set_true:N
+                                                   \l__nm_auto_columns_width_bool}
+                                            {\dim_set:Nn \l__nm_columns_width_dim {#1}},
+      columns-width     .value_required:n = true,
+      name              .code:n           = {\seq_if_in:NnTF \g__nm_names_seq {#1}
+                                                {\__nm_msg_error:nn {Duplicate~name} {#1}}
+                                                {\seq_gput_left:Nn \g__nm_names_seq {#1}}
+                                             \tl_set:Nn \l__nm_name_tl {#1}},
+      name              .value_required:n = true,
+      code-after        .tl_set:N          = \l__nm_code_after_tl,
+      code-after        .initial:n         = \c_empty_tl,
+      code-after        .value_required:n = true,
+      create-extra-nodes  .bool_set:N   = \l__nm_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l__nm_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l__nm_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l__nm_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l__nm_extra_right_margin_dim,
+      unknown .code:n  = \__nm_msg_error:n {Unknown~option~for~NiceArrayC}}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArrayC}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{\@currenvir\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               code-for-last-col,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left-margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags~
+               renew-dots~
+               and~right-margin.}
+\cs_new_protected:Nn \__nm_NiceArrayC:n
+    {\bool_set_true:N \l__nm_exterior_column_bool
+     \begin{NiceArray}
+             {#1
+                >{\int_gincr:N \g__nm_column_int
+                 \int_gset:Nn \g__nm_column_total_int
+                              {\int_max:nn \g__nm_column_total_int \g__nm_column_int}
+                  \hbox_set:Nw \l_tmpa_box $ % $
+                     \l__nm_code_for_last_col_tl
+                 }
+                l
+                <{   $ % $
+                  \hbox_set_end:
+                  \dim_gset:Nn \g__nm_width_last_col_dim
+                     {\dim_max:nn \g__nm_width_last_col_dim
+                                  {\box_wd:N \l_tmpa_box}}
+                  \skip_horizontal:n {-2\arraycolsep}
+                  \hbox_overlap_right:n
+                       {\skip_horizontal:n
+                               { 2\arraycolsep + \l__nm_right_margin_dim
+                                               + \l__nm_extra_right_margin_dim}
+                        \tikz[remember~picture, inner~sep=0pt, minimum~width=0pt, baseline]
+                           \node [anchor=base,
+                                  name = nm-\int_use:N \g__nm_env_int-
+                                            \int_use:N \g__nm_row_int-
+                                            \int_use:N \g__nm_column_int,
+                                  alias = \tl_if_empty:NF \l__nm_name_tl
+                                            {\l__nm_name_tl-
+                                             \int_use:N \g__nm_row_int-
+                                             \int_use:N \g__nm_column_int}]
+                                   {\box_use:N \l_tmpa_box} ; } }}}
+\NewDocumentEnvironment{NiceArrayCwithDelims} {mm O{} m O{}}
+    {\dim_gzero_new:N \g__nm_width_last_col_dim
+     \keys_set:nn {NiceMatrix/NiceArrayC} {#3,#5}
+     \bool_set_false:N \l__nm_exterior_arraycolsep_bool
+     \tl_set:Nn \l__nm_pos_env_tl c
+     \left#1
+     \__nm_NiceArrayC:n {#4}}
+    {\end{NiceArray}
+     \right#2
+     \skip_horizontal:n \g__nm_width_last_col_dim
+    }
+\NewDocumentEnvironment {pNiceArrayC} {}
+    {\NiceArrayCwithDelims{(}{)}}
+    {\endNiceArrayCwithDelims}
+\NewDocumentEnvironment {vNiceArrayC} {}
+    {\NiceArrayCwithDelims{|}{|}}
+    {\endNiceArrayCwithDelims}
+\NewDocumentEnvironment {VNiceArrayC} {}
+    {\NiceArrayCwithDelims{\|}{\|}}
+    {\endNiceArrayCwithDelims}
+\NewDocumentEnvironment {bNiceArrayC} {}
+    {\NiceArrayCwithDelims{[}{]}}
+    {\endNiceArrayCwithDelims}
+\NewDocumentEnvironment {BNiceArrayC} {}
+    {\NiceArrayCwithDelims{\{}{\}}}
+    {\endNiceArrayCwithDelims}
+\keys_define:nn {NiceMatrix/NiceArrayRC}
+  {parallelize-diags    .bool_set:N = \l__nm_parallelize_diags_bool,
+   parallelize-diags    .default:n  = true,
+   renew-dots           .bool_set:N = \l__nm_renew_dots_bool,
+   renew-dots           .default:n  = true,
+   nullify-dots         .bool_set:N = \l__nm_nullify_dots_bool ,
+   nullify-dots         .default:n  = true,
+   code-for-first-row   .tl_set:N   = \l__nm_code_for_first_row_tl,
+   code-for-first-row    .value_required:n = true,
+   code-for-last-col    .tl_set:N   = \l__nm_code_for_last_col_tl,
+   code-for-last-col    .value_required:n = true,
+   columns-width        .code:n     = \str_if_eq:nnTF {#1} {auto}
+                                         {\bool_set_true:N
+                                                \l__nm_auto_columns_width_bool}
+                                         {\dim_set:Nn \l__nm_columns_width_dim {#1}},
+   columns-width        .value_required:n = true,
+   name                 .code:n     = {\seq_if_in:NnTF \g__nm_names_seq {#1}
+                                          {\__nm_msg_error:nn {Duplicate~name} {#1}}
+                                          {\seq_gput_left:Nn \g__nm_names_seq {#1}}
+                                       \tl_set:Nn \l__nm_name_tl {#1}},
+   code-after           .tl_set:N    = \l__nm_code_after_tl,
+   create-extra-nodes   .bool_set:N  = \l__nm_extra_nodes_bool,
+   create-extra-nodes   .default:n   = true,
+   left-margin  .dim_set:N  = \l__nm_left_margin_dim,
+   left-margin  .default:n  = \arraycolsep,
+   right-margin .dim_set:N  = \l__nm_right_margin_dim,
+   right-margin .default:n  = \arraycolsep,
+   extra-left-margin  .dim_set:N  = \l__nm_extra_left_margin_dim,
+   extra-right-margin .dim_set:N  = \l__nm_extra_right_margin_dim,
+   unknown .code:n  = \__nm_msg_error:n {Unknown~option~for~NiceArrayRC}}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArrayRC}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{\@currenvir\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               code-for-last-col,~
+               code-for-first-row,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left~margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots~
+               and~right~margin.}
+\NewDocumentEnvironment {NiceArrayRCwithDelims} {mm O{} m O{}}
+    {\int_zero:N \l__nm_nb_first_row_int
+     \dim_gzero_new:N \g__nm_width_last_col_dim
+     \keys_set:nn {NiceMatrix/NiceArrayRC} {#3,#5}
+     \bool_set_false:N \l__nm_exterior_arraycolsep_bool
+     \tl_set:Nn \l__nm_pos_env_tl c
+     \box_clear_new:N \l__nm_the_array_box
+     \hbox_set:Nw \l__nm_the_array_box
+           $ % $
+           \__nm_NiceArrayC:n {#4}}
+    {      \end{NiceArray}
+           $ % $
+     \hbox_set_end:
+     \dim_set:Nn \l_tmpa_dim
+            { ( \dim_max:nn {12pt}
+                            {\g__nm_max_ht_row_one_dim + \g__nm_max_dp_row_zero_dim})
+              + \g__nm_max_ht_row_zero_dim
+              - \g__nm_max_ht_row_one_dim }
+     \hbox_set:Nn \l_tmpa_box
+        {$ % $
+         \left#1
+         \vcenter {\skip_vertical:n {- \l_tmpa_dim}
+                   \box_use_drop:N \l__nm_the_array_box}
+         \right#2
+         $ % $
+         \skip_horizontal:n \g__nm_width_last_col_dim}
+     \box_set_ht:Nn \l_tmpa_box {\box_ht:N \l_tmpa_box + \l_tmpa_dim}
+     \box_use_drop:N \l_tmpa_box
+    }
+\NewDocumentEnvironment {pNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{(}{)}}
+     {\endNiceArrayRCwithDelims}
+\NewDocumentEnvironment {bNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{[}{]}}
+     {\endNiceArrayRCwithDelims}
+\NewDocumentEnvironment {vNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{|}{|}}
+     {\endNiceArrayRCwithDelims}
+\NewDocumentEnvironment {VNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{\|}{\|}}
+     {\endNiceArrayRCwithDelims}
+\NewDocumentEnvironment {BNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{\{}{\}}}
+     {\endNiceArrayRCwithDelims}
+\cs_generate_variant:Nn \dim_min:nn {vn}
+\cs_generate_variant:Nn \dim_max:nn {vn}
+\cs_new_protected:Nn \__nm_create_extra_nodes:
+     {\begin{tikzpicture}[remember~picture,overlay]
+      \int_step_variable:nnnNn \l__nm_nb_first_row_int 1 \g__nm_row_int \__nm_i
+          {\dim_zero_new:c {l__nm_row_\__nm_i _min_dim}
+           \dim_set_eq:cN {l__nm_row_\__nm_i _min_dim} \c_max_dim
+           \dim_zero_new:c {l__nm_row_\__nm_i _max_dim}
+           \dim_set:cn {l__nm_row_\__nm_i _max_dim} {-\c_max_dim}}
+      \int_step_variable:nnnNn 1 1 \g__nm_column_total_int \__nm_j
+          {\dim_zero_new:c {l__nm_column_\__nm_j _min_dim}
+           \dim_set_eq:cN {l__nm_column_\__nm_j _min_dim} \c_max_dim
+           \dim_zero_new:c {l__nm_column_\__nm_j _max_dim}
+           \dim_set:cn {l__nm_column_\__nm_j _max_dim} {-\c_max_dim}}
+      \int_step_variable:nnnNn \l__nm_nb_first_row_int 1 \g__nm_row_int \__nm_i
+          {\int_step_variable:nnnNn 1 1 \g__nm_column_total_int \__nm_j
+            {\cs_if_exist:cT {pgf@sh@ns@nm-\int_use:N \g__nm_env_int-\__nm_i-\__nm_j}
+               {\tikz@parse@node \pgfutil@firstofone
+                           (nm-\int_use:N \g__nm_env_int-\__nm_i-\__nm_j.south~west)
+                \dim_set:cn {l__nm_row_\__nm_i _min_dim}
+                            {\dim_min:vn {l__nm_row_\__nm_i _min_dim} \pgf@y}
+                \seq_if_in:NxF \g__nm_multicolumn_cells_seq {\__nm_i-\__nm_j}
+                   {\dim_set:cn {l__nm_column_\__nm_j _min_dim}
+                               {\dim_min:vn {l__nm_column_\__nm_j _min_dim} \pgf@x}}
+                \tikz@parse@node \pgfutil@firstofone
+                           (nm-\int_use:N \g__nm_env_int-\__nm_i-\__nm_j.north~east)
+                \dim_set:cn {l__nm_row_\__nm_i _max_dim}
+                            {\dim_max:vn {l__nm_row_\__nm_i _max_dim} \pgf@y}
+                \seq_if_in:NxF \g__nm_multicolumn_cells_seq {\__nm_i-\__nm_j}
+                   {\dim_set:cn {l__nm_column_\__nm_j _max_dim}
+                               {\dim_max:vn {l__nm_column_\__nm_j _max_dim} \pgf@x}}}
+          }}
+      \tikzset{name~suffix = -medium}
+      \__nm_create_nodes:
+      \int_set:Nn \l__nm_nb_first_row_int 1
+      \int_step_variable:nnnNn 1 1 {\g__nm_row_int-1} \__nm_i
+         {\dim_set:cn {l__nm_row_\__nm_i _min_dim}
+                      {(  \dim_use:c {l__nm_row_\__nm_i _min_dim}
+                        + \dim_use:c {l__nm_row_\int_eval:n{\__nm_i+1}_max_dim}) / 2}
+          \dim_set_eq:cc {l__nm_row_\int_eval:n{\__nm_i+1}_max_dim}
+                         {l__nm_row_\__nm_i _min_dim} }
+      \int_step_variable:nnnNn 1 1 {\g__nm_column_int-1} \__nm_j
+         {\dim_set:cn {l__nm_column_\__nm_j _max_dim}
+                      {(  \dim_use:c {l__nm_column_\__nm_j _max_dim}
+                        + \dim_use:c {l__nm_column_\int_eval:n{\__nm_j+1}_min_dim}) / 2}
+          \dim_set_eq:cc {l__nm_column_\int_eval:n{\__nm_j+1}_min_dim}
+                         {l__nm_column_\__nm_j _max_dim} }
+      \dim_sub:cn {l__nm_column_1_min_dim} \g__nm_left_margin_dim
+      \dim_add:cn {l__nm_column_\int_use:N \g__nm_column_int _max_dim}
+                  \g__nm_right_margin_dim
+      \tikzset{name~suffix = -large}
+      \__nm_create_nodes:
+      \end{tikzpicture}
+      \cs_set:Nn \__nm_create_extra_nodes: {}}
+\cs_new_protected:Nn \__nm_create_nodes:
+      {\int_step_variable:nnnNn \l__nm_nb_first_row_int 1 \g__nm_row_int \__nm_i
+          {\int_step_variable:nnnNn 1 1 \g__nm_column_total_int \__nm_j
+              {\coordinate (__nm~south~west)
+                           at (\dim_use:c {l__nm_column_\__nm_j _min_dim},
+                               \dim_use:c {l__nm_row_\__nm_i _min_dim}) ;
+               \coordinate (__nm~north~east)
+                           at (\dim_use:c {l__nm_column_\__nm_j _max_dim},
+                               \dim_use:c {l__nm_row_\__nm_i _max_dim}) ;
+               \draw node [fit = {(__nm~south~west) (__nm~north~east)},
+                           inner~sep=0pt,
+                           name = nm-\int_use:N \g__nm_env_int-\__nm_i-\__nm_j,
+                           alias = \tl_if_empty:NF \g__nm_name_tl
+                                         {\tl_use:N \g__nm_name_tl-\__nm_i-\__nm_j}]
+                          {} ;
+              }
+          }
+      \__nm_seq_mapthread_function:NNN \g__nm_multicolumn_cells_seq
+                                     \g__nm_multicolumn_sizes_seq
+                                     \__nm_node_for_multicolumn:nn
+      }
+\cs_set:Npn \__nm_extract_coords: #1-#2\q_stop{\cs_set:Npn \__nm_i {#1}
+                                             \cs_set:Npn \__nm_j {#2}}
+\cs_new_protected:Nn \__nm_node_for_multicolumn:nn
+       {\__nm_extract_coords: #1\q_stop
+        \coordinate (__nm~south~west)
+                    at (\dim_use:c {l__nm_column_\__nm_j _min_dim},
+                        \dim_use:c {l__nm_row_\__nm_i _min_dim}) ;
+        \coordinate (__nm~north~east)
+                    at (\dim_use:c {l__nm_column_\int_eval:n{\__nm_j+#2-1}_max_dim},
+                        \dim_use:c {l__nm_row_\__nm_i _max_dim}) ;
+        \draw node [fit = {(__nm~south~west) (__nm~north~east)},
+                    inner~sep=0pt,
+                    name = nm-\int_use:N \g__nm_env_int-\__nm_i-\__nm_j,
+                    alias = \tl_if_empty:NF \g__nm_name_tl
+                                  {\tl_use:N \g__nm_name_tl-\__nm_i-\__nm_j}]
+                   {} ;
+        }
+\ProcessKeysOptions {NiceMatrix}
+\cs_new:Npn \__nm_seq_mapthread_function:NNN #1#2#3
+  {\group_begin:
+   \int_step_inline:nnnn 1 1 {\seq_count:N #1}
+         {\seq_pop:NN #1 \l_tmpa_tl
+          \seq_pop:NN #2 \l_tmpb_tl
+          \exp_args:NVV #3 \l_tmpa_tl \l_tmpb_tl}
+   \group_end:
+  }
+\cs_set:Nn \__nm_renew_matrix:
+    {\RenewDocumentEnvironment {pmatrix} {}
+         {\begin{pNiceMatrix}}
+         {\end{pNiceMatrix}}
+     \RenewDocumentEnvironment {vmatrix} {}
+         {\begin{vNiceMatrix}}
+         {\end{vNiceMatrix}}
+     \RenewDocumentEnvironment {Vmatrix} {}
+         {\begin{VNiceMatrix}}
+         {\end{VNiceMatrix}}
+     \RenewDocumentEnvironment {bmatrix} {}
+         {\begin{bNiceMatrix}}
+         {\end{bNiceMatrix}}
+     \RenewDocumentEnvironment {Bmatrix} {}
+         {\begin{BNiceMatrix}}
+         {\end{BNiceMatrix}}}
+\endinput
+%%
+%% End of file `nicematrix.sty'.

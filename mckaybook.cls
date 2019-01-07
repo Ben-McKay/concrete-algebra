@@ -86,7 +86,7 @@
 % because this book has a lot of dimensions.
 
 \RequirePackage[orthodox,l2tabu]{nag}		% Complain about common TeX errors
-\RequirePackage[mathletters]{ucs}			% Unicode characters
+%\RequirePackage[mathletters]{ucs}			% Unicode characters
 \RequirePackage{newunicodechar}
 
 \ifdefined\ChineseTextInThisDocument

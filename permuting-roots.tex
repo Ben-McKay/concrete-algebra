@@ -31,11 +31,11 @@ The only monic quadratic polynomial \(p(x)\) with roots \(x=3\) and \(x=7\) is
 \[
 p(x) = x^2-(3+7)x+3 \cdot 7.
 \]
-The only monic quadratic polynomial \(p(x)\) with roots \(x=r\) and \(x=s\), by the same steps, must be
+The only quadratic monic polynomial \(p(x)\) with roots \(x=r\) and \(x=s\), by the same steps, must be
 \[
 p(x) = x^2-(r+s)x+rs.
 \]
-By the same steps, the only cubic polynomial \(q(x)\) with roots at \(x=r\), \(x=s\) and \(x=t\) is
+By the same steps, the only cubic monic polynomial \(q(x)\) with roots at \(x=r\), \(x=s\) and \(x=t\) is
 \[
 q(x)=(x-r)(x-s)(x-t).
 \]
@@ -69,26 +69,26 @@ p(x)=
 \]
 then the numbers \(r_1, r_2, \dots, r_n\) are the roots of \(p(x)\), and the coefficients of \(p(x)\), say
 \[
-p(x) = x^n - a_{n-1} x^{n-1} + \dots \pm  a_1 x \pm a_0,
+p(x) = x^n - a_1 x^{n-1} + \dots \pm  a_{n-1} x \pm a_n,
 \]
 (with signs switching each term in front of the \(a_j\) coefficients) are computed from the roots by
 \begin{align*}
-a_{n-1} &= r_1 + r_2 + \dots + r_n, \\
-a_{n-2} &= \sum_{i < j} r_i r_j, \\
+a_1 &= r_1 + r_2 + \dots + r_n, \\
+a_2 &= \sum_{i < j} r_i r_j, \\
 & \vdotswithin{=} \\
-a_i &= \sum_{i_1 < i_2 < \dots < i_{n-i}} r_{i_1} r_{i_2} \dots r_{i_{n-i}}, \\
+a_i &= \sum_{j_1 < j_2 < \dots < j_{n-i}} r_{j_1} r_{j_2} \dots r_{j_i}, \\
 & \vdotswithin{=} \\
-a_2 &= r_1 r_2 \dots r_{n-1} + r_1 r_2 \dots r_{n-2} r_n + \dots + r_2 r_3 \dots r_n, \\
-a_1 &= r_1 r_2 \dots r_n.
+a_{n-1} &= r_1 r_2 \dots r_{n-1} + r_1 r_2 \dots r_{n-2} r_n + \dots + r_2 r_3 \dots r_n, \\
+a_n &= r_1 r_2 \dots r_n.
 \end{align*}
 \end{proposition}
-The \emph{elementary symmetric functions} are the polynomials \(e_1, \dots, e_n\)\Notation{ej}{e_j}{elementary symmetric functions} of variables \(t_1, t_2, \dots, t_n\), given by
+The \emph{elementary symmetric polynomials} are the polynomials \(e_1, \dots, e_n\)\Notation{ej}{e_j}{elementary symmetric polynomials} of variables \(t_1, t_2, \dots, t_n\), given by
 \begin{align*}
 e_1\of{t_1,t_2,\dots,t_n} &= t_1 + t_2 + \dots + t_n, \\
 e_2\of{t_1,t_2,\dots,t_n} &= t_1 t_2 + t_1 t_3 + \dots + t_{n-1} t_n, \\
                           &= \sum_{i < j} t_i t_j, \\
                           & \vdotswithin{=} \\
-e_i\of{t_1,t_2,\dots,t_n} &= \sum_{i_1 < i_2 < \dots < i_{n-i}} t_{i_1} t_{i_2} \dots t_{i_{n-i}}, \\
+e_i\of{t_1,t_2,\dots,t_n} &= \sum_{j_1 < j_2 < \dots < j_i} t_{j_1} t_{j_2} \dots t_{j_i}, \\
                           & \vdotswithin{=} \\
 e_{n-1}\of{t_1,t_2,\dots,t_n} &= t_1 t_2 \dots t_{n-1} + t_1 t_2 \dots t_{n-2} t_n + \dots + t_2 t_3 \dots t_n, \\
 e_n\of{t_1,t_2,\dots,t_n} &= t_1 t_2 \dots t_n.
@@ -107,7 +107,7 @@ then the numbers \(r_1, r_2, \dots, r_n\) are the roots of \(p(x)\), and the coe
 \[
 p(x) = x^n - e_1 x^{n-1} + \dots (-1)^{n-1}  e_{n-1} x + (-1)^n e_n,
 \]
-are the elementary symmetric functions 
+are the elementary symmetric polynomials 
 \[
 e_i=e_i\of{r_1,r_2,\dots,r_n}
 \]
@@ -116,23 +116,23 @@ of the roots \(r_1, r_2, \dots, r_n\).
 
 \begin{proof}
 We can see this immediately for linear polynomials: \(p(x)=x-r\), and we checked it above for quadratic and cubic ones.
-It is convenient to rewrite the elementary symmetric functions as 
+It is convenient to rewrite the elementary symmetric polynomials as 
 \[
-e_j\of{r_1,r_2,\dots,r_n}
+e_i\of{r_1,r_2,\dots,r_n}
 =
 \sum r_1^{b_1} r_2^{b_2} \dots r_n^{b_n}
 \]
 where the sum is over all choices of numbers \(b_1, b_2, \dots, b_n\) so that
 \begin{enumerate}
 \item
-each of these \(b_i\) is either \(0\) or \(1\) and
+each of these \(b_j\) is either \(0\) or \(1\) and
 \item
 so that altogether 
 \[
-b_1 + b_2 + b_3 + \dots + b_n = j,
+b_1 + b_2 + b_3 + \dots + b_n = i,
 \]
 \end{enumerate}
-or in other words, ``turn on'' \(j\) of the roots, and turn off the rest, and multiply out the ones that are turned on, and then sum over all choices of which to turn on.
+or in other words, ``turn on'' \(i\) of the roots, and turn off the rest, and multiply out the ones that are turned on, and then sum over all choices of which to turn on.
 
 If we expand out the product
 \[
@@ -155,96 +155,41 @@ x^{\pr{1-b_1} + \pr{1-b_2} + \dots + \pr{1-b_n}},
 \sum_{b_1+\dots+b_n=j} \pr{-r_1}^{b_1} \pr{-r_2}^{b_2} \dots \pr{-r_n}^{b_n}
 x^{n-j}.
 \end{align*}
-%
-%
-%We can write the result we want to prove as
-%\[
-%p(x)\equalquestion \sum (-1)^j
-%r_1^{b_1} 
-%r_2^{b_2}
-%\dots
-%r_n^{b_n}
-%x^{n-j},
-%\]
-%where the sum is over \(0 \le j \le n\) and over \(b_i=0\) or \(1\) with
-%\[
-%j=b_1+b_2+\dots+b_n.
-%\]
-%But then we divide each root by \(x\) and write this as:
-%\[
-%p(x)\equalquestion x^n \sum 
-%\pr{-\frac{r_1}{x}}^{b_1} 
-%\pr{-\frac{r_2}{x}}^{b_2}
-%\dots
-%\pr{-\frac{r_n}{x}}^{b_n},
-%\]
-%where the sum is now over all choices of \(b_i=0\) or \(1\).
-%By induction, suppose we have this result proven for all polynomials of degree less than \(n\).
-%Factor \(p(x)=q(x)\pr{x-r_n}\).
-%Assume the result for \(q(x)\):
-%\[
-%q(x)= x^{n-1} \sum 
-%\pr{-\frac{r_1}{x}}^{b_1} 
-%\pr{-\frac{r_2}{x}}^{b_2}
-%\dots
-%\pr{-\frac{r_{n-1}}{x}}^{b_{n-1}},
-%\]
-%and multiply out to find
-%\[
-%p(x)=x^n 
-%\sum 
-%\pr{-\frac{r_1}{x}}^{b_1} 
-%\pr{-\frac{r_2}{x}}^{b_2}
-%\dots
-%\pr{-\frac{r_{n-1}}{x}}^{b_{n-1}}
-%\pr{1-\frac{r_n}{x}}.
-%\]
-%The last factor splits into terms that don't include \(r_n\), and then those that do, corresponding to adding up \(b_1, b_2, \dots, b_n\) with \(b_n=0\) and then with \(b_n=1\).
 \end{proof}
 
-\section{Symmetric functions}
-A function \(f\left(t_1,t_2,\dots,t_n\right)\) is \emph{symmetric}\define{symmetric!function}
-if its value is unchanged by permuting the variables
-\(t_1, t_2, \dots, t_n\).
-
-For example, \(t_1+t_2+\dots+t_n\) is clearly symmetric.
-For any numbers \(t=\pr{t_1, t_2, \dots, t_n}\)
-let
+\section{Symmetric polynomials}
+A polynomial \(f\left(t_1,t_2,\dots,t_n\right)\) is \emph{symmetric}\define{symmetric!polynomial}\define{polynomial!symmetri c} if it is unchanged by permuting the variables \(t_1, t_2, \dots, t_n\).
+\begin{example}
+\(t_1+t_2+\dots+t_n\) is symmetric.
+\end{example}
+For any numbers or variables \(t=\pr{t_1, t_2, \dots, t_n}\) let
 \[
 P_t(x)\defeq\left(x-t_1\right)\left(x-t_2\right) \dots \left(x-t_n\right).
 \]
 Clearly the roots of \(P_t(x)\) are precisely the entries of the vector
 \(t\).
-
 Let \(e(t)\defeq\pr{e_1(t),e_2(t),\dots,e_n(t)}\), so that \(e\) maps vectors to vectors (with entries in our field).
 
 \begin{lemma}
 Over the field of complex numbers, the map \(e\) is onto, i.e. for each complex vector \(c\) there is a complex vector \(t\) so that \(e(t)=c\).
-In particular, there is no relation between the elementary symmetric functions.
+In particular, there is no relation between the elementary symmetric polynomials.
 \end{lemma}
 \begin{proof}
 Let \(t_1, t_2, \dots, t_n\) be the complex roots of the polynomial
 \[
 P(x) = x^n - c_1 x^{n-1} + c_2 x^{n-2} + \dots + (-1)^n c_n.
 \]
-Such roots exist by the fundamental theorem of algebra (see
-theorem~\vref{theorem:FTA}). 
+Such roots exist by the fundamental theorem of algebra (see theorem~\vref{theorem:FTA}). 
 By proposition~\vref{proposition:vieta}, \(P_t(x)\) has coefficients precisely the same as those of \(P(x)\), i.e. \(P_t(x)=P(x)\).
 \end{proof}
 \begin{lemma}
-Over any field, the entries of two vectors \(s\) and \(t\) are permutations of one another just when \(e(s)=e(t)\), i.e. just when the elementary symmetric functions take the same values at \(s\) and at \(t\).
+Over any field, the entries of two vectors \(s\) and \(t\) are permutations of one another just when \(e(s)=e(t)\), i.e. just when the elementary symmetric polynomials take the same values at \(s\) and at \(t\).
 \end{lemma}
 \begin{proof}
 The roots of \(P_s(x)\) and \(P_t(x)\) are the same numbers.
 \end{proof}
-\begin{corollary}
-A function is symmetric just when it is a function of the elementary symmetric functions.
-\end{corollary}
-This means that every symmetric function \(f\of{t_1,t_2,\dots,t_n}\) has
-the form \(f(t)=h(e(t))\), for a unique function \(h\),
-and conversely if \(h\) is any function at all, then \(f(t)=h(e(t))\)
-determines a symmetric function.
-We want a recipe to write down each symmetric polynomial function in terms of the elemenary symmetric functions, to find this mysterious \(h\).
+We want to see that every symmetric polynomial \(f\of{t_1,t_2,\dots,t_n}\) has the form \(f(t)=h(e(t))\), for a unique polynomial \(h\), and conversely if \(h\) is any function at all, then \(f(t)=h(e(t))\) determines a symmetric polynomial.
+We want a recipe to write down each symmetric polynomial in terms of the elemenary symmetric polynomials, to find this mysterious \(h\).
 
 \begin{example}
 Take the function 
@@ -292,32 +237,32 @@ e_n(t)&=t_1 t_2 \dots t_n.
 \end{align*}
 \end{example}
 
-If a symmetric polynomial contains a term, then it also contains every term obtained by permuting the variables.
-The weights appear in all possible permutations, like
+If a symmetric polynomial contains a term, then it also contains every term obtained by permuting the variables:
 \[
 t_1^3 t_2^5 + t_1^5 t_2^3.
 \]
-Among those permutations, the unique highest weight term, say \(t^a\), has 
-\[
-a=\pr{a_1,a_2,\dots,a_n}
-\]
-with \(a_1 \ge a_2 \ge \dots \ge a_n\).
-
 \begin{example}
-Take a symmetric polynomial 
+It is somehow easier to read \(x,y,z\) than \(t_1,t_2,t_3\), so take a symmetric polynomial 
 \[
-f=6 t_1^{16} t_2^9 t_3^7 + \dots
+f(x,y,z)=6 x^{16} y^9 z^7 + \dots
 \]
 where we only write out the highest weight term.
-The highest weight term contains the variables \(t_1, t_2, t_3\), with smallest power in \(t_3\) and higher powers in the others.
-Inside the highest weight term, each of \(t_1, t_2, t_3\) appears to at least a power of \(7\).
+In such notation, 
+\begin{align*}
+e_1(x,y,z)&=x+y+z=x+\dots, \\
+e_2(x,y,z)&=xy+xz+yz=xz + \dots, \\
+e_3(x,y,z)&=xyz.
+\end{align*}
+Imagine a term in \(f\): if the highest power in that term is in \(y\) or \(z\), permute the variables to get that highest power into \(x\), giving a higher weight term in \(f\).
+So the highest weight term contains the variables \(x, y, z\), with highest power in \(x\) and successively lower powers in each of \(y,z\).
+By the same reasoning, inside the highest weight term, each of \(x,y,z\) appears to at least to the power of the \(z\) variable: in this case, at least to a power of \(7\).
 Factor out \(7\) powers of each variable; we underline that factored out part so you can see it:
 \[
-f=6 t_1^9 t_2^2 \underline{\pr{t_1 t_2 t_3}^7} + \dots
+f=6 x^9 y^2 \underline{\pr{x y z}^7} + \dots
 \]
-In the remaining factors, each variable appears at least to a power of \(2\), so we factor out 2 of each:
+In the remaining factors, there are now no \(z\) variables, and each variable appears at least to a power of \(2\), so we factor out 2 of each:
 \[
-f=6 t_1^7 \underline{\pr{t_1 t_2}^2} \pr{t_1 t_2 t_3}^7 + \dots
+f=6 x^7 \underline{\pr{xy}^2} \pr{xyz}^7 + \dots
 \]
 So finally it is clear that \(f\) has the same highest weight as
 \(
@@ -330,93 +275,129 @@ f = 6 e_1^7 e_2^2 e_3^7 + \dots
 up to terms of lower weight.
 \end{example}
 
+%If we pick integers \(d_1, d_2, \dots, d_n \ge 0\),
+%\begin{align*}
+%e_1(t)^{d_1} e_2(t)^{d_2} \dots e_n(t)^{d_n}
+%&=
+%t_1^{d_1} \pr{t_1t_2}^{d_2} \dots \pr{t_1t_2\dots t_n}^{d_n} + \dots,
+%\\
+%&=
+%t_1^{d_1+d_2+\dots+d_n} t_2^{d_2+d_3+\dots+d_n} \dots 
+%t_n^{d_n} + \dots.
+%\end{align*}
+%Write this more neatly as
+%\[
+%e(t)^d = t^a+\dots
+%\]
+%where
+%\begin{align*}
+%a_1&\defeq d_1+d_2+d_3+\dots+d_n, \\ 
+%a_2&\defeq d_2+d_3+\dots+d_n, \\
+%a_3&\defeq d_3+\dots+d_n
+%& \vdotswithin{\defeq} \\
+%a_n&\defeq d_n.
+%\end{align*}
+%
+%On the other hand, given a decreasing sequence of nonnegative integers 
+%\[
+%a=\pr{a_1,a_2,\dots,a_n}
+%\]
+%calculate \(d\) by
+%\begin{align*}
+%d_1&\defeq a_1-a_2, \\
+%d_2&\defeq a_2-a_3, \\
+%& \vdotswithin{\defeq} \\
+%d_n&\defeq a_n
+%\end{align*}
+%and then \(e(t)^d=t^a+\dots\).
+%So for each decreasing sequence \(a=\pr{a_1,a_2,\dots,a_n}\), we have \(t^a=e(t)^d+\dots\).
 
-If we pick integers \(d_1, d_2, \dots, d_n \ge 0\),
-\begin{align*}
-e_1(t)^{d_1} e_2(t)^{d_2} \dots e_n(t)^{d_n}
-&=
-t_1^{d_1} \pr{t_1t_2}^{d_2} \dots \pr{t_1t_2\dots t_n}^{d_n} + \dots,
-\\
-&=
-t_1^{d_1+d_2+\dots+d_n} t_2^{d_2+d_3+\dots+d_n} \dots 
-t_n^{d_n} + \dots.
-\end{align*}
-Write this more neatly as
-\[
-e(t)^d = t^a+\dots
-\]
-where
-\begin{align*}
-a_1&\defeq d_1+d_2+d_3+\dots+d_n, \\ 
-a_2&\defeq d_2+d_3+\dots+d_n, \\
-a_3&\defeq d_3+\dots+d_n
-& \vdotswithin{\defeq} \\
-a_n&\defeq d_n.
-\end{align*}
-
-On the other hand, given a decreasing sequence of nonnegative integers 
-\[
-a=\pr{a_1,a_2,\dots,a_n}
-\]
-calculate \(d\) by
-\begin{align*}
-d_1&\defeq a_2-a_1, \\
-d_2&\defeq a_3-a_2, \\
-& \vdotswithin{\defeq} \\
-d_n&\defeq a_n
-\end{align*}
-and then \(e(t)^d=t^a+\dots\).
-So for each decreasing sequence \(a=\pr{a_1,a_2,\dots,a_n}\), we have \(t^a=e(t)^d+\dots\).
-
-\begin{theorem}
+\begin{theorem}\label{theorem:symmetric.polynomials.algebra}
 Every symmetric polynomial \(f\) has exactly one expression as a polynomial
 in the elementary symmetric polynomials.
-If \(f\) has real/rational/integer coefficients,
-then \(f\) is a real/rational/integer coefficient
-polynomial of the elementary symmetric polynomials.
+If \(f\) has integer coefficients, then \(f\) is an integer coefficient polynomial of the elementary symmetric polynomials. Similarly if \(f\) has coefficients in any field, then \(f\) is a polynomial of the elementary symmetric polynomials, with coefficients in that same field.
 \end{theorem}
 \begin{proof}
-The highest weight term in \(f\) is a constant multiple of a monomial \(t^a\).
-Every symmetric polynomial, if it contains a monomial \(t^a\) among its terms, also contains \(t^b\), for any \(b\) obtained by permuting the entries of \(a\). 
-So if there is any term at all, there is one \(t^a\) for which \(a\) has decreasing entries.
-As above, let
+Write the highest weight term as some coefficient times \(t_1^{a_1} t_2^{a_2} \dots t_n^{a_n}\).
+For simplicity, write this as \(t^a\).
+If \(a_1\) is smaller than \(a_2\), permute them to get a higher weight term, a contradiction, so \(a_1 \ge a_2\).
+In the same way, \(a_1 \ge a_2 \ge a_3 \ge \dots \ge a_n\).
+It might be that various of these \(a_i\) are zero; instead we can write the term as \(t_1^{a_1} \dots t_k^{a_k}\), with all positive powers \(a_1\ge a_2 \ge \dots \ge a_k>0\).
+Let 
 \[
-d_n\defeq a_n, d_{n-1}\defeq a_{n-1}-a_n, d_{n-2}\defeq a_{n-2}-a_{n-1}, \dots, d_1\defeq a_1-a_2.
+b_1\defeq a_1-a_k, \dots b_{k-1}\defeq a_{k-1}-a_k.
 \]
-Then \(e(t)^d\) has leading term \(t^a\), so subtracting off a suitable multiple of \(e(t)^d\) from \(f\) gives us a polynomial whose highest weight term is lower than \(t^a\).
-Apply induction on the highest term.
+Factor out:
+\[
+t^a=t^b (t_1 \dots t_k)^{a_k}.
+\]
+This is the highest weight term in
+\[
+t^b e_k^{a_k}.
+\]
+For simplicity, write expressions like \(e_1^{d_1} \dots e_n^{d_n}\) as \(e^d\).
+By induction, we can then find some expression \(e^d\) with highest weight term \(t^b\), so
+\[
+t^a=t^b e_k^{a_k} + \dots = e^d e_k^{a_k} + \dots
+\]
+where \(\dots\) means lower weight terms.
+By induction, we can somehow write the lower weight terms as polynomials in the elementary symmetric functions.
 \end{proof}
 \begin{example}
 The sum of squares of two variables is symmetric: 
 \[
-t_1^2+t_2^2=\pr{t_1+t_2}^2-2 \, t_1 t_2.
+x^2+y^2=\pr{x+y}^2-2xy.
 \] 
-To compute out these expressions: \(f(t)=t_1^2+t_2^2\) has highest term \(t_1^2\). 
-The polynomials \(e_1(t)\) and \(e_2(t)\) have highest terms \(t_1\) and \(t_1t_2\).
-So we subtract off \(e_1(t)^2\) from \(f(t)\), and find \(f(t)-e_1(t)^2=-2 \, t_1 t_2=-2 e_2(t)\).
+To compute out these expressions: \(f(x,y)=x^2+y^2\) has highest term \(x^2\). 
+The polynomials \(e_1(x,y)=x+y\) and \(e_2(x,y)=xy\) have highest terms \(x\) and \(xy\).
+So we subtract off \(e_1(x,y)^2\) from \(f(x,y)\), and find \(f(x,y)-e_1(x,y)^2=-2xy=-2e_2(x,y)\).
 \end{example}
 
 \begin{problem}{permuting.roots:express.in.s}
-Express each of the following polynomials as polynomials in the elementary symmetric functions:
+Express each of the following polynomials as polynomials in the elementary symmetric polynomials:
 \begin{enumerate}
+\item \(x^3y^3z + x^3yz^3+xy^3z^3\)
 \item \(4xyz^3+4xzy^3+4yzx^3\)
 \item \(x^4y^4z^4\)
 \item \(xyz+x^2y^2z^2\)
-\item \(x^3y^3z + x^3yz^z+xy^3z^3\)
 \end{enumerate}
 \end{problem}
 \begin{answer}{permuting.roots:express.in.s}
 \begin{enumerate}
+\item
+\begin{align*}
+x^3y^3z + x^3yz^3+xy^3z^3
+&=
+(xyz)(x^2y^2+x^2z^2+y^2z^2),
+\\
+&=e_3(x^2y^2+\dots),
+\\
+&=
+e_3(e_2^2+\dots).
+\end{align*}
+But \(e_2=xy+xz+yz\), so 
+\[
+e_2^2=x^2y^2+x^2z^2+y^2z^2+2x^2yz+2xy^2z+2xyz^2,
+\]
+so
+\begin{align*}
+x^3y^3z + x^3yz^3+xy^3z^3
+&=
+e_3(e_2^2-[2x^2yz+2xy^2z+2xyz^2]),
+\\
+&=
+e_3(e_2^2-2e_3[x+y+z]),
+\\
+&=
+e_3(e_2^2-2e_3e_1)
+\end{align*}
 \item \(4xyz^3+4xzy^3+4yzx^3=4e_3(e_1^2-2e_2)\)
 \item \(x^4y^4z^4=e_3^4\)
 \item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
-\item \(x^3y^3z + x^3yz^z+xy^3z^3=e_3\pr{e_2^2-2e_3e_1}\)
 \end{enumerate}
 \end{answer}
 
-
 \section{Sage}
-
 Sage can compute with elementary symmetric polynomials.
 It writes them in a strange notation.
 The polynomials we have denoted by \(e_3\) sage denotes by \verb!e[3]!.
@@ -428,14 +409,14 @@ P.<w,x,y,z>=PolynomialRing(QQ)
 S=SymmetricFunctions(QQ)
 e=S.e()
 \end{sageblock}
-This creates a ring \(P=\Q{}[w,x,y,z]\), and then lets \(S\) be the ring of symmetric functions.
-The last (mysterious) line sets up the object \(e\) to be the elementary symmetric functions of the ring \(S\).
+This creates a ring \(P=\Q{}[w,x,y,z]\), and then lets \(S\) be the ring of symmetric polynomials.
+The last (mysterious) line sets up the object \(e\) to be the elementary symmetric polynomials of the ring \(S\).
 We can then define a polynomial in our variables:
 \begin{sageblock}
 f = w^2+x^2+y^2+z^2+w*x+w*y+w*z+x*y+x*z+y*z
 e.from_polynomial(f)
 \end{sageblock}
-which prints out \(\sage{e.from_polynomial(f)}\), the expression of \(f\) in terms of elementary symmetric functions.
+which prints out \(\sage{e.from_polynomial(f)}\), the expression of \(f\) in terms of elementary symmetric polynomials.
 To expand out a symmetric polynomial into \(w,x,y,z\) variables:
 \begin{sageblock}
 q = e[2,1]+e[3]
@@ -448,10 +429,9 @@ prints out
 
 
 \section{Sums of powers}
-
 Define \(p_j(t)=t_1^j+t_2^j+\dots+t_n^j\),\Notation{pj}{p_j}{sum of powers polynomials} the sums of powers.
 \begin{lemma}[Isaac Newton\SubIndex{Newton, Isaac}]
-The sums of powers are related to the elementary symmetric functions by
+The sums of powers are related to the elementary symmetric polynomials by
 \begin{align*}
 0 &= e_1 - p_1, \\
 0 &= 2 \, e_2 - p_1 \, e_1 + p_2, \\ 
@@ -460,7 +440,7 @@ The sums of powers are related to the elementary symmetric functions by
 + (-1)^k p_k,
 \end{align*}
 \end{lemma}
-Using these equations, we can write the elementary symmetric functions inductively in terms of the sums of powers, or vice versa.
+Using these equations, we can write the elementary symmetric polynomials inductively in terms of the sums of powers, or vice versa.
 \begin{proof}
 Let's write \(t^{({\ell})}\) for \(t\) with the \({\ell}\)\textsuperscript{th} entry removed, so if \(t\) is a vector with \(n\) entries, then \(t^{({\ell})}\) is a vector with \(n-1\) entries.
 \begin{align*}
@@ -515,13 +495,13 @@ k \, e_k + (-1)^{k-1} p_k.
 \end{align*}
 \end{proof}
 \begin{proposition}
-Every symmetric polynomial is a polynomial in the sums of powers. If the coefficients of the symmetric polynomial are real (or rational), then it is a real (or rational) polynomial function of the sums of powers. 
+Every symmetric polynomial is a polynomial in the sums of powers. If the coefficients of the symmetric polynomial lie in a field, then it is a polynomial function of the sums of powers over that same field.
 \end{proposition}
 \begin{proof}
-We can solve recursively for the sums of powers in terms of the elementary symmetric functions and conversely.
+We can solve recursively for the sums of powers in terms of the elementary symmetric polynomials and conversely.
 \end{proof}
 
-\section{The invariants of a square matrix}
+\section{The invariants of a square matrix}\label{pg:linear.invariants}
 Over any field, a polynomial \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f\left(FAF^{-1}\right)=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
 An invariant is independent of change of basis: if \(T \colon V \to V\) is a linear map on an \(n\)-dimensional vector space, we can define the value \(f(T)\) of any invariant \(f\) of \(n \times n\) matrices, by letting \(f(T)\defeq f(A)\) where \(A\) is the matrix associated to \(T\) in some basis of \(V\).
 \begin{example}
@@ -530,12 +510,12 @@ For any \(n \times n\) matrix \(A\), write
 \det(A-\lambda I)=\chi_A(\lambda)=
 e_n(A) - e_{n-1}(A) \lambda + e_{n-2}(A) \lambda^2 + \dots + (-1)^n \lambda^n.
 \]
-The functions \(e_1(A), e_2(A), \dots, e_n(A)\) are invariants, while \(\chi_A(\lambda)\) is the \emph{characteristic polynomial}\define{characteristic polynomial} of \(A\).
+The expressions \(e_1(A), e_2(A), \dots, e_n(A)\) are invariants, while \(\chi_A(\lambda)\) is the \emph{characteristic polynomial}\define{characteristic polynomial} of \(A\).
 \end{example}
 \begin{example}\label{example:Powers}
 If we write the trace of a matrix \(A\) as \(\tr{A}\), then the functions
 \[
-p_k(A) = \tr\of{A^k}.\SubIndex{trace}
+p_k(A) = \tr\of{A^k}\SubIndex{trace}
 \]
 are invariants.
 \end{example}
@@ -550,7 +530,7 @@ t_1 \\
 & & & t_n
 \end{pmatrix},
 \]
-then prove that \(e_j(A)=e_j\left(t_1,t_2,\dots,t_n\right)\), the elementary symmetric functions of the eigenvalues.
+then prove that \(e_j(A)=e_j\left(t_1,t_2,\dots,t_n\right)\), the elementary symmetric polynomials of the eigenvalues.
 \end{problem}
 \begin{answer}{SymmetricFunctions:Two}
 \begin{align*}
@@ -587,9 +567,9 @@ Suppose that the characteristic polynomial of \(A\) splits into linear factors.
 Prove that \(\Delta_A = 0\) just when \(A\) has an eigenvalue of multiplicity two or more.
 \end{problem}
 \begin{theorem}
-Every invariant polynomial of square matrices over an infinite field has exactly one expression as a polynomial function of the elementary symmetric functions of the eigenvalues. 
+Every invariant polynomial of square matrices over an infinite field has exactly one expression as a polynomial in the elementary symmetric polynomials of the eigenvalues. 
 \end{theorem}
-We can replace the elementary symmetric functions of the eigenvalues by the sums of powers of the eigenvalues.
+We can replace the elementary symmetric polynomials of the eigenvalues by the sums of powers of the eigenvalues.
 \begin{proof}
 Take an invariant polynomial \(f(A)\).
 Every invariant polynomial \(f(A)\) determines an invariant polynomial \(f(t)\)
@@ -620,7 +600,7 @@ In particular, if our field lies in a larger field, then \(f\) remains invariant
 Recall that a matrix has an eigenvector for each eigenvalue, so if there are \(n\) distinct eigenvalues, then \(A\) is diagonalizable.
 This occurs just when the characteristic polynomial \(\chi_A(\lambda)\) splits into distinct linear factors, and so \(\Delta_A \ne 0\).
 Conversely, if \(\Delta_A \ne 0\) and \(\chi_A(\lambda)\) splits into linear factors, then they are distinct, and so \(f(A)=0\).
-We will see (in theorem~\vref{theorem:splitting.field}) that we can sit our field into a larger field in which the characteristic polynomial \(\chi_A(\lambda)\) splits into linear factors, and therefore if \(\Delta_A\ne 0\) then \(f(A)=0\).
+By theorem~\vref{theorem:splitting.field}, we can sit our field into a larger field in which the characteristic polynomial \(\chi_A(\lambda)\) splits into linear factors, and therefore if \(\Delta_A\ne 0\) then \(f(A)=0\).
 
 Pick any matrix \(A_0\) whose eigenvalues are all distinct.
 In particular, \(\Delta_{A_0} \ne 0\).
@@ -636,32 +616,21 @@ But \(f(A)\) is a polynomial, so vanishes for all \(t\).
 The function \(f(A)=e_j\left(\left|\lambda_1\right|,\left|\lambda_2\right|,\dots,\left|\lambda_n\right|\right)\), where \(A\) has eigenvalues \(\lambda_1, \lambda_2, \dots, \lambda_n\), is a continuous invariant function of a real matrix \(A\), and is \emph{not} a polynomial in \(\lambda_1, \lambda_2, \dots, \lambda_n\).
 \end{example}
 
-
-
-
-
-
-
 \section{Resultants and permutations}
-
-A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same total degree, i.e. sum of degrees in all variables.
-
-\begin{problem}{permuting:homog.test}
-Prove that a polynomial \(b(x)\) of degree \(m\) in some variables \(x_1,x_2,\dots,x_n\) over an infinite field is homogeneous just when \(b(tx)=t^mb(x)\) for every \(t\).
-Give a counterexample over a finite field.
-\end{problem}
-
-\begin{lemma}
-Over any field, every factor of a homogeneous polynomial is homogeneous.
-\end{lemma}
-\begin{proof}
-Write the polynomial factorized, as
-\(
-b(x)c(x)
-\),
-and then expand out \(b(x)\) and \(c(x)\) into sums of terms of various orders.
-Then \(b(x)c(x)\) expands into products of such terms, with orders adding up, and they must all add up to the same total, so the highest total degree terms multiply together and the lowest total degree terms multiply together both give the same total degree in the product.
-\end{proof}
+\begin{example}
+If \(b(x,y)=x^2+y^2-1\) and \(c(x,y)=x^2+(y-1)^2-1\), how can we find the points \((x,y)\) at which both \(b(x,y)=0\) and \(c(x,y)=0\)? 
+\begin{center}
+\inputinexample{degenerate-resultant-0}
+\end{center}
+Think of \(b(x,y)\) and \(c(x,y)\) as polynomials in \(x\), with coefficients rational functions of \(y\).
+Then the resultant \(r(y)\) of \(b(x,y),c(x,y)\) is a rational function of \(y\).
+Compute it: \(r(y)=(2y-1)^2\) vanishes at \(y=1/2\).
+So there is a common factor there:
+\[
+b(x,1/2)=c(x,1/2)=\pr{x-\frac{\sqrt{3}}{2}}\pr{x+\frac{\sqrt{3}}{2}}.
+\]
+The common factor came from two common roots.
+\end{example}
 
 In chapter~\ref{chapter:resultants}, we saw that for any two polynomials split into linear factors
 \begin{align*}
@@ -672,12 +641,12 @@ the resultant is
 \begin{align*}
 \resultant{b}{c} 
 =
-\pr{\beta_1-\gamma_1}\pr{\beta_1-\gamma_2}\dots\pr{\beta_m-\gamma_n}.
+\pr{\gamma_1-\beta_1}\pr{\gamma_1-\beta_2}\dots\pr{\gamma_n-\beta_m}.
 \end{align*}
-So the resultant is homogeneous of degree \(m+n\) in the variables \(\beta_i, \gamma_j\).
-The resultant is clearly invariant under any permutation of the roots of \(b(x)\), and also under any permutation of the roots of \(c(x)\).
+So the resultant is homogeneous of degree \(mn\) in the variables \(\beta_i, \gamma_j\).
+The resultant is invariant under any permutation of the roots of \(b(x)\), and also under any permutation of the roots of \(c(x)\).
 Indeed the resultant is by definition expressed in terms of the coefficients of \(b(x)\) and \(c(x)\), not the roots.
-The coefficients are homogeneous polynomials in the roots, elementary symmetric functions.
+The coefficients are homogeneous polynomials in the roots, elementary symmetric polynomials.
 Expanding out the coefficients
 \begin{align*}
 b(x) &= x^m + b_{m-1} x^{m-1} + \dots + b_0, \\
@@ -690,18 +659,19 @@ we see that \(b_j\) has degree \(m-j\) in the roots.
 
 Suppose now that we just take any polynomial \(b(x)\) of degree \(m\) with coefficients being abstract variables \(b_j\). 
 We will now invent a different concept of \emph{weight}.
-It seems natural to assign each coefficient \(b_j\) the \emph{weight}\define{weight} \(m-j\), and then define the \emph{weight} of a monomial in the \(b_j\) to be  the sum of weights of its factors.
-If \(b(x)\) splits, the weight of a polynomial in the coefficients of \(b(x)\) is precisely its degree as a polynomial in the roots of \(b(x)\).
-In particular, the weight of the resultant is \(mn\), when \(b_i\) receives weight \(m-i\) and \(c_j\) receives weight \(n-j\).
-For example, from our examples we computed, we can see that there is a term \(b_0^n=b_{m-m}^n c_{n-0}^0\), and by symmetry there is a term \((-1)^{mn} c_0^m = (-1)^{mn} b_{m-m}^0 c_{n-n}^m\), also of weight \(mn\).
-
+Assign each coefficient \(b_j\) the \emph{weight}\define{weight} \(m-j\) and then define the \emph{weight} of a monomial in the \(b_j\) to be  the sum of weights of its factors.
+\begin{lemma}
+With this notion of weight, every term in the resultant has weight \(mn\).
+\end{lemma}
+\begin{proof}
+By theorem~\vref{theorem:splitting.field}, we can replace our field by some larger field, to arrange that \(b(x)\) and \(c(x)\) split into linear factors, and then the weight of each term in the resultant is clear by expanding the product in terms of roots.
+\end{proof}
 \begin{proposition}\label{proposition:resultant.degree}
-Given any two polynomials \(b(x,y)\) of total degree \(m\) and \(c(x,y)\) of total degree \(m\) over a field, either there are at most \(mn\) values of \(y\) for which there is some point \((x,y)\) which satisfies both \(b(x,y)=0\) and \(c(x,y)=0\), or \(b(x,y)\) and \(c(x,y)\) have a common factor as polynomials in \(x,y\).
+Given any two polynomials \(b(x,y)\) of total degree \(m\) and \(c(x,y)\) of total degree \(n\) over a field, in two variables \(x,y\), either there are at most \(mn\) values of \(y\) for which there is some point \((x,y)\) which satisfies both \(b(x,y)=0\) and \(c(x,y)=0\) (and the resultant in \(x\) vanishes at those values), or \(b(x,y)\) and \(c(x,y)\) have a common factor as polynomials in \(x,y\).
 If the polynomials are homogeneous then either they have a homogeneous common factor, or their resultant is homogeneous nonzero of degree \(mn\).
 \end{proposition}
 \begin{proof}
-Thinking of the polynomials as polynomials in \(x\) with coefficients rational in \(y\), we look at the resultant.
-Expanding out 
+Think of the polynomials as polynomials in \(x\) with coefficients rational in \(y\):
 \[
 b(x,y)=\sum_{j+k \le m} b_{jk} x^k y^j=\sum_j b_j(y) x^j,
 \]
@@ -710,7 +680,7 @@ Therefore the resultant is a polynomial of degree at most \(mn\) in \(y\).
 The resultant vanishes at those values \(y=a\) for which there is a common factor between \(b(x,a)\) and \(c(x,a)\), and in particular if there is a common root it vanishes.
 So there are at most \(mn\) such points or the resultant is everywhere zero.
 If the resultant vanishes everywhere, then \(b(x,y)\) and \(c(x,y)\) have a common factor with coefficients rational functions of \(y\).
-By Gauss's lemmma (proposition~\vref{proposition:Gauss.lemma}) they also have a common factor in polynomials in \(x,y\). 
+By Gauss's lemma (proposition~\vref{proposition:Gauss.lemma}) they also have a common factor in polynomials in \(x,y\). 
 
 For homogeneous polynomials, each term \(b_j(y)\) has degree exactly \(m-j\), so the resultant either vanishes everywhere or has degree exactly \(mn\).
 \end{proof}

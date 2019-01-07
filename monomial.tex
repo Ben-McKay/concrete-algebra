@@ -1,0 +1,38 @@
+\documentclass{amsart}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows,shapes}
+\begin{document}
+\begingroup
+\tikzstyle{every picture}+=[remember picture]
+\tikzstyle{na} = [baseline=-.5ex]
+\tikz[na] \draw node[fill=blue!20] (n1) {coefficient};
+\tikz[na] \draw node[fill=red!20] (n2) {variable};
+\tikz[na] \node[fill=green!20] (n3) {degree};
+
+\medskip
+
+\qquad\qquad\qquad
+\(
+        \tikz[baseline]{
+            \node[inner sep=1pt,fill=blue!20,anchor=base] (t1)
+            {$75$};
+        }
+        \tikz[baseline]{
+            \node[inner sep=1pt,fill=red!20, %ellipse,
+            anchor=base] (t2)
+            {$x$};
+        }
+        \tikz[baseline]{
+            \node[inner sep=0pt,fill=green!20,anchor=base] (t3)
+            {${}^{18}$};
+        }
+\)
+\begin{tikzpicture}[overlay]
+        \path[-stealth] (n1) edge [bend right] (t1);
+        \path[-stealth] (n2) edge (t2);
+        \path[-stealth] (n3) edge [bend left] (t3);
+\end{tikzpicture}
+\endgroup
+\end{document}

@@ -1,0 +1,4146 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2017-2018 by F. Pantigny
+% -----------------------------------
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% \fi
+% \iffalse
+\def\myfileversion{2.1.1}
+\def\myfiledate{2018/09/16}
+%
+%
+%<*batchfile>
+\begingroup
+\input l3docstrip.tex
+\keepsilent
+\usedir{tex/latex/nicematrix}
+\preamble
+
+Copyright (C) 2018 by F. Pantigny
+-----------------------------------
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+\endpreamble
+\askforoverwritefalse
+\endgroup
+%</batchfile>
+%
+%<@@=nm>
+%<*driver>
+\documentclass[dvipsnames]{l3doc}% dvipsnames is for xcolor (loaded by Tikz, loaded by nicematrix)
+\VerbatimFootnotes
+\usepackage{xltxtra}
+\usepackage{geometry}
+\geometry{left=2.8cm,right=2.8cm,top=2.5cm,bottom=2.5cm,papersize={21cm,29.7cm}}
+\usepackage{nicematrix}
+\usetikzlibrary{fit}
+\NewDocumentEnvironment {scope} {} {} {}
+\def\interitem{\vskip 7mm plus 2 mm minus 3mm}          
+\def\emphase{\bgroup\color{RoyalPurple}\let\next=}
+\fvset{commandchars=\~\#\@,formatcom={\color{gray}}}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{6.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{4.5ex plus 1ex minus .2ex}{2ex plus .2ex}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\parindent 0pt
+
+\DisableCrossrefs
+\begin{document}
+\DocInput{nicematrix.dtx}
+\end{document}
+%</driver>
+% \fi 
+% \title{The package \pkg{nicematrix}\thanks{This document corresponds to the version~\myfileversion\space of \pkg{nicematrix},
+% at the date of~\myfiledate.}} \author{F. Pantigny \\ \texttt{fpantigny@wanadoo.fr}}
+%
+%
+% \maketitle
+%
+% \begin{abstract}
+% The LaTeX package \pkg{nicematrix} provides new environments similar to the classical environments |{array}| and
+% |{matrix}| but with some additional features. Among these features are the possibilities to fix the width of the
+% columns and to draw continuous ellipsis dots between the cells of the array.
+% \end{abstract}
+%
+% \vspace{1cm}
+% \section{Presentation}
+%
+%
+% This package can be used with |xelatex|, |lualatex|, |pdflatex| but also by the classical workflow
+% |latex|-|dvips|-|ps2pdf| (or Adobe Distiller). Two or three compilations may be necessary. This package requires
+% and loads the packages \pkg{expl3}, \pkg{l3keys2e}, \pkg{xparse}, \pkg{array}, \pkg{amsmath} and \pkg{tikz}. It
+% also loads the Tikz library \pkg{fit}.
+%
+%
+%
+% \medskip
+% \begin{minipage}{0.6\linewidth}
+% This package provides some new tools to draw mathematical matrices. The main features are the following:
+% 
+% \textbullet\ continuous dotted lines;
+%
+% \textbullet\ a first row and a last column for labels;
+%
+% \textbullet\ a control of the width of the columns.
+% \end{minipage}
+% \hspace{1.4cm}
+% $\vcenter{
+%  \begin{bNiceArrayRC}{CCCC}%
+%                            [code-for-last-col=\color{blue}\scriptstyle,
+%                             code-for-first-row=\color{blue}\scriptstyle,
+%                             columns-width = auto]
+% C_1     & C_2     & \Cdots  & C_n  \\
+% a_{11}  & a_{12}  & \Cdots & a_{1n}  & L_1 \\
+% a_{21}  & a_{22}  & \Cdots & a_{2n}  & L_2 \\
+% \Vdots & \Vdots & \Ddots & \Vdots & \Vdots \\
+% a_{n1}  & a_{n2}  & \Cdots & a_{nn}  & L_n 
+% \end{bNiceArrayRC}
+% }$
+% 
+% \medskip
+% A command |\NiceMatrixOptions| is provided to fix the options (the scope of the options fixed by this command is
+% the current TeX group).
+%
+% 
+% \bigskip
+% \textbf{An example for the continuous dotted lines}
+%
+% \medskip
+% \begin{minipage}{10cm}
+% For example, consider the following code which uses an environment |{pmatrix}| of \pkg{amsmath}.
+%
+% \smallskip
+% \begin{BVerbatim}
+% $A = \begin{pmatrix}
+% 1      & \cdots & \cdots & 1      \\
+% 0      & \ddots &        & \vdots \\
+% \vdots & \ddots & \ddots & \vdots \\
+% 0      & \cdots & 0      & 1
+% \end{pmatrix}$
+% \end{BVerbatim}
+%
+% \smallskip
+% This code composes the matrix $A$ on the right.
+% \end{minipage}\hspace{1cm}
+% $A = \begin{pmatrix}
+% 1      &\cdots &\cdots &1      \\
+% 0      &\ddots &       &\vdots \\
+% \vdots &\ddots &\ddots &\vdots \\
+% 0      &\cdots &0      &1
+% \end{pmatrix}$
+%
+% 
+% \bigskip
+% \begin{scope}
+% \NiceMatrixOptions{transparent}
+% \begin{minipage}{10cm}
+% Now, if we use the package \pkg{nicematrix} with the option |transparent|, the same code will give the 
+% result on the right.
+% \end{minipage}\hspace{1cm}
+% $A = \begin{pmatrix}
+% 1      & \cdots & \cdots & 1      \\
+% 0      & \ddots &        & \vdots \\
+% \vdots & \ddots & \ddots & \vdots \\
+% 0      & \cdots & 0      & 1
+% \end{pmatrix}$
+% \end{scope}
+%
+%
+% \section{The environments of this extension} 
+%
+% The extension \pkg{nicematrix} defines the following new environments.
+% 
+% \medskip
+% \begin{ttfamily}
+% \setlength{\tabcolsep}{3mm}
+% \begin{tabular}{llll}
+% \{NiceMatrix\}  & \{NiceArray\} & \{pNiceArrayC\}          & \{pNiceArrayRC\} \\
+% \{pNiceMatrix\} &               & \{bNiceArrayC\}          & \{bNiceArrayRC\} \\
+% \{bNiceMatrix\} &               & \{BNiceArrayC\}          & \{BNiceArrayRC\} \\
+% \{BNiceMatrix\} &               & \{vNiceArrayC\}          & \{vNiceArrayRC\} \\
+% \{vNiceMatrix\} &               & \{VNiceArrayC\}          & \{VNiceArrayRC\} \\
+% \{VNiceMatrix\} &               & \{NiceArrayCwithDelims\} & \{NiceArrayRCwithDelims\} \\
+% \end{tabular}
+% \end{ttfamily}
+%
+%
+% \medskip
+% By default, the environments |{NiceMatrix}|, |{pNiceMatrix}|, |{bNiceMatrix}|, |{BNiceMatrix}|, |{vNiceMatrix}|
+% and |{VNiceMatrix}| behave almost exactly as the corresponding environments of \pkg{amsmath}:
+% |{matrix}|, |{pmatrix}|, |{bmatrix}|, |{Bmatrix}|, |{vmatrix}| and |{Vmatrix}|.
+% 
+%
+% \medskip
+% The environment |{NiceArray}| is similar to the environment |{array}| of the package |{array}|. However, for
+% technical reasons, in the preamble of the environment |{NiceArray}|, the user must use the letters |L|, |C|
+% and~|R| instead of |l|, |c| and |r|. It's possible to use the constructions \verb|w{...}{...}|,
+% \verb|W{...}{...}|, \verb+|+, |>{...}|, |<{...}|, |@{...}|, |!{...}| and |*{n}{...}| but the letters |p|, |m| and
+% |b| should not be used. See p.~\pageref{NiceArray} the section relating to |{NiceArray}|.
+%
+% \medskip
+% The environments with |C| at the end of their name, |{pNiceArrayC}|, |{bNiceArrayC}|, |{BNiceArrayC}|,
+% |{vNiceArrayC}| and |{VNiceArrayC}| are similar to the environment |{NiceArray}| (especially the special letters
+% |L|, |C| and |R|) but create an exterior column (on the right of the closing delimiter). See
+% p.~\pageref{pNiceArrayC} the section relating to |{pNiceArrayC}|. 
+%
+% \medskip 
+% The environments with |RC|, |{pNiceArrayRC}|, |{bNiceArrayRC}|, |{BNiceArrayRC}|, |{vNiceArrayRC}|,
+% |{VNiceArrayRC}| are similar to the environment |{NiceArray}| but create an exterior row (above the main matrix)
+% and an exterior column. See p.~\pageref{pNiceArrayRC} the section relating to |{pNiceArrayRC}|.
+%
+% 
+% 
+% \section{The continuous dotted lines}
+%
+% Inside the environments of the extension \pkg{nicematrix}, new commands are defined: |\Ldots|, |\Cdots|,
+% |\Vdots|, |\Ddots|, and |\Iddots|. These commands are intended to be used in place of |\dots|, |\cdots|,
+% |\vdots|, |\ddots| and |\iddots|.\footnote{The command |\iddots|, defined in \pkg{nicematrix}, is a variant of
+% |\ddots| with dots going forward: \smash{$\iddots$}. If |mathdots| is loaded, the version of |mathdots| is used.
+% It corresponds to the command |\adots| of \pkg{unicode-math}.}
+%
+% \smallskip
+% Each of them must be used alone in the cell of the array and it draws a dotted line between the first non-empty
+% cells\footnote{The precise definition of a ``non-empty cell'' is given below.} on both sides of the current cell.
+% Of course, for |\Ldots| and |\Cdots|, it's an horizontal line; for |\Vdots|, it's a vertical line and for
+% |\Ddots| and |\Iddots| diagonal ones.\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% a_1      & \Cdots &        & & a_1 \\
+% \Vdots   & a_2    & \Cdots & & a_2 \\
+%          & \Vdots & \Ddots \\
+% \\
+% a_1      & a_2    &        & & a_n \\ 
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% a_1      & \Cdots &        & & a_1 \\
+% \Vdots   & a_2    & \Cdots & & a_2 \\
+%          & \Vdots & \Ddots \\
+% \\
+% a_1      & a_2    &        & & a_n \\ 
+% \end{bNiceMatrix}$
+% 
+% \interitem
+% In order to represent the null matrix, one can use the following codage:\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% 0      & \Cdots & 0      \\
+% \Vdots &        & \Vdots \\
+% 0      & \Cdots & 0 
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% 0      & \Cdots & 0      \\
+% \Vdots &        & \Vdots \\
+% 0      & \Cdots & 0 
+% \end{bNiceMatrix}$
+%
+% \bigskip
+% However, one may want a larger matrix. Usually, in such a case, the users of LaTeX add a new row and a new
+% column. It's possible to use the same method with \pkg{nicematrix}:\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% 0      & \Cdots & \Cdots & 0      \\
+% \Vdots &        &        & \Vdots \\
+% \Vdots &        &        & \Vdots \\
+% 0      & \Cdots & \Cdots & 0 
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% 0      & \Cdots & \Cdots & 0      \\
+% \Vdots &        &        & \Vdots \\
+% \Vdots &        &        & \Vdots \\
+% 0      & \Cdots & \Cdots & 0 
+% \end{bNiceMatrix}$
+% 
+% \bigskip
+% In the first column of this exemple, there are two instructions |\Vdots| but only one dotted line is drawn (there
+% is no overlapping graphic objects in the resulting \textsc{pdf}\footnote{And it's not possible to draw a |\Ldots|
+% and a |\Cdots| line between the same cells.}).
+%
+% However, useless computations are performed by TeX before detecting that both instructions would eventually yield
+% the same dotted line. That's why the package \pkg{nicematrix} provides starred versions of |\Ldots|, |\Cdots|,
+% etc.: |\Ldots*|, |\Cdots*|, etc. These versions are simply equivalent to |\hphantom{\ldots}|,
+% |\hphantom{\cdots}|, etc. The user should use these starred versions whenever a classical version has already
+% been used for the same dotted line.\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% 0       & \Cdots & ~emphase#\Cdots*@ & 0       \\
+% \Vdots  &        &         & \Vdots  \\
+% ~emphase#\Vdots*@ &        &         & ~emphase#\Vdots*@ \\
+% 0       & \Cdots & ~emphase#\Cdots*@ & 0 
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% 0       & \Cdots &        & 0      \\
+% \Vdots  &        &        &        \\
+%         &        &        & \Vdots \\
+% 0       &        & \Cdots & 0 
+% \end{bNiceMatrix}$
+%
+% \bigskip
+% In fact, in this example, it would be possible to draw the same matrix without starred commands with the
+% following code:\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% 0       & \Cdots &        & 0      \\
+% \Vdots  &        &        &        \\
+%         &        &        & \Vdots \\
+% 0       &        & \Cdots & 0 
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% 0       & \Cdots &        & 0      \\
+% \Vdots  &        &        &        \\
+%         &        &        & \Vdots \\
+% 0       &        & \Cdots & 0 
+% \end{bNiceMatrix}$
+%
+% \bigskip
+% There are also other means to change the size of the matrix. Someone might want to use the optional argument of
+% the command~|\\| for the vertical dimension and a command~|\hspace*| in a cell for the horizontal
+% dimension.\footnote{Nevertheless, the best way to fix the width of a column is to use the environment
+% |{NiceArray}| with a column of type~|w| (or |W|).}
+% 
+% However, a command~|\hspace*| might interfer with the construction of the dotted lines. That's why the package
+% \pkg{nicematrix} provides a command~|\Hspace| which is a variant of |\hspace| transparent for the dotted lines of
+% \pkg{nicematrix}.\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% \begin{bNiceMatrix}
+% 0      & \Cdots & ~emphase#\Hspace*{1cm}@ & 0      \\
+% \Vdots &        &               & \Vdots \\~emphase#[1cm]@
+% 0      & \Cdots &               & 0    
+% \end{bNiceMatrix}
+% \end{BVerbatim}
+% $\begin{bNiceMatrix}
+% 0      & \Cdots & \Hspace*{1cm} & 0      \\
+% \Vdots &        &               & \Vdots \\[1cm]
+% 0      & \Cdots &               & 0    
+% \end{bNiceMatrix}$
+% 
+% \subsection{The option nullify-dots}
+%
+% Consider the following matrix composed classicaly with the environment |{pmatrix}|.\par\nobreak
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8cm]
+% $A = \begin{pmatrix}
+% a_0 & b \\
+% a_1 &   \\
+% a_2 &   \\
+% a_3 &   \\
+% a_4 &   \\
+% a_5 & b
+% \end{pmatrix}$
+% \end{BVerbatim}
+% $A = \begin{pmatrix}
+% a_0 & b \\
+% a_1 &   \\
+% a_2 &   \\
+% a_3 &   \\
+% a_4 &   \\
+% a_5 & b
+% \end{pmatrix}$
+%
+%
+% \bigskip
+% If we add |\vdots| instructions in the second column, the geometry of the matrix is modified.\par\nobreak
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8cm]
+% $B = \begin{pmatrix}
+% a_0 & b      \\
+% a_1 & \vdots \\
+% a_2 & \vdots \\
+% a_3 & \vdots \\
+% a_4 & \vdots \\
+% a_5 & b
+% \end{pmatrix}$
+% \end{BVerbatim}
+% $B = \begin{pmatrix}
+% a_0 & b      \\
+% a_1 & \vdots \\
+% a_2 & \vdots \\
+% a_3 & \vdots \\
+% a_4 & \vdots \\
+% a_5 & b
+% \end{pmatrix}$
+%
+% \bigskip
+% By default, with \pkg{nicematrix}, if we replace |{pmatrix}| by |{pNiceMatrix}| and |\vdots| by
+% |\Vdots| (or |\Vdots*| for efficiency), the geometry of the matrix is not changed.\par\nobreak
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8cm]
+% $C = \begin{pNiceMatrix}
+% a_0 & b       \\
+% a_1 & \Vdots  \\
+% a_2 & \Vdots* \\
+% a_3 & \Vdots* \\
+% a_4 & \Vdots* \\
+% a_5 & b
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $C = \begin{pNiceMatrix}
+% a_0 & b       \\
+% a_1 & \Vdots  \\
+% a_2 & \Vdots* \\
+% a_3 & \Vdots* \\
+% a_4 & \Vdots* \\
+% a_5 & b
+% \end{pNiceMatrix}$
+%
+% \bigskip
+% However, one may prefer the geometry of the first matrix $A$ and would like to have such a geometry with a dotted
+% line in the second column. It's possible by using the option |nullify-dots| (and only one instruction |\Vdots| is
+% necessary).\par\nobreak
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8cm]
+% $D = \begin{pNiceMatrix}[~emphase#nullify-dots@]
+% a_0 & b      \\
+% a_1 & \Vdots \\
+% a_2 &        \\
+% a_3 &        \\
+% a_4 &        \\
+% a_5 & b
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $D = \begin{pNiceMatrix}[nullify-dots]
+% a_0 & b      \\
+% a_1 & \Vdots \\
+% a_2 &        \\
+% a_3 &        \\
+% a_4 &        \\
+% a_5 & b
+% \end{pNiceMatrix}$
+%
+% \medskip
+% The option |nullify-dots| smashes the instructions |\Ldots| (and the variants) vertically but also horizontally.
+%
+%
+% \subsection{The command Hdotsfor}
+%
+% Some people commonly use the command |\hdotsfor| of \pkg{amsmath} in order to draw horizontal dotted lines in a
+% matrix. In the environments of \pkg{nicematrix}, one should use instead |\Hdotsfor| in order to draw dotted lines similar
+% to the other dotted lines drawn by the package \pkg{nicematrix}.
+%
+% As with the other commands of \pkg{nicematrix} (like |\Cdots|, |\Ldots|, |\Vdots|, etc.), the dotted line drawn
+% with |\Hdotsfor| extends until the contents of the cells on both sides.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=7cm]
+% $\begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & ~emphase#\Hdotsfor{3}@ & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & \Hdotsfor{3} & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% \end{pNiceMatrix}$
+%
+% \bigskip
+% However, if these cells are empty, the dotted line extends only in the cells specified by the argument of
+% |\Hdotsfor| (by design).
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=7cm]
+% $\begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 & 5 \\
+%   & ~emphase#\Hdotsfor{3}@ \\
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 & 5 \\
+%   & \Hdotsfor{3} \\
+% 1 & 2 & 3 & 4 & 5 \\
+% 1 & 2 & 3 & 4 & 5 \\
+% \end{pNiceMatrix}$
+%
+% \bigskip
+% The command |\hdotsfor| of \pkg{amsmath} takes an optional argument (between square brackets) which is 
+% used for fine tuning of the space beetween two consecutive dots. For homogeneity, |\Hdotsfor| has
+% also an optional argument but this argument is discarded silently.
+% 
+% \subsection{How to generate the continuous dotted lines transparently}
+%
+% The package \pkg{nicematrix} provides an option called |transparent| for using existing code transparently in the
+% environments |{matrix}|. This option can be set as option of |\usepackage| or with the command
+% |\NiceMatrixOptions|.
+% 
+%
+% In fact, this option is an alias for the conjonction of two options: |renew-dots| and |renew-matrix|.
+%
+% \smallskip
+%
+% \begin{itemize}
+% \item The option |renew-dots|\par\nobreak
+% With this option, the commands |\ldots|, |\cdots|, |\vdots|, |\ddots|, |\iddots|\footnote{The command
+% |\iddots| is not a command of LaTeX but is defined by the package \pkg{nicematrix}. If |mathdots| is loaded, the
+% version of |mathdots| is used.} and |\hdotsfor| are redefined within the environments provided by \pkg{nicematrix} 
+% and behave like |\Ldots|, |\Cdots|, |\Vdots|, |\Ddots|, |\Iddots| and |\Hdotsfor|; the command |\dots| (``automatic
+% dots'' of |amsmath|) is also redefined to behave like |\Ldots|.
+%
+% \item  The option |renew-matrix|\par\nobreak
+% With this option, the environment |{matrix}| is redefined and behave like |{NiceMatrix}|, and so on for the five
+% variants.
+% \end{itemize}
+%
+% \bigskip 
+% Therefore, with the option |transparent|, a classical code gives directly the ouput of \pkg{nicematrix}.\par\nobreak
+% \bigskip
+% \begin{scope}
+% \NiceMatrixOptions{transparent}
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% ~emphase#\NiceMatrixOptions{transparent}@
+% \begin{pmatrix}
+% 1      & \cdots & \cdots & 1      \\
+% 0      & \ddots &        & \vdots \\
+% \vdots & \ddots & \ddots & \vdots \\
+% 0      & \cdots & 0      & 1
+% \end{pmatrix}
+% \end{BVerbatim}
+% $\begin{pmatrix}
+% 1      & \cdots & \cdots & 1      \\
+% 0      & \ddots &        & \vdots \\
+% \vdots & \ddots & \ddots & \vdots \\
+% 0      & \cdots & 0      & 1
+% \end{pmatrix}$
+% \end{scope}
+% 
+% \section{The Tikz nodes created by nicematrix}
+% 
+% The package \pkg{nicematrix} creates a Tikz node for each cell of the considered array. These nodes are used to
+% draw the dotted lines between the cells of the matrix. However, the user may wish to use directly these nodes.
+% It's possible. First, the user have to give a name to the matrix (with a key called |name|). Then, the nodes are
+% accessible through the names ``\textsl{name}-$i$-$j$'' where \textsl{name} is the name given to the matrix and
+% $i$ and $j$ the number of the row and the column of the considered cell.
+% 
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{pNiceMatrix}[name=~emphase#mymatrix@]
+% 1 & 2 & 3 \\
+% 4 & 5 & 6 \\
+% 7 & 8 & 9 \\
+% \end{pNiceMatrix}$
+% \tikz[remember picture,overlay] 
+%      \draw ~emphase#(mymatrix-2-2)@ circle (2mm) ; 
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}[name=mymatrix]
+% 1 & 2 & 3 \\
+% 4 & 5 & 6 \\
+% 7 & 8 & 9 \\
+% \end{pNiceMatrix}$
+% \tikz[remember picture,overlay] 
+%      \draw (mymatrix-2-2) circle (2mm) ; 
+%
+% \medskip
+% Don't forget the options |remember picture| and |overlay|.
+%
+% \bigskip
+% In the following example, we have underlined all the nodes of the matrix.
+% \begin{scope}
+% \tikzset{every node/.style = {fill = red!15, inner sep = 0pt}}
+% \[\begin{pNiceMatrix}
+% a & a + b & a + b + c \\
+% a & a     & a + b  \\
+% a & a     & a 
+% \end{pNiceMatrix}\]
+% \end{scope}
+% 
+%
+% \bigskip
+% In fact, the package \pkg{nicematrix} can create ``extra nodes''. These new nodes are created if the option
+% |create-extra-nodes| is used. There are two series of extra nodes: the ``medium nodes'' and the ``large nodes''.
+%
+% \medskip
+% The names of the ``medium nodes'' are constructed by adding the suffix ``|-medium|'' to the names of the ``normal
+% nodes''. In the following example, we have underlined the ``medium nodes''. We consider that this example is self-explanatory.
+% \[\begin{pNiceMatrix}
+% [create-extra-nodes,
+%  code-after = {\begin{tikzpicture}%
+%                   [every node/.style = {fill = red!15,
+%                                         blend mode = multiply,
+%                                         inner sep = -\pgflinewidth/2},
+%                    name suffix = -medium]
+%                \node [fit = (1-1)] {} ;
+%                \node [fit = (1-2)] {} ;
+%                \node [fit = (1-3)] {} ;
+%                \node [fit = (2-1)] {} ;
+%                \node [fit = (2-2)] {} ;
+%                \node [fit = (2-3)] {} ;
+%                \node [fit = (3-1)] {} ;
+%                \node [fit = (3-2)] {} ;
+%                \node [fit = (3-3)] {} ;
+%                \end{tikzpicture}}]
+% a & a + b & a + b + c \\
+% a & a     & a + b  \\
+% a & a     & a 
+% \end{pNiceMatrix}\]
+% 
+%
+% \medskip
+% The names of the ``large nodes'' are constructed by adding the suffix ``|-large|'' to the names of the ``normal
+% nodes''. In the following example, we have underlined the ``large nodes''. We consider that this example is
+% self-explanatory.\footnote{In the environments like |{pNiceArrayC}| and |{pNiceArrayRC}|, there is not ``large
+% nodes'' created in the exterior row and column.}
+%
+% \[\begin{pNiceMatrix}
+% [create-extra-nodes,
+%  code-after = {\begin{tikzpicture}%
+%                   [every node/.style = {blend mode = multiply,
+%                                         inner sep = -\pgflinewidth/2},
+%                    name suffix = -large]
+%                \node [fit = (1-1),fill = red!15] {} ;
+%                \node [fit = (1-3),fill = red!15] {} ;
+%                \node [fit = (2-2),fill = red!15] {} ;
+%                \node [fit = (3-1),fill = red!15] {} ;
+%                \node [fit = (3-3),fill = red!15] {} ;
+%                \node [fit = (1-2),fill = blue!15] {} ;
+%                \node [fit = (2-1),fill = blue!15] {} ;
+%                \node [fit = (2-3),fill = blue!15] {} ;
+%                \node [fit = (3-2),fill = blue!15] {} ;
+%                \end{tikzpicture}}]
+% a & a + b & a + b + c \\
+% a & a     & a + b  \\
+% a & a     & a 
+% \end{pNiceMatrix}\]
+% 
+%
+% \medskip
+% The ``large nodes'' of the first column and last column may appear too small for some usage. That's why it's
+% possible to use the options |left-margin| and |right-margin| to add space on both sides of the array and also
+% space in the ``large nodes'' of the first column and last column. In the following example, we have used the
+% options |left-margin| and |right-margin|.\footnote{The options |left-margin| and |right-margin| take dimensions
+% as values but, if no value is given, the default value is used, which is |\arraycolsep|.}
+% \[\begin{pNiceMatrix}
+% [create-extra-nodes,left-margin,right-margin,
+%  code-after = {\begin{tikzpicture}%
+%                   [every node/.style = {blend mode = multiply,
+%                                         inner sep = -\pgflinewidth/2},
+%                    name suffix = -large]
+%                \node [fit = (1-1),fill = red!15] {} ;
+%                \node [fit = (1-3),fill = red!15] {} ;
+%                \node [fit = (2-2),fill = red!15] {} ;
+%                \node [fit = (3-1),fill = red!15] {} ;
+%                \node [fit = (3-3),fill = red!15] {} ;
+%                \node [fit = (1-2),fill = blue!15] {} ;
+%                \node [fit = (2-1),fill = blue!15] {} ;
+%                \node [fit = (2-3),fill = blue!15] {} ;
+%                \node [fit = (3-2),fill = blue!15] {} ;
+%                \end{tikzpicture}}]
+% a & a + b & a + b + c \\
+% a & a     & a + b  \\
+% a & a     & a 
+% \end{pNiceMatrix}\]
+% 
+% \medskip
+% It's also possible to add more space on both side of the array with the options |extra-left-margin| and
+% |extra-right-margin|. These margins are not incorporated in the ``large nodes''. In the following example, we
+% have used |extra-left-margin| and |extra-right-margin| with the value $3$~pt.
+% \[\begin{pNiceMatrix}
+% [create-extra-nodes,left-margin,right-margin,extra-right-margin=3pt,extra-left-margin=3pt,
+%  code-after = {\begin{tikzpicture}%
+%                   [every node/.style = {blend mode = multiply,
+%                                         inner sep = -\pgflinewidth/2},
+%                    name suffix = -large]
+%                \node [fit = (1-1),fill = red!15] {} ;
+%                \node [fit = (1-3),fill = red!15] {} ;
+%                \node [fit = (2-2),fill = red!15] {} ;
+%                \node [fit = (3-1),fill = red!15] {} ;
+%                \node [fit = (3-3),fill = red!15] {} ;
+%                \node [fit = (1-2),fill = blue!15] {} ;
+%                \node [fit = (2-1),fill = blue!15] {} ;
+%                \node [fit = (2-3),fill = blue!15] {} ;
+%                \node [fit = (3-2),fill = blue!15] {} ;
+%                \end{tikzpicture}}]
+% a & a + b & a + b + c \\
+% a & a     & a + b  \\
+% a & a     & a 
+% \end{pNiceMatrix}\]
+%
+% \medskip
+% In this case, if we want a control over the height of the rows, we can add a |\strut| in each row of the array.
+% \[\begin{pNiceMatrix}
+% [create-extra-nodes,left-margin,right-margin,extra-right-margin=3pt,extra-left-margin=3pt,
+%  code-after = {\begin{tikzpicture}%
+%                   [every node/.style = {blend mode = multiply,
+%                                         inner sep = -\pgflinewidth/2},
+%                    name suffix = -large]
+%                \node [fit = (1-1),fill = red!15] {} ;
+%                \node [fit = (1-3),fill = red!15] {} ;
+%                \node [fit = (2-2),fill = red!15] {} ;
+%                \node [fit = (3-1),fill = red!15] {} ;
+%                \node [fit = (3-3),fill = red!15] {} ;
+%                \node [fit = (1-2),fill = blue!15] {} ;
+%                \node [fit = (2-1),fill = blue!15] {} ;
+%                \node [fit = (2-3),fill = blue!15] {} ;
+%                \node [fit = (3-2),fill = blue!15] {} ;
+%                \end{tikzpicture}}]
+% \strut a & a + b & a + b + c \\
+% \strut a & a     & a + b  \\
+% \strut a & a     & a 
+% \end{pNiceMatrix}\]
+%
+% \bigskip
+% We explain below how to fill the nodes created by \pkg{nicematrix}.
+%
+% \section{The code-after}
+%
+% The option |code-after| may be used to give some code that will be excuted after the construction of the matrix
+% (and, hence, after the construction of all the Tikz nodes).
+%
+% In the |code-after|, the Tikz nodes should be accessed by a name of the form $i$-$j$ (without the prefix of the
+% name of the environment).
+%
+% Moreover, a special command, called |\line| is available to draw directly dotted lines between nodes.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=12cm]
+% $\begin{pNiceMatrix}[~emphase#code-after = {\line {1-1} {3-3}}@]
+% 0 & 0 & 0 \\
+% 0 &   & 0 \\
+% 0 & 0 & 0 \\
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}[code-after = {\line {1-1} {3-3}}]
+% 0 & 0 & 0 \\
+% 0 &   & 0 \\
+% 0 & 0 & 0 \\
+% \end{pNiceMatrix}$
+%
+% 
+% \section{The environment \{NiceArray\}}
+% \label{NiceArray}
+%
+% The environment |{NiceArray}| is similar to the environment |{array}|. As for |{array}|, the mandatory argument
+% is the preamble of the array. However, for technical reasons, in this preamble, the user must use the letters
+% |L|, |C| and~|R|\footnote{The column types |L|, |C| and |R| are defined locally inside |{NiceArray}| with
+% |\newcolumntype| of \pkg{array}. This definition overrides an eventual previous definition.} instead of |l|, |c|
+% and |r|. It's possible to use the constructions \verb|w{...}{...}|, \verb|W{...}{...}|, \verb+|+, |>{...}|,
+% |<{...}|, |@{...}|, |!{...}| and |*{n}{...}| but the letters |p|, |m| and |b| should not be used.\footnote{In a
+% command |\multicolumn|, one should also use the letters |L|, |C|, |R|.}
+%
+% \medskip
+% The environment |{NiceArray}| accepts the classical options |t|, |c| and |b| of |{array}| but also other options
+% defined by \pkg{nicematrix} (|renew-dots|, |columns-width|, etc.).
+%
+% 
+% \vspace{1cm}
+% An example with a linear system (we need |{NiceArray}| for the vertical rule):
+%
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% $\left[\begin{NiceArray}{CCCC|C}
+% a_1    & ?      & \Cdots & ?       & ?     \\
+% 0      &        & \Ddots & \Vdots  & \Vdots\\
+% \Vdots & \Ddots & \Ddots & ? \\ 
+% 0      & \Cdots & 0      & a_n     & ?     \\
+% \end{NiceArray}\right]$
+% \end{BVerbatim}
+% $\left[\begin{NiceArray}{CCCC|C}
+% a_1    & ?      & \Cdots & ?       & ?     \\
+% 0      &        & \Ddots & \Vdots  & \Vdots\\
+% \Vdots & \Ddots & \Ddots & ? \\ 
+% 0      & \Cdots & 0      & a_n     & ?     \\
+% \end{NiceArray}\right]$
+%
+% \vspace{1cm}
+% An example where we use |{NiceArray}| because we want to use the types |L| and |R| for the columns:
+%
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% $\left(\begin{NiceArray}{LCR}
+% a_{11}    & \Cdots & a_{1n} \\
+% a_{21}    &        & a_{2n} \\
+% \Vdots    &        & \Vdots \\
+% a_{n-1,1} & \Cdots & a_{n-1,n} \\
+% \end{NiceArray}\right)$
+% \end{BVerbatim}
+% $\left(\begin{NiceArray}{LCR}
+% a_{11}    & \Cdots & a_{1n} \\
+% a_{21}    &        & a_{2n} \\
+% \Vdots    &        & \Vdots \\
+% a_{n-1,1} & \Cdots & a_{n-1,n} \\
+% \end{NiceArray}\right)$
+%
+%
+%
+%
+% \section{The environment \{pNiceArrayC\} and its variants}
+% \label{pNiceArrayC}
+%
+% The environment |{pNiceArrayC}| composes a matrix with an exterior column.
+%
+% The environment |{pNiceArrayC}| takes a mandatory argument which is the preamble of the array. The types
+% of columns available are the same as for the environment |{NiceArray}|. \textbf{However, no specification must be
+% given for the last column.} It will automatically (and necessarily) be a |L|~column. 
+% 
+% A special option, called |code-for-last-col|, specifies tokens that will be inserted before each cell of the last
+% column. The option |columns-width| doesn't apply to this external column.
+% 
+% \bigskip
+%
+% \begin{Verbatim}
+% $\begin{pNiceArrayC}{*6C|C}[nullify-dots,~emphase#code-for-last-col={\scriptstyle}@]
+% 1      & 1 & 1 &\Cdots &   & 1      & 0      & \\
+% 0      & 1 & 0 &\Cdots &   & 0      &        & L_2 \gets L_2-L_1 \\
+% 0      & 0 & 1 &\Ddots &   & \Vdots &        & L_3 \gets L_3-L_1 \\
+%        &   &   &\Ddots &   &        & \Vdots & \Vdots \\
+% \Vdots &   &   &\Ddots &   & 0      & \\
+% 0      &   &   &\Cdots & 0 & 1      & 0      & L_n \gets L_n-L_1 
+% \end{pNiceArrayC}$
+% \end{Verbatim}
+% 
+% \[\begin{pNiceArrayC}{*6C|C}[nullify-dots,code-for-last-col={\scriptstyle}]
+% 1      & 1 & 1 &\Cdots &   & 1      & 0      & \\
+% 0      & 1 & 0 &\Cdots &   & 0      &        & L_2 \gets L_2-L_1 \\
+% 0      & 0 & 1 &\Ddots &   & \Vdots &        & L_3 \gets L_3-L_1 \\
+%        &   &   &\Ddots &   &        & \Vdots & \Vdots \\
+% \Vdots &   &   &\Ddots &   & 0      & \\
+% 0      &   &   &\Cdots & 0 & 1      & 0      & L_n \gets L_n-L_1 
+% \end{pNiceArrayC}\]
+% 
+%
+% \bigskip
+% In fact, the environment |{pNiceArrayC}| and its variants are based upon an more general environment, called
+% |{NiceArrayCwithDelims}|. The first two mandatory arguments of this environment are the left and right delimiters
+% used in the construction of the matrix. It's possible to use |{NiceArrayCwithDelims}| if we want to use atypical
+% delimiters.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{NiceArrayCwithDelims}%
+%    {\downarrow}{\downarrow}{CCC}
+% 1 & 2 & 3 & L_1 \\
+% 4 & 5 & 6 & L_2 \\
+% 7 & 8 & 9 & L_3
+% \end{NiceArrayCwithDelims}$
+% \end{BVerbatim}
+% $\begin{NiceArrayCwithDelims}%
+%    {\downarrow}{\downarrow}{CCC}
+% 1 & 2 & 3 & L_1 \\
+% 4 & 5 & 6 & L_2 \\
+% 7 & 8 & 9 & L_3
+% \end{NiceArrayCwithDelims}$
+%
+%
+% \section{The environment \{pNiceArrayRC\} and its variants} 
+% \label{pNiceArrayRC}
+%
+% The environment |{pNiceArrayRC}| composes a matrix with an exterior row and an exterior column.
+%
+% This environment |{pNiceArrayRC}| takes a mandatory argument which is the preamble of the array. As for the
+% environment |{pNiceArrayC}|, no specification must be given for the last column (it will automatically be a |L|
+% column). 
+%
+% A special option, called |code-for-first-row|, specifies tokens that will be inserted before each cell of the
+% first row.
+%
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{pNiceArrayRC}{CCC}%
+%   [columns-width = auto,
+%    code-for-first-row = \color{blue},
+%    code-for-last-col  = \color{blue}]
+% C_1 & C_2 & C_3 \\
+% 1 & 2 & 3 & L_1\\
+% 4 & 5 & 6 & L_2\\
+% 7 & 8 & 9 & L_3\\
+% \end{pNiceArrayRC}$
+% \end{BVerbatim}
+% $\begin{pNiceArrayRC}{CCC}[columns-width=auto,
+%                            code-for-first-row = \color{blue},
+%                            code-for-last-col  = \color{blue}]
+% C_1 & C_2 & C_3 \\
+% 1 & 2 & 3 & L_1 \\
+% 4 & 5 & 6 & L_2 \\
+% 7 & 8 & 9 & L_3 \\
+% \end{pNiceArrayRC}$
+%
+%
+% \bigskip
+% The first row of an environment |{pNiceArrayRC}| has the number $0$, and not $1$. This number is used for the
+% names of the Tikz nodes (the names of these nodes are used, for example, by the command |\line| in |code-after|).
+%
+% For technical reasons, it's not possible to use the option of the command |\\| after the first row (the placement
+% of the delimiters would be wrong).
+%
+% \bigskip
+% In fact, the environment |{pNiceArrayRC}| and its variants are based upon an more general environment, called
+% |{NiceArrayRCwithDelims}|. The first two mandatory arguments of this environment are the left and right delimiters
+% used in the construction of the matrix. It's possible to use |{NiceArrayRCwithDelims}| if we want to use atypical
+% delimiters.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{NiceArrayRCwithDelims}%
+%    {\downarrow}{\downarrow}{CCC}[columns-width=auto]
+% C_1 & C_2 & C_3 \\
+% 1 & 2 & 3 \\
+% 4 & 5 & 6 \\
+% 7 & 8 & 9 
+% \end{NiceArrayRCwithDelims}$
+% \end{BVerbatim}
+% $\begin{NiceArrayRCwithDelims}%
+%    {\downarrow}{\downarrow}{CCC}[columns-width=auto]
+% C_1 & C_2 & C_3 \\
+% 1 & 2 & 3 \\
+% 4 & 5 & 6 \\
+% 7 & 8 & 9 
+% \end{NiceArrayRCwithDelims}$
+%
+%
+% \bigskip
+% If we want to write a linear system, we can use the following code, with a preamble \verb+CCC|C+:
+%
+% \medskip 
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{pNiceArrayRC}{~emphase#CCC|C@}
+% C_1 & \Cdots & C_n \\
+% a_{11} & \Cdots & a_{1n} & b_1 \\
+% \Vdots &      & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & b_n \\
+% \end{pNiceArrayRC}$
+% \end{BVerbatim}
+% $\begin{pNiceArrayRC}{CCC|C}
+% C_1 & \Cdots & C_n \\
+% a_{11} & \Cdots & a_{1n} & b_1 \\
+% \Vdots &      & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & b_n \\
+% \end{pNiceArrayRC}$
+% 
+% \medskip
+% The resultat may seem disappointing. It's possible to suppress the vertical rule in the first row with the
+% command |\multicolumn| in order to ``reconstruct'' the cell.
+% 
+%
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{pNiceArrayRC}{CCC|C}
+% C_1 & \Cdots & ~emphase#\multicolumn{1}{C}{C_n}@ \\
+% a_{11} & \Cdots & a_{1n} & b_1 \\
+% \Vdots &      & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & b_n \\
+% \end{pNiceArrayRC}$
+% \end{BVerbatim}
+% $\begin{pNiceArrayRC}{CCC|C}
+% C_1 & \Cdots & \multicolumn{1}{C}{C_n} \\
+% a_{11} & \Cdots & a_{1n} & b_1 \\
+% \Vdots &      & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & b_n 
+% \end{pNiceArrayRC}$
+%
+% \bigskip
+% On the other side, we may remark that an horizontal line (with |\hline| or |\hdashline| of \pkg{arydshln})
+% doesn't extend in the ``exterior column'' of an environment like |{pNiceArrayC}| or |{pNiceArrayRC}|.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% $\begin{pNiceArrayC}{CCC}
+% a_{11} & \Cdots & a_{1n} & L_1 \\
+% \Vdots &        & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & L_n \\
+% ~emphase#\hdashline@
+% S_1    & \Cdots  & S_n \\
+% \end{pNiceArrayC}$
+% \end{BVerbatim}
+% $\begin{pNiceArrayC}{CCC}
+% a_{11} & \Cdots & a_{1n} & L_1 \\
+% \Vdots &        & \Vdots & \Vdots \\
+% a_{n1} & \Cdots & a_{nn} & L_n \\
+% \hdashline
+% S_1    & \Cdots  & S_n \\
+% \end{pNiceArrayC}$
+% 
+%
+% \section{The width of the columns}
+% \label{width}
+%
+% In the environments with an explicit preamble (like |{NiceArray}|, |{pNiceArrayC}|, |{pNiceArrayRC}|, etc.), it's
+% possible to fix the  width of a given column with the standard letters |w| and |W| of the package \pkg{array}.
+% 
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% $\left(\begin{NiceArray}{~emphase#wc{1cm}@CC}
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{NiceArray}\right)$
+% \end{BVerbatim}
+% $\left(\begin{NiceArray}{wc{1cm}CC}
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{NiceArray}\right)$
+%
+%
+% \bigskip
+% It's also possible to fix the width of all the columns of a matrix directly with the option |columns-width| (in
+% all the environments of \pkg{nicematrix}).
+% 
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% $\begin{pNiceMatrix}[~emphase#columns-width = 1cm@]
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}[columns-width = 1cm]
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{pNiceMatrix}$
+%
+% \medskip
+% Note that the space inserted between two columns (equal to 2 |\arraycolsep|) is not suppressed.
+%
+% \bigskip
+% It's possible to give the value |auto| to the option |columns-width|: all the columns of the array will
+% have a width equal to the widest cell of the array. \textbf{Two or three compilations may be necessary.}\par\nobreak
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=10cm]
+% $\begin{pNiceMatrix}[~emphase#columns-width = auto@]
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}[columns-width = auto]
+% 1  & 12 & -123 \\
+% 12 & 0  & 0    \\
+% 4  & 1  & 2 
+% \end{pNiceMatrix}$
+% 
+% \bigskip
+% It's possible to fix the width of the columns of all the matrices of a current scope with the command
+% |\NiceMatrixOptions|.\par\nobreak 
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8.5cm]
+% ~emphase#\NiceMatrixOptions{columns-width=10mm}@
+% $\begin{pNiceMatrix}
+% a & b \\ c & d \\
+% \end{pNiceMatrix}
+% = 
+% \begin{pNiceMatrix}
+% 1   & 1245 \\ 345 & 2 \\
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% \begin{scope}
+% \NiceMatrixOptions{columns-width=10mm}
+% $\begin{pNiceMatrix}
+% a & b \\
+% c & d \\
+% \end{pNiceMatrix}
+% = 
+% \begin{pNiceMatrix}
+% 1   & 1245 \\
+% 345 & 2 \\
+% \end{pNiceMatrix}$
+% \end{scope}
+% 
+% 
+% \bigskip
+% But it's also possible to fix a zone where all the matrices will have their columns of the same width, equal to
+% the widest cell of all the matrices. This construction uses the environment |{NiceMatrixBlock}| with the option
+% |auto-columns-width|.\footnote{At this time, this is the only usage of the environment |{NiceMatrixBlock}| but
+% it may have other usages in the future.}
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=8.5cm]
+% ~emphase#\begin{NiceMatrixBlock}[auto-columns-width]@
+% $\begin{pNiceMatrix}
+% a & b \\ c & d \\
+% \end{pNiceMatrix}
+% = 
+% \begin{pNiceMatrix}
+% 1   & 1245 \\ 345 & 2 \\
+% \end{pNiceMatrix}$
+% ~emphase#\end{NiceMatrixBlock}@
+% \end{BVerbatim}
+% \begin{NiceMatrixBlock}[auto-columns-width]
+% $\begin{pNiceMatrix}
+% a & b \\ c & d \\
+% \end{pNiceMatrix}
+% = 
+% \begin{pNiceMatrix}
+% 1   & 1245 \\  345 & 2 \\
+% \end{pNiceMatrix}$
+% \end{NiceMatrixBlock}
+%
+%
+% \section{Technical remarks}
+%
+% \subsection{Diagonal lines} 
+%
+% By default, all the diagonal lines\footnote{We speak of the lines created by |\Ddots| and not the lines created
+% by a command |\line| in |code-after|.} of a same array are ``parallelized''. That means that the first diagonal
+% line is drawn and, then, the other lines are drawn parallel to the first one (by rotation around the left-most
+% extremity of the line). That's why the position of the instructions |\Ddots| in the array can have a marked
+% effect on the final result.
+%
+% \medskip
+% In the following examples, the first |\Ddots| instruction is written in color:
+% 
+% \medskip
+% \begin{scope}
+% \begin{minipage}{9.5cm}
+% Example with parallelization (default):
+% \begin{Verbatim}
+% $A = \begin{pNiceMatrix}
+% 1      & \Cdots &        & 1      \\
+% a+b    & ~emphase#\Ddots@~ &        & \Vdots \\
+% \Vdots & \Ddots &        &        \\
+% a+b    & \Cdots & a+b    & 1
+% \end{pNiceMatrix}$
+% \end{Verbatim}
+% \end{minipage}
+% $A = \begin{pNiceMatrix}
+% 1      & \Cdots &     & 1      \\
+% a+b    & \Ddots &     & \Vdots \\
+% \Vdots & \Ddots &     &        \\
+% a+b    & \Cdots & a+b & 1
+% \end{pNiceMatrix}$
+% 
+% \bigskip
+% \NiceMatrixOptions{parallelize-diags=true}%
+% \begin{minipage}{9.5cm}
+% % \begin{Verbatim}
+% $A = \begin{pNiceMatrix}
+% 1      & \Cdots &        & 1      \\
+% a+b    &        &        & \Vdots \\
+% \Vdots & ~emphase#\Ddots@~ & \Ddots &        \\
+% a+b    & \Cdots & a+b    & 1
+% \end{pNiceMatrix}$
+% \end{Verbatim}
+% \end{minipage}
+% $A = \begin{pNiceMatrix}
+% 1      & \Cdots &        & 1      \\
+% a+b    &        &        & \Vdots \\
+% \Vdots & \Ddots & \Ddots &        \\
+% a+b    & \Cdots & a+b    & 1
+% \end{pNiceMatrix}$
+%
+% \bigskip
+% It's possible to turn off the parallelization with the option |parallelize-diags| set to |false|: \par\nobreak 
+%
+% \medskip
+% \NiceMatrixOptions{parallelize-diags=false}%
+% \begin{minipage}{9.5cm}
+% The same example without parallelization:
+% \end{minipage}
+% $A = \begin{pNiceMatrix}
+% 1      & \Cdots  &     & 1      \\
+% a+b    & \Ddots  &     & \Vdots \\
+% \Vdots & \Ddots  &     &        \\
+% a+b    & \Cdots  & a+b & 1
+% \end{pNiceMatrix}$
+%
+%
+% \end{scope}
+%
+% \subsection{The ``empty'' cells}
+% 
+% An instruction like |\Ldots|, |\Cdots|, etc. tries to determine the first non-empty cells on both sides. However,
+% a empty cell is not necessarily a cell with no TeX content (that is to say a cell with no token between the two
+% ampersands~|&|). Indeed, a cell with contents |\hspace*{1cm}| may be considered as empty.
+%
+% \interitem
+% For \pkg{nicematrix}, the precise rules are as follow.
+%
+% \begin{itemize}
+% \item An implicit cell is empty. For example, in the following matrix:
+%
+% \begin{Verbatim}
+% \begin{pmatrix}
+% a & b \\
+% c \\
+% \end{pmatrix}
+% \end{Verbatim}
+% 
+% the last cell (second row and second column) is empty.
+%
+% \medskip
+% \item Each cell whose TeX ouput has a width less than 0.5~pt is empty.
+%
+% \medskip
+% \item A cell which contains a command |\Ldots|, |\Cdots|, |\Vdots|, |\Ddots| or |\Iddots| and their starred
+% versions is empty. We recall that these commands should be used alone in a cell.
+%
+% \medskip
+% \item A cell with a command |\Hspace| (or |\Hspace*|) is empty. This command |\Hspace| is a command defined by
+% the package \pkg{nicematrix} with the same meaning as |\hspace| except that the cell where it is used is
+% considered as empty. This command can be used to fix the width of some columns of the matrix without interfering
+% with \pkg{nicematrix}.
+% % \end{itemize}
+%
+%
+% \subsection{The option exterior-arraycolsep}
+% 
+% The environment |{array}| inserts an horizontal space equal to |\arraycolsep| before and after each column. In
+% particular, there is a space equal to |\arraycolsep| before and after the array. This feature of the environment
+% |{array}| was probably not a good idea.\footnote{In the documentation of |{amsmath}|, we can read: {\itshape The
+% extra space of |\arraycolsep| that \pkg{array} adds on each side is a waste so we remove it [in |{matrix}|]
+% (perhaps we should instead remove it from array in general, but that's a harder task).} It's possible to suppress
+% these spaces for a given environment |{array}| with a construction like |\begin{array}{@{}ccccc@{}}|.}
+%
+% The environment |{matrix}| and its variants (|{pmatrix}|, |{vmatrix}|, etc.) of \pkg{amsmath} prefer to delete
+% these spaces with explicit instructions |\hskip -\arraycolsep| and |{NiceArray}| does likewise.
+%
+% However, the user can change this behaviour with the boolean option |exterior-arraycolsep| of the command
+% |\NiceMatrixOptions|. With this option, |{NiceArray}| will insert the same horizontal spaces as the environment
+% |{array}|. 
+%
+% This option is also for ``compatibility'' since the package \pkg{nicematrix} provides a more precise control with
+% the options |left-margin|, |right-margin|, |extra-left-margin| and |extra-right-margin|.
+%
+%
+% \subsection{A technical problem with the argument of \textbackslash\textbackslash}
+%
+% For technical, reasons, if you use the optional argument of the command |\\|, the vertical space added will also
+% be added to the ``normal'' node corresponding at the previous node.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+%      \begin{pNiceMatrix}
+%      a & \frac AB \\~emphase#[2mm]@
+%      b & c
+%      \end{pNiceMatrix}
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+%   [code-after = {\tikz \node [inner sep = 0pt,
+%                               fill = red!15,
+%                               blend mode = multiply,
+%                               fit = (1-2) ] {} ; } ]
+% a & \frac AB \\[2mm]
+% b & c
+% \end{pNiceMatrix}$
+%
+% \bigskip
+% There are two solutions to solve this problem. The first solution is to use a TeX command to insert space between
+% the rows.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+%      \begin{pNiceMatrix}
+%      a & \frac AB \\
+%      ~emphase#\noalign{\kern2mm}@
+%      b & c
+%      \end{pNiceMatrix}
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+%   [code-after = {\tikz \node [inner sep = 0pt,
+%                               fill = red!15,
+%                               blend mode = multiply,
+%                               fit = (1-2) ] {} ; } ]
+% a & \frac AB \\
+% \noalign{\kern2mm}
+% b & c
+% \end{pNiceMatrix}$
+%
+%
+% \bigskip
+% The other solution is to use the command |\multicolumn| in the previous cell.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+%      \begin{pNiceMatrix}
+%      a & ~emphase#\multicolumn1C{\frac AB}@ \\[2mm]
+%      b & c
+%      \end{pNiceMatrix}
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+%   [code-after = {\tikz \node [inner sep = 0pt,
+%                               fill = red!15,
+%                               blend mode = multiply,
+%                               fit = (1-2) ] {} ; } ]
+% a & \multicolumn1C{\frac AB} \\[2mm]
+% b & c
+% \end{pNiceMatrix}$
+%
+%
+% \subsection{A remark concerning a bug of Tikz}
+%
+% Due to a bug in Tikz, the construction |-- cycle| in a Tikz path is incompatible with the use of |name prefix|
+% and |name suffix|.\footnote{cf. |tex.stackexchange.com/questions/327007/tikz-fill-not-being-drawn-using-named-coordinates|}
+%
+% \bigskip
+% Since |name prefix| is implicitly used in the |code-after| of \pkg{nicematrix}, it's not
+% possible to use |-- cycle| in |code-after|. 
+%
+%
+% \subsection{Compatibility with dcolumn}
+%
+% If we want to make \pkg{nicematrix} compatible with \pkg{dcolumn}, it's necessary to patch the commands
+% |\DC@endcentre| and |\DC@endright| as follow.
+%
+% \bigskip
+% |\def\DC@endcentre{$\egroup|
+%
+% |\ifdim \wd\z@>\wd\tw@|
+%
+% |\setbox\tw@=\hbox to\wd\z@{\unhbox\tw@\hfill}%|
+%
+% |\else|
+% 
+% |\setbox\z@=\hbox to\wd\tw@{\hfill\unhbox\z@}\fi|
+%
+% |\@@_Cell:\box\z@\box\tw@ \@@_end_Cell:}|
+%
+% \medskip
+% |\def\DC@endright{$\hfil\egroup \@@_Cell:\box\z@\box\tw@ \@@_end_Cell:}|
+%
+%
+%
+% \section{Examples}
+%
+% \subsection{Dotted lines}
+%
+% \medskip
+% A tridiagonal matrix:
+% 
+% \bigskip
+% \begin{BVerbatim}[baseline=c]
+% $\begin{pNiceMatrix}[nullify-dots]
+% a      & b      & 0      &        & \Cdots & 0      \\ 
+% b      & a      & b      & \Ddots &        & \Vdots \\
+% 0      & b      & a      & \Ddots &        &        \\
+%        & \Ddots & \Ddots & \Ddots &        & 0      \\
+% \Vdots &        &        &        &        & b      \\
+% 0      & \Cdots &        & 0      & b      & a
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% \hspace{1.5cm}
+% $\begin{pNiceMatrix}[nullify-dots]
+% a      & b      & 0      &        & \Cdots & 0      \\ 
+% b      & a      & b      & \Ddots &        & \Vdots \\
+% 0      & b      & a      & \Ddots &        &        \\
+%        & \Ddots & \Ddots & \Ddots &        & 0      \\
+% \Vdots &        &        &        &        & b      \\
+% 0      & \Cdots &        & 0      & b      & a
+% \end{pNiceMatrix}$
+%
+% \vspace{2cm}
+%
+% A permutation matrix:
+%
+% \bigskip
+% \begin{BVerbatim}[baseline=c]
+% $\begin{pNiceMatrix}
+% 0       & 1 & 0 &        & \Cdots &   0    \\
+% \Vdots  &   &   & \Ddots &        & \Vdots \\
+%         &   &   & \Ddots &        &        \\
+%         &   &   & \Ddots &        &   0    \\
+% 0       & 0 &   &        &        &   1    \\
+% 1       & 0 &   & \Cdots &        &   0    
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% \hspace{2.5cm}
+% $\begin{pNiceMatrix}
+% 0       & 1 & 0 &        & \Cdots &   0    \\
+% \Vdots  &   &   & \Ddots &        & \Vdots \\
+%         &   &   & \Ddots &        &        \\
+%         &   &   & \Ddots &        &   0    \\
+% 0       & 0 &   &        &        &   1    \\
+% 1       & 0 &   & \Cdots &        &   0    
+% \end{pNiceMatrix}$
+%
+% \vspace{2cm}
+%
+% An example with |\Iddots|: \par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c]
+% $\begin{pNiceMatrix}
+% 1       & \Cdots  &         & 1      \\
+% \Vdots  &         &         & 0      \\
+%         & ~emphase#\Iddots@ & ~emphase#\Iddots@ & \Vdots \\
+% 1       & 0       & \Cdots  & 0 
+% \end{pNiceMatrix}$
+% \end{BVerbatim}
+% \hspace{4cm}
+% $\begin{pNiceMatrix}
+% 1       & \Cdots  &         & 1      \\
+% \Vdots  &         &         & 0      \\
+%         & \Iddots & \Iddots & \Vdots \\
+% 1       & 0       & \Cdots  & 0 
+% \end{pNiceMatrix}$
+%
+%
+% \vspace{2cm}
+% An example with |\multicolumn|:\par\nobreak
+% \bigskip
+% \begin{BVerbatim}
+% \begin{pNiceMatrix}[nullify-dots]
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+% \Cdots &  & ~emphase#\multicolumn{6}{C}{10 \text{ other rows}}@ & \Cdots \\
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10
+% \end{pNiceMatrix}
+% \end{BVerbatim}
+% 
+% \bigskip
+% \[\begin{pNiceMatrix}[nullify-dots]
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+% \Cdots &  & \multicolumn{6}{C}{10 \text{ other rows}} & \Cdots \\
+% 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10
+% \end{pNiceMatrix}\]
+% 
+% \vspace{2cm}
+% An example with |\Hdotsfor|:\par\nobreak
+% \bigskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% \begin{pNiceMatrix}[nullify-dots]
+% 0 & 1 & 1 & 1 & 1 & 0 \\
+% 0 & 1 & 1 & 1 & 1 & 0 \\
+% \Vdots  & ~emphase#\Hdotsfor{4}@ & \Vdots \\
+%  & ~emphase#\Hdotsfor{4}@ & \\
+%  & ~emphase#\Hdotsfor{4}@ & \\
+%  & ~emphase#\Hdotsfor{4}@ & \\
+% 0 & 1 & 1 & 1 & 1 & 0 
+% \end{pNiceMatrix}
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}[nullify-dots]
+% 0 & 1 & 1 & 1 & 1 & 0 \\
+% 0 & 1 & 1 & 1 & 1 & 0 \\
+% \Vdots  & \Hdotsfor{4} & \Vdots \\
+%  & \Hdotsfor{4} & \\
+%  & \Hdotsfor{4} & \\
+%  & \Hdotsfor{4} & \\
+% 0 & 1 & 1 & 1 & 1 & 0 
+% \end{pNiceMatrix}$
+%
+% \vspace{2cm}
+% An example for the resultant of two polynoms (the dashed line has been drawn with \pkg{arydshln}):\par\nobreak
+% \bigskip
+% \begin{BVerbatim}
+% \setlength{\extrarowheight}{1mm}
+% \[\begin{NiceArray}{|CCCC:CCC|}[columns-width=6mm]
+% a_0   &      &&       &b_0    &      &     \\
+% a_1   &\Ddots&&       &b_1    &\Ddots&     \\
+% \Vdots&\Ddots&&       &\Vdots &\Ddots&b_0  \\
+% a_p   &      &&a_0    &       &      &b_1   \\
+%       &\Ddots&&a_1    &b_q    &      &\Vdots\\
+%       &      &&\Vdots &       &\Ddots&      \\
+%       &      &&a_p     &       &      &b_q    \\
+% \end{NiceArray}\]
+% \end{BVerbatim}
+% 
+% \bigskip
+%
+% \begin{scope}
+% \setlength{\extrarowheight}{1mm}
+% \[\begin{NiceArray}{|CCCC:CCC|}[columns-width=6mm]
+% a_0   &      &&       &b_0    &      &     \\
+% a_1   &\Ddots&&       &b_1    &\Ddots&     \\
+% \Vdots&\Ddots&&       &\Vdots &\Ddots&b_0  \\
+% a_p   &      &&a_0    &       &      &b_1   \\
+%       &\Ddots&&a_1    &b_q    &      &\Vdots\\
+%       &      &&\Vdots &       &\Ddots&      \\
+%       &      &&a_p     &       &      &b_q    \\
+% \end{NiceArray}\]
+% \end{scope}   
+%
+%
+% \subsection{Width of the columns}
+%
+% \medskip
+% In the following example, we use |{NiceMatrixBlock}| with the option |auto-columns-width| because
+% we want the same automatic width for all the columns of the matrices.
+%
+% \bigskip
+% \begin{BVerbatim}
+% ~emphase#\begin{NiceMatrixBlock}[auto-columns-width]@
+% \NiceMatrixOptions{code-for-last-col = \color{blue}\scriptstyle}
+% \setlength{\extrarowheight}{1mm}
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 2&4&8&16&9&\\
+% 3&9&27&81&36&\\
+% 4&16&64&256&100&\\
+% \end{pNiceArrayC}$
+% ...
+% ~emphase#\end{NiceMatrixBlock}@
+% \end{BVerbatim}
+% 
+% \bigskip
+% 
+% \begin{multicols}{2}
+% \begin{NiceMatrixBlock}[auto-columns-width]
+% \NiceMatrixOptions{code-for-last-col = \color{blue}\scriptstyle}
+% \setlength{\extrarowheight}{1mm}
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 2&4&8&16&9&\\
+% 3&9&27&81&36&\\
+% 4&16&64&256&100&\\
+% \end{pNiceArrayC}$
+%
+% \medskip
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 0&2&6&14&7&L_2\gets-2L_1+L_2 \\
+% 0&6&24&78&33&L_3\gets-3L_1+L_3 \\
+% 0&12&60&252&96&L_4\gets-4L_1+L_4 \\
+% \end{pNiceArrayC}$
+%
+% \medskip
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 0&1&3&7&\frac72&L_2\gets\frac12L_2\\
+% 0&3&12&39&\frac{33}2&L_3\gets\frac12L_3 \\
+% 0&1&5&21&8&L_4\gets\frac1{12}L_4 \\
+% \end{pNiceArrayC}$
+%
+% \medskip
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 0&1&3&7&\frac72&\\
+% 0&0&3&18&6&L_3 \gets -3L_2+L_3 \\
+% 0&0&-2&-14&-\frac92&L_4 \gets L_2-L_4 \\
+% \end{pNiceArrayC}$
+%
+% \medskip
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 0&1&3&7&\frac72&\\
+% 0&0&1&6&2&L_3 \gets \frac13L_3\\
+% 0&0&-2&-14&-\frac92&\\
+% \end{pNiceArrayC}$
+%
+% \medskip
+%
+% \quad $\begin{pNiceArrayC}{CCCC|C}
+% 1&1&1&1&1&\\
+% 0&1&3&7&\frac72&\\
+% 0&0&1&6&2& \\
+% 0&0&0&-2&-\frac12 & L_4 \gets 2L_3+L_4 \\
+% \end{pNiceArrayC}$
+% \end{NiceMatrixBlock}
+% \end{multicols}
+% 
+% 
+% \subsection{How to highlight cells of the matrix}
+%
+% \medskip
+% In order to highlight a cell of a matrix, it's possible to ``draw'' one of the correspond nodes (the ``normal
+% node'', the ``medium node'' or the ``large node''). In the following example, we use the ``large nodes'' of the
+% diagonal of the matrix (with the Tikz key ``|name suffix|'', it's easy to use the ``large nodes''). In order to
+% have the continuity of the lines, we have to set |inner sep = -\pgflinewidth/2|.
+%
+% \begin{Verbatim}
+% $\left(\,\begin{NiceArray}{>{\strut}CCCC}
+%    [create-extra-nodes,left-margin,right-margin,
+%     code-after = {\begin{tikzpicture}
+%                      [~emphase#name suffix = -large@,
+%                       every node/.style = {draw,
+%                                            ~emphase#inner sep = -\pgflinewidth/2@}]
+%                      \node [fit = (1-1)] {} ; 
+%                      \node [fit = (2-2)] {} ; 
+%                      \node [fit = (3-3)] {} ; 
+%                      \node [fit = (4-4)] {} ; 
+%                   \end{tikzpicture}}]
+% a_{11} & a_{12} & a_{13} & a_{14} \\
+% a_{21} & a_{22} & a_{23} & a_{24} \\
+% a_{31} & a_{32} & a_{33} & a_{34} \\
+% a_{41} & a_{42} & a_{43} & a_{44} 
+% \end{NiceArray}\,\right)$
+% \end{Verbatim}
+%
+%
+% \[\left(\,\begin{NiceArray}{>{\strut}CCCC}
+%    [create-extra-nodes,left-margin,right-margin,
+%     code-after = {\begin{tikzpicture}[name suffix = -large,
+%                                       every node/.style = {draw,
+%                                                            inner sep = -\pgflinewidth/2}]
+%                      \node [fit = (1-1)] {} ; 
+%                      \node [fit = (2-2)] {} ; 
+%                      \node [fit = (3-3)] {} ; 
+%                      \node [fit = (4-4)] {} ; 
+%                   \end{tikzpicture}}]
+% a_{11} & a_{12} & a_{13} & a_{14} \\
+% a_{21} & a_{22} & a_{23} & a_{24} \\
+% a_{31} & a_{32} & a_{33} & a_{34} \\
+% a_{41} & a_{42} & a_{43} & a_{44} 
+% \end{NiceArray}\,\right)\]
+% 
+%
+% \vspace{1cm}
+% The package \pkg{nicematrix} is constructed upon the environment |{array}| and, therefore, it's possible to use
+% the package \pkg{colortbl} in the environments of \pkg{nicematrix}.
+%
+% \medskip
+% \begin{BVerbatim}[baseline=c]
+% $\begin{bNiceMatrix}
+% 0 & \Cdots & 0 \\
+% ~emphase#\rowcolor{red!15}@ 1 & \Cdots & 1 \\
+% 0 & \Cdots & 0 \\
+% \end{bNiceMatrix}$
+% \end{BVerbatim}
+% \hspace{2cm}
+% $\begin{bNiceMatrix}
+% 0 & \Cdots & 0 \\
+% \rowcolor{red!15} 1 & \Cdots & 1 \\
+% 0 & \Cdots & 0 \\
+% \end{bNiceMatrix}$
+%
+% \medskip
+% The result may be disappointing. We therefore propose another method to highlight a row of the matrix. We
+% create a rectangular Tikz node which encompasses the nodes of the second row with the Tikz library \pkg{fit}. This
+% Tikz node is filled after the construction of the matrix. In order to see the text \emph{under} this node, we
+% have to use transparency with the |blend mode| equal to |multiply|. Warning: some \textsc{pdf} readers are not
+% able to render transparency correctly.
+%
+% \tikzset{highlight/.style={rectangle,
+%                            fill=red!15,
+%                            blend mode = multiply, 
+%                            rounded corners = 0.5 mm, 
+%                            inner sep=1pt}}
+%
+% \medskip
+% \begin{Verbatim}
+% \tikzset{highlight/.style={rectangle,
+%                            fill=red!15,
+%                            ~emphase#blend mode = multiply@,
+%                            rounded corners = 0.5 mm, 
+%                            inner sep=1pt}}
+%
+% $\begin{bNiceMatrix}[~emphase#code-after = {\tikz \node[highlight, fit = (2-1) (2-3)] {} ;}@]
+% 0 & \Cdots & 0 \\
+% 1 & \Cdots & 1 \\
+% 0 & \Cdots & 0 \\
+% \end{bNiceMatrix}$
+% \end{Verbatim}
+% 
+% \[\begin{bNiceMatrix}[code-after = {\tikz \node[highlight, fit = (2-1) (2-3)] {} ;}]
+% 0 & \Cdots & 0 \\
+% 1 & \Cdots & 1 \\
+% 0 & \Cdots & 0 \\
+% \end{bNiceMatrix}\]
+% 
+%
+% \bigskip
+% This code fails with |latex|-|dvips|-|ps2pdf| because Tikz for |dvips|, as for now, doesn't support blend modes. However, the
+% following code, in the preamble, should activate blend modes in this way of compilation.
+%
+%
+% \begin{scope} \small
+% |\ExplSyntaxOn|
+%
+% |\makeatletter|
+%
+% |\tl_set:Nn \l_tmpa_tl {pgfsys-dvips.def}|
+%
+% |\tl_if_eq:NNT \l_tmpa_tl \pgfsysdriver|
+%
+% |  {\cs_set:Npn\pgfsys@blend@mode#1{\special{ps:~/\tl_upper_case:n #1~.setblendmode}}}|
+%
+% |\makeatother|
+%
+% |\ExplSyntaxOff|
+% \end{scope}
+% 
+% \vspace{1cm}
+% Considerer now the following matrix which we have named |example|.
+%
+% \medskip
+% \begin{Verbatim}
+% $\begin{pNiceArrayC}{CCC}[~emphase#name=example@,create-extra-nodes]
+% a & a + b & a + b + c & L_1\\
+% a & a     & a + b     & L_2 \\
+% a & a     & a         & L_3
+% \end{pNiceArrayC}$
+% \end{Verbatim}
+%                           
+% \[\begin{pNiceArrayC}{CCC}
+% a & a + b & a + b + c & L_1\\
+% a & a     & a + b     & L_2 \\
+% a & a     & a         & L_3
+% \end{pNiceArrayC}\]
+% 
+% \bigskip
+% If we want to highlight each row of this matrix, we can use the previous technique three times.
+%
+% \begin{Verbatim}
+% \tikzset{myoptions/.style={remember picture, 
+%                            overlay,
+%                            name prefix = example-,
+%                            every node/.style = {fill = red!15,
+%                                                 blend mode = multiply,
+%                                                 inner sep = 0pt}}}
+% \end{Verbatim}
+% 
+%
+% \tikzset{myoptions/.style={remember picture, 
+%                            overlay,
+%                            name prefix = example-,
+%                            every node/.style = {fill = red!15,
+%                                                 blend mode = multiply,
+%                                                 inner sep = 0pt}}}
+%
+% \begin{Verbatim}
+% \begin{tikzpicture}[myoptions]
+% \node [fit = (1-1) (1-3)] {} ;
+% \node [fit = (2-1) (2-3)] {} ;
+% \node [fit = (3-1) (3-3)] {} ;
+% \end{tikzpicture}
+% \end{Verbatim}
+%
+% \medskip
+% We obtain the following matrix.
+% 
+% \[\begin{pNiceArrayC}{CCC}
+%     [create-extra-nodes,
+%      code-after = {\begin{tikzpicture}[every node/.style = {fill = red!15,
+%                                                             blend mode = multiply,
+%                                                             inner sep = 0pt}]
+%                    \node [fit = (1-1) (1-3)] {} ;
+%                    \node [fit = (2-1) (2-3)] {} ;
+%                    \node [fit = (3-1) (3-3)] {} ;
+%                    \end{tikzpicture}}]
+% a & a + b & a + b + c & L_1\\
+% a & a     & a + b     & L_2 \\
+% a & a     & a         & L_3
+% \end{pNiceArrayC}\]
+%
+% \medskip
+% The result may seem disappointing. We can improve it by using the ``medium nodes'' instead of the ``normal nodes''.
+%
+% \begin{Verbatim}
+% \begin{tikzpicture}[myoptions, ~emphase#name suffix = -medium@]
+% \node [fit = (1-1) (1-3)] {} ;
+% \node [fit = (2-1) (2-3)] {} ;
+% \node [fit = (3-1) (3-3)] {} ;
+% \end{tikzpicture}
+% \end{Verbatim}
+%
+% \medskip
+% We obtain the following matrix.
+% 
+% \[\begin{pNiceArrayC}{CCC}
+%     [create-extra-nodes,
+%      code-after = {\begin{tikzpicture}[every node/.style = {fill = red!15,
+%                                                             blend mode = multiply,
+%                                                             inner sep = 0pt},
+%                                        name suffix = -medium]
+%                    \node [fit = (1-1) (1-3)] {} ;
+%                    \node [fit = (2-1) (2-3)] {} ;
+%                    \node [fit = (3-1) (3-3)] {} ;
+%                    \end{tikzpicture}}]
+% a & a + b & a + b + c & L_1\\
+% a & a     & a + b     & L_2 \\
+% a & a     & a         & L_3
+% \end{pNiceArrayC}\]
+%
+%                           
+% \vspace{1cm}
+% 
+% In the following example, we use the ``large nodes'' to highlight a zone of the matrix.\par\nobreak
+% \begin{Verbatim}
+% \left(\,\begin{NiceArray}{>{\strut}CCCC}
+%    [create-extra-nodes,left-margin,right-margin,
+%     code-after = {\tikz \path [~emphase#name suffix = -large@,
+%                                fill = red!15, 
+%                                blend mode = multiply]
+%                         (1-1.north west)
+%                      |- (2-2.north west)
+%                      |- (3-3.north west)
+%                      |- (4-4.north west)
+%                      |- (4-4.south east)
+%                      |- (1-1.north west) ; } ]
+% A_{11} & A_{12} & A_{13} & A_{14} \\
+% A_{21} & A_{22} & A_{23} & A_{24} \\
+% A_{31} & A_{32} & A_{33} & A_{34} \\
+% A_{41} & A_{42} & A_{43} & A_{44}  
+% \end{NiceArray}\,\right)
+% \end{Verbatim}
+%                              
+% \[\left(\,\begin{NiceArray}{>{\strut}CCCC}
+%    [create-extra-nodes,left-margin,right-margin,
+%     code-after = {\tikz \path [name suffix = -large,
+%                                fill = red!15, 
+%                                blend mode = multiply]
+%                         (1-1.north west)
+%                      |- (2-2.north west)
+%                      |- (3-3.north west)
+%                      |- (4-4.north west)
+%                      |- (4-4.south east)
+%                      |- (1-1.north west) ; } ]
+% A_{11} & A_{12} & A_{13} & A_{14} \\
+% A_{21} & A_{22} & A_{23} & A_{24} \\
+% A_{31} & A_{32} & A_{33} & A_{34} \\
+% A_{41} & A_{42} & A_{43} & A_{44}  
+% \end{NiceArray}\,\right)\]
+%
+% 
+% \subsection{Block matrices}
+%
+% \medskip
+% In the following example, we use the ``large nodes'' to construct a block matrix (the dashed lines have been
+% drawn with \pkg{arydshln}).
+% \begin{Verbatim}
+% \left(\begin{NiceArray}{CC:CC}
+%    [create-extra-nodes,
+%     ~emphase#code-after = { \tikz \node [fit = (1-1-large) (2-2-large), inner sep = 0 pt]@
+%     ~emphase#                           {$0_{22}$} ; }@ ]
+%        &        & a_{13} & a_{14} \\
+%        &        & a_{23} & a_{24} \\
+% \hdashline
+% a_{31} & a_{32} & a_{33} & a_{34} \\
+% a_{41} & a_{42} & a_{34} & a_{44} 
+% \end{NiceArray}\right)
+% \end{Verbatim}
+% 
+%                              
+% \[D = \left(\begin{NiceArray}{CC:CC}
+%    [create-extra-nodes,
+%     code-after = { \tikz \node [fit = (1-1-large) (2-2-large), inner sep = 0 pt] 
+%                                {$0_{22}$} ; } ]
+%        &        & a_{13} & a_{14} \\
+%        &        & a_{23} & a_{24} \\
+% \hdashline
+% a_{31} & a_{32} & a_{33} & a_{34} \\
+% a_{41} & a_{42} & a_{34} & a_{44} 
+% \end{NiceArray}\right)\]
+% 
+%
+% 
+% 
+% \section{Implementation}
+%
+% By default, the package \pkg{nicematrix} doesn't patch any existing code.
+%
+% \smallskip
+% However, when the option |renew-dots| is used, the commands |\cdots|, |\ldots|, |\dots|, |\vdots|, |\ddots| and
+% |\iddots| are redefined in the environments provided by \pkg{nicematrix} as explained previously. In the same way,
+% if the option |renew-matrix| is used, the environment |{matrix}| of \pkg{amsmath} is redefined.
+%
+% \smallskip
+% On the other hand, the environment |{array}| is never redefined.
+%
+% \smallskip
+% Of course, the package \pkg{nicematrix} uses the features of the package \pkg{array}. It tries to be independant of its
+% implementation. Unfortunately, it was not possible to be strictly independant: the package \pkg{nicematrix} relies upon the
+% fact that the package |{array}| uses |\ialign| to begin the |\halign|.
+% 
+% \smallskip
+% The desire to do no modification to existing code leads to complications in the code of this extension. 
+%
+% \subsection{Declaration of the package and extensions loaded}
+%
+% First, \pkg{tikz} and the Tikz library |fit| are loaded before the |\ProvidesExplPackage|.
+% They are loaded this way because |\usetikzlibrary| in |expl3| code fails.\footnote{cf.
+% |tex.stackexchange.com/questions/57424/using-of-usetikzlibrary-in-an-expl3-package-fails|} 
+% 
+%
+%    \begin{macrocode}
+\RequirePackage{tikz}
+\usetikzlibrary{fit}
+%    \end{macrocode}
+% 
+% We give the traditionnal declaration of a package written with |expl3|:
+%    \begin{macrocode}
+\RequirePackage{l3keys2e}
+\ProvidesExplPackage
+  {nicematrix}
+  {\myfiledate}
+  {\myfileversion}
+  {Several features to improve the typesetting of mathematical matrices with TikZ}
+%    \end{macrocode}
+% 
+% The command for the treatment of the options of |\usepackage| is at the end of this package for technical reasons.
+%
+% \bigskip
+% We load \pkg{array} and \pkg{amsmath}.
+%    \begin{macrocode}
+\RequirePackage{array}
+\RequirePackage{amsmath}
+%    \end{macrocode}
+%
+% \bigskip 
+% The package \pkg{xparse} will be used to define the environment |{NiceMatrix}|, its variants and the
+% document-level commands (|\NiceMatrixOptions|, etc.).
+%    \begin{macrocode}
+\RequirePackage{xparse}
+%    \end{macrocode}
+%
+% \subsection{Technical  definitions}
+%
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_msg_error:n 
+        {\msg_error:nn {nicematrix} {#1}}
+\cs_new_protected:Nn \@@_msg_error:nn
+        {\msg_error:nn {nicematrix} {#1} {#2}}
+%    \end{macrocode}
+% 
+% \medskip
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_bool_new:N
+      {\bool_if_exist:NTF #1
+         {\bool_set_false:N #1}
+         {\bool_new:N #1}}
+%    \end{macrocode}
+%                              
+% First, we define a command |\iddots| similar to |\ddots| ($\ddots$) but with dots going forward ($\iddots$). We
+% use |\ProvideDocumentCommand| of \pkg{xparse}, and so, if the command |\iddots| has already been defined (for
+% example by the package \pkg{mathdots}), we don't define it again.
+% 
+%    \begin{macrocode}
+\ProvideDocumentCommand \iddots {}
+      {\mathinner{\mkern 1mu 
+                  \raise \p@ \hbox{.}
+                  \mkern 2mu
+                  \raise 4\p@ \hbox{.}
+                  \mkern 2mu
+                  \raise 7\p@ \vbox{\kern 7pt 
+                                    \hbox{.}}
+                  \mkern 1mu}}
+%    \end{macrocode}
+%
+% This definition is a variant of the standard definition of |\ddots|.
+%
+%
+% \bigskip 
+% The following counter will count the environments |{NiceArray}|. The value of this counter will be used to
+% prefix the names of the Tikz nodes created in the array.
+%    \begin{macrocode}
+\int_new:N \g_@@_env_int
+%    \end{macrocode}
+% 
+% \bigskip
+% The dimension |\l_@@_columns_width_dim| will be used when the options specify that all the columns must have the
+% same width.
+%    \begin{macrocode}
+\dim_new:N \l_@@_columns_width_dim
+%    \end{macrocode}
+%
+% \bigskip
+% The sequence |\g_@@_names_seq| will be the list of all the names of environments used (via the option |name|) in
+% the document: two environments must not have the same name.
+%    \begin{macrocode}
+\seq_new:N \g_@@_names_seq
+%    \end{macrocode}
+%
+% \bigskip
+% The integer |\l_@@_nb_first_row_int| is the number of the first row of the array. The default value is $1$, but,
+% in the environments like |{pNiceArrayRC}|, the value will be~$0$.
+%    \begin{macrocode}
+\int_new:N \l_@@_nb_first_row_int
+\int_set:Nn \l_@@_nb_first_row_int 1
+%    \end{macrocode}
+% 
+% \bigskip
+% The flag |\l_@@_exterior_column_bool| will indicate if we are in an environment of the type of |{pNiceArrayC}| or
+% |{pNiceArrayRC}|. It will be used for the creation of the ``large nodes''.
+%    \begin{macrocode}
+\bool_new:N \l_@@_exterior_column_bool
+%    \end{macrocode}
+% 
+% \bigskip 
+% \subsection{The options}
+%
+% The token list |\l_@@_pos_env_tl| will contain one of the three values |t|, |c| or |b| and will indicate the
+% position of the environment as in the option of the environment |{array}|. For the environment |{pNiceMatrix}|,
+% |{pNiceArrayC}|,|{pNiceArrayRC}| and their variants, the value will programmatically be fixed to |c|. For the
+% environment |{NiceArray}|, however, the three values |t|, |c| and |b| are possible.
+%    \begin{macrocode}
+\tl_new:N \l_@@_pos_env_tl 
+\tl_set:Nn \l_@@_pos_env_tl c
+%    \end{macrocode}
+% 
+% \bigskip
+% The flag |\l_@@_exterior_arraycolsep_bool| corresponds to the option |exterior-arraycolsep|. If this option is
+% set, a space equal to |\arraycolsep| will be put on both sides of an environment |{NiceArray}| (but neither for
+% |{NiceMatrix}|, |{pNiceArrayC}|, |{pNiceArrayRC}| and their variants even if these environments rely upon |{NiceArray}|).
+%    \begin{macrocode}
+\bool_new:N \l_@@_exterior_arraycolsep_bool
+%    \end{macrocode}
+%
+% \bigskip
+% The flag |\l_@@_parallelize_diags_bool| controls wether the diagonals are parallelized. The default
+% is~|true|.
+%    \begin{macrocode}
+\bool_new:N \l_@@_parallelize_diags_bool
+\bool_set_true:N \l_@@_parallelize_diags_bool
+%    \end{macrocode}
+%
+% \bigskip
+% The flag |\l_@@_nullify_dots_bool| corresponds to the option |nullify-dots|. When the flag is down, the
+% instructions like |\vdots| are inserted within a |\hphantom| (and so the constructed matrix has exactly the same
+% size as a matrix constructed with the classical |{matrix}| and |\ldots|, |\vdots|, etc.)
+%    \begin{macrocode}
+\bool_new:N \l_@@_nullify_dots_bool
+%    \end{macrocode}
+%
+%
+% \bigskip
+% The following flag will be used when the current options specify that all the columns of the array must have the
+% same width equal to the largest width of a cell of the array (except the cell of the ``exterior column'' of an
+% environment of the kind of |{pNiceArrayC}|).
+%    \begin{macrocode}
+\bool_new:N \l_@@_auto_columns_width_bool
+%    \end{macrocode}
+% 
+% \bigskip
+% The token list |\l_@@_code_for_last_col_tl| will contain code inserted at the beginning of each cell of the last
+% column in the environment |{pNiceArrayC}| (and its variants). It corresponds to the option |code-for-last-col|.
+%    \begin{macrocode}
+\tl_new:N \l_@@_code_for_last_col_tl
+%    \end{macrocode}
+% 
+% \bigskip
+% We don't want to patch any existing code. That's why some code must be executed in a |\aftergroup|. That's why
+% the parameters used in that code must be transfered outside the current group. To do this, we copy those
+% quantities in global variables just before the |\aftergroup|. Therefore, for those quantities, we have two
+% parameters, one local and one global. For example, we have |\l_@@_name_tl| and |\g_@@_name_tl|.
+%
+% \bigskip
+% The token list |\l_@@_name_tl| will contain the optional name of the environment: this name can be used to
+% access to the Tikz nodes created in the array from outside the environment. 
+%    \begin{macrocode}
+\tl_new:N \g_@@_name_tl
+\tl_new:N \l_@@_name_tl
+%    \end{macrocode}
+%
+% \bigskip
+% The boolean |\l_@@_extra_nodes_bool| will be used to indicate wether the ``medium nodes'' and ``large nodes'' are
+% created in the array. 
+%    \begin{macrocode}
+\bool_new:N \l_@@_extra_nodes_bool
+\bool_new:N \g_@@_extra_nodes_bool
+%    \end{macrocode}
+%
+% \bigskip
+% The dimensions |\l_@@_left_margin_dim| and |\l_@@_right_margin_dim| correspond to the options |left-margin| and |right-margin|.
+%    \begin{macrocode}
+\dim_new:N \l_@@_left_margin_dim
+\dim_new:N \l_@@_right_margin_dim
+\dim_new:N \g_@@_left_margin_dim
+\dim_new:N \g_@@_right_margin_dim
+%    \end{macrocode}
+%                              
+% \bigskip
+% The dimensions |\l_@@_extra_left_margin_dim| and |\l_@@_extra_right_margin_dim| correspond to the options
+% |extra-left-margin| and |extra-right-margin|. 
+%    \begin{macrocode}
+\dim_new:N \l_@@_extra_left_margin_dim
+\dim_new:N \l_@@_extra_right_margin_dim
+\dim_new:N \g_@@_extra_right_margin_dim
+%    \end{macrocode}
+% 
+%
+% \bigskip
+% We define a set of options which will be used with the command |NiceMatrixOptions|.\footnote{Before the version
+% 1.3, the names of the options were in ``camel-case style'' (like |ParallelizeDiagonals|) which was not a good idea. In
+% version 1.4, the names are converted in lowercase with hyphens (like |parallelize-diags|). For compatibility, the
+% old names are conversed.}
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceMatrixOptions}
+     {parallelize-diags    .bool_set:N = \l_@@_parallelize_diags_bool,
+      parallelize-diags    .default:n  = true,
+      ParallelizeDiagonals .meta:n = parallelize-diags,
+%    \end{macrocode}
+%
+% \bigskip
+% With the option |renew-dots|, the command |\cdots|, |\ldots|, |\vdots| and |\ddots| are redefined and behave like the
+% commands |\Cdots|, |\Ldots|, |\Vdots| and |\Ddots|.
+%    \begin{macrocode}
+      renew-dots        .bool_set:N = \l_@@_renew_dots_bool,
+      renew-dots        .default:n  = true,
+      RenewDots         .meta:n = renew-dots,
+%    \end{macrocode}
+%
+% \bigskip
+% With the option |renew-matrix|, the environment |{matrix}| of \pkg{amsmath} and its variants are redefined to
+% behave like the environment |{NiceMatrix}| and its variants.
+%    \begin{macrocode}
+      renew-matrix      .code:n     = \@@_renew_matrix:,
+      renew-matrix      .value_forbidden:n = true,
+      RenewMatrix       .meta:n     = renew-matrix,
+      transparent       .meta:n     = {renew-dots,renew-matrix},
+      transparent       .value_forbidden:n = true,
+      Transparent       .meta:n     = transparent,
+%    \end{macrocode}
+%
+% \bigskip
+% Without the option |nullify-dots|, the instructions like |\vdots| are inserted within a
+% |\hphantom| (and so the constructed matrix has exactly the same size as a matrix constructed with the
+% classical |{matrix}| and |\ldots|, |\vdots|, etc.). This option is set by default.
+%    \begin{macrocode}
+      nullify-dots      .bool_set:N = \l_@@_nullify_dots_bool ,
+      nullify-dots      .default:n  = true,
+      NullifyDots       .meta:n     = nullify-dots,
+%    \end{macrocode}
+%
+% 
+% \bigskip
+% The following option is only for the environment |{pNiceArrayC}| and its variants. It will contain code inserted
+% at the beginning of each cell of the last column.\footnote{In an environment |{pNiceArrayC}|, the last column is
+% composed outside the parentheses of the array.}
+%    \begin{macrocode}
+      code-for-last-col  .tl_set:N         = \l_@@_code_for_last_col_tl,
+      code-for-last-col  .value_required:n = true,
+%    \end{macrocode}  
+%
+% \bigskip
+% Idem for the first row in environments like |{pNiceArrayRC}|.
+%    \begin{macrocode}
+   code-for-first-row   .tl_set:N   = \l_@@_code_for_first_row_tl,
+   code-for-first-row    .value_required:n = true,
+%    \end{macrocode}
+%
+% \bigskip
+% The option |exterior-arraycolsep| will have effect only in |{NiceArray}| for those who want to have for
+% |{NiceArray}| the same behaviour as |{array}|.
+%    \begin{macrocode}
+      exterior-arraycolsep .bool_set:N = \l_@@_exterior_arraycolsep_bool ,
+      exterior-arraycolsep .default:n  = true,
+%    \end{macrocode}
+%
+% \bigskip
+% If the option |columns-width| is used, all the columns will have the same width. 
+%
+% In |\NiceMatrixOptions|, the special value |auto| is not available.
+%    \begin{macrocode}
+      columns-width     .code:n    = \str_if_eq:nnTF {#1} {auto}
+                                     {\@@_msg_error:n {Option~auto~for~columns-width}}
+                                     {\dim_set:Nn \l_@@_columns_width_dim {#1}},
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+      create-extra-nodes  .bool_set:N   = \l_@@_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+      left-margin  .dim_set:N  = \l_@@_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l_@@_right_margin_dim,
+      right-margin  .default:n  = \arraycolsep,
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+      unknown .code:n  = \@@_msg_error:n {Unknown~key~for~NiceMatrixOptions}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Unknown~key~for~NiceMatrixOptions}
+              {The~key~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~command~
+               \token_to_str:N \NiceMatrixOptions.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~keys,~type~H~<return>.}
+              {The~available~keys~are~(in~alphabetic~order):~
+               code-for-last-col,~
+               exterior-arraycolsep,~
+               left-margin,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots,~
+               renew-matrix,~
+               right-margin,~
+               and~transparent}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\msg_new:nnn {nicematrix}
+             {Option~auto~for~columns-width}
+             {You~can't~give~the~value~"auto"~to~the~option~"columns-width"~here.~
+              If~you~go~on,~the~option~will~be~ignored.}
+%    \end{macrocode}
+% 
+% \bigskip
+% |\NiceMatrixOptions| is the command of the \pkg{nicematrix} package to fix options at the document level. The
+% scope of these specifications is the current TeX group.
+%    \begin{macrocode}
+\NewDocumentCommand \NiceMatrixOptions {m}
+    {\keys_set:nn {NiceMatrix/NiceMatrixOptions} {#1}}
+%    \end{macrocode}
+%
+% 
+% \bigskip
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceMatrix}
+     {parallelize-diags .bool_set:N  = \l_@@_parallelize_diags_bool,
+      parallelize-diags .default:n   = true,
+      renew-dots        .bool_set:N  = \l_@@_renew_dots_bool,
+      renew-dots        .default:n   = true,
+      nullify-dots      .bool_set:N  = \l_@@_nullify_dots_bool ,
+      nullify-dots      .default:n   = true,
+%    \end{macrocode}
+% The option |columns-width| is the width of the columns if we want the same width for all the columns of the
+% array. A value of 0~pt means that the width of the column will be the natural width of the column.
+%    \begin{macrocode}
+      columns-width     .code:n      = \str_if_eq:nnTF {#1} {auto}
+                                           {\bool_set_true:N 
+                                                \l_@@_auto_columns_width_bool}
+                                           {\dim_set:Nn \l_@@_columns_width_dim {#1}},
+      name    .code:n                = {\seq_if_in:NnTF \g_@@_names_seq {#1}
+                                           {\@@_msg_error:nn {Duplicate~name} {#1}}
+                                           {\seq_gput_left:Nn \g_@@_names_seq {#1}}
+                                        \tl_set:Nn \l_@@_name_tl {#1}},
+      name    .value_required:n      = true,
+      code-after         .tl_set:N     = \l_@@_code_after_tl,
+      code-after         .initial:n    = \c_empty_tl,
+      code-after         .value_required:n = true,
+%    \end{macrocode}
+%
+% The key |create-extra-nodes| indicates wether the ``medium nodes'' and ``large nodes'' will be created for each
+% cell of the array. 
+%    \begin{macrocode}
+      create-extra-nodes  .bool_set:N   = \l_@@_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+      left-margin  .dim_set:N  = \l_@@_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l_@@_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l_@@_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l_@@_extra_right_margin_dim,
+      unknown .code:n  = \@@_msg_error:n {Unknown~option~for~NiceMatrix}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceMatrix}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{NiceMatrix\}~and~its~variants.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left~margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots~
+               and~right-margin.}
+%    \end{macrocode}
+% 
+% \bigskip
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Duplicate~name}
+              {The~name~"#1"~is~already~used~and~you~shouldn't~use~
+               the~same~environment~name~twice.~You~can~go~on,~but,~
+               maybe,~you~will~have~incorrect~results~especially~ 
+               if~you~use~"columns-width=auto".\\
+               For~a~list~of~the~names~already~used,~type~H~<return>.}
+              {The~names~already~defined~in~this~document~are:~
+               \seq_use:Nnnn~\g_@@_names_seq~{,~} {,~} {~and~}.}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceArray}
+     {parallelize-diags    .bool_set:N = \l_@@_parallelize_diags_bool,
+      parallelize-diags    .default:n  = true,
+      renew-dots           .bool_set:N = \l_@@_renew_dots_bool,
+      renew-dots           .default:n  = true,
+      nullify-dots         .bool_set:N = \l_@@_nullify_dots_bool ,
+      nullify-dots         .default:n  = true,
+      columns-width        .code:n = \str_if_eq:nnTF {#1} {auto}
+                                       {\bool_set_true:N \l_@@_auto_columns_width_bool}
+                                       {\dim_set:Nn \l_@@_columns_width_dim {#1}},
+      columns-width        .value_required:n = true,
+      name                 .code:n     = {\seq_if_in:NnTF \g_@@_names_seq {#1}
+                                            {\@@_msg_error:nn {Duplicate~name} {#1}}
+                                            {\seq_gput_left:Nn \g_@@_names_seq {#1}}
+                                          \tl_set:Nn \l_@@_name_tl {#1}},
+      name                 .value_required:n = true,
+%    \end{macrocode}
+% 
+% \bigskip
+% The options |c|, |t| and |b| of the environment |{NiceArray}| have the same meaning as the option of the classical
+% environment |{array}|.
+%    \begin{macrocode}
+      c                  .code:n    = \tl_set:Nn \l_@@_pos_env_tl c,
+      t                  .code:n    = \tl_set:Nn \l_@@_pos_env_tl t,
+      b                  .code:n    = \tl_set:Nn \l_@@_pos_env_tl b,
+      code-after         .tl_set:N  = \l_@@_code_after_tl,
+      code-after         .initial:n = \c_empty_tl,
+      code-after         .value_required:n = true,
+      create-extra-nodes  .bool_set:N   = \l_@@_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l_@@_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l_@@_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l_@@_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l_@@_extra_right_margin_dim,
+      unknown .code:n  = \@@_msg_error:n {Unknown~option~for~NiceArray}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArray}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{NiceArray\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               b,~
+               c,~
+               code-after,~
+               create-extra-nodes,~
+               columns-width,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left-margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots,~
+               right-margin,~
+               and~t.}
+%    \end{macrocode}
+% 
+% \subsection{The environments \{NiceArray\} and \{NiceMatrix\}}
+%
+% The pseudo-environment |\@@_Cell:|--|\@@_end_Cell:| will be used to format the cells of the array. In the code,
+% the affectations are global because this pseudo-environment will be used in the cells of a |\halign| (via an
+% environment |{array}|).
+%
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_Cell:
+   { 
+%    \end{macrocode}
+% We increment |\g_@@_column_int|, which is the counter of the columns. 
+%    \begin{macrocode}
+    \int_gincr:N \g_@@_column_int
+%    \end{macrocode}
+% Now, we increment the counter of the rows. We don't do this incrementation in the |\everycr| because some
+% packages, like \pkg{arydshln}, creates special rows in the |\halign| that we don't want to take into account.
+%    \begin{macrocode}
+    \int_compare:nNnT \g_@@_column_int = 1
+          {\int_gincr:N \g_@@_row_int}                
+    \int_gset:Nn \g_@@_column_total_int 
+                 {\int_max:nn \g_@@_column_total_int \g_@@_column_int}
+    \hbox_set:Nw \l_tmpa_box $ % $ 
+    \int_compare:nNnT \g_@@_row_int = 0
+             \l_@@_code_for_first_row_tl}
+%    \end{macrocode}
+% 
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_end_Cell:
+   {$ % $ 
+    \hbox_set_end:
+%    \end{macrocode}
+%
+% We want to compute in |\l_@@_max_cell_width_dim| the width of the widest cell of the array (except the cells of
+% the last column of an environment of the kind of |{pNiceArrayC}|).
+%    \begin{macrocode}
+    \dim_gset:Nn \g_@@_max_cell_width_dim
+          {\dim_max:nn \g_@@_max_cell_width_dim {\box_wd:N \l_tmpa_box}}
+%    \end{macrocode}
+%
+%
+%    \begin{macrocode}
+    \int_compare:nNnT \g_@@_row_int = 0
+       {\dim_gset:Nn \g_@@_max_dp_row_zero_dim
+            {\dim_max:nn \g_@@_max_dp_row_zero_dim {\box_dp:N \l_tmpa_box}}
+        \dim_gset:Nn \g_@@_max_ht_row_zero_dim
+            {\dim_max:nn \g_@@_max_ht_row_zero_dim {\box_ht:N \l_tmpa_box}}}
+    \int_compare:nNnT \g_@@_row_int = 1
+       {\dim_gset:Nn \g_@@_max_ht_row_one_dim
+            {\dim_max:nn \g_@@_max_ht_row_one_dim {\box_ht:N \l_tmpa_box}}}
+%    \end{macrocode}
+% 
+% Now, we can create the Tikz node of the cell.
+%    \begin{macrocode}
+    \tikz[remember~picture, inner~sep = 0pt, minimum~width = 0pt, baseline]
+       \node [anchor = base,
+              name = nm-\int_use:N \g_@@_env_int-
+                        \int_use:N \g_@@_row_int-
+                        \int_use:N \g_@@_column_int,
+              alias = \tl_if_empty:NF \l_@@_name_tl
+                         {\tl_use:N \l_@@_name_tl-
+                          \int_use:N \g_@@_row_int-
+                          \int_use:N \g_@@_column_int} ] 
+       \bgroup 
+       \box_use:N \l_tmpa_box
+       \egroup ;} 
+%    \end{macrocode}
+%
+% 
+% \interitem
+% The environment |{NiceArray}| is the main environment of the extension \pkg{nicematrix}.
+%
+% In order to clarify the explanations, we will first give the definition of the environment |{NiceMatrix}|.
+%
+% Our environment |{NiceMatrix}| must have the same second part as the environment |{matrix}| of \pkg{amsmath}
+% (because of the programmation of the option |renew-matrix|). Hence, this second part is the following:
+% 
+% \begin{Verbatim}
+%          \endarray
+%          \skip_horizontal:n {-\arraycolsep}
+% \end{Verbatim}
+% 
+% That's why, in the definition of |{NiceMatrix}|, we must use |\NiceArray| and not |\begin{NiceArray}| 
+% (and, in the definition of |{NiceArray}|, we will have to use |\array|, and not |\begin{array}|: see below).
+% 
+% \medskip
+% Here's the definition of |{NiceMatrix}|:
+%    \begin{macrocode}
+\NewDocumentEnvironment {NiceMatrix} {O{}}
+    {\keys_set:nn {NiceMatrix/NiceMatrix} {#1}
+     \tl_set:Nn \l_@@_pos_env_tl c
+     \bool_set_false:N \l_@@_exterior_arraycolsep_bool
+         \NiceArray{*\c@MaxMatrixCols{C}}
+      }
+    {\endarray
+     \skip_horizontal:n {-\arraycolsep}
+     \skip_horizontal:n {\g_@@_right_margin_dim + \g_@@_extra_right_margin_dim}}
+%    \end{macrocode}
+%
+% \interitem
+% For the definition of |{NiceArray}| (just below), we have the following constraints:
+% \begin{itemize}
+% \item we must use |\array| in the first part of |{NiceArray}| and, therefore, |\endarray| in the second part;
+% \item we have to put a |\aftergroup \@@_after_array:| in the first part of |{NiceArray}| so that |\@@_draw_lines|
+% will be executed at the end of the current environment (either |{NiceArray}| or |{NiceMatrix}|).
+% \end{itemize}
+%               
+%    \begin{macrocode}
+\cs_generate_variant:Nn \dim_set:Nn {Nx}
+%    \end{macrocode}
+% 
+%
+% \bigskip
+%    \begin{macrocode}
+\msg_new:nnn {nicematrix} 
+             {We~are~yet~in~an~environment~NiceArray}
+             {Environments~\{NiceArray\}~(or~\{NiceMatrix\},~etc.)~can't~be~
+              nested.~We~can~go~on,~but,~maybe,~you~will~have~errors~or~an~incorrect~
+              result.}
+%    \end{macrocode}
+% \bigskip
+% First, we test if we are yet in an environment |{NiceArray}| (nested environment are forbidden). It's easy to
+% test whether we are in an environment |{NiceArray}| : a special command |\@@_in_NiceArray:| is defined.
+%    \begin{macrocode}
+\NewDocumentEnvironment {NiceArray} {O{} m O{}}
+    {\cs_if_exist:NT \@@_in_NiceArray:
+           {\@@_msg_error:n {We~are~yet~in~an~environment~NiceArray}}
+%    \end{macrocode}
+% We deactivate Tikz externalization (since we use Tikz pictures with the options |overlay| and 
+% |remember picture|, there would be errors).
+%    \begin{macrocode}
+     \ifcsname tikz@library@external@loaded\endcsname
+      \tikzset{external/export = false}
+     \fi
+     \cs_set:Npn \@@_in_NiceArray: {--Void--}
+     \aftergroup \@@_after_array:
+     \tl_gclear_new:N \g_@@_lines_to_draw_tl 
+%    \end{macrocode}
+%
+% We increment the counter |\g_@@_env_int| which counts the environments |{NiceArray}|.
+%    \begin{macrocode}
+     \int_gincr:N \g_@@_env_int
+     \bool_if:NF \l_@@_block_auto_columns_width_bool
+              {\dim_gzero_new:N \g_@@_max_cell_width_dim}
+%    \end{macrocode}
+%
+% For the following variables, maybe we should create it only if we use the environment |{pNiceArrayRC}| or its variants.
+%    \begin{macrocode}
+     \dim_gzero_new:N \g_@@_max_dp_row_zero_dim
+     \dim_gzero_new:N \g_@@_max_ht_row_zero_dim
+     \dim_gzero_new:N \g_@@_max_ht_row_one_dim
+%    \end{macrocode}
+% 
+%    \begin{macrocode}
+     \keys_set:nn {NiceMatrix/NiceArray} {#1,#3} 
+%    \end{macrocode}
+% 
+% If the user requires all the columns to have a width equal to the widest cell of the array, we read this length in
+% the file |.aux| (of, course, this is possible only on the second run of LaTeX : on the first run, the dimension
+% |\l_@@_columns_width_dim| will be set to zero --- and the columns will have their natural width).
+%    \begin{macrocode}
+     \bool_if:NT \l_@@_auto_columns_width_bool
+         {\aftergroup \@@_write_max_cell_width:
+          \cs_if_free:cTF {_@@_max_cell_width_\int_use:N \g_@@_env_int}
+                {\dim_set:Nn \l_@@_columns_width_dim \c_zero_dim}
+                {\dim_set:Nx \l_@@_columns_width_dim 
+                     {\use:c {_@@_max_cell_width_\int_use:N \g_@@_env_int}}}
+%    \end{macrocode}
+% If the environment has a name, we read the value of the maximal value of the columns from 
+% |_@@_name_cell_width|{\ttfamily\slshape name} (the value will be the correct value even if the number of the 
+% environment has changed (for example because the user has created or deleted an environment before the current one).
+%    \begin{macrocode}
+          \tl_if_empty:NF \l_@@_name_tl
+            {\cs_if_free:cF {_@@_max_cell_width_\l_@@_name_tl}
+                {\dim_set:Nx \l_@@_columns_width_dim 
+                     {\use:c {_@@_max_cell_width_\l_@@_name_tl}}}}
+         }
+%    \end{macrocode}
+% We don't want to patch any code and that's why some code is excuted in a |\aftergroup|. In particular, in this
+% |\aftergroup|, we will have to know the value of some parameters like |\l_@@_extra_nodes_bool|. That's why we transit via a global
+% version for some variables.
+%    \begin{macrocode}
+     \bool_gset_eq:NN \g_@@_extra_nodes_bool \l_@@_extra_nodes_bool
+     \dim_gset_eq:NN \g_@@_left_margin_dim \l_@@_left_margin_dim
+     \dim_gset_eq:NN \g_@@_right_margin_dim \l_@@_right_margin_dim
+     \dim_gset_eq:NN \g_@@_extra_right_margin_dim \l_@@_extra_right_margin_dim
+     \tl_gset_eq:NN \g_@@_code_after_tl \l_@@_code_after_tl
+     \tl_gset_eq:NN \g_@@_name_tl \l_@@_name_tl
+%    \end{macrocode}
+% The environment |{array}| uses internally the command |\ialign| and, in particular, this command |\ialign| sets
+% |\everycr| to |{}|. However, we want to use |\everycr| in our array.
+% The solution is to give to |\ialign| a new definition (giving to |\everycr| the value we want)
+% that will revert automatically to its default definition after the first utilisation.\footnote{With this programmation, we will
+% have, in the cells of the array, a clean version of |\ialign|. That's necessary: the user will probably not employ directly 
+% |\ialign| in the array...  but more likely environments that utilize |\ialign| internally (e.g.: |{substack}|)}
+%    \begin{macrocode}
+     \cs_set:Npn \ialign 
+          {\everycr{\noalign{\int_gzero:N \g_@@_column_int}}
+          \tabskip = \c_zero_skip
+          \cs_set:Npn \ialign {\everycr{} 
+                               \tabskip = \c_zero_skip
+                               \halign}
+          \halign}
+%    \end{macrocode}
+%                                                                                      
+% We define the new column types |L|, |C| and |R| that must be used instead of |l|, |c| and |r| in the preamble of
+% |{NiceArray}|.
+%    \begin{macrocode}
+     \dim_compare:nNnTF \l_@@_columns_width_dim = \c_zero_dim
+        {\newcolumntype{L}{>{\@@_Cell:}l<{\@@_end_Cell:}}
+         \newcolumntype{C}{>{\@@_Cell:}c<{\@@_end_Cell:}}
+         \newcolumntype{R}{>{\@@_Cell:}r<{\@@_end_Cell:}}}
+%    \end{macrocode}
+% If there is an option that specify that all the columns must have the same width, the column types~|L|, |C|
+% and~|R| are in fact defined upon the column type~|w| of array which is, in fact, redefined below.
+%    \begin{macrocode}
+        {\newcolumntype{L}{wl{\dim_use:N \l_@@_columns_width_dim}}
+         \newcolumntype{C}{wc{\dim_use:N \l_@@_columns_width_dim}}
+         \newcolumntype{R}{wr{\dim_use:N \l_@@_columns_width_dim}}}
+%    \end{macrocode}
+% 
+% We nullify the definitions of the column types |w| and |W| because we want to avoid a warning in the log file
+% for a redefinition of a column type.
+%    \begin{macrocode}
+     \cs_set_eq:NN \NC@find@w \relax
+     \cs_set_eq:NN \NC@find@W \relax
+%    \end{macrocode}
+% 
+% We redefine the column types |w| and |W| of the package \pkg{array}.
+%    \begin{macrocode}
+     \newcolumntype{w}[2]
+       {>{\hbox_set:Nw \l_tmpa_box
+          \@@_Cell:}
+        c
+        <{\@@_end_Cell:
+          \hbox_set_end:
+          \makebox[##2][##1]{\box_use:N \l_tmpa_box}}}
+     \newcolumntype{W}[2]
+       {>{\hbox_set:Nw \l_tmpa_box
+          \@@_Cell:}
+        c
+        <{\@@_end_Cell:
+          \hbox_set_end:
+          \cs_set_eq:NN \hss \hfil
+          \makebox[##2][##1]{\box_use:N \l_tmpa_box}}}
+%    \end{macrocode}
+% 
+% The commands |\Ldots|, |\Cdots|, etc. will be defined only in the environment |{NiceArray}|.
+%    \begin{macrocode}
+     \cs_set_eq:NN \Ldots \@@_Ldots
+     \cs_set_eq:NN \Cdots \@@_Cdots
+     \cs_set_eq:NN \Vdots \@@_Vdots
+     \cs_set_eq:NN \Ddots \@@_Ddots
+     \cs_set_eq:NN \Iddots \@@_Iddots
+     \cs_set_eq:NN \Hspace \@@_Hspace:
+     \cs_set_eq:NN \Hdotsfor \@@_Hdotsfor
+     \cs_set_eq:NN \multicolumn \@@_multicolumn:nnn
+     \bool_if:NT \l_@@_renew_dots_bool
+        {\cs_set_eq:NN \ldots \@@_Ldots
+         \cs_set_eq:NN \cdots \@@_Cdots
+         \cs_set_eq:NN \vdots \@@_Vdots
+         \cs_set_eq:NN \ddots \@@_Ddots
+         \cs_set_eq:NN \iddots \@@_Iddots
+         \cs_set_eq:NN \dots \@@_Ldots
+         \cs_set_eq:NN \hdotsfor \@@_Hdotsfor}
+%    \end{macrocode}
+% 
+%
+% The sequence |\g_@@_empty_cells_seq| will contain a list of ``empty'' cells (not all the empty cells of the
+% matrix). If we want to indicate that the cell in row~$i$ and column~$j$ must be considered as empty, the token
+% list ``|i-j|'' will be put in this sequence.
+%    \begin{macrocode}
+     \seq_gclear_new:N  \g_@@_empty_cells_seq
+%    \end{macrocode}
+%
+% The sequence |\g_@@_multicolumn_cells_seq| will contain the list of the cells of the array where a command
+% |\multicolumn{|$n$|}{...}{...}| with $n>1$ is issued. In |\g_@@_multicolumn_sizes_seq|, the ``sizes'' (that is to say
+% the values of $n$) correspondant will be stored. These lists will be used for the creation of the ``medium nodes''
+% (if they are created). 
+%    \begin{macrocode}
+     \seq_gclear_new:N \g_@@_multicolumn_cells_seq
+     \seq_gclear_new:N \g_@@_multicolumn_sizes_seq
+%    \end{macrocode}
+% 
+%
+% The counter |\g_@@_row_int| will be used to count the rows of the array (its incrementation will be in
+% the first cell of the row). At the end of the environment |{array}|, this counter will give the total number of
+% rows of the matrix. 
+%    \begin{macrocode}
+     \int_gzero_new:N \g_@@_row_int 
+     \int_gset:Nn \g_@@_row_int {\l_@@_nb_first_row_int - 1}
+%    \end{macrocode}
+%
+% The counter |\g_@@_column_int| will be used to count the columns of the array. Since we want to
+% know the total number of columns of the matrix, we also create a counter |\g_@@_column_total_int|.
+% These counters are updated in the command |\@@_Cell:| executed at the beginning of each cell. 
+%    \begin{macrocode}
+     \int_gzero_new:N \g_@@_column_int 
+     \int_gzero_new:N \g_@@_column_total_int
+     \cs_set_eq:NN \@ifnextchar \new@ifnextchar
+%    \end{macrocode}
+%
+% The extra horizontal spaces on both sides of an environment |{array}| should be considered as a bad idea of
+% standard LaTeX. In the environment |{matrix}| the package  \pkg{amsmath} prefers to suppress these spaces with
+% instructions ``|\hskip -\arraycolsep|''. In the same way, we decide to suppress them in |{NiceArray}|. However, for better
+% compatibility, we give an option |exterior-arraycolsep| to control this feature.
+%    \begin{macrocode}
+     \bool_if:NF \l_@@_exterior_arraycolsep_bool
+         {\skip_horizontal:n {-\arraycolsep}}
+%    \end{macrocode}
+% 
+%    \begin{macrocode}
+     \skip_horizontal:n {\l_@@_left_margin_dim + \l_@@_extra_left_margin_dim}
+%    \end{macrocode}
+% 
+% 
+% Eventually, the environment |{NiceArray}| is defined upon the environment |{array}|. The token list |\l_@@_pos_tl|
+% will contain one of the values |t|, |c| or |b|.
+%    \begin{macrocode}
+     \array[\l_@@_pos_env_tl]{#2}}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+    {\endarray
+     \bool_if:NF \l_@@_exterior_arraycolsep_bool
+         {\skip_horizontal:n {-\arraycolsep}}
+     \skip_horizontal:n {\g_@@_right_margin_dim + \g_@@_extra_right_margin_dim}}
+%    \end{macrocode}
+%
+%
+% \interitem
+% We create the variants of the environment |{NiceMatrix}|.
+%    \begin{macrocode}
+\NewDocumentEnvironment {pNiceMatrix} {}
+   {\left(\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right)}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {bNiceMatrix} {}
+   {\left[\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right]}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {BNiceMatrix} {}
+   {\left\{\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {vNiceMatrix} {}
+   {\left\lvert\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\rvert}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {VNiceMatrix} {}
+   {\left\lVert\begin{NiceMatrix}}
+   {\end{NiceMatrix}\right\rVert}
+%    \end{macrocode}
+%
+% \interitem
+% For the option \verb|columns-width=auto| (or the option |auto-columns-width| of the environment
+% |{NiceMatrixBlock}|), we want to know the maximal width of the cells of the array (except 
+% the cells of the ``exterior'' column of an environment of the kind of |{pNiceAccayC}|). This length can be known
+% only after the end of the construction of the array (or at the end of the environment |{NiceMatrixBlock}|).
+% That's why we store this value in the main |.aux| file and it will be available in the next run. We write a
+% dedicated command for this because it will be called in a~|\aftergroup|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_write_max_cell_width:
+    {\bool_if:NF \l_@@_block_auto_columns_width_bool
+       {\iow_now:Nn \@mainaux {\ExplSyntaxOn}
+        \iow_now:Nx \@mainaux {\cs_gset:cpn 
+                               {@@_max_cell_width_\int_use:N \g_@@_env_int}
+                               {\dim_use:N \g_@@_max_cell_width_dim} }
+%    \end{macrocode}
+% If the environment has a name, we also create an alias named |\@@_max_cell_width_|{\ttfamily\slshape name}.
+%    \begin{macrocode}
+          \iow_now:Nx \@mainaux {\cs_gset:cpn {@@_max_cell_width_\g_@@_name_tl} 
+                                              {\dim_use:N \g_@@_max_cell_width_dim} }
+        \iow_now:Nn \@mainaux {\ExplSyntaxOff}}}
+%    \end{macrocode}
+% 
+% \interitem
+% The conditionnal |\@@_if_not_empty_cell:nnT| tests wether a cell is empty. The first two arguments must be LaTeX3
+% counters for the row and the column of the considered cell.
+%    \begin{macrocode}
+\prg_set_conditional:Npnn \@@_if_not_empty_cell:nn #1#2 {T,TF}
+%    \end{macrocode}
+% If the cell is an implicit cell (that is after the symbol |\\| of end of row), the cell must, of course, be
+% considered as empty. It's easy to check wether we are in this situation considering the correspondant Tikz node.
+%    \begin{macrocode}
+       {\cs_if_exist:cTF {pgf@sh@ns@nm-\int_use:N \g_@@_env_int-
+                                       \int_use:N #1-
+                                       \int_use:N #2}
+%    \end{macrocode}
+% We manage a list of ``empty cells'' called |\g_@@_empty_cells_seq|. In fact, this list is not a list of all the
+% empty cells of the array but only those explicitely declared empty for some reason. It's easy to check if the
+% current cell is in this list.
+%    \begin{macrocode}
+          {\seq_if_in:NxTF \g_@@_empty_cells_seq
+                           {\int_use:N #1-\int_use:N #2}
+             {\prg_return_false:}
+%    \end{macrocode}
+% In the general case, we consider the width of the Tikz node corresponding to the cell. In order to compute this
+% width, we have to extract the coordinate of the west and east anchors of the node. This extraction needs a
+% command environment |{pgfpicture}| but, in fact, nothing is drawn. 
+%    \begin{macrocode}
+             {\begin{pgfpicture}
+%    \end{macrocode}
+% We store the name of the node corresponding to the cell in |\l_tmpa_tl|.
+%    \begin{macrocode}
+                \tl_set:Nx \l_tmpa_tl {nm-\int_use:N \g_@@_env_int-
+                                          \int_use:N #1-
+                                          \int_use:N #2}
+                \pgfpointanchor \l_tmpa_tl {east}
+                \dim_gset:Nn \g_tmpa_dim \pgf@x
+                \pgfpointanchor \l_tmpa_tl {west}
+                \dim_gset:Nn \g_tmpb_dim \pgf@x
+              \end{pgfpicture}
+              \dim_compare:nNnTF {\dim_abs:n {\g_tmpb_dim-\g_tmpa_dim}} < {0.5 pt}
+                    \prg_return_false:
+                    \prg_return_true:
+             }}
+          \prg_return_false:
+       }
+%    \end{macrocode}
+%
+% \interitem
+% The argument of the following command |\@@_instruction_of_type:n| is the type of the instruction (|Cdots|,
+% |Vdots|, |Ddots|, etc.). This command writes in |\g_@@_lines_to_draw_tl| the instruction that will really draw
+% the line after the construction of the matrix.
+%
+% \medskip
+% For example, for the following matrix,
+% 
+% \smallskip
+% \begin{BVerbatim}[baseline=c,boxwidth=11cm]
+% \begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 \\
+% 5 & \Cdots & & 6 \\
+% 7 & \Hdotsfor{2} \\
+% \end{pNiceMatrix}
+% \end{BVerbatim}
+% $\begin{pNiceMatrix}
+% 1 & 2 & 3 & 4 \\
+% 5 & \Cdots & & 6 \\
+% 7 & \Hdotsfor{2} \\
+% \end{pNiceMatrix}$
+%
+% the content of |\g_@@_lines_to_draw_tl| will be:
+% 
+% \begin{scope}
+% \color{gray}
+% \verb|\@@_draw_Cdots:nn {2}{2}|
+%
+% \verb|\@@_draw_Hdotsfor:nnn {3}{2}{2}|
+% \end{scope} 
+% 
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_instruction_of_type:n 
+     {\tl_gput_right:Nx \g_@@_lines_to_draw_tl 
+           {\exp_not:c {@@_draw_#1:nn} 
+                       {\int_use:N \g_@@_row_int} 
+                       {\int_use:N \g_@@_column_int}}}
+%    \end{macrocode}
+%
+% 
+% \subsection{After the construction of the array}
+%
+% First, we deactivate Tikz externalization (since we use Tikz pictures with the options |overlay| and 
+% |remember picture|, there would be errors).
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_after_array:
+    {\group_begin:
+     \ifcsname tikz@library@external@loaded\endcsname
+         \tikzset{external/export = false}
+     \fi
+%    \end{macrocode}
+% Now, the definition of the counters |\g_@@_column_int| and |\g_@@_column_total_int| change: |\g_@@_column_int|
+% will be the number of columns without the exterior column (in an environment like |{pNiceArrayC}|) and
+% |\g_@@_column_total_int| will be the number of columns with this exterior column.
+%    \begin{macrocode}
+     \int_gset_eq:NN \g_@@_column_int \g_@@_column_total_int
+     \bool_if:NT \l_@@_exterior_column_bool {\int_gdecr:N \g_@@_column_int} 
+%    \end{macrocode}
+%
+% The sequence |\g_@@_yet_drawn_seq| contains a list of lines which have been drawn previously in the matrix. We
+% maintain this sequence because we don't want to draw two overlapping lines.
+%    \begin{macrocode}
+     \seq_gclear_new:N \g_@@_yet_drawn_seq
+%    \end{macrocode}
+%
+% By default, the diagonal lines will be parallelized\footnote{It's possible to use the option
+% |parallelize-diags| to disable this parallelization.}. There are two types of diagonals lines: the $|\Ddots|$
+% diagonals and the |\Iddots| diagonals. We have to count both types in order to know wether a diagonal is the
+% first of its type in the current |{NiceArray}| environment.
+%    \begin{macrocode}
+     \bool_if:NT \l_@@_parallelize_diags_bool
+          {\int_zero_new:N \l_@@_ddots_int
+           \int_zero_new:N \l_@@_iddots_int
+%    \end{macrocode}
+%
+% The dimensions |\l_@@_delta_x_one_dim| and |\l_@@_delta_y_one_dim| will contain the $\Delta_x$ and $\Delta_y$ of the
+% first |\Ddots| diagonal. We have to store these values in order to draw the others |\Ddots| diagonals parallel to
+% the first one. Similarly |\l_@@_delta_x_two_dim| and |\l_@@_delta_y_two_dim| are the $\Delta_x$ and $\Delta_y$ of
+% the first |\Iddots| diagonal.
+%    \begin{macrocode}
+           \dim_zero_new:N \l_@@_delta_x_one_dim
+           \dim_zero_new:N \l_@@_delta_y_one_dim
+           \dim_zero_new:N \l_@@_delta_x_two_dim
+           \dim_zero_new:N \l_@@_delta_y_two_dim}
+%    \end{macrocode}
+%
+% If the user has used the option |create-extra-nodes|, the ``medium nodes'' and ``large nodes'' are created. We
+% recall that the command |\@@_create_extra_nodes:|, when used once, becomes no-op (in the current TeX group).
+%    \begin{macrocode}
+     \bool_if:NT \g_@@_extra_nodes_bool \@@_create_extra_nodes:
+%    \end{macrocode}
+% 
+% \bigskip
+% Now, we really draw the lines. The code to draw the lines has been constructed in the token list |\g_@@_lines_to_draw_tl|.
+%    \begin{macrocode}
+     \tl_if_empty:NF \g_@@_lines_to_draw_tl
+           {\int_zero_new:N  \l_@@_initial_i_int
+            \int_zero_new:N  \l_@@_initial_j_int
+            \int_zero_new:N  \l_@@_final_i_int
+            \int_zero_new:N  \l_@@_final_j_int
+            \@@_bool_new:N \l_@@_initial_open_bool
+            \@@_bool_new:N \l_@@_final_open_bool
+            \g_@@_lines_to_draw_tl}
+     \tl_gclear:N \g_@@_lines_to_draw_tl
+%    \end{macrocode}
+%
+% \bigskip
+% Now, the |code-after|.
+%    \begin{macrocode}
+     \tikzset{every~picture/.style = {overlay,
+                                      remember~picture,
+                                      name~prefix = nm-\int_use:N \g_@@_env_int-}}
+     \cs_set_eq:NN \line \@@_line:nn
+     \g_@@_code_after_tl 
+     \group_end:}
+%    \end{macrocode}
+%
+% \bigskip
+% A dotted line will be said \emph{open} in one of its extremity when it stops on the edge of the matrix and \emph{closed}
+% otherwise. In the following matrix, the dotted line is closed on its left extremity and open on its right.
+% \[ \begin{pNiceMatrix}
+% a+b+c & a+b & a\\
+% a & \Cdots \\
+% a & a+b & a+b+c
+% \end{pNiceMatrix}\]
+% For a closed extremity, we use the normal node and for a open one, we use the ``medium node'' (the medium and
+% large nodes are created with |\@@_create_extra_nodes:| if they have not been created yet).
+% \[ \begin{pNiceMatrix}[code-after = {\begin{tikzpicture} 
+%                                      \node [highlight, fit={(2-1)}] {} ;
+%                                      \node [highlight, fit={(2-3-medium)}] {} ;
+%                                      \end{tikzpicture}
+%                                    }]
+% a+b+c & a+b & a\\
+% a & \Cdots \\
+% a & a+b & a+b+c
+% \end{pNiceMatrix}\]
+%
+% 
+% \bigskip
+% The command |\@@_find_extremities_of_line:nnnn| takes four arguments:
+%
+% \begin{itemize}
+% \item the first argument is the row of the cell where the command was issued;
+% \item the second argument is the column of the cell where the command was issued;
+% \item the third argument is the $x$-value of the orientation vector of the line;
+% \item the fourth argument is the $y$-value the orientation vector of the line;
+% \end{itemize}
+%
+% This command computes:
+%
+% \begin{itemize}
+% \item |\l_@@_initial_i_int| and |\l_@@_initial_j_int| which are the coordinates of one extremity of the line;
+% \item |\l_@@_final_i_int| and |\l_@@_final_j_int| which are the coordinates of the other extremity of the line;
+% \item |\l_@@_initial_open_bool| and |\l_@@_final_open_bool| to indicate wether the extremities are open or not.
+% \end{itemize}
+%
+%    \begin{macrocode}       
+\cs_new_protected:Nn \@@_find_extremities_of_line:nnnn
+          {\int_set:Nn \l_@@_initial_i_int {#1}
+           \int_set:Nn \l_@@_initial_j_int {#2}
+           \int_set:Nn \l_@@_final_i_int {#1}
+           \int_set:Nn \l_@@_final_j_int {#2}
+           \bool_set_false:N \l_@@_initial_open_bool
+           \bool_set_false:N \l_@@_final_open_bool
+%    \end{macrocode}
+% We will do two loops: one when determinating the initial cell and the other when determinating the final cell. 
+% The boolean |\l_@@_stop_loop_bool| will be used to control these loops.
+%    \begin{macrocode}
+           \@@_bool_new:N \l_@@_stop_loop_bool
+           \bool_do_until:Nn \l_@@_stop_loop_bool 
+              {\int_add:Nn \l_@@_final_i_int {#3}
+               \int_add:Nn \l_@@_final_j_int {#4}
+%    \end{macrocode}
+% We test if we are still in the matrix. 
+%    \begin{macrocode}
+               \bool_if:nTF { \int_compare_p:nNn 
+                                  \l_@@_final_i_int < {\l_@@_nb_first_row_int - 1}
+                           || \int_compare_p:nNn 
+                                  \l_@@_final_i_int > \g_@@_row_int
+                           || \int_compare_p:nNn 
+                                  \l_@@_final_j_int < 1
+                           || \int_compare_p:nNn 
+                                  \l_@@_final_j_int > \g_@@_column_total_int}
+%    \end{macrocode}
+% If we are outside the matrix, we have found the extremity of the dotted line and it's a \emph{open} extremity.
+%    \begin{macrocode}
+                       {\bool_set_true:N \l_@@_final_open_bool
+%    \end{macrocode}
+% We do a step backwards because we will draw the dotted line upon the last cell in the matrix (we will use the
+% ``medium node'' of this cell).
+%    \begin{macrocode}  
+                        \int_sub:Nn \l_@@_final_i_int {#3}
+                        \int_sub:Nn \l_@@_final_j_int {#4}
+                        \bool_set_true:N \l_@@_stop_loop_bool}
+%    \end{macrocode}
+% If we are in the matrix, we test if the cell is empty. If it's not the case, we stop the loop because we have
+% found the correct values for |\l_@@_final_i_int| and |\l_@@_final_j_int|.
+%    \begin{macrocode}
+                       {\@@_if_not_empty_cell:nnT 
+                              \l_@@_final_i_int 
+                              \l_@@_final_j_int
+                              {\bool_set_true:N \l_@@_stop_loop_bool}}
+               }
+%    \end{macrocode}
+% 
+% \interitem
+% For |\l_@@_initial_i_int| and |\l_@@_initial_j_int| the programmation is similar to the previous one.
+%    \begin{macrocode}
+           \bool_set_false:N \l_@@_stop_loop_bool
+           \bool_do_until:Nn \l_@@_stop_loop_bool 
+              {\int_sub:Nn \l_@@_initial_i_int {#3}
+               \int_sub:Nn \l_@@_initial_j_int {#4}
+               \bool_if:nTF 
+                       {   \int_compare_p:nNn 
+                               \l_@@_initial_i_int < \l_@@_nb_first_row_int
+                        || \int_compare_p:nNn 
+                               \l_@@_initial_i_int > \g_@@_row_int
+                        || \int_compare_p:nNn 
+                               \l_@@_initial_j_int < 1
+                        || \int_compare_p:nNn 
+                               \l_@@_initial_j_int > \g_@@_column_total_int}
+                       {\bool_set_true:N \l_@@_initial_open_bool
+                        \int_add:Nn \l_@@_initial_i_int {#3}
+                        \int_add:Nn \l_@@_initial_j_int {#4}
+                        \bool_set_true:N \l_@@_stop_loop_bool}
+                       {\@@_if_not_empty_cell:nnT 
+                              \l_@@_initial_i_int 
+                              \l_@@_initial_j_int
+                              {\bool_set_true:N \l_@@_stop_loop_bool}}
+               }
+%    \end{macrocode}
+% If we have at least one open extremity, we create the ``medium nodes'' in the matrix (in the case of an open
+% extremity, the dotted line uses the ``medium node'' of the last empty cell). We remind that, when used once, the
+% command |\@@_create_extra_nodes:| becomes no-op in the current TeX group.
+%    \begin{macrocode}
+           \bool_if:nT {\l_@@_initial_open_bool || \l_@@_final_open_bool}
+                       \@@_create_extra_nodes: }
+%    \end{macrocode}
+%
+% \interitem
+% If the dotted line to draw is in the list of the previously drawn lines (|\g_@@_yet_drawn_seq|), we don't draw
+% (so, we won't have overlapping lines in the \textsc{pdf}). The token list |\l_tmpa_tl| is the $4$-uplet
+% characteristic of the line.
+%    \begin{macrocode}
+\prg_set_conditional:Npnn \@@_if_yet_drawn: {F}
+            {\tl_set:Nx \l_tmpa_tl {\int_use:N \l_@@_initial_i_int-
+                                    \int_use:N \l_@@_initial_j_int-
+                                    \int_use:N \l_@@_final_i_int-
+                                    \int_use:N \l_@@_final_j_int}
+             \seq_if_in:NVTF \g_@@_yet_drawn_seq \l_tmpa_tl
+%    \end{macrocode}
+%
+% If the dotted line to draw is not in the list, we add it to the list |\g_@@_yet_drawn_seq|.
+%    \begin{macrocode}
+              {\prg_return_true:}
+              {\seq_gput_left:NV \g_@@_yet_drawn_seq \l_tmpa_tl
+               \prg_return_false:}}
+%    \end{macrocode}
+%
+%
+% \interitem 
+% The command |\@@_retrieve_coords:nn| retrieves the Tikz coordinates of the two extremities of the dotted line we
+% will have to draw \footnote{In fact, with diagonal lines, or vertical lines in columns of type |L| or |R|, an
+% adjustment of one of the coordinates may be done.}. This command has four implicit arguments which are
+% |\l_@@_initial_i_int|, |\l_@@_initial_j_int|, |\l_@@_final_i_int| and |\l_@@_final_j_int|.
+%
+% The two arguments of the command |\@@_retrieve_coords:nn| are the prefix and the anchor that must be used for the
+% two nodes. 
+%
+% The coordinates are stored in |\g_@@_x_initial_dim|, |\g_@@_y_initial_dim|, |\g_@@_x_final_dim|,
+% |\g_@@_y_final_dim|. These variables are global for technical reasons: we have to do an affectation in an
+% environment |{tikzpicture}|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_retrieve_coords:nn
+     {\dim_gzero_new:N \g_@@_x_initial_dim 
+      \dim_gzero_new:N \g_@@_y_initial_dim 
+      \dim_gzero_new:N \g_@@_x_final_dim 
+      \dim_gzero_new:N \g_@@_y_final_dim
+      \begin{tikzpicture}[remember~picture]
+      \tikz@parse@node\pgfutil@firstofone
+             (nm-\int_use:N \g_@@_env_int-
+                 \int_use:N \l_@@_initial_i_int-
+                 \int_use:N \l_@@_initial_j_int #1)
+      \dim_gset:Nn \g_@@_x_initial_dim \pgf@x
+      \dim_gset:Nn \g_@@_y_initial_dim \pgf@y
+      \tikz@parse@node\pgfutil@firstofone
+             (nm-\int_use:N \g_@@_env_int-
+                 \int_use:N \l_@@_final_i_int-
+                 \int_use:N \l_@@_final_j_int #2)
+      \dim_gset:Nn \g_@@_x_final_dim \pgf@x
+      \dim_gset:Nn \g_@@_y_final_dim \pgf@y
+      \end{tikzpicture} }
+\cs_generate_variant:Nn \@@_retrieve_coords:nn {xx}
+%    \end{macrocode}
+%
+% \interitem
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_Ldots:nn
+      {\@@_find_extremities_of_line:nnnn {#1} {#2} 0 1 
+       \@@_if_yet_drawn:F \@@_actually_draw_Ldots:}
+%    \end{macrocode}
+% 
+% \medskip
+% The command |\@@_actually_draw_Ldots:| actually draws the |Ldots| line using |\l_@@_initial_i_int|,
+% |\l_@@_initial_j_int|, |\l_@@_initial_open_bool|, |\l_@@_final_i_int|, |\l_@@_final_j_int| and
+% |\l_@@_final_open_bool|. We have a dedicated command because if is used also by |\Hdotsfor|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_actually_draw_Ldots:
+          {\@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                                     {-medium.base~west}
+                                     {.base~east}} 
+                                  {\bool_if:NTF \l_@@_final_open_bool 
+                                     {-medium.base~east}
+                                     {.base~west}}
+           \bool_if:NT \l_@@_initial_open_bool
+                 {\dim_gset_eq:NN \g_@@_y_initial_dim \g_@@_y_final_dim }
+           \bool_if:NT \l_@@_final_open_bool                 
+                 {\dim_gset_eq:NN \g_@@_y_final_dim \g_@@_y_initial_dim }
+%    \end{macrocode}
+% We raise the line of a quantity equal to the radius of the dots because we want the dots really ``on'' the line
+% of texte.
+%    \begin{macrocode}
+           \dim_gadd:Nn \g_@@_y_initial_dim {0.53pt}
+           \dim_gadd:Nn \g_@@_y_final_dim {0.53pt}
+           \@@_draw_tikz_line:}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_Cdots:nn
+      {\@@_find_extremities_of_line:nnnn {#1} {#2} 0 1 
+       \@@_if_yet_drawn:F
+            {\@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                                        {-medium.mid~west}
+                                        {.mid~east}} 
+                                    {\bool_if:NTF \l_@@_final_open_bool
+                                        {-medium.mid~east}
+                                        {.mid~west}}
+             \bool_if:NT \l_@@_initial_open_bool
+                   {\dim_gset_eq:NN \g_@@_y_initial_dim \g_@@_y_final_dim }
+             \bool_if:NT \l_@@_final_open_bool                 
+                   {\dim_gset_eq:NN \g_@@_y_final_dim \g_@@_y_initial_dim }
+             \@@_draw_tikz_line:}}
+%    \end{macrocode}
+%
+% \bigskip
+% For the vertical dots, we have to distinguish different instances because we want really vertical lines. Be
+% careful: it's not possible to insert the command |\@@_retrieve_coords:nn| in the arguments |T| and |F| of the
+% \pkg{expl3} commands (why?).
+%    \begin{macrocode}      
+\cs_new_protected:Nn \@@_draw_Vdots:nn
+      {\@@_find_extremities_of_line:nnnn {#1} {#2} 1 0
+       \@@_if_yet_drawn:F
+       {\@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                                  {-medium.north~west}
+                                  {.south~west}} 
+                               {\bool_if:NTF \l_@@_final_open_bool
+                                   {-medium.south~west}
+                                   {.north~west}}
+%    \end{macrocode}
+% The boolean |\l_tmpa_bool| indicates wether the column is of type |l| (|L| of |{NiceArray}|) or may be considered
+% as if.
+%    \begin{macrocode}      
+       \bool_set:Nn \l_tmpa_bool 
+                    {\dim_compare_p:nNn \g_@@_x_initial_dim = \g_@@_x_final_dim}
+       \@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                                 {-medium.north}
+                                 {.south}} 
+                              {\bool_if:NTF \l_@@_final_open_bool  
+                                 {-medium.south}
+                                 {.north}}
+%    \end{macrocode}
+% The boolean |\l_tmpb_bool| indicates wether the column is of type |c| (|C| of |{NiceArray}|) or may be considered
+% as if.
+%    \begin{macrocode}      
+       \bool_set:Nn \l_tmpb_bool 
+                    {\dim_compare_p:nNn \g_@@_x_initial_dim = \g_@@_x_final_dim}
+       \bool_if:NF \l_tmpb_bool
+            {\dim_gset:Nn \g_@@_x_initial_dim
+                         {\bool_if:NTF \l_tmpa_bool \dim_min:nn \dim_max:nn
+                                       \g_@@_x_initial_dim \g_@@_x_final_dim}
+             \dim_gset_eq:NN \g_@@_x_final_dim \g_@@_x_initial_dim}
+       \@@_draw_tikz_line:}}
+%    \end{macrocode}
+%
+% \interitem
+% For the diagonal lines, the situation is a bit more complicated because, by default, we parallelize the diagonals
+% lines. The first diagonal line is drawn and then, all the other diagonal lines are drawn parallel to the first
+% one.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_Ddots:nn
+   {\@@_find_extremities_of_line:nnnn {#1} {#2} 1 1 
+    \@@_if_yet_drawn:F
+    {\@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                                 {-medium.north~west}
+                                 {.south~east}} 
+                            {\bool_if:NTF \l_@@_final_open_bool
+                                 {-medium.south~east}
+                                 {.north~west}}
+%    \end{macrocode}
+% We have retrieved the coordinates in the usual way (they are stored in |\g_@@_x_initial_dim|, etc.).
+% If the parallelization of the diagonals is set, we will have (maybe) to adjust the fourth coordinate.
+%    \begin{macrocode}
+    \bool_if:NT \l_@@_parallelize_diags_bool
+       {\int_incr:N \l_@@_ddots_int
+%    \end{macrocode}
+% We test if the diagonal line is the first one (the counter |\l_@@_ddots_int| is created for this usage).
+%    \begin{macrocode}
+        \int_compare:nNnTF \l_@@_ddots_int = 1
+%    \end{macrocode}
+% If the diagonal line is the first one, we have no adjustment of the line to do but we store the $\Delta_x$ and the
+% $\Delta_y$ of the line because these values will be used to draw the others diagonal lines parallels to the first one.
+%    \begin{macrocode}
+          {\dim_set:Nn \l_@@_delta_x_one_dim {\g_@@_x_final_dim - \g_@@_x_initial_dim }
+           \dim_set:Nn \l_@@_delta_y_one_dim {\g_@@_y_final_dim - \g_@@_y_initial_dim }}
+%    \end{macrocode}
+% If the diagonal line is not the first one, we have to adjust the second extremity of the line by modifying 
+% the coordinate |\g_@@_y_initial_dim|.
+%    \begin{macrocode}
+          {\dim_gset:Nn \g_@@_y_final_dim          
+                  {\g_@@_y_initial_dim +
+                      (\g_@@_x_final_dim - \g_@@_x_initial_dim)
+                      * \dim_ratio:nn \l_@@_delta_y_one_dim \l_@@_delta_x_one_dim }}}
+%    \end{macrocode}
+% Now, we can draw the dotted line (after a possible change of |\g_@@_y_initial_dim|).
+%    \begin{macrocode}
+    \@@_draw_tikz_line:}}
+%    \end{macrocode}
+%
+% \bigskip
+% We draw the |\Iddots| diagonals in the same way.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_Iddots:nn
+   {\@@_find_extremities_of_line:nnnn {#1} {#2} 1 {-1}
+    \@@_if_yet_drawn:F
+    {\@@_retrieve_coords:xx {\bool_if:NTF \l_@@_initial_open_bool
+                              {-medium.north~east}
+                              {.south~west}} 
+                           {\bool_if:NTF \l_@@_final_open_bool
+                              {-medium.south~west}
+                              {.north~east}}
+     \bool_if:NT \l_@@_parallelize_diags_bool
+        {\int_incr:N \l_@@_iddots_int
+         \int_compare:nNnTF \l_@@_iddots_int = 1
+           {\dim_set:Nn \l_@@_delta_x_two_dim {\g_@@_x_final_dim - \g_@@_x_initial_dim}
+            \dim_set:Nn \l_@@_delta_y_two_dim {\g_@@_y_final_dim - \g_@@_y_initial_dim}}
+           {\dim_gset:Nn \g_@@_y_final_dim
+                   {\g_@@_y_initial_dim +
+                       (\g_@@_x_final_dim - \g_@@_x_initial_dim)
+                       * \dim_ratio:nn \l_@@_delta_y_two_dim \l_@@_delta_x_two_dim }}}
+    \@@_draw_tikz_line:}}
+%    \end{macrocode}
+%
+% \bigskip
+% \subsection{The actual instructions for drawing the dotted line with Tikz}
+%
+% The command |\@@_draw_tikz_line:| draws the line using four implicit arguments: 
+%
+% \quad |\g_@@_x_initial_dim|, |\g_@@_y_initial_dim|, |\g_@@_x_final_dim| and |\g_@@_y_final_dim|. 
+% These variables are global for technical reasons: their first affectation was in an instruction |\tikz|.
+%
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_tikz_line:
+                 { 
+%    \end{macrocode}
+% The dimension |\l_@@_l_dim| is the length $\ell$ of the line to draw. We use the floating point reals of
+% \pkg{expl3} to compute this length.
+%    \begin{macrocode}
+                   \dim_zero_new:N \l_@@_l_dim
+                   \dim_set:Nn \l_@@_l_dim
+                              { \fp_to_dim:n 
+                                  { sqrt( (  \dim_use:N \g_@@_x_final_dim 
+                                            -\dim_use:N \g_@@_x_initial_dim) ^2
+                                         +(  \dim_use:N \g_@@_y_final_dim 
+                                            -\dim_use:N \g_@@_y_initial_dim) ^2 )}
+                              }
+%    \end{macrocode}
+% We draw only if the length is not equel to zero (in fact, in the first compilation, the length may be equal to
+% zero). 
+%    \begin{macrocode}
+                   \dim_compare:nNnF \l_@@_l_dim = \c_zero_dim
+%    \end{macrocode}
+% The integer |\l_tmpa_int| is the number of dots of the dotted line.
+%    \begin{macrocode}
+                     {\bool_if:NTF \l_@@_initial_open_bool
+                       {\bool_if:NTF \l_@@_final_open_bool
+                           {\int_set:Nn \l_tmpa_int 
+                                        {\dim_ratio:nn {\l_@@_l_dim} {0.45em}}}
+                           {\int_set:Nn \l_tmpa_int 
+                                        {\dim_ratio:nn {\l_@@_l_dim - 0.3em} {0.45em}}}}
+                       {\bool_if:NTF \l_@@_final_open_bool
+                           {\int_set:Nn \l_tmpa_int 
+                                        {\dim_ratio:nn {\l_@@_l_dim - 0.3em} {0.45em}}}
+                           {\int_set:Nn \l_tmpa_int 
+                                        {\dim_ratio:nn {\l_@@_l_dim - 0.6em} {0.45em}}}}
+%    \end{macrocode}
+% The dimensions |\l_tmpa_dim| and |\l_tmpb_dim| are the coordinates of the vector between two dots in the
+% dotted line.
+%    \begin{macrocode}
+                      \dim_set:Nn \l_tmpa_dim {(\g_@@_x_final_dim - \g_@@_x_initial_dim)
+                                                 * \dim_ratio:nn {0.45em} \l_@@_l_dim}
+                      \dim_set:Nn \l_tmpb_dim {(\g_@@_y_final_dim - \g_@@_y_initial_dim)
+                                                 * \dim_ratio:nn {0.45em} \l_@@_l_dim}
+%    \end{macrocode}
+%
+% The length $\ell$ is the length of the dotted line. We note $\Delta$ the length between two dots and $n$ the
+% number of intervals between dots. We note $\delta = \frac12(\ell - n \Delta)$.
+% The distance between the initial extremity of the line and the first dot will be equal to $k\cdot\delta$ where
+% $k=0$, $1$ or $2$. We first compute this number $k$ in |\l_tmpb_int|.
+%    \begin{macrocode}
+                      \int_set:Nn \l_tmpb_int
+                          {\bool_if:NTF \l_@@_initial_open_bool
+                             {\bool_if:NTF \l_@@_final_open_bool 1 0}
+                             {\bool_if:NTF \l_@@_final_open_bool 2 1}}
+%    \end{macrocode}
+% In the loop over the dots (|\int_step_inline:nnnn|), the dimensions |\g_@@_x_initial_dim| and
+% |\g_@@_y_initial_dim| will be used for the coordinates of the dots. But, before the loop, we must move until the
+% first dot.
+%
+%    \begin{macrocode}
+                      \dim_gadd:Nn \g_@@_x_initial_dim
+                          {  (\g_@@_x_final_dim - \g_@@_x_initial_dim)
+                              * \dim_ratio:nn {\l_@@_l_dim - 0.45 em * \l_tmpa_int}
+                                              {\l_@@_l_dim * 2} 
+                              * \l_tmpb_int}
+%    \end{macrocode}
+% (In a multiplication of a dimension and an integer, the integer must always be put in second position.)
+%    \begin{macrocode}         
+                      \dim_gadd:Nn \g_@@_y_initial_dim 
+                          {   (\g_@@_y_final_dim - \g_@@_y_initial_dim)
+                             * \dim_ratio:nn {\l_@@_l_dim - 0.45 em * \l_tmpa_int}
+                                             {\l_@@_l_dim * 2}
+                             * \l_tmpb_int}
+                      \begin{tikzpicture}[overlay]
+                      \int_step_inline:nnnn 0 1 \l_tmpa_int
+                         { \pgfpathcircle{\pgfpoint{\g_@@_x_initial_dim}
+                                                   {\g_@@_y_initial_dim}}
+                                         {0.53pt}
+                           \pgfusepath{fill}
+                           \dim_gadd:Nn \g_@@_x_initial_dim \l_tmpa_dim
+                           \dim_gadd:Nn \g_@@_y_initial_dim \l_tmpb_dim }
+                      \end{tikzpicture}}
+}
+%    \end{macrocode}
+%
+% \subsection{User commands available in the new environments}
+%
+% We give new names for the commands |\ldots|, |\cdots|, |\vdots| and |\ddots| because these commands will be
+% redefined (if the option |renew-dots| is used).
+%    \begin{macrocode}
+\cs_set_eq:NN \@@_ldots \ldots
+\cs_set_eq:NN \@@_cdots \cdots
+\cs_set_eq:NN \@@_vdots \vdots
+\cs_set_eq:NN \@@_ddots \ddots
+\cs_set_eq:NN \@@_iddots \iddots
+%    \end{macrocode}
+%
+% \interitem
+% The command |\@@_add_to_empty_cells:| adds the current cell to |\g_@@_empty_cells_seq| which is the list of the
+% empty cells (the cells explicitly declared ``empty'': there may be, of course, other empty cells in the matrix).
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_add_to_empty_cells:
+    {\seq_gput_right:Nx \g_@@_empty_cells_seq
+          {\int_use:N \g_@@_row_int-
+           \int_use:N \g_@@_column_int}}
+%    \end{macrocode}
+%
+% \interitem 
+% The commands |\@@_Ldots|, |\@@_Cdots|, |\@@_Vdots|, |\@@_Ddots| and |\@@_Iddots| will be linked to |\Ldots|,
+% |\Cdots|, |\Vdots|, |\Ddots| and |\Iddots| in the environments |{NiceArray}| (the other environments of
+% \pkg{nicematrix} rely upon |{NiceArray}|).
+%    \begin{macrocode}
+\NewDocumentCommand \@@_Ldots {s}
+    {\bool_if:nF {#1} {\@@_instruction_of_type:n {Ldots}}
+     \bool_if:NF \l_@@_nullify_dots_bool {\phantom \@@_ldots}
+     \@@_add_to_empty_cells:}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\NewDocumentCommand \@@_Cdots {s}
+    {\bool_if:nF {#1} {\@@_instruction_of_type:n {Cdots}}
+     \bool_if:NF \l_@@_nullify_dots_bool {\phantom \@@_cdots}
+     \@@_add_to_empty_cells:}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\NewDocumentCommand \@@_Vdots {s}
+    {\bool_if:nF {#1} {\@@_instruction_of_type:n {Vdots}}
+     \bool_if:NF \l_@@_nullify_dots_bool {\phantom \@@_vdots}
+     \@@_add_to_empty_cells:}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\NewDocumentCommand \@@_Ddots {s}
+    {\bool_if:nF {#1} {\@@_instruction_of_type:n {Ddots}}
+     \bool_if:NF \l_@@_nullify_dots_bool {\phantom \@@_ddots}
+     \@@_add_to_empty_cells:}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\NewDocumentCommand \@@_Iddots {s}
+    {\bool_if:nF {#1} {\@@_instruction_of_type:n {Iddots}}
+     \bool_if:NF \l_@@_nullify_dots_bool {\phantom \@@_iddots}
+     \@@_add_to_empty_cells:}
+%    \end{macrocode}
+%
+%
+% \bigskip
+% The command |\@@_Hspace:| will be linked to |\hspace| in |{NiceArray}|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_Hspace:
+  {\@@_add_to_empty_cells:
+   \hspace}
+%    \end{macrocode}
+%
+%
+% \bigskip
+% In the environment |{NiceArray}|, the command |\multicolumn| will be linked to the following command
+% |\@@_multicolumn:nnn|.
+%    \begin{macrocode}
+\cs_set_eq:NN \@@_old_multicolumn \multicolumn
+\cs_new:Nn \@@_multicolumn:nnn
+       {\@@_old_multicolumn{#1}{#2}{#3}
+        \int_compare:nNnT #1 > 1
+            {\seq_gput_left:Nx \g_@@_multicolumn_cells_seq
+                               {\int_eval:n {\g_@@_row_int} - 
+                                \int_use:N \g_@@_column_int}
+             \seq_gput_left:Nn \g_@@_multicolumn_sizes_seq {#1}}
+        \int_gadd:Nn \g_@@_column_int {#1-1}}
+%    \end{macrocode}
+%
+%
+% \bigskip
+% The command |\@@_Hdotsfor| will be linked to |\Hdotsfor| in |{NiceArray}|. This command uses an optional
+% argument like |\hdotsfor| but this argument is discarded (in |\hdotsfor|, this argument is used for fine tuning
+% of the space beetween two consecutive dots). 
+% Tikz nodes are created for all the cells of the array, even the implicit cells of the |\Hdotsfor|.
+%    \begin{macrocode}
+\NewDocumentCommand {\@@_Hdotsfor} {O{} m}
+     {\tl_gput_right:Nx \g_@@_lines_to_draw_tl 
+           {\exp_not:N \@@_draw_Hdotsfor:nnn
+                       {\int_use:N \g_@@_row_int} 
+                       {\int_use:N \g_@@_column_int}
+                       {#2}}
+      \prg_replicate:nn {#2-1} {&}}
+%    \end{macrocode}
+% 
+% \medskip
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_draw_Hdotsfor:nnn
+       {\bool_set_false:N \l_@@_initial_open_bool
+        \bool_set_false:N \l_@@_final_open_bool
+%    \end{macrocode}
+% For the row, it's easy.
+%    \begin{macrocode}
+        \int_set:Nn \l_@@_initial_i_int {#1}
+        \int_set:Nn \l_@@_final_i_int {#1}
+%    \end{macrocode}
+% For the column, it's a bit more complicated.
+%    \begin{macrocode}
+        \int_compare:nNnTF #2 = 1
+              {\int_set:Nn \l_@@_initial_j_int 1
+               \bool_set_true:N \l_@@_initial_open_bool}
+              {\int_set:Nn \l_tmpa_int {#2-1}
+               \@@_if_not_empty_cell:nnTF \l_@@_initial_i_int \l_tmpa_int
+                 {\int_set:Nn \l_@@_initial_j_int {#2-1}}
+                 {\int_set:Nn \l_@@_initial_j_int {#2}
+                  \bool_set_true:N \l_@@_initial_open_bool}}
+        \int_compare:nNnTF {#2+#3-1} = \g_@@_column_int
+              {\int_set:Nn \l_@@_final_j_int {#2+#3-1}
+               \bool_set_true:N \l_@@_final_open_bool}
+              {\int_set:Nn \l_tmpa_int {#2+#3}
+               \@@_if_not_empty_cell:nnTF \l_@@_final_i_int \l_tmpa_int
+                 {\int_set:Nn \l_@@_final_j_int {#2+#3}}
+                 {\int_set:Nn \l_@@_final_j_int {#2+#3-1}
+                  \bool_set_true:N \l_@@_final_open_bool}}
+        \bool_if:nT {\l_@@_initial_open_bool || \l_@@_final_open_bool}
+                    \@@_create_extra_nodes: 
+        \@@_actually_draw_Ldots:}
+%    \end{macrocode}
+% 
+%
+%
+% \subsection{The command \textbackslash line accessible in code-after}
+%
+% In the |code-after|, the command |\@@_line:nn| will be linked to |\line|. This command takes two arguments which
+% are the specification of two cells in the array (in the format $i$-$j$) and draws a dotted line between these cells.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_line:nn
+     {\dim_zero_new:N \g_@@_x_initial_dim
+      \dim_zero_new:N \g_@@_y_initial_dim
+      \dim_zero_new:N \g_@@_x_final_dim
+      \dim_zero_new:N \g_@@_y_final_dim
+      \@@_bool_new:N \l_@@_initial_open_bool
+      \@@_bool_new:N \l_@@_final_open_bool
+      \begin{tikzpicture}
+         \path~(#1)~--~(#2)~node[at~start]~(i)~{}~node[at~end]~(f)~{} ;
+         \tikz@parse@node\pgfutil@firstofone (i)
+         \dim_gset:Nn \g_@@_x_initial_dim \pgf@x
+         \dim_gset:Nn \g_@@_y_initial_dim \pgf@y
+         \tikz@parse@node\pgfutil@firstofone (f)
+         \dim_gset:Nn \g_@@_x_final_dim \pgf@x
+         \dim_gset:Nn \g_@@_y_final_dim \pgf@y
+      \end{tikzpicture}  
+      \@@_draw_tikz_line:}
+%    \end{macrocode}
+% 
+% The commands |\Ldots|, |\Cdots|, |\Vdots|, |\Ddots|, |\Iddots| don't use this command because they have to do
+% other settings (for example, the diagonal lines must be parallelized).
+%
+%
+%
+% \subsection{The environment \{NiceMatrixBlock\}}
+%
+% The following flag will be raised when all the columns of the environments of the block must have the same width
+% in ``auto'' mode.
+%    \begin{macrocode}
+\bool_new:N \l_@@_block_auto_columns_width_bool
+%    \end{macrocode}
+%
+% \bigskip
+% As of now, there is only one option available for the environment |{NiceMatrixBlock}|.
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceMatrixBlock} 
+      {auto-columns-width .code:n = 
+                           {\bool_set_true:N \l_@@_block_auto_columns_width_bool
+                            \dim_gzero_new:N \g_@@_max_cell_width_dim
+                            \bool_set_true:N \l_@@_auto_columns_width_bool}}
+%    \end{macrocode}
+%
+% \bigskip
+%    \begin{macrocode}
+\NewDocumentEnvironment {NiceMatrixBlock} {O{}}
+    {\keys_set:nn {NiceMatrix/NiceMatrixBlock} {#1}
+     \int_zero_new:N \l_@@_first_env_block_int
+     \int_set:Nn \l_@@_first_env_block_int {\g_@@_env_int + 1}}
+%    \end{macrocode}
+%
+% \medskip
+% At the end of the environment |{NiceMatrixBlock}|, we write in the main |.aux| file instructions for the column
+% width of all the environments of the block (that's why we have stored the number of the first environment of the
+% block in the counter |\l_@@_first_env_block_int|).
+%    \begin{macrocode}
+    {\bool_if:NT \l_@@_block_auto_columns_width_bool
+          {\iow_now:Nn \@mainaux {\ExplSyntaxOn}
+           \int_step_inline:nnnn \l_@@_first_env_block_int 1 \g_@@_env_int
+               {\iow_now:Nx \@mainaux         
+                   {\cs_gset:cpn {@@_max_cell_width_##1} 
+                                 {\dim_use:N \g_@@_max_cell_width_dim}}}
+           \iow_now:Nn \@mainaux {\ExplSyntaxOff}}}
+%    \end{macrocode}
+%
+% \subsection{The environment \{pNiceArrayC\} and its variants}
+% 
+% The code in this section can be removed without affecting the previous code.
+% 
+% \medskip
+% First, we define a set of options for the environment |{pNiceArrayC}| and its variants. This set of keys is named   
+% |NiceMatrix/NiceArrayC| even though there is no environment called |{NiceArrayC}|.
+%
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceArrayC}
+     {parallelize-diags .bool_set:N       = \l_@@_parallelize_diags_bool,
+      parallelize-diags .default:n        = true,
+      renew-dots        .bool_set:N       = \l_@@_renew_dots_bool,
+      renew-dots        .default:n        = true,
+      nullify-dots      .bool_set:N       = \l_@@_nullify_dots_bool ,
+      nullify-dots      .default:n        = true,
+      code-for-last-col .tl_set:N         = \l_@@_code_for_last_col_tl,
+      code-for-last-col .value_required:n = true,
+      columns-width     .code:n           = \str_if_eq:nnTF {#1} {auto}
+                                            {\bool_set_true:N 
+                                                   \l_@@_auto_columns_width_bool}
+                                            {\dim_set:Nn \l_@@_columns_width_dim {#1}},
+      columns-width     .value_required:n = true,
+      name              .code:n           = {\seq_if_in:NnTF \g_@@_names_seq {#1}
+                                                {\@@_msg_error:nn {Duplicate~name} {#1}}
+                                                {\seq_gput_left:Nn \g_@@_names_seq {#1}}
+                                             \tl_set:Nn \l_@@_name_tl {#1}},
+      name              .value_required:n = true,
+      code-after        .tl_set:N          = \l_@@_code_after_tl,
+      code-after        .initial:n         = \c_empty_tl,
+      code-after        .value_required:n = true,
+      create-extra-nodes  .bool_set:N   = \l_@@_extra_nodes_bool,
+      create-extra-nodes  .default:n    = true,
+      left-margin  .dim_set:N  = \l_@@_left_margin_dim,
+      left-margin  .default:n  = \arraycolsep,
+      right-margin .dim_set:N  = \l_@@_right_margin_dim,
+      right-margin .default:n  = \arraycolsep,
+      extra-left-margin  .dim_set:N  = \l_@@_extra_left_margin_dim,
+      extra-right-margin .dim_set:N  = \l_@@_extra_right_margin_dim,
+      unknown .code:n  = \@@_msg_error:n {Unknown~option~for~NiceArrayC}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArrayC}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{\@currenvir\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               code-for-last-col,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left-margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags~
+               renew-dots~
+               and~right-margin.}
+%    \end{macrocode}
+%
+% \bigskip
+% In the environment |{pNiceArrayC}| (and its variants), the last column is composed with instructions
+% |\hbox_overlap_right:n| (this instruction may be seen as the \pkg{expl3} equivalent of the classical command
+% |\rlap|). After the composition of the array, an horizontal skip is inserted to compensate for these
+% overlapping boxes.
+%
+% \medskip
+% The command |\@@_NiceArrayC:n| will be used in |{NiceArrayCwithDelims}| but also in the environment
+% |{NiceArrayRCwithDelims}|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_NiceArrayC:n
+    {\bool_set_true:N \l_@@_exterior_column_bool
+     \begin{NiceArray}
+%    \end{macrocode}
+% The beginning of the preamble is the argument of the environment |{pNiceArrayC}|. 
+%    \begin{macrocode}
+             {#1
+%    \end{macrocode}
+% 
+% However, we add a last column with its own specification. For a cell in this last column, the first operation is
+% to store the content of the cell in the box |\l_tmpa_box|. This is allowed in \pkg{expl3} with the construction
+% |\hbox_set:Nw \l_tmpa_box| ... |\hbox_set_end:|.
+%    \begin{macrocode}
+                >{\int_gincr:N \g_@@_column_int
+                 \int_gset:Nn \g_@@_column_total_int
+                              {\int_max:nn \g_@@_column_total_int \g_@@_column_int}
+                  \hbox_set:Nw \l_tmpa_box $ % $
+                     \l_@@_code_for_last_col_tl
+                 }
+                l
+%    \end{macrocode}
+% 
+% We actualize the value of |\g_@@_with_last_col_dim| which, at the end of the array, will contain the maximal width
+% of the cells of the last column (thus, it will be equal to the width of the last column).
+%    \begin{macrocode}
+                <{   $ % $
+                  \hbox_set_end:
+                  \dim_gset:Nn \g_@@_width_last_col_dim
+                     {\dim_max:nn \g_@@_width_last_col_dim
+                                  {\box_wd:N \l_tmpa_box}}
+                  \skip_horizontal:n {-2\arraycolsep}
+%    \end{macrocode}
+% The content of the cell is inserted in an overlapping position.
+%    \begin{macrocode}
+                  \hbox_overlap_right:n
+                       {\skip_horizontal:n
+                               { 2\arraycolsep + \l_@@_right_margin_dim
+                                               + \l_@@_extra_right_margin_dim}
+                        \tikz[remember~picture, inner~sep=0pt, minimum~width=0pt, baseline]
+                           \node [anchor=base,
+                                  name = nm-\int_use:N \g_@@_env_int-
+                                            \int_use:N \g_@@_row_int-
+                                            \int_use:N \g_@@_column_int,
+                                  alias = \tl_if_empty:NF \l_@@_name_tl
+                                            {\l_@@_name_tl-
+                                             \int_use:N \g_@@_row_int-
+                                             \int_use:N \g_@@_column_int}]
+                                   {\box_use:N \l_tmpa_box} ; } }}}
+%    \end{macrocode}
+% This ends the preamble of the array that will be constructed (a rather long preamble, indeed).
+%
+% \bigskip
+% The environments of the type of |{pNiceArrayC}| will be constructed over |{NiceArrayCwithDelims}|. The first
+% two arguments of this environment are the left and the right delimiter.
+%    \begin{macrocode}
+\NewDocumentEnvironment{NiceArrayCwithDelims} {mm O{} m O{}}
+    {\dim_gzero_new:N \g_@@_width_last_col_dim
+     \keys_set:nn {NiceMatrix/NiceArrayC} {#3,#5}
+     \bool_set_false:N \l_@@_exterior_arraycolsep_bool
+     \tl_set:Nn \l_@@_pos_env_tl c
+     \left#1
+     \@@_NiceArrayC:n {#4}}
+    {\end{NiceArray}
+     \right#2
+     \skip_horizontal:n \g_@@_width_last_col_dim
+    }
+%    \end{macrocode}
+%         
+%                                                                             
+% \bigskip
+% In the following environments, we don't use the form with |\begin{...}| and |\end{...}| because we use
+% |\@currenvir| in the error message for an unknown option.
+%    \begin{macrocode}                       
+\NewDocumentEnvironment {pNiceArrayC} {}
+    {\NiceArrayCwithDelims{(}{)}}
+    {\endNiceArrayCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}                       
+\NewDocumentEnvironment {vNiceArrayC} {}
+    {\NiceArrayCwithDelims{|}{|}}
+    {\endNiceArrayCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}                       
+\NewDocumentEnvironment {VNiceArrayC} {}
+    {\NiceArrayCwithDelims{\|}{\|}}
+    {\endNiceArrayCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}                       
+\NewDocumentEnvironment {bNiceArrayC} {}
+    {\NiceArrayCwithDelims{[}{]}}
+    {\endNiceArrayCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}                       
+\NewDocumentEnvironment {BNiceArrayC} {}
+    {\NiceArrayCwithDelims{\{}{\}}}
+    {\endNiceArrayCwithDelims}
+%    \end{macrocode}
+%    
+%
+% \subsection{The environment \{pNiceArrayRC\}}
+%
+% The code in this section can be removed without affecting the previous code.
+% 
+%
+% \bigskip
+%    \begin{macrocode}
+\keys_define:nn {NiceMatrix/NiceArrayRC}
+  {parallelize-diags    .bool_set:N = \l_@@_parallelize_diags_bool,
+   parallelize-diags    .default:n  = true,
+   renew-dots           .bool_set:N = \l_@@_renew_dots_bool,
+   renew-dots           .default:n  = true,
+   nullify-dots         .bool_set:N = \l_@@_nullify_dots_bool ,
+   nullify-dots         .default:n  = true,
+   code-for-first-row   .tl_set:N   = \l_@@_code_for_first_row_tl,
+   code-for-first-row    .value_required:n = true,
+   code-for-last-col    .tl_set:N   = \l_@@_code_for_last_col_tl,
+   code-for-last-col    .value_required:n = true,
+   columns-width        .code:n     = \str_if_eq:nnTF {#1} {auto}
+                                         {\bool_set_true:N 
+                                                \l_@@_auto_columns_width_bool}
+                                         {\dim_set:Nn \l_@@_columns_width_dim {#1}},
+   columns-width        .value_required:n = true,
+   name                 .code:n     = {\seq_if_in:NnTF \g_@@_names_seq {#1}
+                                          {\@@_msg_error:nn {Duplicate~name} {#1}}
+                                          {\seq_gput_left:Nn \g_@@_names_seq {#1}}
+                                       \tl_set:Nn \l_@@_name_tl {#1}},
+   code-after           .tl_set:N    = \l_@@_code_after_tl,
+   create-extra-nodes   .bool_set:N  = \l_@@_extra_nodes_bool,
+   create-extra-nodes   .default:n   = true,
+   left-margin  .dim_set:N  = \l_@@_left_margin_dim,
+   left-margin  .default:n  = \arraycolsep,
+   right-margin .dim_set:N  = \l_@@_right_margin_dim,
+   right-margin .default:n  = \arraycolsep,
+   extra-left-margin  .dim_set:N  = \l_@@_extra_left_margin_dim,
+   extra-right-margin .dim_set:N  = \l_@@_extra_right_margin_dim,
+   unknown .code:n  = \@@_msg_error:n {Unknown~option~for~NiceArrayRC}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\msg_new:nnnn {nicematrix}
+              {Unknown~option~for~NiceArrayRC}
+              {The~option~"\tl_use:N\l_keys_key_tl"~is~unknown~for~the~environment~
+               \{\@currenvir\}.\\
+               If~you~go~on,~it~will~be~ignored.\\
+               For~a~list~of~the~available~options,~type~H~<return>.}
+              {The~available~options~are~(in~alphabetic~order):~
+               code-after,~
+               code-for-last-col,~
+               code-for-first-row,~
+               columns-width,~
+               create-extra-nodes,~
+               extra-left-margin,~
+               extra-right-margin,~
+               left~margin,~
+               name,~
+               nullify-dots,~
+               parallelize-diags,~
+               renew-dots~
+               and~right~margin.}
+%    \end{macrocode}
+%
+%
+% The first and the second argument of the environment |{NiceArrayRCwithDelims}| are the delimiters which will be
+% used in the array. Usually, the final user will not use directly this environment |{NiceArrayRCwithDelims}|
+% because he will use one of the variants |{pNiceArrayRC}|, |{vNiceArrayRC}|, etc.
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {NiceArrayRCwithDelims} {mm O{} m O{}}
+    {\int_zero:N \l_@@_nb_first_row_int 
+     \dim_gzero_new:N \g_@@_width_last_col_dim
+     \keys_set:nn {NiceMatrix/NiceArrayRC} {#3,#5}
+     \bool_set_false:N \l_@@_exterior_arraycolsep_bool
+     \tl_set:Nn \l_@@_pos_env_tl c
+     \box_clear_new:N \l_@@_the_array_box
+     \hbox_set:Nw \l_@@_the_array_box
+           $ % $
+           \@@_NiceArrayC:n {#4}}
+    {      \end{NiceArray}
+           $ % $
+     \hbox_set_end:
+     \dim_set:Nn \l_tmpa_dim
+            { ( \dim_max:nn {12pt} 
+                            {\g_@@_max_ht_row_one_dim + \g_@@_max_dp_row_zero_dim})
+              + \g_@@_max_ht_row_zero_dim 
+              - \g_@@_max_ht_row_one_dim }
+     \hbox_set:Nn \l_tmpa_box
+        {$ % $
+         \left#1
+         \vcenter {\skip_vertical:n {- \l_tmpa_dim}
+                   \box_use_drop:N \l_@@_the_array_box}
+         \right#2
+         $ % $
+         \skip_horizontal:n \g_@@_width_last_col_dim}
+     \box_set_ht:Nn \l_tmpa_box {\box_ht:N \l_tmpa_box + \l_tmpa_dim}
+     \box_use_drop:N \l_tmpa_box
+    }
+%    \end{macrocode}
+% 
+% \bigskip
+% In the following environments, we don't use the form with |\begin{...}| and |\end{...}| because we use
+% |\@currenvir| in the error message for an unknown option.
+%    \begin{macrocode}
+\NewDocumentEnvironment {pNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{(}{)}}
+     {\endNiceArrayRCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {bNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{[}{]}}
+     {\endNiceArrayRCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {vNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{|}{|}}
+     {\endNiceArrayRCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {VNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{\|}{\|}}
+     {\endNiceArrayRCwithDelims}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewDocumentEnvironment {BNiceArrayRC} {}
+     {\NiceArrayRCwithDelims{\{}{\}}}
+     {\endNiceArrayRCwithDelims}
+%    \end{macrocode}
+%
+%
+% \subsection{The extra nodes}
+%
+% First, two variants of the functions |\dim_min:nn| and |\dim_max:nn|.
+%    \begin{macrocode}
+\cs_generate_variant:Nn \dim_min:nn {vn}
+\cs_generate_variant:Nn \dim_max:nn {vn}
+%    \end{macrocode}
+%
+%
+%
+% \bigskip
+% For each row $i$, we compute two dimensions \texttt{l_@@_row_\textsl{i}_min_dim} and
+% \texttt{l_@@_row_\textsl{i}_max_dim}. The dimension \texttt{l_@@_row_\textsl{i}_min_dim} is the minimal
+% $y$-value of all the cells of the row~$i$. The dimension \texttt{l_@@_row_\textsl{i}_max_dim} is the maximal
+% $y$-value of all the cells of the row~$i$.
+%
+% Similarly, for each column $j$, we compute two dimensions \texttt{l_@@_column_\textsl{j}_min_dim} and
+% \texttt{l_@@_column_\textsl{j}_max_dim}. The dimension \texttt{l_@@_column_\textsl{j}_min_dim} is the minimal
+% $x$-value of all the cells of the column~$j$. The dimension \texttt{l_@@_column_\textsl{j}_max_dim} is the maximal
+% $x$-value of all the cells of the column~$j$.
+%
+% Since these dimensions will be computed as maximum or minimum, we initialize them to |\c_max_dim| or |-\c_max_dim|.
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_create_extra_nodes:
+     {\begin{tikzpicture}[remember~picture,overlay]
+      \int_step_variable:nnnNn \l_@@_nb_first_row_int 1 \g_@@_row_int \@@_i
+          {\dim_zero_new:c {l_@@_row_\@@_i _min_dim} 
+           \dim_set_eq:cN {l_@@_row_\@@_i _min_dim} \c_max_dim
+           \dim_zero_new:c {l_@@_row_\@@_i _max_dim} 
+           \dim_set:cn {l_@@_row_\@@_i _max_dim} {-\c_max_dim}}
+      \int_step_variable:nnnNn 1 1 \g_@@_column_total_int \@@_j
+          {\dim_zero_new:c {l_@@_column_\@@_j _min_dim} 
+           \dim_set_eq:cN {l_@@_column_\@@_j _min_dim} \c_max_dim
+           \dim_zero_new:c {l_@@_column_\@@_j _max_dim} 
+           \dim_set:cn {l_@@_column_\@@_j _max_dim} {-\c_max_dim}}
+%    \end{macrocode}
+% We begin the two nested loops over the rows and the columns of the array.
+%    \begin{macrocode}
+      \int_step_variable:nnnNn \l_@@_nb_first_row_int 1 \g_@@_row_int \@@_i
+          {\int_step_variable:nnnNn 1 1 \g_@@_column_total_int \@@_j
+%    \end{macrocode}
+% Maybe the cell ($i$-$j$) is an implicit cell (that is to say a cell after implicit ampersands |&|). In this case,
+% of course, we don't update the dimensions we want to compute.
+%    \begin{macrocode}
+            {\cs_if_exist:cT {pgf@sh@ns@nm-\int_use:N \g_@@_env_int-\@@_i-\@@_j}
+%    \end{macrocode}
+% We retrieve the coordinates of the anchor |south west| of the (normal) node of the cell ($i$-$j$). They will be
+% stored in |\pgf@x| and |\pgf@y|.
+%    \begin{macrocode}
+               {\tikz@parse@node \pgfutil@firstofone 
+                           (nm-\int_use:N \g_@@_env_int-\@@_i-\@@_j.south~west)
+                \dim_set:cn {l_@@_row_\@@_i _min_dim}
+                            {\dim_min:vn {l_@@_row_\@@_i _min_dim} \pgf@y}
+                \seq_if_in:NxF \g_@@_multicolumn_cells_seq {\@@_i-\@@_j}
+                   {\dim_set:cn {l_@@_column_\@@_j _min_dim}
+                               {\dim_min:vn {l_@@_column_\@@_j _min_dim} \pgf@x}}
+%    \end{macrocode}
+% We retrieve the coordinates of the anchor |north east| of the (normal) node of the cell ($i$-$j$). They will be
+% stored in |\pgf@x| and |\pgf@y|.
+%    \begin{macrocode}
+                \tikz@parse@node \pgfutil@firstofone 
+                           (nm-\int_use:N \g_@@_env_int-\@@_i-\@@_j.north~east)
+                \dim_set:cn {l_@@_row_\@@_i _max_dim}
+                            {\dim_max:vn {l_@@_row_\@@_i _max_dim} \pgf@y}
+                \seq_if_in:NxF \g_@@_multicolumn_cells_seq {\@@_i-\@@_j}
+                   {\dim_set:cn {l_@@_column_\@@_j _max_dim}
+                               {\dim_max:vn {l_@@_column_\@@_j _max_dim} \pgf@x}}}
+          }}
+%    \end{macrocode}
+% Now, we can create the ``medium nodes''. We use a command |\@@_create_nodes:| because this command will also be used
+% for the creation of the ``large nodes'' (after changing the value of |name-suffix|).
+%    \begin{macrocode} 
+      \tikzset{name~suffix = -medium}
+      \@@_create_nodes:
+%    \end{macrocode}
+% 
+% \bigskip
+% For ``large nodes'', the eventual ``first row'' and ``last column'' (in environments like |{pNiceArrayRC}|) don't
+% interfer. That's why the loop over the rows will start at 1 and the loop over the columns will stop at
+% $|\g_@@_column_int|$ (and not |\g_@@_column_total_int|).\footnote{We recall that |\g_@@_column_total_int| is
+% equal to |\g_@@_column_int| except if there is an exterior column. In this case, |\g_@@_column_total_int| is equal
+% to |\g_@@_column_int|${}+1$.}
+%     \begin{macrocode}
+      \int_set:Nn \l_@@_nb_first_row_int 1
+%    \end{macrocode}
+% We have to change the values of all the dimensions \texttt{l_@@_row_\textsl{i}_min_dim},
+% \texttt{l_@@_row_\textsl{i}_max_dim}, \texttt{l_@@_column_\textsl{j}_min_dim} and
+% \texttt{l_@@_column_\textsl{j}_max_dim}. 
+%    \begin{macrocode} 
+      \int_step_variable:nnnNn 1 1 {\g_@@_row_int-1} \@@_i
+         {\dim_set:cn {l_@@_row_\@@_i _min_dim}  
+                      {(  \dim_use:c {l_@@_row_\@@_i _min_dim} 
+                        + \dim_use:c {l_@@_row_\int_eval:n{\@@_i+1}_max_dim}) / 2}
+          \dim_set_eq:cc {l_@@_row_\int_eval:n{\@@_i+1}_max_dim} 
+                         {l_@@_row_\@@_i _min_dim} }
+      \int_step_variable:nnnNn 1 1 {\g_@@_column_int-1} \@@_j
+         {\dim_set:cn {l_@@_column_\@@_j _max_dim}  
+                      {(  \dim_use:c {l_@@_column_\@@_j _max_dim} 
+                        + \dim_use:c {l_@@_column_\int_eval:n{\@@_j+1}_min_dim}) / 2}
+          \dim_set_eq:cc {l_@@_column_\int_eval:n{\@@_j+1}_min_dim} 
+                         {l_@@_column_\@@_j _max_dim} }
+      \dim_sub:cn {l_@@_column_1_min_dim} \g_@@_left_margin_dim
+      \dim_add:cn {l_@@_column_\int_use:N \g_@@_column_int _max_dim} 
+                  \g_@@_right_margin_dim
+%    \end{macrocode}
+% Now, we can actually create the ``large nodes''.
+%    \begin{macrocode}
+      \tikzset{name~suffix = -large}
+      \@@_create_nodes:
+      \end{tikzpicture}
+%    \end{macrocode}
+%
+% \medskip
+% When used once, the command |\@@_create_extra_nodes:| must become no-op (in the current TeX group). That's why we
+% put a nullification of the command.
+%    \begin{macrocode}
+      \cs_set:Nn \@@_create_extra_nodes: {}}
+%    \end{macrocode}
+% 
+%
+% \bigskip
+% The control sequence |\@@_create_nodes:| is used twice: for the construction of the ``medium nodes'' and for the
+% construction of the ``large nodes''. The nodes are constructed with the value of all the dimensions 
+% \texttt{l_@@_row_\textsl{i}_min_dim}, \texttt{l_@@_row_\textsl{i}_max_dim}, 
+% \texttt{l_@@_column_\textsl{j}_min_dim} and \texttt{l_@@_column_\textsl{j}_max_dim}. Between the 
+% construction of the ``medium nodes'' and the ``large nodes'', the values of these dimensions are changed.
+%     \begin{macrocode}
+\cs_new_protected:Nn \@@_create_nodes:
+      {\int_step_variable:nnnNn \l_@@_nb_first_row_int 1 \g_@@_row_int \@@_i
+          {\int_step_variable:nnnNn 1 1 \g_@@_column_total_int \@@_j
+%    \end{macrocode}
+% We create two ponctual nodes for the extremities of a diagonal of the rectangular node we want to create. These
+% nodes |(@@~south~west)| and |(@@~north~east)| are not available for the user of \pkg{nicematrix}. That's why
+% their names are independent of the row and the column. In the two nested loops, they will be overwritten until the
+% last cell.
+%    \begin{macrocode}
+              {\coordinate (@@~south~west) 
+                           at (\dim_use:c {l_@@_column_\@@_j _min_dim},
+                               \dim_use:c {l_@@_row_\@@_i _min_dim}) ; 
+               \coordinate (@@~north~east) 
+                           at (\dim_use:c {l_@@_column_\@@_j _max_dim},
+                               \dim_use:c {l_@@_row_\@@_i _max_dim}) ; 
+%    \end{macrocode}
+% We can eventually draw the rectangular node for the cell (|\@@_i|-|\@@_j|). This node is created with the Tikz library
+% \pkg{fit}. Don't forget that the Tikz option |name suffix| has been set to |-medium| or |-large|.
+%    \begin{macrocode}
+               \draw node [fit = {(@@~south~west) (@@~north~east)},
+                           inner~sep=0pt,
+                           name = nm-\int_use:N \g_@@_env_int-\@@_i-\@@_j,
+                           alias = \tl_if_empty:NF \g_@@_name_tl 
+                                         {\tl_use:N \g_@@_name_tl-\@@_i-\@@_j}] 
+                          {} ; 
+              }
+          }
+%    \end{macrocode}
+% Now, we create the nodes for the cells of the |\multicolumn|. We recall that we have stored in
+% |\g_@@_multicolumn_cells_seq| the list of the cells where a |\multicolumn{|$n$|}{...}{...}| with $n$>1 was issued
+% and in |\g_@@_multicolumn_sizes_seq| the correspondant values of $n$.
+%    \begin{macrocode}
+      \@@_seq_mapthread_function:NNN \g_@@_multicolumn_cells_seq 
+                                     \g_@@_multicolumn_sizes_seq
+                                     \@@_node_for_multicolumn:nn
+      }
+%    \end{macrocode}
+%
+%
+% 
+%    \begin{macrocode}
+\cs_set:Npn \@@_extract_coords: #1-#2\q_stop{\cs_set:Npn \@@_i {#1} 
+                                             \cs_set:Npn \@@_j {#2}}
+%    \end{macrocode}
+%
+% The command |\@@_node_for_multicolumn:nn| takes two arguments. The first is the position of the cell where the
+% command |\multicolumn{|$n$|}{...}{...}| was issued in the format $i$|-|$j$ and the second is the value of~$n$ (the
+% length of the ``multi-cell'').
+%    \begin{macrocode}
+\cs_new_protected:Nn \@@_node_for_multicolumn:nn
+       {\@@_extract_coords: #1\q_stop
+        \coordinate (@@~south~west) 
+                    at (\dim_use:c {l_@@_column_\@@_j _min_dim},
+                        \dim_use:c {l_@@_row_\@@_i _min_dim}) ; 
+        \coordinate (@@~north~east) 
+                    at (\dim_use:c {l_@@_column_\int_eval:n{\@@_j+#2-1}_max_dim},
+                        \dim_use:c {l_@@_row_\@@_i _max_dim}) ; 
+        \draw node [fit = {(@@~south~west) (@@~north~east)},
+                    inner~sep=0pt,
+                    name = nm-\int_use:N \g_@@_env_int-\@@_i-\@@_j,
+                    alias = \tl_if_empty:NF \g_@@_name_tl 
+                                  {\tl_use:N \g_@@_name_tl-\@@_i-\@@_j}] 
+                   {} ; 
+        }
+%    \end{macrocode}
+%
+%
+% \subsection{We process the options}
+%
+% We process the options when the package is loaded (with |\usepackage|) but we recommend to use
+% |\NiceMatrixOptions| instead. 
+%
+% We must process these options after the definition of the environment |{NiceMatrix}| because the option
+% |renew-matrix| execute the code |\cs_set_eq:NN \env@matrix \NiceMatrix|. 
+%
+% Of course, the command |\NiceMatrix| must be defined before such an instruction is executed.
+%    \begin{macrocode}
+\ProcessKeysOptions {NiceMatrix}
+%    \end{macrocode}
+%
+% \subsection{Code for \texttt{seq_mapthread_function:NNN}}
+%
+% In |\@@_create_nodes:| (used twice in |\@@_create_extra_nodes:| to create the ``medium nodes'' and ``large
+% nodes''), we want to use |\seq_mapthread_function:NNN| which is in \pkg{l3candidates}). For security, we define a
+% function |\@@_seq_mapthread_function:NNN|. We will delete the following code when |\seq_mapthread_function:NNN|
+% will be in \pkg{l3seq}.
+%    \begin{macrocode}
+\cs_new:Npn \@@_seq_mapthread_function:NNN #1#2#3
+  {\group_begin:
+%    \end{macrocode}
+% In the group, we can use |\seq_pop:NN| safely.
+%    \begin{macrocode}
+   \int_step_inline:nnnn 1 1 {\seq_count:N #1}
+         {\seq_pop:NN #1 \l_tmpa_tl
+          \seq_pop:NN #2 \l_tmpb_tl
+          \exp_args:NVV #3 \l_tmpa_tl \l_tmpb_tl}
+   \group_end:
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\cs_set:Nn \@@_renew_matrix:
+    {\RenewDocumentEnvironment {pmatrix} {}
+         {\begin{pNiceMatrix}}
+         {\end{pNiceMatrix}}
+     \RenewDocumentEnvironment {vmatrix} {}
+         {\begin{vNiceMatrix}}
+         {\end{vNiceMatrix}}
+     \RenewDocumentEnvironment {Vmatrix} {}
+         {\begin{VNiceMatrix}}
+         {\end{VNiceMatrix}}
+     \RenewDocumentEnvironment {bmatrix} {}
+         {\begin{bNiceMatrix}}
+         {\end{bNiceMatrix}}
+     \RenewDocumentEnvironment {Bmatrix} {}
+         {\begin{BNiceMatrix}}
+         {\end{BNiceMatrix}}}
+%    \end{macrocode}
+%
+% 
+% \section{History}
+%
+% \subsection{Changes between versions 1.0 and 1.1}
+% 
+% The dotted lines are no longer drawn with Tikz nodes but with Tikz circles (for efficiency).
+% 
+% Modification of the code which is now twice faster.
+%
+% \subsection{Changes between versions 1.1 and 1.2}
+%
+% New environment |{NiceArray}| with column types |L|, |C| and |R|.
+%
+% \subsection{Changes between version 1.2 and 1.3}
+%
+% New environment |{pNiceArrayC}| and its variants.
+%
+% Correction of a bug in the definition of |{BNiceMatrix}|, |{vNiceMatrix}| and |{VNiceMatrix}| (in fact, it was a
+% typo).
+%
+% Options are now available locally in |{pNiceMatrix}| and its variants. 
+% 
+% The names of the options are changed. The old names were names in ``camel style''. New names are in lowercase and
+% hyphens (but backward compatibility is kept).
+% 
+%
+% \subsection{Changes between version 1.3 and 1.4}
+% 
+% The column types |w| and |W| can now be used in the environments |{NiceArray}|, |{pNiceArrayC}| and its variants
+% with the same meaning as in the package \pkg{array}.
+% 
+% New option |columns-width| to fix the same width for all the columns of the array.
+% 
+%
+% \subsection{Changes between version 1.4 and 2.0}
+% 
+% The versions 1.0 to 1.4 of \pkg{nicematrix} were focused on the continuous dotted lines whereas the version 2.0 of
+% \pkg{nicematrix} provides different features to improve the typesetting of mathematical matrices.
+%
+% \subsection{Changes between version 2.0 and 2.1}
+%
+% New implementation of the environment |{pNiceArrayRC}|. With this new implementation, there is no restriction on
+% the width of the columns.
+%
+% The package \pkg{nicematrix} no longer loads \pkg{mathtools} but only \pkg{amsmath}.
+%
+% Creation of ``medium nodes'' and ``large nodes''.
+%
+% \subsection{Changes between version 2.1 and 2.1.1}
+%
+% Small corrections: for example, the option |code-for-first-row| is now available in the command |\NiceMatrixOptions|.
+%
+% Following a discussion on
+% TeX StackExchange\footnote{cf. |tex.stackexchange.com/questions/450841/tikz-externalize-and-nicematrix-package|}, 
+% Tikz externalization is now deactivated in the environments of the
+% extension \pkg{nicematrix}.\footnote{Before this version, there was an error when using \pkg{nicematrix} with
+% Tikz externalization. In any case, it's not possible to externalize the Tikz elements constructed by
+% \pkg{nicematrix} because they use the options |overlay| and |remember picture|.}
+% 
+% \endinput
+% Local Variables:
+% TeX-fold-mode: nil
+% End:

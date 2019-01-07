@@ -4,19 +4,18 @@
 So nat'ralists observe, a flea \\
 Has smaller fleas that on him prey; \\
 And these have smaller fleas to bite 'em. \\
-And so proceeds Ad infinitum.}\SubIndex{Swift, Jonathan}
+And so proceeds Ad infinitum.}\SubIndex{Swift, Jonathan}\SubIndex{flea}
 \end{epigraphs}
 \begin{example}
 It is often believed that everyone with red\SubIndex{red hair}\SubIndex{hair!red} hair must have a red haired ancestor.
 But this principle is not true.
 We have all seen someone with red hair.
 According to the principle, she must have a red haired ancestor.
-But then by the same principle, he must have a red haired ancestor too, and so on.
+By the same principle, he must have a red haired ancestor too, and so on.
 So the principle predicts an infinite chain of red haired ancestors.
 But there have only been a finite number of creatures (so the geologists tell us).
 So some red haired creature had no red haired ancestor.
 \end{example}
-
 \begin{example}
 We will see that 
 \[
@@ -42,10 +41,8 @@ So we checked that they are equal.
 But this process will just go on for ever and we will never finish checking all values of \(n\).
 We want to check \emph{all} values of \(n\), all at once.
 \end{example}
-
-Picture a row of dominoes.
+Picture a row of dominoes.\SubIndex{domino}
 If we can make the first domino topple, and we can make sure that each domino, if it topples, will make the next domino topple, then they will all topple.
-
 \begin{theorem}[The Principle of Mathematical Induction\define{mathematical induction}\define{induction}]
 Take a collection of positive integers.
 Suppose that \(1\) belongs to this collection.
@@ -62,7 +59,6 @@ So \(n\) is \emph{not} in our collection.
 But being the least integer not in our collection, all integers \(1, 2, \dots, n-1\) less than \(n\) \emph{are} in our collection.
 By hypothesis, \(n\) is also in our collection, a contradiction to our assumption that \(S\) is not empty.
 \end{proof}
-
 \begin{example}
 Let's prove that \(1+2+3+\dots+n=n(n+1)/2\) for any positive integer \(n\).
 First, note that we have already checked this for \(n=1\) above.
@@ -70,7 +66,7 @@ Imagine that we have checked our equation \(1+2+3+\dots+n=n(n+1)/2\) for any pos
 Now we want to check for \(n=k\) whether it is still true: \(1+2+3+\dots+n\equalquestion n(n+1)/2\).
 Since we already know this for \(n=k-1\), we are allowed to write that out, without question marks:
 \[
-1+2+3+\dots+k-1=(k-1)(k-1+1)/2.
+1+2+3+\dots+(k-2)+(k-1)=(k-1)(k-1+1)/2.
 \]
 Simplify:
 \[
@@ -102,14 +98,12 @@ So we have found that, as we wanted to prove,
 \]
 Note that we \emph{used} mathematical induction to prove this: we prove the result for \(n=1\), and then suppose that we have proven it already for all values of \(n\) up to some given value, and then show that this will ensure it is still true for the next value.
 \end{example}
-
 The general pattern of induction arguments: we start with a statement we want to prove, which contains a variable, say \(n\), representing a positive integer.
 \begin{enumerate}
 \item \emph{The base case:} Prove your statement directly for \(n=1\).
 \item \emph{The induction hypothesis:} Assume that the statement is true for all positive integer values less than some value \(n\).
 \item \emph{The induction step:} Prove that it is therefore also true for that value of \(n\).
 \end{enumerate}
-
 \begin{example}
 We can use induction in definitions, not just in proofs.
 We haven't made sense yet of exponents.
@@ -121,7 +115,6 @@ For any integer \(a\) (including the possibility of \(a=0\)) we also define \(a^
 \item \emph{The induction hypothesis:} Suppose that we have defined already what \[a^1, a^2, \dots, a^b\] means, for some positive integer \(b\).
 \item \emph{The induction step:} We then define \(a^{b+1}\) to mean \(a^{b+1} \defeq a \cdot a^b\).
 \end{enumerate}
-
 For example, by writing out
 \begin{align*}
 a^4 
@@ -143,18 +136,13 @@ a^3 a^2 = \pr{a \cdot a \cdot a} \pr{a \cdot a} = a^5.
 \]
 In an expression \(a^b\), the quantity \(a\) is the \emph{mantissa} or \emph{base} and \(b\) is the \emph{exponent}.
 \end{example}
-
-
 \begin{problem}{induction:exponents.sum}
 Use induction to prove that \(a^{b+c}=a^b a^c\) for any integer \(a\) and for any positive integers \(b, c\).
 \end{problem}
-
 \begin{problem}{induction:exponents.mult}
 Use induction to prove that \(\pr{a^b}^c=a^{bc}\) for any integer \(a\) and for any positive integers \(b, c\).
 \end{problem}
-
 Sometimes we start induction at a value of \(n\) which is \emph{not} at \(n=1\).
-
 \begin{example}
 Let's prove, for any integer \(n \ge 2\), that \(2^{n+1} < 3^n\).
 \begin{enumerate}
@@ -182,8 +170,6 @@ How can we relate this to the values \(n=2,3,4,\dots,k-1\)?
 \end{enumerate}
 We conclude that \(2^{n+1}<3^n\) for all integers \(n \ge 2\).
 \end{example}
-
-
 \begin{problem}{induction:horses}
 All horses\SubIndex{horse} are the same colour; we can prove this by induction on the
 number of horses in a given set. 
@@ -201,13 +187,12 @@ By the induction hypothesis, horses \(1\) through \(n-1\) are the same color as 
 Similarly, horses \(2\) through \(n\) are the same color. 
 But the middle horses, \(2\) through
 \(n-1\), can't change color when they're in different groups; these are
-horses, not chameleons. 
+horses, not chameleons.\SubIndex{chameleon}
 So horses \(1\) and \(n\) must be the same color as well. 
 \end{enumerate}
 Thus all \(n\) horses are the same color. 
 What is wrong with this reasoning?
 \end{problem}
-
 \begin{problem}{integers:define.multiplication}
 We could have assumed much less about the integers than the laws we gave in chapter~\ref{chapter:integers}.
 Using only the laws for addition and induction,
@@ -217,7 +202,6 @@ Using only the laws for addition and induction,
 \item Use your definition of multiplication to prove the equality cancellation law for multiplication. 
 \end{enumerate}
 \end{problem}
-
 \begin{problem}{integers:taylor}
 Suppose that \(x,b\) are positive integers.
 Prove that \(x\) can be written as
@@ -237,7 +221,6 @@ Prove that for every positive integer \(n\),
 \pr{\frac{n(n+1)}{2}}^2.
 \]
 \end{problem}
-
 \begin{problem}{integers:tile}
 Picture a \(2 \times 2\) grid, a \(4 \times 4\) grid, an \(8 \times 8\) grid, a \(16 \times 16\) grid, and so on.
 \begin{center}
@@ -245,11 +228,73 @@ Picture a \(2 \times 2\) grid, a \(4 \times 4\) grid, an \(8 \times 8\) grid, a 
 \end{center}
 Fix a positive integer \(n\). Show that it is possible to tile any \(2^n \times 2^n\) grid, but with exactly one square removed, using 'L'-shaped tiles of three squares: \ \input{L}.
 \end{problem}
+Recall that \(\binom{n}{k}\) means the binomial coefficient, i.e. the coefficient of \(x^k\) (or of \(x^{n-k}\)) in the expansion of \((1+x)^n\) in powers of \(x\):
+\[
+(1+x)^n = \binom{n}{0}+\binom{n}{1}x+\binom{n}{2}x^2+\dots+\binom{n}{n}x^n.
+\]
+\begin{problem}{induction:pascal}
+Prove that the binomial coefficients satisfy \(\binom{n+1}{k}=\binom{n}{k-1}+\binom{n}{k}\).
+Explain how this gives Pascal's triangle:
+\begin{center}
+\input{pascals-triangle}
+\end{center}
+\end{problem}
+\begin{answer}{induction:pascal}
+When we expand out \((1+x)^n\), each term in the expansion arises from choosing either \(1\) or \(x\) from each factor \(1+x\), and multiplying out the choices to produce the term.
+So terms with \(x^k\) arise when we choose \(x\) from \(k\) of the factors \(1+x\), and \(1\) from the other \(n-k\).
+So in \((1+x)^{n+1}\), the \(x^k\) terms arise from choosing \(x\) from \(k\) of the first \(n\) factors \(1+x\), and choosing \(1\) from the last one, or from choosing \(x\) from \(k-1\) of the first \(n\) factors, and also choosing \(x\) from the last one.
+\end{answer}
+\begin{problem}{induction:cyclotomic}
+For each positive integer \(n\), let
+\[
+p_n(x)\defeq 1+x+\dots+x^{n-1}=\sum_{k=0}^{n-1} x^k.
+\]
+Prove that
+\[
+p_n(1+x)=\sum_{k=0}^{n-1} \binom{n}{k+1}x^k.
+\]
+\end{problem}
+\begin{answer}{induction:cyclotomic}
+For \(n=1,2,3\), we can check by hand:
+\[
+\begin{array}{ccc}
+\toprule
+n & p_n(x) & p_n(1+x) \\
+\midrule
+1 & 1 & 1 \\
+2 & 1+x & 2+x=\binom{2}{1}x^0+\binom{2}{2}x^1\\
+3 & 1+x+x^2 & 3+3x+x^2=\binom{3}{1}x^0+\binom{3}{2}x^1+\binom{3}{3}x^2 \\
+\bottomrule
+\end{array}
+\]
+From then on, we will need to use induction: 
+\[
+p_{n+1}(x)=p_n(x)+x^n,
+\]
+so
+\begin{align*}
+p_{n+1}(1+x)
+&=
+p_n(1+x)+(1+x)^n
+\\
+&=
+\sum_{k=0}^{n-1} \binom{n}{k+1}x^k
++
+\sum_{k=0}^n \binom{n}{k}x^k,
+\\
+&=
+\sum_{k=0}^{n-1} \left( \binom{n}{k+1}+\binom{n}{k}\right)x^k+x^n,
+\\
+&=
+\sum_{k=0}^{n-1} \binom{n+1}{k+1}x^k+x^n,
+\\
+&=
+\sum_{k=0}^n\binom{n+1}{k+1}x^k.
+\end{align*}
+\end{answer}
 
 \section{Sage}
-
-\epigraph[author={Emo Philips}]{A computer once beat me at chess, but it was no match for me at kick boxing.}\SubIndex{Philips, Emo}
-
+\epigraph[author={Emo Philips}]{A computer once beat me at chess, but it was no match for me at kick boxing.}\SubIndex{Philips, Emo}\SubIndex{kick boxing}
 To define a function in sage, you type \texttt{def}, to mean \emph{define}, like:
 \begin{sageblock}
 def f(n):
@@ -269,7 +314,6 @@ A function can depend on several inputs:
 def g(x,y):
     return x*y+2
 \end{sageblock}
-
 A \emph{recursive function}\define{function!recursive}\define{recursive function} is one whose value for some input depends on its value for other inputs.
 For example, the sum of the integers from \(1\) to \(n\) is:
 \begin{sageblock}
@@ -280,7 +324,6 @@ def sum_of_integers(n):
         return n+sum_of_integers(n-1)
 \end{sageblock}
 giving us \verb!sum_of_integers(5)!\({}=\sage{sum_of_integers(5)}\).
-
 \begin{problem}{induction:fibonacci}
 The \emph{Fibonnaci sequence}\SubIndex{Fibonacci sequence} is \(F(1)=1\), \(F(2)=1\), and \(F(n)=F(n-1)+F(n-2)\) for \(n \ge 3\).
 Write out a function \texttt{F(n)} in sage to compute the Fibonacci sequence.
@@ -293,7 +336,6 @@ Write out a function \texttt{F(n)} in sage to compute the Fibonacci sequence.
 %    else: return F(n-1)+F(n-2)
 %\end{sageblock}
 %\end{answer}
-
 Lets check that \(2^{n+1} < 3^n\) for some values of \(n\), using a loop:
 \begin{sageblock}
 for n in [0..10]: 
@@ -346,9 +388,7 @@ def gcd_by_subtraction(a, b):
     return a
 \end{sageblock}
 
-
 \section{Lists in sage}
-
 Sage manipulates lists.\define{list} 
 A list is a finite sequence of objects written down next to one another.
 The list \verb!L=[4,4,7,9]! is a list called \(L\) which consists of four numbers: \(4, 4, 7\) and \(9\), in that order.

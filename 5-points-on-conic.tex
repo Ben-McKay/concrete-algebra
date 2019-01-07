@@ -1,20 +1,22 @@
 \documentclass[tikz]{standalone}
+\usepackage{xparse}
+\input{colorScheme}
 \begin{document}
 \begingroup
 \newcommand*{\drawEllipse}
 {
-\draw[gray!50] (0,0) ellipse (2cm and 1cm);
+\draw[very thick,curveZero] (0,0) ellipse (1cm and .5cm);
 }
 \newcommand*{\drawHexagon}
 {
 \foreach \i in {0,...,4}
 	{
 	\newcommand*{\dd}{8}
-		\node at ({2*cos(20*\i+\dd*\i*\i)},{sin(20*\i+\dd*\i*\i)}) (p\i) {};
-		\fill[gray,opacity=.5] (p\i) circle (1.5pt);
+		\node at ({cos(20*\i+\dd*\i*\i)},{.5*sin(20*\i+\dd*\i*\i)}) (p\i) {};
+		\DrawNode{p\i}
 	}
 }
-\begin{tikzpicture}[scale=.5, rotate=40]
+\begin{tikzpicture}[rotate=40]
 \drawEllipse
 \drawHexagon
 \end{tikzpicture}

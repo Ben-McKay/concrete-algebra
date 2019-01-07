@@ -67,6 +67,11 @@ We need to see that \((-b)+(-c)\) has the defining property of \(-(b+c)\): addin
 \pf{}{0+0}[existence of negatives] \\
 \lastpf{}{0}[the definition of \(0\)]
 \end{twocolumnproof}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:unique.predecessor}.}
+If \(b=c+1=d+1\) for two integers \(c,d\), then \(c+1=d+1\) so \((c+1)+(-1)=(d+1)+(-1)\), where the existence of negatives ensures that there is a negative \(-1\) of \(1\).
+So \(c+(1+(-1))=d+(1+(-1))\) by the associative law for addition.
+So \(c+0=d+0\), by the existence of negatives law.
+So \(c=d\), by the identity law for addition.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:successor}.}
 Suppose that there are positive integers \(b,c\) with \(b+c\) not positive.
 By the law of well ordering, there is a least possible choice of \(b\), and, for that given \(b\), a least possible choice of \(c\).
@@ -105,6 +110,14 @@ Dividing a nonzero integer \(a\) by zero would mean find an integer \(c\) so tha
 But we have seen that \(0 \, c=0\), so \(a=0\), a contradiction.
 Dividing zero by zero would mean find an integer \(c\) so that \(0=0 \, c\).
 But any integer \(c\) satisfies this equation, so there is no way to pick out one value \(c\) to be \(0/0\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.exists}.}
+Pick any nonzero number, say \(m\), from the collection.
+By proposition~\vref{proposition:divisors.smaller}, \(m\) is not divisible by any integer larger than \(|m|\).
+So all of the positive integer divisors are between \(1\) and \(|m|\).
+Put these integers in a bag.
+Repeatedly throw out the largest integer in our bag which is not a common divisor of the collection.
+But \(1\) is a common divisor, so we can't throw them all out.
+By induction, eventually we get a greatest common divisor, unique because it is the greatest.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:find.gcd}.}
 \begin{enumerate}
 \item \(\sage{gcd(4233, 884)}\)
@@ -115,6 +128,56 @@ But any integer \(c\) satisfies this equation, so there is no way to pick out on
 \item \(\sage{gcd(147, 637)}\)
 \item \(\sage{gcd(266664, 877769)}\).
 \end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.least.sum}.}
+If all integers in our collection are divisible by some integer \(d\), then clearly so are any integer multiples or finite sums of integer multiples.
+So the greatest common divisor divides all such sums.
+Hence the greatest common divisor is unchanged if we replace the collection by the collection of all such sums.
+So we can suppose that any such sum is already in our collection.
+There are such sums which are positive, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
+By well ordering, there is a least such positive sum \(d\).
+Take quotient and remainder of any element \(m\) in our collection by \(d\): \(m=qd+r\).
+The remainder \(r=m-qd\) is also in the collection, but smaller than \(d\), and therefore is zero.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:induction:pascal}.}
+When we expand out \((1+x)^n\), each term in the expansion arises from choosing either \(1\) or \(x\) from each factor \(1+x\), and multiplying out the choices to produce the term.
+So terms with \(x^k\) arise when we choose \(x\) from \(k\) of the factors \(1+x\), and \(1\) from the other \(n-k\).
+So in \((1+x)^{n+1}\), the \(x^k\) terms arise from choosing \(x\) from \(k\) of the first \(n\) factors \(1+x\), and choosing \(1\) from the last one, or from choosing \(x\) from \(k-1\) of the first \(n\) factors, and also choosing \(x\) from the last one.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:induction:cyclotomic}.}
+For \(n=1,2,3\), we can check by hand:
+\[
+\begin{array}{ccc}
+\toprule
+n & p_n(x) & p_n(1+x) \\
+\midrule
+1 & 1 & 1 \\
+2 & 1+x & 2+x=\binom{2}{1}x^0+\binom{2}{2}x^1\\
+3 & 1+x+x^2 & 3+3x+x^2=\binom{3}{1}x^0+\binom{3}{2}x^1+\binom{3}{3}x^2 \\
+\bottomrule
+\end{array}
+\]
+From then on, we will need to use induction:
+\[
+p_{n+1}(x)=p_n(x)+x^n,
+\]
+so
+\begin{align*}
+p_{n+1}(1+x)
+&=
+p_n(1+x)+(1+x)^n
+\\
+&=
+\sum_{k=0}^{n-1} \binom{n}{k+1}x^k
++
+\sum_{k=0}^n \binom{n}{k}x^k,
+\\
+&=
+\sum_{k=0}^{n-1} \left( \binom{n}{k+1}+\binom{n}{k}\right)x^k+x^n,
+\\
+&=
+\sum_{k=0}^{n-1} \binom{n+1}{k+1}x^k+x^n,
+\\
+&=
+\sum_{k=0}^n\binom{n+1}{k+1}x^k.
+\end{align*}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:euclidean.algorithm:try.Bezout}.}
 \begin{enumerate}
 \item
@@ -132,6 +195,28 @@ But any integer \(c\) satisfies this equation, so there is no way to pick out on
 %\sagestr{bgcd(4864,3458)}
 \begin{align*}
 \gcd{4864,3458}&=2\gcd{2432,1729},\\&=2\gcd{1216,1729},\\&=2\gcd{608,1729},\\&=2\gcd{304,1729},\\&=2\gcd{152,1729},\\&=2\gcd{76,1729},\\&=2\gcd{38,1729},\\&=2\gcd{19,1729},\\&=2\gcd{19,1710},\\&=2\gcd{19,855},\\&=2\gcd{19,836},\\&=2\gcd{19,418},\\&=2\gcd{19,209},\\&=2\gcd{19,190},\\&=2\gcd{19,95},\\&=2\gcd{19,76},\\&=2\gcd{19,38},\\&=2\gcd{19,19},\\&=2\gcd{19,0},\\&=38\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.divided}.}
+Let \(d\) be the greatest common divisor of some collection of integers.
+So each of the integers in the collection is a multiple of \(d\).
+If some integer \(d'\) divides into \(d\), i.e. \(d\) is a multiple of \(d'\), then each of the integers in the collection is a multiple of \(d\), so a multiple of \(d'\).
+On the other hand, suppose that \(d'\) is an integer which divides into all integers in our collection.
+Let \(g\defeq\gcd{d,d'}\), so \(d'=D'g\) and \(d=Dg\).
+Clearly \(D,D'\) are coprime.
+Note: \(d'\) divides \(d\) just when \(D'\) divides \(D\).
+Moreover, all integers in our collection are divisible by \(g\).
+So we make a new collection of these integers, dividing each integer in the old collection by \(g\).
+Replacing the old collection by the new, we can assume that \(d,d'\) are coprime.
+So \(d'\) divides all integers in our collection, but is coprime to \(d\).
+Each integer in the collection has the form \(dm\), so \(d'\) \(m\), say \(dm=dd'm'\).
+So \(dd'\) is a positive common divisor, larger than \(d\) if \(|d'|>1\), a contradiction, so \(d'=\pm 1\) divides into \(d\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.divisor}.}
+Let \(d\defeq\gcd{b,c}\), so \(b=Bd\) and \(c=Cd\).
+If \(B,C\) have a positive common divisor \(k\), say \(B=kB'\) and \(C=kC'\), then \(b=B'kd\) and \(c=C'kd\) so \(kd\) divides \(b\) and \(c\), but \(d\) is the greatest common divisor so \(k=1\).
+Therefore \(\gcd{B,C}=1\).
+Multiple by \(m\): \(mb=B(md)\) and \(mc=C(md)\), so \(md\) divides \(mb\) and \(mc\).
+By problem~\vref{problem:integers:gcd.divided}, \(md\) divides \(D\), say \(D=md\ell\).
+Then \(mb=md\ell b'\) and \(mc=md\ell c'\) so \(b=d\ell b'=Bd\) so \(\ell b'=B\) and similarly \(\ell c'=C\).
+But \(B\) and \(C\) are coprime, so \(\ell=1\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:nine}.}
 A 1-digit positive integer has the form \(b=b_0\) with \(0 \le b_0 \le 9\) its first digit.
 A 2-digit positive integer has the form \(b=b_0+10 \, b_1\) with \(0 \le b_0,b_1 \le 9\).
@@ -246,8 +331,83 @@ As they are coprime, no prime occurs in both factorizations.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:int.values}.}
 Take the polynomial \(b(x)=(1/2)x(x+1)=(1/2)x^2+(1/2)x\).
 If \(x\) is an odd integer, then \(x+1\) is even, and vice versa, so \(b(x)\) is an integer for any integer \(x\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Bezout.mod.3}.}
+Keep in mind that, modulo \(3\), \(-1=2,-2=1\), \(1^{-1}=1\), \(2^{-1}=2\), so
+\begin{align*}
+&
+\begin{pmatrix}
+1 & 0 & x^3+x \\
+0 & 1 & x^4+1
+\end{pmatrix} \text{ add \(-x\)(row 1) to row 2},
+\\
+&
+\begin{pmatrix}
+1 & 0 & x^3+x \\
+-x & 1 & -x^2+1
+\end{pmatrix} \text{ add \(x\)(row 2) to row 1},
+\\
+&
+\begin{pmatrix}
+1-x^2 & x & 2x \\
+-x & 1 & -x^2+1
+\end{pmatrix} \text{ add \(2x\)(row 1) to row 2},
+\\
+&
+\begin{pmatrix}
+1-x^2 & x & 2x \\
+x^3+x & 1+2x^2 & 1
+\end{pmatrix}
+\end{align*}
+So the B\'ezout coefficients are \(x^3+x,1+2x^2\) and the gcd is \(1\).
+We can check: expand out
+\[
+(x^3+x)(x^3+x)+(1+2x^2)(x^4+1)=(x^6+2x^4+x^2)+(2x^6+x^4+2x^2+1)=1.
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:not.prime.characteristic}.}
 roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example}.}
+To get you started: \(p_0(x)=4x^4+2x^2-1\), \(p'(x)=16x^3+4x=4(4x^3+x)\), so we can rescale by \(1/4\) to simplify to \(p_1(x)=4x^3+x\), \(p_2(x)=1-x^2\), \(p_3(x)=-5x\) which you can rescale by \(1/5\) to get \(p_3(x)=-x\), \(p_4(x)=-1\).
+You should find that there is one root in that interval. You can check by letting \(x^2=t\), write as a quadratic equation in \(t\), solve with the quadratic formula, and also look at the graph:
+\begin{center}
+\begin{sagesilent}
+x=var(`x`)
+\end{sagesilent}
+\sageplot[width=6cm]{plot(4*x^4+2*x^2-1,(x,0,1))}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example.2}.}
+To get you started: \(p_0(x)=x^4+4x^3-1\), \(p'(x)=4x^3 + 12x^2=4(x^3+3x^2)\), so we can rescale by \(1/4\) to simplify to \(p_1(x)=x^3+3x^2\), \(p_2(x)=3x^2 + 1\), \(p_3(x)=\frac{4}{3}x + 4\), \(p_4(x)= -28\).
+There is one root in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(x^4+4*x^3-1,(x,0,1))}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example.3}.}
+The sequence is \(x^6+4x^3-2, 6x^5+12x^2, -2x^3+2, -18x^2, -2\).
+These have values at \(x=0\) of \(-2, 0, 2, -2\), and at \(x=1\) they have \(3, 18, -18, -2\).
+There is one root in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(x^6+4*x^3-2,(x,0,1))}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example.4}.}
+The sequence is \(2x^4+4x^3+2x^2-1, 8x^3 + 12x^2 + 4x, (1/2)x^2+(1/2)x+1, 16x+8, -7/8\).
+These have values at \(x=-2\) of \(7, -24, 2, -24, -7/8\), and at \(x=1\) they have \(7, 24, 2, 24, -7/8\).
+There are two roots in that interval:
+\begin{center}
+\sageplot[width=6cm]{plot(2*x^4+4*x^3+2*x^2-1,(x,-2,1))}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.quadratic}.}
+Each pattern of signs in the Sturm sequence, followed by a picture of parabolas with that pattern, indicating whether the point where we calculate the Sturm sequence gives a positive or negative value of the quadratic function, whether the point is to the left or right of the vertex of the parabola, and whether the discriminant is positive or negative:
+\[
+\begin{array}{@{}c@{}@{}c@{}@{}c@{}@{}c@{}@{}c@{}@{}c@{}}
+-&-&-&\smil{---}\\
+-&-&+&\smil{--+}\\
+-&+&-&\smil{-+-}\\
+-&+&+&\smil{-++}\\
++&-&-&\smil{+--}\\
++&-&+&\smil{+-+}\\
++&+&-&\smil{++-}\\
++&+&+&\smil{+++}\\
+\end{array}
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:bound}.}
 If \(p(x)=0\) then
 \[
@@ -305,6 +465,17 @@ Pick any integer \(N\) larger than any of the roots of \(p(x)\).
 In particular, \(p(N)>0\).
 For any integer \(\ell\), if we set \(x=N+\ell p(N)\), then expanding out \(x^k=N^k+\dots\), the \(\dots\) terms all contain a factor of \(p(N)\), so \(p(x)=p(N)+\dots\), where again the \(\dots\) terms all contain a factor of \(p(N)\).
 So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell p(N)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Eisenstein.cyclotomic}.}
+By problem~\vref{problem:induction:cyclotomic},
+\begin{align*}
+c(x+1)
+&=\binom{p}{1}+\binom{p}{2}x+\binom{p}{3}x^2+\dots+\binom{p}{p-1}x^{p-2}+\binom{p}{p}x^{p-1},
+\\
+&=p+\frac{p!}{2!(p-2)!}x+\frac{p!}{3!(p-3)!}x^2+\dots+\frac{p!}{(p-1)!1!}x^{p-2}+x^{p-1}.
+\end{align*}
+Clearly there is a factor of \(p\) in each term, and no \(p^2\) factor in the constant term.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:rationals}.}
+Take two such, cross multiply, and use unique factorisation of polynomials.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:quot.poly}.}
 \[
 \begin{array}{c|ccccccccc}
@@ -406,6 +577,48 @@ So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell
 \]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:inverse.mod.3.and.p}.}
 \(2x^8+x\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:mod.2}.}
+Either note the common factor of \(x+1\): \(b(x)=(x+1)(x^2+x+1)\), \(c(x)=(x+1)^2x\), or compute the determinant of
+\[
+\begin{pmatrix}
+1&0&0&0&0&0\\
+1&1&0&1&0&0\\
+1&1&1&0&1&0\\
+1&1&1&1&0&1\\
+0&1&1&0&1&0\\
+0&0&1&0&0&1
+\end{pmatrix}
+\]
+by expanding across the first row:
+\[
+\begin{pmatrix}
+1&0&1&0&0\\
+1&1&0&1&0\\
+1&1&1&0&1\\
+1&1&0&1&0\\
+0&1&0&0&1
+\end{pmatrix}
+\]
+and note that two rows are the same so the determinant (and the resultant) is zero.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:modp.example}.}
+The resultant is
+\[
+\resultant{x^2+1}{x^2+3x}
+=
+\det
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 3 & 0 \\
+1 & 0 & 1 & 3 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+=10.
+\]
+But \(10\) only has \(2\) and \(5\) as prime factors, so this resultant vanishes just exactly when \(p=2\) or \(p=5\).
+If \(p=2\) the factors are \(x^2+1=(x+1)^2\) and \(x^2+3x=x^2+x=x(x+1)\), so a common factor of \(x+1\).
+If \(p=5\) the factors are \(x^2+1=(x-2)(x-3)\) and \(x^2+3x=x(x-2)\), so a common factor of \(x-2\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:even.terms}.}
+The resultant is the determinant of a matrix whose every column has an even number of nonzero entries, so sum equal to zero. So the sum of the rows is zero, a linear relation among rows, hence zero determinant.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:euclid.that.mofo}.}
 \[
 b(x)=x^2 \, c(x) + 2x+1,
@@ -500,6 +713,62 @@ For \(p(x)=x^3+2x-1\), \(p'(x)=3x^2+2\) so
 \]
 so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
 \end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:discriminant.as.product}.}
+Write out
+\[
+p(x)=(x-x_1)(x-x_2)\dots(x-x_n).
+\]
+Differentiate:
+\begin{align*}
+p'(x)
+&=(x-x_2)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
+&+(x-x_1)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
+&+\vdots\\
+&+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_n)\\
+&+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_{n-1})
+\end{align*}
+Every term but the first has a factor of \(x-x_1\), so if we plug in \(x=x_1\):
+\[
+p'(x_1)=(x_1-x_2)(x_1-x_3)\dots(x_1-x_{n-1})(x_1-x_n)=\prod_{j \ne 1} (x_1-x_j).
+\]
+By the same reasoning, replacing \(x_1\) by any other root \(x_i\):
+\[
+p'(x_i)=\prod_{j \ne i} (x_i-x_j).
+\]
+So the discriminant is
+\begin{align*}
+\Delta_{p(x)}
+&=
+\resultant{p(x)}{p'(x)},
+\\
+&=
+(-1)^{n(n-1)}\resultant{p'(x)}{p(x)},
+\end{align*}
+Note that either \(n\) is even or \(n-1\) is even, so \((-1)^{n(n-1)}=1\):
+\begin{align*}
+\Delta_{p(x)}
+&=
+\resultant{p'(x)}{p(x)},
+\\
+&=
+\prod_i p'(x_i),
+\\
+&=
+\prod_i \prod_{j\ne i}(x_i-x_j),
+\\
+&=
+\prod_{i\ne j}(x_i-x_j).
+\end{align*}
+So now, for example, \(x_1-x_2\) occurs here, as does \(x_2-x_1\), so putting those together into one factor \(-(x_1-x_2)\):
+\[
+\Delta_{p(x)}
+=
+\prod_{i<j}(-1)(x_i-x_j)^2.
+\]
+There are \(n(n-1)/2)\) choices of \(i < j\), so finally
+\[
+\Delta_{p(x)}=(-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2.
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate}.}
 Write these equations as polynomials in increasing powers of \(t\), with coefficients rational in \(x,y\):
 \begin{align*}
@@ -524,6 +793,72 @@ y^2-(x-1)x(x+1)
 So the equation of the curve is \(y^2=(x-1)x(x+1)\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate.3}.}
 \(x^2+(1-x)y^2\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate.4}.}
+The equations, in powers of \(t\), are
+\begin{align*}
+0 &= x+t+t^3, \\
+0 &= 1+yt.
+\end{align*}
+The resultant is
+\begin{align*}
+\begin{vmatrix}
+x & 1 & 0 & 0 \\
+1 & y & 1 & 0 \\
+0 & 0 & y & 1 \\
+1 & 0 & 0 & y
+\end{vmatrix}
+=xy^3+y^2+1.
+\end{align*}
+So \(p(x,y)=xy^3+y^2+1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:express.in.s}.}
+\begin{enumerate}
+\item
+\begin{align*}
+x^3y^3z + x^3yz^3+xy^3z^3
+&=
+(xyz)(x^2y^2+x^2z^2+y^2z^2),
+\\
+&=e_3(x^2y^2+\dots),
+\\
+&=
+e_3(e_2^2+\dots).
+\end{align*}
+But \(e_2=xy+xz+yz\), so
+\[
+e_2^2=x^2y^2+x^2z^2+y^2z^2+2x^2yz+2xy^2z+2xyz^2,
+\]
+so
+\begin{align*}
+x^3y^3z + x^3yz^3+xy^3z^3
+&=
+e_3(e_2^2-[2x^2yz+2xy^2z+2xyz^2]),
+\\
+&=
+e_3(e_2^2-2e_3[x+y+z]),
+\\
+&=
+e_3(e_2^2-2e_3e_1)
+\end{align*}
+\item \(4xyz^3+4xzy^3+4yzx^3=4e_3(e_1^2-2e_2)\)
+\item \(x^4y^4z^4=e_3^4\)
+\item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:SymmetricFunctions:Two}.}
+\begin{align*}
+\chi_A{\lambda}
+&=
+\left(t_1-\lambda\right)\left(t_2-\lambda\right)
+\dots \left(t_n-\lambda\right)\\
+&=(-1)^n P_{t}\left(\lambda\right)\\
+&=
+e_n(t) - e_{n-1}(t) \lambda + e_{n-2}(t) \lambda^2 + \dots + (-1)^n \lambda^n.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:inverse.Cramer}.}
+Cramer's rule says that the inverse \(A^{-1}\) has entries
+\[
+A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
+\]
+so rational functions of the entries of \(A\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:bijection.finite}.}
 Denote by \(\cardinality{S}\) the number of elements in a set \(S\).
 We use the basic fact that if \(S \subseteq T\) is a subset of a finite set \(T\), then \(\cardinality{S} \le \cardinality{T}\), with equality just when \(S=T\).
@@ -534,6 +869,210 @@ Each element maps somewhere, i.e. lies in \(f^{-1}(x)\) for some \(x \in f(X)\):
 \ge \sum_{x \in f(X)} 1 = \cardinality{f(X)},
 \]
 with equality, i.e. \(f\) surjective, just when \(f^{-1}\set{x}\) has one element for every \(x \in f(X)\), i.e. just when \(f\) is injective.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:tetrahedron}.}
+We can simply permutate the vertices in any way at all by symmetries, as we can rotate any one vertex to any other, and then fixing that vertex, the symmetries of the opposite faceare arbitrary symmetries of an equilateral triangle, so carry out any permutation of its vertices.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:disjointify}.}
+Apply each cycle in succession to \(1\): \((543)1=1\), \((234)1=1\), \((123)1=2\). So \((123)(234)(543)1=2\).
+Similarly apply them to \(2\): \((543)2=2\), \((234)2=3\), \((123)3=1\). So \((123)(234)(543)2=1\).
+Continue in this way to find (a) \((123)(234)(543)=21543\).
+Clearly this takes \(1 \to 2 \to 1\) and \(3 \to 5 \to 3\) and \(4 \to 4\), so (b) as a product of disjoint cycles
+\((123)(234)(543)=(12)(35)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cycle.product}.}
+\((234)\):
+\begin{align*}
+1 &\to 4 \to 1, \\
+2 &\to 4 \to 2 \to 3, \\
+3 &\to 2 \to 3 \to 4, \\
+4 &\to 3 \to 1 \to 2.
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cube}.}
+Indicate cycle lengths in a permutation by drawing boxes, a row of them to indicate a cycle of that length, arranged successively shorter: the \emph{Young diagram}\define{Young diagram} of a permutation.
+For example,
+\[
+\yng(4,3^2,2)
+\]
+indicates a permutation which has cycles of lengths \(4,3,3,2\).
+The group \(G\) of rotations of a cube moves any vertex to any other (8 in all), and rotates a vertex around taking any edge at that vertex to any other (3 in all), but once we fix a vertex and edge, we fix everything, so the group has exactly \(8\cdot 3=24\) elements.
+Every rotation is a rotation around an axis, through the centre of the cube.
+It is determined completely by how it acts on the centres of the faces, as they contain a basis of vectors.
+The identity \(1\) fixes every face, so has \(6\) cycles (all of length 1) as permutation of the faces.
+A rotation of angle \(\pi\) around an axis through the center of a face fixes two faces and permutes two others, so a pair of disjoint cycles of length 2; there are 3 such, as there are three choices of axis.
+A rotation of angle \(\pi\) around an axis through the center of an edge permutes three pairs of faces, so a triple of disjoint cycles of length 2; there are 6 such rotations.
+An element of order 3 is a rotation around an axis through two opposite corners: it is a cycle of order 3 on the three faces touching one corner, and also of order 3 on the opposite three faces touching the opposite corner.
+There are 4 choices of a pair of opposite corners, and then 2 directions of rotation, so 8 such rotations.
+An element of order 4 is a rotation by angle \(\pi/2\), so around some axis through two opposite faces, giving one cycle of length 4; there are 3 choices of axis, but we can point the axis in either direction, so 6 such rotations.
+We can sum the various permutations of the faces of cube arising from rotations as:
+\[
+\yng(1^6)+3\yng(2^2,1^2)+6\yng(2^3)+8\yng(3^2)+6\yng(4,1,1)
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:symmetric.conjugacy.1}.}
+In general, if
+\[
+g=\dots (a_1 a_2 \dots a_k) \dots
+\]
+where the \(\dots\) indicate other cycles, in a product of disjoint cycles, then \(hgh^{-1}\), when applied to \(h(a_i)\) gives
+\begin{align*}
+(hgh^{-1})(h(a_1))
+&=
+hgh^{-1}h(a_1),
+\\
+&=
+hg(h^{-1}h)(a_1),
+\\
+&=
+hg(a_1),
+\\
+&=
+h(a_{2}),
+\end{align*}
+and so on: \(hgh^{-1}\) takes \(h(a_i)\) to \(h(a_{i+1})\) and takes \(h(a_n)\) to \(h(a_1)\).
+If \(g\) is a product of cycles, the same thing works applied one at a time.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:symmetric.conjugacy}.}
+Start with just one cycle, say \((a_1a_2\dots a_k)\) and one cycle \((b_1b_2\dots b_k\).
+Then let \(ga_1\defeq b_1\), \dots, \(ga_k\defeq b_k\), and let \(gx\defeq x\) for \(x\) not among \(a_1,\dots,a_k\).
+Let's check that \((b_1\dots b_k)=g(a_1 \dots a_k)g^{-1}\).
+The left hand side acts on \(b_1\) by moving it to \(b_2\), and so on.
+The right hand side takes \(b_1\), applies \(g^{-1}\) to it, so gives \(a_1\), then moves \(a_1\) to \(a_2\), and then applies \(g\) to that, giving \(b_2\), and so on.
+Now for two disjoint cycles, say
+\[
+g_1 = (a_1 a_2 \dots a_k)(\alpha_1 \alpha_2 \dots \alpha_{\ell})
+\]
+and
+\[
+g_2 = (b_1 b_2 \dots b_k)(\beta_1 \beta_2 \dots \beta_{\ell}),
+\]
+let \(ga_i \defeq b_1\) and \(g\alpha_i\defeq \beta_i\) and \(gx=x\) for any other \(x\).
+Again check that \(g_2=gg_1g^{-1}\).
+Proceed by induction.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:transposition.product}.}
+\((12)(23)(34)(45)(56)(67)(56)(45)(34)(23)(12)\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:compose.poly}.}
+Let \(q\defeq p^{-1}\) and \(s\defeq r^{-1}\), so
+\begin{align*}
+(r(pb))(t_1,\dots,t_n)
+&=
+pb(t_{s(1)},\dots,t_{s(n)}),
+\\
+&=
+b(t_{q(s(1))},\dots,t_{q(s(n))}),
+\\
+&=
+b(t_{q \circ s(1))},\dots,t_{q \circ s(n))}),
+\\
+&=
+(q \circ s)^{-1}b(t_1,\dots,t_n),
+\\
+&=
+(s^{-1} \circ q^{-1})b(t_1,\dots,t_n),
+\\
+&=
+(rp)b(t_1,\dots,t_n).
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:transposition}.}
+We can transpose \(i\) and \(i+1\) as \((i \ \ i+1)\).
+We can transpose \(i\) and \(i+2\), as a product \((i \ \ i+1)(i+1 \ \ i+2)(i \ \ i+1)\).
+Similarly, we can write any transposition as a product of an odd number of transpositions of neighboring integers: if \(i<j\),
+\[
+(i \ \ j)=(i \ \ i+1)(i+1 \ \ i+2)\dots(j-2 \ \ j-1)(j-1 \ \ j)\dots(i+1 \ \ i+2)(i \ \ i+1).
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutions:rationals}.}
+If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
+Two see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
+Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
+Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
+So any swap either changes sign or leaves both numerator and denominator alone.
+Multiple the numerator and denominator by the function \(\prod_{i<j}(t_i - t_j)\) to ensure that the don't change when we transpose, and so they don't change under any permutation.
+Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:15}.}
+If we make a move by sliding a tile left or right, we don't change \(x\) or \(y\), so \(z\) is the same.
+If we make a move by sliding a tile up or down, we change \(y\) and also carry out a cycle in the order of the tiles.
+If that tile is in the first column, we are making a cycle of length 4:
+\begin{center}
+\input{15-4-cycle.tex}
+\end{center}
+and the same for any other column, since we have one less square above and one more below.
+So the value of \(x\) always changes.
+So \(z\) stays the same.
+The initial picture:
+\begin{center}
+\input{15-unsolvable.tex}
+\end{center}
+differs from the final one:
+\begin{center}
+\input{15-2.tex}
+\end{center}
+by a single transposition, with no row swap, so different value of \(z\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:all}.}
+{
+\arraycolsep=1.4pt\def\arraystretch{2.2}
+\setlength{\arraycolsep}{10pt}
+\[
+\begin{array}{ccccccccccc}
+\yng(1)\\
+\yng(2)&\yng(1,1)\\
+\yng(3)&\yng(2,1)&\yng(1,1,1)\\
+\yng(4)&\yng(3,1)&\yng(2,2)&\yng(2,1,1)&\yng(1,1,1,1)\\
+\yng(5)&\yng(4,1)&\yng(3,2)&\yng(3,1,1)&\yng(2,2,1)&\yng(2,1,1,1)&\yng(1,1,1,1,1)
+\end{array}
+\]
+}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:permute.poly}.}
+\(p^{-1}=(132)(45)\), so \(pf(t_1,t_2,t_3,t_4,t_5)=t_3^2 + t_1t_2+t_3t_5^5\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:permute.poly}.}
+The permutations of \(234\) are
+\[
+(),(23),(24),(34),(234),(243),
+\]
+and each appears along with its inverse here, so we can write the inverses as
+\[
+(),(23),(24),(34),(243),(234).
+\]
+So
+\begin{align*}
+234_+ f(t_1,t_2,t_3,t_4,t_5)
+&=
+f(t_1,t_2,t_3,t_4,t_5)+f(t_1,t_3,t_2,t_4,t_5)+f(t_1,t_4,t_3,t_2,t_5)\\
+&\qquad
++f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5)
+\end{align*}
+A transposition like \((23)\) has sign \(-1\), and more generally a cycle of even length has sign \(-1\), while a cycle of odd length has sign \(1\):
+\begin{align*}
+234_- f(t_1,t_2,t_3,t_4,t_5)
+&=
+f(t_1,t_2,t_3,t_4,t_5)-f(t_1,t_3,t_2,t_4,t_5)-f(t_1,t_4,t_3,t_2,t_5)\\
+&\qquad
+-f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5).
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:lambda.p}.}
+Let \(\mu\defeq\lambda^p\).
+So \(\mu_+\) acts on polynomials by products of permutations of the rows of \(\mu\).
+But if \(\lambda\) has a row
+\[
+a_1 a_2 \dots a_k,
+\]
+then \(\mu\) has corresponding row
+\[
+p(a_1) p(a_2) \dots p(a_k).
+\]
+In \(\lambda_+\), this row produces permutations which are products of cycles of the form
+\[
+(a_{i_1} \ a_{i_2} \ \dots \ a_{i_{\ell}}).
+\]
+As in problem~\vref{problem:groups:symmetric.conjugacy.1}, in \(\mu_+\), each such cycle yields a cycle of the form
+\[
+(p(a_{i_1}) \ p(a_{i_2}) \ \dots \ p(a_{i_{\ell}})).
+\]
+Similarly for columns instead of rows and \(\lambda_-\) instead of \(\lambda_+\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:central}.}
+\begin{align*}
+q \lambda q^{-1}
+&=
+q \frac{\sum_p p \lambda_+ \lambda_- p^{-1}}{N^2_{\lambda}} q^{-1},
+\\
+&=
+\frac{\sum_p (qp) \lambda_+ \lambda_- (qp)^{-1}}{N^2_{\lambda}},
+\end{align*}
+just rewrites the permutations \(p\) in a different order, as \(qp\) instead of \(p\), so \(q\lambda q^{-1}=\lambda\), i.e. \(q\lambda=\lambda q\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:polynomial.group}.}
 Suppose first that \(x_0=0\).
 For any \(y \in \R{}\), let \(p_y\) be the polynomial \(p(x,y)\).
@@ -556,29 +1095,220 @@ x_0*y&=p(x_0,y),\\
 is constant, not a bijection, a contradiction, so \(d=0\), i.e. \(p(x,y)=x+y\).
 
 If the identity element is \(x_0\) instead, then the operation \(x\otimes y=p(x+x_0,y+x_0)-x_0\) is a new group operation with identity element \(0\), so \(p(x+x_0,y+y_0)=x+y+x_0\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:express.in.s}.}
-\begin{enumerate}
-\item \(4xyz^3+4xzy^3+4yzx^3=4e_3(e_1^2-2e_2)\)
-\item \(x^4y^4z^4=e_3^4\)
-\item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
-\item \(x^3y^3z + x^3yz^z+xy^3z^3=e_3\pr{e_2^2-2e_3e_1}\)
-\end{enumerate}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:SymmetricFunctions:Two}.}
-\begin{align*}
-\chi_A{\lambda}
-&=
-\left(t_1-\lambda\right)\left(t_2-\lambda\right)
-\dots \left(t_n-\lambda\right)\\
-&=(-1)^n P_{t}\left(\lambda\right)\\
-&=
-e_n(t) - e_{n-1}(t) \lambda + e_{n-2}(t) \lambda^2 + \dots + (-1)^n \lambda^n.
-\end{align*}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:inverse.Cramer}.}
-Cramer's rule says that the inverse \(A^{-1}\) has entries
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:order.four}.}
+\tikzstyle{multtable}=[draw=gray!30,very thick,rounded corners]
+\newcommand{\mtbl}[5]{
+\begin{array}{c|cccc}
+#1 \\ \hline
+#2 \\
+#3 \\
+#4 \\
+#5
+\end{array}
+}
+
+\newcommand{\tbl}[5]{$\mtbl{#1}{#2}{#3}{#4}{#5}$}
+
+We start only knowing that \(1a=a\), and so on:
 \[
-A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }};
+\end{tikzpicture}
 \]
-so rational functions of the entries of \(A\).
+In the first blank, entry, we have to put \(1,a,b\) or \(c\); we are choosing the value of \(a^2\).
+If you pick \(b\) and I pick \(c\), we could just swap the letters \(b\) and \(c\) in the alphabet to get your choice to agree with mine.
+If we pick \(a^2=a\) then cancel an \(a\) from both sides to get \(a=1\), not possible since our group has 4 distinct elements.
+So \(a^2=1, b\) or \(c\), and swap letters to get \(a^2=1\) or \(b\):
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}};
+\end{tikzpicture}
+\]
+Since every element of the group occurs exactly once in each row and column, in the left hand table, the next element across is \(b\) or \(c\).
+But there is already a \(b\) in the column, so \(c\), forcing the next entry to be \(b\).
+In the right hand table, the next element is either \(1\) or \(c\).
+But we have a \(c\) in the final column, so
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b &   &   &  }
+{c &  c &   &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+};
+\end{tikzpicture}
+\]
+Going down the 2nd columns, we have (in the left hand table) already used \(a,1\), and in the 3rd row we already have a \(b\), so \(c\), and then \(b\).
+Similarly (in the right hand table), in the 2nd column, we have already used \(a,b\), and we have a \(c\) in the last row, so we must use \(1\) in the 2nd column, last row, and so a \(c\) above that.
+\[
+\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c &   &  }
+{c &  c & b &   &  }}}
+child {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c &   &  }
+{c &  c & 1 &   &  }}
+};
+\end{tikzpicture}
+\]
+On the left hand table, we can next pick a \(1\) or \(a\), b
+On the right hand, either a \(1\) or an \(a\), but we have a \(1\) in the last row, so we can't put another \(1\) in that row, so must be \(1,a\):
+\[
+\begin{tikzpicture}[sibling distance=1cm,level distance=5cm]
+\node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a &   &   &  }
+{b &  b &   &   &  }
+{c &  c &   &   &  }}
+[edge from parent fork down]
+child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c &   &  }
+{c &  c & b &   &  }}
+[edge from parent fork down]
+child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & 1 & a}
+{c &  c & b & a & 1}}
+}
+child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & a & 1}
+{c &  c & b & 1 & a}}
+}}
+child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c & 1 & a}
+{c &  c & 1 & a & b}}
+};
+\end{tikzpicture}
+\]
+If we swap the letters \(a,b\), we find the second and third tables become the same, so drop the second one:
+\[
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & 1 & c & b}
+{b &  b & c & a & 1}
+{c &  c & b & 1 & a}};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\node[multtable] at (0,0) {\tbl%
+{  &  1 & a & b & c}
+{1 &  1 & a & b & c}
+{a &  a & b & c & 1}
+{b &  b & c & 1 & a}
+{c &  c & 1 & a & b}};
+\end{tikzpicture}
+\]
+One then has to check that these are in fact groups, as they both turn out to be.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:cyclic.subgroups}.}
+Take a subgroup \(H\) of a cyclic group \(G\).
+Suppose that \(G\) is generated by an element \(x\), i.e. consists of the integer powers of \(x\).
+The elements of \(H\) consist only of certain powers of \(x\); let \(S \subset \Z{}\) be the set of integers \(k\) so that \(x^k\) belongs to \(H\).
+Clearly \(x^kx^{\ell}=x^{k+\ell}\) and \((x^k)^{-1}=x^{-k}\), and \(1=x^0\), so \(S\) is a subgroup of \(\Z{}\) under addition.
+If \(S=\set{0}\), clearly \(H=\set{1} \subset G\) is cyclic.
+But if \(S\ne\set{0}\), then \(S\) contains a least positive element, say \(n\).
+Then \(S\) contains all integer multiples of \(n\).
+If \(S\) contains some integer \(k\), then \(S\) contains \(uk+vn\) for any integers \(u,v\), and in particular (if \(u,v\) are the B\'ezout coefficients of \(k,n\)), \(S\) contains the greatest common divisor of \(k,n\), which is at most as large as \(n\).
+But \(n\) is the smallest positive integer in \(S\), so that greatest common divisor of \(k,n\) is \(n\), i.e. \(n\) divides \(k\).
+So \(n\) divides all elements of \(S\): \(S\) is the set of all integer multiples of \(n\), and so \(H\) is generated by \(x^n\), so cyclic.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cube}.}
+We have numbers \(n\) of group elements \(g\) with various numbers \(c_g\) of cycles:
+\[
+\begin{array}{cc}
+\toprule
+n & c_g\\
+\midrule
+1 & 6\\
+3 & 4\\
+6 & 3\\
+8 & 2\\
+6 & 3\\
+\bottomrule
+\end{array}
+\]
+Hence
+\[
+\frac{1}{|G|} \sum_{g \in G} n^{c_g}
+=
+\frac{1}{24} (n^6 + 3n^4 + 6n^3+8n^2+6n^3)=\frac{1}{24}n^2(n+1)(n^3-n^2+4n+8),
+\]
+so for various values of \(n\):
+\[
+\begin{array}{cc}
+\toprule
+n & |C| \\
+\midrule
+1 & 1\\
+2 & 10\\
+3 & 57\\
+4 & 240\\
+5 & 800\\
+\bottomrule
+\end{array}
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:kernel.subring}.}
 If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
 So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
@@ -588,6 +1318,13 @@ So \(K\) is a subring.
 If \(I \subset \Q{}\) is an ideal, containing some nonzero element \(b \in \Q{}\), then \(I\) also contains \((1/b)b=1\), and so, for any rational number \(c\), \(I\) contains \(c \cdot 1 = c\), i.e. \(I=\Q{}\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:preserve.minus}.}
 If \(z=x-y\) then \(f(x)=f(y+z)=f(y)+f(z)\) so \(f(z)=f(x)-f(y)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:symmetric.polynomials}.}
+The elementary symmetric polynomials of the roots are the coefficients of \(p(x)\).
+All symmetric functions are polynomials in the elementary symmetric polynomials.
+A different proof: all of \(\alpha_1,\dots,\alpha_n\) belong to the splitting field of \(p(x)\) inside \(K\).
+So we can assume without loss of generality that \(K\) is the splitting field of \(p(x)\).
+The Galois group of \(K/k\) acts as permutations of \(\alpha_1,\dots,\alpha_n\), fixing \(k\), so fixes \(q(\alpha_1,\dots,\alpha_n)\).
+But \(K\) is a Galois extension of \(k\), so the fixed elements under the Galois group are precisely the elements of \(k\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:simplify.integral}.}
 \begin{align*}
 2 \int \pr{t^2-1}^2 \, dt
@@ -666,7 +1403,7 @@ Homogenize to \(x^3+x^2y+xy^2+y^3+x^2z=z^3\), and then set \(z=0\) to get the ho
 Factor: \((x+y)(x^2+y^2)=0\).
 So \(x+y=0\), i.e. \([x,-x,0]=[1,-1,0]\), or \(x^2+y^2=0\), which factors over any field \(k\) which contains an element \(i\) so that \(i^2=-1\), as \((x-iy)(x+iy)=0\), i.e. \(y=\pm ix\), so \([x,ix,0]=[1,i,0]\) and \([x,-ix,0]=[1,-i,0]\).
 Hence the points of our curve that lie on the line at infinity are \([1,-1,0], [1,i,0], [1,-i,0]\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points}.}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points.5}.}
 Start with the affine plane.
 Remember (from problem~\vref{problem:polynomials:quadratic.formula}) that you can use the quadratic formula:
 \[
@@ -694,31 +1431,3 @@ Homogenize: \(y^2z+yz^2=x^3+xz^2+z^3\), and set \(z=0\): \(0=x^3\), so \(x=0\), 
 Final answer: \([0,2,1], [2,2,1], [3,2,1], [0,1,0]\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellensatz:closed.image}.}
 \(p(x,y)=(1-xy)^2+x^2\) over the field \(k=\R{}\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:more.projective.planes:zero.div}.}
-To have a nonzero element \(a+\ii b\) being a zero divisor on the left, we would need to have
-\begin{align*}
-0
-&=
-(a+\ii b)(c+\ii d),
-\\
-&=
-ac-\bar{d}b+\ii\pr{da+b\bar{c}}.
-\end{align*}
-Therefore \(ac=\bar{d}b\) and \(da=-b\bar{c}\).
-Multiplying suitably, \(dac=d\bar{d}b\) and \(dac=-c\bar{c}b\).
-So \(0=\pr{d\bar{d}+c\bar{c}}b\) and thus \(b=0\) or else \(c=d=0\).
-But if \(b=0\) then \(ac=0\) and \(da=0\), so \(a=0\) or else \(c=d=0\).
-
-To have a nonzero element \(a+\ii b\) being a zero divisor on the right, we would need to have
-\begin{align*}
-0
-&=
-(c+\ii d)(a + \ii b),
-\\
-&=
-ca-\bar{b}d+\ii\pr{bc+d\bar{a}}.
-\end{align*}
-Therefore \(ca=\bar{b}d\) and \(bc=-d\bar{a}\).
-Multiplying suitably, \(bca=b\bar{b}d\) and \(bca=-da\bar{a}\).
-So therefore \(d=0\) or else \(a=b=0\).
-But if \(d=0\) then \(ca=0\) and \(bc=0\), so \(c=0\).

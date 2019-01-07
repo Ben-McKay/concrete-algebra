@@ -1,12 +1,14 @@
 \documentclass{standalone}
 \usepackage{tikz}
+\usepackage{xparse}
+\input{colorScheme}
 \newcommand{\conicshift}{.875}
 \begin{document}
 \begin{tikzpicture}[scale=.3]
 \begin{scope}[shift={({\conicshift},0)},rotate=45]
 \draw[white] (-2,-1) rectangle (2,1);
-\draw[gray] (0,0) ellipse (2cm and 1cm);
+\draw[curveZero,very thick] (0,0) ellipse (2cm and 1cm);
 \end{scope}
-\draw[gray] (0,0) ellipse (2cm and 1cm);
+\draw[curveZero,very thick] (0,0) ellipse (2cm and 1cm);
 \end{tikzpicture}
 \end{document}

@@ -6,8 +6,8 @@
 \begin{example}\label{example:rational.cubic}
 Let's find the solutions of the algebraic equation \(y^2=x^2+x^3\).
 The solutions form a curve in the plane, intuitively because the equation is one constraint on two variables.
-First, we note that there is one obvious solution: \((x,y)=(0,0)\).
-Next, a minor miracle occurs: we find that almost every line through \((0,0)\) passes through another point of the curve, which we can compute.
+There is one obvious solution: \((x,y)=(0,0)\).
+A minor miracle: almost every line through \((0,0)\) passes through another point of the curve, which we can compute.
 To see this, write any line through \((0,0)\), say with slope \(t\), as \(y=tx\).
 Plug this in to the equation \(y^2=x^2+x^3\) to see if we can find any more solutions:
 \[
@@ -100,12 +100,12 @@ There are infinitely many \(\bar{k}\)-points, because we can force either \(x\) 
 The equation of an algebraic curve is not uniquely determined.
 The curve \(x^2-y=0\) is the same curve as \(\pr{x^2-y}^9=0\).
 The curve \(xy=0\) splits into \(x=0\) or \(y=0\), two curves.
-If the equation of the curve has nonconstant factors, we say that the curve is \emph{reducible}% 
+If the equation of a curve has nonconstant factors, we say that the curve is \emph{reducible}% 
 \define{irreducible!curve}%
 \define{reducible!curve}% 
 \define{curve!irreducible}%
 \define{curve!reducible} 
-and the equations formed from the factors, or the curves they cut out, are \emph{components}\define{component} of \(X\).
+and the equations formed from the factors, or the curves they cut out, are \emph{components}\define{component} of the curve.
 We can assume that the polynomial \(f(x,y)\) in the equation \(f(x,y)=0\) of a curve is not a square, cube, etc. of any polynomial.
 
 \begin{lemma}
@@ -130,6 +130,22 @@ A regular morphism with a regular inverse is \emph{biregular}\define{biregular},
 Clearly biregular algebraic curves have isomorphic algebras of regular functions.
 
 \begin{example}
+We will see that, over any field of characteristic not \(2\), every conic is biregular to precisely one of
+\[
+\begin{array}{@{}rll@{}}
+\toprule
+\text{Equation} & \text{Geometry} & \text{Regular function algebra} \\
+\midrule
+y=0 & \text{line} & k[x] \\[4pt]
+xy=0 & \text{pair of intersecting lines} & k[x] \oplus k[y] \\[4pt]
+xy=1 & \text{hyperbola} & k\left[x,x^{-1}\right] \\[4pt]
+y=x^2 & \text{parabola} & k[x] \\[4pt]
+y=\pm 1 & \text{pair of disjoint lines} & k[x] \oplus k[x]\\[4pt]
+y=\pm \alpha & \text{pair of disjoint lines over} & k(\alpha)[x] \\
+             & k(\alpha), \alpha^2 \in k, \alpha \notin k \\
+\bottomrule
+\end{array}
+\]
 Take a conic \(0=f(x,y)\) and expand out 
 \[
 f(x,y)=ax^2+bxy+cy^2+rx+sy+t.
@@ -188,22 +204,6 @@ Again linearly transform to get the conic \(y^2=-t\).
 If \(-t\) has a square root in \(k\), say \(a\), then our equation is \(y=\pm a\), and rescale the \(y\) variable to get \(a=1\), so a pair of disjoint lines \(y=\pm 1\).
 If \(-t\) has no square root in \(k\), then an empty set of points with coordinates in \(k\), but a pair of disjoint lines with coordinates in \(k(\alpha)\), \(\alpha=\sqrt{-t}\): \(y=\pm \alpha\).
 This \(\alpha\) is uniquely determined up to scaling by an element of \(k^{\times}\).
-Summing up, over any field of characteristic not \(2\), every conic is biregular to precisely one of
-\[
-\begin{array}{@{}rll@{}}
-\toprule
-\text{Equation} & \text{Geometry} & \text{Regular function algebra} \\
-\midrule
-y=0 & \text{line} & k[x] \\[4pt]
-xy=0 & \text{pair of intersecting lines} & k[x] \oplus k[y] \\[4pt]
-xy=1 & \text{hyperbola} & k\left[x,x^{-1}\right] \\[4pt]
-y=x^2 & \text{parabola} & k[x] \\[4pt]
-y=\pm 1 & \text{pair of disjoint lines} & k[x] \oplus k[x]\\[4pt]
-y=\pm \alpha & \text{pair of disjoint lines over} & k(\alpha)[x] \\
-             & k(\alpha), \alpha^2 \in k, \alpha \notin k \\
-\bottomrule
-\end{array}
-\]
 For example, over the rational numbers, the equations \(x^2=-t\) for \(t\) any prime or \(x^2=t\) for \(t\) any prime give conics with no rational points.
 Different primes give different conics, and the reader can work out why they are not biregular over the rational numbers.
 One the other hand, over the real numbers, we only have a single conic \(x^2=-1\) with no real points.

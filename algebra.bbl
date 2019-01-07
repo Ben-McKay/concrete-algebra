@@ -7,6 +7,12 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{10}
 
+\bibitem{Ahlfors:1978}
+Lars~V. Ahlfors, \emph{Complex analysis}, third ed., McGraw-Hill Book Co., New
+  York, 1978, An introduction to the theory of analytic functions of one
+  complex variable, International Series in Pure and Applied Mathematics.
+  \MR{510197}
+
 \bibitem{Clemens:2003}
 C.~Herbert Clemens, \emph{A scrapbook of complex curve theory}, second ed.,
   Graduate Studies in Mathematics, vol.~55, American Mathematical Society,
@@ -16,15 +22,34 @@ C.~Herbert Clemens, \emph{A scrapbook of complex curve theory}, second ed.,
 David~S. Dummit and Richard~M. Foote, \emph{Abstract algebra}, third ed., John
   Wiley \& Sons, Inc., Hoboken, NJ, 2004. \MR{2286236 (2007h:00003)}
 
+\bibitem{Etingof.et.al:2011}
+Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner,
+  Dmitry Vaintrob, and Elena Yudovina, \emph{Introduction to representation
+  theory}, Student Mathematical Library, vol.~59, American Mathematical
+  Society, Providence, RI, 2011, With historical interludes by Slava Gerovitch.
+  \MR{2808160}
+
 \bibitem{Graham/Knuth/Patashnik:1994}
 Ronald~L. Graham, Donald~E. Knuth, and Oren Patashnik, \emph{Concrete
   mathematics}, second ed., Addison-Wesley Publishing Company, Reading, MA,
   1994, A foundation for computer science. \MR{1397498 (97d:68003)}
 
+\bibitem{Hoffman/Kunze:1971}
+Kenneth Hoffman and Ray Kunze, \emph{Linear algebra}, Second edition,
+  Prentice-Hall, Inc., Englewood Cliffs, N.J., 1971. \MR{0276251}
+
 \bibitem{Hungerford:1980}
 Thomas~W. Hungerford, \emph{Algebra}, Graduate Texts in Mathematics, vol.~73,
   Springer-Verlag, New York-Berlin, 1980, Reprint of the 1974 original.
   \MR{600654 (82a:00006)}
+
+\bibitem{Needham:1997}
+Tristan Needham, \emph{Visual complex analysis}, The Clarendon Press, Oxford
+  University Press, New York, 1997. \MR{1446490}
+
+\bibitem{Rota:1971}
+Gian-Carlo Rota, \emph{Combinatorial theory and invariant theory}, Bowdoin
+  College, Maine, U.S.A., 1971, Notes by L.~Guibas.
 
 \bibitem{Shafarevich:2005}
 Igor~R. Shafarevich, \emph{Basic notions of algebra}, Encyclopaedia of

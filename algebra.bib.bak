@@ -1,4 +1,3 @@
-% This file was created with JabRef 2.10b2.
 % Encoding: UTF-8
 
 
@@ -167,3 +166,29 @@
   Timestamp                = {2015.08.17}
 }
 
+@Book{Rota:1971,
+  title     = {Combinatorial Theory and Invariant Theory},
+  publisher = {Bowdoin College, Maine, U.S.A.},
+  year      = {1971},
+  author    = {Gian-Carlo Rota},
+  note      = {Notes by L.~Guibas},
+}
+
+@Book{Etingof.et.al:2011,
+  title      = {Introduction to representation theory},
+  publisher  = {American Mathematical Society, Providence, RI},
+  year       = {2011},
+  author     = {Etingof, Pavel and Golberg, Oleg and Hensel, Sebastian and Liu, Tiankai and Schwendner, Alex and Vaintrob, Dmitry and Yudovina, Elena},
+  volume     = {59},
+  series     = {Student Mathematical Library},
+  isbn       = {978-0-8218-5351-1},
+  note       = {With historical interludes by Slava Gerovitch},
+  doi        = {10.1090/stml/059},
+  mrclass    = {20G15 (16-01 16G10 17B10 20-01)},
+  mrnumber   = {2808160},
+  mrreviewer = {Burkhard K\"{u}lshammer},
+  pages      = {viii+228},
+  url        = {https://doi.org/10.1090/stml/059},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

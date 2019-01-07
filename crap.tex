@@ -1,0 +1,53 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{nicematrix}
+\usepackage{amsmath}
+\begin{document}
+%\[
+%\begin{pmatrix}
+%b_0    &        &        &        & c_0 \\
+%b_1    & b_0    &        &        & c_1    & c_0 \\
+%\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+%\vdots & \ddots & \ddots  & b_0   & \vdots & \ddots & \ddots & c_0 \\
+%b_m    & \ddots & \ddots  & b_1   & c_n    & \ddots & \ddots & c_1 \\
+%       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+%       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+%       &        &        & b_m    &        &        &        & c_n \\
+%\end{pmatrix}
+%\]
+%\[
+%\begin{pmatrix}
+%b(x)   & xb(x)  & \dots  & x^{n-1}b(x)& c(x)   & xc(x) & \dots & x^{m-1} c(x) \\
+%b_1    & b_0    &        &        & c_1    & c_0 \\
+%\vdots & \ddots & \ddots &        & \vdots & \ddots & \ddots & \\
+%b_m    & \ddots & \ddots  & b_0    & c_n    & \ddots & \ddots  & c_0 \\
+%       & b_m    & \ddots  & b_1    &        & c_n    & \ddots  & c_1 \\
+%       &        & \ddots & \vdots &        &        & \ddots & \vdots \\
+%       &        &        & b_m    &        &        &        & c_n
+%\end{pmatrix}.
+%\]
+\[
+\begin{pmatrix}
+b(x)   & xb(x)  & \cdots  & x^{n-1}b(x) & c(x) & xc(x) & \dots & x^{m-1}c(x) \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\vdots & b_1    & \ddots &        & \vdots & c_1 & \ddots & \\
+\vdots & \ddots & \ddots & b_0   & \vdots & \ddots & \ddots & c_0 \\
+b_m    & \ddots & \ddots & b_1   & c_n    & \ddots & \ddots & c_1 \\
+       & b_m    & \ddots & \vdots &        & c_n    & \ddots & \vdots \\
+       &        & \ddots & \vdots    &        &        & \ddots & \vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
+\end{pmatrix}
+\]
+\[
+\begin{pNiceMatrix}
+b(x)   & xb(x)  & \Cdots  & x^{n-1}b(x) & c(x) & xc(x) & \dots & x^{m-1}c(x) \\
+b_1    & b_0    &        &        & c_1    & c_0 \\
+\Vdots & b_1    & \Ddots &        & \Vdots & c_1 & \Ddots & \\
+\Vdots & \Ddots & \Ddots & b_0   & \Vdots & \Ddots & \Ddots & c_0 \\
+b_m    & \Ddots & \Ddots & b_1   & c_n    & \Ddots & \Ddots & c_1 \\
+       & b_m    & \Ddots & \vdots &        & c_n    & \Ddots & \Vdots \\
+       &        & \Ddots & \vdots    &        &        & \Ddots & \Vdots \\
+       &        &        & b_m    &        &        &        & c_n \\
+\end{pNiceMatrix}
+\]
+\end{document}

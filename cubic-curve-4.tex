@@ -1,23 +1,23 @@
 \documentclass{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{xparse}
 \pgfplotsset{compat=1.12,width=7cm}%
+\input{colorScheme}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
 \newcommand{\RRR}{1.8}
-\newcommand{\lineclr}{gray!30}
-\draw[\lineclr] 
+\draw[axisColor] 
 	(\RRR,0) 
 -- ({-\RRR},0);
-\newcommand{\curveclr}{gray}
-  \addplot[domain=-1:0,\curveclr,samples=200]{sqrt((x+1)*x*(x-1))};%
-  \addplot[domain=-1:0,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
-  \addplot[domain=1:2,\curveclr,samples=200]{sqrt((x+1)*x*(x-1)))};%
-  \addplot[domain=1:2,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
-  \fill[gray!20,draw=gray] (axis cs:0,0) circle (1.3pt);
-  \fill[gray!20,draw=gray] (axis cs:1,0) circle (1.3pt);
-  \fill[gray!20,draw=gray] (axis cs:-1,0) circle (1.3pt);
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{sqrt((x+1)*x*(x-1))};%
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+  \addplot[very thick,domain=1:2,curveZero,samples=200]{sqrt((x+1)*x*(x-1)))};%
+  \addplot[very thick,domain=1:2,curveZero,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+\DrawDotInPlot{0}{0}
+\DrawDotInPlot{1}{0}
+\DrawDotInPlot{-1}{0}
 \end{axis}
 \end{tikzpicture}
 \end{document}

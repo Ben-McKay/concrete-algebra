@@ -2,36 +2,26 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.12,width=7cm}%
+\usepackage{xparse}
+\input{colorScheme}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
 \newcommand{\fn}[1]{sqrt((#1+1)*(#1)*(#1-1))}
-%\newcommand{\RRR}{1.8}
-\newcommand{\lineclr}{gray!30}
 \newcommand{\xnought}{-.35}
 \pgfmathsetmacro{\ynought}{0.554188596057335}
-%{sqrt((\xnought+1)*(\xnought)*(\xnought-1))}%
 \pgfmathsetmacro{\slope}{-0.570654109900308}
-%{(3*(\xnought^2)-1)/(2*\ynought)}%
 \newcommand{\xone}{-1.8}
 \pgfmathsetmacro{\yone}{1.38163705541278}
-%{\ynought+\slope*(\xone-\xnought)}%
 \newcommand{\xtwo}{1.8}
 \pgfmathsetmacro{\ytwo}{-0.672717740228328}
-%{\ynought+\slope*(\xtwo-\xnought)}%
-\draw[\lineclr] 
-	(axis cs:{\xone},{\yone}) 
--- (axis cs:{\xtwo},{\ytwo});
-\newcommand{\curveclr}{gray}
-  \addplot[domain=-1:0,\curveclr,samples=200]{sqrt((x+1)*x*(x-1))};%
-  \addplot[domain=-1:0,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
-  \addplot[domain=1:2,\curveclr,samples=200]{sqrt((x+1)*x*(x-1)))};%
-  \addplot[domain=1:2,\curveclr,samples=200]{-sqrt((x+1)*x*(x-1)))};%
-%  \fill[gray!20,draw=gray] (axis cs:0,0) circle (1.3pt);
-%  \fill[gray!20,draw=gray] (axis cs:1,0) circle (1.3pt);
-%  \fill[gray!20,draw=gray] (axis cs:-1,0) circle (1.3pt);
-\fill[gray!20,draw=gray] (axis cs:{\xnought},{\ynought}) circle (1.3pt) node[above,black] {\(p\)};
-\fill[gray!20,draw=gray] (axis cs:1.02564611314611, -0.230829512177879) circle (1.3pt) node[right,black] {\(r\)};
+\draw[axisColor] 	(axis cs:{\xone},{\yone}) -- (axis cs:{\xtwo},{\ytwo});
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{sqrt((x+1)*x*(x-1))};%
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+  \addplot[very thick,domain=1:2,curveZero,samples=200]{sqrt((x+1)*x*(x-1)))};%
+  \addplot[very thick,domain=1:2,curveZero,samples=200]{-sqrt((x+1)*x*(x-1)))};%
+  \DrawDotInPlot[p]{\xnought}{\ynought}
+  \DrawDotInPlot[r]{1.02564611314611}{-0.230829512177879}[below left]
 \end{axis}
 \end{tikzpicture}
 \end{document}

@@ -1,17 +1,16 @@
 \documentclass{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.12,width=7cm}%
+\usepackage{xparse}
+\pgfplotsset{compat=1.14}%
+\input{colorScheme}
 \begin{document}
-\begin{tikzpicture}[scale=.5]
-\begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
-\newcommand{\RRR}{1.8}
-\newcommand{\lineclr}{gray!30}
-\newcommand{\curveclr}{gray!50}
-  \addplot[domain=-1:0,\curveclr,samples=200]{sqrt(x^2+x^3)};%
-  \addplot[domain=-1:0,\curveclr,samples=200]{-sqrt(x^2+x^3)};%
-  \addplot[domain=0:1,\curveclr]{sqrt(x^2+x^3)};%
-  \addplot[domain=0:1,\curveclr]{-sqrt(x^2+x^3)};%
+\begin{tikzpicture}
+\begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2,width=4cm]
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{-sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{-sqrt(x^2+x^3)};%
 \end{axis}
 \end{tikzpicture}
 \end{document}

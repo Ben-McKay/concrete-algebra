@@ -1,0 +1,67 @@
+\documentclass{amsart}
+\usepackage{tikz}
+\usepackage{xparse}
+\include{colorScheme}
+\begin{document}
+Given a projective plane \(P\), take a quadrilateral:
+\NewDocumentCommand\dt{O{}mmO{}}{\DrawDot[#1]{#2/3}{#3/3}[#4]}
+\newcommand{\lne}[4]{\draw[curveZero,very thick] ({#1/3},{#2/3}) -- ({#3/3},{#4/3});}
+\newenvironment{ppdiagram}%
+{%%
+\begin{center}
+\begin{tikzpicture}
+}%%
+{%%
+\end{tikzpicture}
+\end{center}
+}%%
+\begin{ppdiagram}
+\dt{0}{0}
+\dt{0}{3} 
+\dt{3}{0}  
+\dt{1}{1}
+\end{ppdiagram}
+Call this:
+\begin{ppdiagram}
+\lne{0}{3}{3}{0}
+\dt{0}{0} 
+\dt{0}{3} 
+\dt{3}{0} 
+\dt{1}{1} 
+\end{ppdiagram}
+the \emph{line at infinity}. Henceforth, draw it far away.
+Two lines:
+\begin{ppdiagram}
+\lne{1.5}{0}{1.5}{3}
+\lne{2.5}{0}{2.5}{3}
+\dt{0}{0} 
+\dt{1}{1} 
+\end{ppdiagram}
+are \emph{parallel} if they meet at the line at infinity.
+One of the two ``finite'' points of our quadrilateral we designate the \emph{origin}.
+We draw lines from it out to the two ``far away'' points: the \emph{axes}:
+\begin{ppdiagram}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\dt{0}{0} 
+\dt{1}{1} 
+\end{ppdiagram}
+Map any point \(p\) not on the line at infinity to points on the two axes:
+\begin{ppdiagram}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\lne{2}{3}{2}{0}
+\dt{0}{0}
+\dt[p]{2}{1}[right]
+\dt[p_x]{2}{0}[below]
+\end{ppdiagram}
+and
+\begin{ppdiagram}
+\lne{0}{0}{3}{0}
+\lne{0}{0}{0}{3}
+\lne{3}{1}{0}{1}
+\dt{0}{0} 
+\dt[p]{2}{1}[above]
+\dt[p_y]{0}{1}[left]
+\end{ppdiagram}
+\end{document}

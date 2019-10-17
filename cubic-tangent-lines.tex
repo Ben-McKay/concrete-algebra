@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xparse}
+\pgfplotsset{compat=1.12,width=7cm}%
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
+\clip (-1.1,-1) rectangle (.9,1.5);
+\newcommand{\RRR}{1.8}
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{-sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{-sqrt(x^2+x^3)};%
+\draw[axisColor] 
+	(0,\RRR) -- (0,-\RRR);
+\newcommand{\ThetaX}{38}
+\draw[axisColor]
+	({\RRR*cos(\ThetaX)},{1+\RRR*sin(\ThetaX)}) 
+-- ({-\RRR*cos(\ThetaX)},{1-\RRR*sin(\ThetaX)});
+\DrawDotInPlot{0}{1}
+\end{axis}
+\end{tikzpicture}
+\end{document}

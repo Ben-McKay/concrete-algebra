@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xparse}
+\pgfplotsset{compat=1.12,width=7cm}%
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[hide axis,xmin=-2,xmax=2,ymin=-2,ymax=2]
+\clip (-1.3,-1) rectangle (.9,1.5);
+\newcommand{\RRR}{1.8}
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=-1:0,curveZero,samples=200]{-sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{sqrt(x^2+x^3)};%
+  \addplot[very thick,domain=0:1,curveZero]{-sqrt(x^2+x^3)};%
+\draw[axisColor] 
+	(0,-1) -- (0,1.5);
+\draw[axisColor] 
+	(-1,-1) -- (-1,1.5);
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -89,19 +89,19 @@
 %\RequirePackage[mathletters]{ucs}			% Unicode characters
 \RequirePackage{newunicodechar}
 
-\ifdefined\ChineseTextInThisDocument
 \RequirePackage[utf8]{inputenc} % Default input file encoding
+\ifdefined\ChineseTextInThisDocument
 \RequirePackage{CJKutf8}
 \let\I\relax
 \NewDocumentCommand\Chinese{m}{\begin{CJK*}{UTF8}{gbsn}#1\end{CJK*}}
 \else 
-\RequirePackage[utf8x]{inputenc} % Default input file encoding
 \fi
 
 \RequirePackage[T1]{fontenc}		% Default font encoding
 \RequirePackage{strict}
 \RequirePackage{lmodern}			% Nice fonts.
 \RequirePackage{fixmath}			% Make Greek letters look right.
+\RequirePackage[tt=lining]{cfr-lm}
 \RequirePackage[mathscr]{eucal}
 
 \RequirePackage[%
@@ -114,7 +114,7 @@ factor=1100,%
 stretch=10,%
 shrink=10]{microtype}
 \microtypecontext{spacing=nonfrench}
-
+\usepackage{embrac} % fixes parentheses and brackets in italic text.
 %% American Mathematical Society symbols, theorem and
 %% commutative diagram packages.
 \RequirePackage{amsmath}
@@ -378,122 +378,46 @@ Analphabetics
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 
-%\NewDocumentEnvironment{examples}{}{\begin{itemize}}{\end{itemize}}
-%\NewDocumentEnvironment{example}{}{\begin{itemize}\item}{\end{itemize}}
+\colorlet{exampleBackgroundColour}{gray!16}
 
-%% Examples code, using the tcolorbox package.
-%\definecolor{example-color}{gray}{.95}
-%\definecolor{example-border-color}{gray}{.8}
-%\definecolor{example-color}{RGB}{255,255,255}
-%\definecolor{example-border-color}{RGB}{180,180,180}
-\tikzset{exampleStyle/.style={black!50,thin,rounded corners}}
-\newcommand{\exampleBorderWidth}{2mm}
-\newtcolorbox{example}
-{
-empty,
-before=\par\medskip\noindent,
-parbox=false,
-boxsep=0pt,
-left=0mm,
-right=0mm,
-top=0pt,
-bottom=0pt,
-breakable,
-pad at break*=0mm,
-vfill before first,
-before upper={\widowpenalties=3 10000 10000 150},
-overlay unbroken
-={\draw[exampleStyle] (frame.north west)--([xshift=-\exampleBorderWidth]frame.north west)--([xshift=-\exampleBorderWidth]frame.south west)--(frame.south west); },
-overlay first
-={\draw[exampleStyle] (frame.north west)--([xshift=-\exampleBorderWidth]frame.north west)--([xshift=-\exampleBorderWidth]frame.south west); },
-overlay middle
-={\draw[exampleStyle] ([xshift=-\exampleBorderWidth]frame.north west)--([xshift=-\exampleBorderWidth]frame.south west); },
-overlay last
-={\draw[exampleStyle] ([xshift=-\exampleBorderWidth]frame.north west)--([xshift=-\exampleBorderWidth]frame.south west)--(frame.south west); },
-}
-%\NewDocumentEnvironment{example}{}{
-%\begin{tcolorbox}[
-%empty,
-%before=\par\medskip\noindent,
-%parbox=false,
-%boxsep=0pt,
-%left=4mm,
-%right=3mm,
-%top=0pt,
-%bottom=0pt,
-%breakable,
-%pad at break*=0mm,
-%vfill before first,
-%overlay unbroken
-%={\draw[exampleStyle] ([xshift=2mm]frame.north west)--(frame.north west)--(frame.south west)--([xshift=2mm]frame.south west); },
-%overlay first
-%={\draw[exampleStyle] ([xshift=2mm]frame.north west)--(frame.north west)--(frame.south west); },
-%overlay middle
-%={\draw[exampleStyle] (frame.north west)--(frame.south west); },
-%overlay last
-%={\draw[exampleStyle] (frame.north west)--(frame.south west)--([xshift=2mm]frame.south west); },
-%%enhanced,
-%%breakable,
-%%colframe=example-border-color,
-%%colback=white,
-%%leftrule=10mm,
-%%toprule=3mm,
-%%bottomrule=3mm,
-%%rightrule=10mm,
-%%pad at break*=1mm,
-%%toprule at break=-1mm,bottomrule at break=-1mm,
-%%before upper={\widowpenalties=3 10000 10000 150}]
-%%%colback=example-color,colframe=example-border-color,
-%%%breakable,pad at break*=1mm,
-%%%toprule=1.2mm,bottomrule=1.2mm,leftrule=1mm,rightrule=1mm,toprule at break=-1mm,bottomrule at break=-1mm,
-%%%before upper={\widowpenalties=3 10000 10000 150}]%
-%}{\end{tcolorbox}}
-\NewDocumentEnvironment{examples}{}{
-%\begin{tcolorbox}[
-%empty,
-%before=\par\medskip\noindent,
-%parbox=false,
-%boxsep=0pt,
-%left=4mm,
-%right=3mm,
-%top=0pt,
-%bottom=0pt,
-%breakable,
-%pad at break*=0mm,
-%vfill before first,
-%overlay unbroken
-%={\draw[exampleStyle] ([xshift=2mm]frame.north west)--(frame.north west)--(frame.south west)--([xshift=2mm]frame.south west); },
-%overlay first
-%={\draw[exampleStyle] ([xshift=2mm]frame.north west)--(frame.north west)--(frame.south west); },
-%overlay middle
-%={\draw[exampleStyle] (frame.north west)--(frame.south west); },
-%overlay last
-%={\draw[exampleStyle] (frame.north west)--(frame.south west)--([xshift=2mm]frame.south west); },
-%%enhanced,
-%%breakable,
-%%colframe=example-border-color,
-%%colback=white,
-%%leftrule=10mm,
-%%toprule=3mm,
-%%bottomrule=3mm,
-%%rightrule=10mm,
-%%%colback=example-color,colframe=example-border-color,
-%%%breakable,
-%%pad at break*=1mm,
-%%toprule at break=-1mm,bottomrule at break=-1mm,
-%%%toprule=1.2mm,bottomrule=1.2mm,leftrule=1mm,rightrule=1mm,toprule at break=-1mm,bottomrule at break=-1mm,
-%%before upper={\widowpenalties=3 10000 10000 150}]%
-%]
-\begin{example}
-\begin{itemize}
+\newtcolorbox{example}{%
+enhanced,%
+breakable,%
+colback=gray!16,%
+colframe=gray!22,%
+leftrule=1.4pt,%
+toprule=1.4pt,%
+bottomrule=1.4pt,%
+rightrule=1.4pt,%
+arc=3mm}
+\newenvironment{exampleAndImage}[1]%
+{%
+\begin{tcolorbox}[enhanced,%
+breakable,%
+colback=gray!16,%
+colframe=gray!22,%
+leftrule=1.4pt,%
+toprule=1.4pt,%
+bottomrule=1.4pt,%
+rightrule=1.4pt,%
+arc=3mm,%
+sidebyside,%
+lower separated=false,%
+righthand width=#1,%
+]%
 }%
-{
-\end{itemize}
+{%
+\end{tcolorbox}%
+}%
+\NewDocumentEnvironment{examples}{}{%
+\begin{example}%
+\begin{itemize}}%
+{\end{itemize}%
 \end{example}}
 
 % In the middle of an example, the background color is not white. If you need a white background to put an image on it, it looks best to use an imageborderinexample.
 \definecolor{image-border-color}{gray}{.975}
-\NewDocumentCommand\imageborderinexample{m}{\begin{center}%\tcbox[colframe=image-border-color, colback=white]
+\NewDocumentCommand\imageborderinexample{m}{\begin{center}\tcbox[colframe=image-border-color, colback=white]
 {#1}\end{center}}
 \NewDocumentCommand\includegraphicsinexample{om}%
 {\IfValueTF{#1}{\imageborderinexample{\includegraphics[#1]{#2}}}{\imageborderinexample{\includegraphics{#2}}}}
@@ -559,7 +483,8 @@ overlay last
 
 % Colour for the rulings in tables:
 \RequirePackage{colortbl}
-\arrayrulecolor{gray!30}
+\newcommand{\defaultArrayRuleColor}{gray!30}
+\arrayrulecolor{\defaultArrayRuleColor}
 \makeatletter
     \def\rulecolor#1#{\CT@arc{#1}}
     \def\CT@arc#1#2{%

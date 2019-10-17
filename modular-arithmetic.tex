@@ -249,7 +249,7 @@ We now want to write out exponent \(2005\) as a sum of powers of \(2\), by first
 +
 981
 \\
-\intertext{and then dividing in the next power of 2 we can fit into the remainder,}
+\intertext{and then dividing in the next power of \(2\) we can fit into the remainder,}
 &= 1024 + 512 + 469,
 \\
 &= 1024 + 512 + 256 + 128 + 64 + 16 + 4 + 1.
@@ -341,9 +341,7 @@ then \(sr\) is congruent to \(1\) modulo \(m\), i.e. there is some quotient \(q\
 \begin{example}
 Working modulo \(163\), let's compute \(14^{-1}\).
 First we carry out the long division
-\[
-\longdiv{163}{14}
-\]
+\integerLongDivision{163}{14}
 Now let's start looking for B\'ezout coefficients, by writing out matrix:
 \[
 \begin{pmatrix}
@@ -492,8 +490,8 @@ x\defeq r_1 u_1 v_1 + r_2 u_2 v_2 + \dots + r_n u_n v_n.
 We can simplify this a little: add or subtract multiples of \(m\) until \(x\) is in the range \(0 \le x \le m-1\).
 \end{example}
 \begin{theorem}
-Take some positive integers \(m_1, m_2, \dots, m_n\), so that any two of them are coprime.
-Suppose that we want to find an unknown integer \(x\) given only the knowledge of its remainders modulo \(m_1, m_2, \dots, m_n\); so we know its remainder modulo \(m_1\) is \(r_1\), modulo \(m_2\) is \(r_2\), and so on.
+Take some positive integers \(m_1, m_2, \dots, m_n\), coprime to one another.
+Suppose that we want to find an unknown integer \(x\), given only the knowledge of its remainders modulo \(m_1, m_2, \dots, m_n\); so we know its remainder modulo \(m_1\) is \(r_1\), modulo \(m_2\) is \(r_2\), and so on.
 There is such an integer \(x\), given by the recipe above, and \(x\) is unique modulo 
 \[
 m_1 m_2 \dots m_n.
@@ -564,11 +562,11 @@ Solve the problem about eggs. Hint: ignore the information about eggs taken out 
 \end{problem}
 \begin{problem}{modular.arithmetic:army}
 Use the Chinese remainder theorem to determine the smallest number of soldiers possible in Han Xin's army if the following facts are true.
-When they parade in rows of 3 soldiers, two soldiers will be left. When they parade in rows of 5, 3 will be left, and in rows of 7, 2 will be left.
+When they parade in rows of three soldiers, two soldiers will be left. When they parade in rows of five, three will be left, and in rows of seven, two will be left.
 \end{problem}
 \begin{problem}{modular.arithmetic:army.2}
 Use the Chinese remainder theorem to determine the smallest number of soldiers possible in Han Xin's army if the following facts are true.
-When they parade in rows of 3 soldiers, one soldier will be left. When they parade in rows of 7, 2 will be left, and in rows of 19, three will be left.
+When they parade in rows of three soldiers, one soldier will be left. When they parade in rows of seven, two will be left, and in rows of \(19\), three will be left.
 \end{problem}
 \begin{answer}{modular.arithmetic:army.2}
 We want to find remainders \((1,2,3)\) modulo \((3,7,19)\).
@@ -609,6 +607,81 @@ r_1 u_1 v_1 + r_2 u_2 v_2 + r_3 u_3 v_3
 \end{align*}
 So there are at least 79 soldiers in Han Xin's army.
 \end{answer}
+\begin{problem}{modular:CRT.22.39}
+Use the Chinese remainder theorem to find the smallest positive integer \(x\) so that
+\begin{align*}
+x&=2\pmod{22},\\
+x&=8\pmod{39}.
+\end{align*}
+\end{problem}
+\begin{answer}{modular:CRT.22.39}
+We have \(r_1,r_2=2,8\), \(m_1,m_2=22,39\), so \(u_1=39\), \(u_2=22\).
+Modulo \(22\):
+\[
+v_1=39^{-1}=(22+17)^{-1}=17^{-1}.
+\]
+B\'ezout:
+\begin{align*}
+\begin{pmatrix}
+1&0&17\\
+0&1&22
+\end{pmatrix}
+&\quad\text{add \(-\)row 1 to row 2},\\
+\begin{pmatrix}
+1&0&17\\
+-1&1&5
+\end{pmatrix}
+&\quad\text{add \(-3\cdot\)row 2 to row 1},\\
+\begin{pmatrix}
+4&-3&2\\
+-1&1&5
+\end{pmatrix}
+&\quad\text{add \(-2\cdot\)row 1 to row 2},\\
+\begin{pmatrix}
+4&-3&2\\
+-9&7&1
+\end{pmatrix}
+\end{align*}
+So \((-9)(17)+(7)(22)=1\), so mod \(22\), \(v_1=-9=22-9=13\).
+Modulo \(39\), \(v_2=22^{-1}\), 
+\begin{align*}
+\begin{pmatrix}
+1&0&22\\
+0&1&39
+\end{pmatrix}
+&\quad\text{add \(-\)row 1 to row 2},\\
+\begin{pmatrix}
+1&0&22\\
+-1&1&17
+\end{pmatrix}
+&\quad\text{add \(-\)row 2 to row 1},\\
+\begin{pmatrix}
+2&-1&5\\
+-1&1&17
+\end{pmatrix}
+&\quad\text{add \(-3\cdot\)row 1 to row 2},\\
+\begin{pmatrix}
+2&-1&5\\
+-7&4&2
+\end{pmatrix}
+&\quad\text{add \(-2\cdot\)row 2 to row 1},\\
+\begin{pmatrix}
+16&-9&1\\
+-7&4&2
+\end{pmatrix}
+\end{align*}
+So \(v_2=16\).
+Modulo \(39\cdot 22=858\), 
+\begin{align*}
+x&=r_1u_1v_1+r_2u_2v_2,\\
+ &=(2)(39)(13)+(8)(22)(16),\\
+ &=1014+2816,\\
+ &=3830,\\
+ &=(4)(858)+398,\\
+ &=398.
+\end{align*}
+\end{answer}
+\section{Bird's eye view of the Chinese remainder theorem}
 Given some integers \(m_1, m_2, \dots, m_n\), we consider sequences \(\pr{b_1, b_2, \dots, b_n}\) consisting of remainders: \(b_1\) a remainder modulo \(m_1\), and so on.
 Add sequences of remainders in the obvious way:
 \[
@@ -664,7 +737,7 @@ The map taking \(b\) to \(\vec{b}\), from remainders modulo \(m\) to sequences o
 
 \section{Euler's totient function}
 \emph{Euler's totient function}\define{Euler's totient function}\define{totient function} \(\phi\)\Notation{phi(m)}{\phi(m)}{Euler's totient function} assigns to each positive integer \(m=2,3, \dots\) the number of all remainders modulo \(m\) which are units (in other words, coprime to \(m\)) [in other words, which have reciprocals].
-It is convenient to \emph{define} \(\phi(1)\defeq 1\) (even though there \emph{isn't} actually 1 unit remainder modulo 1).
+It is convenient to \emph{define} \(\phi(1)\defeq 1\) (even though there \emph{isn't} actually \(1\) unit remainder modulo \(1\)).
 \begin{problem}{modular.arithmetic:totient.values}
 Explain by examining the remainders that the first few values of \(\phi\) are
 \[

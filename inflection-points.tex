@@ -3,7 +3,7 @@
 Traditionally, an \emph{inflection point}\define{inflection point} meant a point where the graph of a function changes from being convex down to being convex up, or vice versa.
 Clearly at any inflection point, the derivative goes from decreasing to increasing, or vice versa, so the second derivative vanishes.
 Notions of convexity depend very strongly on having some idea of positive and negative numbers, so they don't apply in the context of algebraic curves.
-The closest we can come to this is to \emph{define} an \emph{inflection point} or \emph{flex}\define{flex} of an algebraic plane curve to be a point at which the tangent line meets the curve to order 3 or more.
+The closest we can come to this is to \emph{define} an \emph{inflection point} or \emph{flex}\define{flex} of an algebraic plane curve to be a point at which the tangent line meets the curve to order \(3\) or more.
 
 To find such points, we define the \emph{Hessian} \(\Hessian{b}(x,y,z)\) of a homogeneous polynomial \(b(x,y,z)\) by
 \[
@@ -22,7 +22,7 @@ b_{xy} \defeq \pderiv{b}{x,y}
 \]
 and so on.
 So if \(b(x,y,z)\) is homogeneous of degree \(n\), then \(b_{xy}\) is homogeneous of degree \(n-2\), so \(\Hessian{b}(x,y,z)\) is homogeneous of degree \(3(n-2)\).
-If \(b(x,y,z)\) has degree 2, so that the associated curve is a conic, then \(\Hessian{b}(x,y,z)\) is a constant, the determinant of the symmetric matrix of coefficients of \(b(x,y,z)\). 
+If \(b(x,y,z)\) has degree \(2\), so that the associated curve is a conic, then \(\Hessian{b}(x,y,z)\) is a constant, the determinant of the symmetric matrix of coefficients of \(b(x,y,z)\). 
 So \(\Hessian{b}(x,y,z)\) is a nonzero constant, i.e. \(H\) is empty, just when \(b(x,y,z)\) is a smooth conic.
 Similarly, \(\Hessian{b}(x,y,z)\) vanishes everywhere for a line or a singular conic (a pair of lines).
 
@@ -54,7 +54,7 @@ Since \(b(x,y,z)\) is a sum of homogeneous terms, it is enough to check one such
 \end{proof}
 
 \begin{lemma}
-The Hessian \(\Hessian{b}(x,y,z)\) vanishes at a smooth point of a plane algebraic curve \(B=(0=b(x,y,z))\) just when the tangent line at that point meets the curve to order 3 or more.
+The Hessian \(\Hessian{b}(x,y,z)\) vanishes at a smooth point of a plane algebraic curve \(B=(0=b(x,y,z))\) just when the tangent line at that point meets the curve to order \(3\) or more.
 \end{lemma}
 \begin{proof}
 Euler's lemma:
@@ -137,7 +137,7 @@ b(x,y)&=b(x_0+\Delta x,y_0+y_0' \Delta x),
 \\
 &=-b_y(x_0,y_0) y_0'\Delta x -b_y(x_0,y_0) y''_0 \frac{\Delta x}{2} + \dots
 \end{align*}
-So the Hessian vanishes just where the tangent line meets the curve to order 3 or more, and this occurs just where \(y''=0\).
+So the Hessian vanishes just where the tangent line meets the curve to order \(3\) or more, and this occurs just where \(y''=0\).
 \end{proof}
 
 \begin{lemma}

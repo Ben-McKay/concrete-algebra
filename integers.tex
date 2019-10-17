@@ -373,9 +373,7 @@ Plug into \(0=(Q-q)c+(R-r)\) to see that \(Q=q\).
 \begin{example}
 How do we actually find quotient and remainder, by hand?
 Long division:
-\[
-\longdiv{249}{17}
-\]
+\integerLongDivision{249}{17}
 So if we start with \(b=249\) and \(c=17\), we carry out long division to find the quotient \(q=14\) and the remainder \(r=11\).
 \end{example}
 \begin{problem}{integers:quotient.and.remainder}
@@ -425,25 +423,15 @@ Repeat the process: taking \(17\) and dividing out \(11\), the quotient and rema
 Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
 Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
 In more detail, we divide the smaller integer (smaller in absolute value) into that the larger:
-\[
-\longdiv{249}{17}
-\]
+\integerLongDivision{249}{17}
 Throw out the larger integer, \(249\), and replace it by the remainder, \(11\), and divide again:
-\[
-\longdiv{17}{11}
-\]
+\integerLongDivision{17}{11}
 Again we throw out the larger integer (in absolute value), \(17\), and replace with the remainder, \(6\), and repeat:
-\[
-\longdiv{11}{6}
-\]
+\integerLongDivision{11}{6}
 and again:
-\[
-\longdiv{6}{5}
-\]
+\integerLongDivision{6}{5}
 and again:
-\[
-\longdiv{5}{1}
-\]
+\integerLongDivision{5}{1}
 The remainder is now zero.
 The greatest common divisor is therefore \(1\), the final nonzero remainder: 
 \(\gcd{249,17}=1\).

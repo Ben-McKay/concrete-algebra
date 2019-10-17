@@ -27,7 +27,7 @@ If you know the partition, you can draw the Young diagram, and vice versa, so we
 \]
 
 \begin{problem}{young:all}
-Draw all Young diagrams with at most 5 boxes.
+Draw all Young diagrams with at most \(5\) boxes.
 \end{problem}
 \begin{answer}{young:all}
 {
@@ -135,16 +135,16 @@ f(a,b,c,d,e,f,g,h,i,j,k).
 \] 
 
 \begin{example}
-The diagram \([3]=\yng(3)\) will act on polynomial of 3 variables, i.e. \(f(a,b,c)\), by symmetrically averaging:
+The diagram \([3]=\yng(3)\) acts on polynomial of 3 variables, i.e. \(f(a,b,c)\), by symmetrically averaging: \(\yng(3) f(a,b,c)\) is
 \[
-\yng(3) f(a,b,c)=\frac{f(a,b,c)+f(a,c,b)+f(b,a,c)+f(b,c,a)+f(c,a,b)+f(c,b,a)}{6}.
+\frac{f(a,b,c)+f(a,c,b)+f(b,a,c)+f(b,c,a)+f(c,a,b)+f(c,b,a)}{6}.
 \]
 \end{example}
 
 \begin{example}
-The diagram \([1,1,1]=\yng(1^3)\) will antisymmetrize in 3 variables, 
+The diagram \([1,1,1]=\yng(1^3)\) antisymmetrizes in 3 variables: \([1,1,1]f(a,b,c)\) is
 \[
-[1,1,1]f(a,b,c)=\frac{f(a,b,c)-f(a,c,b)-f(b,a,c)+f(b,c,a)+f(c,a,b)-f(c,b,a)}{6}.
+\frac{f(a,b,c)-f(a,c,b)-f(b,a,c)+f(b,c,a)+f(c,a,b)-f(c,b,a)}{6}.
 \]
 \end{example}
 Soon we will explain how Young diagrams act in general. 
@@ -424,10 +424,8 @@ Therefore finally the Young diagram is
 \lambda=\frac{()+(12)+(13)+(23)+(123)+(132)}{6}.
 \]
 (We still owe the reader an explanation of the 6 in the denominator.)
-This Young diagram symmetrizes any polynomial of 3 variables:
+This Young diagram symmetrizes any polynomial of 3 variables: \([3]f(t_1,t_2,t_3)\) is
 \[
-[3]f(t_1,t_2,t_3)
-=
 \frac{f(t_1,t_2,t_3)+f(t_2,t_1,t_3)+f(t_3,t_2,t_1)+f(t_1,t_3,t_2)+f(t_3,t_1,t_2)+f(t_2,t_3,t_1)}{6}.
 \]
 \end{example}
@@ -450,10 +448,8 @@ Therefore finally the Young diagram is
 \frac{()-(12)-(13)-(23)+(123)+(132)}{6}.
 \end{align*}
 (We still owe the reader an explanation of the 6 in the denominator.)
-This Young diagram antisymmetrizes any polynomial of 3 variables:
+This Young diagram antisymmetrizes any polynomial of 3 variables: \([1,1,1]f(t_1,t_2,t_3)\) is
 \[
-[1,1,1]f(t_1,t_2,t_3)
-=
 \frac{f(t_1,t_2,t_3)-f(t_2,t_1,t_3)-f(t_3,t_2,t_1)-f(t_1,t_3,t_2)+f(t_3,t_1,t_2)+f(t_2,t_3,t_1)}{6}.
 \]
 \end{example}
@@ -637,12 +633,8 @@ If \(\lambda=[2,2,1]\) then the Young diagram has \(r=3\) rows and the numerator
 The denominator has \(i<j\) but \(1 \le i,j \le 3\), so \(1<2\), \(1<3\) and \(2<3\):
 \begin{align*}
 \prod_{i<j}\pr{\pr{\lambda_i-\lambda_j}+\pr{j-i}}
-&=
-\pr{(2-2)+(2-1)}\pr{(2-1)+(3-1)}\pr{(2-1)+(3-2)},
-\\
-&=
-\pr{1}\pr{3}\pr{2},
-\\
+&=\pr{(0)+(1)}\pr{(1)+(2)}\pr{(1)+(1)},\\
+&=\pr{1}\pr{3}\pr{2},\\
 &=6.
 \end{align*}
 Hence

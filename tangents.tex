@@ -1,8 +1,7 @@
 \chapter{The tangent line}\label{chapter:tangent.line}
 
 \section{Lines crossing a curve}
-
-\begin{proposition}
+\begin{proposition}\label{proposition:lines.crossing}
 Pick an irreducible plane algebraic curve \(C\) of degree \(d\) and a point \(p\) of the plane not lying on \(C\).
 Among all of the lines through \(p\), every one of them strikes \(C\) in exactly \(d\) distinct points, except for at most \(d(d-1)\) lines.
 \end{proposition}
@@ -13,13 +12,12 @@ Also arrange that \(C\) is not entirely on the line at infinity, so contains som
 From the equation \(q(x,y)=0\) of the curve \(C\), the intersections lie on \(q(x,mx)=0\), a polynomial of degree at most \(d\) in \(x\).
 This polynomial is not the zero polynomial, because the origin does not lie on \(C\).
 Therefore the number of intersections is \(d\).
-The multiplicities will all be 1 except at values of \(m\) where the discriminant (as a polynomial in \(x\)) of \(q(x,mx)=0\) vanishes.
+The multiplicities will all be \(1\) except at values of \(m\) where the discriminant (as a polynomial in \(x\)) of \(q(x,mx)=0\) vanishes.
 The discriminant is an equation of degree at most \(d(d-1)\) in \(m\).
 If the discriminant vanishes as a polynomial in \(m\), it vanishes as a rational function of \(m\), and so \(q(x,mx)\) has a zero of higher multiplicity as a polynomial in \(x\) with rational coefficients in \(m\): \(q(x,mx)=(x-f(m))^2 Q(x,m)\).
 But replacing \(m\) by \(y/x\) we find that \(q(x,y)\) is reducible as a polynomial in \(x\) with coefficients rational in \(y\), and so by the Gauss' lemma \(q(x,y)\) is reducible as a polynomial in \(x,y\), a contradiction.
 So the discriminant is a nonzero polynomial, and if it is constant we can homogenise and dehomogenise to get it to be nonconstant.
 \end{proof}
-
 
 Given a curve in the projective plane, we can take any of the three homogeneous coordinate variables \([x,y,z]\) and rescale to 1, say to \(x=1\), and see the curve as lying on the affine plane.
 As we have seen, changing the choice of variable, say to \(y=1\) or to \(z=1\), involves rehomogenising the equation and then plugging in \(y=1\) or \(z=1\), giving us a birational curve.

@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{%
+matrix,%
+arrows,%
+arrows.meta,%
+calc,%
+decorations.pathmorphing,%
+decorations.pathreplacing,%
+decorations.markings,%
+decorations.fractals,%
+fadings,%
+hobby,%
+knots,%
+shadows,%
+lindenmayersystems,%
+shadings,%
+backgrounds,%
+angles,%
+quotes}
+\tikzfading[name=fadeoutright,
+left color=transparent!0,
+right color=transparent!100]
+
+\begin{document}
+\begin{tikzpicture}
+\filldraw[draw=black!30,fill=white,path fading=fadeoutright,fading transform={rotate=45}] 
+{(.8,.8) -- (0,.8) -- (0,0) -- (.8,0)} -- (.8,.8) -- cycle;
+\draw[-stealth] (0,0) -- (.8,0);
+\draw[-stealth] (0,0) -- (0,.8);
+\end{tikzpicture}
+\end{document}

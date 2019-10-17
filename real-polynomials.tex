@@ -1,11 +1,10 @@
 \chapter{Real polynomials, complex polynomials}
-
+\epigraph[author={Herman Melville},source={Moby Dick}]{I cherish the greatest respect towards everybody’s religious obligations, never mind how comical.}\SubIndex{Melville, Herman}\SubIndex{Moby Dick}
+\epigraph[author={Herman Melville},source={Moby Dick}]{Hell is an idea first born on an undigested apple-dumpling.}\SubIndex{Melville, Herman}\SubIndex{Moby Dick}
 In this chapter (and only this chapter), we assume that the reader is familiar with real numbers, with continuity, and with the intermediate value theorem:\define{intermediate value theorem}\define{theorem!intermediate value} every continuous function \(y=f(x)\) defined on an interval \(a \le x \le b\) takes on all values between \(f(a)\) and \(f(b)\).
 We also assume that the reader knows that polynomials are continuous.
 See \cite{Spivak:2006} for the complete story of continuity and the intermediate value theorem.
-
 \section{Polynomials over the real numbers}
-
 \begin{example}
 If \(f(x)\) is a polynomial with positive coefficients, like
 \[
@@ -14,7 +13,6 @@ f(x)=-4 + 7x + 17x^2 + 674x^4,
 then making \(x\) very large makes \(f(x)\) very large positive, clearly, since \(x^4\) eventually gets much larger than all other terms.
 The equation \(f(x)=0\) must have a solution \(x>0\), because \(f(x)\) starts at \(f(0)=-4\) (negative) and then gets much larger than anything we like eventually for large enough \(x\), so gets positive, so must be zero somewhere in between.
 \end{example}
-
 \begin{problem}{rationals:cubic}
 Prove that the equation
 \[
@@ -23,12 +21,9 @@ Prove that the equation
 has a real number solution \(x\).
 More generally, prove that any odd-order polynomial equation in a real variable has a real solution.
 \end{problem}
-
-
 \section{Counting positive roots}
-
 \begin{theorem}[Descartes]\define{theorem!Descartes}\define{Descartes!theorem}
-The number of positive roots, counted with multiplicities, of a real polynomial \(b(x)\) is either equal to the number of changes of sign of its coefficients (when we write the polynomial \(b(x)\) with terms in order of degree), or less by a multiple of 2.
+The number of positive roots, counted with multiplicities, of a real polynomial \(b(x)\) is either equal to the number of changes of sign of its coefficients (when we write the polynomial \(b(x)\) with terms in order of degree), or less by a multiple of \(2\).
 \end{theorem}
 \begin{example}
 The polynomial
@@ -39,10 +34,10 @@ has coefficients with signs \(++--++\).
 We ignore the zero coefficients, for example in front of \(x^6\) and \(x^4\).
 So as we travel along the signs, they change twice, once from \(+\) to neighboring \(-\), and once from \(-\) to neighboring \(+\).
 So this \(b(x)\) has at most \(2\) roots \(x>0\), and the number of roots with \(x>0\) is even.
-So there are either 2 positive roots or none.
+So there are either \(2\) positive roots or none.
 \end{example}
 \begin{example}
-The polynomial \(c(x)=x^5-3x^4+3x^3+9x^2-27x+3\) has 4 sign changes, so 4 or 2 or 0 roots \(x\) with \(x>0\).
+The polynomial \(c(x)=x^5-3x^4+3x^3+9x^2-27x+3\) has \(4\) sign changes, so \(4\) or \(2\) or \(0\) roots \(x\) with \(x>0\).
 If we look at the polynomial \(c(-x)\), expand out to get \(c(-x)=-x^5-3x^4-3x^3+9x^2+27x+3\) has 1 sign change, so 1 root with \(x>0\).
 Therefore \(c(x)\) has 1 root with \(x < 0\).
 \end{example}
@@ -136,11 +131,7 @@ descartes(t^(79)-4*t^(17)+t^(10)+t^6+t-1)
 \end{sageblock}
 yields \(\sage{descartes(t^(79)-4*t^(17)+t^(10)+t^6+t-1)}\).
 
-
-
-
 \section{Counting roots of a real polynomial in an interval}
-
 Suppose that \(p(x)\) is a polynomial with real coefficients.
 Let \(p_0(x)\) be just another name for \(p(x)\).
 Let \(p_1(x)\defeq p'(x)\).
@@ -178,7 +169,6 @@ p_3(0)&=6,       &  p_3(1)&=6,\\
 \]
 so \(s(0)=2\) sign changes, and \(s(1)=1\) sign changes, with expected number of roots \(2-1=1\), i.e. we expect that \(p(x)\) has all 1 of its roots in the interval \(0 < x \le 1\).
 \end{example}
-
 \begin{theorem}[Sturm]
 If a polynomial \(p(x)\) with real coefficients has no multiple roots at \(x=a\) or at \(x=b\) then the expected number of distinct roots \(p(x)\) in the interval \(a < x \le b\) is the number of distinct roots of \(p(x)\) in that interval.
 \end{theorem}
@@ -190,7 +180,8 @@ Hence the common roots of any two successive polynomials in the Sturm sequence l
 
 Suppose that \(x=x_0\) is a root of \(p_m(x)\).
 By definition, \(p_m(x)\) is the greatest common divisor (up to \(\pm\) sign) of \(p(x)\) and \(p'(x)\), so divides into all of the \(p_0(x), p_1(x), \dots, p_m(x)\).
-So its zeroes are already zeroes of all of those, and so \(x=x_0\) is a root of all of \(p_0(x), p_1(x), \dots, p_m(x)\) and so a multiple root of \(p(x)\).
+So its zeroes are already zeroes of all of those, and so \(x=x_0\) is a root of all of \(p_0(x), p_1(x), \dots, p_m(x)\).
+Since \(p_0(x)=p(x)\) and \(p_1(x)=p'(x)\), \(x=x_0\) is a zero of both \(p(x)\) and \(p'(x)\), so a double root of \(p(x)\).
 
 Take a root \(x=x_0\) of one of the polynomials \(p_i(x)\) in the Sturm sequence.
 Suppose that \(p_i(x)\) is not \(p_0(x)\) or \(p_m(x)\), at the two ends of the sequence, but just one of the polynomials in middle of the sequence.
@@ -205,7 +196,6 @@ So if \(x=x_0\) is not a root of all of the polynomials in the chain, but a root
 \input{sturm-pic-5}\qquad
 \input{sturm-pic-6}
 \end{center}
-
 Suppose in addition that \(p_i(x)\) has an odd number of roots at \(x=x_0\).
 As \(x\) travels from a little less than \(x=x_0\) to a little more than \(x=x_0\), the sign of \(p_i(x)\) changes across this gap, but that of \(p_{i-1}(x)\) and \(p_{i+1}(x)\) stay the same.
 So they together contribute the same total number of sign changes for \(x>x_0\) as they did for \(x<x_0\).
@@ -213,7 +203,6 @@ So they together contribute the same total number of sign changes for \(x>x_0\) 
 \input{sturm-pic-3}\qquad
 \input{sturm-pic-4}
 \end{center}
-
 Suppose instead in addition that \(p_i(x)\) has an even number of roots at \(x=x_0\).
 As \(x\) travels from a little less than \(x=x_0\) to a little more, the sign of all of \(p_{i-1}(x), p_i(x), p_{i+1}(x)\) stay the same across this gap.
 So they together contribute the same total number of sign changes for \(x>x_0\) as they did for \(x<x_0\).
@@ -221,7 +210,6 @@ So they together contribute the same total number of sign changes for \(x>x_0\) 
 \input{sturm-pic-7}\qquad
 \input{sturm-pic-8}
 \end{center}
-
 Lets go back to the start of the Sturm sequence.
 If \(p(x)\) has an odd number of roots at some point \(x=x_0\), then \(p'(x)\) has an even number, and so \(p(x)\) changes sign as \(x\) goes from \(x < x_0\) to \(x > x_0\), while \(p'(x)\) doesn't change sign.
 \begin{center}
@@ -291,7 +279,6 @@ There are two roots in that interval:
 \sageplot[width=6cm]{plot(2*x^4+4*x^3+2*x^2-1,(x,-2,1))}
 \end{center}
 \end{answer}
-
 \NewDocumentCommand\parab{mmmm}%
 {%
 \begin{tikzpicture}[scale=.3,baseline=-0.5ex]
@@ -369,7 +356,6 @@ b=(x-1)*x*(x+1)^3
 expected_number_of_zeroes(b,0,1)
 \end{sageblock}
 yields \(\sage{expected_number_of_zeroes(b,0,1)}\).
-
 \begin{problem}{real.polynomials:bound}
 For a polynomial \(p(x)=a_n x^n + \dots + a_0\) with real coefficients, find a constant \(c>0\) so that every real root \(x\) of \(p(x)\) lies in the interval \(-c \le x \le c\).
 (By repeatedly cutting this interval in half, and applying Sturm's theorem, we can rapidly zoom in on the zeroes of \(p(x)\), using a computer.)
@@ -426,9 +412,7 @@ whichever is larger.
 
 \section{Factoring complex polynomials}
 \epigraph[author={H.~L.~Mencken}]{For every complex problem there is an answer that is clear, simple, and wrong.}\SubIndex{Mencken, H.~L.}
-
 The complex numbers are in a very strong sense free of the deficiencies of the rational and real numbers:
-
 \begin{theorem}[The fundamental theorem of algebra]\label{theorem:FTA}
 Every nonconstant polynomial function
 \[
@@ -447,7 +431,6 @@ Draw the roots of \(z^5-1\).
 \input{5th-roots}
 \end{center}
 \end{answer}
-
 \begin{theorem}
 Every complex coefficient polynomial function
 \[
@@ -464,7 +447,6 @@ Apply the fundamental theorem of algebra to find a root \(r_1\), and then divide
 \end{proof}
 
 \section{Factoring real polynomials}
-
 \begin{theorem}
 Every real coefficient polynomial function
 \[
@@ -495,7 +477,6 @@ Divide this factor off and apply induction on degree of \(p(x)\).
 \end{proof}
 
 \section{Partial fractions}
-
 \begin{lemma}\label{lemma:partial.fraction}
 Take any rational function 
 \[
@@ -512,18 +493,15 @@ where \(s(x), t(x)\) are the B\'ezout coefficients of \(u(x), v(x)\).
 \begin{proof}
 Write out \(s(x)u(x)+t(x)v(x)=1\) and then multiply both sides by \(p(x)\) and divide both sides by \(q(x)\).
 \end{proof}
-
 A \emph{partial fraction}\define{partial fraction} is a rational function \(\frac{b(x)}{c(x)^n}\) where \(b(x)\) has smaller degree than \(c(x)\) and \(c(x)\) is irreducible.
 A \emph{partial fraction decomposition}\define{partial fraction!decomposition}
 of a rational function \(\frac{p(x)}{q(x)}\) is an expression as a sum of a polynomial function together with finitely many partial fractions, so that the denominators of the partial fractions multiplied together divide \(q(x)\).
-
 \begin{theorem}
 Every rational function over any field has a partial fraction decomposition, unique up to reordering the partial fractions.
 \end{theorem}
 \begin{proof}
 Just repeat the process described in lemma~\vref{lemma:partial.fraction}.
 \end{proof}
-
 \begin{example}
 \[
 \frac{4}{x^2+2x-3} = \frac{-1}{x+3} + \frac{1}{x-1}.
@@ -544,7 +522,6 @@ x^2+3x+4+\frac{1}{(x-1)} + \frac{1}{(x - 1)^3} + \frac{x + 1}{x^2+1}+\frac{1}{(x
 Note that we cannot get rid of the square in the last denominator, because we have to allow powers.
 Also note that if we allow complex numbers here instead of real numbers, then we can factor \(x^2+1=(x-i)(x+i)\), so there is a different partial fraction decomposition over the complex numbers, with lower degrees in denominators.
 \end{example}
-
 In sage:
 \begin{sageblock}
 x=var('x')
@@ -553,9 +530,7 @@ f.partial_fraction(x)
 \end{sageblock}
 yields \(\sage{f.partial_fraction(x)}\).
 
-
 \section{Integrals}
-
 \begin{corollary}\label{corollary:rational.function.integral}
 Every rational function \(f(x)\) with real coefficients has indefinite integral \(\int f(x) \, dx\) a polynomial in functions of the form
 \[
@@ -616,7 +591,6 @@ and integrate both sides to find
 \]
 This enables us, by induction, to lower the order of the numerator, at the cost of raising the order of the denominator, to reduce the integration to a previous case.
 \end{proof}
-
 Sage can integrate:
 \begin{sageblock}
 integral((1/x)+(x-1)/x^3,x)

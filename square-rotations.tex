@@ -9,10 +9,10 @@
 \stepcounter{squareBoxCounter}%
 \begin{scope}[xshift=\thesquareBoxCounter in]%
 \fill[shapeZero,draw=curveZero] (0,0) rectangle (1,1);%
-\node[below left=-1.3mm and -1.3mm] at (0,0) {#1};%
-\node[above left=-1.3mm and -1.3mm] at (0,1) {#2};%
-\node[above right=-1.3mm and -1.3mm] at (1,1) {#3};%
-\node[below right=-1.3mm and -1.3mm] at (1,0) {#4};%
+\node[below left=-1.3mm and -1.3mm] at (0,0) {\(#1\)};%
+\node[above left=-1.3mm and -1.3mm] at (0,1) {\(#2\)};%
+\node[above right=-1.3mm and -1.3mm] at (1,1) {\(#3\)};%
+\node[below right=-1.3mm and -1.3mm] at (1,0) {\(#4\)};%
 \end{scope}}%
 \begin{tikzpicture}[scale=.5]%
 \sqrbox{1}{2}{3}{4}%

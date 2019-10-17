@@ -1,10 +1,9 @@
 \chapter{Permutations}
-
+\epigraph[author={Herman Melville},source={Moby Dick}]{I cherish the greatest respect towards everybody’s religious obligations, never mind how comical.}\SubIndex{Melville, Herman}\SubIndex{Moby Dick}
+\epigraph[author={Herman Melville},source={Moby Dick}]{Hell is an idea first born on an undigested apple-dumpling.}\SubIndex{Melville, Herman}\SubIndex{Moby Dick}
 \section{Transformation groups}
-
 Take a set \(X\), which could be a set of points in the plane, or a set of numbers, or a collection of various geometric figures, or the set of books in a library, or any other set of any sort of things.
 A \emph{transformation}\define{transformation} \(f\) of \(X\) associates to each element \(x\) of \(X\) some element \(f(x)\) also from \(X\).
-
 \begin{example}
 Take a square \(X\) in the plane, and rotate it around its centre by a right angle.
 Each point \(p\) of \(X\) is rotated into some point \(f(p)\).
@@ -18,17 +17,14 @@ The \emph{identity transformation}\define{transformation!identity}\define{identi
 Shuffle a deck of cards.
 If \(X\) is the set of cards, the shuffle is a transformation \(f\) of \(X\).
 \end{example}
-
 Two maps \(f \colon X \to Y\) and \(g \colon Y \to X\) between sets are \emph{inverses}\define{inverse} if \(f(g(x))=x\) and \(g(f(x))=x\) for any element \(x\) of \(X\).
 In other words, \(f \circ g\) and \(g \circ f\) are both the identity transformation.
 Recall that a map \(f\) is \emph{invertible}\define{invertible!transformation}\define{transformation!invertible}, also called a \emph{bijection}\define{bijection} or a \emph{permutation}\define{permutation} if it has an inverse.
-
 \begin{problem}{groups:bijection}
 A map \(f \colon X \to Y\) of a set \(X\) is \emph{injective}\define{injective} (also called \emph{one-to-one}\define{one-to-one}) if \(f(p)=f(q)\) only when \(p=q\).
 It is \emph{surjective}\define{surjective} (also called \emph{onto}\define{onto}) if every element \(y\) of \(Y\) has the form \(y=f(x)\) for some element \(x\) of \(X\).
 Prove that a map is a bijection just when it is injective and surjective.
 \end{problem}
-
 \begin{problem}{groups:bijection.finite}
 Prove that a transformation \(f\) of a \emph{finite} set \(X\) is injective just when it is surjective, and hence just when it is a bijection.
 \end{problem}
@@ -43,11 +39,9 @@ Each element maps somewhere, i.e. lies in \(f^{-1}(x)\) for some \(x \in f(X)\):
 \]
 with equality, i.e. \(f\) surjective, just when \(f^{-1}\set{x}\) has one element for every \(x \in f(X)\), i.e. just when \(f\) is injective.
 \end{answer}
-
 \begin{problem}{groups:transformations.associative}
 Prove the \emph{associative law}\define{associative law} for transformations: if \(f,g\) and \(h\) are transformations of a set \(X\), then \((f \circ g) \circ h=f \circ (g \circ h)\).
 \end{problem}
-
 \begin{problem}{groups:bijection.inverse}
 Prove that a bijection \(f\) has a unique inverse.
 \end{problem}
@@ -106,7 +100,7 @@ For an isosceles, but not equilateral, triangle, the symmetry group is the ident
 An equilateral triangle has as symmetries: the identity transformation, the rotation by \(120\si{\degree}\), the rotation by \(240\si{\degree}\), and the three reflections in the three axes of symmetry.
 \end{example}
 \begin{problem}{groups:brick}
-Consider a \emph{brick}, i.e. a rectangular box whose length, width and height are all unequal.
+Consider a brick, i.e. a rectangular box whose length, width and height are all unequal.
 What is its symmetry group?
 \end{problem}
 \begin{example}
@@ -467,7 +461,7 @@ Prove that, over any field, any symmetric rational function (i.e. permutation in
 \end{problem}
 \begin{answer}{permutions:rationals}
 If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
-Two see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
+To see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
 Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
 Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
 So any swap either changes sign or leaves both numerator and denominator alone.
@@ -489,7 +483,7 @@ Write out the elements of the alternating group on \(4\) letters.
 Prove that the alternating group on \(n\) letters contains \(n!/2\) elements.
 \end{problem}
 \begin{problem}{permutations:15}
-The 15-puzzle is a \(4 \times 4\) square containing with 15 slideable tiles (each a \(1 \times 1\) square), so one square is vacant (i.e. has no tile in it):
+The \(15\)-puzzle is a \(4 \times 4\) square containing with \(15\) slideable tiles (each a \(1 \times 1\) square), so one square is vacant (i.e. has no tile in it):
 \begin{center}
 \input{15.tex}
 \end{center}

@@ -294,8 +294,8 @@ If \(p=2\) the factors are \(x^2+1=(x+1)^2\) and \(x^2+3x=x^2+x=x(x+1)\), so a c
 If \(p=5\) the factors are \(x^2+1=(x-2)(x-3)\) and \(x^2+3x=x(x-2)\), so a common factor of \(x-2\).
 \end{answer}
 \begin{problem}{resultants:even.terms}
-Suppose that \(b(x)\) and \(c(x)\) are polynomials in one variable \(x\), with coefficients in the field of integer remainders modulo 2. 
-Suppose that \(b(x)\) is a sum of 1126 nonzero terms, while \(c(x)\) is a sum of 8080 nonzero terms. 
+Suppose that \(b(x)\) and \(c(x)\) are polynomials in one variable \(x\), with coefficients in the field of integer remainders modulo \(2\). 
+Suppose that \(b(x)\) is a sum of \(1126\) nonzero terms, while \(c(x)\) is a sum of \(8080\) nonzero terms. 
 Note: we don't say anything about the degree of either one. 
 Prove that they have a common factor of positive degree.
 \end{problem}
@@ -875,7 +875,7 @@ x(t)=t^2+1, y(t)=t+\frac{1}{t}.
 \end{problem}
 \begin{answer}{resultants:eliminate.3}\(x^2+(1-x)y^2\)\end{answer}
 \begin{problem}{resultants:eliminate.4}
-With coefficients over the field of remainders modulo 2, find a polynomial equation \(0=p(x,y)\), with \(p(x,y)\) not constant, satisfied by the parameterized plane curve \((x(t),y(t))=(t^3+t,1/t)\).
+With coefficients over the field of remainders modulo \(2\), find a polynomial equation \(0=p(x,y)\), with \(p(x,y)\) not constant, satisfied by the parameterized plane curve \((x(t),y(t))=(t^3+t,1/t)\).
 \end{problem}
 \begin{answer}{resultants:eliminate.4}
 The equations, in powers of \(t\), are
@@ -897,7 +897,7 @@ So \(p(x,y)=xy^3+y^2+1\).
 \end{answer}
 
 \section{Sage}
-Sage handles 2 variable polynomials:
+Sage handles \(2\) variable polynomials:
 \begin{sageblock}
 P.<x,y> = PolynomialRing(QQ)
 a = x + y

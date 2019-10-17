@@ -76,7 +76,7 @@ p(x) = x^n - a_1 x^{n-1} + \dots \pm  a_{n-1} x \pm a_n,
 a_1 &= r_1 + r_2 + \dots + r_n, \\
 a_2 &= \sum_{i < j} r_i r_j, \\
 & \vdotswithin{=} \\
-a_i &= \sum_{j_1 < j_2 < \dots < j_{n-i}} r_{j_1} r_{j_2} \dots r_{j_i}, \\
+a_i &= \sum_{j_1 < j_2 < \dots < j_i} r_{j_1} r_{j_2} \dots r_{j_i}, \\
 & \vdotswithin{=} \\
 a_{n-1} &= r_1 r_2 \dots r_{n-1} + r_1 r_2 \dots r_{n-2} r_n + \dots + r_2 r_3 \dots r_n, \\
 a_n &= r_1 r_2 \dots r_n.
@@ -170,17 +170,22 @@ Clearly the roots of \(P_t(x)\) are precisely the entries of the vector
 \(t\).
 Let \(e(t)\defeq\pr{e_1(t),e_2(t),\dots,e_n(t)}\), so that \(e\) maps vectors to vectors (with entries in our field).
 
+Recall that a field is \emph{algebraically closed} if every polynomial with coefficients in that field splits into a product of linear factors with coefficients in that field.
+Recall the fundamental theorem of algebra (theorem~\vref{theorem:FTA}): the field of complex numbers \(\C{}\) is algebraically closed.
 \begin{lemma}
-Over the field of complex numbers, the map \(e\) is onto, i.e. for each complex vector \(c\) there is a complex vector \(t\) so that \(e(t)=c\).
+For each vector \(c\) with entries in a field, there is a vector \(t\), with entries in a finite degree extension field, so that \(e(t)=c\).
 In particular, there is no relation between the elementary symmetric polynomials.
+Over an infinite field, there is no nontrivial polynomial equation satisfied by the elementary symmetric polynomials.
 \end{lemma}
 \begin{proof}
-Let \(t_1, t_2, \dots, t_n\) be the complex roots of the polynomial
+Let \(t_1, t_2, \dots, t_n\) be the roots of the polynomial
 \[
 P(x) = x^n - c_1 x^{n-1} + c_2 x^{n-2} + \dots + (-1)^n c_n.
 \]
-Such roots exist by the fundamental theorem of algebra (see theorem~\vref{theorem:FTA}). 
 By proposition~\vref{proposition:vieta}, \(P_t(x)\) has coefficients precisely the same as those of \(P(x)\), i.e. \(P_t(x)=P(x)\).
+Any relation \(R(e(t))=0\) between the elementary symmetric polynomials must be satisfied at all points \(c\), so is trivial for any function \(R\).
+For a polynomial \(R\), which we don't think of as a function, over an infinite field, the expression \(R(e(t))\) vanishing forces \(R(c)\) to vanish for each \(c\).
+Varying any one component of \(c\), \(R(c)\) is a polynomial function of that component with infinitely many roots, so is zero in that component for all other components fixed, so the zero polynomial by induction.
 \end{proof}
 \begin{lemma}
 Over any field, the entries of two vectors \(s\) and \(t\) are permutations of one another just when \(e(s)=e(t)\), i.e. just when the elementary symmetric polynomials take the same values at \(s\) and at \(t\).
@@ -190,7 +195,6 @@ The roots of \(P_s(x)\) and \(P_t(x)\) are the same numbers.
 \end{proof}
 We want to see that every symmetric polynomial \(f\of{t_1,t_2,\dots,t_n}\) has the form \(f(t)=h(e(t))\), for a unique polynomial \(h\), and conversely if \(h\) is any function at all, then \(f(t)=h(e(t))\) determines a symmetric polynomial.
 We want a recipe to write down each symmetric polynomial in terms of the elemenary symmetric polynomials, to find this mysterious \(h\).
-
 \begin{example}
 Take the function 
 \[
@@ -684,3 +688,15 @@ By Gauss's lemma (proposition~\vref{proposition:Gauss.lemma}) they also have a c
 
 For homogeneous polynomials, each term \(b_j(y)\) has degree exactly \(m-j\), so the resultant either vanishes everywhere or has degree exactly \(mn\).
 \end{proof}
+\begin{problem}{permutions:rationals}
+Prove that, over any field, any symmetric rational function (i.e. permutation invariant) has an expression \(b(e_1,\dots,e_n)/c(e_1,\dots,e_n)\) as a ratio of polynomials with no common nonconstant factor, expressed in the elementary symmetric polynomials, unique up to rescaling numerator and denominator by the same nonzero constant.
+\end{problem}
+\begin{answer}{permutions:rationals}
+If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
+To see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
+Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
+Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
+So any swap either changes sign or leaves both numerator and denominator alone.
+Multiple the numerator and denominator by the function \(\prod_{i<j}(t_i - t_j)\) to ensure that the don't change when we transpose, and so they don't change under any permutation.
+Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
+\end{answer}

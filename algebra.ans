@@ -190,7 +190,7 @@ p_n(1+x)+(1+x)^n
 \sagestr{bezpretty(-1000,2002)}
 \end{enumerate}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:primes:Eratosthenes}.}
-2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113
+\(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113\)
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:multiple.of.two}.}
 %\sagestr{bgcd(4864,3458)}
 \begin{align*}
@@ -283,6 +283,72 @@ r_1 u_1 v_1 + r_2 u_2 v_2 + r_3 u_3 v_3
 &=79+2 \cdot 399.
 \end{align*}
 So there are at least 79 soldiers in Han Xin's army.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:CRT.22.39}.}
+We have \(r_1,r_2=2,8\), \(m_1,m_2=22,39\), so \(u_1=39\), \(u_2=22\).
+Modulo \(22\):
+\[
+v_1=39^{-1}=(22+17)^{-1}=17^{-1}.
+\]
+B\'ezout:
+\begin{align*}
+\begin{pmatrix}
+1&0&17\\
+0&1&22
+\end{pmatrix}
+&\quad\text{add \(-\)row 1 to row 2},\\
+\begin{pmatrix}
+1&0&17\\
+-1&1&5
+\end{pmatrix}
+&\quad\text{add \(-3\cdot\)row 2 to row 1},\\
+\begin{pmatrix}
+4&-3&2\\
+-1&1&5
+\end{pmatrix}
+&\quad\text{add \(-2\cdot\)row 1 to row 2},\\
+\begin{pmatrix}
+4&-3&2\\
+-9&7&1
+\end{pmatrix}
+\end{align*}
+So \((-9)(17)+(7)(22)=1\), so mod \(22\), \(v_1=-9=22-9=13\).
+Modulo \(39\), \(v_2=22^{-1}\),
+\begin{align*}
+\begin{pmatrix}
+1&0&22\\
+0&1&39
+\end{pmatrix}
+&\quad\text{add \(-\)row 1 to row 2},\\
+\begin{pmatrix}
+1&0&22\\
+-1&1&17
+\end{pmatrix}
+&\quad\text{add \(-\)row 2 to row 1},\\
+\begin{pmatrix}
+2&-1&5\\
+-1&1&17
+\end{pmatrix}
+&\quad\text{add \(-3\cdot\)row 1 to row 2},\\
+\begin{pmatrix}
+2&-1&5\\
+-7&4&2
+\end{pmatrix}
+&\quad\text{add \(-2\cdot\)row 2 to row 1},\\
+\begin{pmatrix}
+16&-9&1\\
+-7&4&2
+\end{pmatrix}
+\end{align*}
+So \(v_2=16\).
+Modulo \(39\cdot 22=858\),
+\begin{align*}
+x&=r_1u_1v_1+r_2u_2v_2,\\
+ &=(2)(39)(13)+(8)(22)(16),\\
+ &=1014+2816,\\
+ &=3830,\\
+ &=(4)(858)+398,\\
+ &=398.
+\end{align*}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:use.totient}.}
 Factor \(120 =2^3 \, 3^1 \, 5^1\).
 So Euler's totient is \(\phi(120)=(2^3-2^2)(3^1-3^0)(5^1-5^0)=32\).
@@ -465,6 +531,10 @@ Pick any integer \(N\) larger than any of the roots of \(p(x)\).
 In particular, \(p(N)>0\).
 For any integer \(\ell\), if we set \(x=N+\ell p(N)\), then expanding out \(x^k=N^k+\dots\), the \(\dots\) terms all contain a factor of \(p(N)\), so \(p(x)=p(N)+\dots\), where again the \(\dots\) terms all contain a factor of \(p(N)\).
 So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell p(N)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.2}.}
+Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
+Note that \(p(y)^2=y^2+1\).
+So Eisenstein applies: \(a(x,y)\) is irreducible.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Eisenstein.cyclotomic}.}
 By problem~\vref{problem:induction:cyclotomic},
 \begin{align*}
@@ -474,6 +544,31 @@ c(x+1)
 &=p+\frac{p!}{2!(p-2)!}x+\frac{p!}{3!(p-3)!}x^2+\dots+\frac{p!}{(p-1)!1!}x^{p-2}+x^{p-1}.
 \end{align*}
 Clearly there is a factor of \(p\) in each term, and no \(p^2\) factor in the constant term.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:circle}.}
+Over the complex numbers,
+\[
+b(x,y)=(x+iy)(x-iy).
+\]
+Over all of the other fields, if reducible, it splits into linear factors
+\[
+b(x,y)=(\alpha x+\beta y)(\gamma x+\delta y)=\alpha\gamma x^2 + (\alpha\delta+\beta\gamma)xy+\beta\delta y.
+\]
+None of the coefficients can vanish, since \(b(x,y)\) doesn't have a factor of \(x\) or \(y\).
+For real coefficients, \(b(x,y)\) vanishes along a line \(\alpha x+\beta y=0\).
+This is not possible because squares \(x^2,y^2\) can't be negative, so if \(x^2+y^2=0\) then \(x=y=0\).
+Alternate proof: plug in \(y=1\) to get \(x^2+1=(\alpha x+\beta)(\gamma x+\delta\), vanishing at \(x=-\beta/\alpha\), a square root of \(-1\).
+It follows that \(b(x,y)\) is irreducible over the rationals, because rationals are real.
+The coefficients of \(b(x,y)\) are coprime, so \(b(x,y)\) is irreducible over the integers.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.xy}.}
+Eisenstein with \(p=3\), \(111=(3)(37)\), and \(37\) is not divisible by 3, so \(q(x)\) is irreducible.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.xy}.}
+This \(b(x,y)\) is irreducible, by Eisenstein's criterion, with with \(p(y)=y^2+y+1\).
+We need to know that \(p(y)\) is irreducible, and to see this: any reducible quadratic, having degree 2, splits into irreducibles of degrees 1 each, so linear.
+The only linear polynomials are the two linears \(y,y+1\).
+Their 3 possible products are \(y^2,y(y+1),(y+1)^2=y^2+1\), not equal to \(y^2+y+1\).
+So irreducible over remainders modulo \(2\).
+If it reduces over integers, quotient by \(2\) to get a reduction in remainders modulo \(2\), or to get zero.
+But it remains nonzero and irreducible.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:rationals}.}
 Take two such, cross multiply, and use unique factorisation of polynomials.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:quot.poly}.}
@@ -859,456 +954,14 @@ Cramer's rule says that the inverse \(A^{-1}\) has entries
 A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
 \]
 so rational functions of the entries of \(A\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:bijection.finite}.}
-Denote by \(\cardinality{S}\) the number of elements in a set \(S\).
-We use the basic fact that if \(S \subseteq T\) is a subset of a finite set \(T\), then \(\cardinality{S} \le \cardinality{T}\), with equality just when \(S=T\).
-The image of \(f\) is \(f(X) \subseteq X\), equality just when \(f\) is surjective, i.e. just when \(\cardinality{f(X)}=\cardinality{X}\).
-Each element maps somewhere, i.e. lies in \(f^{-1}(x)\) for some \(x \in f(X)\):
-\[
-\cardinality{X} = \sum_{x \in f(X)} \cardinality{f^{-1}\set{x}}
-\ge \sum_{x \in f(X)} 1 = \cardinality{f(X)},
-\]
-with equality, i.e. \(f\) surjective, just when \(f^{-1}\set{x}\) has one element for every \(x \in f(X)\), i.e. just when \(f\) is injective.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:tetrahedron}.}
-We can simply permutate the vertices in any way at all by symmetries, as we can rotate any one vertex to any other, and then fixing that vertex, the symmetries of the opposite faceare arbitrary symmetries of an equilateral triangle, so carry out any permutation of its vertices.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:disjointify}.}
-Apply each cycle in succession to \(1\): \((543)1=1\), \((234)1=1\), \((123)1=2\). So \((123)(234)(543)1=2\).
-Similarly apply them to \(2\): \((543)2=2\), \((234)2=3\), \((123)3=1\). So \((123)(234)(543)2=1\).
-Continue in this way to find (a) \((123)(234)(543)=21543\).
-Clearly this takes \(1 \to 2 \to 1\) and \(3 \to 5 \to 3\) and \(4 \to 4\), so (b) as a product of disjoint cycles
-\((123)(234)(543)=(12)(35)\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cycle.product}.}
-\((234)\):
-\begin{align*}
-1 &\to 4 \to 1, \\
-2 &\to 4 \to 2 \to 3, \\
-3 &\to 2 \to 3 \to 4, \\
-4 &\to 3 \to 1 \to 2.
-\end{align*}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cube}.}
-Indicate cycle lengths in a permutation by drawing boxes, a row of them to indicate a cycle of that length, arranged successively shorter: the \emph{Young diagram}\define{Young diagram} of a permutation.
-For example,
-\[
-\yng(4,3^2,2)
-\]
-indicates a permutation which has cycles of lengths \(4,3,3,2\).
-The group \(G\) of rotations of a cube moves any vertex to any other (8 in all), and rotates a vertex around taking any edge at that vertex to any other (3 in all), but once we fix a vertex and edge, we fix everything, so the group has exactly \(8\cdot 3=24\) elements.
-Every rotation is a rotation around an axis, through the centre of the cube.
-It is determined completely by how it acts on the centres of the faces, as they contain a basis of vectors.
-The identity \(1\) fixes every face, so has \(6\) cycles (all of length 1) as permutation of the faces.
-A rotation of angle \(\pi\) around an axis through the center of a face fixes two faces and permutes two others, so a pair of disjoint cycles of length 2; there are 3 such, as there are three choices of axis.
-A rotation of angle \(\pi\) around an axis through the center of an edge permutes three pairs of faces, so a triple of disjoint cycles of length 2; there are 6 such rotations.
-An element of order 3 is a rotation around an axis through two opposite corners: it is a cycle of order 3 on the three faces touching one corner, and also of order 3 on the opposite three faces touching the opposite corner.
-There are 4 choices of a pair of opposite corners, and then 2 directions of rotation, so 8 such rotations.
-An element of order 4 is a rotation by angle \(\pi/2\), so around some axis through two opposite faces, giving one cycle of length 4; there are 3 choices of axis, but we can point the axis in either direction, so 6 such rotations.
-We can sum the various permutations of the faces of cube arising from rotations as:
-\[
-\yng(1^6)+3\yng(2^2,1^2)+6\yng(2^3)+8\yng(3^2)+6\yng(4,1,1)
-\]
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:symmetric.conjugacy.1}.}
-In general, if
-\[
-g=\dots (a_1 a_2 \dots a_k) \dots
-\]
-where the \(\dots\) indicate other cycles, in a product of disjoint cycles, then \(hgh^{-1}\), when applied to \(h(a_i)\) gives
-\begin{align*}
-(hgh^{-1})(h(a_1))
-&=
-hgh^{-1}h(a_1),
-\\
-&=
-hg(h^{-1}h)(a_1),
-\\
-&=
-hg(a_1),
-\\
-&=
-h(a_{2}),
-\end{align*}
-and so on: \(hgh^{-1}\) takes \(h(a_i)\) to \(h(a_{i+1})\) and takes \(h(a_n)\) to \(h(a_1)\).
-If \(g\) is a product of cycles, the same thing works applied one at a time.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:symmetric.conjugacy}.}
-Start with just one cycle, say \((a_1a_2\dots a_k)\) and one cycle \((b_1b_2\dots b_k\).
-Then let \(ga_1\defeq b_1\), \dots, \(ga_k\defeq b_k\), and let \(gx\defeq x\) for \(x\) not among \(a_1,\dots,a_k\).
-Let's check that \((b_1\dots b_k)=g(a_1 \dots a_k)g^{-1}\).
-The left hand side acts on \(b_1\) by moving it to \(b_2\), and so on.
-The right hand side takes \(b_1\), applies \(g^{-1}\) to it, so gives \(a_1\), then moves \(a_1\) to \(a_2\), and then applies \(g\) to that, giving \(b_2\), and so on.
-Now for two disjoint cycles, say
-\[
-g_1 = (a_1 a_2 \dots a_k)(\alpha_1 \alpha_2 \dots \alpha_{\ell})
-\]
-and
-\[
-g_2 = (b_1 b_2 \dots b_k)(\beta_1 \beta_2 \dots \beta_{\ell}),
-\]
-let \(ga_i \defeq b_1\) and \(g\alpha_i\defeq \beta_i\) and \(gx=x\) for any other \(x\).
-Again check that \(g_2=gg_1g^{-1}\).
-Proceed by induction.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:transposition.product}.}
-\((12)(23)(34)(45)(56)(67)(56)(45)(34)(23)(12)\)
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:compose.poly}.}
-Let \(q\defeq p^{-1}\) and \(s\defeq r^{-1}\), so
-\begin{align*}
-(r(pb))(t_1,\dots,t_n)
-&=
-pb(t_{s(1)},\dots,t_{s(n)}),
-\\
-&=
-b(t_{q(s(1))},\dots,t_{q(s(n))}),
-\\
-&=
-b(t_{q \circ s(1))},\dots,t_{q \circ s(n))}),
-\\
-&=
-(q \circ s)^{-1}b(t_1,\dots,t_n),
-\\
-&=
-(s^{-1} \circ q^{-1})b(t_1,\dots,t_n),
-\\
-&=
-(rp)b(t_1,\dots,t_n).
-\end{align*}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:transposition}.}
-We can transpose \(i\) and \(i+1\) as \((i \ \ i+1)\).
-We can transpose \(i\) and \(i+2\), as a product \((i \ \ i+1)(i+1 \ \ i+2)(i \ \ i+1)\).
-Similarly, we can write any transposition as a product of an odd number of transpositions of neighboring integers: if \(i<j\),
-\[
-(i \ \ j)=(i \ \ i+1)(i+1 \ \ i+2)\dots(j-2 \ \ j-1)(j-1 \ \ j)\dots(i+1 \ \ i+2)(i \ \ i+1).
-\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutions:rationals}.}
 If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
-Two see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
+To see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
 Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
 Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
 So any swap either changes sign or leaves both numerator and denominator alone.
 Multiple the numerator and denominator by the function \(\prod_{i<j}(t_i - t_j)\) to ensure that the don't change when we transpose, and so they don't change under any permutation.
 Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:15}.}
-If we make a move by sliding a tile left or right, we don't change \(x\) or \(y\), so \(z\) is the same.
-If we make a move by sliding a tile up or down, we change \(y\) and also carry out a cycle in the order of the tiles.
-If that tile is in the first column, we are making a cycle of length 4:
-\begin{center}
-\input{15-4-cycle.tex}
-\end{center}
-and the same for any other column, since we have one less square above and one more below.
-So the value of \(x\) always changes.
-So \(z\) stays the same.
-The initial picture:
-\begin{center}
-\input{15-unsolvable.tex}
-\end{center}
-differs from the final one:
-\begin{center}
-\input{15-2.tex}
-\end{center}
-by a single transposition, with no row swap, so different value of \(z\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:all}.}
-{
-\arraycolsep=1.4pt\def\arraystretch{2.2}
-\setlength{\arraycolsep}{10pt}
-\[
-\begin{array}{ccccccccccc}
-\yng(1)\\
-\yng(2)&\yng(1,1)\\
-\yng(3)&\yng(2,1)&\yng(1,1,1)\\
-\yng(4)&\yng(3,1)&\yng(2,2)&\yng(2,1,1)&\yng(1,1,1,1)\\
-\yng(5)&\yng(4,1)&\yng(3,2)&\yng(3,1,1)&\yng(2,2,1)&\yng(2,1,1,1)&\yng(1,1,1,1,1)
-\end{array}
-\]
-}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:permute.poly}.}
-\(p^{-1}=(132)(45)\), so \(pf(t_1,t_2,t_3,t_4,t_5)=t_3^2 + t_1t_2+t_3t_5^5\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:permute.poly}.}
-The permutations of \(234\) are
-\[
-(),(23),(24),(34),(234),(243),
-\]
-and each appears along with its inverse here, so we can write the inverses as
-\[
-(),(23),(24),(34),(243),(234).
-\]
-So
-\begin{align*}
-234_+ f(t_1,t_2,t_3,t_4,t_5)
-&=
-f(t_1,t_2,t_3,t_4,t_5)+f(t_1,t_3,t_2,t_4,t_5)+f(t_1,t_4,t_3,t_2,t_5)\\
-&\qquad
-+f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5)
-\end{align*}
-A transposition like \((23)\) has sign \(-1\), and more generally a cycle of even length has sign \(-1\), while a cycle of odd length has sign \(1\):
-\begin{align*}
-234_- f(t_1,t_2,t_3,t_4,t_5)
-&=
-f(t_1,t_2,t_3,t_4,t_5)-f(t_1,t_3,t_2,t_4,t_5)-f(t_1,t_4,t_3,t_2,t_5)\\
-&\qquad
--f(t_1,t_2,t_4,t_3,t_5)+f(t_1,t_4,t_2,t_3,t_5)+f(t_1,t_3,t_4,t_2,t_5).
-\end{align*}
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:lambda.p}.}
-Let \(\mu\defeq\lambda^p\).
-So \(\mu_+\) acts on polynomials by products of permutations of the rows of \(\mu\).
-But if \(\lambda\) has a row
-\[
-a_1 a_2 \dots a_k,
-\]
-then \(\mu\) has corresponding row
-\[
-p(a_1) p(a_2) \dots p(a_k).
-\]
-In \(\lambda_+\), this row produces permutations which are products of cycles of the form
-\[
-(a_{i_1} \ a_{i_2} \ \dots \ a_{i_{\ell}}).
-\]
-As in problem~\vref{problem:groups:symmetric.conjugacy.1}, in \(\mu_+\), each such cycle yields a cycle of the form
-\[
-(p(a_{i_1}) \ p(a_{i_2}) \ \dots \ p(a_{i_{\ell}})).
-\]
-Similarly for columns instead of rows and \(\lambda_-\) instead of \(\lambda_+\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:young:central}.}
-\begin{align*}
-q \lambda q^{-1}
-&=
-q \frac{\sum_p p \lambda_+ \lambda_- p^{-1}}{N^2_{\lambda}} q^{-1},
-\\
-&=
-\frac{\sum_p (qp) \lambda_+ \lambda_- (qp)^{-1}}{N^2_{\lambda}},
-\end{align*}
-just rewrites the permutations \(p\) in a different order, as \(qp\) instead of \(p\), so \(q\lambda q^{-1}=\lambda\), i.e. \(q\lambda=\lambda q\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:polynomial.group}.}
-Suppose first that \(x_0=0\).
-For any \(y \in \R{}\), let \(p_y\) be the polynomial \(p(x,y)\).
-Let \(y'\) be the inverse of \(y\) in the group.
-Then \(p_y \circ p_{y'}(x) = x\), so that \(\degree{p_y} \degree{p_{y'}} = 1\).
-So \(p(x,y)\) has degree \(1\) in \(x\), and by the same argument has degree 1 in \(y\).
-So \(p(x,y)=a+bx+cy+dxy\) for some numbers \(a,b,c,d\).
-Since \(p(x,0)=x\) and \(p(0,y)=y\), \(a=0\) and \(b=c=1\).
-
-If \(d\ne 0\), then pick \(x_0\) to be the unique solution to \(1+dx=0\), i.e. \(x_0\defeq-1/d\).
-Let \(x_0'\) be the inverse of \(x_0\) in the group.
-The map taking \(y\) to \(x_0*y = p(x_0,y)\) has inverse map \(y \mapsto x_0'*y\), so is a bijection.
-But
-\begin{align*}
-x_0*y&=p(x_0,y),\\
-&=x_0+y+dx_0y,\\
-&=x_0+y(1+dx_0),\\
-&=x+0,
-\end{align*}
-is constant, not a bijection, a contradiction, so \(d=0\), i.e. \(p(x,y)=x+y\).
-
-If the identity element is \(x_0\) instead, then the operation \(x\otimes y=p(x+x_0,y+x_0)-x_0\) is a new group operation with identity element \(0\), so \(p(x+x_0,y+y_0)=x+y+x_0\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:order.four}.}
-\tikzstyle{multtable}=[draw=gray!30,very thick,rounded corners]
-\newcommand{\mtbl}[5]{
-\begin{array}{c|cccc}
-#1 \\ \hline
-#2 \\
-#3 \\
-#4 \\
-#5
-\end{array}
-}
-
-\newcommand{\tbl}[5]{$\mtbl{#1}{#2}{#3}{#4}{#5}$}
-
-We start only knowing that \(1a=a\), and so on:
-\[
-\begin{tikzpicture}
-\node[multtable] at (0,0) {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a &   &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }};
-\end{tikzpicture}
-\]
-In the first blank, entry, we have to put \(1,a,b\) or \(c\); we are choosing the value of \(a^2\).
-If you pick \(b\) and I pick \(c\), we could just swap the letters \(b\) and \(c\) in the alphabet to get your choice to agree with mine.
-If we pick \(a^2=a\) then cancel an \(a\) from both sides to get \(a=1\), not possible since our group has 4 distinct elements.
-So \(a^2=1, b\) or \(c\), and swap letters to get \(a^2=1\) or \(b\):
-\[
-\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
-\node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a &   &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}
-[edge from parent fork down]
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}}
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & b &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}};
-\end{tikzpicture}
-\]
-Since every element of the group occurs exactly once in each row and column, in the left hand table, the next element across is \(b\) or \(c\).
-But there is already a \(b\) in the column, so \(c\), forcing the next entry to be \(b\).
-In the right hand table, the next element is either \(1\) or \(c\).
-But we have a \(c\) in the final column, so
-\[
-\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
-\node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a &   &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}
-[edge from parent fork down]
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b &   &   &  }
-{c &  c &   &   &  }}}
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & b & c & 1}
-{b &  b &   &   &  }
-{c &  c &   &   &  }}
-};
-\end{tikzpicture}
-\]
-Going down the 2nd columns, we have (in the left hand table) already used \(a,1\), and in the 3rd row we already have a \(b\), so \(c\), and then \(b\).
-Similarly (in the right hand table), in the 2nd column, we have already used \(a,b\), and we have a \(c\) in the last row, so we must use \(1\) in the 2nd column, last row, and so a \(c\) above that.
-\[
-\begin{tikzpicture}[sibling distance=4cm,level distance=3cm]
-\node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a &   &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}
-[edge from parent fork down]
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b & c &   &  }
-{c &  c & b &   &  }}}
-child {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & b & c & 1}
-{b &  b & c &   &  }
-{c &  c & 1 &   &  }}
-};
-\end{tikzpicture}
-\]
-On the left hand table, we can next pick a \(1\) or \(a\), b
-On the right hand, either a \(1\) or an \(a\), but we have a \(1\) in the last row, so we can't put another \(1\) in that row, so must be \(1,a\):
-\[
-\begin{tikzpicture}[sibling distance=1cm,level distance=5cm]
-\node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a &   &   &  }
-{b &  b &   &   &  }
-{c &  c &   &   &  }}
-[edge from parent fork down]
-child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b & c &   &  }
-{c &  c & b &   &  }}
-[edge from parent fork down]
-child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b & c & 1 & a}
-{c &  c & b & a & 1}}
-}
-child[sibling distance=3cm,level distance=3cm] {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b & c & a & 1}
-{c &  c & b & 1 & a}}
-}}
-child[sibling distance=6cm,level distance=3cm] {node[multtable] {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & b & c & 1}
-{b &  b & c & 1 & a}
-{c &  c & 1 & a & b}}
-};
-\end{tikzpicture}
-\]
-If we swap the letters \(a,b\), we find the second and third tables become the same, so drop the second one:
-\[
-\begin{tikzpicture}
-\node[multtable] at (0,0) {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & 1 & c & b}
-{b &  b & c & a & 1}
-{c &  c & b & 1 & a}};
-\end{tikzpicture}
-\qquad
-\begin{tikzpicture}
-\node[multtable] at (0,0) {\tbl%
-{  &  1 & a & b & c}
-{1 &  1 & a & b & c}
-{a &  a & b & c & 1}
-{b &  b & c & 1 & a}
-{c &  c & 1 & a & b}};
-\end{tikzpicture}
-\]
-One then has to check that these are in fact groups, as they both turn out to be.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:groups:cyclic.subgroups}.}
-Take a subgroup \(H\) of a cyclic group \(G\).
-Suppose that \(G\) is generated by an element \(x\), i.e. consists of the integer powers of \(x\).
-The elements of \(H\) consist only of certain powers of \(x\); let \(S \subset \Z{}\) be the set of integers \(k\) so that \(x^k\) belongs to \(H\).
-Clearly \(x^kx^{\ell}=x^{k+\ell}\) and \((x^k)^{-1}=x^{-k}\), and \(1=x^0\), so \(S\) is a subgroup of \(\Z{}\) under addition.
-If \(S=\set{0}\), clearly \(H=\set{1} \subset G\) is cyclic.
-But if \(S\ne\set{0}\), then \(S\) contains a least positive element, say \(n\).
-Then \(S\) contains all integer multiples of \(n\).
-If \(S\) contains some integer \(k\), then \(S\) contains \(uk+vn\) for any integers \(u,v\), and in particular (if \(u,v\) are the B\'ezout coefficients of \(k,n\)), \(S\) contains the greatest common divisor of \(k,n\), which is at most as large as \(n\).
-But \(n\) is the smallest positive integer in \(S\), so that greatest common divisor of \(k,n\) is \(n\), i.e. \(n\) divides \(k\).
-So \(n\) divides all elements of \(S\): \(S\) is the set of all integer multiples of \(n\), and so \(H\) is generated by \(x^n\), so cyclic.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutations:cube}.}
-We have numbers \(n\) of group elements \(g\) with various numbers \(c_g\) of cycles:
-\[
-\begin{array}{cc}
-\toprule
-n & c_g\\
-\midrule
-1 & 6\\
-3 & 4\\
-6 & 3\\
-8 & 2\\
-6 & 3\\
-\bottomrule
-\end{array}
-\]
-Hence
-\[
-\frac{1}{|G|} \sum_{g \in G} n^{c_g}
-=
-\frac{1}{24} (n^6 + 3n^4 + 6n^3+8n^2+6n^3)=\frac{1}{24}n^2(n+1)(n^3-n^2+4n+8),
-\]
-so for various values of \(n\):
-\[
-\begin{array}{cc}
-\toprule
-n & |C| \\
-\midrule
-1 & 1\\
-2 & 10\\
-3 & 57\\
-4 & 240\\
-5 & 800\\
-\bottomrule
-\end{array}
-\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:kernel.subring}.}
 If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
 So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
@@ -1382,7 +1035,7 @@ rewrites the integral in terms of \(t\).
 \end{align*}
 Take a partial fraction decomposition as in the proof of corollary~\vref{corollary:rational.function.integral}.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:double}.}
-Let \(k_1 \subset k_2 \subset k_3 \dots\) be finite fields or orders \(2,4,8\) and so on.
+Let \(k_1 \subset k_2 \subset k_3 \dots\) be finite fields of orders \(2,4,8\) and so on.
 Our result is clear if \(k=k_1=\Zmod{2}\).
 By induction, suppose that our result is true for \(k_1, k_2, \dots, k_{n-1}\).
 All of the elements \(\alpha\) of \(k_n\) that are not elements of \(k_{n-1}\) satisfy \(\alpha^2+\alpha+c=0\) for some \(c\) in \(k_{n-1}\), as we saw above.

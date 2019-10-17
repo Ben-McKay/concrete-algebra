@@ -1,6 +1,22 @@
 % Encoding: UTF-8
 
 
+
+@book {Ahlfors:1978,
+    AUTHOR = {Ahlfors, Lars V.},
+     TITLE = {Complex analysis},
+   EDITION = {Third},
+      NOTE = {An introduction to the theory of analytic functions of one
+              complex variable,
+              International Series in Pure and Applied Mathematics},
+ PUBLISHER = {McGraw-Hill Book Co., New York},
+      YEAR = {1978},
+     PAGES = {xi+331},
+      ISBN = {0-07-000657-1},
+   MRCLASS = {30-01},
+  MRNUMBER = {510197},
+}
+
 @Book{Clemens:2003,
   Title                    = {A scrapbook of complex curve theory},
   Author                   = {Clemens, C. Herbert},
@@ -50,6 +66,17 @@
   Timestamp                = {2015.08.17}
 }
 
+@book {Hoffman/Kunze:1971,
+    AUTHOR = {Hoffman, Kenneth and Kunze, Ray},
+     TITLE = {Linear algebra},
+    SERIES = {Second edition},
+ PUBLISHER = {Prentice-Hall, Inc., Englewood Cliffs, N.J.},
+      YEAR = {1971},
+     PAGES = {viii+407},
+   MRCLASS = {15.00},
+  MRNUMBER = {0276251},
+}
+
 @Book{Hungerford:1980,
   Title                    = {Algebra},
   Author                   = {Hungerford, Thomas W.},
@@ -65,6 +92,28 @@
   Owner                    = {user},
   Pages                    = {xxiii+502},
   Timestamp                = {2015.08.17}
+}
+
+@book {Ince:1944,
+    AUTHOR = {Ince, E. L.},
+     TITLE = {Ordinary {D}ifferential {E}quations},
+ PUBLISHER = {Dover Publications, New York},
+      YEAR = {1944},
+     PAGES = {viii+558},
+   MRCLASS = {36.0X},
+  MRNUMBER = {0010757},
+}
+
+@book {Needham:1997,
+    AUTHOR = {Needham, Tristan},
+     TITLE = {Visual complex analysis},
+ PUBLISHER = {The Clarendon Press, Oxford University Press, New York},
+      YEAR = {1997},
+     PAGES = {xxiv+592},
+      ISBN = {0-19-853447-7},
+   MRCLASS = {30-01},
+  MRNUMBER = {1446490},
+MRREVIEWER = {D. H. Armitage},
 }
 
 @Book{Shafarevich:2005,

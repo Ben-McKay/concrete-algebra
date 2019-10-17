@@ -1,9 +1,6 @@
 \chapter{Algebraic curves in the plane}
-
 \epigraph[author={Felix Klein}]{Everyone knows what a curve is, until he has studied enough mathematics to become confused through the countless number of possible exceptions.}\SubIndex{Klein, Felix}
-
-
-\begin{example}\label{example:rational.cubic}
+\section{Example}\label{example:rational.cubic}
 Let's find the solutions of the algebraic equation \(y^2=x^2+x^3\).
 The solutions form a curve in the plane, intuitively because the equation is one constraint on two variables.
 There is one obvious solution: \((x,y)=(0,0)\).
@@ -28,10 +25,9 @@ So we get all of the solutions.
 \inputinexample{cubic-curve-2}
 }%\end{center}
 Each line strikes the curve at two points (one of which is the origin); except for the vertical line.
-\end{example}
-
+\section{Definition}
 An \emph{algebraic curve}\define{curve!algebraic}\define{algebraic!curve} is the set of zeroes of a nonconstant polynomial in two variables; the \emph{degree}\define{degree!of algebraic curve}\define{curve!degree} of the curve is the degree of the polynomial.
-A curve of degree 1, 2, 3, 4, 5, 6 is called a \emph{line}\define{line}, \emph{conic}\define{conic}, \emph{cubic curve}\define{cubic!curve}\define{curve!cubic}, \emph{quartic curve}\define{curve!quartic}\define{quartic!curve}, \emph{quintic curve}\define{curve!quintic}\define{quintic!curve}. 
+A curve of degree \(1, 2, 3, 4, 5, 6\) is called a \emph{line}\define{line}, \emph{conic}\define{conic}, \emph{cubic}\define{cubic!curve}\define{curve!cubic}, \emph{quartic}\define{curve!quartic}\define{quartic!curve}, \emph{quintic}\define{curve!quintic}\define{quintic!curve} or \emph{sextic}\define{sextic curve}\define{curve!sextic}.
 
 \begin{problem}{algebraic.curves:ptolemy}
 Use the same trick for the circle \(x^2+y^2=1\) as follows.
@@ -47,10 +43,8 @@ Solve for \(x\): \(x=t(1-y)\), and plug into the equation of the circle to find 
 Explain now why every rational point of the circle corresponds to a rational value of \(t\) and vice versa.
 Explain why the same conclusion holds over any field \(k\).
 \end{problem}
-
 \begin{example}
 Let's try a different cubic curve.
-The degree of a term in a polynomial is the sum of the degrees in each of the variables; the degree of the polynomial is the highest degree of any nonzero term.
 Take the cubic curve
 \[
 y^2=(x+1)x(x-1).
@@ -106,7 +100,7 @@ If the equation of a curve has nonconstant factors, we say that the curve is \em
 \define{curve!irreducible}%
 \define{curve!reducible} 
 and the equations formed from the factors, or the curves they cut out, are \emph{components}\define{component} of the curve.
-We can assume that the polynomial \(f(x,y)\) in the equation \(f(x,y)=0\) of a curve is not a square, cube, etc. of any polynomial.
+We can assume that the polynomial \(f(x,y)\) in the equation \(f(x,y)=0\) of a curve is not a square, cube, etc. of any polynomial, nor is any constant multiple of \(f(x,y)\).
 
 \begin{lemma}
 An irreducible algebraic curve determines its equation uniquely up to scaling by a nonzero constant.
@@ -122,14 +116,14 @@ By proposition~\vref{proposition:resultant.degree}, \(b(x,y)\) and \(c(x,y)\) ha
 
 A \emph{regular function}\define{regular!function}\define{function!regular} on an algebraic curve is the restriction of a polynomial function.
 For example, on the algebraic curve \(y^2=x^2+x^3\), the functions \(0\) and \(y^2-x^2-x^3\) take on the same values at every point, and therefore are equal as regular functions.
-If \(X\) is an algebraic curve over field \(k\), let \(k[X]\) be the set of regular functions on \(X\) with coefficients in \(k\).
+If \(C\) is an algebraic curve over field \(k\), let \(k[C]\) be the set of regular functions on \(C\) with coefficients in \(k\).
 
 A \emph{regular morphism}\define{morphism!regular} of algebraic curves \(f \colon C \to D\) is a map which can be expressed somehow as \(f(x,y)=(s(x,y),t(x,y))\) for two polynomials \(s(x,y), t(x,y)\), so that \(f\), applied to any point of \(C\), yields a point of \(D\).
 For example, the map \(f(x,y)=(s,t)=\pr{1-x^2,x}\) maps \((y=0)\) to \(t^2=s^2+s^3\), as we saw previously.
 A regular morphism with a regular inverse is \emph{biregular}\define{biregular}, and the associated curves are \emph{biregular}.
 Clearly biregular algebraic curves have isomorphic algebras of regular functions.
 
-\begin{example}
+\section{Plane conics}
 We will see that, over any field of characteristic not \(2\), every conic is biregular to precisely one of
 \[
 \begin{array}{@{}rll@{}}
@@ -207,10 +201,9 @@ This \(\alpha\) is uniquely determined up to scaling by an element of \(k^{\time
 For example, over the rational numbers, the equations \(x^2=-t\) for \(t\) any prime or \(x^2=t\) for \(t\) any prime give conics with no rational points.
 Different primes give different conics, and the reader can work out why they are not biregular over the rational numbers.
 One the other hand, over the real numbers, we only have a single conic \(x^2=-1\) with no real points.
-\end{example}
 
-A \emph{rational function}\define{rational!function}\define{function!rational} on an algebraic curve \(X\) over a field \(k\) is a rational function of \(x,y\), whose denominator is not divisible by any nonconstant factor of the equation of the curve.
-
+\section{Rational functions}
+A \emph{rational function}\define{rational!function}\define{function!rational} on an irreducible algebraic curve \(X\) over a field \(k\) is a rational function of \(x,y\), whose denominator is not divisible by any nonconstant factor of the equation of the curve.
 \begin{example}
 On the curve \(X=(y=x^2)\), the rational function \(f=x/(x-y)\) might seem to be undefined near the origin, but we can also write it as
 \begin{align*}
@@ -225,14 +218,30 @@ f
 \frac{1}{1-x}.
 \end{align*}
 \end{example}
+\begin{example}
+The circle \(X=(x^2+y^2=0)\) is irreducible over \(k=\R{}\), so has well defined field of rational functions \(\R{}(X)\).
+Note that \(X\) is reducible over \(\C{}\): \(x^2+y^2=(x+iy)(x-iy)\), so we can't  make a field \(\C{}(X)\), of complex coefficient rational functions, since \(x+iy,x-iy\) are two rational functions which multiply to zero as complex coefficient rational functions on \(X\).
+Elements of \(\R{}(X)\) are ratios
+\[
+\frac{b(x)+c(x)y}{d(x)+e(x)y},
+\]
+for any \(b(x),c(x),d(x),e(x)\) real coefficient polynomials, but with \(y^2=-x^2\), i.e. we can formally write \(y\) as \(ix\), allowing complex coefficients into any terms of positive degree in \(x\).
+\end{example}
+\begin{problem}{algebraic.curves:rat.fns}
+Find the field of rational functions on every conic, over any field not of characteristic \(2\).
+\end{problem}
 A rational function \(f\) is \emph{regular}\define{regular point} near a point of \(X\) if \(f\) can be written as \(f=b/c\) for some  polynomials \(b, c\) with \(c\) nonzero at that point.
 
 A \emph{rational morphism}\define{morphism!rational}\define{rational!morphism} of algebraic curves \(f \colon C \to D\) is a map, which can be expressed somehow as \(f(x,y)=(s(x,y),t(x,y))\) for two rational functions \(s(x,y), t(x,y)\), each of which is regular at some point of \(C\), so that \(f\), applied to any point of \(C\) at which both \(s(x,y)\) and \(t(x,y)\) are regular, yields a point of \(D\).
 A rational morphism with a rational inverse is \emph{birational}\define{birational}, and the associated curves are \emph{birational}.
 A rational morphism is \emph{regular}\define{regular point} near a point of \(C\) if \(s(x,y)\) and \(t(x,y)\) are regular near that point, i.e. can be expressed near that point as ratios of polynomials not vanishing near that point.
 
+\begin{problem}{algebraic.curves:irred.field}
+Prove that any algebraic curve is irreducible just when its algebra of rational functions forms a field.
+\end{problem}
+
 \begin{lemma}
-Algebraic curves in the plane (over any field) are birational just when their fields of rational functions are isomorphic.
+Irreducible algebraic curves in the plane, over any field \(k\), are birational just when their fields of rational functions are isomorphic extensions of \(k\).
 \end{lemma}
 \begin{proof}
 Suppose that the curves are birational.
@@ -249,7 +258,7 @@ A curve birational to a line in the plane (with equation \(y=0\), for example) i
 An algebraic curve \(C\) is rational just when \(k(C) \cong k(x)\).
 
 \begin{problem}{algebraic.curves:conics.rational}
-Imitate our picture of drawing lines through a point of \(y^2=x^3+x^2\), but replacing that cubic curve by an irreducible conic (curve of degree 2).
+Imitate our picture of drawing lines through a point of \(y^2=x^3+x^2\), but replacing that cubic curve by an irreducible conic.
 Prove that conics are rational.
 \end{problem}
 
@@ -266,7 +275,6 @@ There are infinitely many lines through the origin. (Why?)
 
 
 \section{Integrals}
-
 Suppose that \(g(x,y)=0\) is the equation of an irreducible plane algebraic curve over the field of real numbers, for example \(y^2=x^2+x^3\).
 Suppose that we can locally write the curve as the graph of a function \(y=y(x)\), for example \(y=\sqrt{x^2+x^3}\).
 Pick a rational function \(f(x,y)\) on the curve, and consider the integral \(\int f \, dx\), by which we mean

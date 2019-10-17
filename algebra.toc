@@ -1,0 +1,153 @@
+\contentsline {chapter}{\chapternumberline {1}The integers}{1}{chapter.1}%
+\contentsline {section}{Notation}{1}{section*.2}%
+\contentsline {section}{The laws of integer arithmetic}{1}{section*.3}%
+\contentsline {section}{Division of integers}{4}{section*.4}%
+\contentsline {section}{The greatest common divisor}{6}{section*.5}%
+\contentsline {section}{The least common multiple}{7}{section*.6}%
+\contentsline {section}{Sage}{8}{section*.7}%
+\contentsline {chapter}{\chapternumberline {2}Mathematical induction}{9}{chapter.2}%
+\contentsline {section}{Sage}{14}{section*.8}%
+\contentsline {section}{Lists in sage}{16}{section*.9}%
+\contentsline {chapter}{\chapternumberline {3}Greatest common divisors}{19}{chapter.3}%
+\contentsline {section}{The extended Euclidean algorithm}{19}{section*.10}%
+\contentsline {section}{Sage}{22}{section*.11}%
+\contentsline {chapter}{\chapternumberline {4}Prime numbers}{23}{chapter.4}%
+\contentsline {section}{Prime numbers}{23}{section*.12}%
+\contentsline {section}{Greatest common divisors}{24}{section*.13}%
+\contentsline {section}{Sage}{25}{section*.14}%
+\contentsline {chapter}{\chapternumberline {5}Modular arithmetic}{27}{chapter.5}%
+\contentsline {section}{Definition}{27}{section*.15}%
+\contentsline {section}{Arithmetic of remainders}{28}{section*.16}%
+\contentsline {section}{Reciprocals}{31}{section*.17}%
+\contentsline {section}{The Chinese remainder theorem}{33}{section*.18}%
+\contentsline {section}{Bird's eye view of the Chinese remainder theorem}{36}{section*.19}%
+\contentsline {section}{Euler's totient function}{37}{section*.20}%
+\contentsline {section}{Sage}{39}{section*.21}%
+\contentsline {chapter}{\chapternumberline {6}Secret messages}{41}{chapter.6}%
+\contentsline {section}{RSA: the Cocks, Rivest, Shamir and Adleman algorithm}{42}{section*.22}%
+\contentsline {section}{Sage}{43}{section*.23}%
+\contentsline {subsection}{Alice}{43}{section*.24}%
+\contentsline {subsection}{Bob}{44}{section*.25}%
+\contentsline {chapter}{\chapternumberline {7}Rational, real and complex numbers}{47}{chapter.7}%
+\contentsline {section}{Rational numbers}{47}{section*.26}%
+\contentsline {section}{Real numbers}{49}{section*.27}%
+\contentsline {section}{Complex numbers}{50}{section*.28}%
+\contentsline {section}{Sage}{51}{section*.29}%
+\contentsline {chapter}{\chapternumberline {8}Polynomials}{53}{chapter.8}%
+\contentsline {section}{The extended Euclidean algorithm}{54}{section*.30}%
+\contentsline {section}{Factoring}{56}{section*.31}%
+\contentsline {section}{Rational roots}{58}{section*.32}%
+\contentsline {section}{Sage}{59}{section*.33}%
+\contentsline {section}{Interpolation}{60}{section*.34}%
+\contentsline {chapter}{\chapternumberline {9}Real polynomials, complex polynomials}{63}{chapter.9}%
+\contentsline {section}{Polynomials over the real numbers}{63}{section*.35}%
+\contentsline {section}{Counting positive roots}{64}{section*.36}%
+\contentsline {section}{Sage}{65}{section*.37}%
+\contentsline {section}{Counting roots of a real polynomial in an interval}{66}{section*.38}%
+\contentsline {section}{Factoring complex polynomials}{69}{section*.39}%
+\contentsline {section}{Factoring real polynomials}{70}{section*.40}%
+\contentsline {section}{Partial fractions}{71}{section*.41}%
+\contentsline {section}{Integrals}{72}{section*.42}%
+\contentsline {chapter}{\chapternumberline {10}Factoring polynomials}{75}{chapter.10}%
+\contentsline {section}{Factoring with integer coefficients}{75}{section*.43}%
+\contentsline {section}{Eisenstein's criterion: checking that there are no more factors}{77}{section*.44}%
+\contentsline {section}{Eisenstein's criterion in sage}{78}{section*.45}%
+\contentsline {section}{Factorization over rational functions and over polynomials}{79}{section*.46}%
+\contentsline {section}{Homogeneous polynomials}{81}{section*.47}%
+\contentsline {section}{Factoring in many variables}{81}{section*.48}%
+\contentsline {chapter}{\chapternumberline {11}Fields}{83}{chapter.11}%
+\contentsline {section}{Names for our favourite sets}{83}{section*.49}%
+\contentsline {section}{Rings}{84}{section*.50}%
+\contentsline {section}{Special types of rings}{86}{section*.51}%
+\contentsline {section}{Fields}{87}{section*.52}%
+\contentsline {section}{Linear algebra}{89}{section*.53}%
+\contentsline {chapter}{\chapternumberline {12}Field extensions}{91}{chapter.12}%
+\contentsline {section}{Quotienting a polynomial}{91}{section*.54}%
+\contentsline {section}{Field extensions}{92}{section*.55}%
+\contentsline {section}{Adding a root}{93}{section*.56}%
+\contentsline {section}{Splitting fields}{95}{section*.57}%
+\contentsline {section}{Algebraic closure}{96}{section*.58}%
+\contentsline {chapter}{\chapternumberline {13}Resultants and discriminants}{99}{chapter.13}%
+\contentsline {section}{The resultant}{99}{section*.59}%
+\contentsline {section}{Sage}{101}{section*.60}%
+\contentsline {section}{Common factors and resultants}{101}{section*.61}%
+\contentsline {subsection}{The discriminant}{106}{section*.62}%
+\contentsline {section}{Sage}{108}{section*.63}%
+\contentsline {section}{Parameterisation}{108}{section*.64}%
+\contentsline {section}{Sage}{110}{section*.65}%
+\contentsline {chapter}{\chapternumberline {14}Permuting roots}{113}{chapter.14}%
+\contentsline {section}{Vieta's formulas}{113}{section*.66}%
+\contentsline {section}{Symmetric polynomials}{116}{section*.67}%
+\contentsline {section}{Sage}{119}{section*.68}%
+\contentsline {section}{Sums of powers}{120}{section*.69}%
+\contentsline {section}{The invariants of a square matrix}{121}{section*.70}%
+\contentsline {section}{Resultants and permutations}{122}{section*.71}%
+\contentsline {chapter}{\chapternumberline {15}Rings}{125}{chapter.15}%
+\contentsline {section}{Morphisms}{125}{section*.72}%
+\contentsline {section}{Sage}{125}{section*.73}%
+\contentsline {section}{Kernel and image of a morphism}{125}{section*.74}%
+\contentsline {section}{Kernels}{127}{section*.75}%
+\contentsline {section}{Sage}{128}{section*.76}%
+\contentsline {section}{Fractions}{129}{section*.77}%
+\contentsline {section}{Sage}{130}{section*.78}%
+\contentsline {section}{Algebras}{130}{section*.79}%
+\contentsline {chapter}{\chapternumberline {16}Galois theory}{133}{chapter.16}%
+\contentsline {section}{Automorphisms}{133}{section*.80}%
+\contentsline {section}{Galois groups}{134}{section*.81}%
+\contentsline {section}{Adding roots}{136}{section*.82}%
+\contentsline {section}{Radical extensions}{138}{section*.83}%
+\contentsline {chapter}{\chapternumberline {17}Algebraic curves in the plane}{139}{chapter.17}%
+\contentsline {section}{Example}{139}{section*.84}%
+\contentsline {section}{Definition}{140}{section*.85}%
+\contentsline {section}{Plane conics}{142}{section*.86}%
+\contentsline {section}{Rational functions}{143}{section*.87}%
+\contentsline {section}{Integrals}{145}{section*.88}%
+\contentsline {section}{Ideals}{146}{section*.89}%
+\contentsline {section}{Sage}{146}{section*.90}%
+\contentsline {chapter}{\chapternumberline {18}Where plane curves intersect}{149}{chapter.18}%
+\contentsline {section}{Vanishing polynomials}{149}{section*.91}%
+\contentsline {section}{Linear factors}{150}{section*.92}%
+\contentsline {section}{Resultants in many variables}{151}{section*.93}%
+\contentsline {chapter}{\chapternumberline {19}Quotient rings}{157}{chapter.19}%
+\contentsline {section}{Sage}{160}{section*.94}%
+\contentsline {section}{Automorphisms of splitting fields}{161}{section*.95}%
+\contentsline {section}{Transcendental numbers}{161}{section*.96}%
+\contentsline {section}{Finite fields}{162}{section*.97}%
+\contentsline {section}{Sage}{164}{section*.98}%
+\contentsline {chapter}{\chapternumberline {20}Field extensions and algebraic curves}{165}{chapter.20}%
+\contentsline {section}{Rational curves}{166}{section*.99}%
+\contentsline {chapter}{\chapternumberline {21}The projective plane}{169}{chapter.21}%
+\contentsline {section}{Homogeneous coordinates}{172}{section*.100}%
+\contentsline {section}{Example: the Fano plane}{174}{section*.101}%
+\contentsline {section}{Projective space}{175}{section*.102}%
+\contentsline {chapter}{\chapternumberline {22}Algebraic curves in the projective plane}{177}{chapter.22}%
+\contentsline {section}{Homogenisation of plane curves}{177}{section*.103}%
+\contentsline {section}{Conics}{178}{section*.104}%
+\contentsline {section}{Counting intersections of curves}{180}{section*.105}%
+\contentsline {section}{Breaking curves into components}{183}{section*.106}%
+\contentsline {section}{Counting intersections}{184}{section*.107}%
+\contentsline {section}{Sage}{188}{section*.108}%
+\contentsline {chapter}{\chapternumberline {23}Families of plane curves}{191}{chapter.23}%
+\contentsline {section}{Pencils of curves}{191}{section*.109}%
+\contentsline {section}{Polygons}{193}{section*.110}%
+\contentsline {section}{Pascal's mystic hexagon}{193}{section*.111}%
+\contentsline {section}{The space of curves of given degree}{195}{section*.112}%
+\contentsline {chapter}{\chapternumberline {24}Elliptic curves}{201}{chapter.24}%
+\contentsline {section}{Cubic curves}{201}{section*.113}%
+\contentsline {section}{Elliptic curves}{202}{section*.114}%
+\contentsline {chapter}{\chapternumberline {25}The tangent line}{205}{chapter.25}%
+\contentsline {section}{Lines crossing a curve}{205}{section*.115}%
+\contentsline {section}{Singular points}{207}{section*.116}%
+\contentsline {chapter}{\chapternumberline {26}Inflection points}{215}{chapter.26}%
+\contentsline {chapter}{\chapternumberline {27}Conics and quadratic forms}{223}{chapter.27}%
+\contentsline {section}{Quadratic forms}{223}{section*.117}%
+\contentsline {section}{Plane conics}{226}{section*.118}%
+\contentsline {chapter}{\chapternumberline {28}Projective duality}{229}{chapter.28}%
+\contentsline {section}{Dual curves}{229}{section*.119}%
+\contentsline {chapter}{\chapternumberline {29}Polynomial equations have solutions}{233}{chapter.29}%
+\contentsline {section}{Affine space}{233}{section*.120}%
+\contentsline {section}{Closed sets}{235}{section*.121}%
+\contentsline {chapter}{Hints}{239}{chapter*.122}%
+\contentsline {chapter}{Bibliography}{261}{chapter*.123}%
+\contentsline {chapter}{List of notation}{263}{section*.125}%
+\contentsline {chapter}{\indexname }{265}{section*.126}%

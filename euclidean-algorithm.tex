@@ -196,10 +196,10 @@ def bezpretty(b,c):
 \begin{problem}{euclidean.algorithm:try.Bezout}
 Find B\'ezout coefficients and greatest common divisors of
 \begin{enumerate}
-\item 2468, 180
-\item 79, -22
-\item 45,16
-\item -1000,2002
+\item \(2468, 180\)
+\item \(79, -22\)
+\item \(45,16\)
+\item \(-1000,2002\)
 \end{enumerate}
 \end{problem}
 \begin{answer}{euclidean.algorithm:try.Bezout}
@@ -215,149 +215,8 @@ Find B\'ezout coefficients and greatest common divisors of
 \end{enumerate}
 \end{answer}
 
-
-\section{The greatest common divisor of several numbers}
-Take several integers, say \(m_1, m_2, \dots, m_n\), not all zero.
-To find their greatest common divisor, we only have to find the greatest common divisor of the greatest common divisors.
-For example,
-\[
-\gcd{m_1, m_2, m_3}
-=\gcd{\gcd{m_1, m_2}, m_3}
-\]
-and
-\[
-\gcd{m_1, m_2, m_3,m_4}
-=\gcd{\gcd{m_1, m_2}, \gcd{m_3,m_4}}
-\]
-and so on.
-
-\begin{problem}{euclidean.algorithm:multi.gcd}
-Use this approach to find \(\gcd{54,90,75}\).
-\end{problem}
-
-
-\section{B\'ezout coefficients of several numbers}
-Take integers \(m_1, m_2, \dots, m_n\), not all zero.
-We will see that their greatest common divisor is the smallest positive integer \(d\) so that
-\[
-d = s_1 m_1 + s_2 m_2 + \dots + s_n m_n
-\]
-for some integers \(s_1, s_2, \dots, s_n\), the \emph{B\'ezout coefficients} of \(m_1, m_2, \dots, m_n\).
-To find the B\'ezout coefficients, and the greatest common divisor:
-\begin{enumerate}
-\item
-Write down the matrix:
-\[
-\begin{pmatrix}
-1 & 0 & 0 & \dots & 0 & m_1 \\
-0 & 1 & 0 & \dots & 0 & m_2 \\
-0 & 0 & 1 & \dots & 0 & m_3 \\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & 0 & \dots & 1 & m_n
-\end{pmatrix}
-\]
-\item
-Subtract whatever integer multiples of rows from other rows, repeatedly, until the final column has exactly one nonzero entry.
-\item
-That nonzero entry is the greatest common divisor 
-\[
-d=\gcd{m_1, m_2, \dots, m_n}.
-\]
-\item
-The entries in the same row, in earlier columns, are the B\'ezout coefficients, so the row looks like
-\[
-\begin{pmatrix}
-s_1 & s_2 & \dots & s_n & d
-\end{pmatrix}
-\]
-\end{enumerate}
-
-\begin{example}
-To find B\'ezout coefficients of \(12,20,18\):
-\[
-\begin{pmatrix}
-1 & 0 & 0 & 12 \\
-0 & 1 & 0 & 20 \\
-0 & 0 & 1 & 18
-\end{pmatrix}
-\]
-the smallest entry (in absolute value) in the final column is the 12, so we divide it into the other two entries:
-\begin{enumerate}
-\item
-add \(-\text{row 1}\) to row 2, and 
-\item
-\(-\text{row 1}\) to row 3:
-\end{enumerate}
-\[
-\begin{pmatrix}
-1 & 0 & 0 & 12 \\
--1 & 1 & 0 & 8 \\
--1 & 0 & 1 & 6
-\end{pmatrix}
-\]
-Now the smallest (in absolute value) is the \(6\), so we add integer multiples of its row to the two earlier rows:
-\begin{enumerate}
-\item
-add \(-2\cdot\text{row 3}\) to row 1, and 
-\item
-\(-\text{row 3}\) to row 2:
-\end{enumerate}
-\[
-\begin{pmatrix}
-3 & 0 & -2 & 0 \\
-0 & 1 & -1 & 2 \\
--1 & 0 & 1 & 6
-\end{pmatrix}
-\]
-Now the \(2\) is the smallest \emph{nonzero} entry (in absolute value) in the final column.
-Note: once a row in the final column has a zero in it, it becomes irrelevant, so we could save time by crossing it out and deleting it.
-That happens here with the first row.
-But we will leave it as it is, just to make the steps easier to follow.
-Add \(-3\cdot\text{row 2}\) to row 3:
-\[
-\begin{pmatrix}
-3 & 0 & -2 & 0 \\
-0 & 1 & -1 & 2 \\
--1 & -3 & 4 & 0
-\end{pmatrix}
-\]
-Just to carefully check that we haven't made any mistake, you can compute out that this matrix satisfies:
-\[
-\begin{pmatrix}
-3 & 0 & -2 & 0 \\
-0 & 1 & -1 & 2 \\
--1 & -3 & 4 & 0
-\end{pmatrix}
-\begin{pmatrix}
-12 \\
-20 \\
-18 \\
--1
-\end{pmatrix}
-=
-\begin{pmatrix}
-0 \\
-0 \\
-0
-\end{pmatrix}.
-\]
-In particular, our B\'ezout coefficients are the \(0,1,-1\), in front of the greatest common divisor, \(2\).
-Summing up:
-\[
-0 \cdot 12 + 1 \cdot 20 + (-1)\cdot 18 = 2.
-\]
-\end{example}
-
-\begin{problem}{euclidean.algorithm:multi.bezout}
-Use this approach to find B\'ezout coefficients of \(54,90,75\).
-\end{problem}
-
-\begin{problem}{euclidean.algorithm:justify}
-Prove that this method works.
-\end{problem}
-
-\begin{problem}{euclidean.algorithm:multi.lcm}
-Explain how to find the least common multiple of three integers \(a,b,c\).
+\begin{problem}{euclidean.algorithm:several}
+How would you find the greatest common divisor of several integers? The B\'ezout coefficients?
 \end{problem}
 
 \section{Sage}\label{section:euclid.sage}
@@ -377,55 +236,4 @@ def bez(b,c):
     return r,p,q
 \end{sageblock}
 so that \verb!bez(45,210)! returns a triple \((g,s,t)\) where \(g\) is the greatest commmon divisor of \(45,210\), while \(s,t\) are the B\'ezout coefficients.
-
-Let's find B\'ezout coefficients of several numbers.
-First we take a matrix \(A\) of size \(n \times (n+1)\).
-Just as sage has lists \(L\) indexed starting at \verb!L[0]!, so sage indexes matrices as \(A_{ij}\) for \(i\) and \(j\) starting at zero, i.e. the upper left corner entry of any matrix \verb!A! is \verb!A[0,0]! in sage.
-We search for a row which has a nonzero entry in the final column:
-\begin{sageblock}
-def row_with_nonzero_entry_in_final_column(A,rows,columns,starting_from_row=0):
-    for i in range(starting_from_row,rows):
-        if A[i,columns-1]<>0:
-            return i
-    return rows
-\end{sageblock}
-Note that we write \verb!starting_from_row=0! to give a \emph{default value}: we can specify a row to start looking from, but if you call the function \verb!rwo_with_nonzero_entry_in_final_column! without specifying a value for the variable \verb!starting_from_row!, then that variable will take the value \verb!0!.
-We use this to find the B\'ezout coefficients of a list of integers:
-\begin{sageblock}   
-def bez(L):
-    n=len(L)
-    A=matrix(n,n+1)
-    for i in range(0,n):
-        for j in range(0,n):
-            if i==j:
-                A[i,j]=1
-            else:
-                A[i,j]=0
-                A[i,n]=L[i]
-    k=row_with_nonzero_entry_in_final_column(A,n,n+1)
-    l=row_with_nonzero_entry_in_final_column(A,n,n+1,k+1)
-    while l<n:
-        if abs(A[l,n])>abs(A[k,n]):
-            k,l=l,k
-        q=A[k,n]//A[l,n]
-        for j in range(0,n+1):
-            A[k,j]=A[k,j]-q*A[l,j]
-        k=row_with_nonzero_entry_in_final_column(A,n,n+1)
-        l=row_with_nonzero_entry_in_final_column(A,n,n+1,k+1)
-    return ([A[k,j] for j in range(0,n)],A[k,n])
-\end{sageblock}
-Given a list \(L\) of integers, we let \(n\) be the length of the list \(L\), form a matrix \(A\) of size \(n \times (n+1)\), put the identity matrix into its first \(n\) columns, and put the entries of \(L\) into its final column.
-Then we find the first row \verb!k! with a nonzero entry in the last column.
-Then we find the next row \verb!l! with a nonzero entry in the last column.
-Swap \verb!k! and \verb!l! if needed to get row \verb!l! to have smaller entry in the last column.
-Find the quotient \(q\) of those entries, dropping remainder.
-Subtract off \(q\) times row \verb!l! from row \verb!k!.
-Repeat until there is no such row \verb!l! left.
-Return a list of the numbers.
-Test it out:
-\begin{sagesilent}
-R=bez([-2*3*5,2*3*7,2*3*11])
-\end{sagesilent}
-\verb!bez([-2*3*5,2*3*7,2*3*11])! yields \(\sage{R}\), giving the B\'ezout coefficients as the list \(\sage{R[0]}\) and the greatest common divisor next: \(\sage{R[1]}\).
-
 

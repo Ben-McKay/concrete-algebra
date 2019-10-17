@@ -162,8 +162,16 @@ The polynomial \(x^9+14x+7\) is irreducible by Eisenstein's criterion.
 For any prime \(p\) and positive integer \(d\), the polynomial \(x^d-p\) satisfies Eisenstein's criterion.
 Therefore there are no rational number square roots, cube roots, and so on, of any prime number \(p\).
 \end{example}
+\begin{example}
+The polynomial \(x^2+4x+x=(x+2)^2\) is not irreducible, so we \emph{cannot} always apply Eisenstein's criterion with nonprime integers \(p\), for instance with \(p=4\).
+\end{example}
 \begin{problem}{polynomials:Eisenstein}
 Give some examples of polynomials to which Eisenstein's criterion applies.
+\end{problem}
+\begin{problem}{polynomials:backwards}
+Suppose that \(b(x)\) is a polynomial with integer coefficients of degree \(d\).
+Prove that \(c(x)\defeq x^db(1/x)\) is also a polynomial with integer coefficients of degree \(d\).
+Prove that \(b(x)\) is irreducible just when \(c(x)\) is.
 \end{problem}
 \begin{problem}{polynomials:Eisenstein.2}
 Explain why the lowest terms in \(y\) of a product \(b(x,y)c(x,y)\) are obtained by expanding the product of the lowest \(y\) terms in each of \(b(x,y)\) and \(c(x,y)\).
@@ -181,6 +189,18 @@ q(x,y)=2+9xy+40x^3y^2+5y^3+25xy^3+8x^2y^3
 \]
 is irreducible.
 \end{problem}
+\begin{problem}{factoring:Eisen.poly.2}
+Is 
+\[
+a(x,y)=y^9x^9+(y^2+1)x^8+(y^2+1)x^7+y+1
+\]
+irreducible as a polynomial in two variables \(x,y\) with coefficients remainders modulo \(2\)?
+\end{problem}
+\begin{answer}{factoring:Eisen.poly.2}
+Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
+Note that \(p(y)^2=y^2+1\).
+So Eisenstein applies: \(a(x,y)\) is irreducible.
+\end{answer}
 \begin{problem}{polynomials:Eisenstein.cyclotomic}
 Suppose that \(p\) is a prime number.
 Prove that the polynomial \(c(x)\defeq x^{p-1}+x^{p-2}+\dots+x+1\) is irreducible.
@@ -239,6 +259,44 @@ The expression \verb!c.pop()! returns the last element in the list, and at the s
 If \verb!Eisenstein(p)! is not \verb![]!, then \verb!p! is irreducible by Eisenstein's criterion.
 
 \section{Factorization over rational functions and over polynomials}
+\begin{problem}{factoring:circle}
+Over the
+\begin{enumerate}
+\item
+complex numbers,
+\item
+real numbers,
+\item
+rational numbers or
+\item
+integers,
+\item
+integer remainders modulo \(2\),
+\item
+integer remainders modulo \(3\),
+\end{enumerate}
+is
+\[
+b(x,y)=x^2+y^2
+\]
+reducible as a polynomial in two variables \(x,y\)?
+\end{problem}
+\begin{answer}{factoring:circle}
+Over the complex numbers,
+\[
+b(x,y)=(x+iy)(x-iy).
+\]
+Over all of the other fields, if reducible, it splits into linear factors
+\[
+b(x,y)=(\alpha x+\beta y)(\gamma x+\delta y)=\alpha\gamma x^2 + (\alpha\delta+\beta\gamma)xy+\beta\delta y.
+\]
+None of the coefficients can vanish, since \(b(x,y)\) doesn't have a factor of \(x\) or \(y\).
+For real coefficients, \(b(x,y)\) vanishes along a line \(\alpha x+\beta y=0\).
+This is not possible because squares \(x^2,y^2\) can't be negative, so if \(x^2+y^2=0\) then \(x=y=0\).
+Alternate proof: plug in \(y=1\) to get \(x^2+1=(\alpha x+\beta)(\gamma x+\delta\), vanishing at \(x=-\beta/\alpha\), a square root of \(-1\).
+It follows that \(b(x,y)\) is irreducible over the rationals, because rationals are real.
+The coefficients of \(b(x,y)\) are coprime, so \(b(x,y)\) is irreducible over the integers.
+\end{answer}
 \begin{proposition}[Gauss' lemma]\label{proposition:Gauss.lemma}
 Suppose that \(p(x,y)\) is a polynomial in two variables over a field, and that \(p(x,y)\) factors as \(p(x,y)=b(x,y)c(x,y)\), where \(b(x,y)\) and \(c(x,y)\) are polynomial in \(x\) with coefficients rational functions of \(y\).
 Then \(p(x,y)\) also factors in polynomials in \(x,y\).
@@ -248,37 +306,37 @@ To be precise, after perhaps multiplying \(b(x,y)\) by a rational function of \(
 The coefficients in \(x\) on the right hand side of the equation
 \(p(x,y) = b(x,y)c(x,y)\) are rational in \(y\), hence are quotients of polynomials in \(y\). Multiplying through by a common denominator we obtain an equation 
 \[
-d(y)p(x,y) = B(x,y)C(x,y)
+d(y)p(x,y) = b(x,y)c(x,y)
 \]
-where \(B(x,y), C(x,y)\) are polynomials in \(x,y\) and \(d(y)\) is a nonzero polynomial. 
-If \(d(y)\) is constant, divide it into \(C(x,y)\), and the result is proven.
+with new \(b(x,y), c(x,y)\) which are polynomials in \(x,y\), and \(d(y)\) is a nonzero polynomial. 
+If \(d(y)\) is constant, divide it into \(c(x,y)\), and the result is proven.
 
 So we can assume that \(d(y)\) is nonconstant and write \(d(y)\) as a product of irreducible polynomials
 \[
 d(y) = d_1(y)d_2(y) \dots d_n(y).
 \]
-Expand out \(B(x,y)\) and \(C(x,y)\) into powers of \(x\):
+Expand out \(b(x,y)\) and \(c(x,y)\) into powers of \(x\):
 \begin{align*}
-B(x,y) &= \sum B_j(y)x^j, \\
-C(x,y) &= \sum C_j(y)x^j.
+b(x,y) &= \sum b_j(y)x^j, \\
+c(x,y) &= \sum c_j(y)x^j.
 \end{align*}
 Then \(d_1(y)\) divides into all of the terms in 
 \[
-B(x,y)C(x,y)= \sum_n \sum_{j,k} B_j(y)C_k(y) x^{j+k}.
+b(x,y)c(x,y)= \sum_n \sum_{j,k} b_j(y)c_k(y) x^{j+k}.
 \]
-In particular, \(d_1(y)\) divides into the lowest term \(B_0(y)C_0(y)\), so into one of the factors, say into \(B_0(y)\).
-Suppose that \(d_1(y)\) divides into all of the terms \(B_0(y), B_1(y), \dots, B_{j-1}(y)\), and also all of the terms \(C_0(y), C_1(y), \dots, C_{k-1}(y)\).
+In particular, \(d_1(y)\) divides into the lowest term \(b_0(y)c_0(y)\), so into one of the factors, say into \(b_0(y)\).
+Suppose that \(d_1(y)\) divides into all of the terms \(b_0(y), b_1(y), \dots, b_{j-1}(y)\), and also all of the terms \(c_0(y), c_1(y), \dots, c_{k-1}(y)\).
 The \(x^{j+k}\) term has coefficient
 \begin{align*}
-& \underline{B_0(y)} C_{j+k}(y) + \underline{B_1(y)} C_{j+k-1}(y) + \dots + \underline{B_{j-1}(y)} C_{k+1}(y) \\
-& \qquad + B_j(y) C_k(y) + B_{j+1}(y) \underline{C_{k-1}(y)} + \dots + B_{j+k}(y) \underline{C_0(y)}.
+& \underline{b_0(y)} c_{j+k}(y) + \underline{b_1(y)} c_{j+k-1}(y) + \dots + \underline{b_{j-1}(y)} c_{k+1}(y) \\
+& \qquad + b_j(y) c_k(y) + b_{j+1}(y) \underline{c_{k-1}(y)} + \dots + b_{j+k}(y) \underline{c_0(y)}.
 \end{align*}
-So \(d_1(y)\) divides into the underlined expressions, and must divide into one of \(B_j(y)\) or \(C_k(y)\).
+So \(d_1(y)\) divides into the underlined expressions, and must divide into one of \(b_j(y)\) or \(c_k(y)\).
 So we can increase the value of \(j\), or the value of \(k\), or both.
-By induction on both \(j\) and \(k\), \(d_1(y)\) divides into all terms in \(B(x,y)\) (and hence divides into \(B(x,y)\)), or divides into all terms in \(C(x,y)\) (and hence divides into \(C(x,y)\)).
+By induction on both \(j\) and \(k\), \(d_1(y)\) divides into all terms in \(b(x,y)\) (and hence divides into \(b(x,y)\)), or divides into all terms in \(c(x,y)\) (and hence divides into \(c(x,y)\)).
 We cancel out a copy of \(d_1(y)\) from both sides of the equation
 \[
-d(y)p(x,y) = B(x,y)C(x,y)
+d(y)p(x,y) = b(x,y)c(x,y)
 \]
 and proceed by induction on the degree of \(d(y)\).
 \end{proof}
@@ -286,7 +344,7 @@ and proceed by induction on the degree of \(d(y)\).
 Take a polynomial \(q(x,y)\) over a field.
 Expand in powers of \(x\):
 \[
-q(x,y) = a_n(y) x^n + a_{m-1}(y) x^{m-1} + \dots + a_1(y) x + a_0(y),
+q(x,y) = a_n(y) x^n + a_{n-1}(y) x^{n-1} + \dots + a_1(y) x + a_0(y),
 \]
 so that each \(a_0(y),a_1(y),\dots,a_n(y)\) is a polynomial.
 Suppose that there is an irreducible polynomial \(p(y)\) so that
@@ -304,9 +362,47 @@ The proof is identical to the previous proof of Eisenstein's criterion.
 \begin{example}
 \(x^{13}+xy+y\) is irreducible, as it has a factor of \(y\) in each term in \(x\), except the highest term.
 \end{example}
-
+\begin{problem}{factoring:Eisen.poly.xy}
+Is
+\[
+q(x)=10000x^{10000}+999x^{999}+333x^{333}+111
+\]
+irreducible over the rational numbers?
+\end{problem}
+\begin{answer}{factoring:Eisen.poly.xy}
+Eisenstein with \(p=3\), \(111=(3)(37)\), and \(37\) is not divisible by 3, so \(q(x)\) is irreducible.
+\end{answer}
+\begin{problem}{factoring:Eisen.poly.xy.mod.2}
+Is
+\[
+b(x,y)=(y+1)x^{10000}+(y^2+y+1)^{999}x^{999}+(y^2+y+1)^{333}x^{333}+y^2+y+1
+\]
+irreducible as a polynomial in two variables \(x,y\) with coefficients 
+\begin{enumerate}
+\item remainders modulo \(2\)?  
+\item integers?
+\end{enumerate}
+\end{problem}
+\begin{answer}{factoring:Eisen.poly.xy}
+This \(b(x,y)\) is irreducible, by Eisenstein's criterion, with with \(p(y)=y^2+y+1\).
+We need to know that \(p(y)\) is irreducible, and to see this: any reducible quadratic, having degree 2, splits into irreducibles of degrees 1 each, so linear.
+The only linear polynomials are the two linears \(y,y+1\).
+Their 3 possible products are \(y^2,y(y+1),(y+1)^2=y^2+1\), not equal to \(y^2+y+1\).
+So irreducible over remainders modulo \(2\).
+If it reduces over integers, quotient by \(2\) to get a reduction in remainders modulo \(2\), or to get zero.
+But it remains nonzero and irreducible.
+\end{answer}
+\begin{problem}{factoring:CRT.poly}
+State and prove a Chinese remainder theorem for polynomials of one variable over any field.
+Apply it to find the smallest degree polynomial \(p(x)\) so that, over the integer remainders modulo \(2\),
+\begin{alignat*}{2}
+p(x) &= x+1 &\pmod{x^2+x+1}, \\
+p(x) &= x   &\pmod{x^3+x+1}.
+\end{alignat*}
+\end{problem}
 \section{Homogeneous polynomials}
-A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same total degree, i.e. sum of degrees in all variables.
+The \emph{degree} of a term in a multivariable polynomial is the sum of the degrees in each of the variables; the \emph{degree}\define{degree} of the polynomial is the highest degree of any nonzero term.
+A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same degree.
 \begin{problem}{permuting:homog.test}
 Prove that a polynomial \(b(x)\) of degree \(m\) in some variables \(x_1,x_2,\dots,x_n\) over an infinite field is homogeneous just when \(b(tx)=t^mb(x)\) for every \(t\).
 Give a counterexample over a finite field.
@@ -350,7 +446,11 @@ But then \(c_j(x)p_j(x,y)=b_j(x)q_j(x,y)\), and we expand out in powers of \(y\)
 \end{proof}
 
 \begin{problem}{factoring:rationals}
-Every rational function over a field has an expression \(b(x_1,\dots,x_n)/c(x_1,\dots,x_n)\) as a ratio of polynomials with no common nonconstant factor, unique up to rescaling by the same nonzero constant.
+Prove that every rational function over a field has an expression 
+\[
+\frac{b(x_1,\dots,x_n)}{c(x_1,\dots,x_n)}
+\]
+as a ratio of polynomials with no common nonconstant factor, unique up to rescaling both numerator and denominator by the same nonzero constant.
 \end{problem}
 \begin{answer}{factoring:rationals}
 Take two such, cross multiply, and use unique factorisation of polynomials.

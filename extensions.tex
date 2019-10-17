@@ -31,14 +31,14 @@ So, for example,
 \end{align*}
 \end{example}
 \begin{example}\label{factoring:split.it}
-Let \(p(x)\defeq x^2+x+1\) with coefficients over the field of remainders modulo 2.
+Let \(p(x)\defeq x^2+x+1\) with coefficients over the field of remainders modulo \(2\).
 Write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
 To find \(\alpha^{-1}\), compute B\'ezout coefficients:
 \begin{align*}
 &\begin{pmatrix}
 1 & 0 & x \\
 0 & 1 & x^2+x+1
-\end{pmatrix}, \text{ add \(x+1\)(row 1) to row 2},
+\end{pmatrix}, \text{ add \((x+1)\)(row 1) to row 2},
 \\
 &\begin{pmatrix}
 1 & 0 & x \\
@@ -61,7 +61,7 @@ Modulo \(x^2+x+1\), we find
 or in other words \(\alpha^{-1}=\alpha+1\).
 \end{example}
 \begin{problem}{factoring:quot.poly}
-Work out the complete multiplication table for the remainders of polynomials in \(x\) when we quotient out by \(x^2+x\) over the field of remainders modulo 3.
+Work out the complete multiplication table for the remainders of polynomials in \(x\) when we quotient out by \(x^2+x\) over the field of remainders modulo \(3\).
 Which elements have reciprocals?
 \end{problem}
 \begin{answer}{factoring:quot.poly}
@@ -165,7 +165,7 @@ Which elements have reciprocals?
 \]
 \end{answer}
 \begin{problem}{factoring:inverse.mod.3.and.p}
-With coefficients being integers modulo 3, find \(x^{-1}\) modulo \(x^9+2x^2+1\).
+With coefficients being integers modulo \(3\), find \(x^{-1}\) modulo \(x^9+2x^2+1\).
 \end{problem}
 \begin{answer}{factoring:inverse.mod.3.and.p}
 \(2x^8+x\)
@@ -203,13 +203,14 @@ from \(k\).
 The \emph{degree}\define{degree!of field extension} of \(K\) over \(k\) is the smallest number of elements in a basis.
 \begin{example}
 We can write every element of \(\C{}\) as \(x \cdot 1 + y \cdot i\), for some real coefficients \(x,y\).
-So \(\C{}\) is a degree 2 extension of \(\R{}\) with \(1,i\) as a basis.
+So \(\C{}\) is a degree \(2\) extension of \(\R{}\) with \(1,i\) as a basis.
 \end{example}
 \begin{example}
 Clearly \(1, \sqrt{2}\) is a basis for \(\Q{}\of{\sqrt{2}}\) over \(\Q{}\).
 \end{example}
 \begin{example}
 The real numbers \(\R{}\) as an extension of \(\Q{}\) has no basis; it is an infinite degree extension.
+This is a difficult fact to prove.
 \end{example}
 
 
@@ -276,7 +277,7 @@ Suppose that \(p(x)\) is a polynomial over a field \(k\),
 Let \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), and write \(k[\alpha]\) for the ring of remainders modulo \(p(x)\).
 Thinking of \(p(x)\) as a polynomial, \(p(x)\) has a root in \(k[\alpha]\): \(p(\alpha)=0\).
 The ring \(k[\alpha]\) is a field just when \(p(x)\) is irreducible over \(k\).
-If this happens, then \(k[\alpha]\) is an extension field of \(k\) and \(p(x)\) has a linear factor over the field \(k[\alpha]\).
+If this happens, then \(k(\alpha)=k[\alpha]\) and \(k(\alpha)\) is an extension field of \(k\) and \(p(x)\) has a linear factor over the field \(k(\alpha)\).
 \end{theorem}
 \begin{proof}
 By definition, \(p(\alpha)\) means \(p(x)\) but with \(x\) replaced by \(\alpha\), i.e. by the remainder of \(x\) modulo \(p(x)\), i.e. by \(x\), but quotienting out any copies of \(p(x)\) from the resulting expression \(p(x)\), i.e. \(p(\alpha)\) is just \(0\).
@@ -286,6 +287,7 @@ So \(k[\alpha]\) is a field just when any nonzero \(b(\alpha)\) in \(k[\alpha]\)
 Suppose that \(p(x)\) is  irreducible.
 Take B\'ezout coefficients for \(b(x),p(x)\): \(s(x)b(x)+t(x)p(x)=d(x)\), so \(d(x)\) is the greatest common factor of \(b(x),p(x)\).
 Then \(b(x),p(x)\) have greatest common divisor 1, i.e. \(d(x)=1\) (after perhaps a constant rescaling), so mod out \(p(x)\) to get \(s(\alpha)b(\alpha)=1\), i.e. \(b(\alpha)\) has a reciprocal.
+So every nonzero polynomial in \(\alpha\) has a reciprocal, i.e. \(k(\alpha)=k[\alpha]\).
 
 Suppose that \(p(x)\) is reducible, say \(p(x)=b(x)c(x)\), into lower degree factors, so \(0=b(\alpha)c(\alpha)\).
 We want to prove that \(b(\alpha)\) has no reciprocal.
@@ -351,7 +353,6 @@ K = \left\{0,1,\alpha,1+\alpha,\alpha^2,1+\alpha^2,\alpha+\alpha^2,1+\alpha+\alp
 \]
 so \(K\) is a finite field with 8 elements.
 \end{problem}
-
 
 \section{Algebraic closure}
 A field \(k\) is \emph{algebraically closed}\define{algebraically closed}\define{field!algebraically closed} if every polynomial over \(k\) splits into linear factors in \(k\).

@@ -7,24 +7,24 @@
 
 \begin{theorem}[Chasles]\label{theorem:Chasles}\define{theorem!Chasles}\define{Chasles theorem}
 Suppose that \(C_1\) and \(C_2\) are plane cubic curves intersecting at 9 points over the algebraic closure of the field.
-Every plane cubic curve passing through any 8 of those points passes through all 9.
-The plane cubic curves passing through those 9 points are precisely the pencil through \(C_1\) and \(C_2\).
+Every plane cubic curve passing through any \(8\) of those points passes through all \(9\).
+The plane cubic curves passing through those \(9\) points are precisely the pencil through \(C_1\) and \(C_2\).
 \end{theorem}
 \begin{proof}
 By theorem~\vref{theorem:independence}, with \(n=8\) and \(d=3\), either 
 \begin{enumerate}
 \item
-8 of the points impose independent conditions or
+\(8\) of the points impose independent conditions or
 \item
-5 of the points are colinear or
+\(5\) of the points are colinear or
 \item
-all 8 of the points lie on a conic.
+all \(8\) of the points lie on a conic.
 \end{enumerate}
-If 7 of the points lie on a conic, then by B\'ezout's theorem that conic lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
-If 4 of the points lie on a line, then by B\'ezout's theorem that line lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
-So all 8 points inmpose independent conditions, i.e. the projective space of cubics through all \(8\) points has dimension \(3^*-8=1\).
+If \(7\) of the points lie on a conic, then by B\'ezout's theorem that conic lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
+If \(4\) of the points lie on a line, then by B\'ezout's theorem that line lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
+So all \(8\) points inmpose independent conditions, i.e. the projective space of cubics through all \(8\) points has dimension \(3^*-8=1\).
 Since \(C_1 \ne C_2\), the projective space of cubics through all \(9\) points has dimension at least 1: the pencil through \(C_1\) and \(C_2\) is 1-dimensional.
-But the family through all 9 points is a projective subspace of the family through all 8 points.
+But the family through all \(9\) points is a projective subspace of the family through all \(8\) points.
 Both projective spaces have the same dimension, hence these two projective spaces are equal.
 \end{proof}
 
@@ -65,14 +65,10 @@ print("The other intersection point is ",XX.n(),YY.n())
 plot(f,x,-2,2)
 \end{sageblock}
 
-
-
-
 \section{Elliptic curves}
-
 A \emph{elliptic curve}\define{elliptic curve}\define{curve!elliptic} over a field \(k\) is a smooth plane cubic curve \(C\) defined over \(k\) with a chosen point \(o\) of \(C\), also defined over \(k\), which we think of as the ``origin'' of \(C\).
 Given any point \(p\) of \(C\), the line \(op\) contains three points of \(C\) (counting with multiplicity if needed), say \(p,o,\bar{p}\).
-Define the \emph{addition} of points \(p,q\) by taking the line \(pq\), which then intersects \(C\) at 3 points, say \(p,q,r\), and then defining \(p+q\) to be \(\bar{r}\), so \(p+q,r,o\) are the three points at which a line intersects \(C\).
+Define the \emph{addition} of points \(p,q\) by taking the line \(pq\), which then intersects \(C\) at \(3\) points, say \(p,q,r\), and then defining \(p+q\) to be \(\bar{r}\), so \(p+q,r,o\) are the three points at which a line intersects \(C\).
 Danger: note that this addition is \emph{not} the same as adding the coordinates of the points, as you would do in linear algebra.
 
 What if \(p=q\)?
@@ -145,18 +141,18 @@ Take the point \(s\) where \(L_1\) and \(L_1'\) intersect.
 If \(s\) lies on \(C\), then \(s\) lies on \(p,q+r,s\), so \(\bar{s}=p+(q+r)\), but also \(s\) lies on \(r,p+q,s\), so \(\bar{s}=(p+q)+r\).
 So \(s\) lies on \(C\) just when \(p+(q+r)=(p+q)+r\).
 
-Consider the 8 points \(o,p,q,r,q+r,p+q,\) and a ninth point \(s\).
-The cubic \(L_1 \cup L_2 \cup L_3\) contains all 9 points, as does the cubic \(L_1' \cup L_2' \cup L_3'\).
+Consider the \(8\) points \(o,p,q,r,q+r,p+q,\) and a ninth point \(s\).
+The cubic \(L_1 \cup L_2 \cup L_3\) contains all \(9\) points, as does the cubic \(L_1' \cup L_2' \cup L_3'\).
 Suppose that these cubics have no component in common.
-Then by Chasles's theorem (theorem~\vref{theorem:Chasles}), the plane cubics containing the 8 points contain all 9, so \(s\) belongs to \(C\).
+Then by Chasles's theorem (theorem~\vref{theorem:Chasles}), the plane cubics containing the \(8\) points contain all \(9\), so \(s\) belongs to \(C\).
 
 Suppose that these cubics share a component, say \(L_i = L_j'\).
-The 3 points of \(C\) on \(L_i\) and the 3 points on \(L_j'\) must be the same 3 points.
+The 3 points of \(C\) on \(L_i\) and the \(3\) points on \(L_j'\) must be the same \(3\) points.
 No other point of the cubic \(C\) can lie on that line, by B\'ezout's theorem.
-So the remaining 5 points lie on the other lines.
+So the remaining \(5\) points lie on the other lines.
 Each pair of remaining lines is a conic.
-By lemma~\vref{lemma:conics.5.points}, these conics are equal or share a common line through 4 of the points.
-But we can't have 4 points of \(C\) on the same line, by B\'ezout's theorem.
+By lemma~\vref{lemma:conics.5.points}, these conics are equal or share a common line through \(4\) of the points.
+But we can't have \(4\) points of \(C\) on the same line, by B\'ezout's theorem.
 So these conics are equal, i.e. all three lines \(L_1,L_2,L_3\) are the same as \(L_1',L_2',L_3'\) up to reordering.
 
 We know that \(L_1 \ne L_1'\), so \(L_1=L_2'\) or \(L_1=L_3'\).

@@ -1,5 +1,5 @@
 \chapter{Projective duality}
-
+\epigraph[author={Louis Pasteur}, source={Revue Scientifique (1871)}]{There does not exist a category of science to which one can give the name applied science. There are sciences and the applications of science, bound together as the fruit of the tree which bears it.}
 The set of lines in the projective plane \(P=\Proj[2]{k}\) is called the \emph{dual plane}\define{dual!projective plane} and denoted \(P^*=\Proj[2*]{k}\).
 Each line has a homogeneous linear equation \(0=ax+by+cz\), unique up to rescaling, and so the point \([a,b,c]\) is determined, allowing us to identify \(P^*\) with \(\Proj[2]{k}\) itself.
 The points of \(P^*\) correspond to lines in \(P\).
@@ -126,4 +126,45 @@ Take the four equations \(p=0\), \(a=p_x\), \(b=p_y\), \(c=p_z\), rescaling out 
 So the image of the duality map lies in an algebraic curve in the dual plane. But the resultant vanishes just precisely on the points in the image of the duality map, since these equations specify precisely those points \([a,b,c]\).
 \end{proof}
 
+\begin{example}
+For any irreducible conic \(C\), given by an equation \(0=\left<Ax,x\right>\) for a symmetric matrix \(A\), with homogeneous coordinates
+\[
+x=
+\begin{bmatrix}
+x_0\\
+x_1\\
+x_2
+\end{bmatrix}
+\]
+and dual plane homogeneous coordinates
+\[
+a=
+\begin{bmatrix}
+a_0\\
+a_1\\
+a_2
+\end{bmatrix}
+\]
+differentiate to get that the partial derivatives of \(q(x)=\left<Ax,x\right>\) are \(a=q'(x)=2Ax\).
+Solve for \(x\): \(x=2A^{-1}a\).
+Careful to note that we cannot solve for \(x\) over a field of a characteristic \(2\).
+Plug in to the equation of the conic: \(0=\left<a,A^{-1}a\right>\).
+So, for any conic over any field not of characteristic \(2\), the dual conic has the inverse matrix.
+\end{example}
 
+Each singular point of \(C\) is tangent to all lines through it, so by definition that collection of lines belongs to the dual curve.
+But that collection of lines forms a line in the dual plane.
+So the dual curve is a union of irreducible algebraic curves, finitely many of which are lines, precisely one line for each singular point of \(C\).
+
+\begin{proposition}
+Suppose that \(C\) is an irreducible plane algebraic curve and the degree of \(C\) is denoted \(d\).
+The dual curve has degree \(d(d-1)\), containing no lines if \(C\) is not singular, and containing a line for each singular point of \(C\) in the closure of the field of definition, with multiplicity of that line given by the multiplicity of the singularity.
+\end{proposition}
+\begin{proof}
+We can assume the field is algebraically closed.
+The degree of \(C^*\) is the number of intersections of \(C^*\) with the generic line \(L\) in the plane.
+Each line in the dual plane is the dual \(L=p^*\) of a point \(p\) in the original plane, i.e. the set of points in the dual plane corresponding to lines through the point \(p\) of the plane.
+The intersection of \(L^*\) with \(C^*\) occurs at the points of \(C^*\) corresponding to the lines tangent to \(C\) passing through \(p\).
+There are \(d(d-1)\) tangent lines through \(p\), counting multiplicity, by proposition~\vref{proposition:lines.crossing}.
+Among these lines are all lines connecting \(p\) to any singular point of \(C\), corresponding to lines in \(C^*\).
+\end{proof}

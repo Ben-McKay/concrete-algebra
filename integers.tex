@@ -446,13 +446,13 @@ If the final nonzero integer is negative, just change its sign to get the greate
 \begin{problem}{integers:find.gcd}
 Find the greatest common divisor of
 \begin{enumerate}
-\item 4233, 884
-\item -191, 78
-\item 253, 29
-\item 84, 276
-\item -92, 876
-\item 147, 637
-\item \num{266664}, \num{877769} %(answer: \num{11111})
+\item \(4233, 884\)
+\item \(-191, 78\)
+\item \(253, 29\)
+\item \(84, 276\)
+\item \(-92, 876\)
+\item \(147, 637\)
+\item \(\num{266664}, \num{877769}\) %(answer: \num{11111})
 \end{enumerate}
 \end{problem}
 \begin{answer}{integers:find.gcd}
@@ -468,17 +468,26 @@ Find the greatest common divisor of
 \end{answer}
 \begin{problem*}{integers:gcd.least.sum}
 Take a nonempty collection of integers, at least one of which is not zero.
-Prove that the greatest common divisor of the collection is the smallest positive integer of the form of a finite sum \(s_1 m_1 + \dots + s_n m_n\) for any integers  \(s_1,\dots,s_n\), and any integers \(m_1,\dots,m_n\) from the collection.
+Allow yourself to ``build new integers'' by adding or subtracting the ones you have from one another.
+Prove that the greatest common divisor of the collection is the smallest positive integer you can ``build''.
 \end{problem*}
 \begin{answer}{integers:gcd.least.sum}
+By repeated addition, you can build any positive integer multiple of any integer from your collection.
+By subtracting an integer from your collection from itself,  you can build zero.
+By repeated subtraction, you can build any negative integer multiple of any integer from your collection.
+So by adding up, you can build any linear combination \(s_1m_1+s_2m_2+\dots+s_nm_n\) of integer multiples \(s_1,s_2,\dots,s_n\) of any elements \(m_1,m_2,\dots,m_n\) from the collection,  with any integers \(s_1,s_2,\dots,s_n\).
 If all integers in our collection are divisible by some integer \(d\), then clearly so are any integer multiples or finite sums of integer multiples.
 So the greatest common divisor divides all such sums.
 Hence the greatest common divisor is unchanged if we replace the collection by the collection of all such sums.
 So we can suppose that any such sum is already in our collection.
-There are such sums which are positive, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
-By well ordering, there is a least such positive sum \(d\).
-Take quotient and remainder of any element \(m\) in our collection by \(d\): \(m=qd+r\).
-The remainder \(r=m-qd\) is also in the collection, but smaller than \(d\), and therefore is zero.
+Our collection contains some positive integer, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
+By well ordering, there is a least positive element \(c\) in our collection.
+Take quotient and remainder of any element \(m\) in our collection by \(c\): \(m=qc+r\).
+The remainder \(r=m-qc\) is also in the collection, not negative, but smaller than \(c\), and therefore is zero.
+So \(c\) is a common divisor of every element in the collection.
+Since \(d\) is the greatest common divisor, \(c\le d\).
+But \(c\) is in the collection, and \(d\) divides everyhing in the collection, so \(d\) divides \(c\), so \(d\le c\).
+Hence \(c=d\), i.e. the greatest common divisor is the smallest positive integer we can build.
 \end{answer}
 
 \section{The least common multiple}

@@ -27,8 +27,22 @@ So we get all of the solutions.
 Each line strikes the curve at two points (one of which is the origin); except for the vertical line.
 \section{Definition}
 An \emph{algebraic curve}\define{curve!algebraic}\define{algebraic!curve} is the set of zeroes of a nonconstant polynomial in two variables; the \emph{degree}\define{degree!of algebraic curve}\define{curve!degree} of the curve is the degree of the polynomial.
-A curve of degree \(1, 2, 3, 4, 5, 6\) is called a \emph{line}\define{line}, \emph{conic}\define{conic}, \emph{cubic}\define{cubic!curve}\define{curve!cubic}, \emph{quartic}\define{curve!quartic}\define{quartic!curve}, \emph{quintic}\define{curve!quintic}\define{quintic!curve} or \emph{sextic}\define{sextic curve}\define{curve!sextic}.
-
+\[
+\begin{array}{@{}r>{$}l<{$}}
+\toprule
+\text{degree}&\text{appellation}\\
+\cmidrule(r){1-1}\cmidrule(l){2-2}
+1&line\define{line}\\
+2&conic\define{conic}\\
+3&cubic\define{cubic!curve}\define{curve!cubic}\\
+4&quartic\define{curve!quartic}\define{quartic!curve}\\
+5&quintic\define{curve!quintic}\define{quintic!curve} \\
+6&sextic\define{curve!sextic}\define{sextic!curve} \\
+7&septic\define{curve!septic}\define{septic!curve} \\
+8&octic\define{curve!octic}\define{octic!curve} \\
+\bottomrule
+\end{array}
+\]
 \begin{problem}{algebraic.curves:ptolemy}
 Use the same trick for the circle \(x^2+y^2=1\) as follows.
 Show first (using the formula for the slope of a line) that for any point \((x,y)\) of the circle, the line through \((0,1)\) and \((x,y)\) passes through the horizontal axis at the point \((t,0)\) where
@@ -129,7 +143,7 @@ We will see that, over any field of characteristic not \(2\), every conic is bir
 \begin{array}{@{}rll@{}}
 \toprule
 \text{Equation} & \text{Geometry} & \text{Regular function algebra} \\
-\midrule
+\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
 y=0 & \text{line} & k[x] \\[4pt]
 xy=0 & \text{pair of intersecting lines} & k[x] \oplus k[y] \\[4pt]
 xy=1 & \text{hyperbola} & k\left[x,x^{-1}\right] \\[4pt]

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.9)  17 OCT 2019 08:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.23)  8 NOV 2019 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -347,21 +347,22 @@ Package verse [2008/07/23] emulated by memoir.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2019-02-15 L3 programming layer (loader) 
+Package: expl3 2019-07-01 L3 programming layer (loader) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2019-02-15 L3 programming layer (code)
+Package: expl3 2019-07-01 L3 programming layer (code)
 \c_max_int=\count138
 \l_tmpa_int=\count139
 \l_tmpb_int=\count140
 \g_tmpa_int=\count141
 \g_tmpb_int=\count142
 \g__kernel_prg_map_int=\count143
-\c_log_iow=\count144
-\l_iow_line_count_int=\count145
-\l__iow_line_target_int=\count146
-\l__iow_one_indent_int=\count147
-\l__iow_indent_int=\count148
+\c__ior_term_ior=\count144
+\c_log_iow=\count145
+\l_iow_line_count_int=\count146
+\l__iow_line_target_int=\count147
+\l__iow_one_indent_int=\count148
+\l__iow_indent_int=\count149
 \c_zero_dim=\dimen147
 \c_max_dim=\dimen148
 \l_tmpa_dim=\dimen149
@@ -380,78 +381,80 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l_tmpb_muskip=\muskip13
 \g_tmpa_muskip=\muskip14
 \g_tmpb_muskip=\muskip15
-\l_keys_choice_int=\count149
-\l__intarray_loop_int=\count150
+\l_keys_choice_int=\count150
+\l__intarray_loop_int=\count151
 \c__intarray_sp_dim=\dimen153
-\g__intarray_font_int=\count151
-\c__fp_leading_shift_int=\count152
-\c__fp_middle_shift_int=\count153
-\c__fp_trailing_shift_int=\count154
-\c__fp_big_leading_shift_int=\count155
-\c__fp_big_middle_shift_int=\count156
-\c__fp_big_trailing_shift_int=\count157
-\c__fp_Bigg_leading_shift_int=\count158
-\c__fp_Bigg_middle_shift_int=\count159
-\c__fp_Bigg_trailing_shift_int=\count160
-\c__kernel_randint_max_int=\count161
-\g__fp_array_int=\count162
-\l__fp_array_loop_int=\count163
-\l__sort_length_int=\count164
-\l__sort_min_int=\count165
-\l__sort_top_int=\count166
-\l__sort_max_int=\count167
-\l__sort_true_max_int=\count168
-\l__sort_block_int=\count169
-\l__sort_begin_int=\count170
-\l__sort_end_int=\count171
-\l__sort_A_int=\count172
-\l__sort_B_int=\count173
-\l__sort_C_int=\count174
-\l__tl_analysis_normal_int=\count175
-\l__tl_analysis_index_int=\count176
-\l__tl_analysis_nesting_int=\count177
-\l__tl_analysis_type_int=\count178
-\l__regex_internal_a_int=\count179
-\l__regex_internal_b_int=\count180
-\l__regex_internal_c_int=\count181
-\l__regex_balance_int=\count182
-\l__regex_group_level_int=\count183
-\l__regex_mode_int=\count184
-\c__regex_cs_in_class_mode_int=\count185
-\c__regex_cs_mode_int=\count186
-\l__regex_catcodes_int=\count187
-\l__regex_default_catcodes_int=\count188
-\c__regex_catcode_D_int=\count189
-\c__regex_catcode_S_int=\count190
-\c__regex_catcode_L_int=\count191
-\c__regex_catcode_O_int=\count192
-\c__regex_catcode_A_int=\count193
-\c__regex_all_catcodes_int=\count194
-\l__regex_show_lines_int=\count266
-\l__regex_min_state_int=\count267
-\l__regex_max_state_int=\count268
-\l__regex_left_state_int=\count269
-\l__regex_right_state_int=\count270
-\l__regex_capturing_group_int=\count271
-\l__regex_min_pos_int=\count272
-\l__regex_max_pos_int=\count273
-\l__regex_curr_pos_int=\count274
-\l__regex_start_pos_int=\count275
-\l__regex_success_pos_int=\count276
-\l__regex_curr_char_int=\count277
-\l__regex_curr_catcode_int=\count278
-\l__regex_last_char_int=\count279
-\l__regex_case_changed_char_int=\count280
-\l__regex_curr_state_int=\count281
-\l__regex_step_int=\count282
-\l__regex_min_active_int=\count283
-\l__regex_max_active_int=\count284
-\l__regex_replacement_csnames_int=\count285
-\l__regex_match_count_int=\count286
-\l__regex_min_submatch_int=\count287
-\l__regex_submatch_int=\count288
-\l__regex_zeroth_submatch_int=\count289
-\g__regex_trace_regex_int=\count290
+\g__intarray_font_int=\count152
+\c__fp_leading_shift_int=\count153
+\c__fp_middle_shift_int=\count154
+\c__fp_trailing_shift_int=\count155
+\c__fp_big_leading_shift_int=\count156
+\c__fp_big_middle_shift_int=\count157
+\c__fp_big_trailing_shift_int=\count158
+\c__fp_Bigg_leading_shift_int=\count159
+\c__fp_Bigg_middle_shift_int=\count160
+\c__fp_Bigg_trailing_shift_int=\count161
+\c__kernel_randint_max_int=\count162
+\g__fp_array_int=\count163
+\l__fp_array_loop_int=\count164
+\l__sort_length_int=\count165
+\l__sort_min_int=\count166
+\l__sort_top_int=\count167
+\l__sort_max_int=\count168
+\l__sort_true_max_int=\count169
+\l__sort_block_int=\count170
+\l__sort_begin_int=\count171
+\l__sort_end_int=\count172
+\l__sort_A_int=\count173
+\l__sort_B_int=\count174
+\l__sort_C_int=\count175
+\l__str_internal_int=\count176
+\c__str_replacement_char_int=\count177
+\l__tl_analysis_normal_int=\count178
+\l__tl_analysis_index_int=\count179
+\l__tl_analysis_nesting_int=\count180
+\l__tl_analysis_type_int=\count181
+\l__regex_internal_a_int=\count182
+\l__regex_internal_b_int=\count183
+\l__regex_internal_c_int=\count184
+\l__regex_balance_int=\count185
+\l__regex_group_level_int=\count186
+\l__regex_mode_int=\count187
+\c__regex_cs_in_class_mode_int=\count188
+\c__regex_cs_mode_int=\count189
+\l__regex_catcodes_int=\count190
+\l__regex_default_catcodes_int=\count191
+\c__regex_catcode_D_int=\count192
+\c__regex_catcode_S_int=\count193
+\c__regex_catcode_L_int=\count194
+\c__regex_catcode_O_int=\count266
+\c__regex_catcode_A_int=\count267
+\c__regex_all_catcodes_int=\count268
+\l__regex_show_lines_int=\count269
+\l__regex_min_state_int=\count270
+\l__regex_max_state_int=\count271
+\l__regex_left_state_int=\count272
+\l__regex_right_state_int=\count273
+\l__regex_capturing_group_int=\count274
+\l__regex_min_pos_int=\count275
+\l__regex_max_pos_int=\count276
+\l__regex_curr_pos_int=\count277
+\l__regex_start_pos_int=\count278
+\l__regex_success_pos_int=\count279
+\l__regex_curr_char_int=\count280
+\l__regex_curr_catcode_int=\count281
+\l__regex_last_char_int=\count282
+\l__regex_case_changed_char_int=\count283
+\l__regex_curr_state_int=\count284
+\l__regex_step_int=\count285
+\l__regex_min_active_int=\count286
+\l__regex_max_active_int=\count287
+\l__regex_replacement_csnames_int=\count288
+\l__regex_match_count_int=\count289
+\l__regex_min_submatch_int=\count290
+\l__regex_submatch_int=\count291
+\l__regex_zeroth_submatch_int=\count292
+\g__regex_trace_regex_int=\count293
 \c_empty_box=\box32
 \l_tmpa_box=\box33
 \l_tmpb_box=\box34
@@ -481,34 +484,36 @@ Package: expl3 2019-02-15 L3 programming layer (code)
 \l_tmpb_coffin=\box43
 \g_tmpa_coffin=\box44
 \g_tmpb_coffin=\box45
+\l__coffin_bounding_shift_dim=\dimen169
+\l__coffin_left_corner_dim=\dimen170
+\l__coffin_right_corner_dim=\dimen171
+\l__coffin_bottom_corner_dim=\dimen172
+\l__coffin_top_corner_dim=\dimen173
+\l__coffin_scaled_total_height_dim=\dimen174
+\l__coffin_scaled_width_dim=\dimen175
 \c__coffin_empty_coffin=\box46
 \l__coffin_display_coffin=\box47
 \l__coffin_display_coord_coffin=\box48
 \l__coffin_display_pole_coffin=\box49
-\l__coffin_display_offset_dim=\dimen169
-\l__coffin_display_x_dim=\dimen170
-\l__coffin_display_y_dim=\dimen171
+\l__coffin_display_offset_dim=\dimen176
+\l__coffin_display_x_dim=\dimen177
+\l__coffin_display_y_dim=\dimen178
 \g__file_internal_ior=\read2
-\l__coffin_bounding_shift_dim=\dimen172
-\l__coffin_left_corner_dim=\dimen173
-\l__coffin_right_corner_dim=\dimen174
-\l__coffin_bottom_corner_dim=\dimen175
-\l__coffin_top_corner_dim=\dimen176
-\l__coffin_scaled_total_height_dim=\dimen177
-\l__coffin_scaled_width_dim=\dimen178
-\l__seq_internal_a_int=\count291
-\l__seq_internal_b_int=\count292
+\l__seq_internal_a_int=\count294
+\l__seq_internal_b_int=\count295
+\c__deprecation_minus_one=\count296
 )
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2019-02-15 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count293
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2019-04-06 v L3 Experimental backend support: PDF m
+ode
+\l__kernel_color_stack_int=\count297
+\l__pdf_internal_box=\box50
 ))
-Package: xparse 2018-10-17 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count294
-\g__xparse_grabber_int=\count295
-\l__xparse_m_args_int=\count296
-\l__xparse_mandatory_args_int=\count297
-\l__xparse_v_nesting_int=\count298
+Package: xparse 2019-05-28 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count298
+\g__xparse_grabber_int=\count299
+\l__xparse_m_args_int=\count300
+\l__xparse_v_nesting_int=\count301
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 2016/08/01 v2.7 eTeX basic definition package (PEB,DPC)
@@ -522,8 +527,8 @@ Package etex Warning: Extended allocation already in use.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/nag/nag.sty
 Package: nag 2011/11/25 0.7 warning about old commands (ulmi)
-\c@nag@c=\count299
-\c@nag@sins=\count300
+\c@nag@c=\count302
+\c@nag@sins=\count303
 Package nag Info: Loaded nag-orthodox.cfg  on input line 552.
 
 (/usr/share/texlive/texmf-dist/tex/latex/nag/nag-orthodox.cfg
@@ -619,7 +624,7 @@ Now handling font encoding C62 ...
 ... no UTF-8 mapping file for font encoding C62
 )
 LaTeX Info: Redefining \selectfont on input line 755.
-\CJK@indent=\box50
+\CJK@indent=\box51
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
@@ -723,7 +728,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@tempa@toks=\toks25
 
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
-\XKV@depth=\count301
+\XKV@depth=\count304
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -900,7 +905,7 @@ ed on 2003/03/14 v1.2 Experimental NFSS Extensions
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@taken=\count302
+\c@taken=\count305
 LaTeX Info: Redefining \itshape on input line 515.
 LaTeX Info: Redefining \scshape on input line 523.
 LaTeX Info: Redefining \upshape on input line 537.
@@ -944,29 +949,29 @@ LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
 (Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
+Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
 \MT@toks=\toks26
-\MT@count=\count303
-LaTeX Info: Redefining \textls on input line 793.
+\MT@count=\count306
+LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen179
-LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
-\MT@listname@count=\count304
+LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
+\MT@listname@count=\count307
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
-File: microtype-pdftex.def 2018/01/14 v2.7a Definitions specific to pdftex (RS)
+File: microtype-pdftex.def 2019/02/28 v2.7b Definitions specific to pdftex (RS)
 
-LaTeX Info: Redefining \lsstyle on input line 913.
-LaTeX Info: Redefining \lslig on input line 913.
+LaTeX Info: Redefining \lsstyle on input line 914.
+LaTeX Info: Redefining \lslig on input line 914.
 \MT@outer@space=\skip191
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
+File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/embrac/embrac.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2018-10-17 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2019-05-28 LaTeX2e option processing using LaTeX3 keys
 )
 Package: embrac 2017/07/04 v0.7 Upright Brackets in Emphasized Text
 )
@@ -990,30 +995,30 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count305
+\inf@bad=\count308
 LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count306
-\leftroot@=\count307
+\uproot@=\count309
+\leftroot@=\count310
 LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count308
-\DOTSCASE@=\count309
+\classnum@=\count311
+\DOTSCASE@=\count312
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box51
-\strutbox@=\box52
+\Mathstrutbox@=\box52
+\strutbox@=\box53
 \big@size=\dimen182
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count310
-\c@MaxMatrixCols=\count311
+\macc@depth=\count313
+\c@MaxMatrixCols=\count314
 \dotsspace@=\muskip16
-\c@parentequation=\count312
-\dspbrk@lvl=\count313
+\c@parentequation=\count315
+\dspbrk@lvl=\count316
 \tag@help=\toks28
-\row@=\count314
-\column@=\count315
-\maxfields@=\count316
+\row@=\count317
+\column@=\count318
+\maxfields@=\count319
 \andhelp@=\toks29
 \eqnshift@=\dimen183
 \alignsep@=\dimen184
@@ -1056,15 +1061,15 @@ Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count317
-\calc@Bcount=\count318
+\calc@Acount=\count320
+\calc@Bcount=\count321
 \calc@Adimen=\dimen189
 \calc@Bdimen=\dimen190
 \calc@Askip=\skip259
 \calc@Bskip=\skip260
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count319
+\calc@Ccount=\count322
 \calc@Cskip=\skip261
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -1074,7 +1079,7 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count320
+\g_MT_multlinerow_int=\count323
 \l_MT_multwidth_dim=\dimen191
 \origjot=\skip262
 \l_MT_shortvdotswithinadjustabove_dim=\dimen192
@@ -1088,7 +1093,7 @@ LaTeX Info: Redefining \( on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
 Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
-\c@vrcnt=\count321
+\c@vrcnt=\count324
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
@@ -1096,42 +1101,41 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
 \LTright=\skip264
 \LTpre=\skip265
 \LTpost=\skip266
-\LTchunksize=\count322
+\LTchunksize=\count325
 \LTcapwidth=\dimen259
-\LT@head=\box53
-\LT@firsthead=\box54
-\LT@foot=\box55
-\LT@lastfoot=\box56
-\LT@cols=\count323
-\LT@rows=\count324
-\c@LT@tables=\count325
-\c@LT@chunks=\count326
+\LT@head=\box54
+\LT@firsthead=\box55
+\LT@foot=\box56
+\LT@lastfoot=\box57
+\LT@cols=\count326
+\LT@rows=\count327
+\c@LT@tables=\count328
+\c@LT@chunks=\count329
 \LT@p@ftn=\toks38
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
-\c@tracingmulticols=\count327
-\mult@box=\box57
+\c@tracingmulticols=\count330
+\mult@box=\box58
 \multicol@leftmargin=\dimen260
-\c@unbalance=\count328
-\c@collectmore=\count329
-\doublecol@number=\count330
-\multicoltolerance=\count331
-\multicolpretolerance=\count332
+\c@unbalance=\count331
+\c@collectmore=\count332
+\doublecol@number=\count333
+\multicoltolerance=\count334
+\multicolpretolerance=\count335
 \full@width=\dimen261
 \page@free=\dimen262
 \premulticols=\dimen263
 \postmulticols=\dimen264
 \multicolsep=\skip267
 \multicolbaselineskip=\skip268
-\partial@page=\box58
-\last@line=\box59
+\partial@page=\box59
+\last@line=\box60
 \maxbalancingoverflow=\dimen265
-\mult@rightbox=\box60
-\mult@grightbox=\box61
-\mult@gfirstbox=\box62
-\mult@firstbox=\box63
-\@tempa=\box64
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@gfirstbox=\box63
+\mult@firstbox=\box64
 \@tempa=\box65
 \@tempa=\box66
 \@tempa=\box67
@@ -1148,14 +1152,15 @@ Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
 \@tempa=\box78
 \@tempa=\box79
 \@tempa=\box80
-\c@columnbadness=\count333
-\c@finalcolumnbadness=\count334
+\@tempa=\box81
+\c@columnbadness=\count336
+\c@finalcolumnbadness=\count337
 \last@try=\dimen266
 \multicolovershoot=\dimen267
 \multicolundershoot=\dimen268
-\mult@nat@firstbox=\box81
-\colbreak@box=\box82
-\mc@col@check@num=\count335
+\mult@nat@firstbox=\box82
+\colbreak@box=\box83
+\mc@col@check@num=\count338
 )
 \algebra@idxfile=\write4
 \openout4 = `algebra.idx'.
@@ -1166,8 +1171,8 @@ Writing index file algebra.idx
 \openout5 = `not.glo'.
 
 Writing glossary file not.glo 
-\c@howmany@notation=\count336
-\c@howmany@indexentries=\count337
+\c@howmany@notation=\count339
+\c@howmany@indexentries=\count340
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
@@ -1217,15 +1222,15 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen269
-\Hy@linkcounter=\count338
-\Hy@pagecounter=\count339
+\Hy@linkcounter=\count341
+\Hy@pagecounter=\count342
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count340
+\Hy@SavedSpaceFactor=\count343
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -1252,7 +1257,7 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count341
+\c@Hy@tempcnt=\count344
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -1260,7 +1265,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen270
-\Fld@menulength=\count342
+\Fld@menulength=\count345
 \Field@Width=\dimen271
 \Fld@charsize=\dimen272
 Package hyperref Info: Hyper figures ON on input line 6378.
@@ -1272,22 +1277,22 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6405.
 Package hyperref Info: PDF/A mode OFF on input line 6410.
 LaTeX Info: Redefining \ref on input line 6450.
 LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count343
-\c@Item=\count344
-\c@Hfootnote=\count345
+\Hy@abspage=\count346
+\c@Item=\count347
+\c@Hfootnote=\count348
 )
 (/usr/share/texlive/texmf-dist/tex/latex/memoir/memhfixc.sty
 Package: memhfixc 2013/05/30 v1.17 nameref/hyperref package fixes for memoir cl
 ass
-\c@memhycontfloat=\count346
-\c@Hpagenote=\count347
+\c@memhycontfloat=\count349
+\c@Hpagenote=\count350
 )
 Package hyperref Info: Driver: hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count348
-\c@bookmark@seq@number=\count349
+\Fld@listcount=\count351
+\c@bookmark@seq@number=\count352
 \Hy@SectionHShift=\skip269
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -1315,13 +1320,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 260.
-\c@subfigure=\count350
+\c@subfigure=\count353
 \cftbeforesubfigureskip=\skip270
 \cftsubfigureindent=\skip271
 \cftsubfigurenumwidth=\skip272
 
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2018/12/07 version 4.15 text color boxes
+Package: tcolorbox 2019/03/02 version 4.20 text color boxes
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -1332,15 +1337,15 @@ Package: tcolorbox 2018/12/07 version 4.15 text color boxes
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
 ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box83
+\pgfutil@abb=\box84
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfrcs 2019/05/09 v3.1.3 (3.1.3)
 ))
-Package: pgf 2019/02/02 v3.1.1 (3.1.1)
+Package: pgf 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -1362,7 +1367,7 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfsys 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks40
@@ -1380,48 +1385,50 @@ ex
 \pgf@yb=\dimen282
 \pgf@xc=\dimen283
 \pgf@yc=\dimen284
+\pgf@xd=\dimen285
+\pgf@yd=\dimen286
 \w@pgf@writea=\write6
 \r@pgf@reada=\read3
-\c@pgf@counta=\count351
-\c@pgf@countb=\count352
-\c@pgf@countc=\count353
-\c@pgf@countd=\count354
+\c@pgf@counta=\count354
+\c@pgf@countb=\count355
+\c@pgf@countc=\count356
+\c@pgf@countd=\count357
 \t@pgf@toka=\toks43
 \t@pgf@tokb=\toks44
 \t@pgf@tokc=\toks45
-\pgf@sys@id@count=\count355
+\pgf@sys@id@count=\count358
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/02/02 v3.1.1 (3.1.1)
+File: pgf.cfg 2019/05/09 v3.1.3 (3.1.3)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-pdftex.def 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f
-File: pgfsys-common-pdf.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-common-pdf.def 2019/05/09 v3.1.3 (3.1.3)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
-File: pgfsyssoftpath.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfsyssoftpath@smallbuffer@items=\count356
-\pgfsyssoftpath@bigbuffer@items=\count357
+File: pgfsyssoftpath.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfsyssoftpath@smallbuffer@items=\count359
+\pgfsyssoftpath@bigbuffer@items=\count360
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
-File: pgfsysprotocol.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsysprotocol.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcore 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen285
-\pgfmath@count=\count358
-\pgfmath@box=\box84
+\pgfmath@dimen=\dimen287
+\pgfmath@count=\count361
+\pgfmath@box=\box85
 \pgfmath@toks=\toks46
 \pgfmath@stack@operand=\toks47
 \pgfmath@stack@operation=\toks48
@@ -1444,117 +1451,119 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count359
+\c@pgfmathroundto@lastzeros=\count362
 ))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
-File: pgfcorepoints.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@picminx=\dimen286
-\pgf@picmaxx=\dimen287
-\pgf@picminy=\dimen288
-\pgf@picmaxy=\dimen289
-\pgf@pathminx=\dimen290
-\pgf@pathmaxx=\dimen291
-\pgf@pathminy=\dimen292
-\pgf@pathmaxy=\dimen293
-\pgf@xx=\dimen294
-\pgf@xy=\dimen295
-\pgf@yx=\dimen296
-\pgf@yy=\dimen297
-\pgf@zx=\dimen298
-\pgf@zy=\dimen299
+File: pgfcorepoints.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@picminx=\dimen288
+\pgf@picmaxx=\dimen289
+\pgf@picminy=\dimen290
+\pgf@picmaxy=\dimen291
+\pgf@pathminx=\dimen292
+\pgf@pathmaxx=\dimen293
+\pgf@pathminy=\dimen294
+\pgf@pathmaxy=\dimen295
+\pgf@xx=\dimen296
+\pgf@xy=\dimen297
+\pgf@yx=\dimen298
+\pgf@yy=\dimen299
+\pgf@zx=\dimen300
+\pgf@zy=\dimen301
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
 code.tex
-File: pgfcorepathconstruct.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@path@lastx=\dimen300
-\pgf@path@lasty=\dimen301
+File: pgfcorepathconstruct.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@path@lastx=\dimen302
+\pgf@path@lasty=\dimen303
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
 .tex
-File: pgfcorepathusage.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@shorten@end@additional=\dimen302
-\pgf@shorten@start@additional=\dimen303
+File: pgfcorepathusage.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@shorten@end@additional=\dimen304
+\pgf@shorten@start@additional=\dimen305
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
-File: pgfcorescopes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfpic=\box85
-\pgf@hbox=\box86
-\pgf@layerbox@main=\box87
-\pgf@picture@serial@count=\count360
+File: pgfcorescopes.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfpic=\box86
+\pgf@hbox=\box87
+\pgf@layerbox@main=\box88
+\pgf@picture@serial@count=\count363
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
-File: pgfcoregraphicstate.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgflinewidth=\dimen304
+File: pgfcoregraphicstate.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgflinewidth=\dimen306
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
 s.code.tex
-File: pgfcoretransformations.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@pt@x=\dimen305
-\pgf@pt@y=\dimen306
-\pgf@pt@temp=\dimen307
+File: pgfcoretransformations.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@pt@x=\dimen307
+\pgf@pt@y=\dimen308
+\pgf@pt@temp=\dimen309
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorequick.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
 ex
-File: pgfcoreobjects.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreobjects.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
 .code.tex
-File: pgfcorepathprocessing.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepathprocessing.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
 x
-File: pgfcorearrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfarrowsep=\dimen308
+File: pgfcorearrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfarrowsep=\dimen310
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@max=\dimen309
-\pgf@sys@shading@range@num=\count361
+File: pgfcoreshade.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@max=\dimen311
+\pgf@sys@shading@range@num=\count364
+\pgf@shadingcount=\count365
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreimage.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
 tex
-File: pgfcoreexternal.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfexternal@startupbox=\box88
+File: pgfcoreexternal.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfexternal@startupbox=\box89
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
 x
-File: pgfcorelayers.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorelayers.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
 ode.tex
-File: pgfcoretransparency.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoretransparency.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
 tex
-File: pgfcorepatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepatterns.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorerdf.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfnodeparttextbox=\box89
+File: pgfmoduleshapes.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfnodeparttextbox=\box90
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfmoduleplot.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty
-Package: pgfcomp-version-0-65 2019/02/02 v3.1.1 (3.1.1)
-\pgf@nodesepstart=\dimen310
-\pgf@nodesepend=\dimen311
+Package: pgfcomp-version-0-65 2019/05/09 v3.1.3 (3.1.3)
+\pgf@nodesepstart=\dimen312
+\pgf@nodesepend=\dimen313
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
 .sty
-Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcomp-version-1-18 2019/05/09 v3.1.3 (3.1.3)
 )) (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
@@ -1563,29 +1572,29 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count362
+\etb@tempcnta=\count366
 )
-\tcb@titlebox=\box90
-\tcb@upperbox=\box91
-\tcb@lowerbox=\box92
-\tcb@phantombox=\box93
-\c@tcbbreakpart=\count363
-\c@tcblayer=\count364
-\tcolorbox@number=\count365
-\tcb@temp=\box94
+\tcb@titlebox=\box91
+\tcb@upperbox=\box92
+\tcb@lowerbox=\box93
+\tcb@phantombox=\box94
+\c@tcbbreakpart=\count367
+\c@tcblayer=\count368
+\tcolorbox@number=\count369
 \tcb@temp=\box95
 \tcb@temp=\box96
 \tcb@temp=\box97
+\tcb@temp=\box98
 \tcb@out=\write7
 \tcb@record@out=\write8
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '4.15'
-\tcb@testbox=\box98
-\tcb@totalupperbox=\box99
-\tcb@totallowerbox=\box100
+Library (tcolorbox): 'tcbbreakable.code.tex' version '4.20'
+\tcb@testbox=\box99
+\tcb@totalupperbox=\box100
+\tcb@totallowerbox=\box101
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '4.15'
+Library (tcolorbox): 'tcbskins.code.tex' version '4.20'
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -1593,73 +1602,73 @@ Library (tcolorbox): 'tcbskins.code.tex' version '4.15'
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/02/02 v3.1.1 (3.1.1)
+Package: pgffor 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen312
-\pgffor@skip=\dimen313
+\pgffor@iter=\dimen314
+\pgffor@skip=\dimen315
 \pgffor@stack=\toks49
 \pgffor@toks=\toks50
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2019/02/02 v3.1.1 (3.1.1)
+Package: tikz 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
-File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@plot@mark@count=\count366
-\pgfplotmarksize=\dimen314
+File: pgflibraryplothandlers.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@plot@mark@count=\count370
+\pgfplotmarksize=\dimen316
 )
-\tikz@lastx=\dimen315
-\tikz@lasty=\dimen316
-\tikz@lastxsaved=\dimen317
-\tikz@lastysaved=\dimen318
-\tikzleveldistance=\dimen319
-\tikzsiblingdistance=\dimen320
-\tikz@figbox=\box101
-\tikz@figbox@bg=\box102
-\tikz@tempbox=\box103
-\tikz@tempbox@bg=\box104
-\tikztreelevel=\count367
-\tikznumberofchildren=\count368
-\tikznumberofcurrentchild=\count369
-\tikz@fig@count=\count370
+\tikz@lastx=\dimen317
+\tikz@lasty=\dimen318
+\tikz@lastxsaved=\dimen319
+\tikz@lastysaved=\dimen320
+\tikzleveldistance=\dimen321
+\tikzsiblingdistance=\dimen322
+\tikz@figbox=\box102
+\tikz@figbox@bg=\box103
+\tikz@tempbox=\box104
+\tikz@tempbox@bg=\box105
+\tikztreelevel=\count371
+\tikznumberofchildren=\count372
+\tikznumberofcurrentchild=\count373
+\tikz@fig@count=\count374
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfmatrixcurrentrow=\count371
-\pgfmatrixcurrentcolumn=\count372
-\pgf@matrix@numberofcolumns=\count373
+File: pgfmodulematrix.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfmatrixcurrentrow=\count375
+\pgfmatrixcurrentcolumn=\count376
+\pgf@matrix@numberofcolumns=\count377
 )
-\tikz@expandcount=\count374
+\tikz@expandcount=\count378
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarytopaths.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )))
-\tcb@waterbox=\box105
+\tcb@waterbox=\box106
 
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.15'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.20'
 ))
-\c@theorem=\count375
-\c@problemTheorem=\count376
+\c@theorem=\count379
+\c@problemTheorem=\count380
 \ansoutoutstre@m=\write9
-\c@howmany@answers=\count377
+\c@howmany@answers=\count381
  (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
 \everycr=\toks51
 \minrowclearance=\skip273
 )
 (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+Package: enumitem 2019/06/20 v3.9 Customized lists
 \enitkv@toks@=\toks52
 \labelindent=\skip274
-\enit@outerparindent=\dimen321
+\enit@outerparindent=\dimen323
 \enit@toks=\toks53
-\enit@inbox=\box106
-\enit@count@id=\count378
-\enitdp@description=\count379
+\enit@inbox=\box107
+\enit@count@id=\count382
+\enitdp@description=\count383
 )
 \smallboxh=\skip275
 \smallboxd=\skip276
@@ -1667,18 +1676,26 @@ Package: enumitem 2019/02/04 v3.8 Customized lists
 )
 (/usr/share/texlive/texmf-dist/tex/latex/longdivision/longdivision.sty
 Package: longdivision 
-\l__longdiv_linkedlist_length_int=\count380
-\l__longdiv_temp_int=\count381
-\l__longdiv_quotient_int=\count382
-\l__longdiv_position_int=\count383
-\l__longdiv_point_digit_int=\count384
-\g__longdiv_temp_dim=\dimen322
-\l__longdiv_extra_digits_int=\count385
-\l__longdiv_max_extra_digits_int=\count386
-\l__longdiv_display_divisions_int=\count387
-\c__longdiv_digitwidth_dim=\dimen323
-\c__longdiv_pointwidth_dim=\dimen324
-\l__longdiv_tempwidth_dim=\dimen325
+\l__longdiv_quotient_int=\count384
+\l__longdiv_position_int=\count385
+\l__longdiv_point_digit_int=\count386
+\l__longdiv_repeat_digit_int=\count387
+\g__longdiv_temp_dim=\dimen324
+\l__longdiv_extra_digits_int=\count388
+\l__longdiv_max_extra_digits_int=\count389
+\l__longdiv_digits_requested_int=\count390
+\l__longdiv_display_divisions_int=\count391
+\l__longdiv_linkedlist_length_int=\count392
+\l__longdiv_temp_int=\count393
+\longdiv@dividendlength=\skip278
+\longdiv@dividendheight=\skip279
+\longdiv@divisorheight=\skip280
+\longdiv@maxheight=\skip281
+\c__longdiv_digitwidth_dim=\dimen325
+\c__longdiv_pointwidth_dim=\dimen326
+\c__longdiv_parenwidth_dim=\dimen327
+\l__longdiv_tempwidth_dim=\dimen328
+\l__longdiv_rulethickness_dim=\dimen329
 )
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.sty
 Package: standalone 2018/03/26 v1.3a Package to include TeX sub-files with prea
@@ -1700,7 +1717,7 @@ Package: filehook-memoir 2011/01/03 v0.1 filehook patch for memoir class
 Package filehook Info: Detected 'memoir' class: the memoir hooks will be moved 
 to the `At...OfFiles' hooks on input line 43.
 ))
-\c@currfiledepth=\count388
+\c@currfiledepth=\count394
 )
 (/usr/share/texlive/texmf-dist/tex/latex/gincltex/gincltex.sty
 Package: gincltex 2011/09/04 v0.3 Include external LaTeX files like graphics
@@ -1717,39 +1734,39 @@ Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
 
 (/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
-\collectedbox=\box107
+\collectedbox=\box108
 )
-\tc@llx=\dimen326
-\tc@lly=\dimen327
-\tc@urx=\dimen328
-\tc@ury=\dimen329
+\tc@llx=\dimen330
+\tc@lly=\dimen331
+\tc@urx=\dimen332
+\tc@ury=\dimen333
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen330
-\adjbox@Height=\dimen331
-\adjbox@Depth=\dimen332
-\adjbox@Totalheight=\dimen333
-\adjbox@pwidth=\dimen334
-\adjbox@pheight=\dimen335
-\adjbox@pdepth=\dimen336
-\adjbox@ptotalheight=\dimen337
+\adjbox@Width=\dimen334
+\adjbox@Height=\dimen335
+\adjbox@Depth=\dimen336
+\adjbox@Totalheight=\dimen337
+\adjbox@pwidth=\dimen338
+\adjbox@pheight=\dimen339
+\adjbox@pdepth=\dimen340
+\adjbox@ptotalheight=\dimen341
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count389
+\c@checkoddpage=\count395
 LaTeX Info: Redefining \checkoddpage on input line 45.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box108
-\sift@deathcycles=\count390
-\@vwid@loff=\dimen338
-\@vwid@roff=\dimen339
+\@vwid@box=\box109
+\sift@deathcycles=\count396
+\@vwid@loff=\dimen342
+\@vwid@roff=\dimen343
 ))
-\gincltex@box=\box109
+\gincltex@box=\box110
 )
 (/usr/share/texlive/texmf-dist/tex/latex/filemod/filemod-expmin.sty
 Package: filemod-expmin 2011/09/19 v1.2 Get and compare file modification times
@@ -1757,8 +1774,8 @@ Package: filemod-expmin 2011/09/19 v1.2 Get and compare file modification times
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
-\integerpart=\count391
-\decimalpart=\count392
+\integerpart=\count397
+\decimalpart=\count398
 )
 Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
@@ -1772,9 +1789,9 @@ Package: mleftright 2016/05/16 v1.1 Math left/right delim. as open/close (HO)
 (/usr/share/texmf/tex/latex/asymptote/asymptote.sty
 Package: asymptote 2016/11/26 v1.33 Asymptote style file for LaTeX
  (./algebra.pre)
-\ASYbox=\box110
-\ASYdimen=\dimen340
-\c@asy=\count393
+\ASYbox=\box111
+\ASYdimen=\dimen344
+\c@asy=\count399
 \AsyStream=\write10
 \AsyPreStream=\write11
 
@@ -1786,49 +1803,49 @@ Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2018/05/17 v2.7s A comprehensive (SI) units package
-\l__siunitx_tmp_box=\box111
-\l__siunitx_tmp_dim=\dimen341
-\l__siunitx_tmp_int=\count394
-\l__siunitx_number_mantissa_length_int=\count395
-\l__siunitx_number_uncert_length_int=\count396
-\l__siunitx_round_int=\count397
-\l__siunitx_process_decimal_int=\count398
-\l__siunitx_process_uncertainty_int=\count399
-\l__siunitx_process_fixed_int=\count400
-\l__siunitx_process_integer_min_int=\count401
-\l__siunitx_process_precision_int=\count402
-\l__siunitx_group_min_int=\count403
-\l__siunitx_angle_marker_box=\box112
-\l__siunitx_angle_unit_box=\box113
-\l__siunitx_angle_marker_dim=\dimen342
-\l__siunitx_angle_unit_dim=\dimen343
-\l__siunitx_unit_int=\count404
-\l__siunitx_unit_denominator_int=\count405
-\l__siunitx_unit_numerator_int=\count406
-\l__siunitx_unit_prefix_int=\count407
-\l__siunitx_unit_prefix_base_int=\count408
-\l__siunitx_unit_prefix_gram_int=\count409
-\l__siunitx_number_product_int=\count410
-\c__siunitx_one_fill_skip=\skip278
-\l__siunitx_table_unit_align_skip=\skip279
-\l__siunitx_table_exponent_dim=\dimen344
-\l__siunitx_table_integer_dim=\dimen345
-\l__siunitx_table_mantissa_dim=\dimen346
-\l__siunitx_table_marker_dim=\dimen347
-\l__siunitx_table_result_dim=\dimen348
-\l__siunitx_table_uncert_dim=\dimen349
-\l__siunitx_table_fill_pre_dim=\dimen350
-\l__siunitx_table_fill_post_dim=\dimen351
-\l__siunitx_table_fill_mid_dim=\dimen352
-\l__siunitx_table_pre_box=\box114
-\l__siunitx_table_post_box=\box115
-\l__siunitx_table_mantissa_box=\box116
-\l__siunitx_table_result_box=\box117
-\l__siunitx_table_number_align_skip=\skip280
-\l__siunitx_table_text_align_skip=\skip281
+\l__siunitx_tmp_box=\box112
+\l__siunitx_tmp_dim=\dimen345
+\l__siunitx_tmp_int=\count400
+\l__siunitx_number_mantissa_length_int=\count401
+\l__siunitx_number_uncert_length_int=\count402
+\l__siunitx_round_int=\count403
+\l__siunitx_process_decimal_int=\count404
+\l__siunitx_process_uncertainty_int=\count405
+\l__siunitx_process_fixed_int=\count406
+\l__siunitx_process_integer_min_int=\count407
+\l__siunitx_process_precision_int=\count408
+\l__siunitx_group_min_int=\count409
+\l__siunitx_angle_marker_box=\box113
+\l__siunitx_angle_unit_box=\box114
+\l__siunitx_angle_marker_dim=\dimen346
+\l__siunitx_angle_unit_dim=\dimen347
+\l__siunitx_unit_int=\count410
+\l__siunitx_unit_denominator_int=\count411
+\l__siunitx_unit_numerator_int=\count412
+\l__siunitx_unit_prefix_int=\count413
+\l__siunitx_unit_prefix_base_int=\count414
+\l__siunitx_unit_prefix_gram_int=\count415
+\l__siunitx_number_product_int=\count416
+\c__siunitx_one_fill_skip=\skip282
+\l__siunitx_table_unit_align_skip=\skip283
+\l__siunitx_table_exponent_dim=\dimen348
+\l__siunitx_table_integer_dim=\dimen349
+\l__siunitx_table_mantissa_dim=\dimen350
+\l__siunitx_table_marker_dim=\dimen351
+\l__siunitx_table_result_dim=\dimen352
+\l__siunitx_table_uncert_dim=\dimen353
+\l__siunitx_table_fill_pre_dim=\dimen354
+\l__siunitx_table_fill_post_dim=\dimen355
+\l__siunitx_table_fill_mid_dim=\dimen356
+\l__siunitx_table_pre_box=\box115
+\l__siunitx_table_post_box=\box116
+\l__siunitx_table_mantissa_box=\box117
+\l__siunitx_table_result_box=\box118
+\l__siunitx_table_number_align_skip=\skip284
+\l__siunitx_table_text_align_skip=\skip285
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
-Package: translator 2018/01/04 v1.12 Easy translation of strings in LaTeX
+Package: translator 2019-05-31 v1.12a Easy translation of strings in LaTeX
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/cool/cool.sty
 Package: cool 2006/12/29 v1.35 COntent Oriented LaTeX
@@ -1838,20 +1855,20 @@ Package: coollist 2009/09/20 v1.4 COntent Oriented LaTeX Lists
 
 (/usr/share/texlive/texmf-dist/tex/latex/coolstr/coolstr.sty
 Package: coolstr 2009/09/09 v2.2 COntent Oriented LaTeX Strings
-\c@COOL@strlen=\count411
-\c@COOL@strpointer=\count412
-\c@COOL@str@index=\count413
-\c@COOL@str@start=\count414
-\c@COOL@str@end=\count415
+\c@COOL@strlen=\count417
+\c@COOL@strpointer=\count418
+\c@COOL@str@index=\count419
+\c@COOL@str@start=\count420
+\c@COOL@str@end=\count421
 )
 (/usr/share/texlive/texmf-dist/tex/latex/forloop/forloop.sty
 Package: forloop 2006/09/18 v3.0 For Loops for LaTeX
 )
-\c@COOL@listlen=\count416
-\c@COOL@listpointer=\count417
-\c@COOL@intsum=\count418
-\c@COOL@register@ct=\count419
-\c@COOL@register@len=\count420
+\c@COOL@listlen=\count422
+\c@COOL@listpointer=\count423
+\c@COOL@intsum=\count424
+\c@COOL@register@ct=\count425
+\c@COOL@register@len=\count426
 )
 (/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
@@ -1860,30 +1877,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
 )
-\c@COOL@ct=\count421
-\c@COOL@ct@=\count422
-\c@COOL@multideriv=\count423
-\c@COOL@row=\count424
-\c@COOL@col=\count425
+\c@COOL@ct=\count427
+\c@COOL@ct@=\count428
+\c@COOL@multideriv=\count429
+\c@COOL@row=\count430
+\c@COOL@col=\count431
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
 tex
-File: pgflibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\arrowsize=\dimen353
+File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\arrowsize=\dimen357
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
-File: tikzlibrarybackgrounds.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@layerbox@background=\box118
-\pgf@layerboxsaved@background=\box119
+File: tikzlibrarybackgrounds.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgf@layerbox@background=\box119
+\pgf@layerboxsaved@background=\box120
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarycalc.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarydecorations.pathmorphing.code.tex
@@ -1891,22 +1908,22 @@ zlibrarydecorations.pathmorphing.code.tex
 zlibrarydecorations.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
 e.tex
-\pgfdecoratedcompleteddistance=\dimen354
-\pgfdecoratedremainingdistance=\dimen355
-\pgfdecoratedinputsegmentcompleteddistance=\dimen356
-\pgfdecoratedinputsegmentremainingdistance=\dimen357
-\pgf@decorate@distancetomove=\dimen358
-\pgf@decorate@repeatstate=\count426
-\pgfdecorationsegmentamplitude=\dimen359
-\pgfdecorationsegmentlength=\dimen360
+\pgfdecoratedcompleteddistance=\dimen358
+\pgfdecoratedremainingdistance=\dimen359
+\pgfdecoratedinputsegmentcompleteddistance=\dimen360
+\pgfdecoratedinputsegmentremainingdistance=\dimen361
+\pgf@decorate@distancetomove=\dimen362
+\pgf@decorate@repeatstate=\count432
+\pgfdecorationsegmentamplitude=\dimen363
+\pgfdecorationsegmentlength=\dimen364
 )
-\tikz@lib@dec@box=\box120
+\tikz@lib@dec@box=\box121
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathmorphing.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfit.code.tex
-File: tikzlibraryfit.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryfit.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryintersections.code.tex
@@ -1914,23 +1931,23 @@ zlibraryintersections.code.tex
 s.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
 )
-\pgf@intersect@solutions=\count427
+\pgf@intersect@solutions=\count433
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarypetri.code.tex
-File: tikzlibrarypetri.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarypetri.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarypositioning.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytrees.code.tex
-File: tikzlibrarytrees.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarytrees.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarythrough.code.tex
-File: tikzlibrarythrough.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarythrough.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
@@ -1941,9 +1958,9 @@ Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
 \t@pgfplots@toka=\toks54
 \t@pgfplots@tokb=\toks55
 \t@pgfplots@tokc=\toks56
-\pgfplots@tmpa=\dimen361
-\c@pgfplots@coordindex=\count428
-\c@pgfplots@scanlineindex=\count429
+\pgfplots@tmpa=\dimen365
+\c@pgfplots@coordindex=\count434
+\c@pgfplots@scanlineindex=\count435
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -1957,7 +1974,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 gfsupp_pgflibraryfpu.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count430
+\c@pgfmathroundto@lastzeros=\count436
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
@@ -1966,13 +1983,13 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count431
+\c@pgfplotsarray@tmp=\count437
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count432
+\c@pgfplotstable@counta=\count438
 \t@pgfplotstable@a=\toks57
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
@@ -1985,7 +2002,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count433
+\c@pgfplotslibrarysurf@no=\count439
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -2012,53 +2029,53 @@ e.tex)
 zlibrarydecorations.pathreplacing.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count434
-\pgfplots@xmin@reg=\dimen362
-\pgfplots@xmax@reg=\dimen363
-\pgfplots@ymin@reg=\dimen364
-\pgfplots@ymax@reg=\dimen365
-\pgfplots@zmin@reg=\dimen366
-\pgfplots@zmax@reg=\dimen367
+\pgfplots@numplots=\count440
+\pgfplots@xmin@reg=\dimen366
+\pgfplots@xmax@reg=\dimen367
+\pgfplots@ymin@reg=\dimen368
+\pgfplots@ymax@reg=\dimen369
+\pgfplots@zmin@reg=\dimen370
+\pgfplots@zmax@reg=\dimen371
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryplotmarks.code.tex
-File: tikzlibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryplotmarks.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
 de.tex
-File: pgflibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryplotmarks.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrary3d.code.tex
-File: tikzlibrary3d.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrary3d.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )) (./genyoungtabtikz.sty
 Package: genyoungtabtikz 2016/10/05 v1.14; Macros for Young tableaux, using Tik
 z
-\g@b@xdim=\dimen368
-\g@tempdim=\dimen369
-\g@boxdim=\dimen370
-\g@boxdimx=\dimen371
-\g@boxdimy=\dimen372
-\g@xcoord=\dimen373
-\g@ycoord=\dimen374
-\g@xpos=\dimen375
-\g@linethick=\dimen376
-\g@adder=\dimen377
-\g@line=\dimen378
-\g@xshifting=\dimen379
-\g@yshifting=\dimen380
-\g@counter=\count435
-\g@counting=\count436
-\c@yrescount=\count437
-\c@ystartrow=\count438
-\g@shift=\dimen381
-\g@dep=\dimen382
-\g@corner=\count439
-\c@g@c@rner=\count440
-\g@baselineshifter=\count441
-\c@blockheight=\count442
+\g@b@xdim=\dimen372
+\g@tempdim=\dimen373
+\g@boxdim=\dimen374
+\g@boxdimx=\dimen375
+\g@boxdimy=\dimen376
+\g@xcoord=\dimen377
+\g@ycoord=\dimen378
+\g@xpos=\dimen379
+\g@linethick=\dimen380
+\g@adder=\dimen381
+\g@line=\dimen382
+\g@xshifting=\dimen383
+\g@yshifting=\dimen384
+\g@counter=\count441
+\g@counting=\count442
+\c@yrescount=\count443
+\c@ystartrow=\count444
+\g@shift=\dimen385
+\g@dep=\dimen386
+\g@corner=\count445
+\c@g@c@rner=\count446
+\g@baselineshifter=\count447
+\c@blockheight=\count448
 )
-\YoungBoxSize=\skip282
+\YoungBoxSize=\skip286
 
 (/usr/share/texlive/texmf-dist/tex/latex/stackengine/stackengine.sty
 Package: stackengine 2017/02/13 v4.01\ Stacking text and objects in convenient 
@@ -2066,22 +2083,22 @@ ways
 
 (/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.sty
 (/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.tex
-\loi_cnt_foreach_nest=\count443
-\loi_nestcnt=\count444
+\loi_cnt_foreach_nest=\count449
+\loi_nestcnt=\count450
 )
-Package: listofitems 2018/11/01 v1.6 Grab items in lists using user-specified s
-ep char (CT)
+Package: listofitems 2019/05/18 v1.62 Grab items in lists using user-specified 
+sep char (CT)
 )
-\c@@stackindex=\count445
-\@boxshift=\skip283
-\stack@tmplength=\skip284
-\temp@stkl=\skip285
-\@stackedboxwidth=\skip286
-\@addedbox=\box121
-\@anchorbox=\box122
-\stackedbox=\box123
-\@centerbox=\box124
-\c@ROWcellindex@=\count446
+\c@@stackindex=\count451
+\@boxshift=\skip287
+\stack@tmplength=\skip288
+\temp@stkl=\skip289
+\@stackedboxwidth=\skip290
+\@addedbox=\box122
+\@anchorbox=\box123
+\stackedbox=\box124
+\@centerbox=\box125
+\c@ROWcellindex@=\count452
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tensor/tensor.sty
 Package: tensor 2004/12/20 v2.1 tensor indices package (PGR)
@@ -2095,9 +2112,9 @@ Package: tensor 2004/12/20 v2.1 tensor indices package (PGR)
 Package: epigraph-keys 2015/09/19 Epigraphs using key values
 
 (/usr/share/texlive/texmf-dist/tex/latex/songbook/conditionals.sty)
-\epigraphtextindent=\skip287
-\epigraphauthorsourceindent=\skip288
-\epigraphtextwidth=\skip289
+\epigraphtextindent=\skip291
+\epigraphauthorsourceindent=\skip292
+\epigraphtextwidth=\skip293
 )
 (./sagetex.sty
 Package: sagetex 2015/08/26 v3.0-92d9f7a embedding Sage into LaTeX documents
@@ -2105,71 +2122,71 @@ Package: sagetex 2015/08/26 v3.0-92d9f7a embedding Sage into LaTeX documents
 Package: fancyvrb 2019/01/15
 
 Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
-\FV@CodeLineNo=\count447
+\FV@CodeLineNo=\count453
 \FV@InFile=\read4
-\FV@TabBox=\box125
-\c@FancyVerbLine=\count448
-\FV@StepNumber=\count449
+\FV@TabBox=\box126
+\c@FancyVerbLine=\count454
+\FV@StepNumber=\count455
 \FV@OutFile=\write12
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count450
-\lst@gtempboxa=\box126
+\lst@mode=\count456
+\lst@gtempboxa=\box127
 \lst@token=\toks63
-\lst@length=\count451
-\lst@currlwidth=\dimen383
-\lst@column=\count452
-\lst@pos=\count453
-\lst@lostspace=\dimen384
-\lst@width=\dimen385
-\lst@newlines=\count454
-\lst@lineno=\count455
-\lst@maxwidth=\dimen386
+\lst@length=\count457
+\lst@currlwidth=\dimen387
+\lst@column=\count458
+\lst@pos=\count459
+\lst@lostspace=\dimen388
+\lst@width=\dimen389
+\lst@newlines=\count460
+\lst@lineno=\count461
+\lst@maxwidth=\dimen390
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
-\c@lstnumber=\count456
-\lst@skipnumbers=\count457
-\lst@framebox=\box127
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count462
+\lst@skipnumbers=\count463
+\lst@framebox=\box128
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2018/09/02 1.7 listings configuration
+File: listings.cfg 2019/02/27 1.8b listings configuration
 ))
-Package: listings 2018/09/02 1.7 (Carsten Heinz)
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/makecmds/makecmds.sty
 Package: makecmds 2009/09/03 v1.0a extra command making commands
 )
-\c@ST@inline=\count458
-\c@ST@plot=\count459
-\c@ST@cmdline=\count460
-\sagetexindent=\skip290
+\c@ST@inline=\count464
+\c@ST@plot=\count465
+\c@ST@cmdline=\count466
+\sagetexindent=\skip294
 
 (./algebra.sagetex.sout)
-\sagecommandlineskip=\skip291
+\sagecommandlineskip=\skip295
 )
 (/usr/share/texlive/texmf-dist/tex/latex/morewrites/morewrites.sty
 (/usr/share/texlive/texmf-dist/tex/latex/morewrites/primargs.sty
 Package: primargs 2018/12/29 Parsing arguments of primitives
 )
 Package: morewrites 2018/12/29 Always room for a new write
-\g__morewrites_later_int=\count461
-\l__morewrites_user_int=\count462
+\g__morewrites_later_int=\count467
+\l__morewrites_user_int=\count468
 \g__morewrites_iow=\write13
 \g__morewrites_ior=\read5
-\g__morewrites_group_level_int=\count463
-\g__morewrites_shipout_box=\box128
-\l__morewrites_collect_next_int=\count464
-\g__morewrites_alloc_write_int=\count465
+\g__morewrites_group_level_int=\count469
+\g__morewrites_shipout_box=\box129
+\l__morewrites_collect_next_int=\count470
+\g__morewrites_alloc_write_int=\count471
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 Package: bookmark 2016/05/17 v1.26 PDF bookmarks (HO)
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def
 File: bkm-pdftex.def 2016/05/17 v1.26 bookmark driver for pdfTeX (HO)
-\BKM@id=\count466
+\BKM@id=\count472
 ))
-\c@squareBoxCounter=\count467
+\c@squareBoxCounter=\count473
 
 (./colorScheme.tex)) (./algebra.aux)
 \openout1 = `algebra.aux'.
@@ -2310,7 +2327,7 @@ Package microtype Info: Using default kerning set `alltext'.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\AtBeginShipoutBox=\box129
+\AtBeginShipoutBox=\box130
 Package hyperref Info: Link coloring ON on input line 15.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -2319,7 +2336,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count468
+\c@section@level=\count474
 LaTeX Info: Redefining \Ref on input line 515.
 )
 Redoing nameref's sectioning
@@ -2331,16 +2348,16 @@ LaTeX Info: Redefining \nameref on input line 15.
 LaTeX Info: Redefining \Ref on input line 15.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count469
-\scratchdimen=\dimen387
-\scratchbox=\box130
-\nofMPsegments=\count470
-\nofMParguments=\count471
+\scratchcounter=\count475
+\scratchdimen=\dimen391
+\scratchbox=\box131
+\nofMPsegments=\count476
+\nofMParguments=\count477
 \everyMPshowfont=\toks64
-\MPscratchCnt=\count472
-\MPscratchDim=\dimen388
-\MPnumerator=\count473
-\makeMPintoPDFobject=\count474
+\MPscratchCnt=\count478
+\MPscratchDim=\dimen392
+\MPnumerator=\count479
+\makeMPintoPDFobject=\count480
 \everyMPtoPDFconversion=\toks65
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -2421,7 +2438,7 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.16} (current compat level: 1.14).
 
-\c@lstlisting=\count475
+\c@lstlisting=\count481
 \ST@sf=\write19
 \openout13 = `algebra.sagetex.sage'.
 
@@ -2482,7 +2499,7 @@ Package pdftex.def Info: brunnian-ring.pdf  used on input line 16.
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count476
+\mycount=\count482
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 2.
 \openout13 = `algebra.mw'.
@@ -2523,7 +2540,7 @@ Package microtype Warning: tracking amount list `algebra.tex/22' will
  [6] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count477
+\mycount=\count483
  (./algebra.toc
 Overfull \hbox (1.08pt too wide) detected at line 14
  \T1/clm2j/m/n/9 23
@@ -2585,83 +2602,83 @@ Overfull \hbox (4.90498pt too wide) detected at line 99
  []
 
 
-Overfull \hbox (4.47298pt too wide) detected at line 107
- \T1/clm2j/m/n/9 149
+Overfull \hbox (3.28496pt too wide) detected at line 107
+ \T1/clm2j/m/n/9 151
  []
 
 
-Overfull \hbox (4.21196pt too wide) detected at line 111
- \T1/clm2j/m/n/9 157
+Overfull \hbox (4.76097pt too wide) detected at line 111
+ \T1/clm2j/m/n/9 159
  []
 
 
-Overfull \hbox (4.76097pt too wide) detected at line 117
- \T1/clm2j/m/n/9 165
- []
-
-
-Overfull \hbox (4.90498pt too wide) detected at line 119
+Overfull \hbox (4.90498pt too wide) detected at line 117
  \T1/clm2j/m/n/9 169
  []
 
 
-Overfull \hbox (3.80696pt too wide) detected at line 123
- \T1/clm2j/m/n/9 177
+Overfull \hbox (4.35597pt too wide) detected at line 119
+ \T1/clm2j/m/n/9 173
  []
 
 
-Overfull \hbox (3.42897pt too wide) detected at line 130
- \T1/clm2j/m/n/9 191
+Overfull \hbox (3.42897pt too wide) detected at line 123
+ \T1/clm2j/m/n/9 181
  []
 
 
-Overfull \hbox (4.87799pt too wide) detected at line 135
- \T1/clm2j/m/n/9 201
+Overfull \hbox (4.76097pt too wide) detected at line 130
+ \T1/clm2j/m/n/9 195
  []
 
 
-Overfull \hbox (6.20999pt too wide) detected at line 138
+Overfull \hbox (6.20999pt too wide) detected at line 135
  \T1/clm2j/m/n/9 205
  []
 
 
-Overfull \hbox (4.67097pt too wide) detected at line 141
- \T1/clm2j/m/n/9 215
+Overfull \hbox (6.354pt too wide) detected at line 138
+ \T1/clm2j/m/n/9 209
  []
 
 
-Overfull \hbox (6.201pt too wide) detected at line 142
- \T1/clm2j/m/n/9 223
+Overfull \hbox (4.81499pt too wide) detected at line 141
+ \T1/clm2j/m/n/9 219
  []
 
 
-Overfull \hbox (6.201pt too wide) detected at line 145
- \T1/clm2j/m/n/9 229
+Overfull \hbox (5.652pt too wide) detected at line 142
+ \T1/clm2j/m/n/9 227
  []
 
 
-Overfull \hbox (6.291pt too wide) detected at line 147
+Overfull \hbox (6.291pt too wide) detected at line 145
  \T1/clm2j/m/n/9 233
  []
 
 
-Overfull \hbox (6.291pt too wide) detected at line 150
- \T1/clm2j/m/n/9 239
+Overfull \hbox (5.74199pt too wide) detected at line 147
+ \T1/clm2j/m/n/9 237
  []
 
 
-Overfull \hbox (4.81499pt too wide) detected at line 151
- \T1/clm2j/m/n/9 261
+Overfull \hbox (5.859pt too wide) detected at line 150
+ \T1/clm2j/m/n/9 243
  []
 
 
-Overfull \hbox (6.291pt too wide) detected at line 152
- \T1/clm2j/m/n/9 263
- []
-
-
-Overfull \hbox (6.14699pt too wide) detected at line 153
+Overfull \hbox (6.14699pt too wide) detected at line 151
  \T1/clm2j/m/n/9 265
+ []
+
+
+Overfull \hbox (5.74199pt too wide) detected at line 152
+ \T1/clm2j/m/n/9 267
+ []
+
+
+Overfull \hbox (6.291pt too wide) detected at line 153
+ \T1/clm2j/m/n/9 269
  []
 
 )
@@ -2681,7 +2698,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout13 = `algebra.mw'.
 
  (./integers.tex
-\mycount=\count478
+\mycount=\count484
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -2750,11 +2767,11 @@ File: t1clm.fd 2010/05/25 Fontinst v1.933 font definitions for T1/clm.
 \openout13 = `algebra.mw'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 506--506
+Underfull \hbox (badness 10000) in paragraph at lines 515--515
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+clm2v on input line 508
+LaTeX Font Info:    Try loading font information for T1+clm2v on input line 517
 .
 (/usr/share/texlive/texmf-dist/tex/latex/cfr-lm/t1clm2v.fd
 File: t1clm2v.fd 2010/05/25 Fontinst v1.933 font definitions for T1/clm2v.
@@ -2858,7 +2875,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 [8] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count479
+\mycount=\count485
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -3227,7 +3244,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 297--297
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count480
+\mycount=\count486
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -3384,7 +3401,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 223--223
  [22] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count481
+\mycount=\count487
 
 
 Package microtype Warning: tracking amount list `algebra.tex/2(2)' will
@@ -3466,7 +3483,7 @@ Package pdftex.def Info: prime-pi.png  used on input line 223.
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count482
+\mycount=\count488
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -3680,7 +3697,7 @@ Package microtype Warning: tracking amount list `algebra.tex/440' will
 [40] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count483
+\mycount=\count489
 
 
 Package microtype Warning: tracking amount list `algebra.tex/3' will
@@ -3713,7 +3730,7 @@ Underfull \vbox (badness 1237) has occurred while \output is active []
 \openout13 = `algebra.mw'.
 
 
-Overfull \hbox (19.90251pt too wide) in paragraph at lines 148--151
+Overfull \hbox (19.90251pt too wide) in paragraph at lines 236--239
 \T1/clm2j/m/n/9 (-10) and use a com-puter to com-pute the se-cret code on the n
 um-ber $\OML/lmm/m/it/9 x \OT1/lmr/m/n/9 = 127 114 114 111 104$\T1/clm2j/m/n/9 
 (-10) .
@@ -3943,7 +3960,7 @@ um-ber $\OML/lmm/m/it/9 x \OT1/lmr/m/n/9 = 127 114 114 111 104$\T1/clm2j/m/n/9
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count484
+\mycount=\count490
 <Rhind_Mathematical_Papyrus.jpg, id=549, 435.12563pt x 273.27094pt>
 File: Rhind_Mathematical_Papyrus.jpg Graphic file (type jpg)
 <use Rhind_Mathematical_Papyrus.jpg>
@@ -4105,7 +4122,7 @@ Overfull \hbox (3.9261pt too wide) in paragraph at lines 233--233
  [52] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count485
+\mycount=\count491
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -4413,7 +4430,7 @@ Package microtype Warning: tracking amount list `algebra.tex/451' will
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count486
+\mycount=\count492
 
 
 Package microtype Warning: tracking amount list `algebra.tex/2(3)' will
@@ -4787,7 +4804,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 414--414
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count487
+\mycount=\count493
 
 
 Package microtype Warning: tracking amount list `algebra.tex/3(5)' will
@@ -5021,7 +5038,7 @@ t/9 x; y\OT1/lmr/m/n/9 )$
 [82] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count488
+\mycount=\count494
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--3
 
@@ -5073,7 +5090,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--3
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count489
+\mycount=\count495
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -5123,7 +5140,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count490
+\mycount=\count496
 \openout13 = `algebra.mw'.
 
  [99] (./algebra.mw)
@@ -5286,7 +5303,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 \openout13 = `algebra.mw'.
 
 
-Underfull \vbox (badness 1924) has occurred while \output is active []
+Underfull \vbox (badness 1297) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
@@ -5545,7 +5562,7 @@ Underfull \vbox (badness 1924) has occurred while \output is active []
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count491
+\mycount=\count497
 \openout13 = `algebra.mw'.
 
  [113] (./algebra.mw)
@@ -5691,7 +5708,7 @@ Overfull \hbox (3.38495pt too wide) detected at line 470
  [124] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count492
+\mycount=\count498
 
 
 Package microtype Warning: tracking amount list `algebra.tex/3(6)' will
@@ -5837,7 +5854,7 @@ Package microtype Warning: tracking amount list `algebra.tex/3(6)' will
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count493
+\mycount=\count499
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -5879,7 +5896,7 @@ Underfull \vbox (badness 1097) has occurred while \output is active []
  [138] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count494
+\mycount=\count500
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
@@ -5894,6 +5911,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 \openout13 = `algebra.mw'.
 
  (./cubic-curve-3.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 \openout13 = `algebra.mw'.
 
  [140]
@@ -5905,9 +5924,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
  [141] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 \openout13 = `algebra.mw'.
 
- [142] (./algebra.mw)
+ [142]
+(./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -5917,8 +5940,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
 \openout13 = `algebra.mw'.
 
-
-[144] (./algebra.mw)
+ [144] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -5928,6 +5950,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
 \openout13 = `algebra.mw'.
 
+
+[146] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -5944,15 +5968,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
 \openout13 = `algebra.mw'.
 
- [146] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-<sage-algebraic-curve-plot.png, id=1289, 429.2838pt x 422.7795pt>
+<sage-algebraic-curve-plot.png, id=1287, 429.2838pt x 422.7795pt>
 File: sage-algebraic-curve-plot.png Graphic file (type png)
 <use sage-algebraic-curve-plot.png>
-Package pdftex.def Info: sage-algebraic-curve-plot.png  used on input line 429.
+Package pdftex.def Info: sage-algebraic-curve-plot.png  used on input line 443.
 
 (pdftex.def)             Requested size: 142.26378pt x 140.1047pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+\openout13 = `algebra.mw'.
+
+ [147]
+(./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -5969,11 +5999,13 @@ Package pdftex.def Info: sage-algebraic-curve-plot.png  used on input line 429.
 
 \openout13 = `algebra.mw'.
 
-<sage-algebraic-curve-plot-2.png, id=1290, 304.2567pt x 422.7795pt>
+\openout13 = `algebra.mw'.
+
+<sage-algebraic-curve-plot-2.png, id=1294, 304.2567pt x 422.7795pt>
 File: sage-algebraic-curve-plot-2.png Graphic file (type png)
 <use sage-algebraic-curve-plot-2.png>
-Package pdftex.def Info: sage-algebraic-curve-plot-2.png  used on input line 43
-9.
+Package pdftex.def Info: sage-algebraic-curve-plot-2.png  used on input line 45
+3.
 (pdftex.def)             Requested size: 142.26378pt x 197.68066pt.
 \openout13 = `algebra.mw'.
 
@@ -5991,15 +6023,15 @@ Package pdftex.def Info: sage-algebraic-curve-plot-2.png  used on input line 43
 
 \openout13 = `algebra.mw'.
 
-<sage-algebraic-curve-plot-3.png, id=1291, 304.2567pt x 422.7795pt>
+<sage-algebraic-curve-plot-3.png, id=1295, 304.2567pt x 422.7795pt>
 File: sage-algebraic-curve-plot-3.png Graphic file (type png)
 <use sage-algebraic-curve-plot-3.png>
-Package pdftex.def Info: sage-algebraic-curve-plot-3.png  used on input line 44
-8.
+Package pdftex.def Info: sage-algebraic-curve-plot-3.png  used on input line 46
+2.
 (pdftex.def)             Requested size: 142.26378pt x 197.68066pt.
 \openout13 = `algebra.mw'.
 
- [147 <./sage-algebraic-curve-plot.png> <./sage-algebraic-curve-plot-2.png>] (.
+ [148 <./sage-algebraic-curve-plot.png> <./sage-algebraic-curve-plot-2.png>] (.
 /algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -6019,21 +6051,27 @@ Package pdftex.def Info: sage-algebraic-curve-plot-3.png  used on input line 44
 
 \openout13 = `algebra.mw'.
 
-<sage-algebraic-surface-plot.png, id=1298, 501.875pt x 501.875pt>
+<sage-algebraic-surface-plot.png, id=1302, 501.875pt x 501.875pt>
 File: sage-algebraic-surface-plot.png Graphic file (type png)
 <use sage-algebraic-surface-plot.png>
-Package pdftex.def Info: sage-algebraic-surface-plot.png  used on input line 45
-7.
+Package pdftex.def Info: sage-algebraic-surface-plot.png  used on input line 47
+1.
 (pdftex.def)             Requested size: 142.26378pt x 142.26239pt.
-)
-(./intersecting-curves.tex
+) (./intersecting-curves.tex
 \openout13 = `algebra.mw'.
 
- [148 <./sage-algebraic-curve-plot-3.png> <./sage-algebraic-surface-plot.png (P
+ [149 <./sage-algebraic-curve-plot-3.png> <./sage-algebraic-surface-plot.png (P
 NG copy)>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count495
+\openout13 = `algebra.mw'.
+
+[150
+
+] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count501
 
 
 Package microtype Warning: tracking amount list `algebra.tex/2(7)' will
@@ -6042,9 +6080,7 @@ Package microtype Warning: tracking amount list `algebra.tex/2(7)' will
 
 \openout13 = `algebra.mw'.
 
-[149
-
-] (./algebra.mw)
+[151] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./nondegenerate-resultant.tex)
@@ -6060,7 +6096,7 @@ it/9 c\OT1/lmr/m/n/9 (\OML/lmm/m/it/9 x; y\OT1/lmr/m/n/9 )$ \T1/clm2j/m/n/9 (-1
 
 \openout13 = `algebra.mw'.
 
-[150] (./algebra.mw)
+[152] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./degenerate-resultant-2c.tex)
@@ -6069,7 +6105,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [151]
+ [153]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -6077,20 +6113,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout13 = `algebra.mw'.
 
 
-[152] (./algebra.mw)
+[154] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./degenerate-resultant-3.tex)
 \openout13 = `algebra.mw'.
 
- [153] (./algebra.mw)
+ [155] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
 (./degenerate-resultant-4.tex) (./nondegenerate-resultant-2.tex)
 \openout13 = `algebra.mw'.
 
- [154]
+ [156]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -6102,96 +6138,22 @@ esn't van-ish ev-ery-where by lemma [][]18.1[][]
 
 \openout13 = `algebra.mw'.
 
-[155] (./algebra.mw)
+[157] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./quotient-rings.tex
 \openout13 = `algebra.mw'.
 
- [156] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\mycount=\count496
-\openout13 = `algebra.mw'.
-
- [157
-
-]
-(./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
  [158] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
+\mycount=\count502
 \openout13 = `algebra.mw'.
 
- [159] (./algebra.mw)
-\openout13 = `algebra.mw'.
+ [159
 
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
+]
+(./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6201,8 +6163,23 @@ esn't van-ish ev-ery-where by lemma [][]18.1[][]
 
 \openout13 = `algebra.mw'.
 
+ [161] (./algebra.mw)
+\openout13 = `algebra.mw'.
 
-[161] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6212,7 +6189,6 @@ esn't van-ish ev-ery-where by lemma [][]18.1[][]
 
 \openout13 = `algebra.mw'.
 
- [163] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6261,69 +6237,140 @@ esn't van-ish ev-ery-where by lemma [][]18.1[][]
 
 \openout13 = `algebra.mw'.
 
+
+[163] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-)
-(./varieties.tex
 \openout13 = `algebra.mw'.
 
  [164] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count497
- (./cubic-curve-2.tex)
-<cylinder-on-curve.pdf, id=1418, 816.66206pt x 810.01523pt>
+\openout13 = `algebra.mw'.
+
+ [165] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [166]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+) (./varieties.tex
+\openout13 = `algebra.mw'.
+
+ [167] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [168
+
+] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count503
+
+(./cubic-curve-2.tex)
+<cylinder-on-curve.pdf, id=1435, 816.66206pt x 810.01523pt>
 File: cylinder-on-curve.pdf Graphic file (type pdf)
 <use cylinder-on-curve.pdf>
 Package pdftex.def Info: cylinder-on-curve.pdf  used on input line 16.
 (pdftex.def)             Requested size: 113.81102pt x 112.88225pt.
 \openout13 = `algebra.mw'.
 
- [165
-
- <./cylinder-on-curve.pdf>] (./algebra.mw)
+ [169 <./cylinder-on-curve.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-<cylinder-on-curve-2.pdf, id=1428, 128.09055pt x 121.44472pt>
+<cylinder-on-curve-2.pdf, id=1445, 128.09055pt x 121.44472pt>
 File: cylinder-on-curve-2.pdf Graphic file (type pdf)
 <use cylinder-on-curve-2.pdf>
 Package pdftex.def Info: cylinder-on-curve-2.pdf  used on input line 27.
 (pdftex.def)             Requested size: 113.81102pt x 107.90941pt.
-<cylinder-on-curve-3.pdf, id=1429, 128.09055pt x 121.44472pt>
+<cylinder-on-curve-3.pdf, id=1446, 128.09055pt x 121.44472pt>
 File: cylinder-on-curve-3.pdf Graphic file (type pdf)
 <use cylinder-on-curve-3.pdf>
 Package pdftex.def Info: cylinder-on-curve-3.pdf  used on input line 36.
 (pdftex.def)             Requested size: 113.81102pt x 107.90941pt.
 \openout13 = `algebra.mw'.
 
- [166 <./cylinder-on-curve-2.pdf> <./cylinder-on-curve-3.pdf>] (./algebra.mw)
+ [170 <./cylinder-on-curve-2.pdf> <./cylinder-on-curve-3.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [167] (./algebra.mw)
+ [171]
+(./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./projective-plane.tex
 \openout13 = `algebra.mw'.
 
-
-[168] (./algebra.mw)
+ [172] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count498
+\mycount=\count504
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--5
 
@@ -6334,14 +6381,14 @@ Package microtype Warning: tracking amount list `algebra.tex/12' will
 (microtype)                override list `algebra.tex/2(7)' for 
 (microtype)                font `T1///sc/' on input line 12.
 
-<railway-tracks.jpg, id=1462, 192.72pt x 129.1224pt>
+<railway-tracks.jpg, id=1478, 192.72pt x 129.1224pt>
 File: railway-tracks.jpg Graphic file (type jpg)
 <use railway-tracks.jpg>
 Package pdftex.def Info: railway-tracks.jpg  used on input line 16.
 (pdftex.def)             Requested size: 113.81102pt x 76.25247pt.
 \openout13 = `algebra.mw'.
 
-[169
+[173
 
  <./railway-tracks.jpg>] (./algebra.mw)
 \openout13 = `algebra.mw'.
@@ -6352,30 +6399,30 @@ Package microtype Warning: tracking amount list `algebra.tex/33' will
 (microtype)                override list `algebra.tex/12' for 
 (microtype)                font `T1///sc/' on input line 33.
 
-<above-the-plane-vantage.pdf, id=1467, 447.94653pt x 258.9374pt>
+<above-the-plane-vantage.pdf, id=1484, 447.94653pt x 258.9374pt>
 File: above-the-plane-vantage.pdf Graphic file (type pdf)
 <use above-the-plane-vantage.pdf>
 Package pdftex.def Info: above-the-plane-vantage.pdf  used on input line 39.
 (pdftex.def)             Requested size: 142.26378pt x 82.23738pt.
-<above-the-plane-connect.pdf, id=1468, 447.94653pt x 357.30489pt>
+<above-the-plane-connect.pdf, id=1485, 447.94653pt x 357.30489pt>
 File: above-the-plane-connect.pdf Graphic file (type pdf)
 <use above-the-plane-connect.pdf>
 Package pdftex.def Info: above-the-plane-connect.pdf  used on input line 43.
 (pdftex.def)             Requested size: 142.26378pt x 113.47847pt.
-<above-the-plane-off-to-infinity.pdf, id=1469, 447.94653pt x 267.97115pt>
+<above-the-plane-off-to-infinity.pdf, id=1486, 447.94653pt x 267.97115pt>
 File: above-the-plane-off-to-infinity.pdf Graphic file (type pdf)
 <use above-the-plane-off-to-infinity.pdf>
 Package pdftex.def Info: above-the-plane-off-to-infinity.pdf  used on input lin
 e 47.
 (pdftex.def)             Requested size: 142.26378pt x 85.10646pt.
-<above-the-plane-3.pdf, id=1470, 447.94653pt x 267.97115pt>
+<above-the-plane-3.pdf, id=1487, 447.94653pt x 267.97115pt>
 File: above-the-plane-3.pdf Graphic file (type pdf)
 <use above-the-plane-3.pdf>
 Package pdftex.def Info: above-the-plane-3.pdf  used on input line 51.
 (pdftex.def)             Requested size: 142.26378pt x 85.10646pt.
 \openout13 = `algebra.mw'.
 
-[170 <./above-the-plane-vantage.pdf> <./above-the-plane-connect.pdf> <./above-t
+[174 <./above-the-plane-vantage.pdf> <./above-the-plane-connect.pdf> <./above-t
 he-plane-off-to-infinity.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -6394,11 +6441,11 @@ Package pdftex.def Info: above-the-plane-3.pdf  used on input line 64.
 (pdftex.def)             Requested size: 142.26378pt x 85.10646pt.
 \openout13 = `algebra.mw'.
 
- [171 <./above-the-plane-3.pdf>]
+ [175 <./above-the-plane-3.pdf>]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-<above-the-plane-projective-line.pdf, id=1499, 447.94653pt x 421.54489pt>
+<above-the-plane-projective-line.pdf, id=1517, 447.94653pt x 421.54489pt>
 File: above-the-plane-projective-line.pdf Graphic file (type pdf)
 <use above-the-plane-projective-line.pdf>
 Package pdftex.def Info: above-the-plane-projective-line.pdf  used on input lin
@@ -6406,37 +6453,37 @@ e 74.
 (pdftex.def)             Requested size: 142.26378pt x 133.88081pt.
 \openout13 = `algebra.mw'.
 
- [172 <./above-the-plane-projective-line.pdf>] (./algebra.mw)
+ [176 <./above-the-plane-projective-line.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
 
-[173] (./algebra.mw)
+[177] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [174] (./algebra.mw)
+ [178] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./projective-curves.tex
 \openout13 = `algebra.mw'.
 
- [175]
+ [179]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [176
+ [180
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count499
+\mycount=\count505
  (./cubic-curve-1.tex)
-<cone-over-cubic.pdf, id=1532, 476.03143pt x 521.93996pt>
+<cone-over-cubic.pdf, id=1549, 476.03143pt x 521.93996pt>
 File: cone-over-cubic.pdf Graphic file (type pdf)
 <use cone-over-cubic.pdf>
 Package pdftex.def Info: cone-over-cubic.pdf  used on input line 11.
@@ -6467,31 +6514,31 @@ Package pdftex.def Info: cone-over-cubic.pdf  used on input line 11.
 
 \openout13 = `algebra.mw'.
 
- [177 <./cone-over-cubic.pdf>] (./algebra.mw)
+ [181 <./cone-over-cubic.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./hyperbola.tex)
-<cone-over-hyperbola-p0.pdf, id=1547, 476.05153pt x 182.65338pt>
+<cone-over-hyperbola-p0.pdf, id=1564, 476.05153pt x 182.65338pt>
 File: cone-over-hyperbola-p0.pdf Graphic file (type pdf)
 <use cone-over-hyperbola-p0.pdf>
 Package pdftex.def Info: cone-over-hyperbola-p0.pdf  used on input line 53.
 (pdftex.def)             Requested size: 227.62204pt x 87.33539pt.
-<cone-over-hyperbola-p1.pdf, id=1548, 476.05153pt x 120.4209pt>
+<cone-over-hyperbola-p1.pdf, id=1565, 476.05153pt x 120.4209pt>
 File: cone-over-hyperbola-p1.pdf Graphic file (type pdf)
 <use cone-over-hyperbola-p1.pdf>
 Package pdftex.def Info: cone-over-hyperbola-p1.pdf  used on input line 54.
 (pdftex.def)             Requested size: 227.62204pt x 57.57903pt.
-<cone-over-hyperbola-p2.pdf, id=1549, 476.05153pt x 191.68713pt>
+<cone-over-hyperbola-p2.pdf, id=1566, 476.05153pt x 191.68713pt>
 File: cone-over-hyperbola-p2.pdf Graphic file (type pdf)
 <use cone-over-hyperbola-p2.pdf>
 Package pdftex.def Info: cone-over-hyperbola-p2.pdf  used on input line 55.
 (pdftex.def)             Requested size: 227.62204pt x 91.65485pt.
-<cone-over-parabola.pdf, id=1550, 476.05153pt x 249.90364pt>
+<cone-over-parabola.pdf, id=1567, 476.05153pt x 249.90364pt>
 File: cone-over-parabola.pdf Graphic file (type pdf)
 <use cone-over-parabola.pdf>
 Package pdftex.def Info: cone-over-parabola.pdf  used on input line 59.
 (pdftex.def)             Requested size: 227.62204pt x 119.49097pt.
-<cone-over-ellipse.pdf, id=1551, 476.05153pt x 337.22989pt>
+<cone-over-ellipse.pdf, id=1568, 476.05153pt x 337.22989pt>
 File: cone-over-ellipse.pdf Graphic file (type pdf)
 <use cone-over-ellipse.pdf>
 Package pdftex.def Info: cone-over-ellipse.pdf  used on input line 65.
@@ -6501,14 +6548,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [178 <./cone-over-hyperbola-p0.pdf> <./cone-over-hyperbola-p1.pdf>] (./algebra
+ [182 <./cone-over-hyperbola-p0.pdf> <./cone-over-hyperbola-p1.pdf>] (./algebra
 .mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
 
-[179 <./cone-over-hyperbola-p2.pdf> <./cone-over-parabola.pdf>] (./algebra.mw)
+[183 <./cone-over-hyperbola-p2.pdf> <./cone-over-parabola.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
@@ -6519,7 +6566,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--88
 (./cubic-curve-4.tex)
 \openout13 = `algebra.mw'.
 
- [180 <./cone-over-ellipse.pdf>] (./algebra.mw)
+ [184 <./cone-over-ellipse.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
@@ -6528,34 +6575,11 @@ Underfull \vbox (badness 4673) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [181]
+ [185]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./nested-circle.tex)
-\openout13 = `algebra.mw'.
-
- [182] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [183] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-
-(./generic-triangle.tex) (./generic-triangle-very.tex)
-\openout13 = `algebra.mw'.
-
- [184] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-[185] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
 \openout13 = `algebra.mw'.
 
  [186] (./algebra.mw)
@@ -6566,6 +6590,27 @@ Underfull \vbox (badness 4673) has occurred while \output is active []
  [187] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
+
+(./generic-triangle.tex) (./generic-triangle-very.tex)
+\openout13 = `algebra.mw'.
+
+ [188] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+
+[189] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [190] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [191] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6588,7 +6633,9 @@ Underfull \vbox (badness 4673) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [188]
+\openout13 = `algebra.mw'.
+
+ [192]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -6770,130 +6817,6 @@ Underfull \vbox (badness 4673) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [189] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-<curve_intersection.png, id=1676, 432.1746pt x 422.7795pt>
-File: curve_intersection.png Graphic file (type png)
-<use curve_intersection.png>
-Package pdftex.def Info: curve_intersection.png  used on input line 555.
-(pdftex.def)             Requested size: 170.71652pt x 167.00574pt.
-) (./families.tex
-\openout13 = `algebra.mw'.
-
- [190 <./curve_intersection.png>] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\mycount=\count500
-
-
-Package microtype Warning: tracking amount list `algebra.tex/3(8)' will
-(microtype)                override list `algebra.tex/33' for 
-(microtype)                font `T1///sc/' on input line 3.
-
-(./lines-thru-a-point.tex)
-
-! LaTeX Error: File `pencils/pencil-1' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 \includegraphics[width=4cm]{pencils/pencil-1}
-                                                  
-? 
-\openout13 = `algebra.mw'.
-
-[191
-
-] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-<pencils/pencil-2.pdf, id=1689, 3212.0pt x 3212.0pt>
-File: pencils/pencil-2.pdf Graphic file (type pdf)
-<use pencils/pencil-2.pdf>
-Package pdftex.def Info: pencils/pencil-2.pdf  used on input line 46.
-(pdftex.def)             Requested size: 113.81102pt x 113.80379pt.
-<Girl_blowing_bubbles.jpg, id=1690, 1606.0pt x 1071.00125pt>
-File: Girl_blowing_bubbles.jpg Graphic file (type jpg)
-<use Girl_blowing_bubbles.jpg>
-Package pdftex.def Info: Girl_blowing_bubbles.jpg  used on input line 63.
-(pdftex.def)             Requested size: 85.35826pt x 56.91968pt.
-\openout13 = `algebra.mw'.
-
- [192 <./pencils/pencil-2.pdf> <./Girl_blowing_bubbles.jpg>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6903,30 +6826,124 @@ Package pdftex.def Info: Girl_blowing_bubbles.jpg  used on input line 63.
 
 \openout13 = `algebra.mw'.
 
- [194] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [195] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-(./5-points-on-conic.tex) (./cubic-curve-5.tex)
 \openout13 = `algebra.mw'.
 
- [196] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-LaTeX Font Info:    Try loading font information for TS1+clm2j on input line 41
-2.
-
-(/usr/share/texlive/texmf-dist/tex/latex/cfr-lm/ts1clm2j.fd
-File: ts1clm2j.fd 2008/02/13 Fontinst v1.928 font definitions for TS1/clm2j.
-)
 \openout13 = `algebra.mw'.
 
- [197]
-(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+<curve_intersection.png, id=1693, 432.1746pt x 422.7795pt>
+File: curve_intersection.png Graphic file (type png)
+<use curve_intersection.png>
+Package pdftex.def Info: curve_intersection.png  used on input line 555.
+(pdftex.def)             Requested size: 170.71652pt x 167.00574pt.
+) (./families.tex
+\openout13 = `algebra.mw'.
+
+ [194 <./curve_intersection.png>] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count506
+
+
+Package microtype Warning: tracking amount list `algebra.tex/3(8)' will
+(microtype)                override list `algebra.tex/33' for 
+(microtype)                font `T1///sc/' on input line 3.
+
+(./lines-thru-a-point.tex)
+<pencils/pencil-1.pdf, id=1700, 1138.11195pt x 1138.11195pt>
+File: pencils/pencil-1.pdf Graphic file (type pdf)
+<use pencils/pencil-1.pdf>
+Package pdftex.def Info: pencils/pencil-1.pdf  used on input line 39.
+(pdftex.def)             Requested size: 113.81102pt x 113.80049pt.
+\openout13 = `algebra.mw'.
+
+ [195
+
+] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+<pencils/pencil-2.pdf, id=1706, 3212.0pt x 3212.0pt>
+File: pencils/pencil-2.pdf Graphic file (type pdf)
+<use pencils/pencil-2.pdf>
+Package pdftex.def Info: pencils/pencil-2.pdf  used on input line 46.
+(pdftex.def)             Requested size: 113.81102pt x 113.80379pt.
+<Girl_blowing_bubbles.jpg, id=1707, 1606.0pt x 1071.00125pt>
+File: Girl_blowing_bubbles.jpg Graphic file (type jpg)
+<use Girl_blowing_bubbles.jpg>
+Package pdftex.def Info: Girl_blowing_bubbles.jpg  used on input line 63.
+(pdftex.def)             Requested size: 85.35826pt x 56.91968pt.
+
+Underfull \vbox (badness 8056) has occurred while \output is active []
+
+\openout13 = `algebra.mw'.
+
+ [196 <./pencils/pencil-1.pdf> <./pencils/pencil-2.pdf>] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [197 <./Girl_blowing_bubbles.jpg>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -6939,14 +6956,44 @@ File: ts1clm2j.fd 2008/02/13 Fontinst v1.928 font definitions for TS1/clm2j.
  [199] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-)
-(./elliptic-curves.tex
+
+(./5-points-on-conic.tex)
 \openout13 = `algebra.mw'.
 
  [200] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count501
+ (./cubic-curve-5.tex)
+LaTeX Font Info:    Try loading font information for TS1+clm2j on input line 41
+2.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cfr-lm/ts1clm2j.fd
+File: ts1clm2j.fd 2008/02/13 Fontinst v1.928 font definitions for TS1/clm2j.
+)
+\openout13 = `algebra.mw'.
+
+ [201]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [202] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [203] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+)
+(./elliptic-curves.tex
+\openout13 = `algebra.mw'.
+
+ [204] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count507
 
 
 Package microtype Warning: tracking amount list `algebra.tex/3(9)' will
@@ -6956,7 +7003,7 @@ Package microtype Warning: tracking amount list `algebra.tex/3(9)' will
 (./cubic-curve-4.tex)
 \openout13 = `algebra.mw'.
 
- [201
+ [205
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
@@ -7020,33 +7067,33 @@ Package microtype Warning: tracking amount list `algebra.tex/3(9)' will
 
 \openout13 = `algebra.mw'.
 
- [202]
+ [206]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [203] (./algebra.mw)
+ [207] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./tangents.tex
 \openout13 = `algebra.mw'.
 
- [204] (./algebra.mw)
+ [208] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count502
+\mycount=\count508
 \openout13 = `algebra.mw'.
 
 
-[205
+[209
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [206] (./algebra.mw)
+ [210] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./cubic-curve-1.tex)
@@ -7057,33 +7104,33 @@ Package microtype Warning: tracking amount list `algebra.tex/110' will
 
 \openout13 = `algebra.mw'.
 
-[207] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [208] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [209] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [210]
-(./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [211] (./algebra.mw)
+[211] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
  [212] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [213] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [214]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [215] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [216] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
@@ -7094,90 +7141,17 @@ Overfull \hbox (3.03726pt too wide) detected at line 429
 ) (./inflection-points.tex
 \openout13 = `algebra.mw'.
 
- [213] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [214
-
-] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\mycount=\count503
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [215]
-(./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [216] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
  [217] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
+ [218
+
+] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [218] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
+\mycount=\count509
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7216,6 +7190,18 @@ Overfull \hbox (3.03726pt too wide) detected at line 429
 
 \openout13 = `algebra.mw'.
 
+ [219]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [220] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [221] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7224,8 +7210,69 @@ Overfull \hbox (3.03726pt too wide) detected at line 429
 
 \openout13 = `algebra.mw'.
 
+\openout13 = `algebra.mw'.
 
-[219] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [222] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+
+[223] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
@@ -7236,38 +7283,10 @@ Overfull \hbox (13.27672pt too wide) detected at line 364
 
 \openout13 = `algebra.mw'.
 
-[220] (./algebra.mw)
+[224] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./conics.tex
-\openout13 = `algebra.mw'.
-
- [221] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [222
-
-] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\mycount=\count504
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--3
-
- []
-
-\openout13 = `algebra.mw'.
-
-[223] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [224] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
 \openout13 = `algebra.mw'.
 
  [225] (./algebra.mw)
@@ -7275,45 +7294,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--3
 
 \openout13 = `algebra.mw'.
 
- [226]
+ [226
+
+] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count510
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--3
+
+ []
+
+\openout13 = `algebra.mw'.
+
+[227] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [228] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [229] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [230]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 ) (./duality.tex
 \openout13 = `algebra.mw'.
 
- [227] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [228
-
-] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\mycount=\count505
-
-
-Package microtype Warning: tracking amount list `algebra.tex/2(10)' will
-(microtype)                override list `algebra.tex/110' for 
-(microtype)                font `T1///sc/' on input line 2.
-
-\openout13 = `algebra.mw'.
-
-[229] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [230] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-) (./nullstellensatz.tex
-\openout13 = `algebra.mw'.
-
- [231]
-(./algebra.mw)
+ [231] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7323,7 +7339,38 @@ Package microtype Warning: tracking amount list `algebra.tex/2(10)' will
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count506
+\mycount=\count511
+
+
+Package microtype Warning: tracking amount list `algebra.tex/2(10)' will
+(microtype)                override list `algebra.tex/110' for 
+(microtype)                font `T1///sc/' on input line 2.
+
+\openout13 = `algebra.mw'.
+
+[233] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [234] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+) (./nullstellensatz.tex
+\openout13 = `algebra.mw'.
+
+ [235]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [236
+
+] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\mycount=\count512
 
 
 Package microtype Warning: tracking amount list `algebra.tex/2(11)' will
@@ -7337,23 +7384,23 @@ Package microtype Warning: tracking amount list `algebra.tex/3(12)' will
 
 \openout13 = `algebra.mw'.
 
-[233] (./algebra.mw)
+[237] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [234] (./algebra.mw)
+ [238] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [235] (./algebra.mw)
+ [239] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 )
 \openout13 = `algebra.mw'.
 
- [236]
+ [240]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -7366,7 +7413,7 @@ File: UTF8.enc 2015/04/18 4.8.4
 (/usr/share/texmf/tex/latex/CJK/UTF8/UTF8.chr
 File: UTF8.chr 2015/04/18 4.8.4
 )
-LaTeX Font Info:    Try loading font information for C70+gbsn on input line 70.
+LaTeX Font Info:    Try loading font information for C70+gbsn on input line 71.
 
 
 (/usr/share/texmf/tex/latex/CJK/UTF8/c70gbsn.fd
@@ -7377,7 +7424,7 @@ File: c70gbsn.fdx 2012/05/07 4.8.3
 )
 
 LaTeX Font Warning: Font shape `C70/gbsn/m/it' undefined
-(Font)              using `C70/gbsn/m/n' instead on input line 70.
+(Font)              using `C70/gbsn/m/n' instead on input line 71.
 
 Missing character: There is no Ù in font gbsnu6c!
 Missing character: There is no x in font gbsnu5b!
@@ -7405,12 +7452,12 @@ File: UTF8.chr 2015/04/18 4.8.4
 )
 Missing character: There is no ! in font gbsnu71!
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--70
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--70
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
 
  []
 
@@ -7421,9 +7468,9 @@ File: UTF8.enc 2015/04/18 4.8.4
 File: UTF8.chr 2015/04/18 4.8.4
 )
 
-Package microtype Warning: tracking amount list `algebra.tex/70' will
+Package microtype Warning: tracking amount list `algebra.tex/71' will
 (microtype)                override list `algebra.tex/3(12)' for 
-(microtype)                font `T1///sc/' on input line 70.
+(microtype)                font `T1///sc/' on input line 71.
 
 (/usr/share/texmf/tex/latex/CJK/UTF8/UTF8.enc
 File: UTF8.enc 2015/04/18 4.8.4
@@ -7433,7 +7480,7 @@ File: UTF8.chr 2015/04/18 4.8.4
 )
 
 LaTeX Font Warning: Font shape `C70/gbsn/m/sc' undefined
-(Font)              using `C70/gbsn/m/n' instead on input line 70.
+(Font)              using `C70/gbsn/m/n' instead on input line 71.
 
 Missing character: There is no Š in font gbsnu83!
 (/usr/share/texmf/tex/latex/CJK/UTF8/UTF8.enc
@@ -7442,33 +7489,33 @@ File: UTF8.enc 2015/04/18 4.8.4
 (/usr/share/texmf/tex/latex/CJK/UTF8/UTF8.chr
 File: UTF8.chr 2015/04/18 4.8.4
 )
-Underfull \hbox (badness 10000) in paragraph at lines 72--72
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
 
  []
 
-<15_Order_Dragon_Curve.pdf, id=1982, 753.47655pt x 906.15161pt>
+<15_Order_Dragon_Curve.pdf, id=2004, 753.47655pt x 906.15161pt>
 File: 15_Order_Dragon_Curve.pdf Graphic file (type pdf)
 <use 15_Order_Dragon_Curve.pdf>
-Package pdftex.def Info: 15_Order_Dragon_Curve.pdf  used on input line 75.
+Package pdftex.def Info: 15_Order_Dragon_Curve.pdf  used on input line 76.
 (pdftex.def)             Requested size: 142.26378pt x 171.07828pt.
 \openout13 = `algebra.mw'.
 
-[237 <./15_Order_Dragon_Curve.pdf>] (./algebra.mw)
+[241 <./15_Order_Dragon_Curve.pdf>] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [238
+ [242
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count507
+\mycount=\count513
 
 (./algebra.ans
 \openout13 = `algebra.mw'.
 
- [239
+ [243
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
@@ -7480,7 +7527,7 @@ Overfull \hbox (12.72775pt too wide) detected at line 69
 
 \openout13 = `algebra.mw'.
 
-[240] (./algebra.mw)
+[244] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7513,7 +7560,20 @@ Overfull \hbox (12.72775pt too wide) detected at line 69
 
 \openout13 = `algebra.mw'.
 
- [241] (./algebra.mw)
+ [245] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [246] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7525,24 +7585,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [242]
-(./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-\openout13 = `algebra.mw'.
-
- [243]
+ [247]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -7551,7 +7594,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout13 = `algebra.mw'.
 
 
-Overfull \hbox (79.05653pt too wide) in paragraph at lines 192--194
+Overfull \hbox (79.05653pt too wide) in paragraph at lines 200--202
 [][]\T1/clm2j/bx/n/9 4.2[][]. $\OT1/lmr/m/n/9 2\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9
  3\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 5\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 7\OML/lmm/
 m/it/9 ; \OT1/lmr/m/n/9 11\OML/lmm/m/it/9 ; \OT1/lmr/m/n/9 13\OML/lmm/m/it/9 ; 
@@ -7573,13 +7616,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [244]
+ [248]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [245] (./algebra.mw)
+ [249] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7607,7 +7650,7 @@ Underfull \vbox (badness 1609) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [246]
+ [250]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
@@ -7625,75 +7668,9 @@ Underfull \vbox (badness 1609) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [247] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [248] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
- [249] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-
-Package sagetex Warning: Graphics file sage-plots-for-algebra.tex/plot-0.pdf on
- page 250 does not exist. Plot command is on input line 441.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-Package sagetex Warning: Graphics file sage-plots-for-algebra.tex/plot-1.pdf on
- page 250 does not exist. Plot command is on input line 447.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-Package sagetex Warning: Graphics file sage-plots-for-algebra.tex/plot-2.pdf on
- page 250 does not exist. Plot command is on input line 454.
-
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
-
-Package sagetex Warning: Graphics file sage-plots-for-algebra.tex/plot-3.pdf on
- page 250 does not exist. Plot command is on input line 461.
-
-\openout13 = `algebra.mw'.
-
-[250] (./algebra.mw)
-\openout13 = `algebra.mw'.
-
-\openout13 = `algebra.mw'.
-
  [251] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
- (./5th-roots.tex)
 \openout13 = `algebra.mw'.
 
  [252] (./algebra.mw)
@@ -7706,32 +7683,95 @@ Package sagetex Warning: Graphics file sage-plots-for-algebra.tex/plot-3.pdf on
 
 \openout13 = `algebra.mw'.
 
- [254] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [255] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [256]
-(./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [257] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
+<sage-plots-for-algebra.tex/plot-0.pdf, id=2162, 455.0116pt x 341.63634pt>
+File: sage-plots-for-algebra.tex/plot-0.pdf Graphic file (type pdf)
+<use sage-plots-for-algebra.tex/plot-0.pdf>
+Package pdftex.def Info: sage-plots-for-algebra.tex/plot-0.pdf  used on input l
+ine 449.
+(pdftex.def)             Requested size: 170.71652pt x 128.18108pt.
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+<sage-plots-for-algebra.tex/plot-1.pdf, id=2164, 455.0116pt x 341.63634pt>
+File: sage-plots-for-algebra.tex/plot-1.pdf Graphic file (type pdf)
+<use sage-plots-for-algebra.tex/plot-1.pdf>
+Package pdftex.def Info: sage-plots-for-algebra.tex/plot-1.pdf  used on input l
+ine 455.
+(pdftex.def)             Requested size: 170.71652pt x 128.18108pt.
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+<sage-plots-for-algebra.tex/plot-2.pdf, id=2166, 455.0116pt x 341.63634pt>
+File: sage-plots-for-algebra.tex/plot-2.pdf Graphic file (type pdf)
+<use sage-plots-for-algebra.tex/plot-2.pdf>
+Package pdftex.def Info: sage-plots-for-algebra.tex/plot-2.pdf  used on input l
+ine 462.
+(pdftex.def)             Requested size: 170.71652pt x 128.18108pt.
+\openout13 = `algebra.mw'.
+
+
+[254 <./sage-plots-for-algebra.tex/plot-0.pdf> <./sage-plots-for-algebra.tex/pl
+ot-1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./sage-plots-for-algebra.tex/plot-1.pdf
+): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+<sage-plots-for-algebra.tex/plot-3.pdf, id=2202, 457.26834pt x 341.63634pt>
+File: sage-plots-for-algebra.tex/plot-3.pdf Graphic file (type pdf)
+<use sage-plots-for-algebra.tex/plot-3.pdf>
+Package pdftex.def Info: sage-plots-for-algebra.tex/plot-3.pdf  used on input l
+ine 469.
+(pdftex.def)             Requested size: 170.71652pt x 127.54509pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \openout13 = `algebra.mw'.
 
- [258]
-(./algebra.mw)
+ [255 <./sage-plots-for-algebra.tex/plot-2.pdf> <./sage-plots-for-algebra.tex/p
+lot-3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./sage-plots-for-algebra.tex/plot-3.pdf
+): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [256] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+ (./5th-roots.tex)
+\openout13 = `algebra.mw'.
+
+ [257] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+
+[258] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
@@ -7739,22 +7779,43 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [259] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-) (./algebra.bbl (./algebra.brf)
+\openout13 = `algebra.mw'.
+
+ [260] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [261]
+(./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [262] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+\openout13 = `algebra.mw'.
+
+ [263] (./algebra.mw)
+\openout13 = `algebra.mw'.
+
+) (./algebra.bbl
+(./algebra.brf)
 \tf@brf=\write20
 \openout13 = `algebra.brf'.
 
 \openout13 = `algebra.mw'.
 
- [260]
-(./algebra.mw)
+ [264] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count508
+\mycount=\count514
 
 bibitemlist
 \openout13 = `algebra.mw'.
 
-[261
+[265
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
@@ -7762,10 +7823,10 @@ bibitemlist
 ) (./not.gls
 \openout13 = `algebra.mw'.
 
- [262] (./algebra.mw)
+ [266] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
-\mycount=\count509
+\mycount=\count515
 
 Overfull \hbox (26.85922pt too wide) in alignment at lines 1--1
  [] [] 
@@ -7798,7 +7859,7 @@ Overfull \hbox (26.85922pt too wide) in alignment at lines 41--52
 
 \openout13 = `algebra.mw'.
 
-[263
+[267
 
 
 ] (./algebra.mw)
@@ -7807,14 +7868,14 @@ Overfull \hbox (26.85922pt too wide) in alignment at lines 41--52
 )
 \openout13 = `algebra.mw'.
 
- [264
+ [268
 
 
 ] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
  (./algebra.ind
-\mycount=\count510
+\mycount=\count516
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -7822,7 +7883,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 \openout13 = `algebra.mw'.
 
-[265
+[269
 
 
 ] (./algebra.mw)
@@ -7830,30 +7891,28 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 \openout13 = `algebra.mw'.
 
- [266] (./algebra.mw)
+ [270] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [267] (./algebra.mw)
+ [271] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 \openout13 = `algebra.mw'.
 
- [268]
+ [272]
 (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 
-Overfull \hbox (7.54419pt too wide) in paragraph at lines 437--438
+Overfull \hbox (7.54419pt too wide) in paragraph at lines 444--445
 []\T1/clm2j/m/n/9 (-10) The Unabridged Jour-nals of Sylvia Plath,
  []
 
 \openout13 = `algebra.mw'.
 
-[269
-
-] (./algebra.mw)
+[273] (./algebra.mw)
 \openout13 = `algebra.mw'.
 
 )
@@ -7863,17 +7922,12 @@ Overfull \hbox (7.54419pt too wide) in paragraph at lines 437--438
 
 
 *********************************************************************
-
-Package sagetex Warning: there were undefined Sage formulas and/or plots.
-Run Sage on algebra.sagetex.sage, and then run LaTeX on algebra.tex again.
-
-*********************************************************************
 No complaints by nag.
 \tf@toc=\write21
 \openout13 = `algebra.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
 (./algebra.aux
 \openout13 = `algebra.mw'.
 
@@ -8500,8 +8554,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
 \openout13 = `algebra.mw'.
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 \openout13 = `algebra.brf'.
 
 Package rerunfilecheck Info: File `algebra.brf' has not changed.
@@ -8510,23 +8564,20 @@ Package rerunfilecheck Info: File `algebra.brf' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 79.
 \openout13 = `algebra.sagetex.sage'.
 
 \openout13 = `algebra.toc'.
 
  ) 
 Here is how much of TeX's memory you used:
- 62641 strings out of 492615
- 1329213 string characters out of 6131390
- 1788708 words of memory out of 5000000
- 63349 multiletter control sequences out of 15000+600000
+ 63574 strings out of 492609
+ 1351431 string characters out of 6131461
+ 1805651 words of memory out of 5000000
+ 64285 multiletter control sequences out of 15000+600000
  695992 words of font info for 343 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,17n,366p,1518b,2726s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 80i,17n,366p,1518b,2728s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cfr-lm/t1-clm.enc}{/usr/share/
 texlive/texmf-dist/fonts/enc/dvips/cfr-lm/dotdigits-clm.enc}{/usr/share/texmf/f
 onts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
@@ -8564,10 +8615,10 @@ m/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.p
 fb>
-Output written on algebra.pdf (277 pages, 3567739 bytes).
+Output written on algebra.pdf (281 pages, 3604857 bytes).
 PDF statistics:
- 3203 PDF objects out of 3580 (max. 8388607)
- 2748 compressed objects within 28 object streams
- 955 named destinations out of 1000 (max. 500000)
- 70148 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 3292 PDF objects out of 3580 (max. 8388607)
+ 2789 compressed objects within 28 object streams
+ 959 named destinations out of 1000 (max. 500000)
+ 70173 words of extra memory for PDF output out of 74296 (max. 10000000)
 

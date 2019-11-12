@@ -129,14 +129,22 @@ By induction, eventually we get a greatest common divisor, unique because it is 
 \item \(\sage{gcd(266664, 877769)}\).
 \end{enumerate}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.least.sum}.}
+By repeated addition, you can build any positive integer multiple of any integer from your collection.
+By subtracting an integer from your collection from itself,  you can build zero.
+By repeated subtraction, you can build any negative integer multiple of any integer from your collection.
+So by adding up, you can build any linear combination \(s_1m_1+s_2m_2+\dots+s_nm_n\) of integer multiples \(s_1,s_2,\dots,s_n\) of any elements \(m_1,m_2,\dots,m_n\) from the collection,  with any integers \(s_1,s_2,\dots,s_n\).
 If all integers in our collection are divisible by some integer \(d\), then clearly so are any integer multiples or finite sums of integer multiples.
 So the greatest common divisor divides all such sums.
 Hence the greatest common divisor is unchanged if we replace the collection by the collection of all such sums.
 So we can suppose that any such sum is already in our collection.
-There are such sums which are positive, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
-By well ordering, there is a least such positive sum \(d\).
-Take quotient and remainder of any element \(m\) in our collection by \(d\): \(m=qd+r\).
-The remainder \(r=m-qd\) is also in the collection, but smaller than \(d\), and therefore is zero.
+Our collection contains some positive integer, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
+By well ordering, there is a least positive element \(c\) in our collection.
+Take quotient and remainder of any element \(m\) in our collection by \(c\): \(m=qc+r\).
+The remainder \(r=m-qc\) is also in the collection, not negative, but smaller than \(c\), and therefore is zero.
+So \(c\) is a common divisor of every element in the collection.
+Since \(d\) is the greatest common divisor, \(c\le d\).
+But \(c\) is in the collection, and \(d\) divides everyhing in the collection, so \(d\) divides \(c\), so \(d\le c\).
+Hence \(c=d\), i.e. the greatest common divisor is the smallest positive integer we can build.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:induction:pascal}.}
 When we expand out \((1+x)^n\), each term in the expansion arises from choosing either \(1\) or \(x\) from each factor \(1+x\), and multiplying out the choices to produce the term.
 So terms with \(x^k\) arise when we choose \(x\) from \(k\) of the factors \(1+x\), and \(1\) from the other \(n-k\).

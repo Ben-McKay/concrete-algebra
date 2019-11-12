@@ -99,55 +99,55 @@
 \contentsline {chapter}{\chapternumberline {17}Algebraic curves in the plane}{139}{chapter.17}%
 \contentsline {section}{Example}{139}{section*.84}%
 \contentsline {section}{Definition}{140}{section*.85}%
-\contentsline {section}{Plane conics}{142}{section*.86}%
-\contentsline {section}{Rational functions}{143}{section*.87}%
-\contentsline {section}{Integrals}{145}{section*.88}%
-\contentsline {section}{Ideals}{146}{section*.89}%
-\contentsline {section}{Sage}{146}{section*.90}%
-\contentsline {chapter}{\chapternumberline {18}Where plane curves intersect}{149}{chapter.18}%
-\contentsline {section}{Vanishing polynomials}{149}{section*.91}%
-\contentsline {section}{Linear factors}{150}{section*.92}%
-\contentsline {section}{Resultants in many variables}{151}{section*.93}%
-\contentsline {chapter}{\chapternumberline {19}Quotient rings}{157}{chapter.19}%
-\contentsline {section}{Sage}{160}{section*.94}%
-\contentsline {section}{Automorphisms of splitting fields}{161}{section*.95}%
-\contentsline {section}{Transcendental numbers}{161}{section*.96}%
-\contentsline {section}{Finite fields}{162}{section*.97}%
-\contentsline {section}{Sage}{164}{section*.98}%
-\contentsline {chapter}{\chapternumberline {20}Field extensions and algebraic curves}{165}{chapter.20}%
-\contentsline {section}{Rational curves}{166}{section*.99}%
-\contentsline {chapter}{\chapternumberline {21}The projective plane}{169}{chapter.21}%
-\contentsline {section}{Homogeneous coordinates}{172}{section*.100}%
-\contentsline {section}{Example: the Fano plane}{174}{section*.101}%
-\contentsline {section}{Projective space}{175}{section*.102}%
-\contentsline {chapter}{\chapternumberline {22}Algebraic curves in the projective plane}{177}{chapter.22}%
-\contentsline {section}{Homogenisation of plane curves}{177}{section*.103}%
-\contentsline {section}{Conics}{178}{section*.104}%
-\contentsline {section}{Counting intersections of curves}{180}{section*.105}%
-\contentsline {section}{Breaking curves into components}{183}{section*.106}%
-\contentsline {section}{Counting intersections}{184}{section*.107}%
-\contentsline {section}{Sage}{188}{section*.108}%
-\contentsline {chapter}{\chapternumberline {23}Families of plane curves}{191}{chapter.23}%
-\contentsline {section}{Pencils of curves}{191}{section*.109}%
-\contentsline {section}{Polygons}{193}{section*.110}%
-\contentsline {section}{Pascal's mystic hexagon}{193}{section*.111}%
-\contentsline {section}{The space of curves of given degree}{195}{section*.112}%
-\contentsline {chapter}{\chapternumberline {24}Elliptic curves}{201}{chapter.24}%
-\contentsline {section}{Cubic curves}{201}{section*.113}%
-\contentsline {section}{Elliptic curves}{202}{section*.114}%
-\contentsline {chapter}{\chapternumberline {25}The tangent line}{205}{chapter.25}%
-\contentsline {section}{Lines crossing a curve}{205}{section*.115}%
-\contentsline {section}{Singular points}{207}{section*.116}%
-\contentsline {chapter}{\chapternumberline {26}Inflection points}{215}{chapter.26}%
-\contentsline {chapter}{\chapternumberline {27}Conics and quadratic forms}{223}{chapter.27}%
-\contentsline {section}{Quadratic forms}{223}{section*.117}%
-\contentsline {section}{Plane conics}{226}{section*.118}%
-\contentsline {chapter}{\chapternumberline {28}Projective duality}{229}{chapter.28}%
-\contentsline {section}{Dual curves}{229}{section*.119}%
-\contentsline {chapter}{\chapternumberline {29}Polynomial equations have solutions}{233}{chapter.29}%
-\contentsline {section}{Affine space}{233}{section*.120}%
-\contentsline {section}{Closed sets}{235}{section*.121}%
-\contentsline {chapter}{Hints}{239}{chapter*.122}%
-\contentsline {chapter}{Bibliography}{261}{chapter*.123}%
-\contentsline {chapter}{List of notation}{263}{section*.125}%
-\contentsline {chapter}{\indexname }{265}{section*.126}%
+\contentsline {section}{Plane conics}{143}{section*.86}%
+\contentsline {section}{Rational functions}{144}{section*.87}%
+\contentsline {section}{Integrals}{146}{section*.88}%
+\contentsline {section}{Ideals}{147}{section*.89}%
+\contentsline {section}{Sage}{147}{section*.90}%
+\contentsline {chapter}{\chapternumberline {18}Where plane curves intersect}{151}{chapter.18}%
+\contentsline {section}{Vanishing polynomials}{151}{section*.91}%
+\contentsline {section}{Linear factors}{152}{section*.92}%
+\contentsline {section}{Resultants in many variables}{153}{section*.93}%
+\contentsline {chapter}{\chapternumberline {19}Quotient rings}{159}{chapter.19}%
+\contentsline {section}{Sage}{162}{section*.94}%
+\contentsline {section}{Automorphisms of splitting fields}{163}{section*.95}%
+\contentsline {section}{Transcendental numbers}{164}{section*.96}%
+\contentsline {section}{Finite fields}{165}{section*.97}%
+\contentsline {section}{Sage}{167}{section*.98}%
+\contentsline {chapter}{\chapternumberline {20}Field extensions and algebraic curves}{169}{chapter.20}%
+\contentsline {section}{Rational curves}{170}{section*.99}%
+\contentsline {chapter}{\chapternumberline {21}The projective plane}{173}{chapter.21}%
+\contentsline {section}{Homogeneous coordinates}{176}{section*.100}%
+\contentsline {section}{Example: the Fano plane}{178}{section*.101}%
+\contentsline {section}{Projective space}{179}{section*.102}%
+\contentsline {chapter}{\chapternumberline {22}Algebraic curves in the projective plane}{181}{chapter.22}%
+\contentsline {section}{Homogenisation of plane curves}{181}{section*.103}%
+\contentsline {section}{Conics}{182}{section*.104}%
+\contentsline {section}{Counting intersections of curves}{184}{section*.105}%
+\contentsline {section}{Breaking curves into components}{187}{section*.106}%
+\contentsline {section}{Counting intersections}{188}{section*.107}%
+\contentsline {section}{Sage}{192}{section*.108}%
+\contentsline {chapter}{\chapternumberline {23}Families of plane curves}{195}{chapter.23}%
+\contentsline {section}{Pencils of curves}{195}{section*.109}%
+\contentsline {section}{Polygons}{197}{section*.110}%
+\contentsline {section}{Pascal's mystic hexagon}{198}{section*.111}%
+\contentsline {section}{The space of curves of given degree}{199}{section*.112}%
+\contentsline {chapter}{\chapternumberline {24}Elliptic curves}{205}{chapter.24}%
+\contentsline {section}{Cubic curves}{205}{section*.113}%
+\contentsline {section}{Elliptic curves}{206}{section*.114}%
+\contentsline {chapter}{\chapternumberline {25}The tangent line}{209}{chapter.25}%
+\contentsline {section}{Lines crossing a curve}{209}{section*.115}%
+\contentsline {section}{Singular points}{211}{section*.116}%
+\contentsline {chapter}{\chapternumberline {26}Inflection points}{219}{chapter.26}%
+\contentsline {chapter}{\chapternumberline {27}Conics and quadratic forms}{227}{chapter.27}%
+\contentsline {section}{Quadratic forms}{227}{section*.117}%
+\contentsline {section}{Plane conics}{230}{section*.118}%
+\contentsline {chapter}{\chapternumberline {28}Projective duality}{233}{chapter.28}%
+\contentsline {section}{Dual curves}{233}{section*.119}%
+\contentsline {chapter}{\chapternumberline {29}Polynomial equations have solutions}{237}{chapter.29}%
+\contentsline {section}{Affine space}{237}{section*.120}%
+\contentsline {section}{Closed sets}{239}{section*.121}%
+\contentsline {chapter}{Hints}{243}{chapter*.122}%
+\contentsline {chapter}{Bibliography}{265}{chapter*.123}%
+\contentsline {chapter}{List of notation}{267}{section*.125}%
+\contentsline {chapter}{\indexname }{269}{section*.126}%

@@ -79,17 +79,16 @@ A surjective and injective morphism is an \emph{isomorphism}\define{isomorphism!
 If there is an isomorphism between rings \(R\) and \(S\), they are \emph{isomorphic}\define{isomorphic!rings}, denoted \(R \cong S\).\Notation{R=S}{R \cong S}{isomorphic rings}
 If two rings are isomorphic, then they are identical for all practical purposes.
 An isomorphism \(f \colon R \to  R\) from a ring to itself is an \emph{automorphism}.\define{automorphism!ring}
-
 \begin{example}
 Take some positive integers \(m_1, m_2, \dots, m_n\).
 Let 
 \[
 m\defeq m_1 m_2 \dots m_n.
 \]
-For each \(k \in \Zmod{m}\), write its remainder modulo \(m_1\) as \(\bar{k}_1\), and so on.
-Write \(\bar{k}\) to mean 
+For each \(b \in \Zmod{m}\), write its remainder modulo \(m_1\) as \(\bar{b}_1\), and so on.
+Write \(\bar{b}\) to mean 
 \[
-\bar{k} \defeq \pr{\bar{k}_1, \bar{k}_2, \dots, \bar{k}_n}.
+\bar{b} \defeq \pr{\bar{b}_1, \bar{b}_2, \dots, \bar{b}_n}.
 \]
 Let
 \[
@@ -101,7 +100,7 @@ f \colon \Zmod{m} \to S
 \)
 by 
 \(
-f(k)=\bar{k}.
+f(b)=\bar{b}.
 \)
 It is clear that \(f\) is a ring morphism.
 The Chinese\SubIndex{Chinese remainder theorem} remainder theorem states that \(f\) is a ring \emph{isomorphism} precisely when any two of the integers 
@@ -122,25 +121,18 @@ For example, if \(m=3030=2\cdot3\cdot5\cdot101\), then
 \pr{\Zmod{101}}.
 \]
 \end{example}
-
 \begin{problem}{rings:z.four}
 Prove that \(\Zmod{4}\) is \emph{not} isomorphic to \(\pr{\Zmod{2}}\oplus\pr{\Zmod{2}}\).
 \end{problem}
-
 \begin{problem}{rings:zero.ring}
 Prove that any two rings that contains exactly one element are isomorphic, by a unique isomorphism.
 \end{problem}
 
-
-
 \section{Kernels}
-
 The main trick to understand complicated rings is to find morphisms to them from more elementary rings, and from them to more elementary rings.
-
 \begin{problem}{rings:images}
 Prove that every subring of any given ring is the image of some morphism of rings.
 \end{problem}
-
 It is natural to ask which subrings of a ring are kernels of morphisms.
 An \emph{ideal}\define{ideal} of a commutative ring \(R\) is a nonempty subset \(I\) of \(R\) so that, if \(i, j\) are in \(I\) then \(i-j\) is in \(I\) and if \(i\) is in \(I\) and \(r\) is in \(R\) then \(ri\) is in \(I\): an ideal is \emph{sticky} under multiplication. 
 \begin{example}
@@ -155,7 +147,6 @@ The real polynomials in a variable \(x\) vanishing to order \(3\) or more at the
 Note why they are sticky: if \(i=x^3 p(x)\) and \(r=q(x)\) then \(ri=x^3p(x)q(x)\) has a factor of \(x^3\) still, so also vanishes to order \(3\) or more.
 This is a good way to think about ideals: they remind us of the ideal of functions vanishing to some order somewhere, inside some ring of functions.
 \end{example}
-
 \begin{problem}{rings:rational.ideals}
 Prove that the only ideals in \(\Q{}\) are \(0\) and \(\Q{}\).
 \end{problem}

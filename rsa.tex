@@ -13,8 +13,8 @@
 \section{RSA: the Cocks, Rivest, Shamir and Adleman algorithm}\SubIndex{RSA algorithm}
 \begin{example}
 Alice\SubIndex{Alice} wants to send a message to Bob,\SubIndex{Bob} but she doesn't want Eve\SubIndex{Eve} to read it.
-She first writes the message down in a computer, as a collection of 0's and 1's.
-She can think of these 0's and 1's as binary digits of some large integer \(x\), or as binary digits of some \emph{remainder}\SubIndex{remainder} \(x\) modulo some large integer \(m\).
+She first writes the message down in a computer, as a collection of \(0\)'s and \(1\)'s.
+She can think of these \(0\)'s and \(1\)'s as binary digits of some large integer \(x\), or as binary digits of some \emph{remainder}\SubIndex{remainder} \(x\) modulo some large integer \(m\).
 Alice takes her message \(x\) and turns it into a secret coded message by sending Bob not the original \(x\), but instead sending him \(x^d\) modulo \(m\), for some integer \(d\).
 This will scramble up the digits of \(x\) unrecognizably, if \(d\) is chosen ``at random''.
 For random enough \(d\), and suitably chosen positive integer \(m\), Bob can unscramble the digits of \(x^d\) to find \(x\).
@@ -22,24 +22,31 @@ For random enough \(d\), and suitably chosen positive integer \(m\), Bob can uns
 \begin{example}
 For example, take \(m\defeq 55\) and let \(d\defeq 17\) and \(y\defeq x^{17} \operatorname{mod} 55\):
 \[
-\begin{array}{@{}rr@{\hspace{1cm}}rr@{\hspace{1cm}}rr@{\hspace{1cm}}rr@{}}
+\begin{array}{@{}rrp{0pt}rrp{0pt}rrp{0pt}rr@{}}
 \toprule
-x & y & x & y & x & y & x & y \\
-\midrule
-0 & 0 & 14 & 9 & 28 & 8 & 42 & 37\\ 
- 1 & 1 & 15 & 5 & 29 & 39 & 43 & 43\\ 
- 2 & 7 & 16 & 36 & 30 & 35 & 44 & 44\\ 
- 3 & 53 & 17 & 52 & 31 & 26 & 45 & 45\\ 
- 4 & 49 & 18 & 28 & 32 & 32 & 46 & 51\\ 
- 5 & 25 & 19 & 24 & 33 & 33 & 47 & 42\\ 
- 6 & 41 & 20 & 15 & 34 & 34 & 48 & 38\\ 
- 7 & 17 & 21 & 21 & 35 & 40 & 49 & 14\\ 
- 8 & 13 & 22 & 22 & 36 & 31 & 50 & 30\\ 
- 9 & 4 & 23 & 23 & 37 & 27 & 51 & 6\\ 
- 10 & 10 & 24 & 29 & 38 & 3 & 52 & 2\\ 
- 11 & 11 & 25 & 20 & 39 & 19 & 53 & 48\\ 
- 12 & 12 & 26 & 16 & 40 & 50 & 54 & 54\\ 
- 13 & 18 & 27 & 47 & 41 & 46 & 55 & 0\\ 
+x & y && x & y && x & y && x & y \\
+\cmidrule(r){1-1}
+\cmidrule(lr){2-2}
+\cmidrule(lr){4-4}
+\cmidrule(lr){5-5}
+\cmidrule(lr){7-7}
+\cmidrule(lr){8-8}
+\cmidrule(lr){10-10}
+\cmidrule(l){11-11}
+ 0 & 0 && 14 & 9 && 28 & 8 && 42 & 37\\ 
+ 1 & 1 && 15 & 5 && 29 & 39 && 43 & 43\\ 
+ 2 & 7 && 16 & 36 && 30 & 35 && 44 & 44\\ 
+ 3 & 53 && 17 & 52 && 31 & 26 && 45 & 45\\ 
+ 4 & 49 && 18 & 28 && 32 & 32 && 46 & 51\\ 
+ 5 & 25 && 19 & 24 && 33 & 33 && 47 & 42\\ 
+ 6 & 41 && 20 & 15 && 34 & 34 && 48 & 38\\ 
+ 7 & 17 && 21 & 21 && 35 & 40 && 49 & 14\\ 
+ 8 & 13 && 22 & 22 && 36 & 31 && 50 & 30\\ 
+ 9 &   4 && 23 & 23 && 37 & 27 && 51 & 6\\ 
+ 10 & 10 && 24 & 29 && 38 & 3 && 52 & 2\\ 
+ 11 & 11 && 25 & 20 && 39 & 19 && 53 & 48\\ 
+ 12 & 12 && 26 & 16 && 40 & 50 && 54 & 54\\ 
+ 13 & 18 && 27 & 47 && 41 & 46 && 55 & 0\\ 
 % s=""
 %for i in range(0,14):
 %    s=s+"{} & {} & {} & {} & {} & {} & {} & {}".format(i,mod(i,55)^(17),i+14,mod(i+14,55)^(17),i+2*14,mod(i+2*14,55)^(17),i+3*14,mod(i+3*14,55)^(17))+r"\\" + " \n "
@@ -95,6 +102,87 @@ x & y & x & y & x & y & x & y \\
 \bottomrule
 \end{array}
 \]
+%\[
+%\begin{array}{@{}rr@{\hspace{1cm}}rr@{\hspace{1cm}}rr@{\hspace{1cm}}rr@{}}
+%\toprule
+%x & y & x & y & x & y & x & y \\
+%\cmidrule(r){1-1}
+%\cmidrule(lr{1cm}){2-2}
+%\cmidrule(lr){3-3}
+%\cmidrule(lr{1cm}){4-4}
+%\cmidrule(lr){5-5}
+%\cmidrule(lr{1cm}){6-6}
+%\cmidrule(lr){7-7}
+%\cmidrule(l){8-8}
+%0 & 0 & 14 & 9 & 28 & 8 & 42 & 37\\ 
+% 1 & 1 & 15 & 5 & 29 & 39 & 43 & 43\\ 
+% 2 & 7 & 16 & 36 & 30 & 35 & 44 & 44\\ 
+% 3 & 53 & 17 & 52 & 31 & 26 & 45 & 45\\ 
+% 4 & 49 & 18 & 28 & 32 & 32 & 46 & 51\\ 
+% 5 & 25 & 19 & 24 & 33 & 33 & 47 & 42\\ 
+% 6 & 41 & 20 & 15 & 34 & 34 & 48 & 38\\ 
+% 7 & 17 & 21 & 21 & 35 & 40 & 49 & 14\\ 
+% 8 & 13 & 22 & 22 & 36 & 31 & 50 & 30\\ 
+% 9 & 4 & 23 & 23 & 37 & 27 & 51 & 6\\ 
+% 10 & 10 & 24 & 29 & 38 & 3 & 52 & 2\\ 
+% 11 & 11 & 25 & 20 & 39 & 19 & 53 & 48\\ 
+% 12 & 12 & 26 & 16 & 40 & 50 & 54 & 54\\ 
+% 13 & 18 & 27 & 47 & 41 & 46 & 55 & 0\\ 
+%% s=""
+%%for i in range(0,14):
+%%    s=s+"{} & {} & {} & {} & {} & {} & {} & {}".format(i,mod(i,55)^(17),i+14,mod(i+14,55)^(17),i+2*14,mod(i+2*14,55)^(17),i+3*14,mod(i+3*14,55)^(17))+r"\\" + " \n "
+%%print(s)
+%%%0 & 0 & 20 & 15 & 40 & 50\\ 
+%%% 1 & 1 & 21 & 21 & 41 & 46\\ 
+%%% 2 & 7 & 22 & 22 & 42 & 37\\ 
+%%% 3 & 53 & 23 & 23 & 43 & 43\\ 
+%%% 4 & 49 & 24 & 29 & 44 & 44\\ 
+%%% 5 & 25 & 25 & 20 & 45 & 45\\ 
+%%% 6 & 41 & 26 & 16 & 46 & 51\\ 
+%%% 7 & 17 & 27 & 47 & 47 & 42\\ 
+%%% 8 & 13 & 28 & 8 & 48 & 38\\ 
+%%% 9 & 4 & 29 & 39 & 49 & 14\\ 
+%%% 10 & 10 & 30 & 35 & 50 & 30\\ 
+%%% 11 & 11 & 31 & 26 & 51 & 6\\ 
+%%% 12 & 12 & 32 & 32 & 52 & 2\\ 
+%%% 13 & 18 & 33 & 33 & 53 & 48\\ 
+%%% 14 & 9 & 34 & 34 & 54 & 54\\ 
+%%% 15 & 5 & 35 & 40 & 55 & 0\\ 
+%%% 16 & 36 & 36 & 31 & 56 & 1\\ 
+%%% 17 & 52 & 37 & 27 & 57 & 7\\ 
+%%% 18 & 28 & 38 & 3 & 58 & 53\\ 
+%%% 19 & 24 & 39 & 19 & 59 & 49\\
+%%0  &  0  &  28  &  8 \\
+%%1  &  1  &  29  &  39 \\
+%%2  &  7  &  30  &  35 \\
+%%3  &  53  &  31  &  26 \\
+%%4  &  49  &  32  &  32 \\
+%%5  &  25  &  33  &  33 \\
+%%6  &  41  &  34  &  34 \\
+%%7  &  17  &  35  &  40 \\
+%%8  &  13  &  36  &  31 \\
+%%9  &  4  &  37  &  27 \\
+%%10  &  10  &  38  &  3 \\
+%%11  &  11  &  39  &  19 \\
+%%12  &  12  &  40  &  50 \\
+%%13  &  18  &  41  &  46 \\
+%%14  &  9  &  42  &  37 \\
+%%15  &  5  &  43  &  43 \\
+%%16  &  36  &  44  &  44 \\
+%%17  &  52  &  45  &  45 \\
+%%18  &  28  &  46  &  51 \\
+%%19  &  24  &  47  &  42 \\
+%%20  &  15  &  48  &  38 \\
+%%21  &  21  &  49  &  14 \\
+%%22  &  22  &  50  &  30 \\
+%%23  &  23  &  51  &  6 \\
+%%24  &  29  &  52  &  2 \\
+%%25  &  20  &  53  &  48 \\
+%%26  &  16  &  54  &  54 \\
+%%27  &  47  &  55  &  0 \\
+%\bottomrule
+%\end{array}
+%\]
 If Alice sends Bob the secret message \(y=x^{17}\), then Bob decodes it by \(x=y^{33}\), as we will see.
 \end{example}
 \begin{theorem}\label{theorem:RSA}

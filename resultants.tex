@@ -231,11 +231,6 @@ not all zero,  so that \(u(x)b(x)+v(x)c(x)=0\).
 In other words, there are polynomials \(u(x)\) and \(v(x)\) of required degrees so that \(u(x)b(x)+v(x)c(x)=0\).
 The theorem now follows from lemma~\vref{lemma:common.factor.polys}.
 \end{proof}
-
-The resultant is brutal to compute, even for polynomials of fairly small degree.
-Its importance, like that of the determinant of a matrix, arises from its theoretical power.
-At this point, the reader should be annoyed: we already know how to find common divisors, even the greatest common divisor, by a fast calcuation, so we surely don't need a slow resultant calculation to see if there is a common divisor of positive degree, since we can already actually find that divisor, and more quickly.
-The reader is right, but surprisingly we will find many uses for the resultant.
 \begin{problem}{polynomials:resultant}
 Find the resultants, and use them to decide if there are nonconstant common factors.
 \begin{enumerate}
@@ -243,8 +238,12 @@ Find the resultants, and use them to decide if there are nonconstant common fact
 \item \(x^2+1,x-1\)
 \end{enumerate} 
 \end{problem}
+The resultant is brutal to compute, even for polynomials of fairly small degree.
+Its importance, like that of the determinant of a matrix, arises from its theoretical power.
+At this point, the reader should be annoyed: we already know how to find common divisors, even the greatest common divisor, by a fast calculation, so we surely don't need a slow resultant calculation to see if there is a common divisor of positive degree, since we can already actually find that divisor, and more quickly.
+The reader is right, but surprisingly we will find many uses for the resultant.
 \begin{problem}{resultants:mod.2}
-Over the field of remainders modulo 2, calculate the resultant of \(b(x)=x^3+x^2+x+1, c(x)=x^3+x\).
+Over the field of remainders modulo \(2\), calculate the resultant of \(b(x)=x^3+x^2+x+1, c(x)=x^3+x\).
 \emph{Warning}: the \(6 \times 6\) determinant you get is actually easier than it looks at first, so look for tricks to find it without any hard calculation.
 \end{problem}
 \begin{answer}{resultants:mod.2}
@@ -685,9 +684,9 @@ Since \(\Delta \ne 0\), we see that there are no double roots over the complex n
 Prove that the sign of the discriminant \(\Delta\) of a monic cubic polynomial tells us that the number of roots is:
 \[
 \begin{array}{@{}rl@{}}
-\Delta > 0 & \text{3 distinct roots} \\
-\Delta = 0 & \text{a triple root or 1 real double root and 1 real single root} \\
-\Delta < 0 & \text{1 real and 2 complex roots}.
+\Delta > 0 & \text{\(3\) distinct roots} \\
+\Delta = 0 & \text{a triple root or \(1\) real double root and \(1\) real single root} \\
+\Delta < 0 & \text{\(1\) real and \(2\) complex roots}.
 \end{array}
 \]
 \end{problem}

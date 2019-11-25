@@ -1,9 +1,0 @@
-\contentsline {section}{\tocsection {}{1}{My first section}}{1}
-\contentsline {subsection}{\tocsubsection {}{1.1}{My first subsection}}{3}
-\contentsline {subsection}{\tocsubsection {}{1.2}{My second subsection}}{4}
-\contentsline {subsection}{\tocsubsection {}{1.3}{My third subsection}}{6}
-\contentsline {section}{\tocsection {}{2}{My second section}}{7}
-\contentsline {subsection}{\tocsubsection {}{2.1}{My fourth subsection}}{9}
-\contentsline {subsection}{\tocsubsection {}{2.2}{My fifth subsection}}{10}
-\contentsline {subsection}{\tocsubsection {}{2.3}{My sixth subsection}}{12}
-\contentsline {subsection}{\tocsubsection {}{2.4}{My seventh subsection}}{13}

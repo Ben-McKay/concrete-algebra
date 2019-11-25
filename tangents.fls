@@ -1,6 +1,0 @@
-PWD /home/user/Documents/teaching/algebra/MS2014
-INPUT /usr/local/texlive/2016/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT tangents.tex
-OUTPUT tangents.log

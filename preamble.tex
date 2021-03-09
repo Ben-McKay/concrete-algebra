@@ -1,11 +1,8 @@
-\documentclass[ContainsChinese]{mckaybook}
-
+\documentclass[ContainsChinese]{willowtreebook}
 \Title{Concrete Algebra}
 \Subtitle{With a View Toward Abstract Algebra}
 \Author{\texorpdfstring{Benjamin \scotsMc{}Kay}{Benjamin McKay}}
-\Location{University College Cork}
 \BibliographyFile{algebra}
-
 \usepackage{longdivision}
 \usepackage{standalone}
 \usepackage{xstring}
@@ -29,6 +26,7 @@ positioning,
 trees,
 through
 }
+\usepackage{tikz-cd}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}
 \usepackage{tikz-3dplot}
@@ -170,5 +168,8 @@ through
 \NewDocumentCommand\Hessian{m}{\ensuremath{\det #1''}}
 
 \NewDocumentCommand\pres{mo}{\ensuremath{\IfValueTF{#2}{\braketDelim{#1}{#2}}{\left<#1\right>}}}
+
+\NewDocumentCommand\Gr{mo}{\ensuremath{\operatorname{Gr}_{#1}\IfValueT{#2}{\!{#2}}}}
+\NewDocumentCommand\GL{m}{\ensuremath{\operatorname{GL}_{#1}}}
 
 \input{colorScheme}

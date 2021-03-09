@@ -308,7 +308,7 @@ Prove that \(p(c)=q(c)\) for all numbers \(c\) from the field.
 \begin{problem}{polynomials:not.prime.characteristic}
 Why are we working over fields?
 Working modulo \(6\), consider the polynomial \(b(x)=x^2+5x\).
-How many roots does it have among the remainders module \(6\)?
+How many roots does it have among the remainders modulo \(6\)?
 How many factorizations can you make for it, working modulo \(6\)?
 \end{problem}
 \begin{answer}{polynomials:not.prime.characteristic}
@@ -364,8 +364,9 @@ Using lemma~\vref{lemma:guess.roots}, find all rational roots of
 \(x^2/3-x-5/3\),
 \end{enumerate}
 \end{problem}
-
-
+\begin{problem}{polynomials:odd.roots}
+Prove that any quadratic equation with odd integer coefficients has no rational roots.
+\end{problem}
 
 \section{Sage}
 \epigraph[author={Norbert Wiener}, source={The Human Use Of Human Beings: Cybernetics And Society}]{The world of the future will be an even more demanding struggle against the limitations of our intelligence, not a comfortable hammock in which we can lie down to be waited upon by our robot slaves.}\SubIndex{Wiener, Norbert}\SubIndex{The Human Use Of Human Beings: Cybernetics And Society}%
@@ -429,7 +430,7 @@ We can define our own function to calculate B\'ezout coefficients, which does ex
 def bezpoly(b,c):
     p,q,r=1,0,b
     s,t,u=0,1,c
-    while u<>0:
+    while u!=0:
         if r.degree()>u.degree():
             p,q,r,s,t,u=s,t,u,p,q,r
         Q=u//r

@@ -509,11 +509,11 @@ so
 We can make sage code for our fast trick:
 \begin{sageblock}
 R.<x> = PolynomialRing(QQ)
-def fastresultant(b,c):
+def fast_resultant(b,c):
     m=b.degree()
     n=c.degree()
     if m<n:
-        return (-1)^(m*n)*fastresultant(c,b)
+        return (-1)^(m*n)*fast_resultant(c,b)
     if n==0:
         if m==0:
             return 1
@@ -525,10 +525,29 @@ def fastresultant(b,c):
     r=B % C
     if (r==0):
         return 0
-    return (-1)^(m*n)*lb^n*lc^m*fastresultant(C,r)
+    return (-1)^(m*n)*lb^n*lc^m*fast_resultant(C,r)
 \end{sageblock}
-so that \verb!fastresultant(x^3+x+7,x^2+2)! yields \(\sage{fastresultant(x^3+x+7,x^2+2)}\).
-
+so that \verb!fast_resultant(x^3+x+7,x^2+2)! yields \(\sage{fast_resultant(x^3+x+7,x^2+2)}\).
+We can run a speed test, 
+\begin{verbatim}
+b=sum([ZZ.random_element(0,100)*x^j for j in [0..100]])
+c=sum([ZZ.random_element(0,100)*x^j for j in [0..100]])
+print("The built in resultant function from sage:")
+%timeit b.resultant(c)
+print("Our slow resultant function:")
+%timeit resultant(b,c)
+print("Our fast resultant function:")
+%timeit fast_resultant(b,c)
+\end{verbatim}
+Sage's built in routine easily wins, but we can see that the fast method is faster than the slow one:
+\begin{verbatim}
+The built in resultant function from sage:
+4.48 ms ± 25.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+Our slow resultant function:
+72.8 ms ± 171 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+Our fast resultant function:
+53.2 ms ± 146 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+\end{verbatim}
 
 \subsection{The discriminant}
 For any polynomial \(p(x)\), with any sort of coefficients, say
@@ -661,7 +680,8 @@ By the quadratic formula, the zeroes of \(p'(x)\) are at
 x=-\frac{2}{3} \pm \frac{2 \sqrt{2}}{3} i,
 \]
 not real.
-Clearly \(p'(x)>0\) for all values of \(x\).
+Since \(p'(x)\) has only positive coefficients, \(p'(x)>0\) for \(x>0\).
+But \(p'(x)\) has no real zeroes, so \(p'(x)>0\) for all real values of \(x\).
 Therefore \(p(x)\) is increasing, so has precisely one real root, irrational and negative.
 The two remaining complex roots are nonreal conjugates.
 The discriminant of \(p(x)\) is
@@ -679,6 +699,33 @@ The discriminant of \(p(x)\) is
 \]
 Since \(\Delta \ne 0\), we see that there are no double roots over the complex numbers, which is already clear.
 \end{example}
+
+\begin{problem}{resultants:cubic.discriminant.a}
+Suppose that \(a\) is a real number.
+Find the discriminant of \(q(x)=x^3+ax+1\).
+For which real numbers \(a\) does \(q(x)\) have a multiple root?
+What is the multiplicity of that root?
+\end{problem}
+\begin{answer}{resultants:cubic.discriminant.a}
+The discriminant is the resultant of \(p(x),p'(x)\), so the determinant of
+\[
+\begin{pmatrix}
+1&0&a&0&0\\
+a&1&0&a&0\\
+0&a&3&0&a\\
+1&0&0&3&0\\
+0&1&0&0&3
+\end{pmatrix}
+\]
+which is \(27+4a^3\), so vanishes just when \(a=-3/\sqrt[3]{4}\).
+For this value of \(a\), the polynomial actually factors:
+\[
+x^3-\frac{3}{\sqrt[3]{4}}x+1
+=
+(x-2^{-1/3})^2(x+2^{2/3}),
+\]
+so a double root at \(x=2^{-1/3}\) and a single root at \(x=-2^{2/3}\).
+\end{answer}
 
 \begin{problem}{resultants:cubic.discriminant}
 Prove that the sign of the discriminant \(\Delta\) of a monic cubic polynomial tells us that the number of roots is:

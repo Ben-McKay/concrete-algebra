@@ -30,35 +30,91 @@ So, for example,
 -2\alpha.
 \end{align*}
 \end{example}
+\begin{example}
+If \(p(x)=x^2\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), since \(\alpha^2=0\).
+The remainder \(\alpha\) is very much like the ``very small quantities'' that physicists talk about, so small that the square is negligibly small and can be dropped from calculations.
+\end{example}
+\begin{example}
+If \(p(x)=x(x-1)\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), but with \(\alpha(\alpha-1)=0\), so \(\alpha^2=\alpha\).
+Think of \(\alpha\) as a number which can't decide whether it wants to be zero or one, and is somehow behaving like both zero and one at the same time.
+\end{example}
 \begin{example}\label{factoring:split.it}
 Let \(p(x)\defeq x^2+x+1\) with coefficients over the field of remainders modulo \(2\).
 Write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
-To find \(\alpha^{-1}\), compute B\'ezout coefficients:
-\begin{align*}
-&\begin{pmatrix}
-1 & 0 & x \\
-0 & 1 & x^2+x+1
-\end{pmatrix}, \text{ add \((x+1)\)(row 1) to row 2},
-\\
-&\begin{pmatrix}
-1 & 0 & x \\
-x+1 & 1 & 1
-\end{pmatrix}, \text{ add \(x\)(row 2) to row 1},
-\\
-&\begin{pmatrix}
-x^2+x+1 & x & 0 \\
-x+1 & 1 & 1
-\end{pmatrix}.
-\end{align*}
-So the B\'ezout coefficients are
+To find \(\alpha^{-1}\), write out \(0=p(\alpha)\):
 \[
-(x+1)(x)+(1)(x^2+x+1)=1.
+0=\alpha^2+\alpha+1,
 \]
-Modulo \(x^2+x+1\), we find
+and subtract the constant term to the other side:
 \[
-(\alpha+1)\alpha = 1
+1=\alpha^2+\alpha,
+\]
+and then factor out an \(\alpha\) from the nonconstant terms:
+\[
+1=\alpha(\alpha+1)
 \]
 or in other words \(\alpha^{-1}=\alpha+1\).
+\end{example}
+\begin{problem}{factoring:inverse.mod.3.and.p}
+With coefficients being integers modulo \(3\), find \(x^{-1}\) modulo \(x^9+2x^2+1\).
+\end{problem}
+\begin{answer}{factoring:inverse.mod.3.and.p}
+\[
+0=\alpha^9+2\alpha^2+1,
+\]
+\[
+-1=\alpha^9+2\alpha^2=\alpha(\alpha^8+2\alpha)
+\]
+\[
+\frac{-1}{\alpha}=\alpha^8+2\alpha,
+\]
+and multiply by \(-1\) to get
+\[
+\frac{1}{\alpha}=-\alpha^8-2\alpha=2\alpha^7+\alpha
+\]
+since \(-1=2\).
+\end{answer}
+\begin{problem}{factoring:crt.mod.poly}
+Guess: what do you think the Chinese remainder theorem might be for remainders modulo polynomials, instead of working with remainders modulo integers?
+\end{problem}
+\begin{example}
+We can find reciprocals more generally, not just of \(\alpha\) but of any remainder modulo any polynomial, using B\'ezout coefficients.
+Let \(p(x)\defeq x^3+x+1\) with coefficients over the field of remainders modulo \(2\).
+Write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
+To find \((\alpha^2+\alpha+1)^{-1}\), find B\'ezout coefficients of \(p(x)\) and \(x^2+x+1\):
+\begin{align*}
+& \begin{pmatrix}
+    1 & 0 & x^2+x+1 \\
+    0 & 1 & x^3+x+1
+  \end{pmatrix} \text{ add \(x\)row 2 to row 1}, 
+  \\
+& \begin{pmatrix}
+    1 & 0 & x^2+x+1 \\
+    x & 1 & x^2+1
+  \end{pmatrix} \text{ add row 2 to row 1}, 
+  \\
+& \begin{pmatrix}
+    1+x & 1 & x \\
+    x & 1 & x^2+1
+  \end{pmatrix} \text{ add \(x\)row 1 to row 2}, 
+  \\
+& \begin{pmatrix}
+    1+x & 1 & x \\
+    x^2 & x+1 & 1
+  \end{pmatrix}.
+\end{align*}
+Hence
+\[
+(x^2)(x^2+x+1)+(x+1)(x^3+x+1)=1.
+\]
+Modulo out \(p(x)\) to get
+\[
+(\alpha^2)(\alpha^2+\alpha+1)=1.
+\]
+Hence
+\[
+\frac{1}{\alpha^2+\alpha+1}=\alpha^2.
+\]
 \end{example}
 \begin{problem}{factoring:quot.poly}
 Work out the complete multiplication table for the remainders of polynomials in \(x\) when we quotient out by \(x^2+x\) over the field of remainders modulo \(3\).
@@ -164,23 +220,6 @@ Which elements have reciprocals?
 \end{array}
 \]
 \end{answer}
-\begin{problem}{factoring:inverse.mod.3.and.p}
-With coefficients being integers modulo \(3\), find \(x^{-1}\) modulo \(x^9+2x^2+1\).
-\end{problem}
-\begin{answer}{factoring:inverse.mod.3.and.p}
-\(2x^8+x\)
-\end{answer}
-\begin{problem}{factoring:crt.mod.poly}
-Guess: what do you think the Chinese remainder theorem might be for remainders modulo polynomials, instead of working with remainders modulo integers?
-\end{problem}
-\begin{example}
-If \(p(x)=x^2\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), since \(\alpha^2=0\).
-The remainder \(\alpha\) is very much like the ``very small quantities'' that physicists talk about, so small that the square is negligibly small and can be dropped from calculations.
-\end{example}
-\begin{example}
-If \(p(x)=x(x-1)\), and again letting \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), then quotienting out \(p(x)\) yields remainders of the form \(b + c \alpha\), but with \(\alpha(\alpha-1)=0\), so \(\alpha^2=\alpha\).
-Think of \(\alpha\) as a number which can't decide whether it wants to be zero or one, and is somehow behaving like both zero and one at the same time.
-\end{example}
 
 \section{Field extensions}
 If \(k\) and \(K\) are fields and \(k\) is contained in \(K\), with the same identity element, zero element, addition and multiplication operations, then \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
@@ -309,12 +348,12 @@ The real-coefficient polynomial \(x^2+1\) splits over \(\C{}\):
 x^2+1=\left(x-i\right)\left(x+i\right).
 \]
 \end{example}
+An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field} of a polynomial \(p(x)\) over \(k\) if \(p(x)\) splits over \(K\) and every element of \(K\) is expressible as a rational function (with coefficients from \(k\)) of the roots of \(p(x)\).
 \begin{problem}{fields:sqrt.2}
 Denote by \(\Q{}\of{\sqrt{2}}\) the field extension of \(\Q{}\) generated by \(\sqrt{2}\), i.e. the smallest subfield of \(\C{}\) containing \(\sqrt{2}\).
 Prove that \(\Q{}\of{\sqrt{2}}\) consists precisely of the numbers \(b+c\sqrt{2}\) for \(b, c\) rational.
 Prove that \(\Q{}\of{\sqrt{2}}\) is a splitting field for \(x^2-2\) over \(\Q{}\).
 \end{problem}
-An extension \(K\) of a field \(k\) is a \emph{splitting field}\define{splitting field} of a polynomial \(p(x)\) over \(k\) if \(p(x)\) splits over \(K\) and every element of \(K\) is expressible as a rational function (with coefficients from \(k\)) of the roots of \(p(x)\).
 \begin{theorem}\label{theorem:splitting.field}
 Every polynomial \(p(x)\) over any field \(k\) has a splitting field \(K\).
 If \(p(x)\) has degree \(n\) then \(K\) has degree at most \(n!\) over \(k\).

@@ -181,7 +181,7 @@ def bezpretty(b,c):
     M = matrix([[p,q,r],[s,t,u]])
     result="\\begin{align*}\n"
     result=result+"&{}\\\\ ".format(latex(M))
-    while u<>0:
+    while u!=0:
         if abs(r)>abs(u):
             p,q,r,s,t,u=s,t,u,p,q,r
         Q=u//r
@@ -228,7 +228,7 @@ We can write our own function to compute B\'ezout coefficients:
 def bez(b,c):
     p,q,r=1,0,b
     s,t,u=0,1,c
-    while u<>0:
+    while u!=0:
         if abs(r)>abs(u):
             p,q,r,s,t,u=s,t,u,p,q,r
         Q=u//r

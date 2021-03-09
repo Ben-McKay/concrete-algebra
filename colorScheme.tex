@@ -1,19 +1,19 @@
-\colorlet{curveZero}{gray!75}
+\colorlet{curveZero}{gray!85}
 \colorlet{curveOne}{blue!60}
 \colorlet{curveTwo}{brown!50!gray}
 \colorlet{curveThree}{green!40!gray}
 \colorlet{curveFour}{red!50!gray}
 \NewDocumentCommand\DrawDotInPlot{O{}mmO{}}%
 {%
-\fill[gray!20,draw=gray] (axis cs:{#2},{#3}) circle (1.3pt) node[above,black,#4] {\(#1\)};%
+\fill[gray!15,draw=gray] (axis cs:{#2},{#3}) circle [radius=1.6pt] node[above,black,#4] {\(#1\)};%
 }%
 \NewDocumentCommand\DrawDot{O{}mmO{}}%
 {%
-\fill[gray!20,draw=gray] ({#2},{#3}) circle (1.3pt) node[above,black,#4] {\(#1\)};%
+\fill[gray!20,draw=gray] ({#2},{#3}) circle (1.6pt) node[above,black,#4] {\(#1\)};%
 }%
 \NewDocumentCommand\DrawNode{O{}m}%
 {%
-\fill[gray!20,draw=gray] (#2) circle (1.3pt) node[above,black] {\(#1\)};%
+\fill[gray!20,draw=gray] (#2) circle (1.6pt) node[above,black] {\(#1\)};%
 }%
 \colorlet{axisColor}{gray!50}
 \tikzstyle{shapeZero}=[fill=curveZero,opacity=.4]

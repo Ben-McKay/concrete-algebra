@@ -1,7 +1,5 @@
 \chapter{Algebraic curves in the projective plane}
-
 \section{Homogenisation of plane curves}
-
 Take an algebraic curve \(y^2=x^2+x^3\) in the affine plane over a field \(k\).
 \begin{center}
 \input{cubic-curve-1}
@@ -10,7 +8,6 @@ The \emph{cone}\define{cone} on the curve is the surface in \(k^3\) given by \(y
 \begin{center}
 \includegraphics[width=4cm]{cone-over-cubic}
 \end{center}
-
 The recipe: given an algebraic equation, like \(y^2=x^2+x^3\):
 \begin{enumerate}
 \item 
@@ -21,12 +18,9 @@ Invent a new variable \(z\).
 Multiply each term by a power of \(z\) so that the total degree of each term reaches \(n\).
 \end{enumerate}
 A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same total degree, i.e. sum of degrees in all variables.
-
 \begin{problem}{projective.plane:homogenise}
 Homogenise \(x^2y - x^2 + y = 1 + 2x - y^2x^3\).
 \end{problem}
-
-
 In sage:
 \begin{sageblock}
 R.<x,y,z> = PolynomialRing(QQ)
@@ -40,9 +34,7 @@ Thefore every solution lies on a line through the origin consisting of other sol
 The set of solutions is a surface, which is a union of lines through the origin.
 A \emph{projective plane curve}\define{projective!plane curve}\define{plane curve!projective}\define{curve!projective plane} is the set of lines through the origin satisfying a nonzero homogeneous polynomial.
 
-
 \section{Conics}
-
 \begin{example}
 Take a hyperbola \(xy=1\) in the affine plane, 
 \begin{center}
@@ -71,22 +63,18 @@ a circle of radius \(\frac{1}{2}\).
 So again the circle is birational to the parabola and to the hyperbola, and they all have the same rational function fields.
 In these pictures we can see why the conics are called \emph{conics}: they are all slices of the same cone.
 \end{example}
-
 \begin{example}
 The affine curve \(x^2+y^2=-1\) has no real points on it, but has complex points.
 It homogenises to \(x^2+y^2+z^2=0\), a ``sphere of zero radius'', with the origin as its only real point, but with again many complex points.
 The complex linear change of variables \(X=x-iy, Y=x+iy, Z=iz\) gives us \(XY=Z^2\), the same projective curve as before.
 So these curves are all birational over the complex numbers, and indeed are all identified by automorphisms of the complex projective plane.
 \end{example}
-
 \begin{problem}{projective.plane:dehomogenise}
 By the same trick of homogenising and dehomogenising in various variables, draw the same sort of pictures for the circle \(x^2+y^2=1\) to see what cone it homogenises to, and what curves it makes when you intersect that cone with the planes (a) \(x=1\), (b) \(y=1\) and (c) \(z=y+1\). 
 \end{problem}
 
 \section{Counting intersections of curves}
-
 \epigraph[author={Chico Marx}]{Who are you going to believe, me or your own eyes?}\SubIndex{Marx, Chico}
-
 \begin{example}
 A line through a cubic curve
 \begin{center}
@@ -211,7 +199,7 @@ p(x,y)=x(x-y)(x+2y).
 \end{example}
 \begin{example}
 The family of curves with \(y^2=ax\) contains the curve \(y^2=0\) when \(a=0\), a line.
-So a family of curves of degree 2 contains a curve of degree 1.
+So a family of curves of degree \(2\) contains a curve of degree \(1\).
 It is natural to think of the curve being a ``double line'' when \(a=0\).
 \end{example}
 
@@ -472,7 +460,7 @@ We restate B\'ezout's theorem without reference to generic triangles, since the 
 Over any field \(k\), take two projective algebraic plane curves \(B\) and \(C\) not sharing a common component.
 Over the algebraic closure \(\bar{k}\) of the field, the intersection numbers of the intersection points sum to
 \[
-\sum_{p \in \Proj[2]{\bar{k}}} \multiplicity{p}{B}{C} = \degree{B}\degree{C}.
+\sum_p \multiplicity{p}{B}{C} = \degree{B}\degree{C}.
 \]
 \end{theorem}
 

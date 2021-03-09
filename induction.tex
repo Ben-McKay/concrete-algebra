@@ -361,13 +361,15 @@ Tricks like this help us to check our induction proofs.
 
 If we write \verb!a=a+1! in sage, this means that the new value of the variable \verb!a! is equal to one more than the old value that \verb!a! had previously.
 Unlike mathematical variables, sage variables can change value over time.
-In sage the expression \verb!a<>b! means \(a \ne b\).
+In sage the expression \verb!a!=b! means \(a \ne b\).
 Although sage knows how to calculate the greatest common divisor of some integers, we can define own greatest common divisor function:
 \begin{sageblock}
 def my_gcd(a, b):
-    while b<>0:
+    if abs(a)<abs(b):
+        b,a=a,b
+    while b!=0:
         a,b=b,a%b 
-    return a
+    return abs(a)
 \end{sageblock}
 We could also write a greatest divisor function that uses repeated subtraction, avoiding the quotient operation {\%}:
 \begin{sageblock}
@@ -380,7 +382,7 @@ def gcd_by_subtraction(a, b):
         return b
     if b==0:
         return a    
-    while a<>b:
+    while a!=b:
         if a>b:
             a=a-b
         else:
@@ -398,30 +400,21 @@ When you ``add'' lists they concatenate: \verb![6]+[2]! yields \(\sage{[6]+[2]}\
 Sage uses notation \verb!L[0]!, \verb!L[1]!, and so on, to retrieve the elements of a list, instead of the usual vector notation.
 \emph{Warning:} the element \verb!L[1]! is \emph{not} the first element.
 The length of a list \(L\) is \verb!len(L)!.
-To create a list \([0,1,2,3,4,5]\) of successive integer, type \verb!range(0,6)!.
+To create a list \([0,1,2,3,4,5]\) of successive integer, type \verb!list(range(0,6))!.
 Note that the number 6 here tells you to go up to, but not include, 6.
 So a \(L\) list of \(6\) elements has elements \(L_0, L_1, \dots, L_5\), denoted \verb!L[0]!, \verb!L[1]!, \dots, \verb!L[5]! in sage.
 To retrieve the list of elements of \(L\) from \(L_2\) to \(L_4\), type \verb!L[2:5]!; again strangely this means up to but not including \(L_5\).
 
-For example, to reverse the elements of a list:
-\begin{sageblock}
-def reverse(L):
-    n=len(L)
-    if n<=1:
-        return L
-    else:
-        return L[n-1:n]+reverse(L[0:n-1])
-\end{sageblock}
 We create a list with 10 entries, print it:
 \begin{sageblock}
-L=range(0,10)
+L=list(range(0,10))
 print(L)
 \end{sageblock}
 yielding \(\sage{L}\) and then print its reversal:
 \begin{sageblock}
-print(reverse(L))
+print(L.reverse())
 \end{sageblock}
-yielding \(\sage{reverse(L)}\).
+yielding \(\sage{L.reverse()}\).
 
 We can construct a list of elements of the Fibonacci\SubIndex{Fibonacci sequence} sequence:
 \begin{sageblock}

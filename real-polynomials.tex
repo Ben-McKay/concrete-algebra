@@ -108,7 +108,7 @@ def descartes(p):
     sign = 0
     sign_changes = 0
     for c in p.list():
-        if c <> 0:
+        if c != 0:
             if sign == 0:
                 if c < 0:
                     sign = -1
@@ -242,7 +242,7 @@ To get you started: \(p_0(x)=4x^4+2x^2-1\), \(p'(x)=16x^3+4x=4(4x^3+x)\), so we 
 You should find that there is one root in that interval. You can check by letting \(x^2=t\), write as a quadratic equation in \(t\), solve with the quadratic formula, and also look at the graph:
 \begin{center}
 \begin{sagesilent}
-x=var(`x`)
+x=var("x")
 \end{sagesilent}
 \sageplot[width=6cm]{plot(4*x^4+2*x^2-1,(x,0,1))}
 \end{center}

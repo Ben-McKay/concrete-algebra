@@ -183,9 +183,12 @@ Prove that every regular projective algebraic plane curve is irreducible.
 Give an example of reducible regular affine algebraic plane curve.
 \end{problem}
 
-
-\begin{lemma}
+\begin{lemma}\label{lemma:number.of.singular.points}
 The number of singular points of an irreducible algebraic curve of degree \(d\) is at most \(d(d-1)\).
+Moreover, if the singular points have orders \(n_1,n_2,\dots,n_k\), then
+\[
+\sum_k n_k(n_k-1)\le d(d-1).
+\]
 \end{lemma}
 \begin{proof}
 The singular points are the solutions of 
@@ -199,6 +202,9 @@ p(x,y), \pderiv{p}{x}
 \]
 have a common factor, then since \(p(x,y)\) is irreducible, this factor must be \(p(x,y)\).
 But \(\pderiv{p}{x}\) is a polynomial of lower degree in \(x\) than \(p(x,y)\), a contradiction.
+So the number of common roots is \(p(x,y)\) and \(\pderiv{p}{x}\) is \(d(d-1)\) when multiplicities are counted.
+Take a singular point, and arrange that it is the origin.
+If order is \(n\), so \(p(x,y)\) expands out to have lowest nonzero term homogeneous of degree \(n\), then \(\pderiv{p}{x}\) has lowest nonzero term homogeneous of degree \(n-1\).
 \end{proof}
 
 \begin{problem}{tangents.any.order}
@@ -260,6 +266,7 @@ Then for any point \(p\) and projective algebraic plane curves \(C, D\):
 \order{p}{C}\order{p}{D} \le \multiplicity{p}{C}{D},
 \]
 with equality just when no line defined over any extension field is tangent to both curves at \(p\).
+In particular, the order \(\order{p}{C}\) is the multiplicity of intersection \(\multiplicity{p}{C}{\ell}\) for any line \(\ell\) through \(p\) which is not tangent to \(C\) at \(p\).
 \end{theorem}
 \begin{proof}
 If \(C\) or \(D\) is a line, our result is precisely theorem~\vref{theorem:tangent.intersection}.

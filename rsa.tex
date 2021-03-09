@@ -266,7 +266,7 @@ yields \(\sage{ord('A')}\), giving each letter (and punctuation sign and space, 
 To apply this to an entire string of text,
 \begin{sageblock}
 m = "HELLO WORLD"
-m = map(ord, m)
+m = list(map(ord, m))
 m
 \end{sageblock}
 yields

@@ -18,10 +18,10 @@ The level sets
 \]
 of the ratio form a collection of curves \(C_r\), called the \emph{pencil}\define{pencil} of curves containing \(B\) and \(C\).
 The curve \(B\) is \(C_0\) while \(C\) is \(C_{\infty}\).
-Every point \([x,y,z]\) in the plane lies on a unique one of these curves, with value \(r\) given by taking the value of \(p(x,y,z)/q(x,y,z)\) at that point, except for the points in \(B \cap C\), for which the ratio is never defined.
+Every point \([x,y,z]\) in the plane lies on a unique one of these curves, with value \(r\) given by taking the value of \(b(x,y,z)/c(x,y,z)\) at that point, except for the points in \(B \cap C\), for which the ratio is never defined.
 To be more precise, each curve \(C_r\) can also be written as
 \[
-p(x,y,z) = r q(x,y,z),
+b(x,y,z) = r \, c(x,y,z),
 \]
 (except for \(C_{\infty}=C\)).
 The points of \(B \cap C\) belong to \emph{all} curves \(C_r\) of the pencil.
@@ -345,8 +345,12 @@ d & d^* \\
 \bottomrule 
 \end{array}
 \]
-For example, the set of lines in \(\Proj[2]{k}\) is a 2-dimensional projective space, a projective plane, the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}.
+\begin{example}
+The set of lines in \(\Proj[2]{k}\) is a 2-dimensional projective space, a projective plane, the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}.
+\end{example}
+\begin{example}
 More generally, our projective space \(\Proj[d^*]{k}\) contains all curves of degree \(d\), reducible or irreducible.
+\end{example}
 
 A pencil\SubIndex{pencil} \(C_r = (p=rq)\) of two curves \(B\) and \(C\) is just a line inside \(\Proj[d^*]{k}\).
 More generally, a \emph{linear system}\define{linear!system} is collection of plane curves whose equations form a projective linear subspace in \(\Proj[d^*]{k}\).
@@ -367,7 +371,7 @@ In particular, if \(d^*=n\), then (after perhaps an infinite field extension) th
 \end{lemma}
 \begin{proof}
 The proof is by induction.
-For \(d=1\), there is a pencil of lines through a point (\(n=1\)) and a unique line through any 2 points (\(n=2\)) and no line through 3 or more points, if we pick our 3 points correctly.
+For \(d=1\), there is a pencil of lines through a point (\(n=1\)) and a unique line through any \(2\) points (\(n=2\)) and no line through \(3\) or more points, if we pick our \(3\) points correctly.
 Suppose that the result is true for all values of \(n\) and \(d\) less than some particular choices of \(n\) and \(d \ge 2\).
 Note that 
 \[
@@ -383,7 +387,7 @@ If we take away any points, say down to some number \(n\) of point, then the dim
 \end{proof}
  
 \begin{example}
-Through any 2 points there is precisely one line: 
+Through any \(2\) points there is precisely one line: 
 \begin{tikzpicture} 
 \draw[axisColor,very thick] (0,0) -- (1,0); 
 \DrawDot{0}{0} 
@@ -432,7 +436,74 @@ Since some line contains three of the points, by B\'ezout's theorem, that line i
 If no line contains four of the points, then each line is determined by the two points it contains which are not on the other line, and the conic is uniquely determined.
 \end{proof}
 
+\section{Prescribing singularities}
+\begin{lemma}
+The curves of a given degree \(d\) which pass through a given point of the plane, having a singularity of order \(n\) or more at that point, form a linear system of codimension \(n(n+1)/2\) in the degree \(d\) curves, if \(d\ge n\).
+\end{lemma}
+\begin{proof}
+There is such a curve, since \(d\ge n\), so the space of these curves is not empty.
+Take the point to be the origin in affine coordinates.
+Then the polynomial equations of such curves are those with all terms of degree less than \(n\) vanishing, so we can count the terms.
+\end{proof}
+\begin{theorem}\label{theorem:prescribe.singularities}
+The curves of a given degree \(d\) which pass through given points, having given orders \(n_1,n_2,\dots,n_k\) at given points \(p_1,p_2,\dots,p_k\) form a linear system of codimension no more than 
+\[
+\frac{1}{2}\sum n_j(n_j+1).
+\]
+\end{theorem}
+\begin{proof}
+We intersect the linear systems of the previous lemma.
+\end{proof}
 
+\section{Genera}
+The \emph{arithmetic genus}\define{arithmetic genus}\define{genus!arithmetic} of an irreducible plane algebraic curve of degree \(d\) is \(g=(d-2)(d-1)/2\).
+Its \emph{geometric genus}\define{genus!geometric}\define{geometric genus}, also called its \emph{deficiency}\define{deficiency}, is 
+\[
+\frac{(d-2)(d-1)}{2}-\frac{1}{2}\sum n_j(n_j-1),
+\]
+where \(n_1,\dots,n_k\) are the orders of the singularities.
+\begin{theorem}
+The geometric genus of any irreducible plane algebraic curve is not negative.
+\end{theorem}
+\begin{proof}
+For a line or irreducible conic, there are no singularities and the arithmetic genus is zero.
+So we can assume the degree of our curve is \(3\) or more.
+By lemma~\vref{lemma:number.of.singular.points}, 
+\[
+\frac{1}{2}\sum n_j(n_j-1)\le d(d-1).
+\]
+
+Consider the spaces of all curves of degree \(d-1\) which have singularities at the same points as our given curve, and with multiplicity  no less than \(n-1\) wherever our curve has a singular point of order \(n\).
+By theorem~\vref{theorem:prescribe.singularities}, the set of all such curves is a linear system, if not empty, of codimension
+\[
+\frac{1}{2}\sum_j n_j(n_j-1)
+\]
+so, if not empty, has dimension
+\[
+\delta\defeq \frac{(d-1)(d+2)}{2}-\frac{1}{2}\sum_j n_j(n_j-1).
+\]
+Moreover, if \(\delta\ge 0\) then the linear system is not empty.
+The space of all curves of degree \(d-1\) has dimension \((d-1)(d+2)/2\), and
+\[
+\frac{1}{2}\sum_j n_j(n_j-1) \le d(d-1)<\frac{1}{2}(d-1)(d+2).
+\]
+So \(\delta>0\) and our space of curves is not empty: there are curves of degree \(d-1\) with orders at least \(n_1-1,\dots,n_k-1\) at the given points.
+
+Denote the singular points by \(p_1,p_2,\dots,p_k\) and the curve as \(C\).
+After perhaps taking an algebraic extension of the field we work over, we can find \(\delta\) regular points on our curve, say \(q_1,q_2,\dots,q_{\delta}\).
+Take the linear system of curves of degree \(d-1\) with singularity of order at least \(n_j-1\) at each point \(p_j\), and passing through \(q_1,q_2,\dots,q_{\delta}\).
+Each point \(q_j\) imposes at most one linear condition, so there is at least one curve \(D\) in this linear system.
+
+Curve \(D\) has lower degree than \(C\), and \(C\) is irreducible, so \(D\) and \(C\) meet only at finitely many points.
+By B\`ezout's theorem (theorem~\vref{theorem:B\'ezout}), \(C\) and \(D\) intersect with multiplicities summing to \(d(d-1)\).
+They have the same singular points, where orders are at least \(n_j\) and \(n_j-1\), and then they intersect at \(\delta\) regular points, so
+\[
+d(d-1)\ge \sum_j n_j(n_j-1) +\delta.
+\]
+\end{proof}
+
+
+\section{Independence of linear equations on curves}
 A points \(p_1,p_2,\dots,p_n\) in the plane \emph{impose independent conditions on curves of degree \(d\)}\define{independent conditions} if the linear system of curves through those points has dimension \(d^*-n\) (or is empty if \(d^*-n<0\)).
 Lemma~\vref{lemma:general.position.defined} says that (after perhaps a field extension) failure to impose independent conditions on curves of degree \(d\) occurs just when the linear system of curves through those points has dimension more than \(d^*-n\) (or is not empty, if \(d^*-n<0\)), and also says that we can choose \(n\) points that impose independent conditions.
 We want to examine the failure of small numbers of points to impose independent conditions.

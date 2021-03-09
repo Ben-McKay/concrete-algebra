@@ -245,7 +245,7 @@ def Eisenstein(b):
     highest=c.pop()
     possible_primes=prime_factors(gcd(c))
     for p in possible_primes:
-        if (highest%p<>0) and (c[0]%(p^2)<>0):
+        if (highest%p!=0) and (c[0]%(p^2)!=0):
             return p
     return 0
 \end{sageblock}

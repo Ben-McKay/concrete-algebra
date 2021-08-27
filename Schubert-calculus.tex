@@ -1,0 +1,431 @@
+\chapter{Schubert calculus}
+\section{Exterior powers}
+Suppose that \(V\) is a finite dimensional vector space over a field \(k\).
+A \emph{multilinear function}\define{multilinear function} is a function 
+\[
+f \colon \underbrace{V \times V \times \dots \times V}_{q \text{ copies of } V} \to k,
+\]
+so that 
+\[
+f(v_1,v_2,\dots,v_q)
+\]
+is linear in each vector variable \(v_1,\dots,v_q\).
+It is \emph{alternating}\define{alternating} if it changes sign when we swap any two of the variables.
+\begin{problem}{Schubert.swap}
+Prove that a function is alternating just when it changes sign when we swap any successive two of the variables.
+\end{problem}
+\begin{problem}{Schubert.swap.2}
+Prove that a function is alternating just when it changes sign by the sign of a permutation when we apply that permutation to the variables.
+\end{problem}
+Clearly the set of all alternating multilinear functions of \(q\) vector variables is a vector space, denoted \(\Lambda^q V^*\).
+In particular, when \(q=1\), \(\Lambda^1V^*=V^*\) is just the dual space.
+
+Take a linear map \(\varphi \colon V \to W\) between vector spaces.
+Recall that \(\varphi\) determines a transpose \(\varphi^* \colon W^* \to V^*\) by \(\varphi^* \xi=\xi \circ \varphi\) for each \(\xi \in W^*\).
+In other words, each linear function \(\xi\) on \(W\), composed with \(\varphi\), gives a linear map on \(V\).
+In the same way, define a composition for multilinear functions: define
+\[
+\varphi^* \colon \Lambda^q W^* \to \Lambda^q V^*,
+\]
+by
+\[
+(\varphi^*f)(v_1,\dots,v_q)=f(\varphi v_1,\dots, \varphi v_q).
+\]
+
+Maybe we don't like that \(\varphi^*\) maps things to do with \(W\) to things to do with \(V\).
+Careful to note where we make use of dual spaces: we define \(\Lambda^q V\) to be \([\Lambda^q (V^*)]^*\), the \(q^{\text{th}}\) \emph{exterior power} of \(V\).
+Abstractly, each element of \(\Lambda^q V\) is an alternating multilinear function on \(V^*\), so takes \(q\) linear functions on \(V\) as its arguments, and computes out a number.
+This is very abtract, but will quickly become more concrete.
+
+Each vector \(v_0 \in V\) determines a linear function \(f\) on linear functions \(\xi\) on \(V\) by: \(f(\xi)\defeq\xi(v_0)\).
+So \(\xi\in V^*\), and so \(f\in V^{**}\).
+In this way, we map \(V\to V^{**}\), \(v_0\mapsto f\).
+\begin{problem}{Schubert.calculus:iso}
+Since \(V\) has finite dimension, this map is an isomorphism.
+\end{problem}
+Henceforth, we allow ourselves to write this function \(f\) as \(v_0\), so that we write
+\[
+v_0(\xi)\defeq \xi(v_0).
+\]
+
+Now we imitate this construction for multilinear functions.
+Fix any vectors \(v_1,\dots,v_q\) in \(V\).
+Define a map on multilinear functions: plug this vectors into the function.
+So to each multilinear function \(f\), we associate the number
+\[
+f(v_1,\dots,v_q).
+\]
+We call this function
+\[
+f \mapsto f(v_1,\dots,v_q)
+\]
+by the name 
+\[
+v_1\wedge \dots \wedge v_q.
+\]
+So
+\[
+(v_1\wedge \dots \wedge v_q)(f)=f(v_1,\dots,v_q).
+\]
+\begin{example}
+Try \(q=1\): \(\Lambda^1 V=V\), with \(v(f)=f(v)\) as above.
+\end{example}
+Take vectors \(v_1,\dots,v_n\) in \(V\).
+Suppose that \(I\) is a set of \(p\) distinct integers from \(1\) to \(n\), say \(I=\set{i_1,i_2,\dots,i_q}\) with \(1\le i_1<i_2<\dots<i_p\le n\).
+Let
+\[
+v_I\defeq v_{i_1}\wedge\dots\wedge v_{i_p}.
+\]
+\begin{lemma}
+For any basis \(e_1,\dots,e_n\), the set of vectors \(e_I\) form a basis of \(\Lambda^q V\).
+In particular,
+\[
+\dim \Lambda^q V = \binom{\dim V}{q}.
+\]
+\end{lemma}
+This suggests the notation \(\binom{V}{q}\) instead of \(\Lambda^q V\), which might  have been a better choice, but is not standard.
+\begin{example}
+If \(V=k^4\), then \(\Lambda^1 V=V\) and \(\Lambda^2 V\) has basis 
+\[
+e_1\wedge e_2,e_1\wedge e_3,e_1\wedge e_4,e_2\wedge e_3,e_2\wedge e_4,e_3\wedge e_4.
+\]
+\end{example}
+\begin{problem}{Schubert.calculus:universal.property}
+Suppose that 
+\[
+f \colon \underbrace{V \times V \times \dots \times V}_{q \text{ times}} \to W
+\]
+is an alternating multilinear map of vector spaces.
+Prove that there is a unique linear map \(F \colon \Lambda^q V \to W\) so that
+\[
+F(v_1\wedge\dots\wedge v_q)=f(v_1,\dots,v_q) 
+\]
+for any vectors \(v_1,\dots,v_q\) in \(V\).
+\end{problem}
+
+\section{The exterior algebra}
+Let
+\[
+\Lambda^* V \defeq \bigoplus_q \Lambda^q V.
+\]
+If \(x\in\Lambda^q V\), let \((-1)^x\defeq(-1)^q\).
+\begin{lemma}
+There is a unique \emph{wedge product} on \(\Lambda^* V\), denoted \(\wedge\), so that 
+\begin{enumerate}
+\item
+\(\Lambda^* V\) is an associative algebra,  and 
+\item
+\(x\wedge y=(-1)^{x}(-1)^{y}y \wedge x\) and
+\item
+for any vectors \(v_i\) in \(V\), if \(I\) and \(J\) are disjoint sequences of increasing indices, with all indices of \(I\) less than those of \(J\), then \(v_I \wedge v_J=v_{IJ}\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Suppose that there is such an operation.
+For any vectors \(v_I,v_J\), if all elements of \(I\) exceed those of \(J\), then \(v_I\wedge v_J=(-1)^{|I|+|J|}v_J\wedge v_I\), so these products are determined by our rules.
+For any other combinations, we can use this rule and associativity to slide elements \(v_i,v_j\) across one another one at a time.
+Taking these \(v_i\) to be a basis, we expand out a basis \(v_I\), and we find that combining these rules inductively gives precisely one way to compute out each wedge product, so the wedge product is defined.
+\end{proof}
+\begin{example}
+If \(V=k^4\), we compute in \(\Lambda^* V\).
+The four vectors \(e_1,e_2,e_3,e_4\) anticommute with one another, i.e. \(e_2 \wedge e_1=-e_1\wedge e_2\) and so on.
+By the same rule, \(e_1\wedge e_1=0\) and so on.
+The only other rule is associativity.
+It is convenient as above to denote \(e_1\wedge e_2\) as \(e_{1,2}\).
+Since our indices run only from \(1\) to \(4\), we can drop commas and denote \(e_{1,2}\) by \(e_{12}\), and so on.
+For instance,
+\begin{align*}
+(e_1\wedge e_2+e_1\wedge e_3)\wedge (e_4 + e_2 + e_3\wedge e_2)
+&=
+e_1\wedge e_2\wedge (e_4 + e_2 + e_3\wedge e_2)
+\\
+&\quad+
+e_1\wedge e_3\wedge (e_4 + e_2 + e_3\wedge e_2),
+\\
+&=
+e_1\wedge e_2\wedge e_4\\
+&\quad +e_1\wedge e_2\wedge e_2\\
+&\quad +e_1\wedge e_2\wedge e_3\wedge e_2\\
+&\quad + e_1\wedge e_3\wedge e_4\\
+&\quad + e_1\wedge e_3 \wedge e_2 \\
+&\quad + e_1\wedge e_3 \wedge e_3\wedge e_2,
+\\
+&=
+e_1\wedge e_2\wedge e_4\\
+&\quad +e_1\wedge 0\\
+&\quad -e_1\wedge e_2\wedge e_2\wedge e_3\\
+&\quad + e_1\wedge e_3\wedge e_4\\
+&\quad - e_1\wedge e_2 \wedge e_3\\
+&\quad + e_1\wedge 0\wedge e_2,
+\\
+&=
+e_1\wedge e_2\wedge e_4\\
+&\quad+0\\
+&\quad -0\\
+&\quad+e_1\wedge e_3\wedge e_4\\
+&\quad-e_1\wedge e_2 \wedge e_3\\
+&\quad+0,
+\\
+&=
+e_{124}+e_{134}-e_{123}.
+\end{align*}
+\end{example}
+
+\section{The Grassmannian}
+Take integers \(0<p\le n\) and a vector space \(V\) of dimension \(n\).
+The set of all \(p\)-dimensional linear subspaces of \(V\) is denoted \(\Gr{p}[V]\) or \(\Gr{p,n}\), and called the \emph{Grassmannian} of \(p\)-dimensional subspaces of \(V\), a strange but standard name.
+
+Take \(p\) linearly independent vectors \(v_1,\dots,v_p\) from \(V\).
+If we change the vectors \(v_1,\dots,v_p\) to some other vectors spanning the same subspace, say to \(v_i'\defeq\sum a_{ij} v_j\), for an invertible matrix \(A=(a_{ij})\), then clearly \(v_1\wedge \dots \wedge v_p\) changes to 
+\[
+v_1'\wedge \dots \wedge v_p'=\det A v_1\dots v_p.
+\]
+So \(v_1\wedge\dots\wedge v_p\) is defined uniquely, up to a nonzero constant multiple, by the linear subspace spanned by \(v_1,\dots,v_p\), say \(W\subset V\).
+To each \(p\)-dimensional linear subspace \(W\subset V\), we pick a basis \(v_1,\dots,v_p\) of \(W\) and associate to \(W\) the line which is the span of \(v_1\wedge\dots\wedge v_p\), so a point of the projective space \(P=\mathbb{P}\Lambda^pV\cong \Proj{d}\) where \(d\defeq\binom{\dim V}{p}\).
+We want to see that the Grassmannian is a projective variety.
+
+\begin{problem}{Schubert.calculus:Plucker.1}
+An element \(x\in\Lambda^p\) has the form \(v_1\wedge\dots\wedge v_p\) for some vectors \(v_1,\dots,v_p\) just when the linear map
+\[
+w\in V\mapsto w\wedge x 
+\]
+has kernel of dimension \(p\) or more, in which case the kernel has dimension \(p\) or dimension \(n\).
+\end{problem}
+\begin{answer}{Schubert.calculus:Plucker.1}
+Suppose that \(x\) has this form.
+Either there is a linear relation among \(v_1,\dots,v_p\), so \(x=0\), so this rank is zero, or there is no such relation.
+We can then take these \(v_i\) as the first \(p\) vectors in a basis, and expand \(w\) in that basis, to see that the kernel of this linear map consists just in \(w\) being a linear combination of \(v_1,\dots, v_p\), so kernel of dimension \(p\).
+
+Suppose that this map \(w\mapsto w\wedge x\) has such kernel, say of dimension \(s\ge p\).
+Take a basis \(e_1,\dots,e_n\) of \(V\) with \(e_1,\dots,e_s\) a basis for that kernel.
+Expand \(x\) in the basis \(e_I\), say as \(x=\sum x_I e_I\) with coefficients \(x_I\).
+Let \(I_0\defeq\set{1,2,\dots,p}\).
+Then 
+\begin{align*}
+0&=e_i\wedge x,
+\\
+&=\sum_{i\notin I} x_I e_i \wedge e_I.
+\end{align*}
+Since these \(e_I\) are a basis, and \(e_i\wedge e_I=\pm e_J\) for \(J=\set{i}\cup I\), \(x_I=0\) unless \(i\in I\).
+Since this holds for all these \(i=1,2,\dots,p\), we find that \(I\) contains \(1,2,\dots,p\), and has \(p\) indices, so \(I=I_0\).
+\end{answer}
+\begin{theorem}
+The Grassmannian \(\Gr{p}[V]\) is a projective variety, with each \(p\)-dimensional linear suspace \(W\in\Gr{p}[V]\) sitting in projective space \(\mathbb{P}\Lambda^pV\) as the line spanned by the wedge product \(v_1\wedge\dots\wedge v_p\) of a basis \(v_1,\dots,v_p\) of \(W\).
+Each rational function on the Grassmannian is a ratio of homogeneous polynomial functions of the components of elements of \(\Lambda^p V\), in any basis of \(V\).
+\end{theorem}
+\begin{proof}
+From among the various elements \(x\) of \(\Lambda^p V\), the associated linear map \(w\mapsto w\wedge x\) has rank \(p\) or less just when, in a basis, its \((p+1)\times(p+1)\) minors all vanish.
+Hence the set of all such elements \(x\) is an affine variety in \(\Lambda^p V\) cut out by these homogeneous equations.
+The associated projective variety is identified with the Grassmannian, by the lemma above: each nonzero \(x\) with all such minors vanishing arises as \(x=v_1\wedge\dots v_p\) for linearly independent \(v_1,\dots,v_p\), uniquely determined up to invertible linear combinations.
+\end{proof}
+\begin{example}
+The product \(X \times Y\) of two projective varieties, \(X\) in \(\Proj{p}\) and \(Y\) in \(\Proj{q}\), is a projective variety, but not obviously so.
+Indeed, each \(X \times \set{y_0}\) and each \(\set{x_0}\times Y\) is a projective subvariety with obvious identification with \(X\) or \(Y\).
+We want the rational functions on \(X \times Y\) to be the field generated by those on \(X\) and those on \(Y\), with a product of functions regular near some points \(x_0\) on \(X\) and \(y_0\) on \(Y\) being regular near \((x_0,y_0)\).
+Each point \((x,y)\) of \(X \times Y\) gives a point of \(\Proj{p}\), so a line \(\ell_x\) in \(k^{p+1}\), and a point of \(\Proj{q}\), so a line \(\ell_y\) in \(k^{q+1}\).
+Hence a plane \(\ell_x \times \ell_y \in k^{p+q+2}\).
+So we see \(X \times Y\) sitting in \(\Gr{2,p+q+2}\) which sits in \(\Proj{d}\) where \(d=\binom{p+q+2}{2}\).
+The equations of \(X\times Y\) in \(\Proj{d}\) are those of \(\Gr{2,p+q+2}\) in \(\Proj{d}\), and then those of \(X\) inside its projective space and \(Y\) in its; it is not practical to follow through the entire process to find polynomial equations of \(X \times Y\).
+\end{example}
+\begin{example}
+Any product of projective spaces is a projective variety. 
+\end{example}
+\begin{example}
+The blowup of the projective plane \(P\) at a point \(p_0\) is a projective variety, as it is the subvariety of \(P\times P^*\) given by equations \(0=a_0x_0+a_1x_1\), as we saw previously.
+\end{example}
+
+
+\section{Flags}
+A \emph{flag} \(F=\set{V_0,\dots,V_n}\) in \(V\) is a collection of linear subspaces 
+\[
+0=V_0 \subset V_1 \subset V_2 \subset \dots \subset V_n=V,
+\]
+where \(V_i\) has dimension \(i\).
+\begin{example}
+Every flag \(F\) becomes the flag \(V_j=E_{1\dots j}\) in a suitable basis: just pick \(e_1\) to be any nonzero element of \(V_1\), \(e_2\) any nonzero element of \(V_2\) so that \(e_1,e_2\) are linearly independent, and so on.
+Such a basis is \emph{adapted} to the flag.
+\end{example}
+\begin{problem}{Schubert.calculus:flag.aut}
+A invertible linear transformation of \(V\) preserves a flag (an \emph{automorphism} of the flag) just when it is strictly upper triangular in some, hence any, adapted basis.
+\end{problem}
+Given a linear subspace \(W\subset V\), we record the dimensions \(d_j\) of \(W\cap V_j\).
+Note that \(d_0=0\) and \(d_n=p\) for any \(W\).
+
+Take a basis \(e_1,\dots,e_n\) of \(V\) adapted to a flag \(F=\set{V_i}\).
+Let \(I\defeq\set{i_1,i_2,\dots,i_p}\) with
+\[
+1\le i_1<i_2<\dots<i_p\le n.
+\]
+Let \(E_I\) be the span of \(e_{i_1},\dots,e_{i_p}\), called a \emph{coordinate subspace}.\define{coordinate subspace}
+\begin{example}
+For \(V=k^4\), we have coordinate subspaces
+\begin{align*}
+E_1,E_2,E_3,E_4&\in\Gr{1,4}=\Proj{3},\\
+E_{12},E_{13},E_{14},E_{23},E_{24}&\in\Gr{2,4},\\
+E_{123},E_{124},E_{134},E_{234}&\in\Gr{2,4}=\Proj{3*}.
+\end{align*}
+\end{example}
+\begin{problem}{Schubert.calculus:inter.dim}
+Take the vectors \(e_{i_1},\dots,e_{i_{\ell}}\), where \(\ell\) is chosen as large possible so that \(i_{\ell}\le j\).
+These vectors are a basis of \(E_I\cap V_j\).
+In particular, \(d_j\) is this integer \(\ell\).
+\end{problem}
+\begin{example}
+Try \(I\defeq\set{n-p+1,n-p+2,\dots,n-1,n}\); then \(E_I\cap V_j\) has basis \(e_{n-p+1},\dots,e_j\) if \(n-p+1\le j\), and is zero otherwise.
+Hence 
+\[
+0=d_0=d_1=\dots=d_{n-p}, d_{n-p+1}=1, d_{n-p+2}=2, \dots, d_{n-1}=p-1, d_n=p.
+\]
+\end{example}
+\begin{lemma}\label{lemma:Schubert.intersections}
+Take a flag in a finite dimensional vector space \(V\) and an adapted basis for the flag.
+For any linear subspace \(W\subseteq V\), there is a unique coordinate subspace \(E_I\) with the same intersection dimensions \(d_j\) with the flag subspaces.
+There is a flag automorphism taking \(E_I\) to \(W\).
+\end{lemma}
+\begin{proof}
+If \(W\) lies inside \(V_{n-1}\), then the result holds by induction.
+So we can suppose that \(W\) does not lie inside \(V_{n-1}\).
+Let \(W'\) be the span of \(e_n,W\cap V_{n-1}\).
+Clearly \(W'\) has the same intersection dimensions \(d_j\) as \(W\).
+Moreover, if a coordinate subspace has those same intersection dimensions, it must contain \(e_n\). 
+By induction, we can replace \(W'\cap V_{n-1}=W\cap V_{n-1}\) by a unique coordinate subspace \(E_I\) of \(V_{n-1}\) without changing its intersection dimensions.
+Then \(E_{In}\) is the unique coordinate subspace of \(V\) with the same intersection dimensions \(d_j\) as \(W\).
+Inductively, take an automorphism of \(V_{n-1}\) preserving the flag and taking \(W\cap V_{n-1}\) to \(E_I\cap V_{n-1}\).
+Extend it to an automorphism of \(V\) by taking \(w_n\mapsto e_n\) for some \(w_n\in W-V_{n-1}\).
+\end{proof}
+
+\section{Schubert cells and Schubert varieties}
+The \emph{Schubert cell} \(C_I\subseteq\Gr{p}[V]\) of the flag is the set of all \(p\)-dimensional linear subspaces\(W\subseteq  V\) whose intersection dimensions agree with those of \(E_I\).
+Since every linear subspace \(W\) has such intersection dimensions, every linear subspace belongs to a union Schubert cell, i.e. \(\Gr{p}[V]\) is the disjoint union of Schubert cells.
+The \emph{Schubert variety} \(X_I\subseteq\Gr{p}[V]\) of the flag is the set of all \(p\)-dimensional linear subspaces\(W\subseteq  V\) whose intersection dimensions at at least  those of \(E_I\).
+Each Schubert variety \(X_I\) is clearly a union of Schubert cells
+\[
+X_I = \bigcup_J C_J,
+\]
+the union being taken over all \(J=\set{j_{\ell}}\) so that \(j_{\ell}\le i_{\ell}\) for all \(\ell\).
+Suppose that \(W\) has a basis \(v_1,\dots,v_p\).
+The dimension of \(W\cap V_j\) is at least some integer \(d_j\) just when the linear map
+\[
+v\mapsto v\wedge v_1\wedge \dots \wedge v_p
+\]
+has rank at most \(j-d_j\).
+So the various \(X_I\) are cut out by rank conditions, i.e. by minor determinants of various matrices in our basis for \(V\).
+Hence \(X_I\) is a projective variety.
+We want to understand how to compute intersections \(X_I\cap X_J\), which will tell us how conditions on intersection dimensions reinforce one another, an essential but sophisticated phenomenon in linear algebra.
+\begin{example}
+If \(V=k^4\), in \(\Gr{2,4}\) we have Schubert varieties 
+\[
+X_{12},X_{13},X_{14},X_{23},X_{24},X_{34}.
+\]
+So \(C_{12}\) consists of those planes \(W\subset V\) with the same intersection dimensions as \(E_{12}\).
+We find these: \(E_{12}\cap V_1=V_1\) has dimension \(1\), and \(E_{12}\cap V_2=V_2\) has dimension \(2\).
+So \(C_{12}\) consists of planes \(W\subset V\) so that \(W\cap V_1\) is a line and \(W\cap V_2\) is a plane, so \(W=V_2=E_{12}\).
+Hence \(C_{12}\) is a point.
+Compute out intersection dimensions:
+\[
+\begin{array}{llll}
+             & V_1 & V_2 & V_3 \\
+E_{12} &1&2&2\\
+E_{13} &1&1&2\\
+E_{14} &1&1&1\\
+E_{23} &0&1&2\\
+E_{24} &0&1&1\\
+E_{34} &0&0&1
+\end{array}
+\]
+we see that each plane \(W\) in \(C_{ij}\) has a unique basis of the given form:
+\[
+\begin{array}{ll}
+C_{12} & e_1,e_2 \\
+C_{13} & e_1,a_{32}e_2+e_3\\
+C_{14} & e_1,a_{42}e_2+a_{43}e_3+e_4\\
+C_{23} & a_{21}e_1+e_2,a_{31}e_1+e_3\\
+C_{24} & a_{21}e_1+e_2,a_{41}e_1+a_{43}e_3+e_4\\
+C_{34} & a_{31}e_1+a_{32}e_2+e_3,a_{41}e_1+a_{42}e_2+e_4.
+\end{array}
+\]
+Take a plane \(W\) spanned by \(e_1,a_{32}e_2+e_3\).
+If \(a_{32}\ne 0\), and we let \(t=1/a_{32}\), it is also spanned by 
+\[
+e_1,e_2+te_3,
+\]
+and so we picture that, in the ``limit as \(t\to 0\)'', we would expect \(e_1,e_2\) to lie in the closure.
+Indeed, by our definition of \(X_{13}\), \(X_{13}\) includes \(C_{13}\) and also all \(C_{ij}\) for which the intersection dimensions above are no smaller.
+So to find \(X_{13}\), look above at all \(E_{13}\) having intersection dimensions \(1,1,2\).
+The only other \(E_{ij}\) with intersection dimensions not smaller is \(E_{12}\).
+So \(X_{13}=C_{13}\cup C_{12}\).
+In the same way,
+\begin{align*}
+X_{12}&=C_{12},\\
+X_{13}&=C_{12}\cup C_{13},\\
+X_{14}&=C_{12}\cup C_{13}\cup C_{14},\\
+X_{23}&=C_{12}\cup C_{13}\cup C_{23},\\
+X_{24}&=C_{12}\cup C_{13}\cup C_{23}\cup C_{24},\\
+X_{34}&=C_{12}\cup C_{12}\cup C_{14}\cup C_{23}\cup C_{24}=\Gr{2,4}.
+\end{align*}
+We track the inclusions of the Schubert varieties by drawing an arrow from one variety to another to represent containment, writing \(ij\) to represent \(X_{ij}\):
+\[
+\input{hasse-gr-2-4}
+\]
+Since distinct Schubert cells are disjoint, we see immediately how the various Schubert varieties intersect.
+\begin{problem}{Schubert.calculus:3.6}
+Repeat this for \(\Gr{3,6}\).
+\end{problem}
+\end{example}
+
+
+\section{Parameterizing Schubert cells}
+The linear transformation in lemma~\vref{lemma:Schubert.intersections} is not uniquely determined.
+For example, rescaling all basis vectors, by a diagonal matrix, preserves all coordinate subspaces.
+More generally, flag automorphisms preserving a coordinate subspace \(E_I\) are precisely those for which, for each \(j\) in \(I\), column \(j\) of \(g\) has zeroes everywhere except in rows \(i\le j\) with \(i\) in \(I\).
+On the other hand, a flag automorphism is \emph{\(I\)-complementary} if its matrix agrees with the identity matrix in all positions \(g_{ij}\) with \(i\) in \(I\) or \(j\) not in \(I\).
+Inductively, we can use our proof of lemma~\vref{lemma:Schubert.intersections} above to prove that there is a unique \(I\)-complementary \(g\) with \(W=gE_I\).
+\begin{corollary}
+Every element of \(C_I\) is uniquely expressed as \(W=UE_I\) where \(U\) is \(I\)-complementary.
+Hence we identify \(C_I\) with the set of all \(I\)-complementary flag automorphisms, i.e. with the set of all matrices \(g\) equal to the identity matrix except at positions \(g_{ij}\) for \(i\) not in \(I\) and \(j\) in \(I\), so \(C_I=k^d\) for some integer \(d\).
+\end{corollary}
+\begin{problem}{Schubert.calculus:C.X}
+Prove that \(X_I\) is the closure of \(C_I\).
+\end{problem}
+\begin{answer}{Schubert.calculus:C.X}
+Since \(X_I\) is closed, and contains \(C_I\), \(X_I\) contains the closure of \(C_I\).
+Any homogeneous polynomial vanishing on \(C_I\) vanishes on all 
+\[
+v_1\wedge\dots\wedge v_p
+\]
+for \(v_1,\dots, v_p\) a basis of any \(W\) in \(C_I\).
+We can choose this basis to be 
+\begin{align*}
+v_1&=\sum_{j<i_1} a_{j1}e_j+ e_{i_1},\\
+v_2&=\sum_{j\ne i_1, j<i_2} a_{j2}e_j+ e_{i_2},\\
+&\vdots\\
+v_{\ell}&=\sum_{j \notin I}^{j<i_{\ell}} a_{j\ell}e_{j}+e_{i_{\ell}},\\
+&\vdots\\
+v_p&=\sum_{j \notin I}^{j<i_p} a_{jp}e_j+e_{i_p}.
+\end{align*}
+Scaling these by constants \(a_{j i_j}\), our homogeneous polynomials vanish on 
+\[
+v_1\wedge\dots\wedge v_p
+\]
+for  
+\begin{align*}
+v_1&=\sum_{j\le i_1} a_{j1}e_j,\\
+v_2&=\sum_{j\ne i_1, j\le i_2} a_{j2}e_j,\\
+&\vdots\\
+v_{\ell}&=\sum_{j \notin I}^{j\le i_{\ell}} a_{j\ell}e_{j},\\
+&\vdots\\
+v_p&=\sum_{j \notin I}^{j\le i_p} a_{jp}e_j.
+\end{align*}
+But now we can vary these \(a_{ji_j}\) to get vanishing on all \(W\) lying in all \(C_J\) with intersection dimensions at most those of \(C_I\).
+\end{answer}
+A linear transformation preserves the subspace \(E_{I_0}\) spanned by \(e_1,\dots,e_p\) just when, in any adapted basis, it is a block matrix
+\[
+\begin{pmatrix}
+a & b \\
+0 & c
+\end{pmatrix}
+\]
+with \(a\) \(p\times p\), \(b\) \(p \times q\), \(c\) \(q\ \times q\), a \emph{Borel matrix}.
+For \(I\) as above, let \(E_I\) be the span of the \(e_{i_1},\dots,e_{i_p}\).
+If we rescale coordinate axes, i.e. multiple by a diagonal invertible matrix, the subspaces of dimension \(p\) that are preserved are precisely the coordinate subspaces.
+So the group of diagonal invertible matrices has these points \(E_I\) of \(\Gr{p}[V]\) as its fixed points. 

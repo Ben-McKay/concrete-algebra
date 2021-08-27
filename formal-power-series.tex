@@ -1,0 +1,591 @@
+\chapter{Formal power series}
+\epigraph[author={William Blake}, source={The Marriage of Heaven and Hell}]{If the doors of perception were cleansed every thing would appear to man as it is, Infinite. For man has closed himself up, till he sees all things thro' narrow chinks of his cavern.}\SubIndex{Blake, William}
+\section{Introduction}
+Recall that many elementary functions are expressed in \emph{power series}\define{power series} (also called \emph{Taylor series}):\define{Taylor series}
+\begin{align*}
+\sin x &= x-\frac{x^3}{3!}+\frac{x^5}{5!}+\dots=\sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!},\\
+\cos x &= 1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dots=\sum_{n=0}^\infty \frac{(-1)^n x^{2n}}{(2n)!},\\
+e^x&=1+x+\frac{x^2}{2}+\dots=\sum_{n=0}^{\infty} \frac{x^n}{n!},
+\end{align*}
+some of which are not expanded around the origin:
+\begin{align*}
+\log x &= \sum_{n=1}^{\infty} \frac{(-1)^{n+1}(x-1)^n}{n},\\
+\frac{1}{1+x}&=\sum_{n=0}^{\infty} (-1)^n(x-1)^n.
+\end{align*}
+Each of these converges only in some interval near the value of \(x\) around which we are expanding.
+Since we are interested in algebra, we ignore convergence.
+A \emph{formal power series}\define{formal power series} in variables \(x,y,z\) is a formal sum
+\[
+\sum_{p,q,r=0}^{\infty} c_{pqr} x^py^q z^r
+\]
+where the coefficients \(c_{pqr}\) belong to some ring \(R\), and we don't require the sum to converge. 
+(For a general ring \(R\), there is really no concept of convergence anyway).
+\begin{example}
+The formal power series 
+\[
+0!+1!x+2!x^2+3!x^3+\dots
+\]
+over the real numbers converges nowhere but at \(x=0\).
+\end{example}
+Similarly, if we have variables \(x_1,\dots,x_n\), take integers, positive or zero, \(\alpha=(\alpha_1,\dots,\alpha_n)\) and write \(x^{\alpha}\) to mean \(x_1^{\alpha_1}\dots x_n^{\alpha_n}\)
+A \emph{formal power series}\define{formal power series} in \(x_1,\dots,x_n\) over a ring \(R\) is a formal sum
+\[
+\sum_{\alpha} c_{\alpha} x^{\alpha},
+\]
+with coefficients \(c_{\alpha}\) in \(R\).
+The set of all formal power series in some variables \(x_1,\dots,x_n\) over a ring \(R\) is denoted \(R[[x_1,\dots,x_n]]\), or \(R[[x]]\) for short if \(x=(x_1,\dots,x_n)\) is understood.
+
+\section{Arithmetic}
+Add, subtract, multiply and differentiate by the usual rules for polynomials, applied term by term to the whole power series, treating all coefficients as commuting with all variables.
+In other words, add by
+\[
+\left(\sum_{\alpha} b_{\alpha} x^{\alpha}\right)
++
+\left(\sum_{\alpha} c_{\alpha} x^{\alpha}\right)
+\defeq
+\sum_{\alpha} \left(b_{\alpha}+c_{\alpha}\right) x^{\alpha},
+\]
+subtract by
+\[
+\left(\sum_{\alpha} b_{\alpha} x^{\alpha}\right)
+-
+\left(\sum_{\alpha} c_{\alpha} x^{\alpha}\right)
+\defeq
+\sum_{\alpha} \left(b_{\alpha}-c_{\alpha}\right) x^{\alpha},
+\]
+scale by
+\[
+c
+\left(\sum_{\alpha} b_{\alpha} x^{\alpha}\right)
+\defeq
+\sum_{\alpha} \left(cb_{\alpha}\right) x^{\alpha},
+\]
+and
+\[
+\left(\sum_{\alpha} b_{\alpha} x^{\alpha}\right)c
+\defeq
+\sum_{\alpha} \left(b_{\alpha}c\right) x^{\alpha},
+\]
+(so that, in effect, we are declaring that all variables \(x_i\) commute with all coefficients from \(R\)), and multiply by
+\[
+\left(\sum_{\alpha} b_{\alpha} x^{\alpha}\right)
+\left(\sum_{\alpha} c_{\alpha} x^{\alpha}\right)
+\defeq
+\sum_{\alpha} \left(\sum_{\beta+\gamma=\alpha}b_{\beta}c_{\gamma}\right) x^{\alpha}.
+\]
+If \(R\) is commutative, or a ring with identity, so is \(R[[x_1,\dots,x_n]]\).
+
+If \(R\) is a ring with identity, a \emph{monomial}\define{monomial} is an expression \(x^{\alpha}\).
+When we multiply a formal power series by a monomial, we add \(\alpha\) to the power of every term, with the same coefficients appearing only shifted in powers.
+Therefore, if a formal power series \(f(x)\) can be factored by a monomial \(x^{\alpha}\), the factorization is unique, and we write it as \(f(x)/x^{\alpha}\).
+
+Define
+\[
+\pderiv{}{x_i}
+\sum_{\alpha} b_{\alpha} x^{\alpha}
+=
+\sum_{\alpha_i>0} b_{\alpha}\alpha_i \frac{x^{\alpha}}{x_i}.
+\]
+
+If we let
+\[
+b(x)=\sum_{\alpha} b_{\alpha} x^{\alpha},
+\]
+write \(b(0)\) to mean \(b_0\), but otherwise we can not make sense of setting \(x\) to a constant inside \(b(x)\), since we have no notion of convergence.
+In the same vein, we can write \(b(0,x_2,\dots,x_n)\) to mean the sum of all terms in the expansion of \(b(x)\) which have zero power of \(x_1\).
+
+It is convenient to write \(\coef{x^{\alpha}}\) to mean the operator which associates to each formal power series its \(x^{\alpha}\) coefficient, so
+\[
+\coef{x^3}(1-7x+4x^2-12x^3+2x^4)=-12
+\]
+while
+\[
+\coef{x^3}(1+2+3x+4x^2)=0.
+\]
+\begin{problem}{newton:one.minus.x}
+Prove that
+\[
+1=(1-x)(1+x+x^2+\dots)
+\]
+over any ring with identity.
+\end{problem}
+\begin{answer}{newton:one.minus.x}
+Let's be very careful.
+The formal definition of the product is
+\begin{align*}
+&\coef{x^{\ell}}(1-x)(1+x+x^2+\dots)\\
+&=
+\sum_{k=0}^{\ell} 
+\left(\coef{x^k}(1-x)\right)
+\left(\coef{x^{\ell-k}}(1+x+x^2+\dots)\right).
+\end{align*}
+Clearly
+\[
+\coef{x^k}(1-x)=
+\begin{cases}
+1,&\text{ if \(k=0\)},\\
+-1,&\text{ if \(k=1\)},\\
+0,&\text{ otherwise},
+\end{cases}
+\]
+while
+\[
+\coef{x^k}(1+x+x^2+\dots)=1.
+\]
+So
+\begin{align*}
+\coef{x^{\ell}}(1-x)(1+x+x^2+\dots)
+&=
+\sum_{k=0}^{\ell}
+\begin{cases}
+1,&\text{ if \(k=0\)},\\
+-1,&\text{ if \(k=1\)},\\
+0,&\text{ otherwise},
+\end{cases}
+\\
+&=
+\begin{cases}
+1,&\text{ if \(\ell=0\)},\\
+0,&\text{ if \(\ell\ge 1\)}.
+\end{cases}
+\end{align*}
+\end{answer}
+
+For each \(\alpha=(\alpha_1,\dots,\alpha_n)\), it is traditional to write \(|\alpha|\) to denote \(\alpha_1+\dots+\alpha_n\), and to say that \(x^{\alpha}\) has \emph{order}\define{order!of term} \(|\alpha|\).
+
+The role played by highest order terms in polynomials is often played by lowest in formal power series. 
+The \emph{lowest order part}\define{lowest order part} of a formal power series is the sum of all nonzero terms of lowest order.
+\begin{example}
+In two variables \(x,y\), the lowest order part of \(x^3+4x^2y+x^4+y^5+\dots\) is \(x^3+4x^2y\).
+\end{example}
+\section{Infinite sums and products}
+We can't make sense of infinite sums in an arbitrary ring, since we don't have a notion of convergence.
+We allow ourselves to define an infinite sum of formal power series
+\[
+f_1(x)+f_2(x)+\dots
+\]
+only if the lowest orders of the \(f_j(x)\) go to infinity with \(j\); only finitely many \(f_j(x)\) add to the term at each order.
+\begin{problem}{formal.power.series:example.sum}
+Let 
+\[
+f_1(x)=1+x+x^2+\dots,
+\]
+and let \(f_k(x)=x^{k-1}f_1(x)\).
+Find \(f_1(x)+f_2(x)+\dots\).
+\end{problem}
+\begin{answer}{formal.power.series:example.sum}
+\begin{align*}
+f_1(x)&=1+x+x^2+x^3+x^4+x^5+\dots,\\
+f_2(x)&=x+x^2+x^3+x^4+x^5+\dots,\\
+f_3(x)&=x^2+x^3+x^4+x^5+\dots,\\
+f_4(x)&=x^3+x^4+x^5+\dots,\\
+&\vdots
+\end{align*}
+so
+\[
+f_1(x)+f_2(x)+f_3(x)+\dots
+=
+1+2x+3x^2+4x^3+\dots.
+\]
+\end{answer}
+Similarly, an infinite product
+\[
+f_1(x)f_2(x)\dots
+\]
+is defined as long as the lowest order of each \(f_j(x)\) goes to \(\infty\) with \(j\).
+\begin{example}
+If
+\begin{align*}
+f_1(x)&=2+2x+2x^2+2x^3+2x^4+\dots,\\
+f_2(x)&=1+3x^2+3x^3+3x^4+\dots,\\
+f_3(x)&=1+4x^3+4x^4+\dots,\\
+\vdots&\\
+\end{align*}
+then
+\[
+f_1(x)f_2(x)f_3(x)\dots=2+2x+8x^2+\dots
+\]
+\end{example}
+\begin{problem}{formal.power.series:exp.x.k}
+Over the rational numbers, find the terms up to order \(3\) in
+\[
+\prod_{n=1}^{\infty}\exp(x^n).
+\]
+\end{problem}
+
+\section{Division}
+\begin{theorem}
+A formal power series in a single variable, over a commutative ring with identity, has a reciprocal formal power series if and only if its constant term is a unit.
+\end{theorem}
+\begin{proof}
+Divide off the constant term, so we can assume it is \(1\), say \(f(x)=1-g(x)\) with \(g(0)=0\).
+Take the identity
+\[
+1=(1-x)(1+x+x^2+\dots)
+\]
+and replace \(x\) by the formal power series \(g(x)\):
+\[
+1=f(x)(1+g(x)+g(x)^2+\dots).
+\]
+\end{proof}
+\begin{corollary}
+If \(f(x),g(x)\) are formal power series in a single variable, over a commutative ring with identity, and \(g(0)\) is a unit, then there is a unique formal power series \(h(x)\) so that \(f(x)=h(x)g(x)\), and \(h(x)\) is therefore denoted \(f(x)/g(x)\).
+\end{corollary}
+\begin{problem}{formal.power:Euclid}
+Over a field, take any two formal power series \(b(x),c(x)\) in a single variable \(x\).
+Lets try to divide \(b(x)\) by \(c(x)\).
+Prove that there is a unique polynomial \(r(x)\) of degree less than the lowest order of \(c(x)\) and  a unique formal power series \(q(x)\) so that \(b(x)=q(x)c(x)+r(x)\).
+\end{problem}
+\begin{answer}{formal.power:Euclid}
+If \(b(x)\) has lower lowest order than \(c(x)\), we can subtract off some polynomial \(r(x)\) from \(b(x)\) so that \(b(x)-r(x)\) has lowest orderequal to of \(c(x)\).
+Otherwise, we can set \(r(x)=0\).
+So now \(b(x)-r(x)\) has lowest order no less than \(c(x)\).
+We can then multiple \(c(x)\) by the power \(x^k\) of \(x\) that will make \(c(x)\) have equal lowest order with \(b(x)-r(x)\).
+So for a suitable constant \(q_0\), \(x^{k_0}q_0c(x)\) has the same lowest order term as \(b(x)-r(x)\).
+So \(b(x)-r(x)-q_0x^{k_0}q_0c(x)\) has higher lowest order than \(b(x)-r(x)\).
+Repeating, we find that we can write
+\[
+0=b(x)-r(x)-(q_0x^{k_0}+q_1x^{k_1}+q_2x^{k_2}+\dots)c(x).
+\]
+So \(b(x)=r(x)+q(x)c(x)\), with \(r(x)\) a polynomial of degree less than the lowest order \(c(x)\).
+If there are two such expressions \(r_0(x)+q_0(x)c(x)=r_1(x)+q_1(x)c(x)\), their difference has
+\[
+r_0(x)-r_1(x)=(q_1(x)-q_0(x))c(x).
+\]
+Every term agrees.
+But every term on the left hand side has degree less than the lowest order of \(c(x)\), while every term on the right hand side has degree at least that.
+\end{answer}
+
+\section{Composition}
+When we compose polynomial functions \(y=f(x)\) and \(z=g(y)\), we obtain a polynomial function \(z=g(f(x))=(g\circ f)(x)\).
+Note that \(g(f(x))\) has constant term \(g(f(0))\).
+So we cannot hope to extend composition to formal power series, since \(g(y)\) might not make sense with \(x\) is replaced by \(f(0)\).
+So we will need to assume that \(g(y)\) is a polynomial or that \(f(0)=0\).
+On the other hand, if \(f(0)=0\), then \(g(f(0))=g(0)\) is defined.
+For polynomials, the degree of the composition is at most the product of the degrees, since the highest possible term in \(g(f(x))\) comes from taking that in \(f(x)\) and plugging into that of \(g(y)\).
+By the same reasoning, the term in \(g(f(x))\) of a given degree \(n\), perhaps not the highest degree, arises only from terms of degree \(p\) in \(f(x)\) plugged into terms of degree \(q\) in \(g(y)\) with \(pq=n\). 
+So we can define the composition \(g(f(x))\) as long as \(f(0)=0\) or \(g(y)\) is a polynomial.
+\begin{example}
+Over any field \(k\) of characteristic zero, the \emph{exponential series}\define{exponential series} is
+\[
+\exp(x)=1+x+\frac{x^2}{2}+\dots=\sum_{n=0}^{\infty} \frac{x^n}{n!}.
+\]
+We cannot expand out \(\exp(\exp(x))\) since \(\exp(0)=1\ne 0\).
+We \emph{can} expand out \(\exp(-1+\exp(x))\):
+\begin{align*}
+\exp(-1+\exp(x))
+&=
+1+(-1+\exp(x))+(-1+\exp(x))^2+\dots,
+\\
+&=
+1+\left(x+\frac{x^2}{2}+\dots\right)+\frac{\left(x+\frac{x^2}{2}+\dots\right)^2}{2}+\dots,
+\\
+&=
+1+x+\frac{x^2}{2}+\frac{x^2}{2}+\dots,
+\\
+&=1+x+x^2+\dots
+\end{align*}
+\end{example}
+\begin{problem}{formal.power:exp.exp}
+Find the next term in \(\exp(-1+\exp(x))\).
+\end{problem}
+\begin{problem}{formal.power.series:exp}
+Is it true that
+\[
+\prod_{k=1}^{\infty}\exp(x^k)
+=
+\exp\left(\sum_{k=1}^{\infty} x^k\right)?
+\]
+\end{problem}
+
+\section{Formal maps}
+A \emph{formal transformation}\define{formal transformation} or \emph{formal map}\define{formal map}\define{map!formal} \(y=f(x)\), for \(x=(x_1,\dots,x_n)\) and \(y=(y_1,\dots,y_m)\) variables, over a ring \(R\), is a choice of formal power series \(y_i=f_i(x)\) for each \(y_i\) variable and with \(y_i(0)=0\).
+For a matrix \(A\) with nonnegative integer entries, we let
+\[
+x^A\defeq\pr{\prod_j (x_j)^{A_{1j}},\dots,\prod_j (x_j)^{A_{mj}}}.
+\]
+The reader can check that \((x^A)^B=x^{(BA)}\): exponents multiply under composition, but not quite how we might guess.
+Each formal transformation is 
+\[
+y=f(x)=\sum_A b_A x^A,
+\]
+where \(b_A\) are matrices with entries in \(R\).
+If there are only finitely many nonzero terms, the map is a \emph{polynomial map}.\define{polynomial map}\define{map!polynomial}
+
+Define the \emph{composition}\define{composition} of two formal maps \(z=g(y)\) and \(y=f(x)\), with \(f(0)=0\) or with \(g(y)\) polynomial, to have terms of order \(n\) given by taking the terms of order \(k\) in \(f(x)\) plugged into terms of degree \(n-k\) in \(g(y)\), to produce a polynomial map, and then taking its terms of order \(n\).
+\begin{example}
+Consider the expression
+\[
+(a_0+a_1x+a_2x^2+\dots)^n
+\]
+over a commutative ring.
+Expanding out, 
+\[
+a_0^n+na_0^{n-1}a_1x+\dots
+\]
+the coefficient of \(x^{\ell}\) is
+\[
+\sum_{0<k\le\ell}
+\sum_{i_1+\dots+i_k=\ell} a_{i_1}\dots a_{i_k}.
+\]
+The only way to get an \(a_{\ell}\) in there is in the term
+\[
+na_0^{n-1} a_{\ell},
+\]
+and no coefficient \(a_k\) for any \(k>\ell\) can appear in that term.
+So if we write it as
+\[
+(a_0+a_1x+a_2x^2+\dots)^n=b_0+b_1x+\dots
+\]
+then
+\begin{align*}
+b_0&=a_0^n,\\
+b_1&=na_0^{n-1}a_1,\\
+b_2&=na_0^{n-1}a_2+\binom{n}{2}a_0^{n-2}a_1^2,\\
+&\vdots\\
+b_{\ell}&=na_0^{n-1}a_{\ell}+\dots,
+\end{align*}
+We try to solve these equations for \(a_0,a_1,\dots\) in terms of \(b_0,b_1,\dots\).
+Suppose that \(b_0\ne 0\).
+We only need to solve \(a_0^n=b_0\) for \(a_0\).
+After that, each equation for \(b_{\ell}\) is linear in the unknown \(a_{\ell}\), so has a unique solution as long as \(na_0^{n-1}\) has a reciprocal.
+\end{example}
+In summary:
+\begin{theorem}\label{thm:n.root.fps}
+Any formal power series in a single variable has an \(n^{\text{th}}\) root formal power series, as long as 
+\begin{itemize}
+\item
+it is over a commutative ring with identity in which \(n\) is a unit and
+\item
+its lowest degree term has degree a multiple of \(n\) and
+\item
+its lowest degree term has coefficient an \(n^{\text{th}}\) power of a unit.
+\end{itemize}
+There is then exactly one \(n^{\text{th}}\) root of the formal power series for each \(n^{\text{th}}\) root of that coefficient.
+\end{theorem}
+\begin{proof}
+We look for an \(n^{\text{th}}\) root of some formal power series
+\[
+y=b_0x^{kn}+b_1x^{kn+1}+\dots=x^{kn}(b_0+b_1x+\dots),
+\]
+for some multiple \(kn\).
+We can take \(n^{\text{th}}\) root \(x^k\) of \(x^{kn}\), so we need only take \(n^{\text{th}}\) root of \(b_0+b_1x+\dots\), as above.
+All subsequent \(a_{\ell}\) are uniquely determined after the choice of \(a_0\), i.e. \(n^{\text{th}}\) root of \(b_0\). 
+If we change the choice of \(a_0\), say to some \(A_0\), which is also an \(n^{\text{th}}\) root of \(b_0\), then 
+\[
+\frac{A_0^{n-1}}{a_0^n}
+\]
+is a reciprocal of \(A_0\), so \(A_0\) is also a unit.
+\end{proof}
+\begin{theorem}\label{thm:formal.solve}
+Suppose that \(p(x,y)\) is a formal power series over a commutative ring, with \(p(0,0)=0\).
+Suppose that the coefficient of the linear term in \(y\) is a unit in the commutative ring.
+Then there is a unique formal power series \(y=y(x)\), over the same commutative ring, with \(y(0)=0\) and with \(p(x,y(x))=0\) as a composition of formal power series.
+The terms of this formal power series \(y(x)\) are given by polynomials, with integer coefficients, in the terms of the formal power series \(p(x,y)\), after divided \(p(x,y)\) by that unit.
+\end{theorem}
+\begin{proof}
+We can rescale \(p(x,y)\) to arrange that the coefficient of \(y\) is \(-1\), so that we can write the formal equation \(0=p(x,y)\)  as \(y=q(x,y)\), where \(q(0,0)=0\) and where \(q(x,y)\) has vanishing \(y\) term.
+Expand out \(q(x,y)=\sum b_{pq} x^py^q\) to make the equation \(y=q(x,y)\) into
+\begin{alignat*}{8}
+y&=&(&b_{10}&x&+&b_{20}&x^2&+&b_{30}&x^3&+&\dots&)\\
+&\,+&(&b_{11}&x&+&b_{21}&x^2&+&b_{31}&x^3&+&\dots&)y\\
++(b_{02}&\,+&&b_{12}&x&+&b_{22}&x^2&+&b_{32}&x^3&+&\dots&)y^2\\
+&\ \vdots&&&&\ \vdots&&&\vdots\\
++(b_{0n}&\,+&&b_{1n}&x&+&b_{2n}&x^2&+&b_{3n}&x^3&+&\dots&)y^n\\
+&\ \vdots&&&&\ \vdots&&&\vdots
+\end{alignat*}
+
+Write out \(y=c_1x+c_2x^2+\dots\), and plug in to get
+\begin{alignat*}{8}
+&&&c_1&x&+&c_2&x^2&+&c_3&x^3&\dots\\
+&=&(&b_{10}&x&+&b_{20}&x^2&+&b_{30}&x^3&+&\dots&)\\
+&\,+&(&b_{11}&x&+&b_{21}&x^2&+&b_{31}&x^3&+&\dots&)(c_1x+c_2x^2+c_3x^3+\dots)\\
++(b_{02}&\,+&&b_{12}&x&+&b_{22}&x^2&+&b_{32}&x^3&+&\dots&)(c_1x+c_2x^2+c_3x^3+\dots)^2\\
+&\ \vdots&&&&\ \vdots&&&\vdots\\
++(b_{0n}&\,+&&b_{1n}&x&+&b_{2n}&x^2&+&b_{3n}&x^3&+&\dots&)(c_1x+c_2x^2+c_3x^3+\dots)^n\\
+&\ \vdots&&&&\ \vdots&&&\vdots
+\end{alignat*}
+Expand out term by term to find equations
+\begin{align*}
+c_1&=b_{10},\\
+c_2&=b_{20}+b_{11}c_1+b_{02}c_1^2\\
+c_3&=b_{30}+b_{11}c_2+b_{21}c_1+b_{12}c_1^2+2b_{02}c_1c_2+b_{03}c_1^3,\\
+      &\vdots
+\end{align*}
+
+It is clear that we can calculate out order by order, but let us prove it.
+Consider the general induction argument to arrive at the general term \(c_{\ell}=\dots\). 
+We can write the above equations as
+\[
+y=xQ_0(x)+xQ_1(x)y+\sum_{n=2}^{\infty} q_n(x)y^n.
+\]
+We know all of the coefficients of \(Q_1(x),Q_2(x),q_2(x),q_3(x),\dots\).
+We want \(y\) to be divisible by \(x\); write \(y=xz\) and plug in to get
+\[
+z=Q_0(x)+xQ_1(x)z+\sum_{n=2}^{\infty} q_n(x)x^{n-1}z^n.
+\]
+Take a formal power series \(z=c_1+c_2x+\dots\) and plug in.
+Each term \(c_k\) appearing on the right hand side appears in \(xQ_1(x)z\), multiplied by at least one \(x\), so forces itself into the equation for \(c_{k+1}\) on the left hand side.
+But \(c_k\) also it appears in \(q_n(x)x^{n-1}z^n\).
+In that term, \(n\) factors \(c_k\) multiply together, say of degrees \(k_1,k_2,\dots,k_n\), and give a term of order at least \(n-1+k_1+\dots+k_n\), with \(n\ge 2\), so a term of higher order that any of \(c_{k_1},\dots,c_{k_n}\).
+Hence each term \(c_k\) on the right hand side only occurs in equations that give rise to terms \(c_{\ell}\) on the left hand side, with \(k<\ell\).
+Hence every equation, term by term, solves for some \(c_{\ell}\) in terms of lower order \(c_k\).
+So there is a unique equation determining each term, and it determines it as a polynomial, with integer coefficients, in the lower order terms.
+\end{proof}
+\begin{corollary}
+At any smooth point of a plane algebraic curve, given by one nontrivial polynomial equation \(0=p(x,y)\) in two variables, we can arrange by a linear change of variables that the curve passes through the origin of coordinates, and is not tangent to the vertical coordinate axis there.
+Then the equation of the curve \(0=p(x,y)\) has a unique formal power series solution \(y=y(x)\) at that point.
+\end{corollary}
+\begin{problem}{formal.power.series:reduce.curve}
+Prove that the polynomial \(p(x,y)=y^2-x^2(1+x)\) is irreducible as a polynomial over any commutative ring with identity.
+(Hint: a stronger result is perhaps easier: \(y^2-f(x)\) is irreducible just when the polynomial \(f(x)\) is a square.)
+Over the real numbers, its zeroes form an algebraic plane curve:
+\begin{center}
+\pgfplotsset{compat=1.12,width=7cm}%
+\input{cubic-curve-1}
+\end{center}
+Explain how to factor \(p(x,y)\) into a product of two formal power series, each linear in \(x\) (so it is \emph{not} irreducible as a formal power series), over any commutative ring with identity.
+Roughly speaking, near the origin, the algebraic plane curve consists of the ``graphs'' of two ``functions'', but the ``functions'' might just be formal power series.
+\end{problem}
+\begin{answer}{formal.power.series:reduce.curve}
+If \(y^2-f(x)\) is reducible, each factor is linear in \(y\), or else one is constant in \(y\) and the other quadratic.
+In the second case: the factor constant in \(x\) is multiplied by a quadratic in \(x\), coefficients polynomial in \(y\), giving \(x^2+\dots\), constant in \(y\), so the factor constant in \(x\) and \(y\).
+In the first case: each linear factor has, up to rescaling, a unit coefficient in front of \(x\)
+\[
+x^2-f(y)=(x+b(y))(x+c(y))=x^2+x(b(y)+c(y))+b(y)c(y),
+\]
+so that \(c(y)=-b(y)\), and then \(x^2-f(y)=x^2-b(y)^2=(x+b(y))(x-b(y))\).
+Clearly \(y^2(1+y)\) is not a square, because it has odd degree.
+But over formal power series,
+\[
+x^2-y^2(1+y)=(x-y\sqrt{1+y})(x+y\sqrt{1+y})
+\]
+where \(\sqrt{1+y}\) means that we apply our previous results to construct the unique square root of \(1+y\) for which we take \(\sqrt{1}\) to be \(1\).
+\end{answer}
+\begin{example}
+Consider a formal power series \(x=a_1y+\dots\); can we solve for \(y=y(x)\), as a formal power series in \(x\)?
+According to our theorem, if \(a_1\) is a unit, then we can.
+But suppose that \(0=a_1=a_2=\dots=a_{n-1}\) but \(a_n\ne 0\)?
+The simplest example is \(x=y^2\).
+No formal power series can solve this: if the constant term of \(y(x)\) is nonzero, so is that of \(y(x)^2\).
+If not zero, then \(y(x)^2\) has degree \(2\) or more in \(x\) in its lowest term.
+So we have to introduce a formal root, i.e. work modulo the ideal generated by \(z=x^2\), for some new variable \(z\).
+This is the only obstruction:
+\end{example}
+\begin{theorem}
+Take a formal power series \(x=a_1y+\dots\) whose lowest order nonzero coefficient, say \(a_n\), is a unit which has an \(n^{\text{th}}\) root.
+Then the formal power series has a formal inverse function, i.e. we can solve it for \(y=y(x^{1/n})\), term by term in a formal power series, to ensure identity composition in either direction, after we introduce an \(n^{\text{th}}\) root \(x^{1/n}\).
+There is precisely one such inverse for each \(n^{\text{th}}\) root of \(a_n\).
+\end{theorem}
+\begin{proof}
+Let \(c_0\) be an \(n^{\text{th}}\) root of \(a_n\), the first nonzero term of \(x=x(y)\).
+Write \(x^{1/n}\) for a formal \(n^{\text{th}}\) root of \(x\), i.e. the remainder of \(z\) modulo \(z^n-x\).
+Apply theorem~\vref{thm:n.root.fps} to take an \(n^{\text{th}}\) root formal power series
+\[
+1+b_1y+b_2y^2+\dots
+\]
+of the formal power series
+\[
+1+\frac{a_{n+1}y}{a_n}+\frac{a_{n+2}y^2}{a_n}+\dots
+\]
+Apply theorem~\vref{thm:formal.solve} to the equation
+\[
+0=-x^{1/n}+c_0y(1+b_1y+b_2y^2+\dots),
+\]
+to give a formal power series
+\[
+y=c_1x^{1/n}+c_2x^{2/n}+\dots.
+\]
+So this solves the \(n^{\text{th}}\) power of 
+\[
+x^{1/n}=c_0y(1+b_1y+b_2y^2+\dots),
+\]
+which expands out to
+\[
+x=a_n y^n + a_{n+1}y^{n+1}+\dots
+\]
+\end{proof}
+\section{Laurent series}
+A \emph{formal Laurent series}\define{formal Laurent series} is defined just as a formal power series, but allowing in addition finitely many terms of negative degree:
+\[
+f(x)=\sum_{\alpha} b_{\alpha}x^{\alpha},
+\]
+for \(x=(x_1,\dots,x_n)\) and with the sum over \(\alpha=(\alpha_1,\dots,\alpha_n)\), for any integers \(\alpha_i\), but with only finitely many terms having any of the \(\alpha_i<0\).
+\begin{example}
+\[
+\frac{1}{x}+1+x+x^2+\dots
+\]
+is a formal Laurent series in one variable, while
+\[
+\frac{1}{x}+\frac{1}{x^2}+\frac{1}{x^3}+\dots
+\]
+is \emph{not}, nor is
+\[
+x^{1/2}+x,
+\]
+The series
+\[
+\frac{1}{xy}+\frac{1}{x}+\frac{1}{y}+1+x^3+x^5+x^7+\dots
+\]
+is a formal Laurent series in two variables, but
+\[
+x^2y^{-1}+x^3y^{-2}+x^4y^{-3}+\dots,
+\]
+is not.
+\end{example}
+We denote the set of all formal Laurent series in variables \(x=(x_1,\dots,x_n)\) over a ring \(R\) by \(R((x))\).
+\begin{problem}{formal.power.series:Laurent.field}
+The formal Laurent series, in a single variable, over a field is a field.
+\end{problem}
+\begin{answer}{formal.power.series:Laurent.field}
+Each nonzero formal Laurent series is uniquely expressed as 
+\[
+f(x)=x^k F(x),
+\]
+where \(k\) is an integer and \(F(x)\) is a formal power series with \(F(0)\ne 0\).
+Clearly \(F(x)\) has a unique reciprocal formal power series \(1/F(x)\).
+We would like to have
+\[
+\frac{1}{f(x)}=x^{-k}\frac{1}{F(x)}.
+\]
+Call this formal Laurent series \(h(x)\).
+Clearly \(h(x)f(x)=1\).
+\end{answer}
+\section{Puiseaux series}
+A \emph{Puiseaux series}\define{Puiseaux series} is a formal sum
+\[
+y(x)=c_1 x^{p_1/q}+c_2x^{p_2/q}+\dots
+\]
+for an increasing sequence of integers \(p_1,p_2,\dots\), finitely many of which can be negative, and a single positive integer \(q\).
+In other words, it is a formal Laurent series in \(x^{1/q}\).
+\begin{example}
+\[
+\frac{1}{x}+\frac{1}{x^2}+\dots=x^{-1}+x^{-2}+\dots
+\]
+is \emph{not} a Puiseaux series, nor is
+\[
+x^{.1}+x^{.11}+x^{.111}+\dots=x^{1/10}+x^{11/100}+x^{111/1000}+\dots
+\]
+\end{example}
+\begin{problem}{formal.power.series:Puiseaux}
+Prove that the set of all Puiseaux series over a field \(k\) in a single variable \(x\) forms a field.
+\end{problem}
+\section{Algebraic closures}
+\begin{theorem}
+If \(k\) is an algebraically closed field of characteristic zero, then the algebraic closure of the field of formal Laurent series in a single variable over \(k\) is the field of Puiseaux series in that variable over \(k\).
+\end{theorem}
+Given an algebraic curve \(0=p(x,y)\), we want to write out a Puiseaux series \(y=y(x)\) to ``solve''  the equation \(0=p(x,y)\), and we want to consider both the existence and the uniqueness of this series.
+We already see that there is no such formal power series in integer powers of \(x\).
+We will prove (after we define the term \emph{order} of a point of a plane algebraic curve):
+\begin{theorem}[Newton--Puiseaux]\define{theorem!Newton--Puiseaux}\define{Newton--Puiseaux theorem}
+Take a plane algebraic curve over an algebraically closed field \(k\).
+For simplicity, we suppose that the origin lies on the curve, and that the curve is irreducible.
+There is a Puiseaux series \(y(x)\) so that \(0=p(x,y(x))\), in the ring 
+of Puiseaux series.
+The number of distinct such series agrees with the order of the origin as a point of the algebraic curve.
+\end{theorem}
+
+\epigraph[author={Rainer Maria Rilke}]{Whoever you are, go out into the evening, \\
+leaving your room, of which you know every bit; \\ 
+your house is the last before the infinite, \\
+whoever you are.} 

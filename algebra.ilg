@@ -1,6 +1,6 @@
-This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
-Scanning input file algebra.idx....done (410 entries accepted, 0 rejected).
-Sorting entries......done (4161 comparisons).
-Generating output file algebra.ind....done (494 lines written, 0 warnings).
+This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
+Scanning input file algebra.idx....done (537 entries accepted, 0 rejected).
+Sorting entries.......done (5714 comparisons).
+Generating output file algebra.ind....done (612 lines written, 0 warnings).
 Output written in algebra.ind.
 Transcript written in algebra.ilg.

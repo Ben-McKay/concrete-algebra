@@ -390,9 +390,10 @@ Find the quotient and remainder for \(b,c\) equal to:
 \section{The greatest common divisor}
 A \emph{common divisor}\define{common divisor} of some integers is an integer which divides them all.
 \begin{problem}{integers:gcd.exists}
-Given any collection of one or more integers, not all zero, prove that they have a \emph{greatest common divisor}\define{greatest common divisor}, i.e. a largest positive integer divisor.
+Given any collection of one or more integers, not all zero, prove that they have a unique \emph{greatest common divisor}\define{greatest common divisor}, i.e. a common divisor \(d\ge 0\) so that every common divisor divides \(d\). 
 \end{problem}
 \begin{answer}{integers:gcd.exists}
+Suppose the collection is not empty.
 Pick any nonzero number, say \(m\), from the collection.
 By proposition~\vref{proposition:divisors.smaller}, \(m\) is not divisible by any integer larger than \(|m|\).
 So all of the positive integer divisors are between \(1\) and \(|m|\).
@@ -400,6 +401,12 @@ Put these integers in a bag.
 Repeatedly throw out the largest integer in our bag which is not a common divisor of the collection.
 But \(1\) is a common divisor, so we can't throw them all out.
 By induction, eventually we get a greatest common divisor, unique because it is the greatest.
+
+Suppose the collection is empty.
+Any integer \(d\) is a common divisor, since there is nothing to divide into.
+But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
+Those other common divisors can be any integers.
+So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
 \end{answer}
 Denote the greatest common divisor of integers \(m_1, m_2, \dots, m_n\) as
 \[
@@ -407,10 +414,10 @@ Denote the greatest common divisor of integers \(m_1, m_2, \dots, m_n\) as
 \Notation{gcd(m1,m2,...,mn)}{\gcd{m_1,m_2,\dots,m_n}}{greatest common divisor}
 \]
 If the greatest common divisor of two integers is \(1\), they are \emph{coprime}.\define{coprime}
-We will also define \(\gcd{0,0,\dots,0}\defeq 0\).
+We note that \(\gcd{0,0,\dots,0}=0\) and also that \(\gcd{}=0\) by our definition.
 \begin{lemma}
 Take two integers \(b, c\) with \(c\ne 0\) and compute the quotient \(q\) and remainder \(r\), so that \(b=qc+r\) and \(0 \le r < |c|\).
-Then the greatest common divisor of \(b\) and \(c\) is the greatest common divisor of \(c\) and \(r\).
+Then \(\gcd{b,c}=\gcd{c,r}\).
 \end{lemma}
 \begin{proof}
 Any divisor of \(c\) and \(r\) divides the right hand of the equation \(b=qc+r\), so it divides the left hand side, and so divides \(b\) and \(c\).
@@ -419,9 +426,23 @@ By the same reasoning, writing the same equation as \(r=b-qc\), we see that any 
 \begin{example}
 This makes very fast work of finding the greatest common divisor by hand.
 For example, if \(b=249\) and \(c=17\) then we found that \(q=14\) and \(r=11\), so \(\gcd{249,17}=\gcd{17,11}\).
-Repeat the process: taking \(17\) and dividing out \(11\), the quotient and remainder are \(1,6\), so \(\gcd{17,11}=\gcd{11,6}\).
-Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
-Again repeat the process: the quotient and remainder for \(11,6\) are \(1,5\), so \(\gcd{11,6}=\gcd{6,5}\).
+Repeat the process.
+It is convenient to write down our first two numbers, 
+\[
+249,17
+\]
+next write the remainder of dividing them, 
+\[
+249,17,11
+\]
+then write then remainder of dividing the last two on the list:
+\[
+249,17,11,6
+\]
+and repeat
+\[
+249,17,11,6,5,1,0.
+\]
 In more detail, we divide the smaller integer (smaller in absolute value) into that the larger:
 \integerLongDivision{249}{17}
 Throw out the larger integer, \(249\), and replace it by the remainder, \(11\), and divide again:
@@ -433,12 +454,12 @@ and again:
 and again:
 \integerLongDivision{5}{1}
 The remainder is now zero.
-The greatest common divisor is therefore \(1\), the final nonzero remainder: 
+The greatest common divisor is therefore \(1\), the final \emph{nonzero} remainder: 
 \(\gcd{249,17}=1\).
 \end{example}
 This method to find the greatest common divisor is called the \emph{Euclidean algorithm}.\define{Euclidean algorithm}\define{algorithm!Euclidean}
 \begin{example}
-If the final nonzero integer is negative, just change its sign to get the greatest common divisor.
+If the final nonzero remainder is negative, just change its sign to get the greatest common divisor:
 \[
 \gcd{-4,-2}=\gcd{-2,0}=\gcd{-2}=2.
 \]

@@ -185,14 +185,14 @@ a pair of lines defined over a quadratic extension \(k(\sqrt{\alpha})\) meeting 
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-At a singular point of a plane conic, in an affine chart in which the singular point is the origin, the equation of the conic becomes a quadratic form in \(x,y\).
+At a singular point of a plane conic, in an affine plane in which the singular point is the origin, the equation of the conic becomes a quadratic form in \(x,y\).
 This factors over \(k\) or over a quadratic extension of \(k\), i.e. the conic is a pair of lines in a quadratic extension.
 If any point (except the origin) on one of those lines has coordinates in \(k\), then the line does, and so does the associated linear factor, and then by dividing that linear factor in, we see that the other linear factor is also defined over \(k\).
 Suppose on the other hand that the linear factors don't exist over \(k\), only over the quadratic extension.
 Then no other point of the affine plane with coordinates in \(k\) belongs to the curve, except the singular point.
 Write out the equation of the curve as \(ax^2+bxy+cy^2=0\), say.
-Switch to the affine chart \(y=1\) where the curve is \(ax^2+bx+c\).
-Since the homogeneous equation has no roots in \(\Proj[1]{k}\), this quadratic equation has no root in \(k\), so there is no point in this affine chart \(y=1\).
+Switch to the affine plane \(y=1\) where the curve is \(ax^2+bx+c\).
+Since the homogeneous equation has no roots in \(\Proj[1]{k}\), this quadratic equation has no root in \(k\), so there is no point in this affine plane \(y=1\).
 Therefore the projective conic has precisely one point with coordinates in \(k\).
 \end{proof}
 
@@ -202,7 +202,7 @@ If a conic in the projective plane over a field \(k\) has a regular point with c
 \begin{proof}
 Suppose that our conic is not a pair of lines.
 It has a regular point with coordinates in \(k\), and is not a pair of lines, so it has no singular points, and so is irreducible.
-Arrange by projective automorphism that the regular point lies at the origin of the affine chart \(z=1\) with tangent line \(y=0\), so the curve has the form
+Arrange by projective automorphism that the regular point lies at the origin of the affine plane \(z=1\) with tangent line \(y=0\), so the curve has the form
 \[
 y=ax^2+bxy+cy^2.
 \]
@@ -231,7 +231,7 @@ The inverse map is
 \]
 Clearly this identifies the rational functions.
 
-More geometrically, pick a regular point \(p_0\) on the curve, and arrange that it is the origin in an affine chart.
+More geometrically, pick a regular point \(p_0\) on the curve, and arrange that it is the origin in an affine plane.
 Then take a line \(\ell\) in the plane, and identify each point \(p \in \ell\) of that line with the intersection point of the line \(pp_0\) with \(C\).
 We leave the reader to check that this gives the same map. 
 \end{proof}

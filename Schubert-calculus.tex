@@ -89,6 +89,11 @@ If \(V=k^4\), then \(\Lambda^1 V=V\) and \(\Lambda^2 V\) has basis
 \[
 e_1\wedge e_2,e_1\wedge e_3,e_1\wedge e_4,e_2\wedge e_3,e_2\wedge e_4,e_3\wedge e_4.
 \]
+As we mentioned above, it is convenient to write \(e_{1,2}\) to mean \(e_1\wedge e_2\).
+If we work with fewer than \(10\) vectors, skip the comma: define \(e_{12}\) to mean \(e_1\wedge e_2\), and so on:
+\[
+e_{12},e_{13},e_{14},e_{23},e_{24},e_{34}.
+\]
 \end{example}
 \begin{problem}{Schubert.calculus:universal.property}
 Suppose that 
@@ -128,43 +133,30 @@ Taking these \(v_i\) to be a basis, we expand out a basis \(v_I\), and we find t
 \end{proof}
 \begin{example}
 If \(V=k^4\), we compute in \(\Lambda^* V\).
-The four vectors \(e_1,e_2,e_3,e_4\) anticommute with one another, i.e. \(e_2 \wedge e_1=-e_1\wedge e_2\) and so on.
+The four vectors \(e_1,e_2,e_3,e_4\) anticommute with one another, i.e. \(e_2\wedge e_1=-e_1\wedge e_2\) and so on.
 By the same rule, \(e_1\wedge e_1=0\) and so on.
 The only other rule is associativity.
 It is convenient as above to denote \(e_1\wedge e_2\) as \(e_{1,2}\).
 Since our indices run only from \(1\) to \(4\), we can drop commas and denote \(e_{1,2}\) by \(e_{12}\), and so on.
+Remember that \(e_{11}=e_1\wedge e_1=0\), and so also \(e_{112}=0\).
+But then \(e_{121}=-e_{112}\) by antisymmetry, and so \(e_{121}=-e_{112}=0\).
+More generally, repeated indices force zero.
 For instance,
 \begin{align*}
-(e_1\wedge e_2+e_1\wedge e_3)\wedge (e_4 + e_2 + e_3\wedge e_2)
+(e_{12}+e_{13})\wedge (e_4 + e_2 + e_{32})
 &=
-e_1\wedge e_2\wedge (e_4 + e_2 + e_3\wedge e_2)
+e_{12}\wedge (e_4 + e_2 + e_{32})
 \\
 &\quad+
-e_1\wedge e_3\wedge (e_4 + e_2 + e_3\wedge e_2),
+e_{13}\wedge (e_4 + e_2 + e_{32}),
 \\
 &=
-e_1\wedge e_2\wedge e_4\\
-&\quad +e_1\wedge e_2\wedge e_2\\
-&\quad +e_1\wedge e_2\wedge e_3\wedge e_2\\
-&\quad + e_1\wedge e_3\wedge e_4\\
-&\quad + e_1\wedge e_3 \wedge e_2 \\
-&\quad + e_1\wedge e_3 \wedge e_3\wedge e_2,
+e_{124}+e_{122}+e_{1232}\\
+&\quad+e_{134}+e_{132}+e_{133},
 \\
 &=
-e_1\wedge e_2\wedge e_4\\
-&\quad +e_1\wedge 0\\
-&\quad -e_1\wedge e_2\wedge e_2\wedge e_3\\
-&\quad + e_1\wedge e_3\wedge e_4\\
-&\quad - e_1\wedge e_2 \wedge e_3\\
-&\quad + e_1\wedge 0\wedge e_2,
-\\
-&=
-e_1\wedge e_2\wedge e_4\\
-&\quad+0\\
-&\quad -0\\
-&\quad+e_1\wedge e_3\wedge e_4\\
-&\quad-e_1\wedge e_2 \wedge e_3\\
-&\quad+0,
+e_{124}+0+0\\
+&\quad+e_{134}-e_{123}+0,
 \\
 &=
 e_{124}+e_{134}-e_{123}.
@@ -398,9 +390,9 @@ We can choose this basis to be
 \begin{align*}
 v_1&=\sum_{j<i_1} a_{j1}e_j+ e_{i_1},\\
 v_2&=\sum_{j\ne i_1, j<i_2} a_{j2}e_j+ e_{i_2},\\
-&\vdots\\
+&\vdotswithin{=}\\
 v_{\ell}&=\sum_{j \notin I}^{j<i_{\ell}} a_{j\ell}e_{j}+e_{i_{\ell}},\\
-&\vdots\\
+&\vdotswithin{=}\\
 v_p&=\sum_{j \notin I}^{j<i_p} a_{jp}e_j+e_{i_p}.
 \end{align*}
 Scaling these by constants \(a_{j i_j}\), our homogeneous polynomials vanish on 
@@ -411,9 +403,9 @@ for
 \begin{align*}
 v_1&=\sum_{j\le i_1} a_{j1}e_j,\\
 v_2&=\sum_{j\ne i_1, j\le i_2} a_{j2}e_j,\\
-&\vdots\\
+&\vdotswithin{=}\\
 v_{\ell}&=\sum_{j \notin I}^{j\le i_{\ell}} a_{j\ell}e_{j},\\
-&\vdots\\
+&\vdotswithin{=}\\
 v_p&=\sum_{j \notin I}^{j\le i_p} a_{jp}e_j.
 \end{align*}
 But now we can vary these \(a_{ji_j}\) to get vanishing on all \(W\) lying in all \(C_J\) with intersection dimensions at most those of \(C_I\).

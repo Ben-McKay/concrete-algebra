@@ -1,5 +1,6 @@
 \colorlet{curveZero}{gray!85}
 \colorlet{curveOne}{blue!60}
+\definecolor{curveOneColor}{rgb}{.6,0,0}
 \colorlet{curveTwo}{brown!50!gray}
 \colorlet{curveThree}{green!40!gray}
 \colorlet{curveFour}{red!50!gray}
@@ -14,6 +15,10 @@
 \NewDocumentCommand\DrawNode{O{}m}%
 {%
 \fill[gray!20,draw=gray] (#2) circle (1.6pt) node[above,black] {\(#1\)};%
+}%
+\NewDocumentCommand\DrawDotThreeD{O{}mmmO{}}%
+{%
+\fill[gray!20,draw=gray] ({#2},{#3},{#4}) circle (1.6pt) node[above,black,#5] {\(#1\)};%
 }%
 \colorlet{axisColor}{gray!50}
 \tikzstyle{shapeZero}=[fill=curveZero,opacity=.4]

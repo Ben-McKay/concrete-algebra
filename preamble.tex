@@ -18,7 +18,10 @@
 arrows,
 backgrounds,
 calc,
+decorations.markings,
 decorations.pathmorphing,
+decorations.pathreplacing,
+decorations.shapes,
 fit,
 intersections,
 petri,
@@ -29,6 +32,7 @@ through
 \usepackage{tikz-cd}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}
+\usepgfplotslibrary{fillbetween}
 \usepackage{tikz-3dplot}
 \usepackage{genyoungtabtikz}
 \newlength{\YoungBoxSize}
@@ -120,6 +124,10 @@ through
 {\tensor[^{\#}]{{#2}}{}}%
 }%
 
+% Cross out mathematics.
+\newcommand\hcancel[2][red]{\setbox0=\hbox{$#2$}%
+\rlap{\raisebox{.45\ht0}{\textcolor{#1}{\rule{\wd0}{1pt}}}}#2} 
+
 
 % \congmod[p]{b}{c} means b=c (mod p).
 \NewDocumentCommand\congmod{omm}{\IfValueTF{#1}{#2 \equiv #3 \pmod{#1}}{#2 \equiv #3}}
@@ -171,5 +179,10 @@ through
 
 \NewDocumentCommand\Gr{mo}{\ensuremath{\operatorname{Gr}_{#1}\IfValueT{#2}{\!{#2}}}}
 \NewDocumentCommand\GL{m}{\ensuremath{\operatorname{GL}_{#1}}}
+
+\NewDocumentCommand\adj{sm}{\ensuremath{\operatorname{adj}\IfBooleanTF{#1}{\left(#2\right)}{#2}}}
+
+% coefficients of polynomials and Taylor series
+\NewDocumentCommand\coef{m}{\ensuremath{\left.#1\right|}}
 
 \input{colorScheme}

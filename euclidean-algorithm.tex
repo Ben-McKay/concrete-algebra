@@ -1,4 +1,4 @@
-\chapter{Greatest common divisors}
+\chapter{Greatest common divisors}\label{chapter:gcd}
 \epigraph[author={Euclid}]{The laws of nature are but the mathematical thoughts of God.}\SubIndex{Euclid}
 \epigraph[author={Edna St. Vincent Millay}, source={Euclid Alone}]
 {Euclid alone has looked on Beauty bare. \\
@@ -17,7 +17,7 @@ Who, though once only and then but far away, \\
 Have heard her massive sandal set on stone.}\SubIndex{St. Vincent Millay, Edna}\SubIndex{beauty}
 \section{The extended Euclidean algorithm}\define{extended Euclidean algorithm}\define{Euclidean algorithm!extended}\define{algorithm!extended Euclidean}
 \begin{theorem}[B\'ezout]
-For any two integers \(b, c\), not both zero, there are integers \(s,t\) so that \(sb+tc=\gcd{b,c}\).
+For any two integers \(b, c\), there are integers \(s,t\) so that \(sb+tc=\gcd{b,c}\).
 \end{theorem}
 These \emph{B\'ezout coefficients}\define{B\'ezout!coefficients} \(s, t\) play an essential role in advanced arithmetic, as we will see.
 \begin{example}
@@ -68,7 +68,7 @@ the process stops here, and where we expect to get an equation \(sb+tc=\gcd{b,c}
 0(-8)+1(-4)=-4, 
 \]
 which has the wrong sign, a negative greatest common divisor.
-So if the answer pops out a negative for the greatest common divisor, we change signs: \(s=0, t=-1, \gcd{b,c}=4\).
+So if the answer pops out a negative for the greatest common divisor, we change signs across the whole row: \(s=0, t=-1, \gcd{b,c}=4\).
 \end{example}
 
 \begin{theorem}\label{theorem:B\'ezout.euclidean}
@@ -214,7 +214,6 @@ Find B\'ezout coefficients and greatest common divisors of
 \sagestr{bezpretty(-1000,2002)}
 \end{enumerate}
 \end{answer}
-
 \begin{problem}{euclidean.algorithm:several}
 How would you find the greatest common divisor of several integers? The B\'ezout coefficients?
 \end{problem}

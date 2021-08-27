@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw[gray,thick,-stealth] (-1,0) -- (1,0);
+\draw[gray,thick,-stealth] (0,-1) -- (0,1);
+\draw[black,thick] (-1,.5) -- (1,.5);
+\begin{scope}
+    \clip(-1,-1) rectangle (1,1);
+	\foreach \i in {1,...,7}
+	{
+		\pgfmathsetmacro\clr{100-5*\i}
+		\pgfmathsetmacro\thet{130-15*\i}
+		\draw[draw=curveOne!\clr,very thick] ({2*cos(\thet)},{2*sin(\thet)}) -- ({-2*cos(\thet)},{-2*sin(\thet)});
+		\pgfmathsetmacro\xxx{cot(\thet)/2}
+		\DrawDot{\xxx}{.5}
+	}
+\end{scope}
+\DrawDot{0}{0}
+\end{tikzpicture}
+\end{document}

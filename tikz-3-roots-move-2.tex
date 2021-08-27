@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw[curveZero] (-1,0) -- (1.5,0);
+%\draw[very thick,curveTwo,domain=-1:1] plot (\x,{-.5*\x*\x*\x});
+%\fill[curveOne] (0,0) circle (2pt);
+%\fill[curveOne] (-.8,0) circle (2pt);
+\foreach \i/\j in {.8/10,1/20,1.2/30,1.4/40,1.6/50,1.8/60,2/70,2.2/80,2.4/90,2.6/100}
+{
+	\draw[very thick,curveOne!\j!curveTwo,domain=-1:1.5] plot (\x,{\x*(\x/\i-1)*(\x+.8)});
+}
+\draw[very thick,curveTwo,domain=-1:1.5] plot (\x,{\x*(-1)*(\x+.8)});
+\DrawDot{0}{0}
+\DrawDot{-.8}{0}
+%\fill[curveOne] (.8,0) circle (2pt);
+%\draw[very thick,curveThree,domain=-1:1] plot (\x,{-1+.25*\x*\x*\x});
+\end{tikzpicture}
+\end{document}

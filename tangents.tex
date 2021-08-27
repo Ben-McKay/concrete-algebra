@@ -7,7 +7,7 @@ Among all of the lines through \(p\), every one of them strikes \(C\) in exactly
 \end{proposition}
 \begin{proof}
 First assume that \(C\) is irreducible.
-Arrange that the point \(p\) lies at the origin in an affine chart, so that the lines through \(p\) are those of the form \(y=mx\) or \(x=0\).
+Arrange that the point \(p\) lies at the origin in an affine plane \(z=1\), so that the lines through \(p\) are those of the form \(y=mx\) or \(x=0\).
 Also arrange that \(C\) is not entirely on the line at infinity, so contains some finite points.
 From the equation \(q(x,y)=0\) of the curve \(C\), the intersections lie on \(q(x,mx)=0\), a polynomial of degree at most \(d\) in \(x\).
 This polynomial is not the zero polynomial, because the origin does not lie on \(C\).
@@ -110,7 +110,7 @@ We can justify this over the real numbers (or the complex numbers), by saying th
 \epigraph[author={Robert Graves}, source={Conversations with Robert Graves}]{That's what love is. It's a recognition of singularity.}\SubIndex{Graves, Robert}
 
 Take any algebraic curve \(C\) in the projective plane, and any point \(p_0\) of \(C\).
-Write out an affine chart in which \(p_0\) is the origin \((x,y)=(0,0)\), and write out the equation \(0=p(x,y)\) of the curve.
+Write out an affine plane \(z=1\) in which \(p_0\) is the origin \((x,y)=(0,0)\), and write out the equation \(0=p(x,y)\) of the curve.
 We can take \(p(x,y)\) to be a product of irreducibles \(p_i(x,y)\).
 Since the origin belongs to \(C\), at least one of the factors \(p_i(x,y)\) vanishes there.
 Expand each \(p_i(x,y)\) into sums of constants times monomials.
@@ -150,7 +150,7 @@ The singular points of an affine algebraic curve \(C\) with equation \(0=p(x,y)\
 0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y},
 \]
 by definition.
-Similarly, the singular points of a projective algebraic curve are the singular points of one of its representatives in an affine chart.
+Similarly, the singular points of a projective algebraic curve are the singular points of one of its representatives in an affine plane.
 \end{example}
 \begin{example}
 Take a reducible curve and write it as a union of irreducible component curves.
@@ -163,8 +163,8 @@ Therefore every reducible curve is singular.
 Consequently, every nonsingular curve is irreducible.
 \end{example}
 \begin{example}
-The curve \(y=x^n\) in the affine chart \(z=1\) has no singularities in that chart, if \(n \ge 1\) is an integer.
-In the chart \(x=1\) it becomes \(z^{n-1}y=1\) which has singularities just when 
+The curve \(y=x^n\) in the affine plane \(z=1\) has no singularities in that affine plane, if \(n \ge 1\) is an integer.
+In the affine plane \(x=1\) it becomes \(z^{n-1}y=1\) which has singularities just when 
 \[
 z^{n-1}y=1 \text{ and } z^{n-1}=0 \text{ and } (n-1)z^{n-2} y = 0,
 \]

@@ -111,6 +111,7 @@ But we have seen that \(0 \, c=0\), so \(a=0\), a contradiction.
 Dividing zero by zero would mean find an integer \(c\) so that \(0=0 \, c\).
 But any integer \(c\) satisfies this equation, so there is no way to pick out one value \(c\) to be \(0/0\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.exists}.}
+Suppose the collection is not empty.
 Pick any nonzero number, say \(m\), from the collection.
 By proposition~\vref{proposition:divisors.smaller}, \(m\) is not divisible by any integer larger than \(|m|\).
 So all of the positive integer divisors are between \(1\) and \(|m|\).
@@ -118,6 +119,12 @@ Put these integers in a bag.
 Repeatedly throw out the largest integer in our bag which is not a common divisor of the collection.
 But \(1\) is a common divisor, so we can't throw them all out.
 By induction, eventually we get a greatest common divisor, unique because it is the greatest.
+
+Suppose the collection is empty.
+Any integer \(d\) is a common divisor, since there is nothing to divide into.
+But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
+Those other common divisors can be any integers.
+So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:find.gcd}.}
 \begin{enumerate}
 \item \(\sage{gcd(4233, 884)}\)
@@ -226,8 +233,8 @@ By problem~\vref{problem:integers:gcd.divided}, \(md\) divides \(D\), say \(D=md
 Then \(mb=md\ell b'\) and \(mc=md\ell c'\) so \(b=d\ell b'=Bd\) so \(\ell b'=B\) and similarly \(\ell c'=C\).
 But \(B\) and \(C\) are coprime, so \(\ell=1\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:nine}.}
-A 1-digit positive integer has the form \(b=b_0\) with \(0 \le b_0 \le 9\) its first digit.
-A 2-digit positive integer has the form \(b=b_0+10 \, b_1\) with \(0 \le b_0,b_1 \le 9\).
+A \(1\)-digit positive integer has the form \(b=b_0\) with \(0 \le b_0 \le 9\) its first digit.
+A \(2\)-digit positive integer has the form \(b=b_0+10 \, b_1\) with \(0 \le b_0,b_1 \le 9\).
 In general, an \(n\)-digit positive integer has the form
 \[
 b=b_0+10 \, b_1 + 10^2 \, b_2 + \dots + 10^{n-1} b_{n-1}.
@@ -439,12 +446,21 @@ We can check: expand out
 \]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:not.prime.characteristic}.}
 roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rsa:nuke}.}
+Pick a large prime number $p$.
+Pick a random polynomial $b(t)$ of degree $k$ with coefficients in $\mathbb{Z}/p\mathbb{Z}$.
+Tell person $1$ the value of $b(1)$, person $2$ the value of $b(2)$ and so forth.
+Tell them all the value of $p$.
+Send the signal when any group of them tells you $b(0)$.
+Any $k+1$ people can use linear algebra (which requires all of the arithmetic operations, including reciprocals, so $p$ has to be prime) to compute all coefficients of $b(t)$ (by interpolation), and hence $b(0)$.
+Any $k$ or fewer people have no information about $b(0)$, since whatever polynomial \(b(t)\) we choose, we can always alter it arbitrarily at any \(k\) nonzero values of \(t\), without altering its value at \(t=0\) (proof: interpolation).
+The signal to start the war is the value of $b(0)$, entered into some computer; if $p$ is enormous, there is essentially no chance of guessing some randomly chosen $b(0)$.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example}.}
 To get you started: \(p_0(x)=4x^4+2x^2-1\), \(p'(x)=16x^3+4x=4(4x^3+x)\), so we can rescale by \(1/4\) to simplify to \(p_1(x)=4x^3+x\), \(p_2(x)=1-x^2\), \(p_3(x)=-5x\) which you can rescale by \(1/5\) to get \(p_3(x)=-x\), \(p_4(x)=-1\).
 You should find that there is one root in that interval. You can check by letting \(x^2=t\), write as a quadratic equation in \(t\), solve with the quadratic formula, and also look at the graph:
 \begin{center}
 \begin{sagesilent}
-x=var(`x`)
+x=var("x")
 \end{sagesilent}
 \sageplot[width=6cm]{plot(4*x^4+2*x^2-1,(x,0,1))}
 \end{center}
@@ -532,6 +548,36 @@ whichever is larger.
 \begin{center}
 \input{5th-roots}
 \end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:unique.p.f.d}.}
+Suppose you find a counterexample: two partial fraction decompositions for the same rational function.
+Their difference is a partial fraction decomposition for the zero rational function \(0/c(x)\) for some \(c(x)\).
+Suppose we have such.
+
+Clearly if our partial fraction decomposition is pure polynomial, with no partial fractions, it can't equal the zero rational function without being entirely zero: clear denominators
+
+Now suppose that we have a partial fraction decomposition for the zero rational function \(0/c(x)\).
+Split \(c(x)\) into a product of coprime irreducibles
+\[
+c(x)=c_1(x)^{n_1}\dots c_{\ell}(x)^{n_{\ell}}.
+\]
+Suppose that our decomposition is
+\[
+\frac{0}{c(x)}
+=B(x)
++\sum_j \sum_{k=1}^{n_j} \frac{b_{jk}(x)}{c_j(x)^k},
+\]
+Multiply by \(c(x)\) to clear denominators:
+\[
+0=c(x)B(x)+\sum_j \sum_{k=1}^{n_j} b_{jk}(x)c_j(x)^{n_j-k}\prod_{i\ne j} c_i(x)^{n_i}
+\]
+All terms in both sides are divisible by \(c_1(x)\), except perhaps a single one:
+\[
+b_{1n_1}(x)\prod_{i\ne 1} {c_i(x)^{n_i}}.
+\]
+So \(c_1(x)^{n_1}\) must also divide this.
+But all of the \(c_i\) are coprime to \(c_1(x)\), so \(c_1(x)\) divides \(b_{1n_1}(x)\), but has larger degree, so \(b_{1n_1}(x)=0\).
+We can reduce the value of \(n_1\) in our partial fraction decomposition, to find a simpler counterexample with fewer terms.
+Apply induction on the number of terms, until the partial fraction decomposition becomes a polynomial, which must agree with the zero polynomial, so must have all coefficients zero.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:prime.outputs}.}
 We can flip the sign to get \(p(x)\) to have a positive leading coefficient.
 After \(x\) is made larger than any of the (finitely many) roots of \(p(x)\), we know that \(p(x)>0\).
@@ -577,8 +623,33 @@ Their 3 possible products are \(y^2,y(y+1),(y+1)^2=y^2+1\), not equal to \(y^2+y
 So irreducible over remainders modulo \(2\).
 If it reduces over integers, quotient by \(2\) to get a reduction in remainders modulo \(2\), or to get zero.
 But it remains nonzero and irreducible.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:add.identity}.}
+Starting with any ring \(R\), let \(S\) be the set of pairs \((n,r)\) so that \(n\) is an integer and \(r\in R\).
+Add by
+\[
+(n_0,r_0)+(n_1,r_1)=(n_0+n_1,r_0+r_1).
+\]
+Multiply by
+\[
+(n_0,r_0)(n_1,r_1)=(n_0n_1,n_1r_0+n_0r_1+r_0r_1).
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:rationals}.}
 Take two such, cross multiply, and use unique factorisation of polynomials.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:inverse.mod.3.and.p}.}
+\[
+0=\alpha^9+2\alpha^2+1,
+\]
+\[
+-1=\alpha^9+2\alpha^2=\alpha(\alpha^8+2\alpha)
+\]
+\[
+\frac{-1}{\alpha}=\alpha^8+2\alpha,
+\]
+and multiply by \(-1\) to get
+\[
+\frac{1}{\alpha}=-\alpha^8-2\alpha=2\alpha^7+\alpha
+\]
+since \(-1=2\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:quot.poly}.}
 \[
 \begin{array}{c|ccccccccc}
@@ -678,8 +749,105 @@ Take two such, cross multiply, and use unique factorisation of polynomials.
 1+\alpha   \\
 \end{array}
 \]
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:inverse.mod.3.and.p}.}
-\(2x^8+x\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:newton:one.minus.x}.}
+Let's be very careful.
+The formal definition of the product is
+\begin{align*}
+&\coef{x^{\ell}}(1-x)(1+x+x^2+\dots)\\
+&=
+\sum_{k=0}^{\ell}
+\left(\coef{x^k}(1-x)\right)
+\left(\coef{x^{\ell-k}}(1+x+x^2+\dots)\right).
+\end{align*}
+Clearly
+\[
+\coef{x^k}(1-x)=
+\begin{cases}
+1,&\text{ if \(k=0\)},\\
+-1,&\text{ if \(k=1\)},\\
+0,&\text{ otherwise},
+\end{cases}
+\]
+while
+\[
+\coef{x^k}(1+x+x^2+\dots)=1.
+\]
+So
+\begin{align*}
+\coef{x^{\ell}}(1-x)(1+x+x^2+\dots)
+&=
+\sum_{k=0}^{\ell}
+\begin{cases}
+1,&\text{ if \(k=0\)},\\
+-1,&\text{ if \(k=1\)},\\
+0,&\text{ otherwise},
+\end{cases}
+\\
+&=
+\begin{cases}
+1,&\text{ if \(\ell=0\)},\\
+0,&\text{ if \(\ell\ge 1\)}.
+\end{cases}
+\end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:example.sum}.}
+\begin{align*}
+f_1(x)&=1+x+x^2+x^3+x^4+x^5+\dots,\\
+f_2(x)&=x+x^2+x^3+x^4+x^5+\dots,\\
+f_3(x)&=x^2+x^3+x^4+x^5+\dots,\\
+f_4(x)&=x^3+x^4+x^5+\dots,\\
+&\vdots
+\end{align*}
+so
+\[
+f_1(x)+f_2(x)+f_3(x)+\dots
+=
+1+2x+3x^2+4x^3+\dots.
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power:Euclid}.}
+If \(b(x)\) has lower lowest order than \(c(x)\), we can subtract off some polynomial \(r(x)\) from \(b(x)\) so that \(b(x)-r(x)\) has lowest orderequal to of \(c(x)\).
+Otherwise, we can set \(r(x)=0\).
+So now \(b(x)-r(x)\) has lowest order no less than \(c(x)\).
+We can then multiple \(c(x)\) by the power \(x^k\) of \(x\) that will make \(c(x)\) have equal lowest order with \(b(x)-r(x)\).
+So for a suitable constant \(q_0\), \(x^{k_0}q_0c(x)\) has the same lowest order term as \(b(x)-r(x)\).
+So \(b(x)-r(x)-q_0x^{k_0}q_0c(x)\) has higher lowest order than \(b(x)-r(x)\).
+Repeating, we find that we can write
+\[
+0=b(x)-r(x)-(q_0x^{k_0}+q_1x^{k_1}+q_2x^{k_2}+\dots)c(x).
+\]
+So \(b(x)=r(x)+q(x)c(x)\), with \(r(x)\) a polynomial of degree less than the lowest order \(c(x)\).
+If there are two such expressions \(r_0(x)+q_0(x)c(x)=r_1(x)+q_1(x)c(x)\), their difference has
+\[
+r_0(x)-r_1(x)=(q_1(x)-q_0(x))c(x).
+\]
+Every term agrees.
+But every term on the left hand side has degree less than the lowest order of \(c(x)\), while every term on the right hand side has degree at least that.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:reduce.curve}.}
+If \(y^2-f(x)\) is reducible, each factor is linear in \(y\), or else one is constant in \(y\) and the other quadratic.
+In the second case: the factor constant in \(x\) is multiplied by a quadratic in \(x\), coefficients polynomial in \(y\), giving \(x^2+\dots\), constant in \(y\), so the factor constant in \(x\) and \(y\).
+In the first case: each linear factor has, up to rescaling, a unit coefficient in front of \(x\)
+\[
+x^2-f(y)=(x+b(y))(x+c(y))=x^2+x(b(y)+c(y))+b(y)c(y),
+\]
+so that \(c(y)=-b(y)\), and then \(x^2-f(y)=x^2-b(y)^2=(x+b(y))(x-b(y))\).
+Clearly \(y^2(1+y)\) is not a square, because it has odd degree.
+But over formal power series,
+\[
+x^2-y^2(1+y)=(x-y\sqrt{1+y})(x+y\sqrt{1+y})
+\]
+where \(\sqrt{1+y}\) means that we apply our previous results to construct the unique square root of \(1+y\) for which we take \(\sqrt{1}\) to be \(1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:Laurent.field}.}
+Each nonzero formal Laurent series is uniquely expressed as
+\[
+f(x)=x^k F(x),
+\]
+where \(k\) is an integer and \(F(x)\) is a formal power series with \(F(0)\ne 0\).
+Clearly \(F(x)\) has a unique reciprocal formal power series \(1/F(x)\).
+We would like to have
+\[
+\frac{1}{f(x)}=x^{-k}\frac{1}{F(x)}.
+\]
+Call this formal Laurent series \(h(x)\).
+Clearly \(h(x)f(x)=1\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:mod.2}.}
 Either note the common factor of \(x+1\): \(b(x)=(x+1)(x^2+x+1)\), \(c(x)=(x+1)^2x\), or compute the determinant of
 \[
@@ -816,6 +984,25 @@ For \(p(x)=x^3+2x-1\), \(p'(x)=3x^2+2\) so
 \]
 so there is no common factor between \(p(x)\) and \(p'(x)\), and so no double roots among the complex numbers.
 \end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:cubic.discriminant.a}.}
+The discriminant is the resultant of \(p(x),p'(x)\), so the determinant of
+\[
+\begin{pmatrix}
+1&0&a&0&0\\
+a&1&0&a&0\\
+0&a&3&0&a\\
+1&0&0&3&0\\
+0&1&0&0&3
+\end{pmatrix}
+\]
+which is \(27+4a^3\), so vanishes just when \(a=-3/\sqrt[3]{4}\).
+For this value of \(a\), the polynomial actually factors:
+\[
+x^3-\frac{3}{\sqrt[3]{4}}x+1
+=
+(x-2^{-1/3})^2(x+2^{2/3}),
+\]
+so a double root at \(x=2^{-1/3}\) and a single root at \(x=-2^{2/3}\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:discriminant.as.product}.}
 Write out
 \[
@@ -826,7 +1013,7 @@ Differentiate:
 p'(x)
 &=(x-x_2)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
 &+(x-x_1)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
-&+\vdots\\
+&\vdotswithin{+}\\
 &+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_n)\\
 &+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_{n-1})
 \end{align*}
@@ -946,6 +1133,20 @@ e_3(e_2^2-2e_3e_1)
 \item \(x^4y^4z^4=e_3^4\)
 \item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
 \end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutions:rationals}.}
+We will prove that any symmetric function has an expression \(b(e_1,\dots,e_n)/c(e_1,\dots,e_n)\) as a ratio of polynomials with no common nonconstant factor, expressed in the elementary symmetric polynomials, unique up to rescaling numerator and denominator by the same nonzero constant.
+If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
+To see that there is one such, write out the function as \(p(t_1,\dots,t_n)/q(t_1,\dots,t_n)\).
+Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
+Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
+So any swap either changes sign or leaves both numerator and denominator alone.
+Replace our expression for our rational function by
+\[
+\frac{p(t_1,\dots,t_n)q(t_1,\dots,t_n)}{q(t_1,\dots,t_n)^2}.
+\]
+So there is an expression in symmetric polynomials.
+Factor out any common factors.
+Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:SymmetricFunctions:Two}.}
 \begin{align*}
 \chi_A{\lambda}
@@ -957,19 +1158,11 @@ e_3(e_2^2-2e_3e_1)
 e_n(t) - e_{n-1}(t) \lambda + e_{n-2}(t) \lambda^2 + \dots + (-1)^n \lambda^n.
 \end{align*}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:inverse.Cramer}.}
-Cramer's rule says that the inverse \(A^{-1}\) has entries
+By theorem~\vref{theorem:adjugate}, \(A^{-1}=(\det A)^{-1}\adj{A}\), so
 \[
 A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
 \]
-so rational functions of the entries of \(A\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permutions:rationals}.}
-If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
-To see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
-Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
-Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
-So any swap either changes sign or leaves both numerator and denominator alone.
-Multiple the numerator and denominator by the function \(\prod_{i<j}(t_i - t_j)\) to ensure that the don't change when we transpose, and so they don't change under any permutation.
-Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
+rational functions of the entries of \(A\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:kernel.subring}.}
 If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
 So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
@@ -977,8 +1170,23 @@ Zero belongs to \(K\) because \(f(0)=0\).
 So \(K\) is a subring.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:rational.ideals}.}
 If \(I \subset \Q{}\) is an ideal, containing some nonzero element \(b \in \Q{}\), then \(I\) also contains \((1/b)b=1\), and so, for any rational number \(c\), \(I\) contains \(c \cdot 1 = c\), i.e. \(I=\Q{}\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:int.dom.det}.}
+Pass to the field of fractions, where the result is standard linear algebra, and then clear denominators in the entries of \(x\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:det.A.inv}.}
+If \(\det A\) is a unit, then clearly \((\det A)^{-1}\adj{A}\) is an inverse.
+If there is an inverse, say \(B\), then \(AB=BA=I\), and we take determinant to find \((\det A)(\det B)=1\), so \(\det A\) is a unit.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:preserve.minus}.}
 If \(z=x-y\) then \(f(x)=f(y+z)=f(y)+f(z)\) so \(f(z)=f(x)-f(y)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:symmetric.gp}.}
+For any field \(k\), take variables \(t=(t_1,\dots,t_n)\) and let \(e_1=e_1(t),\dots,e_n=e_n(t)\) be the elementary symmetric polynomials and \(e=(e_1,\dots,e_n)\).
+The field of symmetric functions is by definition the fixed field of \(k(t)\) by permutations of the variables.
+By problem~\vref{problem:permutions:rationals}, the field of symmetric functions is precisely the field \(k(e)\) generated by \(e_1,\dots,e_n\).
+We want to see that \(k(t)/k(e)\) is a Galois extension, with automorphism group the group of permutations of \(t_1,\dots,t_n\).
+The symmetric functions \(k(e)\) have the rational functions \(k(t)\) as a splitting field for the polynomial
+\[
+x^n-e_1x^{n-1}+e_2x^{n-2}-\dots+(-1)^ne_n.
+\]
+By lemma~\vref{lemma:auts.are.Sn}, the automorphisms of \(k(t_1,\dots,t_n)\) which fix \(k(e_1,\dots,e_n)\) are precisely the permutations of \(t_1,\dots,t_n\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:galois:symmetric.polynomials}.}
 The elementary symmetric polynomials of the roots are the coefficients of \(p(x)\).
 All symmetric functions are polynomials in the elementary symmetric polynomials.
@@ -1042,6 +1250,13 @@ rewrites the integral in terms of \(t\).
 \int f\left(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}\right)\frac{2}{1+t^2}dt.
 \end{align*}
 Take a partial fraction decomposition as in the proof of corollary~\vref{corollary:rational.function.integral}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:reg.fns}.}
+If \(c(x,y)\) divides \(p(x,y)\), clearly \(p(x,y)=0\) on every \(\bar{k}\)-point where \(c(x,y)=0\).
+Suppose that \(p(x,y)=0\) on those points.
+For any constant value of \(x\) or \(y\) in \(\bar{k}\), there are points where \(c(x,y)=0\) and so the resultant of \(p(x,y),c(x,y)\) in the other variable vanishes.
+So the resultant vanishes for infinitely many values, so vanishes everywhere.
+So \(p(x,y),c(x,y)\) have a common factor in \(k[x,y]\).
+Recall that \(c(x,y)\) is irreducible.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:double}.}
 Let \(k_1 \subset k_2 \subset k_3 \dots\) be finite fields of orders \(2,4,8\) and so on.
 Our result is clear if \(k=k_1=\Zmod{2}\).
@@ -1059,6 +1274,8 @@ Let \(n\) be the degree of \(p(x)\).
 We write each element \(b(x)\) in  \(k[x]\) as a polynomial, but if the polynomial has degree \(n\) or more, rewrite it as \(b(x)=q(x)p(x)+r(x)\), quotient and remainder. Then every element of \(K\) is written as the remainder term, i.e. as a polynomial of degree at most \(n-1\).  Hence the elements \(1,x,\dots,x^{n-1}\) in \(k[x]\) map to a spanning set inside \(K\). If not a basis, then there must be some linear relation between them, i.e. a lower degree polynomial in \(x\) vanishing in \(K\), i.e. vanishing modulo \(p(x)\).
 But then taking quotient and remainder, we see that this is not possible.
 Hence \(K\) has a basis over \(k\) consisting of the images of \(1,x,x^2,\dots,x^{n-1}\) in \(k[x]\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:homog}.}
+\(P(x,y)=x^4+xy^3+y^4\)
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points}.}
 Homogenize to \(x^3+x^2y+xy^2+y^3+x^2z=z^3\), and then set \(z=0\) to get the homogeneous equation \(x^3+x^2y+xy^2+y^3=0\).
 Factor: \((x+y)(x^2+y^2)=0\).
@@ -1092,3 +1309,91 @@ Homogenize: \(y^2z+yz^2=x^3+xz^2+z^3\), and set \(z=0\): \(0=x^3\), so \(x=0\), 
 Final answer: \([0,2,1], [2,2,1], [3,2,1], [0,1,0]\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellensatz:closed.image}.}
 \(p(x,y)=(1-xy)^2+x^2\) over the field \(k=\R{}\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.varieties:irred.hyp}.}
+By the nullstellensatz, \(X\) is irreducible in \(U\), since splitting \(X\) into a union of distinct subvarieties \(X_1,X_2\), each would satisfy an equation not satisfied on the other, say \(f_1=0\) and \(f_2=0\).
+But then \(f=0\) lies inside \(f_1f_2=0\), so \(f\) divides \(f_1\) or \(f_2\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellansatz:linear.proj}.}
+The projection consists of the points \((x,-1,z)\) for which \(t(x,-1,z)\) satisfies our equations for some \(t\).
+Plug in to get \(t^2x^2+t+1=0\) and \(t(t^2x^3-z)=0\).
+Since \(y=x^2+1>0\) on our curve, we need \(t<0\) to get \(y=-t\) to lie on the curve.
+So \(z=t^2x^3\).
+Check that \(x(x+z)^2=z\) is our resulting cubic curve.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:Schubert.calculus:Plucker.1}.}
+Suppose that \(x\) has this form.
+Either there is a linear relation among \(v_1,\dots,v_p\), so \(x=0\), so this rank is zero, or there is no such relation.
+We can then take these \(v_i\) as the first \(p\) vectors in a basis, and expand \(w\) in that basis, to see that the kernel of this linear map consists just in \(w\) being a linear combination of \(v_1,\dots, v_p\), so kernel of dimension \(p\).
+
+Suppose that this map \(w\mapsto w\wedge x\) has such kernel, say of dimension \(s\ge p\).
+Take a basis \(e_1,\dots,e_n\) of \(V\) with \(e_1,\dots,e_s\) a basis for that kernel.
+Expand \(x\) in the basis \(e_I\), say as \(x=\sum x_I e_I\) with coefficients \(x_I\).
+Let \(I_0\defeq\set{1,2,\dots,p}\).
+Then
+\begin{align*}
+0&=e_i\wedge x,
+\\
+&=\sum_{i\notin I} x_I e_i \wedge e_I.
+\end{align*}
+Since these \(e_I\) are a basis, and \(e_i\wedge e_I=\pm e_J\) for \(J=\set{i}\cup I\), \(x_I=0\) unless \(i\in I\).
+Since this holds for all these \(i=1,2,\dots,p\), we find that \(I\) contains \(1,2,\dots,p\), and has \(p\) indices, so \(I=I_0\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:Schubert.calculus:C.X}.}
+Since \(X_I\) is closed, and contains \(C_I\), \(X_I\) contains the closure of \(C_I\).
+Any homogeneous polynomial vanishing on \(C_I\) vanishes on all
+\[
+v_1\wedge\dots\wedge v_p
+\]
+for \(v_1,\dots, v_p\) a basis of any \(W\) in \(C_I\).
+We can choose this basis to be
+\begin{align*}
+v_1&=\sum_{j<i_1} a_{j1}e_j+ e_{i_1},\\
+v_2&=\sum_{j\ne i_1, j<i_2} a_{j2}e_j+ e_{i_2},\\
+&\vdotswithin{=}\\
+v_{\ell}&=\sum_{j \notin I}^{j<i_{\ell}} a_{j\ell}e_{j}+e_{i_{\ell}},\\
+&\vdotswithin{=}\\
+v_p&=\sum_{j \notin I}^{j<i_p} a_{jp}e_j+e_{i_p}.
+\end{align*}
+Scaling these by constants \(a_{j i_j}\), our homogeneous polynomials vanish on
+\[
+v_1\wedge\dots\wedge v_p
+\]
+for
+\begin{align*}
+v_1&=\sum_{j\le i_1} a_{j1}e_j,\\
+v_2&=\sum_{j\ne i_1, j\le i_2} a_{j2}e_j,\\
+&\vdotswithin{=}\\
+v_{\ell}&=\sum_{j \notin I}^{j\le i_{\ell}} a_{j\ell}e_{j},\\
+&\vdotswithin{=}\\
+v_p&=\sum_{j \notin I}^{j\le i_p} a_{jp}e_j.
+\end{align*}
+But now we can vary these \(a_{ji_j}\) to get vanishing on all \(W\) lying in all \(C_J\) with intersection dimensions at most those of \(C_I\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:more.projective.planes:has.perspective}.}
+Any projective plane already contains a quadrilateral; pick out any one of those 4 points to make a triangle, and then pick out another to make another triangle.
+They are in perspective from either of those two points.
+Taking duals gives perspective from a line.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:more.projective.planes:zero.div}.}
+To have a nonzero element \(a+\ii b\) being a zero divisor on the left, we would need to have
+\begin{align*}
+0
+&=
+(a+\ii b)(c+\ii d),
+\\
+&=
+ac-\bar{d}b+\ii\pr{da+b\bar{c}}.
+\end{align*}
+Therefore \(ac=\bar{d}b\) and \(da=-b\bar{c}\).
+Multiplying suitably, \(dac=d\bar{d}b\) and \(dac=-c\bar{c}b\).
+So \(0=\pr{d\bar{d}+c\bar{c}}b\) and thus \(b=0\) or else \(c=d=0\).
+But if \(b=0\) then \(ac=0\) and \(da=0\), so \(a=0\) or else \(c=d=0\).
+
+To have a nonzero element \(a+\ii b\) being a zero divisor on the right, we would need to have
+\begin{align*}
+0
+&=
+(c+\ii d)(a + \ii b),
+\\
+&=
+ca-\bar{b}d+\ii\pr{bc+d\bar{a}}.
+\end{align*}
+Therefore \(ca=\bar{b}d\) and \(bc=-d\bar{a}\).
+Multiplying suitably, \(bca=b\bar{b}d\) and \(bca=-da\bar{a}\).
+So therefore \(d=0\) or else \(a=b=0\).
+But if \(d=0\) then \(ca=0\) and \(bc=0\), so \(c=0\).

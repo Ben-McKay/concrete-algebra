@@ -49,6 +49,12 @@ A polynomial with integer coefficients is \emph{irreducible}%
 \define{polynomial!reducible}
 if it does not split into a product \(b(x)c(x)\) except for having \(b(x)=\pm 1\).
 (Note that this notion of irreducibility is different from being irreducible over a field.)
+\begin{example}
+\[
+2x^3-4x+2=(2)(x-1)(x^2+x-1)=(-2)(-x+1)(x^2+x-1)=(-2)(x-1)(-x^2-x+1)
+\]
+are three different factorizations into irreducibles.
+\end{example}
 \begin{corollary}\label{corollary:coprime.coeffs}
 Suppose that \(p(x)\) is a polynomial with coprime integer coefficients.
 Then it is irreducible as an integer coefficient polynomial just when it is irreducible as an rational coefficient polynomial.
@@ -163,7 +169,7 @@ For any prime \(p\) and positive integer \(d\), the polynomial \(x^d-p\) satisfi
 Therefore there are no rational number square roots, cube roots, and so on, of any prime number \(p\).
 \end{example}
 \begin{example}
-The polynomial \(x^2+4x+x=(x+2)^2\) is not irreducible, so we \emph{cannot} always apply Eisenstein's criterion with nonprime integers \(p\), for instance with \(p=4\).
+The polynomial \(x^2+4x+4=(x+2)^2\) is not irreducible, so we \emph{cannot} always apply Eisenstein's criterion with nonprime integers \(p\), for instance with \(p=4\).
 \end{example}
 \begin{problem}{polynomials:Eisenstein}
 Give some examples of polynomials to which Eisenstein's criterion applies.
@@ -419,39 +425,3 @@ The highest degree term in \(b(x)\) multiplies by the highest degree term in \(c
 Since all terms in \(b(x)c(x)\) have the same degree, so do all terms in \(b(x)\) and in \(c(x)\).
 \end{proof}
 
-
-\section{Factoring in many variables}
-\begin{theorem}\label{theorem:ufd}
-Every polynomial \(p(x_1,\dots,x_n)\) with coefficients in a field admits a unique factorization
-\[
-p(x_1,\dots,x_n)=p_1(x_1,\dots,x_n)\dots p_N(x_1,\dots,x_n)
-\]
-into irreducible factors.
-\end{theorem}
-\begin{proof}
-We prove the result for two variables \(x,y\), but the same proof works for any number of variables.
-Take two factorisations:
-\[
-p(x,y)=p_1(x,y)\dots p_M(x,y)=q_1(x,y)\dots q_N(x,y).
-\]
-If the highest order term in one of these \(p_j(x,y)\) or \(q_j(x,y)\) is in the \(x\) variable, then replace \(x,y\) by \(x+\lambda y,y\), for some constant \(\lambda\).
-But for a poor choice of \(\lambda\), this might knock out the highest order term in \(y\) in another \(p_j(x,y)\) or \(q_j(x,y)\).
-To avoid this, we replace our field by the field of rational functions in an abstract variable \(\lambda\), so no cancellations can take place.
-We can reverse the process by replacing \(x,y\) by \(x-\lambda y,y\), so factorisations are preserved and reflected.
-If we can prove unique factorisation in this larger field, then any factorisation in the original field will still be unique in the original field.
-In particular, we can suppose that none of the factors is constant in \(y\), and that the highest order term in \(y\) is constant in \(x\).
-Thinking of \(p\) as a polynomial in \(y\), with coefficients rational in \(x\), by induction the factorisation in such functions is unique.
-So after perhaps reordering, each \(p_j(x,y)\) is equal to some \(q_j(x,y)\) up to some rational function \(b_j(x)/c_j(x)\), with no common factor in numerator and denominator.
-But then \(c_j(x)p_j(x,y)=b_j(x)q_j(x,y)\), and we expand out in powers of \(y\) to get \(c_j(x)\) dividing into every coefficient in \(q_j(x,y)\), so into the highest coefficient, which has no \(x\) in it.
-\end{proof}
-
-\begin{problem}{factoring:rationals}
-Prove that every rational function over a field has an expression 
-\[
-\frac{b(x_1,\dots,x_n)}{c(x_1,\dots,x_n)}
-\]
-as a ratio of polynomials with no common nonconstant factor, unique up to rescaling both numerator and denominator by the same nonzero constant.
-\end{problem}
-\begin{answer}{factoring:rationals}
-Take two such, cross multiply, and use unique factorisation of polynomials.
-\end{answer}

@@ -53,358 +53,485 @@
 \indexentry{coprime|FancyIndexEntry}{6}
 \indexentry{Euclidean algorithm|FancyIndexEntry}{7}
 \indexentry{algorithm!Euclidean|FancyIndexEntry}{7}
-\indexentry{least common multiple|FancyIndexEntry}{7}
+\indexentry{least common multiple|FancyIndexEntry}{8}
 \indexentry{Picasso, Pablo|hyperpage}{8}
-\indexentry{Boole, George|hyperpage}{9}
-\indexentry{Swift, Jonathan|hyperpage}{9}
-\indexentry{flea|hyperpage}{9}
-\indexentry{red hair|hyperpage}{9}
-\indexentry{hair!red|hyperpage}{9}
-\indexentry{domino|hyperpage}{10}
-\indexentry{mathematical induction|FancyIndexEntry}{10}
-\indexentry{induction|FancyIndexEntry}{10}
-\indexentry{law of well ordering|hyperpage}{10}
-\indexentry{horse|hyperpage}{12}
-\indexentry{chameleon|hyperpage}{12}
-\indexentry{Philips, Emo|hyperpage}{14}
-\indexentry{kick boxing|hyperpage}{14}
-\indexentry{function!recursive|FancyIndexEntry}{15}
-\indexentry{recursive function|FancyIndexEntry}{15}
-\indexentry{Fibonacci sequence|hyperpage}{15}
-\indexentry{list|FancyIndexEntry}{16}
+\indexentry{Boole, George|hyperpage}{11}
+\indexentry{Swift, Jonathan|hyperpage}{11}
+\indexentry{flea|hyperpage}{11}
+\indexentry{red hair|hyperpage}{11}
+\indexentry{hair!red|hyperpage}{11}
+\indexentry{domino|hyperpage}{12}
+\indexentry{mathematical induction|FancyIndexEntry}{12}
+\indexentry{induction|FancyIndexEntry}{12}
+\indexentry{law of well ordering|hyperpage}{12}
+\indexentry{horse|hyperpage}{14}
+\indexentry{chameleon|hyperpage}{14}
+\indexentry{Philips, Emo|hyperpage}{16}
+\indexentry{kick boxing|hyperpage}{16}
+\indexentry{function!recursive|FancyIndexEntry}{17}
+\indexentry{recursive function|FancyIndexEntry}{17}
 \indexentry{Fibonacci sequence|hyperpage}{17}
-\indexentry{Euclid|hyperpage}{19}
-\indexentry{St. Vincent Millay, Edna|hyperpage}{19}
-\indexentry{beauty|hyperpage}{19}
-\indexentry{extended Euclidean algorithm|FancyIndexEntry}{19}
-\indexentry{Euclidean algorithm!extended|FancyIndexEntry}{19}
-\indexentry{algorithm!extended Euclidean|FancyIndexEntry}{19}
-\indexentry{B\'ezout!coefficients|FancyIndexEntry}{19}
-\indexentry{extended Euclidean algorithm|FancyIndexEntry}{20}
-\indexentry{Euclidean algorithm!extended|FancyIndexEntry}{20}
-\indexentry{Dijkstra, Edsger|hyperpage}{22}
-\indexentry{Haddon, Mark|hyperpage}{23}
-\indexentry{prime|FancyIndexEntry}{23}
-\indexentry{Euclid|hyperpage}{24}
-\indexentry{even integer|FancyIndexEntry}{24}
-\indexentry{odd integer|FancyIndexEntry}{24}
-\indexentry{Euler, Leonhard|hyperpage}{25}
-\indexentry{Gauss, Carl Friedrich|hyperpage}{27}
-\indexentry{multiplicative inverse|FancyIndexEntry}{31}
-\indexentry{unit|FancyIndexEntry}{31}
-\indexentry{Brahmagupta|hyperpage}{34}
-\indexentry{Brahma-Sphuta-Siddhanta|hyperpage}{34}
-\indexentry{Brahma's correct system|hyperpage}{34}
-\indexentry{Euler's totient function|FancyIndexEntry}{37}
-\indexentry{totient function|FancyIndexEntry}{37}
-\indexentry{Plath, Sylvia|hyperpage}{41}
-\indexentry{The Unabridged Journals of Sylvia Plath|hyperpage}{41}
-\indexentry{Malraux, Andr\IeC {\'e}|hyperpage}{41}
-\indexentry{enigma|hyperpage}{41}
-\indexentry{RSA algorithm|hyperpage}{42}
-\indexentry{Alice|hyperpage}{42}
-\indexentry{Bob|hyperpage}{42}
-\indexentry{Eve|hyperpage}{42}
-\indexentry{remainder|hyperpage}{42}
-\indexentry{Euler's totient function|hyperpage}{42}
-\indexentry{papyrus!Rhind|hyperpage}{47}
-\indexentry{Rhind papyrus|hyperpage}{47}
-\indexentry{Dawson, Les|hyperpage}{47}
-\indexentry{zero|hyperpage}{47}
-\indexentry{rational!number|FancyIndexEntry}{47}
-\indexentry{number!rational|FancyIndexEntry}{47}
-\indexentry{numerator|FancyIndexEntry}{48}
-\indexentry{denominator|FancyIndexEntry}{48}
-\indexentry{perfect square|FancyIndexEntry}{49}
-\indexentry{positive!rational number|FancyIndexEntry}{49}
-\indexentry{number line|FancyIndexEntry}{50}
-\indexentry{Painlev\'e, Paul|hyperpage}{50}
-\indexentry{complex conjugation|FancyIndexEntry}{51}
-\indexentry{norm|FancyIndexEntry}{51}
-\indexentry{modulus|FancyIndexEntry}{51}
-\indexentry{Nietzsche, Friedrich|hyperpage}{52}
-\indexentry{Uber Wahrheit und Luge im aussermoralischen Sinne@\"Uber Wahrheit und L\"uge im aussermoralischen Sinne|hyperpage}{52}
-\indexentry{De Morgan, Augustus|hyperpage}{53}
-\indexentry{polynomial|FancyIndexEntry}{53}
-\indexentry{monomial|FancyIndexEntry}{53}
-\indexentry{coefficient!of polynomial|FancyIndexEntry}{53}
-\indexentry{term|FancyIndexEntry}{53}
-\indexentry{degree!of polynomial|FancyIndexEntry}{53}
-\indexentry{monic polynomial|FancyIndexEntry}{55}
-\indexentry{polynomial!monic|FancyIndexEntry}{55}
-\indexentry{field|FancyIndexEntry}{55}
-\indexentry{irreducible!polynomial|FancyIndexEntry}{55}
-\indexentry{reducible!polynomial|FancyIndexEntry}{55}
-\indexentry{polynomial!irreducible|FancyIndexEntry}{55}
-\indexentry{polynomial!reducible|FancyIndexEntry}{55}
-\indexentry{Kirillov, A. A.|hyperpage}{56}
-\indexentry{quadratic!polynomial|FancyIndexEntry}{57}
-\indexentry{polynomial!quadratic|FancyIndexEntry}{57}
-\indexentry{cubic!polynomial|FancyIndexEntry}{57}
-\indexentry{polynomial!cubic|FancyIndexEntry}{57}
-\indexentry{Wiener, Norbert|hyperpage}{59}
-\indexentry{The Human Use Of Human Beings: Cybernetics And Society|hyperpage}{59}
-\indexentry{Poincar\'e, Henri|hyperpage}{60}
-\indexentry{La Science et L'Hypoth\`ese|hyperpage}{60}
-\indexentry{interpolation|FancyIndexEntry}{60}
-\indexentry{Melville, Herman|hyperpage}{63}
-\indexentry{Moby Dick|hyperpage}{63}
-\indexentry{Melville, Herman|hyperpage}{63}
-\indexentry{Moby Dick|hyperpage}{63}
-\indexentry{intermediate value theorem|FancyIndexEntry}{63}
-\indexentry{theorem!intermediate value|FancyIndexEntry}{63}
-\indexentry{theorem!Descartes|FancyIndexEntry}{64}
-\indexentry{Descartes!theorem|FancyIndexEntry}{64}
-\indexentry{Sturm!sequence|FancyIndexEntry}{66}
-\indexentry{roots!expected number|FancyIndexEntry}{66}
-\indexentry{expected number of distinct roots|FancyIndexEntry}{66}
-\indexentry{Mencken, H.\nobreakspace  {}L.|hyperpage}{69}
-\indexentry{partial fraction|FancyIndexEntry}{71}
-\indexentry{partial fraction!decomposition|FancyIndexEntry}{71}
-\indexentry{Williams, Tennessee|hyperpage}{75}
-\indexentry{Gauss's lemma|FancyIndexEntry}{75}
-\indexentry{irreducible!polynomial|FancyIndexEntry}{76}
-\indexentry{reducible!polynomial|FancyIndexEntry}{76}
-\indexentry{polynomial!irreducible|FancyIndexEntry}{76}
-\indexentry{polynomial!reducible|FancyIndexEntry}{76}
-\indexentry{criterion!Eisenstein|FancyIndexEntry}{77}
-\indexentry{Eisenstein's criterion|FancyIndexEntry}{77}
-\indexentry{criterion!Eisenstein|FancyIndexEntry}{80}
-\indexentry{Eisenstein's criterion|FancyIndexEntry}{80}
-\indexentry{degree|FancyIndexEntry}{81}
-\indexentry{homogeneous!polynomial|FancyIndexEntry}{81}
-\indexentry{polynomial!homogeneous|FancyIndexEntry}{81}
-\indexentry{Banach, Stefan|hyperpage}{83}
-\indexentry{ring|FancyIndexEntry}{84}
-\indexentry{addition laws|FancyIndexEntry}{84}
-\indexentry{associative law!addition|FancyIndexEntry}{84}
-\indexentry{identity law!addition|FancyIndexEntry}{84}
-\indexentry{existence of negatives|FancyIndexEntry}{84}
-\indexentry{commutative law!addition|FancyIndexEntry}{84}
-\indexentry{multiplication laws|FancyIndexEntry}{84}
-\indexentry{associative law!multiplication|FancyIndexEntry}{84}
-\indexentry{distributive law|FancyIndexEntry}{84}
-\indexentry{polynomial|FancyIndexEntry}{84}
-\indexentry{rational!function|FancyIndexEntry}{85}
-\indexentry{function!rational|FancyIndexEntry}{85}
-\indexentry{identity law!multiplication|FancyIndexEntry}{86}
-\indexentry{commutative law!multiplication|FancyIndexEntry}{86}
-\indexentry{unit!ring|FancyIndexEntry}{87}
-\indexentry{field|FancyIndexEntry}{87}
-\indexentry{characteristic|FancyIndexEntry}{87}
-\indexentry{zero divisor|FancyIndexEntry}{87}
-\indexentry{Russell, Bertrand|hyperpage}{91}
-\indexentry{basis|FancyIndexEntry}{93}
-\indexentry{degree!of field extension|FancyIndexEntry}{93}
-\indexentry{split polynomial|FancyIndexEntry}{95}
-\indexentry{splitting field|FancyIndexEntry}{95}
-\indexentry{algebraically closed|FancyIndexEntry}{96}
-\indexentry{field!algebraically closed|FancyIndexEntry}{96}
-\indexentry{splitting field|FancyIndexEntry}{96}
-\indexentry{field!splitting|FancyIndexEntry}{96}
-\indexentry{algebraic!closure|FancyIndexEntry}{96}
-\indexentry{resultant|FancyIndexEntry}{100}
-\indexentry{derivative|FancyIndexEntry}{107}
-\indexentry{discriminant|FancyIndexEntry}{107}
-\indexentry{Weyl, Hermann|hyperpage}{113}
-\indexentry{monic polynomial|FancyIndexEntry}{113}
-\indexentry{polynomial!monic|FancyIndexEntry}{113}
-\indexentry{Viet\'e, Francois|hyperpage}{114}
-\indexentry{symmetric!polynomial|FancyIndexEntry}{116}
-\indexentry{polynomial!symmetri c|FancyIndexEntry}{116}
-\indexentry{weight|FancyIndexEntry}{117}
-\indexentry{Newton, Isaac|hyperpage}{120}
-\indexentry{invariant!of square matrix|FancyIndexEntry}{121}
-\indexentry{characteristic polynomial|FancyIndexEntry}{121}
-\indexentry{trace|hyperpage}{121}
-\indexentry{weight|FancyIndexEntry}{123}
-\indexentry{Frost, Robert|hyperpage}{125}
-\indexentry{morphism!ring|FancyIndexEntry}{125}
-\indexentry{homomorphism|FancyIndexEntry}{125}
-\indexentry{kernel!ring morphism|FancyIndexEntry}{125}
-\indexentry{injective!morphism|FancyIndexEntry}{126}
-\indexentry{morphism!injective|FancyIndexEntry}{126}
-\indexentry{one-to-one!morphism|FancyIndexEntry}{126}
-\indexentry{morphism!one-to-one|FancyIndexEntry}{126}
-\indexentry{surjective!morphism|FancyIndexEntry}{126}
-\indexentry{morphism!surjective|FancyIndexEntry}{126}
-\indexentry{morphism!onto|FancyIndexEntry}{126}
-\indexentry{onto!morphism|FancyIndexEntry}{126}
-\indexentry{isomorphism!ring|FancyIndexEntry}{126}
-\indexentry{isomorphic!rings|FancyIndexEntry}{126}
-\indexentry{automorphism!ring|FancyIndexEntry}{126}
-\indexentry{Chinese remainder theorem|hyperpage}{126}
-\indexentry{ideal|FancyIndexEntry}{127}
-\indexentry{field!of fractions|FancyIndexEntry}{129}
-\indexentry{algebra|FancyIndexEntry}{130}
-\indexentry{scalar multiplication|FancyIndexEntry}{130}
-\indexentry{Poisson, Sim\'eon-Denis|hyperpage}{133}
-\indexentry{automorphism|FancyIndexEntry}{133}
-\indexentry{automorphism!group|FancyIndexEntry}{133}
-\indexentry{group!automorphism|FancyIndexEntry}{133}
-\indexentry{Galois group|FancyIndexEntry}{134}
-\indexentry{group!Galois|FancyIndexEntry}{134}
-\indexentry{Galois extension|FancyIndexEntry}{135}
-\indexentry{extension!Galois|FancyIndexEntry}{135}
-\indexentry{simple extension|FancyIndexEntry}{138}
-\indexentry{extension!simple|FancyIndexEntry}{138}
-\indexentry{simple extension|FancyIndexEntry}{138}
-\indexentry{extension!simple|FancyIndexEntry}{138}
-\indexentry{Klein, Felix|hyperpage}{139}
-\indexentry{curve!algebraic|FancyIndexEntry}{140}
-\indexentry{algebraic!curve|FancyIndexEntry}{140}
-\indexentry{degree!of algebraic curve|FancyIndexEntry}{140}
-\indexentry{curve!degree|FancyIndexEntry}{140}
-\indexentry{line|FancyIndexEntry}{140}
-\indexentry{conic|FancyIndexEntry}{140}
-\indexentry{cubic!curve|FancyIndexEntry}{140}
-\indexentry{curve!cubic|FancyIndexEntry}{140}
-\indexentry{curve!quartic|FancyIndexEntry}{140}
-\indexentry{quartic!curve|FancyIndexEntry}{140}
-\indexentry{curve!quintic|FancyIndexEntry}{140}
-\indexentry{quintic!curve|FancyIndexEntry}{140}
-\indexentry{curve!sextic|FancyIndexEntry}{140}
-\indexentry{sextic!curve|FancyIndexEntry}{140}
-\indexentry{curve!septic|FancyIndexEntry}{140}
-\indexentry{septic!curve|FancyIndexEntry}{140}
-\indexentry{curve!octic|FancyIndexEntry}{140}
-\indexentry{octic!curve|FancyIndexEntry}{140}
-\indexentry{Fermat's Last Theorem|FancyIndexEntry}{141}
-\indexentry{algebraic!curve|FancyIndexEntry}{141}
-\indexentry{irreducible!curve|FancyIndexEntry}{142}
-\indexentry{reducible!curve|FancyIndexEntry}{142}
-\indexentry{curve!irreducible|FancyIndexEntry}{142}
-\indexentry{curve!reducible|FancyIndexEntry}{142}
-\indexentry{component|FancyIndexEntry}{142}
-\indexentry{regular!function|FancyIndexEntry}{142}
-\indexentry{function!regular|FancyIndexEntry}{142}
-\indexentry{morphism!regular|FancyIndexEntry}{142}
-\indexentry{biregular|FancyIndexEntry}{142}
-\indexentry{rational!function|FancyIndexEntry}{144}
-\indexentry{function!rational|FancyIndexEntry}{144}
-\indexentry{regular point|FancyIndexEntry}{145}
-\indexentry{morphism!rational|FancyIndexEntry}{145}
-\indexentry{rational!morphism|FancyIndexEntry}{145}
-\indexentry{birational|FancyIndexEntry}{145}
-\indexentry{regular point|FancyIndexEntry}{145}
-\indexentry{rational!curve|FancyIndexEntry}{145}
-\indexentry{curve!rational|FancyIndexEntry}{145}
-\indexentry{partial fraction|hyperpage}{146}
-\indexentry{al-Sirhind\IeC {\=\i }, Ahmad al-F\IeC {\=a}r\IeC {\=u}q\IeC {\=\i }|hyperpage}{151}
-\indexentry{linear!function|FancyIndexEntry}{152}
-\indexentry{linear!hyperplane|FancyIndexEntry}{152}
-\indexentry{hyperplane!linear|FancyIndexEntry}{152}
-\indexentry{resultant|hyperpage}{153}
-\indexentry{quotient ring|FancyIndexEntry}{160}
-\indexentry{prime ideal|FancyIndexEntry}{160}
-\indexentry{ideal!prime|FancyIndexEntry}{160}
-\indexentry{ideal!maximal|FancyIndexEntry}{161}
-\indexentry{maximal ideal|FancyIndexEntry}{161}
-\indexentry{Frobenius morphism|FancyIndexEntry}{165}
-\indexentry{morphism!Frobenius|FancyIndexEntry}{165}
-\indexentry{degree!of field extension|hyperpage}{170}
-\indexentry{irreducible!polynomial|hyperpage}{171}
-\indexentry{reducible!polynomial|hyperpage}{171}
-\indexentry{polynomial!irreducible|hyperpage}{171}
-\indexentry{polynomial!reducible|hyperpage}{171}
-\indexentry{Luroth's theorem@L\"uroth's theorem|FancyIndexEntry}{171}
-\indexentry{theorem!Luroth@L\"uroth|FancyIndexEntry}{171}
-\indexentry{Cayley, Arthur|hyperpage}{173}
-\indexentry{descriptive geometry|FancyIndexEntry}{173}
-\indexentry{Blake, William|hyperpage}{173}
-\indexentry{Dostoyevsky, Fyodor|hyperpage}{174}
-\indexentry{Brothers Karamazov|hyperpage}{174}
-\indexentry{projective!plane|FancyIndexEntry}{175}
-\indexentry{affine plane|FancyIndexEntry}{176}
-\indexentry{projective!line|FancyIndexEntry}{176}
-\indexentry{homogeneous!coordinates|FancyIndexEntry}{176}
-\indexentry{coordinates!homogeneous|FancyIndexEntry}{176}
-\indexentry{projective!automorphism|FancyIndexEntry}{177}
-\indexentry{projective!plane|FancyIndexEntry}{178}
-\indexentry{Fano plane|FancyIndexEntry}{178}
-\indexentry{plane!Fano|FancyIndexEntry}{178}
-\indexentry{projective!space|FancyIndexEntry}{179}
-\indexentry{projective!automorphism|FancyIndexEntry}{179}
-\indexentry{cone|FancyIndexEntry}{181}
-\indexentry{homogeneous!polynomial|FancyIndexEntry}{181}
-\indexentry{polynomial!homogeneous|FancyIndexEntry}{181}
-\indexentry{projective!plane curve|FancyIndexEntry}{182}
-\indexentry{plane curve!projective|FancyIndexEntry}{182}
-\indexentry{curve!projective plane|FancyIndexEntry}{182}
-\indexentry{Marx, Chico|hyperpage}{185}
-\indexentry{component!multiple|FancyIndexEntry}{187}
-\indexentry{theorem!Study|FancyIndexEntry}{187}
-\indexentry{Study!theorem|FancyIndexEntry}{187}
-\indexentry{generic!triangle|FancyIndexEntry}{188}
-\indexentry{triangle!generic|FancyIndexEntry}{188}
-\indexentry{very generic!triangle|FancyIndexEntry}{189}
-\indexentry{triangle!very generic|FancyIndexEntry}{189}
-\indexentry{generic!triangle!very|FancyIndexEntry}{189}
-\indexentry{intersection number|FancyIndexEntry}{189}
-\indexentry{theorem!B\'ezout|FancyIndexEntry}{190}
-\indexentry{B\'ezout!theorem|FancyIndexEntry}{190}
-\indexentry{theorem!B\'ezout|FancyIndexEntry}{192}
-\indexentry{B\'ezout!theorem|FancyIndexEntry}{192}
-\indexentry{Tolstoy, Leo|hyperpage}{195}
-\indexentry{Karenina, Anna|hyperpage}{195}
-\indexentry{pencil|FancyIndexEntry}{195}
-\indexentry{triangle|FancyIndexEntry}{197}
-\indexentry{quadrilateral|FancyIndexEntry}{197}
-\indexentry{polygon|FancyIndexEntry}{197}
-\indexentry{dual!projective plane|FancyIndexEntry}{199}
-\indexentry{projective!plane!dual|FancyIndexEntry}{199}
-\indexentry{pencil|hyperpage}{200}
-\indexentry{linear!system|FancyIndexEntry}{200}
-\indexentry{general position|FancyIndexEntry}{200}
-\indexentry{independent conditions|FancyIndexEntry}{202}
-\indexentry{Lang, Serge|hyperpage}{205}
-\indexentry{theorem!Chasles|FancyIndexEntry}{205}
-\indexentry{Chasles theorem|FancyIndexEntry}{205}
-\indexentry{elliptic curve|FancyIndexEntry}{206}
-\indexentry{curve!elliptic|FancyIndexEntry}{206}
-\indexentry{tangent line|FancyIndexEntry}{209}
-\indexentry{Graves, Robert|hyperpage}{211}
-\indexentry{order!of point on curve|FancyIndexEntry}{212}
-\indexentry{point!smooth|FancyIndexEntry}{212}
-\indexentry{regular!point|FancyIndexEntry}{212}
-\indexentry{point!regular|FancyIndexEntry}{212}
-\indexentry{point!smooth|FancyIndexEntry}{212}
-\indexentry{smooth!point|FancyIndexEntry}{212}
-\indexentry{singular point|FancyIndexEntry}{212}
-\indexentry{point!singular|FancyIndexEntry}{212}
-\indexentry{smooth!curve|FancyIndexEntry}{212}
-\indexentry{curve!smooth|FancyIndexEntry}{212}
-\indexentry{regular!curve|FancyIndexEntry}{212}
-\indexentry{curve!regular|FancyIndexEntry}{212}
-\indexentry{inflection point|FancyIndexEntry}{219}
-\indexentry{flex|FancyIndexEntry}{219}
-\indexentry{Hessian!curve|FancyIndexEntry}{219}
-\indexentry{lemma!Euler|hyperpage}{220}
-\indexentry{Euler!lemma|hyperpage}{220}
-\indexentry{Russell, Bertrand|hyperpage}{227}
-\indexentry{quadratic!form|FancyIndexEntry}{227}
-\indexentry{form!quadratic|FancyIndexEntry}{227}
-\indexentry{Sylvester's law of inertia|FancyIndexEntry}{227}
-\indexentry{Sylvester, James|hyperpage}{227}
-\indexentry{inertia|hyperpage}{227}
-\indexentry{signature|FancyIndexEntry}{227}
-\indexentry{square-free|FancyIndexEntry}{228}
-\indexentry{dual!projective plane|FancyIndexEntry}{233}
-\indexentry{dual!curve|FancyIndexEntry}{234}
-\indexentry{al-Sirhind\IeC {\=\i }, Ahmad al-F\IeC {\=a}r\IeC {\=u}q\IeC {\=\i }|hyperpage}{237}
-\indexentry{Paine, Thomas|hyperpage}{237}
-\indexentry{affine space|FancyIndexEntry}{237}
-\indexentry{Hilbert basis theorem|FancyIndexEntry}{238}
-\indexentry{theorem!Hilbert basis|FancyIndexEntry}{238}
-\indexentry{nullstellensatz|FancyIndexEntry}{238}
-\indexentry{theorem!nullstellensatz|FancyIndexEntry}{238}
-\indexentry{affine variety|FancyIndexEntry}{239}
-\indexentry{variety!affine|FancyIndexEntry}{239}
-\indexentry{closed set|FancyIndexEntry}{239}
-\indexentry{open set|FancyIndexEntry}{239}
-\indexentry{neighborhood|FancyIndexEntry}{239}
-\indexentry{closure|FancyIndexEntry}{240}
-\indexentry{Zhou, Zhuang|hyperpage}{241}
-\indexentry{dragon|hyperpage}{241}
-\indexentry{Zhuangzi|hyperpage}{241}
-\indexentry{Thom, Ren\IeC {\'e}|hyperpage}{241}
+\indexentry{list|FancyIndexEntry}{18}
+\indexentry{Fibonacci sequence|hyperpage}{19}
+\indexentry{Euclid|hyperpage}{21}
+\indexentry{St. Vincent Millay, Edna|hyperpage}{21}
+\indexentry{beauty|hyperpage}{21}
+\indexentry{extended Euclidean algorithm|FancyIndexEntry}{21}
+\indexentry{Euclidean algorithm!extended|FancyIndexEntry}{21}
+\indexentry{algorithm!extended Euclidean|FancyIndexEntry}{21}
+\indexentry{B\'ezout!coefficients|FancyIndexEntry}{21}
+\indexentry{extended Euclidean algorithm|FancyIndexEntry}{22}
+\indexentry{Euclidean algorithm!extended|FancyIndexEntry}{22}
+\indexentry{Dijkstra, Edsger|hyperpage}{24}
+\indexentry{Haddon, Mark|hyperpage}{25}
+\indexentry{prime|FancyIndexEntry}{25}
+\indexentry{Euclid|hyperpage}{26}
+\indexentry{even integer|FancyIndexEntry}{26}
+\indexentry{odd integer|FancyIndexEntry}{26}
+\indexentry{Euler, Leonhard|hyperpage}{27}
+\indexentry{Gauss, Carl Friedrich|hyperpage}{29}
+\indexentry{multiplicative inverse|FancyIndexEntry}{33}
+\indexentry{unit|FancyIndexEntry}{33}
+\indexentry{Brahmagupta|hyperpage}{37}
+\indexentry{Brahma-Sphuta-Siddhanta|hyperpage}{37}
+\indexentry{Brahma's correct system|hyperpage}{37}
+\indexentry{Euler's totient function|FancyIndexEntry}{41}
+\indexentry{totient function|FancyIndexEntry}{41}
+\indexentry{Plath, Sylvia|hyperpage}{45}
+\indexentry{The Unabridged Journals of Sylvia Plath|hyperpage}{45}
+\indexentry{Malraux, André|hyperpage}{45}
+\indexentry{enigma|hyperpage}{45}
+\indexentry{RSA algorithm|hyperpage}{46}
+\indexentry{Alice|hyperpage}{46}
+\indexentry{Bob|hyperpage}{46}
+\indexentry{Eve|hyperpage}{46}
+\indexentry{remainder|hyperpage}{46}
+\indexentry{Euler's totient function|hyperpage}{46}
+\indexentry{papyrus!Rhind|hyperpage}{49}
+\indexentry{Rhind papyrus|hyperpage}{49}
+\indexentry{Dawson, Les|hyperpage}{49}
+\indexentry{zero|hyperpage}{49}
+\indexentry{rational!number|FancyIndexEntry}{49}
+\indexentry{number!rational|FancyIndexEntry}{49}
+\indexentry{numerator|FancyIndexEntry}{50}
+\indexentry{denominator|FancyIndexEntry}{50}
+\indexentry{perfect square|FancyIndexEntry}{51}
+\indexentry{positive!rational number|FancyIndexEntry}{51}
+\indexentry{number line|FancyIndexEntry}{52}
+\indexentry{Painlev\'e, Paul|hyperpage}{52}
+\indexentry{complex conjugation|FancyIndexEntry}{53}
+\indexentry{norm|FancyIndexEntry}{53}
+\indexentry{modulus|FancyIndexEntry}{53}
+\indexentry{Nietzsche, Friedrich|hyperpage}{54}
+\indexentry{Uber Wahrheit und Luge im aussermoralischen Sinne@\"Uber Wahrheit und L\"uge im aussermoralischen Sinne|hyperpage}{54}
+\indexentry{De Morgan, Augustus|hyperpage}{55}
+\indexentry{polynomial|FancyIndexEntry}{55}
+\indexentry{monomial|FancyIndexEntry}{55}
+\indexentry{coefficient!of polynomial|FancyIndexEntry}{55}
+\indexentry{term|FancyIndexEntry}{55}
+\indexentry{degree!of polynomial|FancyIndexEntry}{55}
+\indexentry{monic polynomial|FancyIndexEntry}{57}
+\indexentry{polynomial!monic|FancyIndexEntry}{57}
+\indexentry{field|FancyIndexEntry}{58}
+\indexentry{irreducible!polynomial|FancyIndexEntry}{58}
+\indexentry{reducible!polynomial|FancyIndexEntry}{58}
+\indexentry{polynomial!irreducible|FancyIndexEntry}{58}
+\indexentry{polynomial!reducible|FancyIndexEntry}{58}
+\indexentry{Kirillov, A. A.|hyperpage}{58}
+\indexentry{quadratic!polynomial|FancyIndexEntry}{59}
+\indexentry{polynomial!quadratic|FancyIndexEntry}{59}
+\indexentry{cubic!polynomial|FancyIndexEntry}{59}
+\indexentry{polynomial!cubic|FancyIndexEntry}{59}
+\indexentry{Wiener, Norbert|hyperpage}{61}
+\indexentry{The Human Use Of Human Beings: Cybernetics And Society|hyperpage}{61}
+\indexentry{Poincar\'e, Henri|hyperpage}{62}
+\indexentry{La Science et L'Hypoth\`ese|hyperpage}{62}
+\indexentry{interpolation|FancyIndexEntry}{63}
+\indexentry{Melville, Herman|hyperpage}{65}
+\indexentry{Moby Dick|hyperpage}{65}
+\indexentry{Melville, Herman|hyperpage}{65}
+\indexentry{Moby Dick|hyperpage}{65}
+\indexentry{intermediate value theorem|FancyIndexEntry}{65}
+\indexentry{theorem!intermediate value|FancyIndexEntry}{65}
+\indexentry{theorem!Descartes|FancyIndexEntry}{66}
+\indexentry{Descartes!theorem|FancyIndexEntry}{66}
+\indexentry{Sturm!sequence|FancyIndexEntry}{68}
+\indexentry{roots!expected number|FancyIndexEntry}{68}
+\indexentry{expected number of distinct roots|FancyIndexEntry}{68}
+\indexentry{Mencken, H.\nobreakspace  {}L.|hyperpage}{72}
+\indexentry{partial fraction|FancyIndexEntry}{73}
+\indexentry{partial fraction!decomposition|FancyIndexEntry}{73}
+\indexentry{Williams, Tennessee|hyperpage}{77}
+\indexentry{Gauss's lemma|FancyIndexEntry}{77}
+\indexentry{irreducible!polynomial|FancyIndexEntry}{78}
+\indexentry{reducible!polynomial|FancyIndexEntry}{78}
+\indexentry{polynomial!irreducible|FancyIndexEntry}{78}
+\indexentry{polynomial!reducible|FancyIndexEntry}{78}
+\indexentry{criterion!Eisenstein|FancyIndexEntry}{79}
+\indexentry{Eisenstein's criterion|FancyIndexEntry}{79}
+\indexentry{criterion!Eisenstein|FancyIndexEntry}{82}
+\indexentry{Eisenstein's criterion|FancyIndexEntry}{82}
+\indexentry{degree|FancyIndexEntry}{83}
+\indexentry{homogeneous!polynomial|FancyIndexEntry}{83}
+\indexentry{polynomial!homogeneous|FancyIndexEntry}{83}
+\indexentry{Banach, Stefan|hyperpage}{85}
+\indexentry{ring|FancyIndexEntry}{86}
+\indexentry{addition laws|FancyIndexEntry}{86}
+\indexentry{associative law!addition|FancyIndexEntry}{86}
+\indexentry{identity law!addition|FancyIndexEntry}{86}
+\indexentry{existence of negatives|FancyIndexEntry}{86}
+\indexentry{commutative law!addition|FancyIndexEntry}{86}
+\indexentry{multiplication laws|FancyIndexEntry}{86}
+\indexentry{associative law!multiplication|FancyIndexEntry}{86}
+\indexentry{distributive law|FancyIndexEntry}{86}
+\indexentry{polynomial|FancyIndexEntry}{86}
+\indexentry{rational!function|FancyIndexEntry}{87}
+\indexentry{function!rational|FancyIndexEntry}{87}
+\indexentry{identity law!multiplication|FancyIndexEntry}{88}
+\indexentry{commutative law!multiplication|FancyIndexEntry}{88}
+\indexentry{unit!ring|FancyIndexEntry}{89}
+\indexentry{field|FancyIndexEntry}{89}
+\indexentry{characteristic|FancyIndexEntry}{90}
+\indexentry{zero divisor|FancyIndexEntry}{90}
+\indexentry{Russell, Bertrand|hyperpage}{93}
+\indexentry{basis|FancyIndexEntry}{95}
+\indexentry{degree!of field extension|FancyIndexEntry}{95}
+\indexentry{algebraic|FancyIndexEntry}{97}
+\indexentry{minimal polynomial|FancyIndexEntry}{97}
+\indexentry{split polynomial|FancyIndexEntry}{98}
+\indexentry{splitting field|FancyIndexEntry}{98}
+\indexentry{algebraically closed|FancyIndexEntry}{99}
+\indexentry{field!algebraically closed|FancyIndexEntry}{99}
+\indexentry{splitting field|FancyIndexEntry}{99}
+\indexentry{field!splitting|FancyIndexEntry}{99}
+\indexentry{algebraic!closure|FancyIndexEntry}{99}
+\indexentry{Blake, William|hyperpage}{101}
+\indexentry{power series|FancyIndexEntry}{101}
+\indexentry{Taylor series|FancyIndexEntry}{101}
+\indexentry{formal power series|FancyIndexEntry}{101}
+\indexentry{formal power series|FancyIndexEntry}{102}
+\indexentry{monomial|FancyIndexEntry}{102}
+\indexentry{order!of term|FancyIndexEntry}{103}
+\indexentry{lowest order part|FancyIndexEntry}{103}
+\indexentry{exponential series|FancyIndexEntry}{105}
+\indexentry{formal transformation|FancyIndexEntry}{105}
+\indexentry{formal map|FancyIndexEntry}{105}
+\indexentry{map!formal|FancyIndexEntry}{105}
+\indexentry{polynomial map|FancyIndexEntry}{105}
+\indexentry{map!polynomial|FancyIndexEntry}{105}
+\indexentry{composition|FancyIndexEntry}{106}
+\indexentry{formal Laurent series|FancyIndexEntry}{109}
+\indexentry{Puiseaux series|FancyIndexEntry}{110}
+\indexentry{theorem!Newton--Puiseaux|FancyIndexEntry}{111}
+\indexentry{Newton--Puiseaux theorem|FancyIndexEntry}{111}
+\indexentry{resultant|FancyIndexEntry}{114}
+\indexentry{derivative|FancyIndexEntry}{121}
+\indexentry{discriminant|FancyIndexEntry}{121}
+\indexentry{Weyl, Hermann|hyperpage}{127}
+\indexentry{monic polynomial|FancyIndexEntry}{127}
+\indexentry{polynomial!monic|FancyIndexEntry}{127}
+\indexentry{Viet\'e, Francois|hyperpage}{128}
+\indexentry{symmetric!polynomial|FancyIndexEntry}{130}
+\indexentry{polynomial!symmetri c|FancyIndexEntry}{130}
+\indexentry{weight|FancyIndexEntry}{131}
+\indexentry{symmetric function|FancyIndexEntry}{134}
+\indexentry{Newton, Isaac|hyperpage}{134}
+\indexentry{invariant!of square matrix|FancyIndexEntry}{135}
+\indexentry{characteristic polynomial|FancyIndexEntry}{136}
+\indexentry{trace|hyperpage}{136}
+\indexentry{weight|FancyIndexEntry}{138}
+\indexentry{Frost, Robert|hyperpage}{141}
+\indexentry{morphism!ring|FancyIndexEntry}{141}
+\indexentry{homomorphism|FancyIndexEntry}{141}
+\indexentry{kernel!ring morphism|FancyIndexEntry}{141}
+\indexentry{injective!morphism|FancyIndexEntry}{142}
+\indexentry{morphism!injective|FancyIndexEntry}{142}
+\indexentry{one-to-one!morphism|FancyIndexEntry}{142}
+\indexentry{morphism!one-to-one|FancyIndexEntry}{142}
+\indexentry{surjective!morphism|FancyIndexEntry}{142}
+\indexentry{morphism!surjective|FancyIndexEntry}{142}
+\indexentry{morphism!onto|FancyIndexEntry}{142}
+\indexentry{onto!morphism|FancyIndexEntry}{142}
+\indexentry{isomorphism!ring|FancyIndexEntry}{142}
+\indexentry{isomorphic!rings|FancyIndexEntry}{142}
+\indexentry{automorphism!ring|FancyIndexEntry}{142}
+\indexentry{Chinese remainder theorem|hyperpage}{142}
+\indexentry{ideal|FancyIndexEntry}{143}
+\indexentry{field!of fractions|FancyIndexEntry}{145}
+\indexentry{integral domain|FancyIndexEntry}{146}
+\indexentry{adjugate|FancyIndexEntry}{147}
+\indexentry{minimal polynomial|FancyIndexEntry}{149}
+\indexentry{polynomial!minimal|FancyIndexEntry}{149}
+\indexentry{algebra|FancyIndexEntry}{149}
+\indexentry{scalar multiplication|FancyIndexEntry}{149}
+\indexentry{Poisson, Sim\'eon-Denis|hyperpage}{151}
+\indexentry{automorphism|FancyIndexEntry}{151}
+\indexentry{automorphism!group|FancyIndexEntry}{151}
+\indexentry{group!automorphism|FancyIndexEntry}{151}
+\indexentry{Galois group|FancyIndexEntry}{152}
+\indexentry{group!Galois|FancyIndexEntry}{152}
+\indexentry{Galois extension|FancyIndexEntry}{153}
+\indexentry{extension!Galois|FancyIndexEntry}{153}
+\indexentry{simple extension|FancyIndexEntry}{155}
+\indexentry{extension!simple|FancyIndexEntry}{155}
+\indexentry{simple extension|FancyIndexEntry}{155}
+\indexentry{extension!simple|FancyIndexEntry}{155}
+\indexentry{depressed cubic|FancyIndexEntry}{156}
+\indexentry{root of unity|FancyIndexEntry}{157}
+\indexentry{Klein, Felix|hyperpage}{161}
+\indexentry{curve!plane algebraic|FancyIndexEntry}{162}
+\indexentry{plane algebraic!curve|FancyIndexEntry}{162}
+\indexentry{degree!of algebraic curve|FancyIndexEntry}{162}
+\indexentry{curve!degree|FancyIndexEntry}{162}
+\indexentry{line|FancyIndexEntry}{162}
+\indexentry{conic|FancyIndexEntry}{162}
+\indexentry{cubic!curve|FancyIndexEntry}{162}
+\indexentry{curve!cubic|FancyIndexEntry}{162}
+\indexentry{curve!quartic|FancyIndexEntry}{162}
+\indexentry{quartic!curve|FancyIndexEntry}{162}
+\indexentry{curve!quintic|FancyIndexEntry}{162}
+\indexentry{quintic!curve|FancyIndexEntry}{162}
+\indexentry{curve!sextic|FancyIndexEntry}{162}
+\indexentry{sextic!curve|FancyIndexEntry}{162}
+\indexentry{curve!septic|FancyIndexEntry}{162}
+\indexentry{septic!curve|FancyIndexEntry}{162}
+\indexentry{curve!octic|FancyIndexEntry}{162}
+\indexentry{octic!curve|FancyIndexEntry}{162}
+\indexentry{Fermat's Last Theorem|FancyIndexEntry}{163}
+\indexentry{irreducible!curve|FancyIndexEntry}{163}
+\indexentry{reducible!curve|FancyIndexEntry}{163}
+\indexentry{curve!irreducible|FancyIndexEntry}{163}
+\indexentry{curve!reducible|FancyIndexEntry}{163}
+\indexentry{component|FancyIndexEntry}{163}
+\indexentry{regular!function|FancyIndexEntry}{164}
+\indexentry{function!regular|FancyIndexEntry}{164}
+\indexentry{morphism!regular|FancyIndexEntry}{164}
+\indexentry{biregular|FancyIndexEntry}{164}
+\indexentry{rational!function|FancyIndexEntry}{166}
+\indexentry{function!rational|FancyIndexEntry}{166}
+\indexentry{regular point|FancyIndexEntry}{167}
+\indexentry{morphism!rational|FancyIndexEntry}{167}
+\indexentry{rational!morphism|FancyIndexEntry}{167}
+\indexentry{birational|FancyIndexEntry}{167}
+\indexentry{regular point|FancyIndexEntry}{167}
+\indexentry{rational!curve|FancyIndexEntry}{167}
+\indexentry{curve!rational|FancyIndexEntry}{167}
+\indexentry{partial fraction|hyperpage}{168}
+\indexentry{al-Sirhindī, Ahmad al-Fārūqī|hyperpage}{173}
+\indexentry{linear!function|FancyIndexEntry}{174}
+\indexentry{linear!hyperplane|FancyIndexEntry}{174}
+\indexentry{hyperplane!linear|FancyIndexEntry}{174}
+\indexentry{resultant|hyperpage}{175}
+\indexentry{Somerville, E.\nobreakspace  {}\OE .|hyperpage}{181}
+\indexentry{Ross, Martin|hyperpage}{181}
+\indexentry{quotient ring|FancyIndexEntry}{182}
+\indexentry{prime ideal|FancyIndexEntry}{182}
+\indexentry{ideal!prime|FancyIndexEntry}{182}
+\indexentry{ideal!maximal|FancyIndexEntry}{183}
+\indexentry{maximal ideal|FancyIndexEntry}{183}
+\indexentry{Frobenius morphism|FancyIndexEntry}{188}
+\indexentry{morphism!Frobenius|FancyIndexEntry}{188}
+\indexentry{degree!of field extension|hyperpage}{192}
+\indexentry{irreducible!polynomial|hyperpage}{192}
+\indexentry{reducible!polynomial|hyperpage}{192}
+\indexentry{polynomial!irreducible|hyperpage}{192}
+\indexentry{polynomial!reducible|hyperpage}{192}
+\indexentry{Luroth's theorem@L\"uroth's theorem|FancyIndexEntry}{193}
+\indexentry{theorem!Luroth@L\"uroth|FancyIndexEntry}{193}
+\indexentry{projective line|FancyIndexEntry}{198}
+\indexentry{projective transformation|FancyIndexEntry}{199}
+\indexentry{Cayley, Arthur|hyperpage}{199}
+\indexentry{descriptive geometry|FancyIndexEntry}{199}
+\indexentry{Blake, William|hyperpage}{199}
+\indexentry{Dostoyevsky, Fyodor|hyperpage}{200}
+\indexentry{Brothers Karamazov|hyperpage}{200}
+\indexentry{projective!plane|FancyIndexEntry}{202}
+\indexentry{affine plane|FancyIndexEntry}{202}
+\indexentry{projective!line|FancyIndexEntry}{202}
+\indexentry{homogeneous!coordinates|FancyIndexEntry}{203}
+\indexentry{coordinates!homogeneous|FancyIndexEntry}{203}
+\indexentry{projective!automorphism|FancyIndexEntry}{203}
+\indexentry{projective!plane|FancyIndexEntry}{204}
+\indexentry{Fano plane|FancyIndexEntry}{204}
+\indexentry{plane!Fano|FancyIndexEntry}{204}
+\indexentry{projective!space|FancyIndexEntry}{205}
+\indexentry{projective!automorphism|FancyIndexEntry}{205}
+\indexentry{cone|FancyIndexEntry}{207}
+\indexentry{homogeneous!polynomial|FancyIndexEntry}{207}
+\indexentry{polynomial!homogeneous|FancyIndexEntry}{207}
+\indexentry{projective!plane curve|FancyIndexEntry}{208}
+\indexentry{plane curve!projective|FancyIndexEntry}{208}
+\indexentry{curve!projective plane|FancyIndexEntry}{208}
+\indexentry{Marx, Chico|hyperpage}{210}
+\indexentry{component!multiple|FancyIndexEntry}{213}
+\indexentry{theorem!Study|FancyIndexEntry}{213}
+\indexentry{Study!theorem|FancyIndexEntry}{213}
+\indexentry{generic!triangle|FancyIndexEntry}{214}
+\indexentry{triangle!generic|FancyIndexEntry}{214}
+\indexentry{very generic!triangle|FancyIndexEntry}{214}
+\indexentry{triangle!very generic|FancyIndexEntry}{214}
+\indexentry{generic!triangle!very|FancyIndexEntry}{214}
+\indexentry{intersection number|FancyIndexEntry}{215}
+\indexentry{theorem!B\'ezout|FancyIndexEntry}{216}
+\indexentry{B\'ezout!theorem|FancyIndexEntry}{216}
+\indexentry{theorem!B\'ezout|FancyIndexEntry}{218}
+\indexentry{B\'ezout!theorem|FancyIndexEntry}{218}
+\indexentry{Tolstoy, Leo|hyperpage}{221}
+\indexentry{Karenina, Anna|hyperpage}{221}
+\indexentry{pencil|FancyIndexEntry}{221}
+\indexentry{triangle|FancyIndexEntry}{223}
+\indexentry{quadrilateral|FancyIndexEntry}{223}
+\indexentry{polygon|FancyIndexEntry}{223}
+\indexentry{dual!projective plane|FancyIndexEntry}{225}
+\indexentry{projective!plane!dual|FancyIndexEntry}{225}
+\indexentry{pencil|hyperpage}{226}
+\indexentry{linear!system|FancyIndexEntry}{226}
+\indexentry{general position|FancyIndexEntry}{226}
+\indexentry{arithmetic genus|FancyIndexEntry}{228}
+\indexentry{genus!arithmetic|FancyIndexEntry}{228}
+\indexentry{genus!geometric|FancyIndexEntry}{228}
+\indexentry{geometric genus|FancyIndexEntry}{228}
+\indexentry{deficiency|FancyIndexEntry}{228}
+\indexentry{independent conditions|FancyIndexEntry}{229}
+\indexentry{Lang, Serge|hyperpage}{233}
+\indexentry{theorem!Chasles|FancyIndexEntry}{233}
+\indexentry{Chasles theorem|FancyIndexEntry}{233}
+\indexentry{elliptic curve|FancyIndexEntry}{234}
+\indexentry{curve!elliptic|FancyIndexEntry}{234}
+\indexentry{tangent line|FancyIndexEntry}{237}
+\indexentry{Graves, Robert|hyperpage}{239}
+\indexentry{order!of point on curve|FancyIndexEntry}{240}
+\indexentry{point!smooth|FancyIndexEntry}{240}
+\indexentry{regular!point|FancyIndexEntry}{240}
+\indexentry{point!regular|FancyIndexEntry}{240}
+\indexentry{point!smooth|FancyIndexEntry}{240}
+\indexentry{smooth!point|FancyIndexEntry}{240}
+\indexentry{singular point|FancyIndexEntry}{240}
+\indexentry{point!singular|FancyIndexEntry}{240}
+\indexentry{smooth!curve|FancyIndexEntry}{240}
+\indexentry{curve!smooth|FancyIndexEntry}{240}
+\indexentry{regular!curve|FancyIndexEntry}{240}
+\indexentry{curve!regular|FancyIndexEntry}{240}
+\indexentry{inflection point|FancyIndexEntry}{247}
+\indexentry{flex|FancyIndexEntry}{247}
+\indexentry{Hessian!curve|FancyIndexEntry}{247}
+\indexentry{lemma!Euler|hyperpage}{248}
+\indexentry{Euler!lemma|hyperpage}{248}
+\indexentry{Russell, Bertrand|hyperpage}{255}
+\indexentry{quadratic!form|FancyIndexEntry}{255}
+\indexentry{form!quadratic|FancyIndexEntry}{255}
+\indexentry{Sylvester's law of inertia|FancyIndexEntry}{255}
+\indexentry{Sylvester, James|hyperpage}{255}
+\indexentry{inertia|hyperpage}{255}
+\indexentry{signature|FancyIndexEntry}{255}
+\indexentry{square-free|FancyIndexEntry}{256}
+\indexentry{dual!projective plane|FancyIndexEntry}{261}
+\indexentry{dual!curve|FancyIndexEntry}{262}
+\indexentry{al-Sirhindī, Ahmad al-Fārūqī|hyperpage}{265}
+\indexentry{Paine, Thomas|hyperpage}{265}
+\indexentry{affine space|FancyIndexEntry}{265}
+\indexentry{Hilbert basis theorem|FancyIndexEntry}{266}
+\indexentry{theorem!Hilbert basis|FancyIndexEntry}{266}
+\indexentry{affine variety|FancyIndexEntry}{267}
+\indexentry{variety!affine|FancyIndexEntry}{267}
+\indexentry{nullstellensatz|FancyIndexEntry}{267}
+\indexentry{theorem!nullstellensatz|FancyIndexEntry}{267}
+\indexentry{closed set|FancyIndexEntry}{268}
+\indexentry{open set|FancyIndexEntry}{268}
+\indexentry{neighborhood|FancyIndexEntry}{268}
+\indexentry{closure|FancyIndexEntry}{268}
+\indexentry{variety!projective|FancyIndexEntry}{269}
+\indexentry{projective variety|FancyIndexEntry}{269}
+\indexentry{quadric hypersurface|FancyIndexEntry}{269}
+\indexentry{reducible|FancyIndexEntry}{270}
+\indexentry{hypersurface!projective|FancyIndexEntry}{270}
+\indexentry{projective!hypersurface|FancyIndexEntry}{270}
+\indexentry{exceptional line|FancyIndexEntry}{272}
+\indexentry{proper transform|FancyIndexEntry}{272}
+\indexentry{multilinear function|FancyIndexEntry}{277}
+\indexentry{alternating|FancyIndexEntry}{277}
+\indexentry{coordinate subspace|FancyIndexEntry}{281}
+\indexentry{Shakespeare, William|hyperpage}{285}
+\indexentry{Twelfth Night|hyperpage}{285}
+\indexentry{Russell, Bertrand|hyperpage}{285}
+\indexentry{Tolstoy, Leo|hyperpage}{285}
+\indexentry{War and Peace|hyperpage}{285}
+\indexentry{projective!plane|FancyIndexEntry}{285}
+\indexentry{dual!projective plane|FancyIndexEntry}{286}
+\indexentry{projective!plane!dual|FancyIndexEntry}{286}
+\indexentry{projective!space|FancyIndexEntry}{287}
+\indexentry{plane|FancyIndexEntry}{287}
+\indexentry{projective!subspace|FancyIndexEntry}{288}
+\indexentry{subspace!projective|FancyIndexEntry}{288}
+\indexentry{quaternions|FancyIndexEntry}{289}
+\indexentry{skew field|FancyIndexEntry}{289}
+\indexentry{quaternionic projective plane|FancyIndexEntry}{289}
+\indexentry{projective plane!quaternionic|FancyIndexEntry}{289}
+\indexentry{addition laws|FancyIndexEntry}{289}
+\indexentry{multiplication laws|FancyIndexEntry}{290}
+\indexentry{subspace|FancyIndexEntry}{290}
+\indexentry{linear relation|FancyIndexEntry}{290}
+\indexentry{linearly independent|FancyIndexEntry}{290}
+\indexentry{linear combination|FancyIndexEntry}{290}
+\indexentry{span|FancyIndexEntry}{290}
+\indexentry{basis|FancyIndexEntry}{290}
+\indexentry{dimension|FancyIndexEntry}{291}
+\indexentry{linear map|FancyIndexEntry}{291}
+\indexentry{kernel|FancyIndexEntry}{291}
+\indexentry{image|FancyIndexEntry}{291}
+\indexentry{Wittgenstein, Ludwig|hyperpage}{292}
+\indexentry{Tractatus Logico-Philosophicus|hyperpage}{292}
+\indexentry{incidence geometry|FancyIndexEntry}{292}
+\indexentry{configuration|FancyIndexEntry}{292}
+\indexentry{polygon|FancyIndexEntry}{292}
+\indexentry{Fano plane|hyperpage}{292}
+\indexentry{Fano plane|hyperpage}{292}
+\indexentry{kite|FancyIndexEntry}{292}
+\indexentry{isomorphism!projective plane|FancyIndexEntry}{293}
+\indexentry{projective!plane!isomorphism|FancyIndexEntry}{293}
+\indexentry{automorphism!projective plane|FancyIndexEntry}{293}
+\indexentry{projective!plane!automorphism|FancyIndexEntry}{293}
+\indexentry{linear!projective automorphism|FancyIndexEntry}{293}
+\indexentry{dual!configuration|FancyIndexEntry}{294}
+\indexentry{configuration!dual|FancyIndexEntry}{294}
+\indexentry{Hardy, G. H.|hyperpage}{294}
+\indexentry{Bulgakov, Mikhail|hyperpage}{294}
+\indexentry{perspective|FancyIndexEntry}{294}
+\indexentry{perspective|FancyIndexEntry}{294}
+\indexentry{Desargues!projective plane|FancyIndexEntry}{295}
+\indexentry{projective!plane!Desargues|FancyIndexEntry}{295}
+\indexentry{standard Desargues configuration|FancyIndexEntry}{295}
+\indexentry{Desargues!configuration!standard|FancyIndexEntry}{295}
+\indexentry{configuration!standard Desargues|FancyIndexEntry}{295}
+\indexentry{broken Desargues configuration|FancyIndexEntry}{295}
+\indexentry{Desargues!configuration!broken|FancyIndexEntry}{295}
+\indexentry{configuration!broken Desargues|FancyIndexEntry}{295}
+\indexentry{projective!plane!generation|FancyIndexEntry}{297}
+\indexentry{generate!projective plane|FancyIndexEntry}{297}
+\indexentry{configuration!trivalent|FancyIndexEntry}{298}
+\indexentry{trivalent configuration|FancyIndexEntry}{298}
+\indexentry{ring|FancyIndexEntry}{299}
+\indexentry{addition laws|FancyIndexEntry}{299}
+\indexentry{associative law!addition|FancyIndexEntry}{299}
+\indexentry{identity law!addition|FancyIndexEntry}{299}
+\indexentry{existence of negatives|FancyIndexEntry}{299}
+\indexentry{commutative law!addition|FancyIndexEntry}{299}
+\indexentry{multiplication laws|FancyIndexEntry}{299}
+\indexentry{distributive law|FancyIndexEntry}{299}
+\indexentry{identity law!multiplication|FancyIndexEntry}{299}
+\indexentry{commutative law!multiplication|FancyIndexEntry}{299}
+\indexentry{conjugation|FancyIndexEntry}{299}
+\indexentry{\(*\)-ring|FancyIndexEntry}{300}
+\indexentry{octaves|FancyIndexEntry}{300}
+\indexentry{octonions|FancyIndexEntry}{300}
+\indexentry{real!\(*\)-ring|FancyIndexEntry}{300}
+\indexentry{\(*\)-ring!real|FancyIndexEntry}{300}
+\indexentry{associator|FancyIndexEntry}{300}
+\indexentry{alternative ring|FancyIndexEntry}{300}
+\indexentry{ring!alternative|FancyIndexEntry}{300}
+\indexentry{ternary ring|FancyIndexEntry}{302}
+\indexentry{octave projective plane|FancyIndexEntry}{303}
+\indexentry{Zhou, Zhuang|hyperpage}{304}
+\indexentry{dragon|hyperpage}{304}
+\indexentry{Zhuangzi|hyperpage}{304}
+\indexentry{Thom, René|hyperpage}{304}

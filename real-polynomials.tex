@@ -22,6 +22,14 @@ has a real number solution \(x\).
 More generally, prove that any odd-order polynomial equation in a real variable has a real solution.
 \end{problem}
 \section{Counting positive roots}
+\epigraph{A biologist, a physicist and a mathematician drink coffee and watch a house across the street from them. They see two people walk into the house.
+An hour later, three people walk out.
+\\
+    \emph{Physicist:} We measured incorrectly.
+\\
+    \emph{Biologist:} No, they reproduced.
+\\
+    \emph{Mathematician:} No, if one more person enters, the house will be empty.}
 \begin{theorem}[Descartes]\define{theorem!Descartes}\define{Descartes!theorem}
 The number of positive roots, counted with multiplicities, of a real polynomial \(b(x)\) is either equal to the number of changes of sign of its coefficients (when we write the polynomial \(b(x)\) with terms in order of degree), or less by a multiple of \(2\).
 \end{theorem}
@@ -38,8 +46,8 @@ So there are either \(2\) positive roots or none.
 \end{example}
 \begin{example}
 The polynomial \(c(x)=x^5-3x^4+3x^3+9x^2-27x+3\) has \(4\) sign changes, so \(4\) or \(2\) or \(0\) roots \(x\) with \(x>0\).
-If we look at the polynomial \(c(-x)\), expand out to get \(c(-x)=-x^5-3x^4-3x^3+9x^2+27x+3\) has 1 sign change, so 1 root with \(x>0\).
-Therefore \(c(x)\) has 1 root with \(x < 0\).
+If we look at the polynomial \(c(-x)\), expand out to get \(c(-x)=-x^5-3x^4-3x^3+9x^2+27x+3\) has \(1\) sign change, so \(1\) root with \(x>0\).
+Therefore \(c(x)\) has \(1\) root with \(x < 0\).
 \end{example}
 \begin{proof}
 Take a polynomial \(b(x)\).
@@ -167,7 +175,7 @@ p_2(0)&=-10,     &  p_2(1)&=0,\\
 p_3(0)&=6,       &  p_3(1)&=6,\\
 \end{array}
 \]
-so \(s(0)=2\) sign changes, and \(s(1)=1\) sign changes, with expected number of roots \(2-1=1\), i.e. we expect that \(p(x)\) has all 1 of its roots in the interval \(0 < x \le 1\).
+so \(s(0)=2\) sign changes, and \(s(1)=1\) sign changes, with expected number of roots \(2-1=1\), i.e. we expect that \(p(x)\) has one of its roots in the interval \(0 < x \le 1\).
 \end{example}
 \begin{theorem}[Sturm]
 If a polynomial \(p(x)\) with real coefficients has no multiple roots at \(x=a\) or at \(x=b\) then the expected number of distinct roots \(p(x)\) in the interval \(a < x \le b\) is the number of distinct roots of \(p(x)\) in that interval.
@@ -181,7 +189,7 @@ Hence the common roots of any two successive polynomials in the Sturm sequence l
 Suppose that \(x=x_0\) is a root of \(p_m(x)\).
 By definition, \(p_m(x)\) is the greatest common divisor (up to \(\pm\) sign) of \(p(x)\) and \(p'(x)\), so divides into all of the \(p_0(x), p_1(x), \dots, p_m(x)\).
 So its zeroes are already zeroes of all of those, and so \(x=x_0\) is a root of all of \(p_0(x), p_1(x), \dots, p_m(x)\).
-Since \(p_0(x)=p(x)\) and \(p_1(x)=p'(x)\), \(x=x_0\) is a zero of both \(p(x)\) and \(p'(x)\), so a double root of \(p(x)\).
+Since \(p_0(x)=p(x)\) and \(p_1(x)=p'(x)\), \(x=x_0\) is a zero of both \(p(x)\) and \(p'(x)\), so at least a double root of \(p(x)\).
 
 Take a root \(x=x_0\) of one of the polynomials \(p_i(x)\) in the Sturm sequence.
 Suppose that \(p_i(x)\) is not \(p_0(x)\) or \(p_m(x)\), at the two ends of the sequence, but just one of the polynomials in middle of the sequence.
@@ -196,8 +204,9 @@ So if \(x=x_0\) is not a root of all of the polynomials in the chain, but a root
 \input{sturm-pic-5}\qquad
 \input{sturm-pic-6}
 \end{center}
+
 Suppose in addition that \(p_i(x)\) has an odd number of roots at \(x=x_0\).
-As \(x\) travels from a little less than \(x=x_0\) to a little more than \(x=x_0\), the sign of \(p_i(x)\) changes across this gap, but that of \(p_{i-1}(x)\) and \(p_{i+1}(x)\) stay the same.
+As \(x\) travels from a little less than \(x=x_0\) to a little more than \(x=x_0\), the sign of \(p_i(x)\) changes across this gap, but that of \(p_{i-1}(x)\) and \(p_{i+1}(x)\) stay the same, since they don't have a root at \(x=x_0\).
 So they together contribute the same total number of sign changes for \(x>x_0\) as they did for \(x<x_0\).
 \begin{center}
 \input{sturm-pic-3}\qquad
@@ -452,12 +461,12 @@ Every real coefficient polynomial function
 \[
 p(x)=a_0+a_1x+a_2x^2 + \dots + a_n x^n
 \]
-of any degree \(n\) splits into a product of real linear and quadratic factors
+of any degree \(n\) splits into a product of real linear and real quadratic factors
 \[
 p(x)=a_n\pr{x-r_1}\pr{x-r_2}\dots\pr{x-r_k}q_1(x)q_2(x)\dots q_{\ell}(x),
 \]
-where \(q_j(x) = x^2+b_j x + c_j\) is quadratic with no real roots.
-In particular, a real coefficient polynomial is irreducible just when it is linear or quadratic \(ax^2+bx+c\), with \(a \ne 0\) and with \(b^2-4ac<0\).
+where \(q_j(x) = x^2+b_j x + c_j\) is real quadratic with no real roots.
+In particular, a real coefficient polynomial is irreducible just when it is linear or quadratic \(ax^2+bx+c\), with \(a \ne 0\) and with \(b^2-4ac<0\) (i.e. no real roots).
 \end{theorem}
 \begin{proof}
 If the polynomial \(p(x)\) has a real root, divide off the associated linear factor, and apply induction on degree of \(p(x)\).
@@ -473,7 +482,8 @@ So \(p(z)\) is divisible by
 \pr{z-z_1}\pr{z-\bar{z}_1}=z^2-2x_1 z + \left|z_1\right|^2,
 \]
 a quadratic function with real coefficients.
-Divide this factor off and apply induction on degree of \(p(x)\).
+Divide this factor off; applying complex conjugate, find that the quotient also has real coefficients.
+Apply induction.
 \end{proof}
 
 \section{Partial fractions}
@@ -493,15 +503,57 @@ where \(s(x), t(x)\) are the B\'ezout coefficients of \(u(x), v(x)\).
 \begin{proof}
 Write out \(s(x)u(x)+t(x)v(x)=1\) and then multiply both sides by \(p(x)\) and divide both sides by \(q(x)\).
 \end{proof}
-A \emph{partial fraction}\define{partial fraction} is a rational function \(\frac{b(x)}{c(x)^n}\) where \(b(x)\) has smaller degree than \(c(x)\) and \(c(x)\) is irreducible.
+A \emph{partial fraction}\define{partial fraction} is a rational function \(\frac{b(x)}{c(x)^n}\) where \(b(x)\) has smaller degree than \(c(x)\), and \(c(x)\) is irreducible.
 A \emph{partial fraction decomposition}\define{partial fraction!decomposition}
-of a rational function \(\frac{p(x)}{q(x)}\) is an expression as a sum of a polynomial function together with finitely many partial fractions, so that the denominators of the partial fractions multiplied together divide \(q(x)\).
+of a rational function \(\frac{p(x)}{q(x)}\) is an expression as a sum of a polynomial function together with finitely many partial fractions, all with distinct denominators, so that the denominators of the partial fractions divide \(q(x)\).
 \begin{theorem}
 Every rational function over any field has a partial fraction decomposition, unique up to reordering the partial fractions.
 \end{theorem}
 \begin{proof}
-Just repeat the process described in lemma~\vref{lemma:partial.fraction}.
+Take a rational function \(b(x)/c(x)\).
+Repeat the process described in lemma~\vref{lemma:partial.fraction} to get to a sum of terms of the form \(b(x)/c(x)^n\) where \(c(x)\) is irreducible.
+If \(b(x)\) does not have smaller degree than \(c(x)\), then divide \(c(x)\) into \(b(x)\) to get quotient and remainder:
+\begin{align*}
+\frac{b(x)}{c(x)^n}&=\frac{q(x)c(x)+r(x)}{c(x)^n},\\
+&=\frac{q(x)}{c(x)^{n-1}}+\frac{r(x)}{c(x)^n},
+\end{align*}
+and apply induction, replacing \(b(x)\) by \(q(x)\).
+We let the reader prove uniqueness.
 \end{proof}
+\begin{problem*}{real.polynomials:unique.p.f.d}
+Prove that partial fraction decomposition is unique.
+\end{problem*}
+\begin{answer}{real.polynomials:unique.p.f.d}
+Suppose you find a counterexample: two partial fraction decompositions for the same rational function.
+Their difference is a partial fraction decomposition for the zero rational function \(0/c(x)\) for some \(c(x)\).
+Suppose we have such.
+
+Clearly if our partial fraction decomposition is pure polynomial, with no partial fractions, it can't equal the zero rational function without being entirely zero: clear denominators
+
+Now suppose that we have a partial fraction decomposition for the zero rational function \(0/c(x)\).
+Split \(c(x)\) into a product of coprime irreducibles
+\[
+c(x)=c_1(x)^{n_1}\dots c_{\ell}(x)^{n_{\ell}}.
+\]
+Suppose that our decomposition is
+\[
+\frac{0}{c(x)}
+=B(x)
++\sum_j \sum_{k=1}^{n_j} \frac{b_{jk}(x)}{c_j(x)^k},
+\]
+Multiply by \(c(x)\) to clear denominators:
+\[
+0=c(x)B(x)+\sum_j \sum_{k=1}^{n_j} b_{jk}(x)c_j(x)^{n_j-k}\prod_{i\ne j} c_i(x)^{n_i}
+\]
+All terms in both sides are divisible by \(c_1(x)\), except perhaps a single one:
+\[
+b_{1n_1}(x)\prod_{i\ne 1} {c_i(x)^{n_i}}.
+\]
+So \(c_1(x)^{n_1}\) must also divide this.
+But all of the \(c_i\) are coprime to \(c_1(x)\), so \(c_1(x)\) divides \(b_{1n_1}(x)\), but has larger degree, so \(b_{1n_1}(x)=0\).
+We can reduce the value of \(n_1\) in our partial fraction decomposition, to find a simpler counterexample with fewer terms.
+Apply induction on the number of terms, until the partial fraction decomposition becomes a polynomial, which must agree with the zero polynomial, so must have all coefficients zero.
+\end{answer}
 \begin{example}
 \[
 \frac{4}{x^2+2x-3} = \frac{-1}{x+3} + \frac{1}{x-1}.
@@ -517,7 +569,7 @@ has partial fraction decomposition
 \[
 \frac{p(x)}{q(x)}
 =
-x^2+3x+4+\frac{1}{(x-1)} + \frac{1}{(x - 1)^3} + \frac{x + 1}{x^2+1}+\frac{1}{(x^2+1)^2}.
+x^2+3x+4+\frac{1}{x-1} + \frac{1}{(x - 1)^3} + \frac{x + 1}{x^2+1}+\frac{1}{(x^2+1)^2}.
 \]
 Note that we cannot get rid of the square in the last denominator, because we have to allow powers.
 Also note that if we allow complex numbers here instead of real numbers, then we can factor \(x^2+1=(x-i)(x+i)\), so there is a different partial fraction decomposition over the complex numbers, with lower degrees in denominators.

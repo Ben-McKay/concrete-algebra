@@ -173,37 +173,65 @@ Let \(e(t)\defeq\pr{e_1(t),e_2(t),\dots,e_n(t)}\), so that \(e\) maps vectors to
 Recall that a field is \emph{algebraically closed} if every polynomial with coefficients in that field splits into a product of linear factors with coefficients in that field.
 Recall the fundamental theorem of algebra (theorem~\vref{theorem:FTA}): the field of complex numbers \(\C{}\) is algebraically closed.
 \begin{lemma}
-For each vector \(c\) with entries in a field, there is a vector \(t\), with entries in a finite degree extension field, so that \(e(t)=c\).
-Over an infinite field, there is no nontrivial polynomial equation satisfied by the elementary symmetric polynomials.
+For each vector \(c\) with entries in a field, there is a vector \(r\), with entries in a finite degree extension field, so that \(e(r)=c\).
 \end{lemma}
 \begin{proof}
-Let \(t_1, t_2, \dots, t_n\) be the roots of the polynomial
+Let \(r_1, r_2, \dots, r_n\) be the roots of the polynomial
 \[
-P(x) = x^n - c_1 x^{n-1} + c_2 x^{n-2} + \dots + (-1)^n c_n.
+P(x) = x^n - c_1 x^{n-1} + c_2 x^{n-2} + \dots + (-1)^n c_n
 \]
-By proposition~\vref{proposition:vieta}, \(P_t(x)\) has coefficients precisely the same as those of \(P(x)\), i.e. \(P_t(x)=P(x)\).
-Any relation \(R(e(t))=0\) between the elementary symmetric polynomials must be satisfied at all points \(c\), so is trivial for any function \(R\).
-For a polynomial \(R\), which we don't think of as a function, over an infinite field, the expression \(R(e(t))\) vanishing forces \(R(c)\) to vanish for each \(c\).
-Varying any one component of \(c\), \(R(c)\) is a polynomial function of that component with infinitely many roots, so is zero in that component for all other components fixed, so the zero polynomial by induction.
+in its splitting field.
+By proposition~\vref{proposition:vieta}, \(P_r(x)\) has coefficients precisely the same as those of \(P(x)\), i.e. \(P_r(x)=P(x)\).
 \end{proof}
 \begin{lemma}
-Over any field, the entries of two vectors \(s\) and \(t\) are permutations of one another just when \(e(s)=e(t)\), i.e. just when the elementary symmetric polynomials take the same values at \(s\) and at \(t\).
+Given some variables over a field, if there are more elements of the field than variables, then there is no nontrivial polynomial equation satisfied by the elementary symmetric polynomials.
+\end{lemma}
+Consequently, any such polynomial relation disappears after some field extension.
+\begin{proof}
+Any relation \(p(e(t))=0\) between the elementary symmetric polynomials must be satisfied at all points \(c\), so is trivial for any function \(p\).
+For a polynomial \(p\), which we don't think of as a function, over a large enough field, the expression \(p(e(t))\) vanishing forces \(p(c)\) to vanish for each \(c\).
+Varying any one component of \(c\), \(p(c)\) is a polynomial function of that component with too many roots, so is zero in that component for all other components fixed, so the zero polynomial by induction.
+\end{proof}
+\begin{lemma}\label{lemma:permuty}
+Over any field, the entries of two vectors \(u\) and \(v\) are permutations of one another just when \(e(u)=e(v)\), i.e. just when the elementary symmetric polynomials take the same values at \(u\) and at \(v\).
 \end{lemma}
 \begin{proof}
-The roots of \(P_s(x)\) and \(P_t(x)\) are the same numbers.
+The values of the entries of \(e(u),e(v)\) are the coefficients of \(P_u(x),P_v(x)\) whose roots are the entries of \(u,v\).
+Clearly the following are equivalent:
+\begin{itemize}
+\item
+The entries of \(u,v\) agree up to order.
+\item
+The monic polynomials with those roots agree.
+\item
+\(P_u(x)=P_v(x)\).
+\item
+\(P_u(x),P_v(x)\) have the same coefficients.
+\item
+\(e(u)=e(v)\).
+\end{itemize}
 \end{proof}
-We want to see that every symmetric polynomial \(f\of{t_1,t_2,\dots,t_n}\) has the form \(f(t)=h(e(t))\), for a unique polynomial \(h\), and conversely if \(h\) is any function at all, then \(f(t)=h(e(t))\) determines a symmetric polynomial.
+\begin{lemma}\label{lemma:auts.are.Sn}
+Over any field, a list of rational functions \(f(t)=(f_1(t),\dots,f_n(t))\), with \(t=(t_1,\dots,t_n)\), are precisely the functions \(t=(t_1,\dots,t_n)\) up to reordering just when they satisfy
+\[
+e(f(t))=e(t).
+\]
+\end{lemma}
+\begin{proof}
+If our field is \(k\), apply lemma~\vref{lemma:permuty} over \(k(t_1,\dots,t_n)\).
+\end{proof}
+We want to see that every symmetric polynomial \(f\of{t_1,t_2,\dots,t_n}\) has the form \(f(t)=h(e(t))\), for a unique polynomial \(h\), and conversely if \(h\) is any polynomial at all, then \(f(t)=h(e(t))\) determines a symmetric polynomial.
 We want a recipe to write down each symmetric polynomial in terms of the elemenary symmetric polynomials, to find this mysterious \(h\).
 \begin{example}
-Take the function 
+Take the polynomial 
 \[
 f=3x^2yz+3xy^2z+3xyz^2+5xy+5xz+5yz.
 \]
-Clearly the terms with the 5's look like an elementary symmetric function:
+Clearly the terms with the 5's look like an elementary symmetric polynomial:
 \[
 f=3x^2yz+3xy^2z+3xyz^2+5e_2.
 \]
-(We write \(e_2\) to mean the function \(e_2(x,y,z)=xy+xz+yz\), the 2nd elementary symmetric function.)
+(We write \(e_2\) to mean the polynomial \(e_2(x,y,z)=xy+xz+yz\), the 2nd elementary symmetric polynomial.)
 But what about the terms with the 3's?
 Factor them all together as much as we can:
 \[
@@ -316,35 +344,43 @@ up to terms of lower weight.
 %So for each decreasing sequence \(a=\pr{a_1,a_2,\dots,a_n}\), we have \(t^a=e(t)^d+\dots\).
 
 \begin{theorem}\label{theorem:symmetric.polynomials.algebra}
-Every symmetric polynomial \(f\) has exactly one expression as a polynomial
-in the elementary symmetric polynomials.
-If \(f\) has integer coefficients, then \(f\) is an integer coefficient polynomial of the elementary symmetric polynomials. Similarly if \(f\) has coefficients in any field, then \(f\) is a polynomial of the elementary symmetric polynomials, with coefficients in that same field.
+Every symmetric polynomial over any commutative ring has exactly one expression as a polynomial in the elementary symmetric polynomials.
 \end{theorem}
 \begin{proof}
-Write the highest weight term as some coefficient times \(t_1^{a_1} t_2^{a_2} \dots t_n^{a_n}\).
-For simplicity, write this as \(t^a\).
-If \(a_1\) is smaller than \(a_2\), permute them to get a higher weight term, a contradiction, so \(a_1 \ge a_2\).
+Write the highest weight term as some coefficient times
+\[
+t^a=t_1^{a_1} t_2^{a_2} \dots t_n^{a_n}.
+\]
+If \(a_1\) is smaller than \(a_2\), swap \(t_1\) with \(t_2\) to get a higher weight term, a contradiction, so \(a_1 \ge a_2\).
 In the same way, \(a_1 \ge a_2 \ge a_3 \ge \dots \ge a_n\).
-It might be that various of these \(a_i\) are zero; instead we can write the term as \(t_1^{a_1} \dots t_k^{a_k}\), with all positive powers \(a_1\ge a_2 \ge \dots \ge a_k>0\).
 Let 
-\[
-b_1\defeq a_1-a_k, \dots b_{k-1}\defeq a_{k-1}-a_k.
-\]
-Factor out:
-\[
-t^a=t^b (t_1 \dots t_k)^{a_k}.
-\]
-This is the highest weight term in
-\[
-t^b e_k^{a_k}.
-\]
-For simplicity, write expressions like \(e_1^{d_1} \dots e_n^{d_n}\) as \(e^d\).
-By induction, we can then find some expression \(e^d\) with highest weight term \(t^b\), so
-\[
-t^a=t^b e_k^{a_k} + \dots = e^d e_k^{a_k} + \dots
-\]
-where \(\dots\) means lower weight terms.
-By induction, we can somehow write the lower weight terms as polynomials in the elementary symmetric functions.
+\begin{align*}
+d_1&\defeq a_1-a_2,\\
+d_2&\defeq a_2-a_3,\\
+&\vdotswithin{\defeq}\\
+d_{n-1}&\defeq a_{n-1}-a_n,\\
+d_n&\defeq a_n.
+\end{align*}
+Let's search for the highest weight term in \(e^d\):
+\begin{align*}
+e^d&=
+e_1^{d_1}\dots e_n^{d_n},\\
+&=(t_1+\dots)^{d_1}(t_1t_2+\dots)^{d_2}\dots (t_1\dots t_n)^{d_n},
+\\
+&=
+t_1^{d_1}(t_1t_2)^{d_2}\dots (t_1\dots t_n)^{d_n} + \dots 
+\\
+&=
+t_1^{a_1-a_2}(t_1t_2)^{a_2-a_3}\dots (t_1\dots t_{n-1})^{a_{n-1}-a_n}(t_1\dots t_n)^{a_n} + \dots,
+\\
+&=
+t_1^{a_1} t_2^{a_2} \dots t_n^{a_n} +\dots
+\\
+&=
+t^a+\dots
+\end{align*}
+So whatever coefficient of \(t^a\) we find in our given polynomial, subtract that multiple of \(e^d\) from the polynomial, and we reduce the weight.
+By induction, we can somehow write the lower weight terms as polynomials in the elementary symmetric polynomials.
 \end{proof}
 \begin{example}
 The sum of squares of two variables is symmetric: 
@@ -398,6 +434,27 @@ e_3(e_2^2-2e_3e_1)
 \item \(x^4y^4z^4=e_3^4\)
 \item \(xyz+x^2y^2z^2=e_3\pr{1+e_3}\)
 \end{enumerate}
+\end{answer}
+
+\section{Symmetric functions}
+A \emph{symmetric function}\define{symmetric function} is a rational function of several variables, invariant under permutation of those variables.
+\begin{problem}{permutions:rationals}
+Prove that every symmetric function over any field is a ratio of polynomials in the elementary symmetric polynomials.
+\end{problem}
+\begin{answer}{permutions:rationals}
+We will prove that any symmetric function has an expression \(b(e_1,\dots,e_n)/c(e_1,\dots,e_n)\) as a ratio of polynomials with no common nonconstant factor, expressed in the elementary symmetric polynomials, unique up to rescaling numerator and denominator by the same nonzero constant.
+If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
+To see that there is one such, write out the function as \(p(t_1,\dots,t_n)/q(t_1,\dots,t_n)\).
+Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
+Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
+So any swap either changes sign or leaves both numerator and denominator alone.
+Replace our expression for our rational function by
+\[
+\frac{p(t_1,\dots,t_n)q(t_1,\dots,t_n)}{q(t_1,\dots,t_n)^2}.
+\]
+So there is an expression in symmetric polynomials.
+Factor out any common factors.
+Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
 \end{answer}
 
 \section{Sage}
@@ -498,14 +555,14 @@ k \, e_k + (-1)^{k-1} p_k.
 \end{align*}
 \end{proof}
 \begin{proposition}
-Every symmetric polynomial is a polynomial in the sums of powers. If the coefficients of the symmetric polynomial lie in a field, then it is a polynomial function of the sums of powers over that same field.
+Every symmetric polynomial is a polynomial in the sums of powers. If the coefficients of the symmetric polynomial lie in a field, then it is a polynomial of the sums of powers over that same field.
 \end{proposition}
 \begin{proof}
 We can solve recursively for the sums of powers in terms of the elementary symmetric polynomials and conversely.
 \end{proof}
 
 \section{The invariants of a square matrix}\label{pg:linear.invariants}
-Over any field, a polynomial \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f\left(FAF^{-1}\right)=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
+Over any field, a rational function \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f\left(FAF^{-1}\right)=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
 An invariant is independent of change of basis: if \(T \colon V \to V\) is a linear map on an \(n\)-dimensional vector space, we can define the value \(f(T)\) of any invariant \(f\) of \(n \times n\) matrices, by letting \(f(T)\defeq f(A)\) where \(A\) is the matrix associated to \(T\) in some basis of \(V\).
 \begin{example}
 For any \(n \times n\) matrix \(A\), write
@@ -516,11 +573,11 @@ e_n(A) - e_{n-1}(A) \lambda + e_{n-2}(A) \lambda^2 + \dots + (-1)^n \lambda^n.
 The expressions \(e_1(A), e_2(A), \dots, e_n(A)\) are invariants, while \(\chi_A(\lambda)\) is the \emph{characteristic polynomial}\define{characteristic polynomial} of \(A\).
 \end{example}
 \begin{example}\label{example:Powers}
-If we write the trace of a matrix \(A\) as \(\tr{A}\), then the functions
+If we write the trace of a matrix \(A\) as \(\tr{A}\), then the expressions
 \[
 p_k(A) = \tr\of{A^k}\SubIndex{trace}
 \]
-are invariants.
+are invariant polynomials in the entries of \(A\).
 \end{example}
 \begin{problem}{SymmetricFunctions:Two}
 If \(A\) is diagonal, say
@@ -553,11 +610,11 @@ Generalize the previous exercise to \(A\) diagonalizable.
 Prove that the entries of \(A^{-1}\) are rational functions of the entries of the square matrix \(A\), over any field.
 \end{problem}
 \begin{answer}{permuting.roots:inverse.Cramer}
-Cramer's rule says that the inverse \(A^{-1}\) has entries
+By theorem~\vref{theorem:adjugate}, \(A^{-1}=(\det A)^{-1}\adj{A}\), so
 \[
 A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
 \]
-so rational functions of the entries of \(A\).
+rational functions of the entries of \(A\).
 \end{answer}
 
 \begin{example}
@@ -570,11 +627,12 @@ Suppose that the characteristic polynomial of \(A\) splits into linear factors.
 Prove that \(\Delta_A = 0\) just when \(A\) has an eigenvalue of multiplicity two or more.
 \end{problem}
 \begin{theorem}
-Every invariant polynomial of square matrices over an infinite field has exactly one expression as a polynomial in the elementary symmetric polynomials of the eigenvalues. 
+Every invariant polynomial (or invariant rational function) of square matrices over any field with more elements than the number of columns of the matrices, has exactly one expression as a polynomial (rational function) in the elementary symmetric polynomials of the eigenvalues. 
 \end{theorem}
 We can replace the elementary symmetric polynomials of the eigenvalues by the sums of powers of the eigenvalues.
 \begin{proof}
 Take an invariant polynomial \(f(A)\).
+(The same argument will work for an invariant rational function.)
 Every invariant polynomial \(f(A)\) determines an invariant polynomial \(f(t)\)
 by setting
 \[
@@ -588,7 +646,7 @@ t_1 \\
 \]
 Taking \(F\) any permutation matrix, invariance tells us that \(f\left(FAF^{-1}\right)=f(A)\). 
 But \(f\left(FAF^{-1}\right)\) is given by applying the associated permutation to the entries of \(t\).
-Therefore \(f(t)\) is a symmetric function. 
+Therefore \(f(t)\) is a symmetric polynomial. 
 Therefore \(f(t)=h(e(t))\), for some polynomial \(h\); so \(f(A)=h(e(A))\) for  diagonal matrices. 
 Replace \(f\) by \(f(A)-h(e(A))\) to arrange that \(f(A)=0\) on all diagonal matrices \(A\).
 By invariance, \(f(A)=0\) on all diagonalizable matrices. 
@@ -614,9 +672,8 @@ So \(\Delta_{A_t}\ne 0\) except for finitely many \(t\).
 Hence \(f(A_t)=0\) except for finitely many \(t\).
 But \(f(A)\) is a polynomial, so vanishes for all \(t\).
 \end{proof}
-
 \begin{example}
-The function \(f(A)=e_j\left(\left|\lambda_1\right|,\left|\lambda_2\right|,\dots,\left|\lambda_n\right|\right)\), where \(A\) has eigenvalues \(\lambda_1, \lambda_2, \dots, \lambda_n\), is a continuous invariant function of a real matrix \(A\), and is \emph{not} a polynomial in \(\lambda_1, \lambda_2, \dots, \lambda_n\).
+The function \(f(A)=e_j\left(\left|\lambda_1\right|,\left|\lambda_2\right|,\dots,\left|\lambda_n\right|\right)\), where the matrix \(A\), with complex number entries, has eigenvalues \(\lambda_1, \lambda_2, \dots, \lambda_n\), is a continuous invariant function of a real matrix \(A\), and is \emph{not} a polynomial in \(\lambda_1, \lambda_2, \dots, \lambda_n\).
 \end{example}
 
 \section{Resultants and permutations}
@@ -667,7 +724,9 @@ Assign each coefficient \(b_j\) the \emph{weight}\define{weight} \(m-j\) and the
 With this notion of weight, every term in the resultant has weight \(mn\).
 \end{lemma}
 \begin{proof}
-By theorem~\vref{theorem:splitting.field}, we can replace our field by some larger field, to arrange that \(b(x)\) and \(c(x)\) split into linear factors, and then the weight of each term in the resultant is clear by expanding the product in terms of roots.
+By theorem~\vref{theorem:splitting.field}, we can replace our field by some larger field, to arrange that \(b(x)\) and \(c(x)\) split into linear factors.
+We assign each root a weight of one; this gives the correct weight to each coefficient \(b_j,c_j\).
+The weight of each term in the resultant is just its degree in the roots, so \(mn\) as above.
 \end{proof}
 \begin{proposition}\label{proposition:resultant.degree}
 Given any two polynomials \(b(x,y)\) of total degree \(m\) and \(c(x,y)\) of total degree \(n\) over a field, in two variables \(x,y\), either there are at most \(mn\) values of \(y\) for which there is some point \((x,y)\) which satisfies both \(b(x,y)=0\) and \(c(x,y)=0\) (and the resultant in \(x\) vanishes at those values), or \(b(x,y)\) and \(c(x,y)\) have a common factor as polynomials in \(x,y\).
@@ -687,15 +746,3 @@ By Gauss's lemma (proposition~\vref{proposition:Gauss.lemma}) they also have a c
 
 For homogeneous polynomials, each term \(b_j(y)\) has degree exactly \(m-j\), so the resultant either vanishes everywhere or has degree exactly \(mn\).
 \end{proof}
-\begin{problem}{permutions:rationals}
-Prove that, over any field, any symmetric rational function (i.e. permutation invariant) has an expression \(b(e_1,\dots,e_n)/c(e_1,\dots,e_n)\) as a ratio of polynomials with no common nonconstant factor, expressed in the elementary symmetric polynomials, unique up to rescaling numerator and denominator by the same nonzero constant.
-\end{problem}
-\begin{answer}{permutions:rationals}
-If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
-To see that there is one such, write out the function as \(p(x_1,\dots,x_n)/q(x_1,\dots,x_n)\).
-Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
-Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
-So any swap either changes sign or leaves both numerator and denominator alone.
-Multiple the numerator and denominator by the function \(\prod_{i<j}(t_i - t_j)\) to ensure that the don't change when we transpose, and so they don't change under any permutation.
-Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
-\end{answer}

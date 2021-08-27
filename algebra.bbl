@@ -13,6 +13,20 @@ Lars~V. Ahlfors, \emph{Complex analysis}, third ed., McGraw-Hill Book Co., New
   complex variable, International Series in Pure and Applied Mathematics.
   \MR{510197}
 
+\bibitem{Armstrong:1988}
+M.~A. Armstrong, \emph{Groups and symmetry}, Undergraduate Texts in
+  Mathematics, Springer-Verlag, New York, 1988. \MR{965514}
+
+\bibitem{Arnold:2006}
+Vladimir~I. Arnold, \emph{Ordinary differential equations}, Universitext,
+  Springer-Verlag, Berlin, 2006, Translated from the Russian by Roger Cooke,
+  Second printing of the 1992 edition. \MR{2242407}
+
+\bibitem{Bogopolski:2008}
+Oleg Bogopolski, \emph{Introduction to group theory}, EMS Textbooks in
+  Mathematics, European Mathematical Society (EMS), Z\"{u}rich, 2008,
+  Translated, revised and expanded from the 2002 Russian original. \MR{2396717}
+
 \bibitem{Clemens:2003}
 C.~Herbert Clemens, \emph{A scrapbook of complex curve theory}, second ed.,
   Graduate Studies in Mathematics, vol.~55, American Mathematical Society,
@@ -47,6 +61,15 @@ Thomas~W. Hungerford, \emph{Algebra}, Graduate Texts in Mathematics, vol.~73,
 E.~L. Ince, \emph{Ordinary {D}ifferential {E}quations}, Dover Publications, New
   York, 1944. \MR{0010757}
 
+\bibitem{Ledermann:1953}
+Walter Ledermann, \emph{Introduction to the theory of finite groups}, Oliver
+  and Boyd, Edinburgh and London; Interscience Publishers, Inc., New York,
+  1953, 2d ed. \MR{0054593}
+
+\bibitem{MacLane/Birkhoff:1988}
+Saunders Mac~Lane and Garrett Birkhoff, \emph{Algebra}, third ed., Chelsea
+  Publishing Co., New York, 1988. \MR{941522}
+
 \bibitem{Needham:1997}
 Tristan Needham, \emph{Visual complex analysis}, The Clarendon Press, Oxford
   University Press, New York, 1997. \MR{1446490}
@@ -60,6 +83,11 @@ Igor~R. Shafarevich, \emph{Basic notions of algebra}, Encyclopaedia of
   Mathematical Sciences, vol.~11, Springer-Verlag, Berlin, 2005, Translated
   from the 1986 Russian original by Miles Reid, Reprint of the 1997 English
   translation [MR1634541], Algebra, I. \MR{2164721}
+
+\bibitem{Shafarevich/Remizov:2013}
+Igor~R. Shafarevich and Alexey~O. Remizov, \emph{Linear algebra and geometry},
+  Springer, Heidelberg, 2013, Translated from the 2009 Russian original by
+  David Kramer and Lena Nekludova. \MR{2963561}
 
 \bibitem{Spivak:2006}
 Michael Spivak, \emph{Calculus}, Calculus, Cambridge University Press, 2006.

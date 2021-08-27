@@ -10,7 +10,7 @@ The following are the standard names for various collections of numbers (or rema
 \Q{} & the set of all rational numbers, \\
 \R{} & the set of all real numbers, \\
 \C{} & the set of all complex numbers, \\
-m\Z{} & the set of all integer multiples of some number \(m\), \\
+m\Z{} & the set of all integer multiples of some integer \(m\), \\
 \Zmod{m} & the set of all remainders modulo a positive integer \(m\).
 \end{array}
 \]
@@ -68,7 +68,7 @@ Explain how to multiply complex numbers using these pictures.
 
 \section{Rings}
 All of the above sets are examples of rings.
-A \emph{ring}\define{ring} is a set of objects \(S\) together with two operations called \emph{addition} and \emph{multiplication}, and denoted by \(b+c\) and \(bc\), so that if \(b\) and \(c\) belong to \(S\), then \(b+c\) and \(bc\) also belong to \(S\), and so that:
+A \emph{ring}\define{ring} is a set of objects \(S\) together with two operations called \emph{addition} and \emph{multiplication}, denoted like usual addition and multiplication, so that if \(b\) and \(c\) belong to \(S\), then \(b+c\) and \(bc\) also belong to \(S\), and so that:
 \smallskip
 \begin{itemize}
 \item[]\emph{Addition laws:}\define{addition laws}
@@ -92,7 +92,7 @@ A \emph{ring}\define{ring} is a set of objects \(S\) together with two operation
 \medskip
 
 \begin{example}
-Clearly \(\Z{}, \Q{}, \R{}, \C{}\) and \(\Zmod{m}\) (for any positive integer \(m\)) are rings.
+Clearly \(\Z{}, \Q{}, \R{}, \C{},m\Z{}\) and \(\Zmod{m}\) (for any positive integer \(m\)) are rings.
 \end{example}
 \begin{example}
 If \(X\) is a set, and \(S\) is a ring, then we can add and multiply any two functions mapping \(X\) to \(S\) by adding and multiplying the values of the functions as usual.
@@ -107,11 +107,18 @@ with coefficients \(a_0, a_1, \dots, a_n\) drawn from \(S\).
 A polynomial is equal to \(0\) just when all of its coefficients are \(0\).
 Denote the set of all polynomials in \(x\) with coefficients from \(S\) as \(S[x]\).
 Similarly, if we have two abstract variables \(x\) and \(y\), we treat them as commuting: \(xy=yx\), and then we define \(S[x,y]\) to be the set of all polynomials in \(x\) and \(y\) with coefficients drawn from \(S\).
-For example,
+\end{example}
+\begin{example}
 \[
 \frac{1}{3} - 2x + \frac{4}{7}y + 8 x^2 y + y^3
 \]
 belongs to \(\Q{}[x,y]\).
+\end{example}
+\begin{example}
+\[
+2x+1+4x^9y^7+z
+\]
+belongs to \(\Z{}/15\Z{}[x,y,z]\).
 \end{example}
 \begin{example}
 If \(S\) is a ring, a \emph{rational function}\define{rational!function}\define{function!rational} with coefficients drawn from \(S\) is a formal ratio
@@ -133,12 +140,18 @@ For example, if \(S=\Zmod{2}\), then the rational function
 is not defined for any value of \(x\) in \(\Zmod{2}\).
 So we have to think of \(x\) not as a variable that varies over some numbers, but as an abstract symbol.
 Similarly, a rational function is really not a function but an abstract combination of symbols.
+\emph{Danger:} In some rings, we could have some nonzero \(c(x)\) and \(a(x)\) but still have \(a(x)c(x)\) equal the zero polynomial; this won't happen in our examples below, so we won't worry about it.
 \end{example}
 \begin{example}
 If \(x,y\) are two abstract variables, we similarly define \(S(x,y)\) to be the ring of all rational functions in \(x,y\), i.e. formal ratios of polynomials in \(x,y\) with coefficients drawn from \(S\).
 \end{example}
 \begin{example}
-If \(R\) is a ring, \(R\left[x,x^{-1}\right]\) means the ring whose elements are \(b(x)+c\of{x^{-1}}\), polynomials in an abstract variable \(x\) and an abstract variable called \(x^{-1}\), but so that when we multiply those two variables together, we get \(1\).
+If \(S\) is a ring, \(S\left[x,x^{-1}\right]\) means the ring whose elements are \(b(x)+c\of{x^{-1}}\), polynomials in an abstract variable \(x\) and an abstract variable called \(x^{-1}\), but so that when we multiply those two variables together, we get \(1\).
+All elements of \(S\left[x,x^{-1}\right]\) are rational functions, but not all rational functions have this form, for example
+\[
+\frac{1}{x+1}
+\]
+is not in \(S\left[x,x^{-1}\right]\).
 \end{example}
 \begin{example}
 If \(R\) and \(S\) are rings, let \(R \oplus S\) be the set of all pairs \((r,s)\) where \(r\) is in \(R\) and \(s\) is in \(S\).
@@ -149,19 +162,19 @@ Define addition and multiplication by
 \end{align*}
 Similarly we define a finite (or even an infinite) sum of rings, as the set of finite (or infinite) sequences of elements, one from each ring, with obvious addition and multiplication, element at a time.
 \end{example}
-
+\begin{example}
+If \(S\) is a ring and \(n\) is a positive integer, then \(n\times n\) matrices with entries in \(S\) form a ring, sometimes denoted \(S^{n\times n}\), using usual matrix addition and multiplication.
+\end{example}
 \begin{problem}{fields:left.distributive}
 Let \(S\) be the set of all polynomials with real coefficients in one variable.
 To add elements of \(S\), use usual polynomial addition.
 Take the ``multiplication''operation to be composition of polynomials, \emph{not} usual polynomial multiplication.
 Prove that \(S\) satisfies all of the laws above, except distributivity, and satisfies left but not right distributivity.
 \end{problem}
-
-
 If a ring \(R\) is a subset of a ring \(S\), and the addition and multiplication operations of \(R\) are just the ones of \(S\) applied to elements of \(R\), then \(R\) is a \emph{subring} of \(S\).
-For example, \(\Z{}\) is a subring of \(\Q{}\), which is subring of \(\R{}\), which is a subring of \(\C{}\).
-
-
+\begin{example}
+Clearly \(\Z{}\) is a subring of \(\Q{}\), which is subring of \(\R{}\), which is a subring of \(\C{}\).
+\end{example}
 
 \section{Special types of rings}
 A ring is \emph{a ring with identity} if it satisfies
@@ -174,6 +187,8 @@ Note that we require \emph{every} ring to have commutative addition; a \emph{com
 
 The associative law for addition, applied twice, shows that \((a+b)+(c+d)=a+(b+(c+d))\), and so on, so that we can add up any finite sequence, in any order, and get the same result, which we write in this case as \(a+b+c+d\).
 A similar story holds for multiplication.
+
+In any ring, we write \(2a\) to mean \(a+a\), and so on, and \(-2a\) to mean \(-a-a\) and so on.
 
 \begin{problem}{fields:matrices}
 Let \(S\) be the set of all \(2 \times 2\) matrices with integer coefficients, using the usual laws of matrix addition and multiplication as the addition and multiplication in \(S\).
@@ -199,6 +214,9 @@ A \emph{unit}\define{unit!ring} in a ring is an element that has a multiplicativ
 \begin{example}
 In \(\Zmod{7}\) every nonzero element is a unit, because \(7\) is a prime number.
 \end{example}
+\begin{problem}{fields:6.units}
+What are the units in \(\Zmod{6}\)?
+\end{problem}
 \begin{example}
 In \(\Z{}\) the units are \(\pm 1\).
 \end{example}
@@ -212,6 +230,20 @@ Every nonzero rational function is a unit in \(\mathbb{Q}(x)\): \(\pr{\mathbb{Q}
 \begin{problem}{fields:units}
 Prove that, for any ring \(S\) with identity, if \(b\) and \(c\) are units then \(bc\) is a unit.
 \end{problem}
+\begin{problem}{fields:add.identity}
+Prove that every ring lies in a ring with identity.
+\end{problem}
+\begin{answer}{fields:add.identity}
+Starting with any ring \(R\), let \(S\) be the set of pairs \((n,r)\) so that \(n\) is an integer and \(r\in R\).
+Add by 
+\[
+(n_0,r_0)+(n_1,r_1)=(n_0+n_1,r_0+r_1).
+\]
+Multiply by
+\[
+(n_0,r_0)(n_1,r_1)=(n_0n_1,n_1r_0+n_0r_1+r_0r_1).
+\]
+\end{answer}
 \begin{problem}{rings:zero.divisor.units}
 Suppose that \(R\) is a ring and that \(b \in R\) is both a zero divisor and a unit.
 Prove that \(R\) has exactly one element, the element zero.
@@ -269,6 +301,12 @@ Associate to each such number \(a+b2^{1/3}+c2^{2/3}\) the vector \((a,b,c)\) in 
 The product \((a+b2^{1/3}+c2^{2/3})(p+q2^{1/3}+r2^{2/3})\) has associated vector
 \[
 \begin{pmatrix}
+\alpha \\
+\beta \\
+\gamma
+\end{pmatrix}
+=
+\begin{pmatrix}
 a & 2c & 2b \\
 b & a & 2c \\
 c & b & a
@@ -323,7 +361,7 @@ Hence we conclude that \(k\) is a field.
 \end{example}
 
 \section{Linear algebra}
-Most of linear algebra works identically over any field: matrices, Gaussian elimination, invertibility, solvability of equations, determinants, and the theory of eigenvalues and eigenvectors.
+Most of linear algebra works identically over any field: matrices, Gaussian elimination, invertibility, solvability of linear systems of equations, determinants, and the theory of eigenvalues and eigenvectors.
 \begin{problem}{fields:invert.matrix}%
 Let \(k\) be the Boolean numbers \(k\defeq \Zmod{2}\), and \(A\) the
 matrix
@@ -349,4 +387,51 @@ If so, find \(A^{-1}\).
     Prove that \(A\) is not invertible over the rational numbers just when, for every prime number \(p\), \(A_p\) is not invertible over \(\Zmod{p}\).
     Prove that \(A\) is invertible over the integers just when, for every prime number \(p\), the matrix \(A_p\) is invertible over \(\Zmod{p}\).
 \end{problem}
+
+\section{Factoring in many variables}
+\begin{theorem}\label{theorem:ufd}
+Every nonzero polynomial \(p(x_1,\dots,x_n)\) with coefficients in a field admits a factorization
+\[
+p(x_1,\dots,x_n)=p_1(x_1,\dots,x_n)\dots p_{\ell}(x_1,\dots,x_n)
+\]
+into irreducible factors, unique up to reordering and scaling by nonzero constants.
+\end{theorem}
+\begin{proof}
+We prove the result for two variables \(x,y\), but the same proof works for any number of variables.
+The existence of a factorization is clear by induction on degree.
+Take two factorizations:
+\[
+p(x,y)=p_1(x,y)\dots p_{\ell}(x,y)=q_1(x,y)\dots q_m(x,y).
+\]
+If the highest order term in one of these \(p_j(x,y)\) or \(q_j(x,y)\) is in the \(x\) variable, then replace \(x,y\) by \(x+\lambda y,y\), for some constant \(\lambda\).
+But for a poor choice of \(\lambda\), this might knock out the highest order term in \(y\) in another \(p_j(x,y)\) or \(q_j(x,y)\).
+
+To avoid this, we replace our field by the field of rational functions in an abstract variable \(\lambda\).
+We claim no cancellations now take place.
+Consider why.
+Fix your eye on one particular factor \(p_1(x,y)\).
+The highest degree term in \(y\) in the output \(p_1(x+\lambda y,y)\) arises from the terms of the same degree in the input \(p_1(x,y)\), but in \(x\) and \(y\) together.
+Each \(x^ky^{n-k}\) in the input contributes a \(\lambda^k y^n\), one for each \(k\), to the \(y^n\) term in the output.
+No two such contributions have the same power of \(\lambda\), so they can't cancel one another.
+So we get a nonzero \(y^n\) term in every factor.
+
+We can reverse the process by replacing \(x,y\) by \(x-\lambda y,y\), so factorisations are preserved and reflected.
+If we can prove unique factorisation in this larger field, then any factorisation in the original field will still be unique in the original field.
+In particular, we can suppose that none of the factors is constant in \(y\), and that the highest order term in \(y\) is constant in \(x\).
+
+Thinking of \(p\) as a polynomial in \(y\), with coefficients rational in \(x\), by induction the factorisation in such functions is unique.
+So after perhaps reordering, each \(p_j(x,y)\) is equal to some \(q_j(x,y)\) up to some rational function \(b_j(x)/c_j(x)\), with no common factor in numerator and denominator.
+But then \(c_j(x)p_j(x,y)=b_j(x)q_j(x,y)\), and we expand out in powers of \(y\) to get \(c_j(x)\) dividing into every coefficient in \(q_j(x,y)\), so into the highest coefficient, which has no \(x\) in it.
+\end{proof}
+
+\begin{problem}{factoring:rationals}
+Prove that every rational function over a field has an expression 
+\[
+\frac{b(x_1,\dots,x_n)}{c(x_1,\dots,x_n)}
+\]
+as a ratio of polynomials with no common nonconstant factor, unique up to rescaling both numerator and denominator by the same nonzero constant.
+\end{problem}
+\begin{answer}{factoring:rationals}
+Take two such, cross multiply, and use unique factorisation of polynomials.
+\end{answer}
 

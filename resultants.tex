@@ -753,7 +753,7 @@ Differentiate:
 p'(x)
 &=(x-x_2)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
 &+(x-x_1)(x-x_3)\dots(x-x_{n-1})(x-x_n)\\
-&+\vdots\\
+&\vdotswithin{+}\\
 &+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_n)\\
 &+(x-x_1)(x-x_2)(x-x_3)\dots(x-x_{n-1})
 \end{align*}
@@ -809,9 +809,9 @@ R.<t> = PolynomialRing(QQ)
 \end{sageblock}
 yields \(\sage{(t^2-t+7).discriminant()}\).
 
-\section{Parameterisation}
+\section{Parameterization}
 \begin{example}
-Take the curve in the plane parameterised by
+Take the curve in the plane parameterized by
 \[
 \pr{x(t),y(t)}=\pr{t^2-1,t\pr{t^2-1}}:
 \]
@@ -838,7 +838,7 @@ So the resultant vanishes just along the image of the curve in the ``plane''.
 Careful: \(k=\R{}\) then this ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
 \end{proof}
 \begin{example}
-For the curve in the plane parameterised by
+For the curve in the plane parameterized by
 \[
 \pr{x(t),y(t)}=\pr{t^2-1,t\pr{t^2-1}},
 \]

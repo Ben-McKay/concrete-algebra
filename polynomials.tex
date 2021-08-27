@@ -65,7 +65,8 @@ Ignore the sign laws and the law of well ordering.
 Let's work modulo \(2\), in honour of George Boole.
 Let \(p(x)\defeq x^2+x\).
 We write \(x^2+x\) to mean \(\bar{1} x^2 + \bar{1} x\), i.e. the coefficients are remainders.
-This polynomial is not zero, because its coefficients are not zero.
+Note that \(p(x)+p(x)=0\) because \(\bar{2}=\bar{0}\).
+The polynomial \(p(x)\) is not zero, because its coefficients are not zero.
 \emph{Danger:} we might want to think of this polynomial as a \emph{function} of a variable \(x\), and ask that \(x\) also be a remainder modulo \(2\).
 But then that function \emph{is} zero, because if we let \(x=\bar{0}\) then
 \[
@@ -84,14 +85,19 @@ Work modulo \(5\): for which remainders \(a\) can we find a remainder \(b\) so t
 In other words, which elements have square roots?
 \end{problem}
 \begin{problem}{polynomials:int.values}
-Give an example of a polynomial \(b(x)\) none of whose coefficients are integers, so that, if we set \(x\) to an integer value, then \(b(x)\) takes an integer value.
+Give an example of a polynomial \(b(x)\) none of whose coefficients are integers, so that, if we set \(x\) to any integer value, then \(b(x)\) takes an integer value.
 \end{problem}
 \begin{answer}{polynomials:int.values}
 Take the polynomial \(b(x)=(1/2)x(x+1)=(1/2)x^2+(1/2)x\).
 If \(x\) is an odd integer, then \(x+1\) is even, and vice versa, so \(b(x)\) is an integer for any integer \(x\).
 \end{answer}
+\begin{problem}{real:fast.accurate}
+Given numbers \(a,b,c,x\), note that \(ax^2+bx+c=(ax+b)x+c\).
+But if we plug in and compute, which expression is faster to compute with?
+How can you similarly speed up the computation of a cubic polynomial function (i.e. of degree \(3\))?
+\end{problem}
 
-\section{The extended Euclidean algorithm}
+\section{Quotient and remainder}
 You are familiar with long division of polynomials.
 For example, to divide \(x-4\) into \(x^4-3x+5\), we have to order the terms in decreasing degrees as usual, and add in zero terms to get all degrees to show up then\label{equation:extended.Euclid.example}
 \[
@@ -120,6 +126,7 @@ x^4-3x+5 = (x-4) \pr{x^3+4x^2+16x+61} + 249,
 \]
 We stop when the remainder has small \emph{degree} than the expression we want to divide in, in this case when \(249\) has degree zero, smaller than the degree of \(x-4\).
 
+\section{Rules about coefficients}
 In this simple problem, we never needed to divide.
 But in general, to divide \(b(x)\) by \(c(x)\), we might need to divide coefficients of \(b(x)\) by those of \(c(x)\) at some stage.
 Therefore from now on, we will restrict the choice of coefficients to ensure that we can always divide.
@@ -129,12 +136,15 @@ But if we work with integer coefficients, the resulting quotient and remainder m
 \begin{problem}{polynomials:B\'ezout}
 Determine the greatest common divisor of \(b(x) = x^3 +4x^2+x-6\) and \(c(x) = x^5-6x+5\) and the associated B\'ezout coefficients \(s(x), t(x)\).
 \end{problem}
+
 It is trickier to specify the restrictions on coefficients if they are to be remainders modulo an integer.
 From now on, we will only work with remainders modulo a prime.
 The reason is that every nonzero remainder modulo a prime has a reciprocal, so we can always divide coefficients.
 \begin{problem}{polynomials:prime.field}
 Prove that every nonzero remainder modulo a prime has a reciprocal modulo that prime.
 \end{problem}
+
+\section{The extended Euclidean algorithm}
 With these restrictions on coefficients, we can immediately generalize the Euclidean and extended Euclidean algorithms, and compute B\'ezout coefficients and least common multiples, using the same proofs, so we won't repeat them.
 \begin{example}
 Take the polynomials \(b(x)=3+2x-x^2\) and \(c(x)=12-x-x^2\).
@@ -273,7 +283,7 @@ Show that the solutions of the quadratic equation
 \[
 \pr{x+\frac{b}{2a}}^2 = \frac{b^2}{2a^2}-\frac{c}{a}.
 \]
-Prove that the solutions of the quadratic equation, over any field, are
+Prove that the solutions of the quadratic equation, over our field, are
 \[
 x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
 \]
@@ -291,11 +301,18 @@ Prove that the polynomial \(x^3+x+1\) is irreducible over the field of remainder
 \end{problem}
 \begin{example}
 The polynomial \(x^3+x+1\) is irreducible over the field of remainders modulo \(2\), as we saw in the previous problem.
-But then, if it is reducible over the integers, say \(a(x)b(x)\), then quotient out the coefficients modulo \(2\) to get a factorization \(\bar{a}(x)\bar{b}(x)\) over the field of remainders modulo \(2\), a contradiction.
+But then, if it is reducible over the integers, say \(a(x)b(x)\), then quotient out the coefficients modulo \(2\) to get a factorization \(\bar{a}(x)\bar{b}(x)\) over the field of remainders modulo \(2\).
+By irreducibility, in such a factorization, \(\bar{a}(x)\) or \(\bar{b}(x)\) is constant.
+So \(a(x)\) or \(b(x)\) has even leading term or is constant.
+But \(a(x)b(x)=x^3+x+1\) has leading term \(1\), odd.
 Therefore \(x^3+x+1\) is irreducible over the integers.  
 \end{example}
 \begin{corollary}
-Every polynomial over any field has at most one factorisation into linear factors, up to reordering the factors.
+Every polynomial over any field has at most one factorisation into linear factors 
+\[
+a_0(x-r_1)\dots(x-r_n)
+\]
+up to reordering the factors.
 \end{corollary}
 \begin{proof}
 The linear factors are determined by the roots.
@@ -314,7 +331,7 @@ How many factorizations can you make for it, working modulo \(6\)?
 \begin{answer}{polynomials:not.prime.characteristic}
 roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
 \end{answer}
-A root \(c\) of a polynomial \(p(x)\) has \emph{multiplicity \(k\)} if \((x-c)^k\) divides \(p(x)\).
+A root \(c\) of a polynomial \(p(x)\) has \emph{multiplicity \(k\)} if \((x-c)^k\) is the highest power of \(x-c\) which divides \(p(x)\).
 \begin{corollary}
 Over any field, the degree of a polynomial is never less than the sum of the multiplicities of its roots, with equality just when the polynomial is a product of linear factors.
 \end{corollary}
@@ -474,4 +491,20 @@ But their difference has degree at most \(n\), so is zero.
 \begin{problem}{polynomials:interpolation}
 What can go wrong with interpolation if the numbers are drawn from the remainders modulo 6?
 \end{problem}
+\begin{problem*}{rsa:nuke}
+A similar problem to secret coding: sharing the power to make decisions.
+Suppose \(100\) politicians are given the power to start a war, but at least \(51\) of them must agree to send the signal to go to war.
+More generally, a group of $N$ people arrange that any $k+1$ of them can agree to transmit a signal (for example, to go to war), but no $k$ of them can.
+How can you use modular arithmetic to create a secret signal that any $k+1$ people can, working together, come up with, but no $k$ of them can?
+\end{problem*}
+\begin{answer}{rsa:nuke}
+Pick a large prime number $p$.
+Pick a random polynomial $b(t)$ of degree $k$ with coefficients in $\mathbb{Z}/p\mathbb{Z}$. 
+Tell person $1$ the value of $b(1)$, person $2$ the value of $b(2)$ and so forth. 
+Tell them all the value of $p$. 
+Send the signal when any group of them tells you $b(0)$. 
+Any $k+1$ people can use linear algebra (which requires all of the arithmetic operations, including reciprocals, so $p$ has to be prime) to compute all coefficients of $b(t)$ (by interpolation), and hence $b(0)$.
+Any $k$ or fewer people have no information about $b(0)$, since whatever polynomial \(b(t)\) we choose, we can always alter it arbitrarily at any \(k\) nonzero values of \(t\), without altering its value at \(t=0\) (proof: interpolation).
+The signal to start the war is the value of $b(0)$, entered into some computer; if $p$ is enormous, there is essentially no chance of guessing some randomly chosen $b(0)$.
+\end{answer}
 

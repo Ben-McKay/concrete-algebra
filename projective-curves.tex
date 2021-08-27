@@ -80,7 +80,7 @@ A line through a cubic curve
 \begin{center}
 \inputinexample{cubic-curve-4}
 \end{center}
-can hit as many as 3 points.
+can hit as many as \(3\) points.
 \end{example}
 \begin{example}
 Two conics
@@ -88,7 +88,7 @@ Two conics
 \newcommand{\conicshift}{-.5}
 \inputinexample{2-conics}
 \end{center}
-can intersect at as many as 4 points, but sometimes only at 3 points:
+can intersect at as many as \(4\) points, but sometimes only at \(3\) points:
 \begin{center}
 \newcommand{\conicshift}{.875}
 \inputinexample{2-conics}
@@ -217,9 +217,9 @@ From now on, we allow projective plane curves to have components with positive i
 Every algebraic curve in the projective plane has a unique decomposition into irreducible algebraic curves, its \emph{components}.
 To be more precise, every nonzero homogeneous polynomial in 3 variables \(f(x,y,z)\) has a decomposition
 \[
-f=a_0 g_1^{k_1} g_2^{k_2} \dots g_n^{k_n},
+f=a_0 f_1^{k_1} f_2^{k_2} \dots f_n^{k_n},
 \]
-into a product of a nonzero constant \(a_0\) and several coprime irreducible homogeneous polynomials \(g_j(x,y,z)\) to various positive integer powers, unique up to rescaling the constant and the polynomials by nonzero constants, and writing down the polynomials in perhaps a different order.
+into a product of a nonzero constant \(a_0\) and several coprime irreducible homogeneous polynomials \(f_j(x,y,z)\) to various positive integer powers, unique up to rescaling the constant and the polynomials by nonzero constants, and writing down the polynomials in perhaps a different order.
 \end{theorem}
 \begin{proof}
 Suppose that \(g\) is an irreducible polynomial and that \(f=0\) at every point in \(\bar{k}\) where \(g=0\). 
@@ -233,7 +233,6 @@ Therefore this resultant is the zero polynomial.
 If the curve where \(f=0\) is the union of distinct irreducible curves given by equations \(g_i=0\), then each of these \(g_i\) divides \(f\), so their product divides \(f\).
 Apply induction on the degree of \(f\).
 \end{proof}
-
 \begin{theorem}
 Every rational morphism of projective plane algebraic curves \(f \colon B \to C\) is constant or onto a finite union of components of \(C\), at most one for each component of \(B\).
 \end{theorem}
@@ -252,7 +251,7 @@ eliminating \(x,y,z\) given by some algebraic equation in \(a,b,c\) which specif
 By corollary~\vref{corollary:resultant.effective} this equation is not trivial.
 Split \(C\) into irreducibles \(C_1, C_2, \dots, C_N\), say \(C_j=\pr{c_j=0}\). 
 Then \(c_1 c_2 \cdots c_N \circ f=0\) on \(B\), since \(f\) takes \(B\) to \(C\).
-So if \(B=\pr{b(x,y,z)=0}\) then \(b\) is divisible by \(c_1 c_2 \cdots c_N \circ f\) in any affine chart.
+So if \(B=\pr{b(x,y,z)=0}\) then \(b\) is divisible by \(c_1 c_2 \cdots c_N \circ f\) in any affine plane given by taking \(x=1\) or \(y=1\) or \(z=1\).
 If \(c_1 \circ f\) is not zero on \(B\) then divide by it to see that already  \(c_2 \cdots c_N \circ f=0\) on \(B\).
 So \(f\) takes \(B\) into \(C_2 \cup \dots \cup C_N\).
 We can assume that \(c_j \circ f = 0\) on \(B\) for every \(j\), i.e. that \(B \subset f^{-1}C_j\) for every \(j\), i.e. that 

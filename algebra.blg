@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2020/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: algebra.aux
 The style file: amsplain.bst
 Database file #1: algebra.bib
-You've used 16 entries,
+You've used 22 entries,
             2213 wiz_defined-function locations,
-            638 strings with 6771 characters,
-and the built_in function-call counts, 3901 in all, are:
-= -- 291
-> -- 166
+            689 strings with 7863 characters,
+and the built_in function-call counts, 5287 in all, are:
+= -- 396
+> -- 220
 < -- 6
-+ -- 70
-- -- 52
-* -- 294
-:= -- 666
-add.period$ -- 16
-call.type$ -- 16
-change.case$ -- 78
++ -- 92
+- -- 68
+* -- 389
+:= -- 902
+add.period$ -- 22
+call.type$ -- 22
+change.case$ -- 105
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 197
-empty$ -- 380
-format.name$ -- 52
-if$ -- 805
+cite$ -- 22
+duplicate$ -- 269
+empty$ -- 524
+format.name$ -- 68
+if$ -- 1098
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 46
-newline$ -- 58
-num.names$ -- 32
-pop$ -- 91
+int.to.str$ -- 22
+missing$ -- 64
+newline$ -- 76
+num.names$ -- 44
+pop$ -- 124
 preamble$ -- 1
-purify$ -- 58
+purify$ -- 78
 quote$ -- 0
-skip$ -- 110
+skip$ -- 157
 stack$ -- 0
-substring$ -- 82
-swap$ -- 41
+substring$ -- 112
+swap$ -- 53
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 34
+type$ -- 46
 warning$ -- 0
-while$ -- 32
-width$ -- 18
-write$ -- 171
+while$ -- 44
+width$ -- 24
+write$ -- 233

@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\draw (0,0) circle (1cm);
+\node[above] at (0,1) {\(0\)};
+\node[below] at (0,-1) {\(\infty\)};
+\node[left] at (-1,0) {\(-\)};
+\node[right] at (1,0) {\(+\)};
+\DrawDot{0}{1}
+\DrawDot{0}{-1}
+\end{tikzpicture}
+\end{document}

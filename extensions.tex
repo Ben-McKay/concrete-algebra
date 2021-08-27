@@ -86,7 +86,7 @@ To find \((\alpha^2+\alpha+1)^{-1}\), find B\'ezout coefficients of \(p(x)\) and
 & \begin{pmatrix}
     1 & 0 & x^2+x+1 \\
     0 & 1 & x^3+x+1
-  \end{pmatrix} \text{ add \(x\)row 2 to row 1}, 
+  \end{pmatrix} \text{ add \(x\)(row 2) to row 1}, 
   \\
 & \begin{pmatrix}
     1 & 0 & x^2+x+1 \\
@@ -96,7 +96,7 @@ To find \((\alpha^2+\alpha+1)^{-1}\), find B\'ezout coefficients of \(p(x)\) and
 & \begin{pmatrix}
     1+x & 1 & x \\
     x & 1 & x^2+1
-  \end{pmatrix} \text{ add \(x\)row 1 to row 2}, 
+  \end{pmatrix} \text{ add \(x\)(row 1) to row 2}, 
   \\
 & \begin{pmatrix}
     1+x & 1 & x \\
@@ -222,7 +222,7 @@ Which elements have reciprocals?
 \end{answer}
 
 \section{Field extensions}
-If \(k\) and \(K\) are fields and \(k\) is contained in \(K\), with the same identity element, zero element, addition and multiplication operations, then \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
+If \(K\) is a field and \(k\subset K\) is a subring containing some nonzero element, and containing the reciprocals of all of its nonzero elements, \(k\) is a \emph{subfield} of \(K\) and \(K\) is an \emph{extension} of \(k\).
 \begin{example}
 The complex numbers are a field extension of the real numbers.
 \end{example}
@@ -251,7 +251,14 @@ Clearly \(1, \sqrt{2}\) is a basis for \(\Q{}\of{\sqrt{2}}\) over \(\Q{}\).
 The real numbers \(\R{}\) as an extension of \(\Q{}\) has no basis; it is an infinite degree extension.
 This is a difficult fact to prove.
 \end{example}
-
+\begin{example}
+If \(k\subset K\subset L\) are finite degree extensions then clearly \(k\subset L\) is a finite degree extension, with degree the product of the degrees of \(k\subset K\) and \(K\subset L\).
+Take a basis \(\alpha_i\) for \(k\subset K\) and a basis \(\beta_j\) for \(K\subset L\); then \(\alpha_i\beta_j\) is a basis for \(k\subset L\).
+\end{example}
+\newpage
+\begin{example}
+Any finite ``tower'' of extensions, each of finite degree, has degree the product of the degrees, so is a finite degree extension.
+\end{example}
 
 \section{Adding a root}
 \begin{example}
@@ -273,8 +280,8 @@ So \(p(x)\) has no roots in \(k\).
 Let \(K\) be the ring of remainders modulo \(p(x)\).
 As before, we write the remainder of \(x\) modulo \(p(x)\) as \(\alpha\).
 Modulo \(p(x)=x^2+x+1\), of course \(x^2=x+1\), i.e. \(\alpha^2=\alpha+1\).
-So any polynomial of degree 2 or more in \(\alpha\) reduces to one of degree 1, by replacing \(\alpha^2\) by \(\alpha+1\).
-So every element of \(K\) is a polynomial of degree 0 or 1 in \(\alpha\), with coefficients \(0\) or \(1\):
+So any polynomial of degree \(2\) or more in \(\alpha\) reduces to one of degree \(1\), by replacing \(\alpha^2\) by \(\alpha+1\).
+So every element of \(K\) is a polynomial of degree \(0\) or \(1\) in \(\alpha\), with coefficients \(0\) or \(1\):
 \[
 \left\{0,1,\alpha,\alpha+1\right\} = K.
 \]
@@ -310,11 +317,12 @@ Looking for reciprocals, we find that
 Every nonzero element has a reciprocal: \(K\) is a field.
 So \(K=\left\{0,1,\alpha,\alpha+1\right\}\) is an extension of \(k\).
 The polynomial \(p(x)\) splits over this field: \(p(x)=(x+\alpha)(x+1+\alpha)\).
+(Now we see why we like to call our remainder by a Greek letter: we get to use \(x\) again for an abstract variable.)
 \end{example}
 \begin{theorem}
 Suppose that \(p(x)\) is a polynomial over a field \(k\),
 Let \(\alpha\) be the remainder of \(x\) modulo \(p(x)\), and write \(k[\alpha]\) for the ring of remainders modulo \(p(x)\).
-Thinking of \(p(x)\) as a polynomial, \(p(x)\) has a root in \(k[\alpha]\): \(p(\alpha)=0\).
+Thinking of \(p(x)\) as a polynomial, \(p(x)\) has \(\alpha\) as a root in \(k[\alpha]\).
 The ring \(k[\alpha]\) is a field just when \(p(x)\) is irreducible over \(k\).
 If this happens, then \(k(\alpha)=k[\alpha]\) and \(k(\alpha)\) is an extension field of \(k\) and \(p(x)\) has a linear factor over the field \(k(\alpha)\).
 \end{theorem}
@@ -338,6 +346,47 @@ If \(p(x)\) is reducible, split it into irreducible factors, and you can add roo
 \begin{example}
 This theorem explains why, in our last example, adding a root to \(p(x)=x^2+x+1\) over \(k=\Z{}/2\Z{}\) gave a field \(K=\set{0,1,\alpha,\alpha+1}\), not just a ring.
 \end{example}
+An element \(u\in K\) is \emph{algebraic}\define{algebraic} for an extension \(k\subset K\) if it is a root of a nonconstant polynomial in \(k[x]\).
+If such a polynomial factors, \(u\) is a root of one of the factors.
+If \(u\) is a root of two polynomials, it is a root of the greatest common divisor.
+Hence there is a smallest degree nonconstant polynomial \(p(x)\in k[x]\) so that \(p(u)=0\).
+This \(p(x)\) is uniquely determined if we rescale to make it monic, and then called the \emph{minimal polynomial}\define{minimal polynomial} of \(u\) for the extension \(k\subset K\).
+\begin{corollary}
+An element \(u\in K\) is algebraic for an extension \(k\subset K\) just when \(k[u]=k(u)\subset K\) is a finite degree field extension of \(k\) lying inside \(K\).
+If this happens, that field extension is isomorphic to \(k[\alpha]\) where, as usual, \(\alpha\) is the remainder of \(x\) modulo \(p(x)\), and where \(p(x)\in k[x]\) is the minimal polynomial of \(u\).
+\end{corollary}
+\begin{proof}
+For any \(u\in K\), if \(k[u]\subset K\) is a finite dimensional vector space then the powers \(1,u,u^2,\dots\) acheive some linear relation after finitely many steps.
+Such a relation, say 
+\[
+0=a_0+a_1u+\dots+a_nu^n,
+\] 
+is a polynomial in \(u\), so \(u\) is algebraic; we can assume that \(a_n=1\).
+Reverse steps: having \(k[u]\) of finite dimension is equivalent to \(u\) being algebraic.
+
+The minimal polynomial of \(u\) is then
+\[
+p(x)=a_0+a_1x+\dots+a_{n-1}x^{n-1}+x^n.
+\]
+Clearly \(a_0\ne 0\) since we could otherwise factor out some power of \(x\).
+So then we can solve for \(u^{-1}\): divide both sides of the relation by \(a_0u\):
+\[
+0 = u^{-1}+\frac{a_1}{a_0}+\dots+u^{n-1},
+\]
+so we solve for \(u^{-1}\) as a polynomial in \(u\).
+But the same argument works for any element of our finite dimensional vector space: \(k[u]\) is a field inside \(K\).
+Map \(x\in k[x]\mapsto u\in k[u]=k(u)\) onto, a linear map over \(k\).
+The kernel is precisely the set of polynomials divisible by \(p(x)\), so the map descends to an isomorphism from the quotient vector space \(k[\alpha]\to k[u]\), preserving addition and multiplication.
+\end{proof}
+\begin{corollary}
+Every finite degree field extension consists entirely of algebraic elements.
+\end{corollary}
+\begin{corollary}
+A field extension by finitely many algebraic elements is algebraic.
+\end{corollary}
+\begin{proof}
+It has finite degree.
+\end{proof}
 
 \section{Splitting fields}
 A polynomial \(p(x)\) with coefficients in a field \(k\) \emph{splits}\define{split polynomial} if it is a product of linear factors.
@@ -402,6 +451,7 @@ We won't prove:
 Every field \(k\) has an algebraic closure, denoted \(\bar{k}\)\Notation{bk}{\bar{k}}{algebraic closure}, unique up to an isomorphism which is the identity map on \(k\).
 The field \(\bar{k}\) is algebraically closed.
 \end{theorem}
+See \cite{Dummit/Foote:2004} p. 544, proposition 30 for a proof.
 \begin{example}
 Clearly \(\bar{\R{}}=\C{}\).
 \end{example}

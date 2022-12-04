@@ -2,6 +2,44 @@
 \epigraph[author={Sim\'eon-Denis Poisson}]{We have made every effort to understand Galois's proof. His reasoning is not sufficiently clear, sufficiently developed, for us to judge its correctness and we can give no idea of it in this report.}%
 \SubIndex{Poisson, Sim\'eon-Denis}
 \section{Automorphisms}
+\begin{example}
+How can we save work in linear algebra?
+The \(2\times 2\) matrix
+\[
+A=
+\begin{pmatrix}
+3&1\\
+1&1
+\end{pmatrix}
+\]
+has eigenvalues \(\lambda=2\pm\sqrt{2}\), as the reader can check.
+When we compute the eigenvectors, we find that the \(\lambda=2-\sqrt{2}\) eigenspace is spanned by an eigenvector
+\[
+\begin{pmatrix}
+1\\
+\sqrt{2}+1
+\end{pmatrix}.
+\]
+We can guess that the other eigenvalue has corresponding eigenvector given by changing \(\sqrt{2}\mapsto-\sqrt{2}\), so
+\[
+\begin{pmatrix}
+1\\
+\sqrt{2}-1
+\end{pmatrix}.
+\]
+
+Why is this correct?
+Note that \(A\) has only rational coefficients.
+Write elements of \(K=\Q{}(\sqrt{2})\) as \(a+b\sqrt{2}\) with \(a,b\in k=\Q{}\).
+Then clearly \(\sqrt{2}\mapsto-\sqrt{2}\) preserves addition and multiplication, so preserves all of the arithmetic operations used to find eigenvalues and eigenvectors.
+It also preserves all entries of \(A\), since they are rational: \(a+0\sqrt{2}\).
+The eigenvalues lie in \(K\).
+The operations used to find eigenvectors, pure linear algebra, never take us out of \(K\).
+So \(\sqrt{2}\mapsto-\sqrt{2}\), applied to all entries in the first eigenvector with the first eigenvalue give us a second eigenvector with the second eigenvalue.
+\end{example}
+\begin{example}
+By the same argument, the eigenvalues and eigenvectors of any real matrix need not be real, but are interchanged by complex conjugation. 
+\end{example}
 An \emph{automorphism}\define{automorphism} of a ring \(R\) is a morphism \(f \colon R \to R\) which has an inverse \(f^{-1} \colon R \to R\), which is also a morphism.
 \begin{problem}{galois:aut.gp}
 Prove that the set of all automorphisms of any ring \(R\) is a group, the \emph{automorphism group}\define{automorphism!group}\define{group!automorphism} of \(R\).
@@ -111,7 +149,7 @@ Note that \(\sqrt{2}^2=2\), so apply \(h\) to get \(h(\sqrt{2})^2=2\), i.e. \(h(
 \end{proof}
 
 \section{Galois groups}
-The \emph{Galois group}\define{Galois group}\define{group!Galois} of a field extension \(k \subset K\), denoted \(\Gal{k}{K}\) is the group of automorphisms of \(K\) which are the identity on \(k\).
+The \emph{Galois group}\define{Galois!group}\define{group!Galois} of a field extension \(k \subset K\), denoted \(\Gal{k}{K}\) is the group of automorphisms of \(K\) which are the identity on \(k\).
 \begin{example}
 We found above that \(\Gal{\Q{}}{\Q{}(\sqrt{2})}=\set{\pm 1}\) where we let \(-1\) denote the transformation \(b+c\sqrt{2}=b-c\sqrt{2}\).
 \end{example}
@@ -131,7 +169,7 @@ The Galois group of \(\Q{}(\sqrt{2})/\Q{}\) permutes \(\sqrt{2},-\sqrt{2}\), the
 Note that the elements of \(\Q{}(\sqrt{2})\) have the form \(a+b\sqrt{2}\), for \(a,b\) rational.
 Hence the elements of \(\Q{}(\sqrt{2}\) fixed by the Galois group are precisely the elements of \(\Q{}\).
 \end{example}
-A \emph{Galois extension}\define{Galois extension}\define{extension!Galois} is an extension \(K/k\) so that the elements of \(K\) fixed by \(\Gal{k}{K}\) are precisely the elements of \(k\).
+A \emph{Galois extension}\define{Galois!extension}\define{extension!Galois} is an extension \(K/k\) so that the elements of \(K\) fixed by \(\Gal{k}{K}\) are precisely the elements of \(k\).
 \begin{example}
 In chapter~\ref{chapter:fields} we checked that the field \(K\defeq\Q{}(\sqrt[3]{2})\) consists of the numbers \(a+b2^{1/3}+c2^{2/3}\) for \(a,b,c\) rational.
 Note that \(K\) is a subfield of the field of real numbers.
@@ -260,9 +298,9 @@ We adjoin a square root to \(-108\), or equivalently to \(-3\) since \(-108=2^2 
 
 \section{Radical extensions}
 Why is there a quadratic equation but not an equation like it to solve higher order polynomial equations in one variable?
-A \emph{simple extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(K\), denoted \(k(\alpha)\), with an element \(\alpha\) of \(K\), so that every element of \(K\) is a rational function \(b(\alpha)/c(\alpha)\) with coefficients in \(k\).
-A \emph{simple radical extension}\define{simple extension}\define{extension!simple} of a field \(k\) is an extension \(k(\alpha)\) for which \(\alpha\) satisfies an equation \(\alpha^n=c\) for some element \(c\) of \(k\); we usually write such an extension as \(k(\sqrt[n]{c})\).
-A \emph{radical extension} is the result of repeated simple radical extensions \(k(\alpha_1)(\alpha_2)\dots(\alpha_n)\).
+A \emph{simple extension}\define{simple!extension}\define{extension!simple} of a field \(k\) is an extension \(K\), denoted \(k(\alpha)\), with an element \(\alpha\) of \(K\), so that every element of \(K\) is a rational function \(b(\alpha)/c(\alpha)\) with coefficients in \(k\).
+A \emph{simple radical extension}\define{simple!radical extension}\define{extension!simple radical} of a field \(k\) is an extension \(k(\alpha)\) for which \(\alpha\) satisfies an equation \(\alpha^n=c\) for some element \(c\) of \(k\); we usually write such an extension as \(k(\sqrt[n]{c})\).
+A \emph{radical extension}\define{radical extension}\define{extension!radical} is the result of repeated simple radical extensions \(k(\alpha_1)(\alpha_2)\dots(\alpha_n)\).
 \begin{example}
 The quadratic formula
 \[
@@ -450,7 +488,7 @@ By definition \(K\) is also a radical extension of \(k(t)\).
 By lemma~\vref{lemma:extend.Gal}, we can extend further if needed so that the Galois group of \(k(t)/k(e)\) extends to lie in the Galois group of \(K/k(e)\).
 
 The extension \(k(t)/k(e)\) is Galois with Galois group the symmetric group (the group of permutations of variables \(t_1,\dots,t_n\)).
-We leave the reader to pursue sufficient group theory to prove that the symmetric group of permutations of \(5\) or more variables is not a solvable group.
+We leave the reader to pursue sufficient group theory to prove that the symmetric group of permutations of \(5\) or more variables is not a solvable group (because, for example, it is simple and not abelian).
 So the solvable Galois group of \(K/k(e)\) contains the nonsolvable symmetric group.
 The reader can, once again, master sufficient group theory to prove that every subgroup of any solvable group is solvable.
 \end{proof}

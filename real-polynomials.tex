@@ -67,8 +67,8 @@ For large positive numbers \(x\), \(b(x)\) has the same sign as \(b_n\):
 Suppose that \(b(x)\) has no positive roots.
 By the intermediate value theorem, \(b(x)\) stays that same sign for all \(x>0\).
 For \(x=0\), this sign is \(b(x)=b_0\), while for \(x\) large it is the sign of \(b_n\).
-So if \(b(x)\) has no roots, then \(b_0\) and \(b_n\) have the same sign, so there are an even number of sign changes, to start and end at the same sign.
-In particular, the theorem is true for any polynomial \(b(x)\) with no roots.
+So if \(b(x)\) has no positive roots, then \(b_0\) and \(b_n\) have the same sign, so there are an even number of sign changes, to start and end at the same sign.
+In particular, the theorem is true for any polynomial \(b(x)\) with no positive roots.
 
 Suppose that \(b(x)\) has a positive root, say at \(x=a\).
 Factor out:
@@ -148,11 +148,11 @@ The \emph{Sturm sequence}\define{Sturm!sequence} of \(p(x)\) is the sequence \(p
 \begin{example}
 The Sturm sequence of \(p(x)=x^6 - 12x + 10\) is:
 \[\def\arraystretch{1.5}
-\begin{array}{@{}l@{}l@{}l@{}}
+\begin{array}{@{}l@{}l@{}l@{}l@{}}
 p_0(x)&=&x^6 - 12x + 10, \\
 p_1(x)&=&6x^5 - 12, \\
-p_2(x)&=&10x - 10, \\
-p_3(x)&=&6.
+p_2(x)&=&10x - 10, & x^6-12x+10=\frac{x}{6}(6x^5-12)-(10x-10)\\
+p_3(x)&=&6. &6x^5-12=\frac{3}{5}(x^4+x^3+x^2+x+1)(10x-10)-6 
 \end{array}
 \]
 Note that \(p_3(x)\) divides into \(p_2(x)\), because \(p_3(x)\) is a nonzero constant.
@@ -165,8 +165,7 @@ p_0(x), p_1(x), \dots, p_m(x).
 The \emph{expected number of distinct roots}\define{roots!expected number}\define{expected number of distinct roots} of \(p(x)\) in the interval \(a < x \le b\) is \(s(a)-s(b)\).
 
 \begin{example}
-To find the expected number of distinct roots of \(p(x)=x^6 - 12x + 10\) over \(0 < x \le 1\), first note that \(p(0)=10\) and \(p(1)=-1\) are not roots, so not multiple roots.
-The 
+Let's find the expected number of distinct roots of \(p(x)=x^6 - 12x + 10\) over \(0 < x \le 1\). Note that \(p(0)=10\) and \(p(1)=-1\) are not roots, so not multiple roots.
 \[\def\arraystretch{1.4}
 \begin{array}{@{}r@{}l@{\quad}@{}r@{}l@{}}
 p_0(0)&=10,      &  p_0(1)&=-1, \\
@@ -286,6 +285,38 @@ These have values at \(x=-2\) of \(7, -24, 2, -24, -7/8\), and at \(x=1\) they h
 There are two roots in that interval:
 \begin{center}
 \sageplot[width=6cm]{plot(2*x^4+4*x^3+2*x^2-1,(x,-2,1))}
+\end{center}
+\end{answer}
+\begin{problem}{real.polynomials:Sturm.test.example.5}
+Apply the Sturm sequence to the polynomial
+\[
+p(x)=x^5+5x^4-1
+\]
+to find the number of roots between \(x=0\) and \(x=1\).
+\end{problem}
+\begin{answer}{real.polynomials:Sturm.test.example.5}
+Clearly \(p'(x)=5x^4+20x^3\).
+Compute:
+\[
+\begin{array}{r@{}lcc}
+\toprule
+&&x=0&x=1\\
+\midrule
+p_0(x)&=x^5+5x^4-1&-1&5\\
+p_1(x)&=5x^4+20x^3&0&25\\
+p_2(x)&=4x^3+1&1&5\\
+p_3(x)&=\frac{5}{4}x+5&5&\frac{25}{4}\\
+p_4(x)&=255&255&255\\
+\hline
+&&1&0\\
+\bottomrule
+\end{array}
+\]
+so \(1-0=1\) zeroes.
+(We can cheat to guess the right answer: since \(p'(x)=5x^4+20x^3=x^3(5x+20)\ge 0\) for \(0\le x\le 1\), and \(>0\) for \(0<x\le 1\), we see that \(p(x)\) is strictly increasing, so can have at most one root.
+But \(p(0)=-1<0\) and \(p(1)=5>0\), so one root.)
+\begin{center}
+\sageplot[width=6cm]{plot(x^5+5*x^4-1,(x,0,1))}
 \end{center}
 \end{answer}
 \NewDocumentCommand\parab{mmmm}%
@@ -417,7 +448,7 @@ c=
 whichever is larger.
 \end{answer}
 
-
+\newpage
 
 \section{Factoring complex polynomials}
 \epigraph[author={H.~L.~Mencken}]{For every complex problem there is an answer that is clear, simple, and wrong.}\SubIndex{Mencken, H.~L.}

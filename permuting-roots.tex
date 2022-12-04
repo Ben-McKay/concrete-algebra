@@ -500,7 +500,8 @@ The sums of powers are related to the elementary symmetric polynomials by
 + (-1)^k p_k,
 \end{align*}
 \end{lemma}
-Using these equations, we can write the elementary symmetric polynomials inductively in terms of the sums of powers, or vice versa.
+Using these equations, we can write the sums of powers in terms of the elementary symmetric polynomials over any commutative ring.
+On the other hand, we can only write the elementary symmetric polynomials in terms of the sums of powers over any field of characteristic zero or larger than \(n\).
 \begin{proof}
 Let's write \(t^{({\ell})}\) for \(t\) with the \({\ell}\)\textsuperscript{th} entry removed, so if \(t\) is a vector with \(n\) entries, then \(t^{({\ell})}\) is a vector with \(n-1\) entries.
 \begin{align*}
@@ -555,7 +556,7 @@ k \, e_k + (-1)^{k-1} p_k.
 \end{align*}
 \end{proof}
 \begin{proposition}
-Every symmetric polynomial is a polynomial in the sums of powers. If the coefficients of the symmetric polynomial lie in a field, then it is a polynomial of the sums of powers over that same field.
+Every symmetric polynomial over a field of characteristic zero is a polynomial in the sums of powers.
 \end{proposition}
 \begin{proof}
 We can solve recursively for the sums of powers in terms of the elementary symmetric polynomials and conversely.
@@ -564,6 +565,9 @@ We can solve recursively for the sums of powers in terms of the elementary symme
 \section{The invariants of a square matrix}\label{pg:linear.invariants}
 Over any field, a rational function \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f\left(FAF^{-1}\right)=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
 An invariant is independent of change of basis: if \(T \colon V \to V\) is a linear map on an \(n\)-dimensional vector space, we can define the value \(f(T)\) of any invariant \(f\) of \(n \times n\) matrices, by letting \(f(T)\defeq f(A)\) where \(A\) is the matrix associated to \(T\) in some basis of \(V\).
+\begin{example}
+The determinant is an invariant of square matrices.
+\end{example}
 \begin{example}
 For any \(n \times n\) matrix \(A\), write
 \[
@@ -627,9 +631,9 @@ Suppose that the characteristic polynomial of \(A\) splits into linear factors.
 Prove that \(\Delta_A = 0\) just when \(A\) has an eigenvalue of multiplicity two or more.
 \end{problem}
 \begin{theorem}
-Every invariant polynomial (or invariant rational function) of square matrices over any field with more elements than the number of columns of the matrices, has exactly one expression as a polynomial (rational function) in the elementary symmetric polynomials of the eigenvalues. 
+Every invariant polynomial (or invariant rational function) of square matrices, over any field with more elements than the number of columns of the matrices, has exactly one expression as a polynomial (rational function) in the elementary symmetric polynomials of the eigenvalues. 
 \end{theorem}
-We can replace the elementary symmetric polynomials of the eigenvalues by the sums of powers of the eigenvalues.
+We can replace the elementary symmetric polynomials of the eigenvalues by the sums of powers of the eigenvalues, over any field of characteristic zero or larger than the number of columns.
 \begin{proof}
 Take an invariant polynomial \(f(A)\).
 (The same argument will work for an invariant rational function.)
@@ -691,7 +695,41 @@ b(x,1/2)=c(x,1/2)=\pr{x-\frac{\sqrt{3}}{2}}\pr{x+\frac{\sqrt{3}}{2}}.
 \]
 The common factor came from two common roots.
 \end{example}
-
+\begin{problem}{permuting.roots:solve.by.res}
+Working over \(k=\R{}\), let \(b(x,y)\defeq xy^2+x^{10}y+1\) and \(c(x,y)\defeq -xy^2+2x^{13}y+1\).
+Let \(B\) be the curve with equation \(0=b(x,y)\) and \(C\) the one with equation \(0=c(x,y)\).
+Use a resultant to find the points \((x,y)\) of the plane where the curves meet.
+\end{problem}
+\begin{answer}{permuting.roots:solve.by.res}
+The resultant in \(y\) involves determinant of smaller matrix than that in \(x\), because the degrees are smaller:
+\begin{align*}
+r(y)
+&=
+\det
+\begin{pmatrix}
+1&0&1&0\\
+x^{10}&1&2x^{13}&1\\
+x&x^{10}&-x&2x^{13}\\
+0&x&0X-x
+\end{pmatrix},
+\\
+&=
+4x^{27}-4x^{24} + x^{21},
+\\
+&=
+x^{21}(2x^3-1)^2,
+\end{align*}
+so
+\[
+x=0\text{ or }x=\frac{1}{\sqrt[3]{2}}.
+\]
+If we let \(x=0\) we have no solutions.
+(This ``false solution'' is caused by dropping of degree of both \(b(x,y)\) and \(c(x,y)\), which invalidates the method we are using, since the resultant of lower order polynomials has a different expression.)
+If \(x=1/\sqrt[3]{2}\), look at \(0=b+c\) to see
+\[
+y=-\frac{2}{x^{10}+2x^{13}}=\frac{1}{\sqrt[3]{2}^2}.
+\]
+\end{answer}
 In chapter~\ref{chapter:resultants}, we saw that for any two polynomials split into linear factors
 \begin{align*}
 b(x) &= \pr{x-\beta_1} \pr{x-\beta_2} \dots \pr{x-\beta_m}, \\
@@ -729,8 +767,27 @@ We assign each root a weight of one; this gives the correct weight to each coeff
 The weight of each term in the resultant is just its degree in the roots, so \(mn\) as above.
 \end{proof}
 \begin{proposition}\label{proposition:resultant.degree}
-Given any two polynomials \(b(x,y)\) of total degree \(m\) and \(c(x,y)\) of total degree \(n\) over a field, in two variables \(x,y\), either there are at most \(mn\) values of \(y\) for which there is some point \((x,y)\) which satisfies both \(b(x,y)=0\) and \(c(x,y)=0\) (and the resultant in \(x\) vanishes at those values), or \(b(x,y)\) and \(c(x,y)\) have a common factor as polynomials in \(x,y\).
-If the polynomials are homogeneous then either they have a homogeneous common factor, or their resultant is homogeneous nonzero of degree \(mn\).
+Over any field, given any two polynomials \(b(x,y),c(x,y)\) of degrees \(m,n\) in two variables \(x,y\), either 
+\begin{itemize}
+\item
+\begin{itemize}
+\item
+their resultant in \(x\) is a nonzero polynomial in \(y\) of degree at most \(mn\) and 
+\item
+vanishes at those values of \(y\) for which there is some point \((x,y)\) which satisfies both \(b(x,y)=0\) and \(c(x,y)=0\) and so
+\item
+the number of such values is at most the degree of the resultant,
+\end{itemize}
+\item
+or 
+\begin{itemize}
+\item
+their resultant in \(x\) or in \(y\) is the zero polynomial and
+\item
+\(b(x,y)\) and \(c(x,y)\) have a common factor as polynomials in \(x,y\).
+\end{itemize}
+\end{itemize}
+If the polynomials are homogeneous then either their resultant is nonzero of degree exactly \(mn\) or they have a homogeneous common factor.
 \end{proposition}
 \begin{proof}
 Think of the polynomials as polynomials in \(x\) with coefficients rational in \(y\):
@@ -740,9 +797,45 @@ b(x,y)=\sum_{j+k \le m} b_{jk} x^k y^j=\sum_j b_j(y) x^j,
 we see that \(b_j(y)\) has degree at most \(m-j\), exactly the weight of the coefficient \(b_j(y)\) as it enters into the resultant.
 Therefore the resultant is a polynomial of degree at most \(mn\) in \(y\).
 The resultant vanishes at those values \(y=a\) for which there is a common factor between \(b(x,a)\) and \(c(x,a)\), and in particular if there is a common root it vanishes.
-So there are at most \(mn\) such points or the resultant is everywhere zero.
-If the resultant vanishes everywhere, then \(b(x,y)\) and \(c(x,y)\) have a common factor with coefficients rational functions of \(y\).
+So there are at most \(mn\) such points or the resultant is the zero polynomial.
+If the resultant is the zero polynomial, then \(b(x,y)\) and \(c(x,y)\) have a common factor with coefficients rational functions of \(y\).
 By Gauss's lemma (proposition~\vref{proposition:Gauss.lemma}) they also have a common factor in polynomials in \(x,y\). 
 
 For homogeneous polynomials, each term \(b_j(y)\) has degree exactly \(m-j\), so the resultant either vanishes everywhere or has degree exactly \(mn\).
 \end{proof}
+\begin{problem}{permuting.roots:plane.algebraic.curves}
+Over every field, find the resultant of \(b(x,y)=x^2+y^2\) and \(c(x,y)=x^2+y^4+1\), thought of as polynomials in the variable \(x\), with coefficients being rational functions of \(y\).
+What does this resultant tell you?
+Suppose that \(B\) is the set of points \((x,y)\) where \(b(x,y)=0\) and \(C\) the set of points where \(c(x,y)=0\) for \(x\) and \(y\) in that field.
+How many points of intersection can \(B\) and \(C\) have?
+\end{problem}
+\begin{answer}{permuting.roots:plane.algebraic.curves}
+\[
+\det
+\begin{pmatrix}
+y^2&0&y^4+1&0\\
+0&y^2&0&y^4+1\\
+1&0&1&0\\
+0&1&0&1
+\end{pmatrix}
+=(y^4-y^2+1)^2
+\]
+vanishes just at values of \(y=y_0\) for which there are common factors in \(b(x,y_0),c(x,y_0)\) as polynomials in \(x\), and in particular drops if there is common root.
+There are at most \(4\) roots \(y=y_0\) of \(y^4-y^2+1=0\) in any field.
+At each of these there are at most \(4\) roots of \(b(x,y)\), so at most \(4\cdot 4=16\) intersection points in total.
+To be more precise, in a field not of characteristic \(2\),
+\[
+(x,y)=
+(\pm i \omega, \pm \omega),
+\]
+where 
+\[
+\omega=
+\sqrt{
+-\frac{1\pm\sqrt{3}i}{2}
+}
+\]
+if the relevant square roots exist in the field.
+For example, none of these exist over \(k=\Q{}\) or \(k=\R{}\), but all do over \(k=\C{}\).
+In a field of characteristic \(2\), we can let \(u=y^2\), and find that \(u^2=1\), so \(u=1\), a double root, and then \(y^2=1\) so \(y=1\), a double root, and then \(x^2+1=0\), so \(x^2=1\), but also \(x^2+1+1=0\) so \(x^2=0\), a contradiction, so there are no intersection points of \(B\) and \(C\) if our field \(k\) has characteristic \(2\).
+\end{answer}

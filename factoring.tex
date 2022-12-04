@@ -50,9 +50,12 @@ A polynomial with integer coefficients is \emph{irreducible}%
 if it does not split into a product \(b(x)c(x)\) except for having \(b(x)=\pm 1\).
 (Note that this notion of irreducibility is different from being irreducible over a field.)
 \begin{example}
-\[
-2x^3-4x+2=(2)(x-1)(x^2+x-1)=(-2)(-x+1)(x^2+x-1)=(-2)(x-1)(-x^2-x+1)
-\]
+\begin{align*}
+2x^3-4x+2
+&=(2)(x-1)(x^2+x-1),\\
+&=(-2)(-x+1)(x^2+x-1),\\
+&=(-2)(x-1)(-x^2-x+1)
+\end{align*}
 are three different factorizations into irreducibles.
 \end{example}
 \begin{corollary}\label{corollary:coprime.coeffs}
@@ -178,6 +181,10 @@ Give some examples of polynomials to which Eisenstein's criterion applies.
 Suppose that \(b(x)\) is a polynomial with integer coefficients of degree \(d\).
 Prove that \(c(x)\defeq x^db(1/x)\) is also a polynomial with integer coefficients of degree \(d\).
 Prove that \(b(x)\) is irreducible just when \(c(x)\) is.
+Apply to
+\[
+b(x)=1+4x^{27}+8x^{28}+2x^{30}.
+\]
 \end{problem}
 \begin{problem}{polynomials:Eisenstein.2}
 Explain why the lowest terms in \(y\) of a product \(b(x,y)c(x,y)\) are obtained by expanding the product of the lowest \(y\) terms in each of \(b(x,y)\) and \(c(x,y)\).
@@ -195,18 +202,6 @@ q(x,y)=2+9xy+40x^3y^2+5y^3+25xy^3+8x^2y^3
 \]
 is irreducible.
 \end{problem}
-\begin{problem}{factoring:Eisen.poly.2}
-Is 
-\[
-a(x,y)=y^9x^9+(y^2+1)x^8+(y^2+1)x^7+y+1
-\]
-irreducible as a polynomial in two variables \(x,y\) with coefficients remainders modulo \(2\)?
-\end{problem}
-\begin{answer}{factoring:Eisen.poly.2}
-Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
-Note that \(p(y)^2=y^2+1\).
-So Eisenstein applies: \(a(x,y)\) is irreducible.
-\end{answer}
 \begin{problem}{polynomials:Eisenstein.cyclotomic}
 Suppose that \(p\) is a prime number.
 Prove that the polynomial \(c(x)\defeq x^{p-1}+x^{p-2}+\dots+x+1\) is irreducible.
@@ -378,6 +373,18 @@ irreducible over the rational numbers?
 \begin{answer}{factoring:Eisen.poly.xy}
 Eisenstein with \(p=3\), \(111=(3)(37)\), and \(37\) is not divisible by 3, so \(q(x)\) is irreducible.
 \end{answer}
+\begin{problem}{factoring:Eisen.poly.2}
+Is 
+\[
+a(x,y)=y^9x^9+(y^2+1)x^8+(y^2+1)x^7+y+1
+\]
+irreducible as a polynomial in two variables \(x,y\) with coefficients remainders modulo \(2\)?
+\end{problem}
+\begin{answer}{factoring:Eisen.poly.2}
+Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
+Note that \(p(y)^2=y^2+1\).
+So Eisenstein applies: \(a(x,y)\) is irreducible.
+\end{answer}
 \begin{problem}{factoring:Eisen.poly.xy.mod.2}
 Is
 \[
@@ -408,7 +415,7 @@ p(x) &= x   &\pmod{x^3+x+1}.
 \end{problem}
 \section{Homogeneous polynomials}
 The \emph{degree} of a term in a multivariable polynomial is the sum of the degrees in each of the variables; the \emph{degree}\define{degree} of the polynomial is the highest degree of any nonzero term.
-A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} if all of its terms have the same degree.
+A polynomial is \emph{homogeneous}\define{homogeneous!polynomial}\define{polynomial!homogeneous} of a given degree if all of its terms have that degree.
 \begin{problem}{permuting:homog.test}
 Prove that a polynomial \(b(x)\) of degree \(m\) in some variables \(x_1,x_2,\dots,x_n\) over an infinite field is homogeneous just when \(b(tx)=t^mb(x)\) for every \(t\).
 Give a counterexample over a finite field.
@@ -424,4 +431,3 @@ b(x)c(x)
 The highest degree term in \(b(x)\) multiplies by the highest degree term in \(c(x)\) to give the highest degree term in \(b(x)c(x)\), and the same for the lowest degree terms.
 Since all terms in \(b(x)c(x)\) have the same degree, so do all terms in \(b(x)\) and in \(c(x)\).
 \end{proof}
-

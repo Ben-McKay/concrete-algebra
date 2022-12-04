@@ -1,0 +1,276 @@
+% Commands for the discussion of Desargues's theorem:
+% highest x value of any coordinate of any point in the picture:
+\newcommand*{\maxX}{6}
+% lowest x value of any coordinate of any point in the picture:
+\newcommand*{\minX}{0.1}
+
+\newcommand*{\AoneX}{2.99}
+\newcommand*{\AoneY}{0}
+\newcommand*{\Aone}{\AoneX,\AoneY}
+\newcommand*{\AtwoX}{4.22}
+\newcommand*{\AtwoY}{.6}
+\newcommand*{\Atwo}{\AtwoX,\AtwoY}
+\newcommand*{\AthreeX}{4.68}
+\newcommand*{\AthreeY}{1.41}
+\newcommand*{\Athree}{\AthreeX,\AthreeY}
+\newcommand*{\PnoughtX}{4.05}
+\newcommand*{\PnoughtY}{3.11}
+\newcommand*{\Pnought}{\PnoughtX,\PnoughtY}
+\newcommand*{\Tone}{1.5627}
+\newcommand*{\Ttwo}{2.1116}
+\newcommand*{\Tthree}{2.9353}
+
+\newcommand*{\drawOrigin}
+{
+\coordinate (p) at (\Pnought){};
+\DrawNode{p}
+}
+
+\newcommand*{\drawFirstTriangle}
+{
+\coordinate (a1) at (\Aone){};
+\DrawNode{a1}
+\coordinate (a2) at (\Atwo){};
+\DrawNode{a2}
+\coordinate (a3) at (\Athree){};
+\DrawNode{a3}
+\begin{scope}[on background layer]
+\fill[shapeOne] (a1) -- (a2) -- (a3) -- cycle;
+\end{scope}
+}
+
+\newcommand*{\Bone}{{\Tone*(\AoneX-\PnoughtX)+\PnoughtX},{\Tone*(\AoneY-\PnoughtY)+\PnoughtY}}
+\newcommand*{\Btwo}{{\Ttwo*(\AtwoX-\PnoughtX)+\PnoughtX},{\Ttwo*(\AtwoY-\PnoughtY)+\PnoughtY}}
+\newcommand*{\Bthree}{{\Tthree*(\AthreeX-\PnoughtX)+\PnoughtX},{\Tthree*(\AthreeY-\PnoughtY)+\PnoughtY}}
+
+\newcommand*{\drawSecondTriangle}
+{
+\coordinate (b1) at (\Bone){};
+\DrawNode{b1}
+\coordinate (b2) at (\Btwo){};
+\DrawNode{b2}
+\coordinate (b3) at (\Bthree){};
+\DrawNode{b3}
+\begin{scope}[on background layer]
+\fill[shapeTwo] (b1) -- (b2) -- (b3) -- cycle;
+\end{scope}
+}
+
+\newcommand*{\connectVantageAndFirstTwoTriangles}
+{
+\begin{scope}[on background layer]
+\draw[curveZero,very thick] (p) -- (a1) -- (b1);
+\draw[curveZero,very thick] (p) -- (a2) -- (b2);
+\draw[curveZero,very thick] (p) -- (a3) -- (b3);
+\end{scope}
+}
+
+\newcommand*{\findFirstIntersection}
+{
+\coordinate (c1) at (intersection of a2--a3 and b2--b3) {};
+}
+\newcommand*{\findSecondIntersection}
+{
+\coordinate (c2) at (intersection of a1--a3 and b1--b3) {};
+}
+\newcommand*{\findThirdIntersection}
+{
+\coordinate (c3) at (intersection of a1--a2 and b1--b2) {};
+}
+
+\newcommand*{\findAllIntersections}
+{
+\findFirstIntersection
+\findSecondIntersection
+\findThirdIntersection
+}
+
+\newcommand*{\showFirstIntersectionPoint}
+{
+\DrawNode{c1}
+}
+
+\newcommand*{\showSecondIntersectionPoint}
+{
+\DrawNode{c2}
+}
+
+\newcommand*{\showThirdIntersectionPoint}
+{
+\DrawNode{c3}
+}
+
+
+\newcommand*{\showAllIntersectionPoints}
+{
+\showFirstIntersectionPoint
+\showSecondIntersectionPoint
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowFirstIntersectionIsConstructed}
+{
+\begin{scope}[on background layer]
+\draw[curveOne,very thick] (a3) -- (c1); % line through c1
+\draw[curveOne,very thick] (a2) -- (c1); % line through c1
+\draw[curveOne,very thick] (b2) -- (c1); % line through c1
+\draw[curveOne,very thick] (b3) -- (c1); % line through c1
+\end{scope}
+\showFirstIntersectionPoint
+}
+
+\newcommand*{\showHowSecondIntersectionIsConstructed}
+{
+\begin{scope}[on background layer]
+\draw[curveTwo,very thick] (a3) -- (c2); % line through c2
+\draw[curveTwo,very thick] (a1) -- (c2); % line through c2
+\draw[curveTwo,very thick] (b1) -- (c2); % line through c2
+\draw[curveTwo,very thick] (b3) -- (c2); % line through c2
+\end{scope}
+\showSecondIntersectionPoint
+}
+
+\newcommand*{\showHowThirdIntersectionIsConstructed}
+{
+\begin{scope}[on background layer]
+\draw[curveThree,very thick] (a1) -- (c3); % line through c3
+\draw[curveThree,very thick] (a2) -- (c3); % line through c3
+\draw[curveThree,very thick] (b1) -- (c3); % line through c3
+\draw[curveThree,very thick] (b2) -- (c3); % line through c3
+\end{scope}
+\showThirdIntersectionPoint
+}
+
+\newcommand*{\showHowAllIntersectionsAreConstructed}
+{
+\showHowFirstIntersectionIsConstructed
+\showHowSecondIntersectionIsConstructed
+\showHowThirdIntersectionIsConstructed
+}
+
+\newcommand*{\showTheLine}
+{
+\begin{scope}[on background layer]
+\draw[curveZero,very thick] (c1) -- (c2);
+\draw[curveZero,very thick] (c1) -- (c3);
+\draw[curveZero,very thick] (c2) -- (c3);
+\end{scope}
+\showAllIntersectionPoints
+}
+
+\newcommand*{\showThirdTriangle}
+{
+\begin{scope}[on background layer]
+\fill[
+shapeThree,draw=curveThree,very thick
+%green!50!gray,opacity=.1
+] (c1) to[bend left=85] (c2) to[bend right=85] (c3) to[bend left=90] (c1);
+\end{scope}
+\showAllIntersectionPoints
+}
+
+
+\newcommand{\Desargue}[1]{%
+\begin{center}
+\begin{tikzpicture}
+% Draw a strut to make all of the diagrams have the same width, so the same x coordinate in each diagram gives a point the same distant across the page.
+\begin{scope}[on background layer]
+\draw[white] (\minX,0) -- (\maxX,0); 
+\end{scope}
+\IfStrEqCase{#1}{%
+{1}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+}%%
+{2}%
+{%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\drawFirstTriangle
+\drawSecondTriangle
+}%
+{3}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findFirstIntersection
+\showHowFirstIntersectionIsConstructed
+}%%
+{4}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findSecondIntersection
+\showHowSecondIntersectionIsConstructed
+}%%
+{5}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findThirdIntersection
+\showHowThirdIntersectionIsConstructed
+}%%
+{6}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showTheLine
+}%%
+{7}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}%%
+{8}%
+{%%
+\drawOrigin
+\drawFirstTriangle
+\drawSecondTriangle
+\connectVantageAndFirstTwoTriangles
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showThirdTriangle
+}%%
+{9}%
+{%%
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+}%%
+{10}%
+{%%
+\drawFirstTriangle
+\drawSecondTriangle
+\findAllIntersections
+\showHowAllIntersectionsAreConstructed
+\showTheLine
+\begin{scope}[on background layer]
+\draw[opacity=0] (c1) -- ++(6cm,0) node[black] (c4) {\(c_4\)};
+\draw[opacity=0] (c3) -- ++(6cm,0) node[brown] (c5) {\(c_5\)};
+\fill[shapeZero,draw=curveZero] (c4.center) -- (c5.center) -- (c3.center) -- (c1.center) -- cycle;
+\end{scope}
+\begin{scope}[on background layer]
+\draw[opacity=0] (c1) -- ++(6cm,4cm) node[black] (d1) {\(d_1\)};
+\draw[opacity=0] (c3) -- ++(6cm,4cm) node[brown] (d3) {\(d_3\)};
+\fill[shapeZero,draw=curveZero] (d1.center) -- (d3.center) -- (c3.center) -- (c1.center) -- cycle;
+\end{scope}
+}%%
+}%% end IfStrEqCase
+\end{tikzpicture}
+\end{center}
+}

@@ -38,7 +38,7 @@ How can you find an integer \(x\) so that
 \end{example}
 \begin{example}
 A recipe: how to find an unknown integer \(x\) given only the knowledge of its remainders modulo various integers.
-Suppose we know \(x\) has remainder \(r_1\) modulo \(m_1\), \(r_2\) modulo \(m_2\), and so on.
+Suppose we know \(x\) has remainder \(r_1\) modulo \(m_1\), \(r_2\) modulo \(m_2\), \dots \(r_n\) modulo \(m_n\).
 Let 
 \[
 m\defeq m_1 m_2 \dots m_n.
@@ -57,8 +57,7 @@ We can simplify this a little: add or subtract multiples of \(m\) until \(x\) is
 \end{example}
 \begin{theorem}
 Take some positive integers \(m_1, m_2, \dots, m_n\), coprime to one another.
-Suppose that we want to find an unknown integer \(x\), given only the knowledge of its remainders modulo \(m_1, m_2, \dots, m_n\); so we know its remainder modulo \(m_1\) is \(r_1\), modulo \(m_2\) is \(r_2\), and so on.
-There is such an integer \(x\), given by the recipe above, and \(x\) is unique modulo 
+The recipe above works: it finds an integer \(x\) with required remainder, and \(x\) is unique modulo 
 \[
 m_1 m_2 \dots m_n.
 \]
@@ -258,6 +257,28 @@ x&=r_1u_1v_1+r_2u_2v_2,\\
  &=398.
 \end{align*}
 \end{answer}
+\begin{problem}{modular:CRT.4.5.17}
+Use the Chinese remainder theorem to find the smallest positive integer \(x\) so that
+\begin{align*}
+x&=3\pmod{4},\\
+x&=4\pmod{5},\\
+x&=0\pmod{17}.
+\end{align*}
+\end{problem}
+\begin{answer}{modular:CRT.4.5.17}
+Moduli \(m_1,m_2,m_3=4,5,17\), so \(u_1,u_2,u_3=85,68,20\).
+Reduce modulo those to get to \(1,3,3\); we only need reciprocals of these remainders.
+Easily see that we can take \(v_1,v_2,v_3=1,2,6\) as reciprocals of those remainders.
+We have \(r_1,r_2,r_3=3,4,0\).
+Modulo \(4\cdot5\cdot 17=340\), 
+\begin{align*}
+x&=r_1u_1v_1+r_2u_2v_2,\\
+&=799,\\
+&=119
+\end{align*}
+modulo \(340\).
+\end{answer}
+
 \section{Bird's eye view of the Chinese remainder theorem}
 Given some integers \(m_1, m_2, \dots, m_n\), we consider sequences \(\pr{b_1, b_2, \dots, b_n}\) consisting of remainders: \(b_1\) a remainder modulo \(m_1\), and so on.
 Add sequences of remainders in the obvious way:

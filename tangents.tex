@@ -1,5 +1,5 @@
 \chapter{The tangent line}\label{chapter:tangent.line}
-
+\epigraph[author={Karl Barth}, source={The Humanity of God (1960), p. 42.}]{What expressions we used---in part taken over and in part newly invented! above all, the famous `wholly other' breaking in upon us `perpendicularly from above,' the not less famous `infinite qualitative distinction' between God and man, the vacuum, the mathematical point, and the tangent in which alone they must meet.}\SubIndex{Barth, Karl}
 \section{Lines crossing a curve}
 \begin{proposition}\label{proposition:lines.crossing}
 Pick an irreducible plane algebraic curve \(C\) of degree \(d\) and a point \(p\) of the plane not lying on \(C\).
@@ -9,26 +9,27 @@ Among all of the lines through \(p\), every one of them strikes \(C\) in exactly
 First assume that \(C\) is irreducible.
 Arrange that the point \(p\) lies at the origin in an affine plane \(z=1\), so that the lines through \(p\) are those of the form \(y=mx\) or \(x=0\).
 Also arrange that \(C\) is not entirely on the line at infinity, so contains some finite points.
-From the equation \(q(x,y)=0\) of the curve \(C\), the intersections lie on \(q(x,mx)=0\), a polynomial of degree at most \(d\) in \(x\).
+If \(C\) has equation \(C=(0=c(x,y))\), the intersections lie on \(c(x,mx)=0\), a polynomial of degree at most \(d\) in \(x\).
 This polynomial is not the zero polynomial, because the origin does not lie on \(C\).
-Therefore the number of intersections is \(d\).
-The multiplicities will all be \(1\) except at values of \(m\) where the discriminant (as a polynomial in \(x\)) of \(q(x,mx)=0\) vanishes.
-The discriminant is an equation of degree at most \(d(d-1)\) in \(m\).
-If the discriminant vanishes as a polynomial in \(m\), it vanishes as a rational function of \(m\), and so \(q(x,mx)\) has a zero of higher multiplicity as a polynomial in \(x\) with rational coefficients in \(m\): \(q(x,mx)=(x-f(m))^2 Q(x,m)\).
-But replacing \(m\) by \(y/x\) we find that \(q(x,y)\) is reducible as a polynomial in \(x\) with coefficients rational in \(y\), and so by the Gauss' lemma \(q(x,y)\) is reducible as a polynomial in \(x,y\), a contradiction.
+Therefore the number of intersections is \(d\), counted with multiplicities.
+The multiplicities will all be \(1\) except at values of \(m\) where the discriminant (as a polynomial in \(x\)) of \(c(x,mx)=0\) vanishes.
+The discriminant is a polynomial of degree at most \(d(d-1)\) in \(m\).
+
+Suppose that the discriminant vanishes as a polynomial in \(m\).
+It vanishes as a rational function of \(m\).
+Think of \(c(x,mx)\) as a polynomial in \(x\) with coefficients in the field of rational functions of \(m\).
+This polynomial has a zero of higher multiplicity: \(c(x,mx)=(x-f(m))^2 Q(x,m)\).
+Think of \(c(x,y)\) as a polynomial in \(x\) with coefficients rational functions of \(y\).
+Replacing \(m\) by \(y/x\), \(c(x,y)\) is reducible as such a polynomial, and so by the Gauss' lemma \(c(x,y)\) is reducible as a polynomial in \(x,y\), a contradiction.
 So the discriminant is a nonzero polynomial, and if it is constant we can homogenise and dehomogenise to get it to be nonconstant.
+So it has the required degree.
 \end{proof}
-
-Given a curve in the projective plane, we can take any of the three homogeneous coordinate variables \([x,y,z]\) and rescale to 1, say to \(x=1\), and see the curve as lying on the affine plane.
-As we have seen, changing the choice of variable, say to \(y=1\) or to \(z=1\), involves rehomogenising the equation and then plugging in \(y=1\) or \(z=1\), giving us a birational curve.
-
-Looking at our curve in the affine plane, by setting \(x=1\), the curve ``homogenises'' into its cone in \(k^3\), by homogenising the equation. 
-The tangent line in the affine plane \(x=1\) homogenises into a plane through the origin, the tangent plane to the cone.
-When we set \(y=1\) or \(z=1\), or more generally we look at how our homogenised cone surface passes through some plane not containing the origin, the tangent plane to the cone becomes a tangent line to the resulting curve.
-Therefore we can speak of a \emph{tangent line}\define{tangent line} to an algebraic plane curve in the projective plane, by which we mean the projective line which corresponds to the tangent plane to the cone.
+Looking at our curve in the affine plane, by setting \(z=1\), the curve ``homogenises'' into its cone in \(k^3\), by homogenising the equation. 
+The tangent line in the affine plane \(z=1\) homogenises into a plane through the origin, the tangent plane to the cone.
+When we set \(x=1\) or \(y=1\), or more generally we look at how our homogenised cone surface passes through some plane not containing the origin, the tangent plane to the cone becomes a tangent line to the resulting curve.
+Therefore we can speak of a \emph{tangent line}\define{tangent line} to a plane algebraic curve in the projective plane, by which we mean the projective line which corresponds to the tangent plane to the cone.
 
 To calculate that tangent line, we can either operate directly in some affine plane, say \(x=1\), and just differentiate implicitly as usual, or we can homogenise, and then differentiate the equation of the surface via partial derivatives.
-
 \begin{example}
 The curve \(y^2=x^2+x^3\) has tangent line given by differentiating implicitly:
 \[
@@ -96,71 +97,9 @@ and plugging in the point \((x,y)=(3,6)\), we have \(0=0\), no equation at all.
 In general, our procedure yields a tangent line to an irreducible curve precisely at the points \((x,y)\) where the polynomial \(p(x,y)\) in the equation \(p(x,y)=0\) of the curve has at least one nonzero partial derivative, so that we can solve for \(y'(x)\) or for \(x'(y)\) implicitly.
 In this example, 
 \inputinexample{cubic-curve-1}
-there are clearly 2 different lines tangent to the curve.
+there are clearly \(2\) different lines tangent to the curve.
 We find these by taking the homogeneous terms of lowest degree in \(x,y\), \(y^2=x^2\), dropping the \(x^3\) because it has higher order, and then factoring into \(y=\pm x\).
 We can justify this over the real numbers (or the complex numbers), by saying that our equation \(y^2=x^2+x^3\) has solutions \(y=\pm \sqrt{x^2+x^3} \cong \pm x^2\), asymptotically as \(x \to 0\). 
-\end{example}
-
-
-
-
-
-\section{Singular points}
-
-\epigraph[author={Robert Graves}, source={Conversations with Robert Graves}]{That's what love is. It's a recognition of singularity.}\SubIndex{Graves, Robert}
-
-Take any algebraic curve \(C\) in the projective plane, and any point \(p_0\) of \(C\).
-Write out an affine plane \(z=1\) in which \(p_0\) is the origin \((x,y)=(0,0)\), and write out the equation \(0=p(x,y)\) of the curve.
-We can take \(p(x,y)\) to be a product of irreducibles \(p_i(x,y)\).
-Since the origin belongs to \(C\), at least one of the factors \(p_i(x,y)\) vanishes there.
-Expand each \(p_i(x,y)\) into sums of constants times monomials.
-Without loss of generality, we can work over an infinite field.
-Rescale \((x,y)\) by a nonzero constant, and then let that constant ``get small'', i.e. look at the powers of that constant, thinking of higher powers as ``smaller''.
-Each monomial term rescales by some power of that factor.
-Rescale both sides of the equation \(0=p(x,y)\) to get rid of the lowest power.
-For example if \(C\) is \(0=x(y^2-x^2-x^3)\), rescaling by a factor \(\lambda\) gives
-\[
-0=\lambda x\pr{\lambda^2 y^2 - \lambda^2 x^2 - \lambda^3 x^3}.
-\]
-Divide out the lowest power of \(\lambda\), in this case \(\lambda^2\), to get
-\[
-0 = x\pr{y^2 - x^2 - \lambda^3 x^3}.
-\]
-The invariant terms give a homogeneous polynomial \(x\pr{y^2-x^2}\).
-The zeroes of this polynomial form the tangent lines to the curve.
-By homogeneity, the number of tangent lines is the degree of the homogeneous polynomial, which is at most the degree of the curve.
-The \emph{order}\define{order!of point on curve} of a point \(p_0\) on a curve \(C\) is the number of tangent lines, counted with multiplicity.
-A \emph{regular point}\define{point!smooth}\define{regular!point}\define{point!regular} (also called a \emph{smooth point})\define{point!smooth}\define{smooth!point} of an algebraic curve is a point of order \(1\); any other point is a \emph{singular point}.\define{singular point}\define{point!singular}
-A curve without singular points (over the algebraic closure of the field) is \emph{smooth}\define{smooth!curve}\define{curve!smooth} or \emph{regular}.\define{regular!curve}\define{curve!regular}
-
-\begin{example}
-At any point of order \(1\), make a projective change of variables to put the point at the origin, and the line to be the horizontal line \(y=0\).
-So our curve has equation \(p(x,y)=0\) with \(\pderiv{p}{y}\ne 0\) and with \(\pderiv{p}{x}=0\) at the origin.
-After a constant rescaling, our equation is \(y=ax^2+bxy+cy^2+\dots\).
-Note that we cannot rid our equation of these higher order terms in \(y\).
-\end{example}
-\begin{example}
-The curve \(y^3=x^4\) over the real numbers is the graph of a differentiable (but not polynomial) function \(y=x^{4/3}\).
-Its tangent lines at the origin arise from keeping the lowest degree homogeneous terms: \(y^3=0\), i.e. there is a unique tangent line \(y=0\).
-Nonetheless, over the complex numbers this curve is \emph{not} the graph of a differentiable complex function of a complex variable.
-\end{example}
-\begin{example}
-The singular points of an affine algebraic curve \(C\) with equation \(0=p(x,y)\) are precisely the points where 
-\[
-0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y},
-\]
-by definition.
-Similarly, the singular points of a projective algebraic curve are the singular points of one of its representatives in an affine plane.
-\end{example}
-\begin{example}
-Take a reducible curve and write it as a union of irreducible component curves.
-Correspondingly, write its equation as a product of two polynomials.
-Any two of the irreducible components intersect somewhere (at least in the points defined over the algebraic closure of the field), say at a point \(p\).
-Take affine coordinates in which \(p\) is the origin.
-Each of the two components has equation given by a polynomial vanishing at the origin, so the original curve is a product of such polynomials.
-Therefore the equation of the reducible curve vanishes to at least second order.
-Therefore every reducible curve is singular.
-Consequently, every nonsingular curve is irreducible.
 \end{example}
 \begin{example}
 The curve \(y=x^n\) in the affine plane \(z=1\) has no singularities in that affine plane, if \(n \ge 1\) is an integer.
@@ -172,48 +111,9 @@ which never happen simultaneously.
 Therefore over any field, the curve \(y=x^n\) is regular for every \(n=1, 2, \dots\).
 In particular, there are regular curves of all degrees.
 \end{example}
-
-\begin{problem}{projective.curves:singularities}
-Suppose that every intersection point of two projective algebraic plane curves \(B\) and \(C\), over an algebraically closed field, has multiplicity one.
-Prove that \(B\) and \(C\) are regular at these points.
-\end{problem}
-
-\begin{problem}{projective.curves:singularities.2}
-Prove that every regular projective algebraic plane curve is irreducible.
-Give an example of reducible regular affine algebraic plane curve.
-\end{problem}
-
-\begin{lemma}\label{lemma:number.of.singular.points}
-The number of singular points of an irreducible algebraic curve of degree \(d\) is at most \(d(d-1)\).
-Moreover, if the singular points have orders \(n_1,n_2,\dots,n_k\), then
-\[
-\sum_k n_k(n_k-1)\le d(d-1).
-\]
-\end{lemma}
-\begin{proof}
-The singular points are the solutions of 
-\[
-0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y}.
-\]
-If one or both of these partial derivatives vanishes, then \(p(x,y)\) is a function of one variable only, and the result is trivial to prove.
-If the two functions 
-\[
-p(x,y), \pderiv{p}{x}
-\]
-have a common factor, then since \(p(x,y)\) is irreducible, this factor must be \(p(x,y)\).
-But \(\pderiv{p}{x}\) is a polynomial of lower degree in \(x\) than \(p(x,y)\), a contradiction.
-So the number of common roots is \(p(x,y)\) and \(\pderiv{p}{x}\) is \(d(d-1)\) when multiplicities are counted.
-Take a singular point, and arrange that it is the origin.
-If order is \(n\), so \(p(x,y)\) expands out to have lowest nonzero term homogeneous of degree \(n\), then \(\pderiv{p}{x}\) has lowest nonzero term homogeneous of degree \(n-1\).
-\end{proof}
-
-\begin{problem}{tangents.any.order}
-What are the singularities, and their orders, of \(y^p=x^{p+q}\) for \(1 \le p, q\)?
-\end{problem}
-
 \begin{theorem}\label{theorem:tangent.intersection}
-The tangent line to a projective plane algebraic curve at a regular point is the unique line that has intersection number \(2\) or more at that point.
-More generally, the intersection number of a line \(\ell\) and a curve \(C=(0=f)\) at a point \(p\) is the multiplicity of the zero of \(p\) as a zero of the restriction of \(f\) to \(\ell\).
+The tangent line to a projective plane algebraic curve at a regular point is the unique line that has intersection multiplicity \(2\) or more at that point.
+More generally, the intersection multiplicity of a line \(\ell\) and a curve \(C=(0=f)\) at a point \(p\) is the multiplicity of the zero of \(p\) as a zero of the restriction of \(f\) to \(\ell\).
 \end{theorem}
 \begin{proof}
 We can arrange that our coordinates axes form a generic triangle as usual, and that our intersection point is at \((x,y)=\pr{1,1}\).
@@ -222,7 +122,7 @@ We can assume that our projective plane algebraic curve is
 0=f(x,y)=\sum_j f_j(x)y^j.
 \]
 We can arrange that our line is \(y=1\).
-The intersection number is the multiplicity of \(x=1\) as a zero of the resultant
+The intersection multiplicity is the multiplicity of \(x=1\) as a zero of the resultant
 \begin{align*}
 &\det
 \begin{pmatrix}
@@ -251,8 +151,8 @@ The intersection number is the multiplicity of \(x=1\) as a zero of the resultan
 &=
 (-1)^n f(x,1).
 \end{align*}
-So the intersection number of the line and the curve is the multiplicity of vanishing of \(f(x,1)\) at \(x=1\).
-Since \(f(1,1)=1\), the intersection number is positive, and is two or more just when 
+So the intersection multiplicity of the line and the curve is the multiplicity of vanishing of \(f(x,1)\) at \(x=1\).
+Since \(f(1,1)=1\), the intersection multiplicity is positive, and is two or more just when 
 \[
 \left.\frac{d}{dx}\right|_{x=1} f(x,1)=0,
 \]
@@ -266,14 +166,14 @@ Then for any point \(p\) and projective algebraic plane curves \(C, D\):
 \order{p}{C}\order{p}{D} \le \multiplicity{p}{C}{D},
 \]
 with equality just when no line defined over any extension field is tangent to both curves at \(p\).
-In particular, the order \(\order{p}{C}\) is the multiplicity of intersection \(\multiplicity{p}{C}{\ell}\) for any line \(\ell\) through \(p\) which is not tangent to \(C\) at \(p\).
+In particular, the order \(\order{p}{C}\) is the intersection multiplicity \(\multiplicity{p}{C}{\ell}\) for any line \(\ell\) through \(p\) which is not tangent to \(C\) at \(p\).
 \end{theorem}
 \begin{proof}
 If \(C\) or \(D\) is a line, our result is precisely theorem~\vref{theorem:tangent.intersection}.
 If either \(C\) or \(D\) is reducible, our result follows from induction on the degrees of the components and adding up multiplicities.
 
-After perhaps replacing our field by a finite degree extension, pick a generic triangle for the two curves, and arrange that its vertices are \((0,0), (\infty,0), (0,\infty)\) as usual.
-It is easier to compute tangent lines if we shift the axes by adding constants to \(x\) and \(y\) to arrange that the vertices are at \((-1,-1), (\infty,-1), (-1,\infty)\).
+After perhaps replacing our field by a finite degree extension, pick a generic triangle for the two curves, and arrange that its vertices are \((0,0), (0,\infty), (\infty,0)\) as usual.
+It is easier to compute tangent lines if we shift the axes by adding constants to \(x\) and \(y\) to arrange that the vertices are at \((-1,-1), (-1,\infty), (\infty,-1)\).
 We can then arrange that our point \(p\) is \((x,y)=(0,0)\).
 Write the equations of our curves as \(C=(f=0)\) and \(D=(g=0)\).
 Then \(\multiplicity{p}{C}{D}\) is the order of \(x=0\) as a zero of the resultant \(r(x)=\resultant{f}{g}(x)\) in \(y\).
@@ -557,5 +457,140 @@ Similarly, if \(r < s\), swap the roles of \(f\) and \(g\) and repeat.
 Apply induction on \(r\) and \(s\), driving at least one of them to become smaller at each step, with the other staying the same.
 The induction stops when one of them is zero, and \(C\) and \(D\) cease to intersect at \(p\).
 \end{proof}
-
+\begin{problem}{tangents:conics}
+What are the possible intersection multiplicities at a point of two smooth conics, over a field not of characteristic \(2\)?
+\end{problem}
+\begin{answer}{tangents:conics}
+The point might not belong to the conics, giving zero.
+Smooth curves are irreducible.
+The two conics might agree on a component, but being irreducible, they must then be equal since they are irreducible, and then all of their points have intersection multiplicity \(\infty\).
+There is a unique tangent line at each point, by smoothness.
+The order of each point is the number of tangent lines: \(1\).
+By theorem~\vref{theorem:multiplicity.submultiplicative}, the intersection multiplicity is at least \(1\) at any intersection point, with equality just when the tangents are distinct.
+For example, two conics with distinct tangents at the origin: \(y=x^2\) and \(x=y^2\).
+The tangents (drop higher order terms): \(y=0\), \(x=0\). 
+Resultant
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&0&-x\\
+1&-x^2&0\\
+0&1&1
+\end{pmatrix},
+\\
+&=
+-x^2
+\det
+\begin{pmatrix}
+-x^2&0\\
+1&1
+\end{pmatrix}
+-x
+\det
+\begin{pmatrix}
+1&-x^2\\
+0&1
+\end{pmatrix},
+\\
+&=
+-x^2(-x^2)-x(1),
+\\
+&=
+-x^4-x,
+\\
+&=-x(x^3+1).
+\end{align*}
+The resultant vanishes at \(x=0\) and at the three roots of \(x^3+1=0\).
+At the origin, the intersection multiplicity is \(1\).
+Finally, suppose we face two conics tangent at some point.
+By our classification of conics, we can assume that our first curve, after projective transformation, is \(y=x^2\).
+Our second has to intersect at the origin with the same tangent line.
+Writing its equation as
+\[
+0=ax^2+bxy+cy^2+dx+ey+f,
+\]
+note that passing through the origin forces precisely \(f=0\).
+To have tangent \(y=0\), we need lowest order terms to be \(d=0\), \(e\ne 0\).
+Rescale to get \(e=1\):
+\[
+0=ax^2+(bx+1)y+cy^2.
+\]
+Suppose that \(c\ne 0\).
+Now take resultant for our equations \(0=y-x^2\) and this one above:
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&0&ax^2\\
+1&-x^2&bx+1\\
+0&1&c
+\end{pmatrix},
+\\
+&=
+-x^2
+\begin{pmatrix}
+-x^2&bx+1\\
+1&c
+\end{pmatrix}
++ax^2
+\begin{pmatrix}
+1&-x^2\\
+0&1
+\end{pmatrix},
+\\
+&=
+-x^2(-cx^2-bx-1)+ax^2,
+\\
+&=
+cx^4+bx^3+(a+1)x^2,
+\\
+&=
+x^2(cx^2+bx+(a+1)).
+\end{align*}
+So the intersection multiplicity at \(x=0\) is \(2\) unless \(a=-1\), i.e.
+\[
+y=x^2-bxy-cy^2,
+\]
+for which the intersection multiplicity is \(3\).
+If \(c=0\),
+\[
+0=ax^2+(bx+1)y,
+\]
+the resultant is
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&ax^2\\
+1&bx+1
+\end{pmatrix},
+\\
+&=
+-x^2(bx+1)-ax^2,
+\\
+&=
+-x^2(bx+1+a).
+\end{align*}
+So again the intersection multiplicity at \(x=0\) is \(2\), unless \(a=-1\),
+\[
+y=x^2-bxy.
+\]
+for which the intersection multiplicity is \(3\).
+\end{answer}
+\begin{problem}{tangents:cubic}
+Prove that a cubic curve is either smooth or has one singular point.
+\end{problem}
+\begin{answer}{tangents:cubic}
+If a cubic curve \(C\) has two singular points \(p_0,p_1\), then the line \(\ell\) between them has \(\order{p}{C}\le \multiplicity{p}{C}{\ell}\), equality just when \(\ell\) is not tangent to \(C\) at \(p\), for each of the points \(p=p_0,p_1\).
+To be singular \(\order{p}{C}\ge 2\), so adding up over \(p=p_0,p_1\), the intersection number of \(C\) and \(L\) is at least \(4\), contradicting B\'ezout's theorem.
+(We have seen, or can check by differentiating, that the symmetric cubic curve 
+\[
+x^3+y^3+1=3axy
+\]
+over any field of characteristic not \(3\), with \(a^3\ne 1\), is smooth, so there are cubic curves with no singular point over any such field.)
+\end{answer}
 

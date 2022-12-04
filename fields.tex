@@ -165,16 +165,41 @@ Similarly we define a finite (or even an infinite) sum of rings, as the set of f
 \begin{example}
 If \(S\) is a ring and \(n\) is a positive integer, then \(n\times n\) matrices with entries in \(S\) form a ring, sometimes denoted \(S^{n\times n}\), using usual matrix addition and multiplication.
 \end{example}
+\begin{problem}{fields:rat.x.y}
+Which are 
+\end{problem}
 \begin{problem}{fields:left.distributive}
 Let \(S\) be the set of all polynomials with real coefficients in one variable.
 To add elements of \(S\), use usual polynomial addition.
 Take the ``multiplication''operation to be composition of polynomials, \emph{not} usual polynomial multiplication.
-Prove that \(S\) satisfies all of the laws above, except distributivity, and satisfies left but not right distributivity.
+Prove that \(S\) satisfies all of the laws above, except distributivity, and satisfies right but not left distributivity.
 \end{problem}
 If a ring \(R\) is a subset of a ring \(S\), and the addition and multiplication operations of \(R\) are just the ones of \(S\) applied to elements of \(R\), then \(R\) is a \emph{subring} of \(S\).
 \begin{example}
 Clearly \(\Z{}\) is a subring of \(\Q{}\), which is subring of \(\R{}\), which is a subring of \(\C{}\).
 \end{example}
+An \emph{isomorphism}\define{isomorphism} of rings is a bijection \(\varphi\colon S\to T\) of rings matching up their addition and multiplication operations.
+Rings are \emph{isomorphic}\define{isomorphic} if there is an isomorphism between them.
+\begin{problem}{fields:iso}
+\begin{enumerate}
+\item
+Prove that every isomorphism matches up the zero elements.
+\item
+Does it match up the identity elements in rings with identity?
+\item
+If a ring is commutative, is every isomorphic one commutative?
+\item
+Prove that every ring isomorphic to a field is itself a field.
+\item
+Prove that being isomorphic is an equivalence relation.
+\end{enumerate}
+\end{problem}
+\begin{problem}{fields:x.y}
+If \(S\) is a ring, is \(S[x][y]\) isomorphic to \(S[x,y]\)?
+\end{problem}
+\begin{problem}{fields:x.y.2}
+If \(S\) is a ring, is \(S(x)(y)\) isomorphic to \(S(x,y)\) by an isomorphism which is the identity on the constant functions (which we think of as elements of \(S\)), taking \(x\) to \(x\) and \(y\) to \(y\)?
+\end{problem}
 
 \section{Special types of rings}
 A ring is \emph{a ring with identity} if it satisfies
@@ -270,7 +295,7 @@ If there is no such positive number \(c\), we say that \(R\) has characteristic 
 Prove that the characteristic of a division ring \(R\) is prime, say \(p\), and that there is a unique map \(\Zmod{p} \to R\) which takes \(0\) to \(0\), \(1\) to \(1\), and sums to sums and products to products.
 \end{problem}
 \begin{problem}{fields:zero.divisors}
-A \emph{zero divisor}\define{zero divisor} \(r\) in a ring \(R\) is an element so that \(rs=0\) for some element s of \(R\).
+A \emph{zero divisor}\define{zero divisor} in a ring \(R\) is an element \(r\ne 0\) so that \(rs=0\) for some element \(s\ne 0\) of \(R\).
 Suppose that \(k\) is a field.
 Find the (i) zero divisors and (ii) the units in
 \begin{enumerate}
@@ -358,6 +383,9 @@ Clearly \(b\) is even, say \(b=2\beta\); plug in: \(4\alpha^3+8\beta^3+2c^3=12\a
 Divide out \(2\) to get \(2\alpha^3+4\beta^3+c^3=6\alpha \beta c\).
 Finally we see that \(c\) is even, contradicting the fact that \(a,b,c\) are coprime integers.
 Hence we conclude that \(k\) is a field.
+\end{example}
+\begin{example}
+By the same proof as before, every nonconstant polynomial in one variable, over any field, has finitely many roots, no more roots than its degree, even counted with multiplicity.
 \end{example}
 
 \section{Linear algebra}

@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xparse}
+\pgfplotsset{compat=1.14}%
+\input{colorScheme}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[hide axis,xmin=-1,xmax=1,ymin=-1,ymax=1,width=4cm]
+  \addplot[very thick,domain=-1:1,curveZero,samples=300]{abs(x)^(4/3)};%
+\end{axis}
+\end{tikzpicture}
+\end{document}

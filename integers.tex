@@ -6,6 +6,20 @@ You might prefer \(\num[group-separator={,},output-decimal-marker={\cdot}]{12345
 We reserve the \(\cdot\) symbol for multiplication, writing \(2 \cdot 3=6\) rather than \(2 \times 3 = 6\).
 
 \section{The laws of integer arithmetic}
+\epigraph[author={T.S. Eliot},source={Little Gidding, Four Quartets}]{
+We shall not cease from exploration\\
+And the end of all our exploring\\
+Will be to arrive where we started\\
+And know the place for the first time.\\
+Through the unknown, remembered gate\\
+When the last of earth left to discover\\
+Is that which was the beginning;\\
+At the source of the longest river\\
+The voice of the hidden waterfall\\
+And the children in the apple-tree\\
+Not known, because not looked for\\
+But heard, half-heard, in the stillness\\
+Between two waves of the sea.}\SubIndex{Eliot, T.S.}
 The integers are the numbers \(\dots, -2, -1, 0, 1, 2, \dots\).
 Let us distill their essential properties, using only the concepts of addition and multiplication.
 \smallskip
@@ -55,11 +69,15 @@ Write \(a\le b\) to mean \(a<b\) or \(a=b\).
 Write \(a\ge b\) to mean \(b \le a\).
 Write \(|a|\)\define{absolute value} to mean \(a\), if \(a \ge 0\), and to mean \(-a\) otherwise, and call it the \emph{absolute value}\define{absolute value} of \(a\).
 An integer \(a\) is \emph{negative}\define{negative} if \(-a\) is positive.
+%\vspace{2cm}
 
-\vspace{2cm}
+\newpage
 
 To understand mathematics, you have to solve a large number of problems.
-\epigraph[author={Frederick Douglass, statesman and escaped slave}]{I prayed for twenty years but received no answer until I prayed with my legs.}\SubIndex{Douglass, Frederick}
+
+\bigskip
+
+\epigraph[author={Frederick Douglass, statesman who escaped slavery}]{I prayed for twenty years but received no answer until I prayed with my legs.}\SubIndex{Douglass, Frederick}
 \begin{problem}{integers:use.laws}
 For each equation below, what law above justifies it?
 \begin{enumerate}
@@ -291,6 +309,8 @@ A \emph{lower bound}\define{lower bound} on \(S\) is an integer \(b\) so that \(
 Prove that a nonempty set of integers bounded from below contains a least element.
 \end{problem}
 
+\newpage
+
 \section{Division of integers}
 \epigraph[author={Lewis Carroll}, source={Through the Looking Glass}]{Can you do Division?  Divide a loaf by a knife---what's the answer to that?}\SubIndex{Carroll, Lewis}\SubIndex{Through the Looking Glass}
 We haven't mentioned division\define{division} yet.
@@ -389,39 +409,31 @@ Find the quotient and remainder for \(b,c\) equal to:
 
 \section{The greatest common divisor}
 A \emph{common divisor}\define{common divisor} of some integers is an integer which divides them all.
-\begin{problem}{integers:gcd.exists}
-Given any collection of one or more integers, not all zero, prove that they have a unique \emph{greatest common divisor}\define{greatest common divisor}, i.e. a common divisor \(d\ge 0\) so that every common divisor divides \(d\). 
+A \emph{greatest common divisor}\define{greatest common divisor} is a common divisor \(d\ge 0\) so that every common divisor divides \(d\).
+We will see that every set of integers has a unique greatest common divisor.
+\begin{problem}{integers:gcd.unique}
+Prove that if a set of integers has a greatest common divisor, it has only one.
 \end{problem}
-\begin{answer}{integers:gcd.exists}
-Suppose the collection is not empty.
-Pick any nonzero number, say \(m\), from the collection.
-By proposition~\vref{proposition:divisors.smaller}, \(m\) is not divisible by any integer larger than \(|m|\).
-So all of the positive integer divisors are between \(1\) and \(|m|\).
-Put these integers in a bag.
-Repeatedly throw out the largest integer in our bag which is not a common divisor of the collection.
-But \(1\) is a common divisor, so we can't throw them all out.
-By induction, eventually we get a greatest common divisor, unique because it is the greatest.
-
-Suppose the collection is empty.
-Any integer \(d\) is a common divisor, since there is nothing to divide into.
-But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
-Those other common divisors can be any integers.
-So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
+\begin{answer}{integers:gcd.unique}
+If there were two, both nonnegative, they would divide one another, so by proposition~\vref{proposition:divisors.smaller} each is no larger than the other, hence equal.
 \end{answer}
 Denote the greatest common divisor of integers \(m_1, m_2, \dots, m_n\) as
 \[
 \gcd{m_1,m_2,\dots,m_n}.%
 \Notation{gcd(m1,m2,...,mn)}{\gcd{m_1,m_2,\dots,m_n}}{greatest common divisor}
 \]
+Note that \(\gcd{0}=0\) and also that \(\gcd{}=0\) by our definition.
 If the greatest common divisor of two integers is \(1\), they are \emph{coprime}.\define{coprime}
-We note that \(\gcd{0,0,\dots,0}=0\) and also that \(\gcd{}=0\) by our definition.
 \begin{lemma}
 Take two integers \(b, c\) with \(c\ne 0\) and compute the quotient \(q\) and remainder \(r\), so that \(b=qc+r\) and \(0 \le r < |c|\).
-Then \(\gcd{b,c}=\gcd{c,r}\).
+Then \(b,c\) have a greatest common divisor and \(\gcd{b,c}=\gcd{c,r}\).
 \end{lemma}
 \begin{proof}
 Any divisor of \(c\) and \(r\) divides the right hand of the equation \(b=qc+r\), so it divides the left hand side, and so divides \(b\) and \(c\).
 By the same reasoning, writing the same equation as \(r=b-qc\), we see that any divisor of \(b\) and \(c\) divides \(c\) and \(r\).
+So \(b,c\) and \(c,r\) have the same divisors.
+Note that we can pick \(c\) to be the smaller in absolute value of \(b,c\).
+Existence of a greatest common divisor follows by induction since the larger, in absolute value, of \(b,c\) is larger than that of \(c,r\).
 \end{proof}
 \begin{example}
 This makes very fast work of finding the greatest common divisor by hand.
@@ -459,7 +471,7 @@ The greatest common divisor is therefore \(1\), the final \emph{nonzero} remaind
 \end{example}
 This method to find the greatest common divisor is called the \emph{Euclidean algorithm}.\define{Euclidean algorithm}\define{algorithm!Euclidean}
 \begin{example}
-If the final nonzero remainder is negative, just change its sign to get the greatest common divisor:
+This recipe fails if \(c\) divides into \(b\) and \(c<0\): if gives a negative answer. Just change its sign to get the correct greatest common divisor:
 \[
 \gcd{-4,-2}=\gcd{-2,0}=\gcd{-2}=2.
 \]
@@ -489,8 +501,8 @@ Find the greatest common divisor of
 \end{answer}
 \begin{problem*}{integers:gcd.least.sum}
 Take a nonempty collection of integers, at least one of which is not zero.
-Allow yourself to ``build new integers'' by adding or subtracting the ones you have from one another.
-Prove that the greatest common divisor of the collection is the smallest positive integer you can ``build''.
+Allow yourself to ``build new integers'' by adding or subtracting the ones you have from one another, repeatedly.
+Prove that the collection has a greatest common divisor, and it is the smallest positive integer you can ``build''.
 \end{problem*}
 \begin{answer}{integers:gcd.least.sum}
 By repeated addition, you can build any positive integer multiple of any integer from your collection.
@@ -498,18 +510,40 @@ By subtracting an integer from your collection from itself,  you can build zero.
 By repeated subtraction, you can build any negative integer multiple of any integer from your collection.
 So by adding up, you can build any linear combination \(s_1m_1+s_2m_2+\dots+s_nm_n\) of integer multiples \(s_1,s_2,\dots,s_n\) of any elements \(m_1,m_2,\dots,m_n\) from the collection,  with any integers \(s_1,s_2,\dots,s_n\).
 If all integers in our collection are divisible by some integer \(d\), then clearly so are any integer multiples or finite sums of integer multiples.
-So the greatest common divisor divides all such sums.
-Hence the greatest common divisor is unchanged if we replace the collection by the collection of all such sums.
+So every common divisor divides all such sums.
+Hence the common divisors are unchanged if we replace the collection by the collection of all such sums.
 So we can suppose that any such sum is already in our collection.
 Our collection contains some positive integer, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
 By well ordering, there is a least positive element \(c\) in our collection.
 Take quotient and remainder of any element \(m\) in our collection by \(c\): \(m=qc+r\).
 The remainder \(r=m-qc\) is also in the collection, not negative, but smaller than \(c\), and therefore is zero.
 So \(c\) is a common divisor of every element in the collection.
-Since \(d\) is the greatest common divisor, \(c\le d\).
-But \(c\) is in the collection, and \(d\) divides everyhing in the collection, so \(d\) divides \(c\), so \(d\le c\).
-Hence \(c=d\), i.e. the greatest common divisor is the smallest positive integer we can build.
+But \(c\) is in the collection, and so every common divisor divides \(c\).
+Hence \(c\) is the greatest common divisor. 
 \end{answer}
+\begin{problem}{integers:gcd.exists}
+Show that any collection of integers has a unique greatest common divisor. 
+\end{problem}
+\begin{answer}{integers:gcd.exists}
+If the collection contains something other than \(0\), apply problem~\vref{problem:integers:gcd.least.sum}.
+
+Suppose the collection is empty.
+Any integer \(d\) is a common divisor, since there is nothing to divide into.
+But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
+Those other common divisors can be any integers.
+So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
+
+Suppose the collection consists of just one integer: \(0\).
+Then every integer \(n\) divides \(0\), since \(0=0\cdot n\).
+So every integer is a common divisor of the collection.
+A greatest common divisor must be precisely an integer divisible by all others.
+In particular \(0\) is a common divisor since \(0=1\cdot 0\), and is divisible by all integers, so is a greatest common divisor.
+But any nonzero number \(d\), to be a greatest common divisor, has \(d\ge 0\) so positive, and divisible by all integers, so at least as large as any integer by proposition~\vref{proposition:divisors.smaller}, so infinitely large, impossible.
+Hence \(d=0\) is the unique greatest common divisor.
+\end{answer}
+\begin{problem}{integers:fast.gcd.many}
+How can you calculate the greatest common divisor of three integers? Four?
+\end{problem}
 
 \section{The least common multiple}
 The \emph{least common multiple}\define{least common multiple} of a finite collection of integers \(m_1, m_2, \dots, m_n\) is the smallest positive integer \(\ell=\lcm{m_1, m_2, \dots, m_n}\)\Notation{lcm(m1,m2,...,mn)}{\lcm{m_1,m_2,\dots,m_n}}{least common multiple} so that all of the integers \(m_1, m_2, \dots, m_n\) divide \(\ell\).

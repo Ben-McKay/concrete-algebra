@@ -1,5 +1,5 @@
-\chapter{Where plane curves intersect}
-\epigraph[author={Ahmad al-Fārūqī al-Sirhindī},source={Maktubat}]{Among their codified and systematic sciences is geometry, which is totally useless. The sum of the three angles in a triangles is two right angles---what benefit does it have? These theorems that are close to their hearts---what purpose do they serve?}\SubIndex{al-Sirhindī, Ahmad al-Fārūqī}
+\chapter{Where plane algebraic curves intersect}
+\epigraph[author={Ahmad al-Fārūqī al-Sirhindī},source={Maktubat}]{Among their codified and systematic sciences is geometry, which is totally useless. The sum of the three angles in a triangle is two right angles---what benefit does it have? These theorems that are close to their hearts---what purpose do they serve?}\SubIndex{al-Sirhindī, Ahmad al-Fārūqī}
 \section{Vanishing polynomials}
 \begin{example}
 Over the finite field with two elements, \(t(t+1)\) vanishes for any value of \(t\) in that field.
@@ -52,8 +52,61 @@ h(x,y)-\delta(y)h(x,0)=h_1(x,y)q(x)+h_2(x,y)q(y).
 \]
 Plugging back into \(p(x,y)\) gives the result.
 \end{proof}
+\begin{problem}{intersecting.curves:nonzero.somewhere}
+Take a polynomial in several variables over some field.
+Prove that either that polynomial is the zero polynomial or, perhaps after replacing that field by a finite extension, there is a point where that polynomial does not vanish.
+\end{problem}
+\begin{answer}{intersecting.curves:nonzero.somewhere}
+Extend to make the number of elements of the field so large that it exceeds the degree of the polynomial in all of the variables.
+\end{answer}
+\begin{problem}{intersecting.curves:nonzero.somewhere.2}
+Take a polynomial in several variables over some field.
+Prove that either that polynomial is of degree zero or, perhaps after replacing that field by a finite extension, there are two points where that polynomial takes on different values.
+\end{problem}
+\begin{answer}{intersecting.curves:nonzero.somewhere.2}
+If it takes on the same value at all points, even after any finite extension of the field, subtract that value and apply problem~\vref{problem:intersecting.curves:nonzero.somewhere}.
+\end{answer}
+\begin{problem}{intersecting.curves:nonzero.somewhere.3}
+Take a polynomial in several variables over some field.
+Prove that either that polynomial is of degree zero or, perhaps after replacing that field by a finite extension, there are points where that polynomial vanishes.
+\end{problem}
+\begin{answer}{intersecting.curves:nonzero.somewhere.3}
+From problem~\vref{problem:intersecting.curves:nonzero.somewhere.2}, there are two points, say \(x=a\) and \(x=b\), where the polynomial, say \(p(x)\), takes on different values, after perhaps a finite field extension.
+So the polynomial \(t\mapsto p((1-t)a+tb)\) is not constant, a polynomial in one variable, hence splits after a finite field extension.
+Hence \(p(x)\) has roots on the line through \(a\) and \(b\).
+\end{answer}
+\begin{problem}{intersecting.curves:nonzero.somewhere.4}
+Take a polynomial in two or more variables over some field.
+Prove that there are infinitely many points in the algebraic closure of the field where the polynomial vanishes.
+\end{problem}
+\begin{answer}{intersecting.curves:nonzero.somewhere.4}
+We can replace the field by its algebraic closure, so suppose it is algebraically closed, hence infinite.
+Following the solution to problem~\vref{problem:intersecting.curves:nonzero.somewhere.3}, pick points \(x=a\) and \(x=b\) where \(p(a)\ne p(b)\). 
+Since there are two or more variables, we can take in addition some point \(x=c\) not on the line through \(a\) and \(b\).
+Let \(x(t)=(1-t)a+tb\).
+There are only finitely many values of \(t\) at which the nonconstant polynomial \(p(x(t))-p(c)\) vanishes.
+Ignoring those, there are infinitely many points \(x=d\) of the line through \(a\) and \(b\) on which \(p(d)\ne p(c)\).
+For each of those infinitely many points \(d\), on the line through \(c\) and \(d\), the polynomial \(t\mapsto p((1-t)c+td)\) in one variable \(t\) is not constant.
+If \(p(c)=0\), replace \(c\) by one such point of that line on which \(p\ne 0\), and which is not the point \(d\).
+So we can assume that \(p(c)\ne 0\).
+Again, for each of those infinitely many points \(d\), on the line through \(c\) and \(d\), the polynomial \(t\mapsto p((1-t)c+td)\) in one variable \(t\) is not constant, so has roots in the algebraic closure.
+Since \(p(c)\ne 0\), none of those roots lie at \(t=0\).
+If we change the choice of \(d\), the old line from \(c\) to \(d\) and the new one only overlap on the point \(c\), which is not where the roots of \(p(x)\) lie.
+So a distinct root for each of infinitely many choices of \(d\).
+\end{answer}
+In particular, every plane algebraic curve has infinitely many points, but perhaps only in the algebraic closure of its field.
+\begin{problem}{intersecting.curves:polys.take.values}
+Prove that every nonconstant polynomial over a field takes on every value in the algebraic closure of the field, if we plug into the variables suitable values from the algebraic closure.
+\end{problem}
+\begin{answer}{intersecting.curves:polys.take.values}
+Replace the field by its algebraic closure, without loss of generality, so we can assume our field is algebraically closed.
+Writing our variables as \(x=(x_1,\dots,x_n)\), and our polynomial as \(p(x)\),  take a value \(c\) in the field, and replace \(p(x)\) by \(p(x)-c\): it suffices to prove the result for \(c=0\); apply problem~\vref{problem:intersecting.curves:nonzero.somewhere.3}.
+\end{answer}
 
 \section{Linear factors}
+\begin{problem}{intersecting.curves:lines}
+Prove that any two lines in the plane intersect in at most one point.
+\end{problem}
 A \emph{linear function}\define{linear!function} is a polynomial of the form
 \[
 f\of{x_1,x_2,\dots,x_n} = a_1 x_1 + a_2 x_2 + \dots + a_n x_n.
@@ -84,10 +137,13 @@ Then the resultant\SubIndex{resultant} \(r=\resultant{b}{c}\) is expressible as 
 \end{lemma}
 The proof is identical to the proof of lemma~\vref{lemma:resultant.over.integers}.
 
-Take two polynomials \(b(x,y)\) and \(c(x,y)\) and let \(r(x)\) be the resultant of \(b(x,y), c(x,y)\) in the \(y\) variable, so thinking of \(b\) and \(c\) as polynomials in \(y\), with coefficients being polynomials in \(x\).
+Take two polynomials \(b(x,y)\) and \(c(x,y)\).
+Let \(r(x)\) be the resultant of \(b(x,y), c(x,y)\) in the \(y\) variable, so thinking of \(b\) and \(c\) as polynomials in \(y\), with coefficients being polynomials in \(x\).
 So \(r(x)\) is a polynomial in \(x\).
+Imagine drawing the plane algebraic curves \(B=(0=b(x,y))\) and \(C=(0=c(x,y))\).
+The resultant \(r(x)\) \emph{counts correctly}\define{counting correctly} if a root \(x=x_0\) of \(r(x)\) arises just when \(x=x_0\) is a horizontal line through a single intersection point of \(B\) and \(C\).
 \begin{example}
-If \(b(x,y)=y+x\), \(c(x,y)=y\), then \(r(x)=x\) vanishes just at the value \(x=0\) where there is a common factor: \(y\).
+If \(b(x,y)=y+x\), \(c(x,y)=y\), then \(r(x)=x\) vanishes just at the value \(x=0\) where there is a common factor: \(y\), counting correctly.
 \begin{center}
 \inputinexample{nondegenerate-resultant}
 \end{center}
@@ -102,7 +158,7 @@ We can see roots ``flying away'' to infinity on those lines.
 \begin{center}
 \inputinexample{degenerate-resultant-2b}
 \end{center}
-Finding the determinant of the associated \(4 \times 4\) matrix tells us that \(r(x)=x^2\), which vanishes just at the value \(x=0\) where \(b(0,y)=y\) and \(c(0,y)=y+1\) drop in degrees, \emph{not} due to a common factor.
+Finding the determinant of the associated \(4 \times 4\) matrix tells us that \(r(x)=x^2\), which vanishes just at the value \(x=0\) where \(b(0,y)=y\) and \(c(0,y)=y+1\) drop in degrees, \emph{not} due to a common factor, counting incorrectly.
 \begin{center}
 \inputinexample{degenerate-resultant-2}
 \end{center}
@@ -111,7 +167,8 @@ The resultant of \(y\) and \(y+1\) is \emph{not} \(r(0)\) since the degrees drop
 \begin{example}
 If \(b(x,y)=xy^2+y\) and \(c(x,y)=2xy^2+y+1\) then \(r(x)=x(x+1)\) vanishes at \(x=0\) and \(x=-1\).
 At \(x=0\), \(b(0,y)=y, c(0,y)=y+1\) have no common factor, but drop degrees.
-At \(x=-1\), \(b(-1,y)=-y(y-1)\), \(c(-1,y)=-2(y-1)(y-1/2)\) have a common factor, but they don't drop degrees. 
+The resultant is counting incorrectly.
+At \(x=-1\), \(b(-1,y)=-y(y-1)\), \(c(-1,y)=-2(y-1)(y-1/2)\) have a common factor, but they don't drop degrees.
 \begin{center}
 \inputinexample{degenerate-resultant}
 \end{center}
@@ -121,23 +178,50 @@ If \(b(x,y)=x^2+y^2-1\) and \(c(x,y)=(x-1)^2+y^2-1\) then \(r(x)=(2x-1)^2\) vani
 \[
 b(1/2,y)=c(1/2,y)=\pr{y-\frac{\sqrt{3}}{2}}\pr{y+\frac{\sqrt{3}}{2}}.
 \]
+The resultant is counting incorrectly.
 \begin{center}
 \inputinexample{degenerate-resultant-4}
 \end{center}
 \end{example}
+
+\section{Shearing}
+We call the map \((x,y)\mapsto (x+\lambda y,y)\) a \emph{shear}\define{shear} (thinking of rock layers sliding horizontally across one another, not sheep).
 \begin{lemma}\label{lemma:linear.normalization}
 Suppose that \(k\) is a field and 
 \[
 x=\pr{x_1,x_2,\dots,x_n}
 \]
 are variables and \(y\) is a variable.
-Take \(b(x,y)\) and \(c(x,y)\) two nonconstant polynomials in \(k[x,y]\).
+Take \(b(x,y)\) and \(c(x,y)\) two nonconstant polynomials with coefficients in \(k\).
 Then in some finite degree extension of \(k\) there are constants 
 \[
 \lambda=\pr{\lambda_1, \lambda_2, \dots, \lambda_n}
 \]
-so that in the expressions \(b\of{x+\lambda y, y}, c\of{x+\lambda y,y}\), among the monomials of highest degree in \(x,y\), one of those monomials is a constant multiple of a power of \(y\).
+so that after a shear, in the expressions \(b\of{x+\lambda y, y}, c\of{x+\lambda y,y}\), among the monomials of highest degree in \(x,y\), one of those monomials is a constant multiple of a power of \(y\).
 \end{lemma}
+\begin{corollary}
+After a suitable finite field extension and shear, the resultant counts intersections correctly.
+\end{corollary}
+\begin{problem}{intersecting.curves:try.a.shear}
+Work out the resultant after shearing \(b(x,y)\defeq xy^2+y\), \(c(x,y)\defeq xy^2+y+1\).
+\end{problem}
+\begin{answer}{intersecting.curves:try.a.shear}
+The resultant is
+\[
+r(x)=
+\det
+\begin{pmatrix}
+0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 & 0 \\
+x & 1 & 0 & x & 1 & 1 \\
+\lambda & x & 1 & \lambda & x & 1 \\
+0 & \lambda & x & 0 & \lambda & x \\
+0 & 0 & \lambda & 0 & 0 & \lambda
+\end{pmatrix}
+=
+-\lambda^3.
+\]
+\end{answer}
 \begin{example}
 Return to our earlier example of \(b(x,y)=xy^2+y\) and \(c(x,y)=2xy^2+y+1\) and let
 \begin{align*}
@@ -159,7 +243,7 @@ l & x & 1 & 2\lambda & 2 \, x & 1 \\
 \]
 So the resultant now vanishes just when \(x=-(\lambda+1)\), which is precisely when \(B(x,y), C(x,y)\) have a common factor of \(y-1\).
 With a small value of \(\lambda \ne 0\), the picture changes very slightly: we change \(x,y\) to \(x+\lambda y,y\), a linear transformation which leaves the \(x\)-axis alone, but tilts the \(y\)-axis to the left.
-Crucially, we tilt the asymptotic line at which the two curves approached one another (where \(b(x,y)\) and \(c(x,y)\) dropped degrees), but with essentially no effect on the intersection point:
+Crucially, we tilt the asymptotic line at which the two curves approached one another (where \(b(x,y)\) and \(c(x,y)\) dropped degrees), but with essentially no effect on the intersection point: the resultant counts correctly.
 \begin{center}
 \inputinexample{degenerate-resultant-3}
 \end{center}
@@ -184,7 +268,7 @@ r(x)=4
 	\frac{1-\lambda\sqrt{3}}{2}
 }
 \]
-vanishes at two distinct values of \(x\) corresponding to the two distinct roots.
+vanishes at two distinct values of \(x\) corresponding to the two distinct roots, counts correctly.
 In the picture, the two roots now lie on different vertical lines (different values of \(x\)).
 \begin{center}
 \inputinexample{nondegenerate-resultant-2}
@@ -201,13 +285,12 @@ b(x+y\lambda,y)=y^d b(\lambda,1) + \dots
 where \(\dots\) are lower order in \(y\).
 Similarly for two polynomials \(b(x,y), c(x,y)\), or for any finite set of polynomials.
 \end{proof}
-
 \begin{corollary}\label{corollary:resultant.effective}
 Take one variable \(y\) and several variables \(x=\pr{x_1,x_2,\dots,x_n}\) and two polynomials \(b(x,y)\) and \(c(x,y)\) over a field.
 Let \(r(x)\) be the resultant of \(b(x,y), c(x,y)\) in the \(y\) variable.
 For any constant \(a\) in our field, if \(b(a,y)\) and \(c(a,y)\) have a common root in some algebraic extension of our field then \(r(a)=0\).
 
-If the coefficient of highest order in \(y\) of both \(b(x,y)\) and \(c(x,y)\) is constant in \(x\) (for example, perhaps after the normalization described in lemma~\vref{lemma:linear.normalization}) then \(r(a)=0\) at some value \(x=a\) in our field just exactly when \(b(a,y)\) and \(c(a,y)\) have a common factor.
+If the coefficient of highest order in \(y\) of both \(b(x,y)\) and \(c(x,y)\) is constant in \(x\) (for example, after a shear as described in lemma~\vref{lemma:linear.normalization}) then \(r(a)=0\) at some value \(x=a\) in our field just exactly when \(b(a,y)\) and \(c(a,y)\) have a common factor.
 Moreover \(r(x)\) is then the zero polynomial just when \(b(x,y)\) and \(c(x,y)\) have a common factor which is a polynomial in \(x,y\) of positive degree in \(y\).
 \end{corollary}
 \begin{proof}
@@ -224,7 +307,153 @@ In particular, \(c(x,y)\) factorises over that ring.
 By the Gauss lemma (proposition~\vref{proposition:Gauss.lemma}), \(c(x,y)\) factorises over the polynomials in \(x,y\).
 But \(c(x,y)\) is irreducible, so one factor is constant, and it isn't \(d(x,y)\), so it must be \(C(x,y)\), so we rescale by a nonzero constant to get \(d(x,y)=c(x,y)\), i.e. \(c(x,y)\) divides \(b(x,y)\).
 \end{proof}
+\section{Counting intersections}
+\begin{corollary}\label{corollary:finite.intersection}
+The number of intersection points of two plane algebraic curves is finite (even in the algebraic closure of the field), bounded by the product of their degrees, unless they share a component.
+\end{corollary}
+\begin{proof}
+We can assume no common component and shear to get the resultant to count correctly.
+After finite field extension and shear, the zeroes of the resultant are \(x\) coordinates of the intersection points.
+Each zero of the resultant sits on a vertical line containing exactly one intersection point.
+Hence the number of intersections is at most the degree of the resultant.
+\end{proof}
+\begin{example}
+The curves \((x=0)\) and \((xy=1)\) don't intersect, so the number of intersections may be smaller than the product of degrees.
+\end{example}
+The \emph{intersection multiplicity}\define{intersection multiplicity} of plane algebraic curves \(B\) and \(C\) at a point \(p=(x,y)\), denoted \(\multiplicity{p}{B}{C}\),\Notation{BCp}{\multiplicity{p}{B}{C}}{intersection multiplicity of curves \(B\) and \(C\) at point \(p\)} is the multiplicity of \(x\) as a zero of \(\resultant{b}{c}(x)\), after shearing (if needed) to arrange that the resultant counts correctly.
+If \(p\) is not a point of both \(B\) and \(C\) then define
+\(\multiplicity{p}{B}{C}\defeq 0\).
+If \(p\) lies on a common component of \(B\) and \(C\) then let \(\multiplicity{p}{B}{C}\defeq\infty\).
+\begin{problem}{intersection.curves:million}
+Write down equations of two plane algebraic curves \(B\) and \(C\), over any field with at least \(n\) elements, which both have degrees \(m\) and \(n\), say with \(m\le n\), and which intersect at exactly \(mn\) distinct points over the algebraic closure of the field.
+\end{problem}
+\begin{answer}{intersection.curves:million}
+Write out \(m\) distinct elements of \(k\), say
+\[
+b_1,b_2,\dots,b_m,
+\]
+and \(n\) distinct elements of \(k\), say
+\[
+c_1,c_2,\dots,c_n,
+\]
+and let
+\begin{align*}
+B&=(0=(x-b_1)(x-b_2)\dots(x-b_m)=0),\\
+C&=(0=(y-c_1)(y-c_2)\dots(y-c_n)=0).
+\end{align*}
+Then \(B\) intersects \(C\) precisely at points \((x,y)=(b_i,c_j)\) for any \(i=1,2,\dots,m\) and \(j=1,2,\dots,n\), so \(mn\) points of intersection.
+More generally, we can let \(B\) consist of \(m\) distinct lines, and \(C\) also, but so that every line of \(B\) is not parallel to any line of \(C\), so \(mn\) intersections. 
+An irreducible example is more difficult.
+\end{answer}
+\begin{problem}{intersecting.curves:stay.away.irred}
+Prove that, for every irreducible plane algebraic curve, there is a point \((x,y)\) of the plane not lying on it.
+\end{problem}
+\begin{answer}{intersecting.curves:stay.away.irred}
+If the curve is irreducible, shear it to have the form \(B=(y^n+\dots)\), where \(\dots\) are lower order in \(y\).
+On the line \((x=0)\), this equation is not everywhere satisfied, i.e. that vertical line is not a component of \(B\), and the equation of \(B\) becomes a polynomial in \(y\), not the zero polynomial, so having finitely many roots in the algebraic closure.
+Pick any value \(y=y_0\) which is not one of those roots.
+(To find one, if the field is finite, you might have to extend to create more than \(n\) elements in the field.)
+\end{answer}
+\begin{problem}{intersecting.curves:stay.away}
+Prove that, for every plane algebraic curve, there is a point \((x,y)\) of the plane not lying on it.
+\end{problem}
+\begin{answer}{intersecting.curves:stay.away}
+We can assume the curve is not irreducible, by problem~\vref{problem:intersecting.curves:stay.away.irred}.
+Suppose that the curve has components \(B_i=(0=b_i(x,y))\), finitely many.
+Take all resultants \(r_{ij}(x)=\resultant{b_i,b_j}(x)\).
+Each vanishes at only finitely many values of \(x\) by proposition~\vref{proposition:resultant.degree}.
+Even in the algebraic closure, each resultant has still only finitely many roots.
+So we can finitely extend our field, if it is finite, to have some element \(x=x_0\) not a root of any \(r_{ij}(x)\).
+On the vertical line \(x=x_0\), no two of these \(b_i(x_0,y)\) have a common factor, and in particular none of them are zero.
+So altogether finitely many \(y=y_0\) can be a root of one of these \(b_i(x_0,y)\).
+Pick some \(y=y_0\) not a root of any of them, again perhaps after some finite extension of our field if it is a finite field.
+Then \((x_0,y_0)\) is not on the curve.
+\end{answer}
+\begin{problem}{intersecting.curves:rational.fns}
+Prove that every rational function on a curve \(C\), and every rational morphism \(f\colon C\to\Proj^n\) (or \(f\colon C\to D\) between curves) is defined everywhere on \(C\) except perhaps at finitely many points.
+\end{problem}
+\begin{answer}{intersecting.curves:rational.fns}
+We can assume that \(C\) is irreducible.
+Suppose that \(C=(0=c(x,y))\).
+For a rational morphism, we only have to show that its constituent rational functions are defined except perhaps at finitely many points.
+So suppose that 
+\[
+f(x,y)=\frac{p(x,y)}{q(x,y)},
+\]
+is a rational function, determined up to adding multiples of \(c(x,y)\) to its numerator and denominator.
+The denominator \(q(x,y)\) is not a multiple of \(c(x,y)\), since the rational function is defined somewhere and \(c(x,y)\) is irreducible.
+There are finitely many points where the curve \(C\) intersects the curve \((q(x,y)=0)\), by corollary~\vref{corollary:finite.intersection}.
+\end{answer}
+\begin{problem}{intersecting.curves:rational.maps}
+Prove that every rational function, and every rational morphism, on a curve takes on each value only at finitely many points, or else is constant on some component of \(C\).
+\end{problem}
+\begin{answer}
+We can assume that our curve, call it \(B=(0=b(x,y))\), is irreducible, and that our field is algebraically closed.
+Pick an element \(c_0\) of the field.
+Our rational function is
+\[
+f(x,y)=\frac{p(x,y)}{q(x,y)}
+\]
+as ratios of polynomials in lowest terms.
+Since \(f(x,y)\) is not constant on \(B\), \(p(x,y),q(x,y)\) are not both constant.
+The equations
+\begin{align*}
+0&=b(x,y), \\
+c_0q(x,y)&=p(x,y)
+\end{align*}
+are satisfied just by values of \(x,y\) for which \((x,y)\) lies on \(B\) and either \(f(x,y)=c_0\) or both \(p(x,y)\) and \(q(x,y)\) vanish.
+Since \(p(x,y),q(x,y)\) are not both constant and have no common factor, the second equation also cuts out a plane algebraic curve \(C\).
+By corollary~\vref{corollary:finite.intersection}, \(B\) and \(C\) have finitely many points of intersection, or else they share a component, which must then be \(B\) since \(B\) is irreducible.
+But if they share \(B\) as a component, then \(c_0q(x,y)=p(x,y)\) everywhere on \(B\), i.e. \(f\) is constant on \(B\).
+For a rational map (instead of a rational function): its components are rational functions.
+\end{answer}
+\section{Singular points}
+\begin{problem}{intersecting.curves:partials}
+Suppose that \(b(x,y)\) is a polynomial of some degree \(d\) over a field of characteristic \(p>0\) and that \(\pderiv{b}{x}=0\).
+Prove that \(b(x,y)\) is a finite sum of monomials
+\[
+b(x,y)=\sum_{k,\ell\ge 0} c_{k\ell} x^{pk}y^{\ell}.
+\]
+\end{problem}
+\begin{answer}{intersecting.curves:partials}
+Expand into the usual finite sum of monomials:
+\[
+b(x,y)=\sum_{k,\ell\ge 0} b_{k\ell} x^ky^{\ell}.
+\]
+The partial derivative \(\pderiv{b}{x}\) arises from \(b(x,y)\) by replacing every monomial \(x^k y^{\ell}\) by \(kx^ky^{\ell}\).
+Ignoring the constant term, these are all distinct monomials still, and vanish only if \(k\) is divisible by \(p\).
+\end{answer}
+\begin{lemma}\label{lemma:number.of.singular.points}
+The number of singular points of an irreducible plane algebraic curve of degree \(d\), over a field of characteristic zero or more than \(d\), is at most \(d(d-1)\).
+Moreover, if the singular points have orders \(d_1,d_2,\dots,d_k\), then
+\[
+\sum_i d_i(d_i-1)\le d(d-1).
+\]
+\end{lemma}
+\begin{proof}
+The singular points are the solutions of 
+\[
+0=p(x,y)=\pderiv{p}{x}=\pderiv{p}{y}.
+\]
+Suppose that \(\pderiv{p}{x}\) is the zero polynomial.
+By problem~\vref{problem:intersecting.curves:partials}, \(p(x,y)\) is a function of one variable only, and the result is trivial to prove.
 
+So we can suppose that \(\pderiv{p}{x}\) is not the zero polynomial.
+If the two functions 
+\[
+p(x,y), \pderiv{p}{x}
+\]
+have a common factor, then since \(p(x,y)\) is irreducible, this factor must be \(p(x,y)\).
+But \(\pderiv{p}{x}\) is a polynomial of lower degree in \(x\) than \(p(x,y)\), so no common factor.
+By proposition~\vref{proposition:resultant.degree}, the number of common roots of \(p(x,y)\) and \(\pderiv{p}{x}\) is at most \(d(d-1)\) when multiplicities are counted.
+Take a singular point, and arrange that it is the origin.
+If its order is \(d_i\), \(p(x,y)\) expands out to have lowest nonzero term homogeneous of degree \(d_i\), and \(\pderiv{p}{x}\) has lowest nonzero term homogeneous of degree \(d_i-1\).
+So each singularity contributes a zero of order \(d_i(d_i-1)\) to the zeroes of the resultant of \(p(x,y),\pderiv{p}{x}\):
+\[
+\sum_i d_i(d_i-1)
+\]
+is at most the total multiplicity of zeroes of the resultant, which is at most \(d(d-1)\).
+\end{proof}
 \begin{corollary}\label{corollary:Null}
 Given a finite collection of polynomial functions over a field \(k\), for \(x=\pr{x_1,x_2,\dots,x_n}\), either
 \begin{itemize}
@@ -236,9 +465,12 @@ in some finite extension of \(k\), every polynomial lies in the ideal generated 
 \end{corollary}
 \begin{proof}
 Suppose our collection consists of just one polynomial, perhaps in several variables.
-If its values at all points are the same, even after taking any finite extension, then subtract that constant and apply corollary~\vref{lemma:infinite.field.zeroes} to find it becomes zero, so was a constant, say \(c\ne 0\).
-Write any polynomial \(p(x)\) as \(p(x)=c(p(x)/c)\) to see it is a multiple of that constant \(c\), so lies in the ideal.
-If it its values are not all the same, perhaps after taking some finite extension, take two points where it takes on different values.
+
+If its values at all points are the same, some constant \(c\), even after taking any finite extension, then subtract that constant and apply corollary~\vref{lemma:infinite.field.zeroes} to find the polynomial is zero.
+If \(c=0\), the result is clear.
+If \(c\ne 0\), write any polynomial \(p(x)\) as \(p(x)=c(p(x)/c)\) to see it is a multiple of that constant \(c\), so lies in the ideal.
+
+If (perhaps after taking some finite extension field) its values are not all the same at different points, take two points where it takes on different values.
 Draw the line between them.
 It is not constant on that line.
 Restrict it to that line and we reduce the problem down to one variable parameterizing that line.
@@ -262,7 +494,6 @@ By induction we construct polynomials \(q_j(x)\) so that
 So \(1\) lies in the ideal generated by these \(p_1(x), p_2(x), \dots, p_s(x)\).
 But then any polynomial \(f(x)\) has the form \(f(x)=f(x) \cdot 1\), so also lies in that ideal.
 \end{proof}
-
 \begin{problem}{intersecting.curves:null}
 In corollary~\ref{corollary:Null}, prove that either one case or the other occurs, but not both.
 \end{problem}

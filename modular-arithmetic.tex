@@ -111,6 +111,9 @@ Take integers \(a,b,m\) with \(m \ne 0\).
 Let \(d\defeq\gcd{a,b,m}\).
 Prove that \(\congmod[m]{a}{b}\) just when \(\congmod[m/d]{a/d}{b/d}\).
 \end{problem}
+\begin{problem}{modular.arithmetic:5n.plus.7}
+Why is \(5^n+7\) divisible by \(4\) for every \(n=1,2,3,\dots\)?
+\end{problem}
 
 \section{Arithmetic of remainders}
 We now \emph{define} an addition law on the numbers \(0,1,2,3,4,5,6\) by declaring that when we add these numbers, we then take remainder modulo \(7\).
@@ -186,6 +189,13 @@ Compute the remainder when dividing \(19\) into \(37^{200}\).
 \end{problem}
 \begin{problem}{modular.arithmetic:remainder.2}
 Compute the last two digits of \(9^{2000}\).
+\end{problem}
+\begin{problem}{modular.arithmetic:quartic}
+Use modular arithmetic to prove that the integer coefficient polynomial
+\[
+b(x)=2x^4-2x+7
+\]
+has no integer roots.
 \end{problem}
 \begin{problem}{modular.arithmetic:quad.eqn}
 Prove that the equation \(a^2 + b^2 = 3c^2\) has no solutions in nonzero integers \(a\), \(b\) and \(c\).
@@ -281,8 +291,38 @@ Then we can compute out modulo \(13\):
 \begin{problem}{modular:big.power}
 Compute \(2^{100}\) modulo \(125\).
 \end{problem}
+\begin{problem}{modular:pq.zero.divisors}
+A \emph{zero divisor}\SubIndex{zero divisor} among the remainders modulo an integer \(m>0\) is a remainder \(b\) for which there is a nonzero remainder \(c\) so that \(bc=0\) modulo \(m\).
+Suppose that \(m\) is a product of two primes, say \(m=pq\).
+How do we find the number of zero divisors among the remainders modulo \(m\)?
+\end{problem}
+\begin{answer}{modular:pq.zero.divisors}
+\(p+q-2\)
+\end{answer}
 \end{example}
-
+\begin{problem}{modular.arithmetic:poly}
+Use modular arithmetic to prove that the integer coefficient polynomial
+\[
+b(x)=x^4-2x-7
+\]
+has no integer roots.
+\end{problem}
+\begin{answer}{modular.arithmetic:poly}
+Mod \(3\), \(b(x)=x^4+x+2\).
+We plug in \(x=0,1,2\) and take remainder modulo \(3\) to find that these are not roots:
+\[
+\begin{array}{rl}
+\toprule
+x&x^4+x+2\pmod{3}\\
+\midrule
+0&0^4+0+2=2\\
+1&1^4+1+2=1\\
+2&2^4+2+2=2\\
+\bottomrule
+\end{array}
+\]
+Any root in integers would reduce modulo \(3\) to a root in remainders modulo \(3\).
+\end{answer}
 
 \section{Reciprocals}
 Every nonzero rational number \(b/c\) has a reciprocal: \(c/b\).
@@ -316,8 +356,14 @@ A remainder that has a reciprocal is a \emph{unit}.\define{unit}
 Hint: \(\bar{2}^2=0\).
 \end{problem}
 \begin{problem}{modular.arithmetic:reciprocal}
-Prove that, modulo any integer \(m\), \((m-1)^{-1}=m-1\), and that modulo \(m^2\), \((m-1)^{-1}=m^2-m-1\).
+Prove that, modulo any positive integer \(m\), \(m-1\) has a reciprocal and that this reciprocal is \((m-1)^{-1}=m-1\).
 \end{problem}
+\begin{answer}{modular.arithmetic:reciprocal}
+\((m-1)(m-1)=m^2-2m+1=1\) up to multiples of \(m\).
+Careful: the following proof is not going to work. You might try to write that \((m-1)^{-1}\cong (-1)^{-1}\cong -1\) mod \(m\).
+This doesn't work because you are assuming that \((-1)^{-1}\) can be calculated modulo \(m\) just as if it were being calculated first in the integers, and then reduced modulo \(m\). But the \(()^{-1}\) operation doesn't work like that: it doesn't commute with reduction modulo an integer.
+Also, this incorrect attempt at a proof assumes that there is a reciprocal.
+\end{answer}
 \begin{theorem}
 Take a positive integer \(m\) and a remainder \(\bar{r}\) modulo \(m\).
 Take the B\'ezout coefficients of \(r\) and \(m\): \(sr+tm=d\), so that \(d\) is the greatest common divisor of \(r\) and \(m\).
@@ -434,4 +480,3 @@ Finally, explain why, for any integer \(k\),
 \congmod[p]{k^p}{k}.
 \]
 \end{problem}
-

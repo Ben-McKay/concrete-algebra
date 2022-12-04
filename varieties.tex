@@ -73,8 +73,9 @@ c'(x)= \frac{d}{dx} \pr{x^{p^n}-x}=p^n x^{-1+p^n} - 1= -1,
 since \(p=0\) in \(k\).
 But then \(c'(x)\) has no roots in any field extension \(K\) of \(k\), so \(c(x)\) has no multiple roots over \(K\), so \(b(x)\) has no multiple roots over \(K\).
 \end{proof}
-\begin{lemma}
-For any finite field \(K\) of characteristic \(p\), the \emph{Frobenius morphism}\define{Frobenius morphism}\define{morphism!Frobenius} \(f(x)=x^p\) is an automorphism of fields \(f \colon K \to K\), i.e. is a bijection preserving addition, subtraction, multiplication and division, taking \(0 \mapsto 0\) and \(1 \mapsto 1\).
+\begin{lemma}\label{lemma:Frobenius}
+Suppose that \(K\) is a finite field and \(p\) is its characteristic.
+The \emph{Frobenius morphism}\define{Frobenius morphism}\define{morphism!Frobenius} \(f(x)=x^p\) is an automorphism of fields \(f \colon K \to K\), i.e. is a bijection preserving addition, subtraction, multiplication and division, taking \(0 \mapsto 0\) and \(1 \mapsto 1\).
 \end{lemma}
 \begin{proof}
 Clearly \(0^p=0\) and \(1^p=1\).
@@ -222,7 +223,7 @@ So in such a case, \(k(C) \subset k(D)\) is a nontrivial field extension.
 We get a picture giving some intuition for nontrivial algebraic field extensions: typically we expect to see an irreducible curve \(D\) mapping to a curve \(C\) by a many-to-one map.
 The Galois group of \(k(D)/k(C)\) swaps strands of the curve \(D\) up and down in the picture, so each point of \(D\) remains over the same point of \(C\) as before the swap.
 
-The story continues similarly in higher dimensions: a transcendental extension increases dimension, while an algebraic extension, say of degree \(n\), preserves dimension, giving a new geometric object which maps regularly to the old one, by an \(n\)-to-\(1\) map.
+The story continues similarly in higher dimensions: a transcendental extension increases dimension as a ``cylinder'', while an algebraic extension, say of degree \(n\), preserves dimension, giving a new geometric object, sitting inside such a ``cylinder'', mapping regularly to the old one, by an \(n\)-to-\(1\) map.
 
    
 \section{Rational curves}
@@ -265,7 +266,7 @@ Recall that a curve \(C=(0=f(x,y))\) is \emph{irreducible}
 if \(f(x,y)\) is irreducible as a polynomial.
 \begin{theorem}
 An irreducible plane algebraic curve \(C\) over a field \(k\) is rational just when there is a nonconstant rational map \(k \to C\).
-In other words, \(C\) is rational just when there are rational functions \(x(t),y(t)\), not both constant, for which the point \((x(t),y(t))\) lies in \(C\) for all \(t\) in the algebraic closure of the field.
+In other words, \(C\) is rational just when there are rational functions \(x(t),y(t)\), not both constant, for which the point \((x(t),y(t))\) lies in \(C\) for all \(t\) in the algebraic closure of the field for which \(x(t)\) and \(y(t)\) are both defined.
 \end{theorem}
 \begin{proof}
 If our curve \(C\) is rational then by definition \(C\) is birational to a line, so there is such a map.
@@ -279,7 +280,7 @@ Take a rational function on \(C\), say \(g(x,y)=b(x,y)/c(x,y)\).
 Then \(c(x,y)\ne 0\) at all but finitely points of \(C\).
 (Note that this requires that our curve \(C\) is irreducible, as otherwise we might have \(g(x,y)\) vanishing on a component of \(C\).)
 So at infinitely many values of \(t\), \(g(x(t),y(t))\) is defined.
-We map \(g(x,y) \in k(X) \mapsto g(x(t),y(t)) \in k(t)\), a morphism of fields. 
+We map \(g(x,y) \in k(C) \mapsto g(x(t),y(t)) \in k(t)\), a morphism of fields. 
 The image is some subfield \(K=k(x(t),y(t)) \subset k(t)\).
 The result follows from the following theorem applied to \(K\).
 \end{proof}

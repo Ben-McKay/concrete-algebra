@@ -230,7 +230,7 @@ The complex numbers are a field extension of the real numbers.
 The real numbers are a field extension of the rational numbers.
 \end{example}
 Consider how we could write down field extensions.
-If \(k \subset K\) is a subfield, a \emph{basis}\define{basis} of \(K\) over \(k\) is a collection of elements \(\alpha_1, \alpha_2, \dots, \alpha_n\) of \(K\) so that every element of \(K\) has the form
+If \(k \subset K\) is a subfield, a \emph{spanning set}\define{spanning set} of \(K\) over \(k\) is a collection of elements \(\alpha_1, \alpha_2, \dots, \alpha_n\) of \(K\) so that every element of \(K\) has the form
 \[
 a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
 \]
@@ -239,6 +239,7 @@ for some coefficients
 a_1, a_2, \dots, a_n
 \]
 from \(k\).
+A \emph{basis} is a minimal spanning set.
 The \emph{degree}\define{degree!of field extension} of \(K\) over \(k\) is the smallest number of elements in a basis.
 \begin{example}
 We can write every element of \(\C{}\) as \(x \cdot 1 + y \cdot i\), for some real coefficients \(x,y\).
@@ -387,6 +388,20 @@ A field extension by finitely many algebraic elements is algebraic.
 \begin{proof}
 It has finite degree.
 \end{proof}
+\begin{theorem}
+The only finite degree extensions of \(\R{}\) are \(\R{}\) and \(\C{}\).
+\end{theorem}
+\begin{proof}
+The extension must be algebraic, so either is \(\R{}\) or contains an extension by adding a root of an irreducible.
+The irreducibles are linear or quadratic, and the linear have roots in \(\R{}\), so the extension is by adding a root of an irreducible quadratic polynomial \(x^2+bx+c\), so some 
+\[
+\alpha=\frac{-b\pm\sqrt{b^2-4c}}{2}
+\]
+with negative discriminant.
+Translating \(\alpha\) by a real number, the field extension is the same field we get by adding just a square root to the discriminant \(b^2-4c\).
+Scaling, it is the same field we get by adding a \(\sqrt{-1}\), i.e. isomorphic to \(\C{}\).
+We can now factor every quadratic, by the same formula, so now our field is algebraically closed, and so has no extension.
+\end{proof}
 
 \section{Splitting fields}
 A polynomial \(p(x)\) with coefficients in a field \(k\) \emph{splits}\define{split polynomial} if it is a product of linear factors.
@@ -441,6 +456,28 @@ K = \left\{0,1,\alpha,1+\alpha,\alpha^2,1+\alpha^2,\alpha+\alpha^2,1+\alpha+\alp
 \]
 so \(K\) is a finite field with 8 elements.
 \end{problem}
+\begin{lemma}\label{lemma:one.variable.splits}
+Every nonzero homogeneous polynomial of degree \(n\) in two variables over a field \(k\) splits into a product of homogeneous linear factors over some finite extension field.
+\end{lemma}
+\begin{proof}
+If \(P(x,y)\) has a linear factor of \(y\), divide it out and apply induction; so we can assume there are no linear factors of \(y\).
+Since \(y\) is not a linear factor of \(P(x,y)\), \(P(x,1)\) has degree \(n\), so splits \(P(x,1)=a(x-x_1)\dots(x-x_n)\) over some finite extension field.
+The homogeneous polynomial
+\[
+R(x,y)\defeq P(x,y)-a(x-x_1y)(x-x_2y)\dots(x-x_ny)
+\]
+vanishes at \(y=1\) for any \(x\), so by homogeneity vanishes for any \(y \ne 0\).
+Working over the algebraic closure of our field, fixing any value of \(x\), there are infinitely many values of \(y\) at which \(0=R(x,y)\), and so \(R(x,y)\) vanishes everywhere.
+\end{proof}
+\begin{problem}{algebraic.curves:uniqueness}
+Prove that every nonzero homogeneous polynomial \(P(x,y)\) in two variables over a field has a factorization
+\[
+P(x,y)=(a_1x+b_1y)^{n_1}\dots(a_2x+b_2 y)^{n_k},
+\]
+over a finite extension of that field, with all linear factors linearly independent.
+Prove that this factorization is unique up to reordering and rescaling of the factors (by rescalings multiplying to \(1\)).
+\end{problem}
+
 
 \section{Algebraic closure}
 A field \(k\) is \emph{algebraically closed}\define{algebraically closed}\define{field!algebraically closed} if every polynomial over \(k\) splits into linear factors in \(k\).
@@ -477,3 +514,21 @@ Therefore \(k\) is not algebraically closed: every algebraically closed field is
 \begin{problem}{fields:how.big}
 Prove that, for any finite field, and any integer, there is a finite extension of that field which has more elements than that integer.
 \end{problem}
+\begin{problem}{fields:two.vars}
+Suppose that \(k\) is a field and \(p(x_1,\dots,x_n)\) is a polynomial over \(k\) of degree \(d\).
+Suppose that there are \(d+1\) distinct elements \(a_0,\dots,a_d\) in some extension field of \(k\) so that \(p(x_1,\dots,x_n)=0\) whenever all of \(x_1,\dots,x_n\) are chosen to have values among these \(a_0,\dots,a_d\).
+Prove that \(p(x_1,\dots,x_n)\) is the zero polynomial.
+\end{problem}
+\begin{answer}{fields:two.vars}
+For a polynomial in one variable, each root yields a linear factor, so the number of roots is at most the degree, unless the polynomial is the zero polynomial; see corollary~\vref{corollary:degree.factors}.
+Vanishing at \(d+1\) distinct points \(x=a_0,a_1,\dots,a_d\) ensures the zero polynomial.
+Suppose by induction our result is established for all polynomials in any number of variables up to \(n-1\).
+If \(p(x_1,\dots,x_n)\) can be written using only \(n-1\) or fewer of the variables then \(p=0\) by induction.
+We can replace each variable \(x_i\) by \(x_i=X_i+a_0\) to permit us to assume \(a_0=0\).
+Treat \(p(x_1,\dots,x_n)\) as a polynomial in \(x_1\) with coefficients polynomial in \(x_2,\dots,x_n\):
+\[
+p(x_1,\dots,x_n)=P_0(x_2,\dots,x_n)+x_1P_1(x_2,\dots,x_n)+\dots+x_1^kP_k(x_2,\dots,x_n).
+\]
+Setting \(x_1\) to zero, by induction \(P_0(x_2,\dots,x_n)\) vanishes for all \(x_2,\dots,x_n\) among our various \(a_0,\dots,a_d\), so is the zero polynomial.
+If one of \(P_1,P_2,\dots,P_k\) doesn't vanish for some values \((x_2,\dots,x_n)=(c_2,\dots,c_n)\), with each \(c_i\) among our various \(a_j\), then we plug these into \(p(x_1,c_2,\dots,c_n)\), a nonconstant polynomial in one variable, hence nonzero somewhere, a contradiction.
+By induction, each of those coefficient polynomials is the zero polynomial, so \(p(x_1,\dots,x_n)\) is the zero polynomial.\end{answer}

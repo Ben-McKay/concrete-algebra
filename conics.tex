@@ -2,12 +2,8 @@
 
 \epigraph[author={Bertrand Russell}]{I like mathematics because it is not human and has nothing particular to do with this planet or with the whole accidental universe---because, like Spinoza's god, it won't love us in return.}\SubIndex{Russell, Bertrand}
 
-
-
 \section{Quadratic forms}
-
-A \emph{quadratic form}\define{quadratic!form}\define{form!quadratic} is a homogeneous polynomial of degree 2.
-
+A \emph{quadratic form}\define{quadratic!form}\define{form!quadratic} is a homogeneous polynomial of degree \(2\).
 \begin{proposition}[Sylvester's Law of Inertia\define{Sylvester's law of inertia}\SubIndex{Sylvester, James}\SubIndex{inertia}]
 Every quadratic form in \(n\) variables over the real numbers is identified, by some linear change of variables, with precisely one of
 \[
@@ -165,11 +161,7 @@ But \(s=0\) just when \(U=k^n\), i.e. just when \(q=0\) everywhere.
 So we can assume that \(s=1\), i.e. \(0=q(0,x_2,\dots,x_n)\), i.e. \(q=0\) whenever \(x_1=0\), i.e. \(q\) has a factor of \(x_1\), and so splits into a product of linear factors.
 \end{proof}
 
-
-
-
 \section{Plane conics}
-
 \begin{example}
 Look at the curves \(x^2=y^2\) and the curves \(x^2+y^2=0\), defined over \(k=\R{}\); each is a singular plane conic.
 The first is a pair of lines \(x=\pm y\) while the second, a circle of radius zero, has the origin as its only real point, but splits into \(x=\pm i y\) over \(\bar{k}=\C{}\).
@@ -192,24 +184,24 @@ Suppose on the other hand that the linear factors don't exist over \(k\), only o
 Then no other point of the affine plane with coordinates in \(k\) belongs to the curve, except the singular point.
 Write out the equation of the curve as \(ax^2+bxy+cy^2=0\), say.
 Switch to the affine plane \(y=1\) where the curve is \(ax^2+bx+c\).
-Since the homogeneous equation has no roots in \(\Proj[1]{k}\), this quadratic equation has no root in \(k\), so there is no point in this affine plane \(y=1\).
+Since the homogeneous equation has no roots in \(\Proj^1_k\), this quadratic equation has no root in \(k\), so there is no point in this affine plane \(y=1\).
 Therefore the projective conic has precisely one point with coordinates in \(k\).
 \end{proof}
 
 \begin{proposition}
-If a conic in the projective plane over a field \(k\) has a regular point with coordinates in \(k\), it is either a pair of distinct lines, and taken to the conic \(xy=0\) by some projective automorphism, or is irreducible and taken to the conic \(y=x^2\) by some projective automorphism.
+If a conic in the projective plane over a field \(k\) has a regular point with coordinates in \(k\), it is either a pair of distinct lines, and taken to the conic \(xy=0\) by some projective transformation, or is irreducible and taken to the conic \(y=x^2\) by some projective transformation.
 \end{proposition}
 \begin{proof}
 Suppose that our conic is not a pair of lines.
 It has a regular point with coordinates in \(k\), and is not a pair of lines, so it has no singular points, and so is irreducible.
-Arrange by projective automorphism that the regular point lies at the origin of the affine plane \(z=1\) with tangent line \(y=0\), so the curve has the form
+Arrange by projective transformation that the regular point lies at the origin of the affine plane \(z=1\) with tangent line \(y=0\), so the curve has the form
 \[
 y=ax^2+bxy+cy^2.
 \]
 If \(a=0\), we get a factor of \(y\) on both sides, so the equation is reducible.
 Rescale \(y\) to arrange \(a=1\), and write the equation as
 \(x^2=y\pr{1-bx-cy}\).
-Change variables by a projective automorphism \(X=x, Y=y, Z=z-bx-cy\) to get to \(x^2=y\).
+Change variables by a projective transformation \(X=x, Y=y, Z=z-bx-cy\) to get to \(x^2=y\).
 \end{proof}
 
 \begin{corollary}
@@ -219,7 +211,7 @@ If an irreducible conic in the projective plane over a field \(k\) has a regular
 Suppose that the conic, call it \(C\), has equation \(x^2=y\), i.e. \(x^2=yz\) homogeneously.
 Map 
 \[
-[s,t] \in \Proj[1]{k} \mapsto \left[st,s^2,t^2\right] \in C \subset \Proj[2]{k}.
+[s,t] \in \Proj^1_k \mapsto \left[st,s^2,t^2\right] \in C \subset \Proj^2_k.
 \]
 The inverse map is
 \[

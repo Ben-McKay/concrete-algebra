@@ -1,7 +1,7 @@
 \chapter{Projective duality}
 \epigraph[author={Louis Pasteur}, source={Revue Scientifique (1871)}]{There does not exist a category of science to which one can give the name applied science. There are sciences and the applications of science, bound together as the fruit of the tree which bears it.}
-The set of lines in the projective plane \(P=\Proj[2]{k}\) is called the \emph{dual plane}\define{dual!projective plane} and denoted \(P^*=\Proj[2*]{k}\).
-Each line has a homogeneous linear equation \(0=ax+by+cz\), unique up to rescaling, and so the point \([a,b,c]\) is determined, allowing us to identify \(P^*\) with \(\Proj[2]{k}\) itself.
+The set of lines in the projective plane \(P=\Proj^2\) is called the \emph{dual plane}\define{dual!projective plane} and denoted \(P^*=\Proj^{2*}\).
+Each line has a homogeneous linear equation \(0=ax+by+cz\), unique up to rescaling, and so the point \([a,b,c]\) is determined, allowing us to identify \(P^*\) with \(\Proj^2\) itself.
 The points of \(P^*\) correspond to lines in \(P\).
 Through each point of \(P\), there is a pencil of lines; for example if the point is \(\pr{x_0,y_0}\) in the affine chart \(z=1\), then the lines are \(a\pr{x-x_0} + b\pr{y-y0}=0\), or expanding out: \(ax+by+c=0\) where \(c=-ax_0-by_0\).
 Hence in \(P^*\) the pencil is the line consisting of those points \([a,b,c]\) so that \(ax_0+y_0+c=0\).
@@ -13,7 +13,7 @@ We can drop all of this notation and write \(p^*\) also using the symbol \(p\), 
 
 \section{Dual curves}
 
-Take a projective algebraic curve \(C\) in \(P=\Proj[2]{k}\) over a field \(k\) with algebraic closure \(\bar{k}\), with equation \(0=p(x,y)\) in some affine chart.
+Take a projective algebraic curve \(C\) in \(P=\Proj^2\) over a field \(k\) with algebraic closure \(\bar{k}\), with equation \(0=p(x,y)\) in some affine chart.
 
 \begin{problem}{duality:dual.equations}
 Denote partial derivatives as \(p_x \defeq \pderiv{p}{x}\), etc.
@@ -24,7 +24,7 @@ Show that at any point \(\pr{x_0,y_0}\) of \(C\) at which \(p_x \ne 0\) or \(p_y
 \end{problem}
 
 \begin{lemma}
-In homogeneous coordinates \([x,y,z]\) on \(P=\Proj{2}\), if the equation of a curve \(C\) is \(0=p(x,y,z)\) with \(p(x,y,z)\) homogeneous, then the tangent line at a point \(\left[x_0,y_0,z_0\right]\) of \(C\) has homogeneous equation
+In homogeneous coordinates \([x,y,z]\) on \(P=\Proj^2\), if the equation of a curve \(C\) is \(0=p(x,y,z)\) with \(p(x,y,z)\) homogeneous, then the tangent line at a point \(\left[x_0,y_0,z_0\right]\) of \(C\) has homogeneous equation
 \[
 0=
 x p_x\of{x_0,y_0,z_0}

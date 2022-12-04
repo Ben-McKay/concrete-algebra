@@ -1,4 +1,5 @@
-\documentclass[ContainsChinese]{willowtreebook}
+\documentclass%[ContainsChinese]
+{willowtreebook}
 \Title{Concrete Algebra}
 \Subtitle{With a View Toward Abstract Algebra}
 \Author{\texorpdfstring{Benjamin \scotsMc{}Kay}{Benjamin McKay}}
@@ -71,7 +72,7 @@ through
 \newcommand*{\R}[1]{\ensuremath{\mathbb{R}^{#1}}}
 \newcommand*{\Q}[1]{\ensuremath{\mathbb{Q}^{#1}}}
 \newcommand*{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
-\NewDocumentCommand\Zmod{sm}{\ensuremath{\mathbb{Z}\!/{\IfBooleanTF{#1}{\pr{#2}}{#2}}\mathbb{Z}}}
+\NewDocumentCommand\Zmod{sm}{\ensuremath{\mathbb{Z}\kern -1pt/\kern -1pt{\IfBooleanTF{#1}{\pr{#2}}{#2}}\mathbb{Z}}}
 
 % Brackets
 \newcommand*{\pr}[1]{\ensuremath{\left(#1\right)}}
@@ -132,10 +133,12 @@ through
 % \congmod[p]{b}{c} means b=c (mod p).
 \NewDocumentCommand\congmod{omm}{\IfValueTF{#1}{#2 \equiv #3 \pmod{#1}}{#2 \equiv #3}}
 
-%\Proj[2]{k}
-%or
-%\Proj{2}
-\NewDocumentCommand\Proj{om}{\IfValueTF{#1}{\mathbb{P}^{#1}\!\of{#2}}{\mathbb{P}^{#2}}}
+%% Projective space: \Proj^n, \Proj_k, \Proj^n_k, \Proj(V), \Proj^n(k)
+\NewDocumentCommand\Proj{e^e_d()}{%
+\IfNoValueTF{#1}{\IfNoValueTF{#2}{\mathbb{P}}{\mathbb{P}_{\!#2}}}%
+{\IfNoValueTF{#2}{\mathbb{P}^{#1}}{\mathbb{P}^{#1}_{\!#2}}}%
+\IfValueTF{#3}{#3}{}%
+}%
 
 \newcommand{\resultant}[2]{%
 \ensuremath{\operatorname{res}_{#1,#2}}
@@ -143,6 +146,12 @@ through
 
 \newcommand{\discriminant}[1]{%
 \ensuremath{\Delta_{#1}}
+}%
+
+\RenewDocumentCommand\dim{sm}{%
+\IfBooleanTF{#1}{%
+\operatorname{dim}\left(#2\right)}{%
+\operatorname{dim} #2}%
 }%
 
 \newcommand*{\tr}[1]{\operatorname{tr} #1}
@@ -158,7 +167,7 @@ through
 {\ensuremath{{#2}_{#1}}}
 
 \newcommand*{\intersectionnumber}[2]%\intersectionnumber{curve}{curve}
-{\ensuremath{\deg{#1#2}}}
+{\ensuremath{#1#2}}
 
 \NewDocumentCommand\Gal{mm}{\operatorname{Aut}{#2/#1}}
 
@@ -185,4 +194,24 @@ through
 % coefficients of polynomials and Taylor series
 \NewDocumentCommand\coef{m}{\ensuremath{\left.#1\right|}}
 
+% \cev{x} for backwards vector symbol
+\makeatletter
+\DeclareRobustCommand{\cev}[1]{%
+  {\mathpalette\do@cev{#1}}%
+}
+\newcommand{\do@cev}[2]{%
+  \vbox{\offinterlineskip
+    \sbox\z@{$\m@th#1 x$}%
+    \ialign{##\cr
+      \hidewidth\reflectbox{$\m@th#1\vec{}\mkern4mu$}\hidewidth\cr
+      \noalign{\kern-\ht\z@}
+      $\m@th#1#2$\cr
+    }%
+  }%
+}
+\makeatother
+
 \input{colorScheme}
+
+
+

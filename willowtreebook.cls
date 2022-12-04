@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{willowtreebook}[2020/04/24 Willow Tree Book LaTeX class v1.01]
+\ProvidesClass{willowtreebook}[2022/10/31 Willow Tree Book LaTeX class v1.031]
 \DeclareOption{ContainsChinese}{\def\ChineseTextInThisDocument{}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -28,7 +28,6 @@
 \expandafter\def\expandafter\@uclclist\expandafter{%
   \@uclclist\scotsMc\scotsMC
 }
-\RequirePackage{etex}
 \RequirePackage{newunicodechar}
 \RequirePackage[utf8]{inputenc} % Default input file encoding
 \ifdefined\ChineseTextInThisDocument
@@ -540,7 +539,7 @@ ref=\theenumi.\emph{\alph*}}
 % Index
 \ifnum\value{howmany@indexentries}>0
 \indexintoc
-\RenewDocumentCommand\indexname{}{Index}
+%\RenewDocumentCommand\indexname{}{Index}
 {\small{\printindex}}
 \fi
 }%% AtEndDocument

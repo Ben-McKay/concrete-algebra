@@ -161,17 +161,12 @@ sb+tc-d \\
 This has to be zero, so: \(sb+tc=d\).
 \end{proof}
 
-
 \begin{proposition}
-Take two integers \(b,c\), not both zero.
-The number \(\gcd{b,c}\) is precisely the smallest positive integer which can be written as \(sb+tc\) for some integers \(s,t\).
+The greatest common divisor of two integers is the smallest positive integer that can be written as a linear combination of the two integers, with integer coefficients.
 \end{proposition}
 \begin{proof}
-Let \(d \defeq \gcd{b,c}\).
-Since \(d\) divides into \(b\), we divide it, say as \(b=Bd\), for some integer \(B\).
-Similarly, \(c=Cd\) for some integer \(C\).
-Imagine that we write down some positive integer as \(sb+tc\) for some integers \(s,t\).
-Then \(sb+sc=sBd+tCd=(sB+tC)d\) is a multiple of \(d\), so no smaller than \(d\).
+By B\'ezout's theorem, the greatest common divisor is such a combination.
+Dividing into both our original integers, it divides into any such combination, hence is the smallest such combination by proposition~\vref{proposition:divisors.smaller}.
 \end{proof}
 
 \begin{sagesilent}

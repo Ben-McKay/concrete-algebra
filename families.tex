@@ -1,32 +1,23 @@
-\chapter{Families of plane curves}
+\chapter{Families of plane algebraic curves}
 
 \epigraph[author={Leo Tolstoy}, source={Anna Karenina}]{All happy families are alike; each unhappy family is unhappy in its own way.}\SubIndex{Tolstoy, Leo}\SubIndex{Karenina, Anna}
- 
- 
- 
- 
- 
- 
- 
-\section{Pencils of curves}
 
-Every curve \(C\) of degree \(n\) has a homogeneous equation \(c(x,y,z)=0\) of degree \(n\), unique up to rescaling, by Study's theorem (theorem~\vref{theorem:Study}).
-Take two curves \(B\) and \(C\) of the same degree \(n\), with equations \(b(x,y,z)=0\) and \(c(x,y,z)=0\).
+\section{Pencils of curves}
+Take two curves \(B\) and \(C\) of the same degree \(n\), with equations \(b(x,y)=0\) and \(c(x,y)=0\).
 The level sets 
 \[
-\frac{b(x,y,z)}{c(x,y,z)} = r
+\frac{b(x,y)}{c(x,y)} = r
 \]
 of the ratio form a collection of curves \(C_r\), called the \emph{pencil}\define{pencil} of curves containing \(B\) and \(C\).
 The curve \(B\) is \(C_0\) while \(C\) is \(C_{\infty}\).
-Every point \([x,y,z]\) in the plane lies on a unique one of these curves, with value \(r\) given by taking the value of \(b(x,y,z)/c(x,y,z)\) at that point, except for the points in \(B \cap C\), for which the ratio is never defined.
+Every point in the projective plane lies on a unique one of these curves, with value \(r\) given by taking the value of the homogenized \(b(x,y,z)/c(x,y,z)\) at that point, except for the points in \(B \cap C\), for which the ratio is never defined.
 To be more precise, each curve \(C_r\) can also be written as
 \[
-b(x,y,z) = r \, c(x,y,z),
+b(x,y) = r \, c(x,y),
 \]
 (except for \(C_{\infty}=C\)).
 The points of \(B \cap C\) belong to \emph{all} curves \(C_r\) of the pencil.
 Moreover the degree of \(C_r\) is the same as that of \(B\) and \(C\).
-
 \begin{example}
 The lines through a point form a pencil: if \(B=(x=0)\) and \(C=(y=0)\) then \(C_r =(x=ry)\).
 \begin{center}
@@ -64,67 +55,56 @@ In a pencil \(C_r\) for which \(C_0\) and \(C_{\infty}\) are irreducible, we rar
 \par\noindent{\tiny{Creative Commons license, Attribution NonCommercial Unported 3.0, Fir0002/Flagstaffotos}}
 \end{center}
 \end{example}
+\section{Zeroes and poles}
+If \(f(x,y,z)\) is a rational function, say
+\[
+f(x,y,z)=\frac{b(x,y,z)}{c(x,y,z)},
+\]
+then the level sets of \(f(x,y,z)\) are the curves 
+\[
+C_r=(f(x,y,z)=r)=(b(x,y,z)=rc(x,y,z))
+\]
+of the linear system with \(C_0=(f=0)\) and \(C_1=(1/f=0)\).
+Suppose that \(D\) is a plane algebraic curve so that \(f\) is not constant on any component of \(D\).
+Then the level set \(C_r\) intersects it with intersection number 
+\[
+\degree{D}\degree{C_r}=\degree{D}\degree{f}
+\]
+where \(\degree{f}\) means \(\degree{p}\), which also equals \(\degree{q}\).
+In particular, counting with multiplicity, all level sets of \(f\) strike the curve \(D\) at the same number of points.
+Define the \emph{order} of \(f\) at a point \(p\) of \(D\) to be \(\multiplicity{p}{C_0}{D}\) and the \emph{order of pole} of \(f\) to be \(\multiplicity{p}{C_0}{D}\).
+In particular, there are as many zeroes of \(f\) on \(D\) as poles, counted with their orders.
 
-
+\section{Making bubbles}
 \begin{lemma}\label{lemma:bubble}
-Suppose that two projective plane curves \(B\) and \(C\) of order \(n\) intersect at exactly \(n^2\) points (the maximum possible by B\'ezout's theorem).
+Suppose that two projective plane algebraic curves \(B\) and \(C\) of the same degree \(n\) intersect at exactly \(n^2\) points (the maximum possible by B\'ezout's theorem).
 Write \(n\) as \(n=p+q\).
-If exactly \(pn\) of these points lie on a curve \(E\) of degree \(p\) (again the maximum possible) then the remaining points, \(qn\) of them, lie on a curve \(F\) of degree \(q\) (again the maximum possible).
+If exactly \(pn\) of these points lie on an irreducible curve \(E\) of degree \(p\) (again the maximum possible) then the remaining points, \(qn\) of them, lie on a curve \(F\) of degree \(q\) (again the maximum possible).
 \end{lemma}
 \begin{proof}
 Write \(B\) and \(C\) as \(C_0\) and \(C_{\infty}\) in a pencil \(C_r\).
-Pick a point \(s\) different from the intersection points of \(C_0\) and \(C_{\infty}\).
-We can pick such a point, because we can replace our field by its algebraic closure if needed, or more simply by any infinite field containing.
-The numbers of intersection points can't increase when we work in a larger field, since B\'ezout's theorem tells us that they are maximal already.
+Pick a point \(s\) of \(E\) different from the intersection points of \(C_0\) and \(C_{\infty}\); by problem~\vref{problem:intersecting.curves:nonzero.somewhere.4}, there are infinitely many.
 The point \(s\) then belongs to a unique element of the pencil, say to \(C_{r_0}\).
-
-In particular, we can pick \(s\) to belong to \(E\).
-But then \(s\) sits in \(C_{r_0}\) along with the points of \(B \cap C\) and \(s\) also sits in \(E\) along with \(pn\) points of \(B \cap C\).
-So \(E\) and \(C_{r_0}\) contain \(1+pn\) points of \(B \cap C\).
-By B\'ezout's theorem, the degrees of \(E\) and \(C_{r_0}\) are \(p\) and \(n\), they contain a common irreducible component.
+Then \(s\) sits in \(C_{r_0}\) along with all of the points of \(B \cap C\) and \(s\) also sits in \(E\) along with \(pn\) points of \(B \cap C\).
+So \(E\) and \(C_{r_0}\) contain the same \(1+pn\) points of \(B \cap C\).
+By B\'ezout's theorem, as the degrees of \(E\) and \(C_{r_0}\) are \(p\) and \(n\), they contain a common irreducible component.
 Since \(E\) is irreducible by assumption, \(E\) is that component of \(C_{r_0}\).
 So \(C_{r_0} = E \cup F\), for some curve \(F\) of degree at most \(q\), i.e. the pencil bubbles into two components.
 The remaining intersection points of \(B \cap C\) don't lie in \(E\), but all lie in \(C_{r_0}\), so they lie in \(F\).
 \end{proof}
 
-
-
-
 \section{Polygons}\label{section:polygons}
-
-In a projective plane, we have a concept of line, but not of line segment, or of angle or distance.
-In a projective plane a \emph{triangle}\define{triangle} is a triple of points not all on the same line, together with the lines that connect them.
-So a triangle looks like
-\[
-\begin{tikzpicture}
-\clip (-1/3,-2/3) rectangle (4/3,2/3);
-\draw[very thick,curveZero] (-1/3,-1/6) -- (4/3,2/3);
-\draw[very thick,curveZero] (-1/3,7/3) -- (4/3,-1);
-\draw[very thick,curveZero] (-1/3,1/9) -- (4/3,-4/9);
-\end{tikzpicture}
-\]
-rather than
-\[
-\begin{tikzpicture}
-\draw[very thick,curveZero] (0,0) -- (2/3,1/3) -- (1,-1/3) -- cycle;
-\end{tikzpicture}
-\]
-Similarly, a \emph{quadrilateral}\define{quadrilateral} is a quadruple of points, called the \emph{vertices}, no three on the same line, with a chosen ordering defined up to cyclically permuting, so there is no first point or second point, but if you pick a point from the quadruple, there is a next point, and a next, and so on until you come back to the point you started with.
+A \emph{quadrilateral}\define{quadrilateral} is a quadruple of points, called the \emph{vertices}, no three on the same line, with a chosen ordering defined up to cyclically permuting, so there is no first point or second point, but if you pick a point from the quadruple, there is a next point, and a next, and so on until you come back to the point you started with.
 In the same way, we define a \emph{polygon}\define{polygon}.
 The lines through subsequent vertices are the \emph{edges}.
 We can't define the notion of a square or rectangle since there is no notion of length or angle available.
 
-
 \section{Pascal's mystic hexagon}
-
-
 \begingroup
-
 \newcommand*{\drawEllipse}
 {
 \draw[very thick,curveZero] (0,0) ellipse (1cm and .5cm);
 }
-
 \newcommand*{\drawHexagon}
 {
 \foreach \i in {0,...,5}
@@ -134,7 +114,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 		\DrawNode{p\i}
 	}
 }
-
 \newcommand*{\findFirstIntersection}
 {
 \coordinate (c1) at (intersection of p0--p1 and p3--p4) {};
@@ -147,21 +126,16 @@ We can't define the notion of a square or rectangle since there is no notion of 
 {
 \coordinate (c3) at (intersection of p2--p3 and p5--p0) {};
 }
-
 \newcommand*{\findAllIntersections}
 {
 \findFirstIntersection
 \findSecondIntersection
 \findThirdIntersection
 }
-
-
 % highest x value of any coordinate of any point in the picture:
 \newcommand*{\maxX}{3.5}
 % lowest x value of any coordinate of any point in the picture:
 \newcommand*{\minX}{-1}
-
-
 \newcommand*{\showTheLine}
 {
 \begin{scope}[on background layer]
@@ -169,8 +143,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \draw[curveThree,very thick] (c3) -- (c2);
 \end{scope}
 }
-
-
 \newcommand*{\firstPicture}
 {
 \drawEllipse
@@ -184,7 +156,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \draw[curveOne,very thick] (p0) -- (p1);
 \end{scope}
 }
-
 \newcommand*{\secondPicture}
 {
 \firstPicture
@@ -195,7 +166,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \end{scope}
 \DrawNode{c1}
 }
-
 \newcommand*{\thirdPicture}
 {
 \firstPicture
@@ -206,7 +176,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \end{scope}
 \DrawNode{c2}
 }
-
 \newcommand*{\fourthPicture}
 {
 \firstPicture
@@ -217,7 +186,6 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \end{scope}
 \DrawNode{c3}
 }
-
 \newcommand*{\fifthPicture}
 {
 \firstPicture
@@ -234,15 +202,11 @@ We can't define the notion of a square or rectangle since there is no notion of 
 \DrawNode{c2}
 \DrawNode{c3}
 }
-
 \newcommand*{\sixthPicture}
 {
 \fifthPicture
 \showTheLine
 }
-
-
-
 \newcommand{\Pascal}[1]{%
 \par\noindent%
 \begin{center}
@@ -297,7 +261,6 @@ The same for the next pair of opposite sides. \Pascal{3}
 And finally for the third pair of opposite sides. \Pascal{4}
 Draw all of these lines together in one picture. \Pascal{5}
 Mysteriously, all three intersection points lie on a line. \Pascal{6}
-
 \endgroup
 
 \begin{theorem}
@@ -312,22 +275,20 @@ The result follows immediately from lemma~\vref{lemma:bubble}.
 
 
 \section{The space of curves of given degree}
-
 Consider the vector space \(V_d\) of homogeneous polynomials of degree \(d\) in \(3\) variables.
 Each such polynomial has a coefficient of \(x^a y^b z^c\) as long as \(a+b+c=d\).
 Imagine that we take \(d+2\) sticks sitting in a row.
-Colour 2 of them white and the rest black.
+Colour two of them white and the rest black.
 Take \(a\) to be the number of black sticks before the first white one, \(b\) the number of black sticks between the two white ones, and \(c\) the number of black sticks after the second white one.
 Clearly \(a+b+c=d\).
 So the dimension of \(V_d\) as a vector space is 
 \[
 \binom{d+2}{2}.
 \]
-But since the equation \(p_C=0\) of a curve \(C\) is defined only up to rescaling, the curves of degree \(d\) are identified with points of \(\Proj[d^*]{k}\) where 
+But since the equation \(p_C=0\) of a curve \(C\) is defined only up to rescaling, the curves of degree \(d\) are identified with points of \(\Proj^{d^*}\) where 
 \[
 d^* = -1+\binom{d+2}{2}=\frac{d(d+3)}{2}.
 \]
-
 \[
 \begin{array}{@{}rr@{}}
 \toprule 
@@ -346,17 +307,16 @@ d & d^* \\
 \end{array}
 \]
 \begin{example}
-The set of lines in \(\Proj[2]{k}\) is a 2-dimensional projective space, a projective plane, the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}.
+The set of lines in \(\Proj^2\) is also a projective plane, the \emph{dual projective plane}\define{dual!projective plane}\define{projective!plane!dual}.
 \end{example}
 \begin{example}
-More generally, our projective space \(\Proj[d^*]{k}\) contains all curves of degree \(d\), reducible or irreducible.
+More generally, our projective space \(\Proj^{d^*}\) contains all curves of degree \(d\), reducible or irreducible.
 \end{example}
 
-A pencil\SubIndex{pencil} \(C_r = (p=rq)\) of two curves \(B\) and \(C\) is just a line inside \(\Proj[d^*]{k}\).
-More generally, a \emph{linear system}\define{linear!system} is collection of plane curves whose equations form a projective linear subspace in \(\Proj[d^*]{k}\).
+A pencil\SubIndex{pencil} \(C_r = (p=rq)\) of two curves \(B\) and \(C\) is just a line inside \(\Proj^{d^*}\).
+More generally, a \emph{linear system}\define{linear!system} is collection of plane curves whose equations form a projective linear subspace in \(\Proj^{d^*}\).
 
-
-The condition that a point \(q_0=(x_0,y_0,z_0)\) lies in a curve \(C=\pr{c(x,y,z)=0}\) is a linear equation \(c(x_0,y_0,z_0)=0\) on the coefficients of the polynomial \(c(x,y,z)\), so is satisfied by a linear projective hyperplane inside \(\Proj[d^*]{k}\).
+The condition that a point \(q_0=(x_0,y_0,z_0)\) lies in a curve \(C=\pr{c(x,y,z)=0}\) is a linear equation \(c(x_0,y_0,z_0)=0\) on the coefficients of the polynomial \(c(x,y,z)\), so is satisfied by a linear projective hyperplane inside \(\Proj^{d^*}\).
 For example, the condition that a point lie in a line is one equation, so determines a line in the dual projective plane.
 Similarly, the condition that a curve has order at least \(k\) at a point \(q_0\) of the plane is a collection of \(k(k+1)/2\) linearly independent equations, killing the terms in the Taylor series up to order \(k\) (if we arrange that \(q_0\) is the origin, for example).
 A collection of points \(p_1, p_2, \dots, p_n\) in the projective plane is in \emph{general position}\define{general position} for curves of degree \(d\) if the linear system of curves passing through them has either (1) the minimal dimension possible \(d(d+3)/2-n\) if this quantity is not negative and (2) is empty otherwise.
@@ -408,7 +368,6 @@ Through any \(14\) points in general position, there is precisely one quartic.
 \begin{example}
 Through any \(20\) points in general position, there is precisely one quintic.
 \end{example}
-
 \begin{lemma}\label{lemma:conics.5.points}
 Through any \(5\) points in the plane, there is a conic.
 \begin{itemize}
@@ -446,9 +405,9 @@ Take the point to be the origin in affine coordinates.
 Then the polynomial equations of such curves are those with all terms of degree less than \(n\) vanishing, so we can count the terms.
 \end{proof}
 \begin{theorem}\label{theorem:prescribe.singularities}
-The curves of a given degree \(d\) which pass through given points, having given orders \(n_1,n_2,\dots,n_k\) at given points \(p_1,p_2,\dots,p_k\) form a linear system of codimension no more than 
+The curves of a given degree \(d\) which pass through given points, having given orders \(d_1,d_2,\dots,d_k\) at given points \(p_1,p_2,\dots,p_k\) form a linear system of codimension no more than 
 \[
-\frac{1}{2}\sum n_j(n_j+1).
+\frac{1}{2}\sum d_j(d_j+1).
 \]
 \end{theorem}
 \begin{proof}
@@ -459,9 +418,9 @@ We intersect the linear systems of the previous lemma.
 The \emph{arithmetic genus}\define{arithmetic genus}\define{genus!arithmetic} of an irreducible plane algebraic curve of degree \(d\) is \(g=(d-2)(d-1)/2\).
 Its \emph{geometric genus}\define{genus!geometric}\define{geometric genus}, also called its \emph{deficiency}\define{deficiency}, is 
 \[
-\frac{(d-2)(d-1)}{2}-\frac{1}{2}\sum n_j(n_j-1),
+\frac{(d-2)(d-1)}{2}-\frac{1}{2}\sum d_j(d_j-1),
 \]
-where \(n_1,\dots,n_k\) are the orders of the singularities.
+where \(d_1,\dots,d_k\) are the orders of the singularities.
 \begin{theorem}
 The geometric genus of any irreducible plane algebraic curve is not negative.
 \end{theorem}
@@ -470,35 +429,35 @@ For a line or irreducible conic, there are no singularities and the arithmetic g
 So we can assume the degree of our curve is \(3\) or more.
 By lemma~\vref{lemma:number.of.singular.points}, 
 \[
-\frac{1}{2}\sum n_j(n_j-1)\le d(d-1).
+\frac{1}{2}\sum d_j(d_j-1)\le d(d-1).
 \]
 
-Consider the spaces of all curves of degree \(d-1\) which have singularities at the same points as our given curve, and with multiplicity  no less than \(n-1\) wherever our curve has a singular point of order \(n\).
+Consider the spaces of all curves of degree \(d-1\) which have singularities at the same points as our given curve, and with multiplicity no less than \(d_i-1\) wherever our curve has a singular point of order \(d_i\).
 By theorem~\vref{theorem:prescribe.singularities}, the set of all such curves is a linear system, if not empty, of codimension
 \[
-\frac{1}{2}\sum_j n_j(n_j-1)
+\frac{1}{2}\sum_j d_j(d_j-1)
 \]
 so, if not empty, has dimension
 \[
-\delta\defeq \frac{(d-1)(d+2)}{2}-\frac{1}{2}\sum_j n_j(n_j-1).
+\delta\defeq \frac{(d-1)(d+2)}{2}-\frac{1}{2}\sum_j d_j(d_j-1).
 \]
 Moreover, if \(\delta\ge 0\) then the linear system is not empty.
 The space of all curves of degree \(d-1\) has dimension \((d-1)(d+2)/2\), and
 \[
-\frac{1}{2}\sum_j n_j(n_j-1) \le d(d-1)<\frac{1}{2}(d-1)(d+2).
+\frac{1}{2}\sum_j d_j(d_j-1) \le d(d-1)<\frac{1}{2}(d-1)(d+2).
 \]
-So \(\delta>0\) and our space of curves is not empty: there are curves of degree \(d-1\) with orders at least \(n_1-1,\dots,n_k-1\) at the given points.
+So \(\delta>0\) and our space of curves is not empty: there are curves of degree \(d-1\) with orders at least \(d_1-1,\dots,d_k-1\) at the given points.
 
 Denote the singular points by \(p_1,p_2,\dots,p_k\) and the curve as \(C\).
 After perhaps taking an algebraic extension of the field we work over, we can find \(\delta\) regular points on our curve, say \(q_1,q_2,\dots,q_{\delta}\).
-Take the linear system of curves of degree \(d-1\) with singularity of order at least \(n_j-1\) at each point \(p_j\), and passing through \(q_1,q_2,\dots,q_{\delta}\).
+Take the linear system of curves of degree \(d-1\) with singularity of order at least \(d_j-1\) at each point \(p_j\), and passing through \(q_1,q_2,\dots,q_{\delta}\).
 Each point \(q_j\) imposes at most one linear condition, so there is at least one curve \(D\) in this linear system.
 
 Curve \(D\) has lower degree than \(C\), and \(C\) is irreducible, so \(D\) and \(C\) meet only at finitely many points.
-By B\`ezout's theorem (theorem~\vref{theorem:B\'ezout}), \(C\) and \(D\) intersect with multiplicities summing to \(d(d-1)\).
-They have the same singular points, where orders are at least \(n_j\) and \(n_j-1\), and then they intersect at \(\delta\) regular points, so
+By B\`ezout's theorem (theorem~\vref{theorem:Bezout}), \(C\) and \(D\) intersect with multiplicities summing to \(d(d-1)\).
+They have the same singular points, where orders are at least \(d_j\) and \(d_j-1\), and then they intersect at \(\delta\) regular points, so
 \[
-d(d-1)\ge \sum_j n_j(n_j-1) +\delta.
+d(d-1)\ge \sum_j d_j(d_j-1) +\delta.
 \]
 \end{proof}
 
@@ -512,7 +471,6 @@ Imagine we try to prove that points \(p_1,p_2,\dots,p_n\) impose independent con
 Suppose we prove that there is a curve of degree \(d\) passing through \(p_1,p_2,\dots,p_{n-1}\) but not \(p_n\).
 In the vector space of degree \(d\) polynomials, the condition of passing through \(p_n\) as well is an additional linear equation not always satisfied, so cuts out a linear subspace of one lower dimension.
 If the choice of which point is \(p_n\) is arbitrary, then the same will hold for any of the points \(p_i\) in place of \(p_n\), giving \(n\) linearly independent equations, i.e. a linear subspace of \(n\) lower dimensions, so the points impose independent conditions on curves of degree \(d\).
-
 \begin{theorem}\label{theorem:independence}
 Suppose that \(p_1,p_2,\dots,p_n\) are distinct points in the plane, and \(n \le 2d+2\).
 Then these points fail to impose independent conditions on curves of degree \(d\) just when either 
@@ -649,7 +607,3 @@ If you choose \(n-2\) points and I choose \(n-2\) points, they must have at leas
 Any 5 of our points lie on at most one conic, since no three are colinear, by lemma~\vref{lemma:conics.5.points}.
 So all \(n\) points lie on a conic.
 \end{proof}
-
-
-
-

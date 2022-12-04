@@ -110,21 +110,8 @@ Dividing a nonzero integer \(a\) by zero would mean find an integer \(c\) so tha
 But we have seen that \(0 \, c=0\), so \(a=0\), a contradiction.
 Dividing zero by zero would mean find an integer \(c\) so that \(0=0 \, c\).
 But any integer \(c\) satisfies this equation, so there is no way to pick out one value \(c\) to be \(0/0\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.exists}.}
-Suppose the collection is not empty.
-Pick any nonzero number, say \(m\), from the collection.
-By proposition~\vref{proposition:divisors.smaller}, \(m\) is not divisible by any integer larger than \(|m|\).
-So all of the positive integer divisors are between \(1\) and \(|m|\).
-Put these integers in a bag.
-Repeatedly throw out the largest integer in our bag which is not a common divisor of the collection.
-But \(1\) is a common divisor, so we can't throw them all out.
-By induction, eventually we get a greatest common divisor, unique because it is the greatest.
-
-Suppose the collection is empty.
-Any integer \(d\) is a common divisor, since there is nothing to divide into.
-But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
-Those other common divisors can be any integers.
-So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.unique}.}
+If there were two, both nonnegative, they would divide one another, so by proposition~\vref{proposition:divisors.smaller} each is no larger than the other, hence equal.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:find.gcd}.}
 \begin{enumerate}
 \item \(\sage{gcd(4233, 884)}\)
@@ -141,17 +128,32 @@ By subtracting an integer from your collection from itself,  you can build zero.
 By repeated subtraction, you can build any negative integer multiple of any integer from your collection.
 So by adding up, you can build any linear combination \(s_1m_1+s_2m_2+\dots+s_nm_n\) of integer multiples \(s_1,s_2,\dots,s_n\) of any elements \(m_1,m_2,\dots,m_n\) from the collection,  with any integers \(s_1,s_2,\dots,s_n\).
 If all integers in our collection are divisible by some integer \(d\), then clearly so are any integer multiples or finite sums of integer multiples.
-So the greatest common divisor divides all such sums.
-Hence the greatest common divisor is unchanged if we replace the collection by the collection of all such sums.
+So every common divisor divides all such sums.
+Hence the common divisors are unchanged if we replace the collection by the collection of all such sums.
 So we can suppose that any such sum is already in our collection.
 Our collection contains some positive integer, because if \(m_1\) is in our collection, then taking \(s_1\) to be \(1\) if \(m_1>0\) and \(-1\) if \(m_1<0\), \(s_1m_1\) is positive.
 By well ordering, there is a least positive element \(c\) in our collection.
 Take quotient and remainder of any element \(m\) in our collection by \(c\): \(m=qc+r\).
 The remainder \(r=m-qc\) is also in the collection, not negative, but smaller than \(c\), and therefore is zero.
 So \(c\) is a common divisor of every element in the collection.
-Since \(d\) is the greatest common divisor, \(c\le d\).
-But \(c\) is in the collection, and \(d\) divides everyhing in the collection, so \(d\) divides \(c\), so \(d\le c\).
-Hence \(c=d\), i.e. the greatest common divisor is the smallest positive integer we can build.
+But \(c\) is in the collection, and so every common divisor divides \(c\).
+Hence \(c\) is the greatest common divisor.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:integers:gcd.exists}.}
+If the collection contains something other than \(0\), apply problem~\vref{problem:integers:gcd.least.sum}.
+
+Suppose the collection is empty.
+Any integer \(d\) is a common divisor, since there is nothing to divide into.
+But then to have \(d\) be a greatest common divisor, we also need \(d\) to be divisible by all other common divisors.
+Those other common divisors can be any integers.
+So a greatest common divisor \(d\) is precisely an integer which is divisible by all others, and hence must be zero: the greatest common divisor of the empty set is zero.
+
+Suppose the collection consists of just one integer: \(0\).
+Then every integer \(n\) divides \(0\), since \(0=0\cdot n\).
+So every integer is a common divisor of the collection.
+A greatest common divisor must be precisely an integer divisible by all others.
+In particular \(0\) is a common divisor since \(0=1\cdot 0\), and is divisible by all integers, so is a greatest common divisor.
+But any nonzero number \(d\), to be a greatest common divisor, has \(d\ge 0\) so positive, and divisible by all integers, so at least as large as any integer by proposition~\vref{proposition:divisors.smaller}, so infinitely large, impossible.
+Hence \(d=0\) is the unique greatest common divisor.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:induction:pascal}.}
 When we expand out \((1+x)^n\), each term in the expansion arises from choosing either \(1\) or \(x\) from each factor \(1+x\), and multiplying out the choices to produce the term.
 So terms with \(x^k\) arise when we choose \(x\) from \(k\) of the factors \(1+x\), and \(1\) from the other \(n-k\).
@@ -245,6 +247,28 @@ Modulo \(9\), \(\congmod[9]{10}{1}\), so modulo 9
 \\
 \congmod[9]{&}{b_0+b_1+b_2 + \dots + b_{n-1}}.
 \end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:pq.zero.divisors}.}
+\(p+q-2\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:poly}.}
+Mod \(3\), \(b(x)=x^4+x+2\).
+We plug in \(x=0,1,2\) and take remainder modulo \(3\) to find that these are not roots:
+\[
+\begin{array}{rl}
+\toprule
+x&x^4+x+2\pmod{3}\\
+\midrule
+0&0^4+0+2=2\\
+1&1^4+1+2=1\\
+2&2^4+2+2=2\\
+\bottomrule
+\end{array}
+\]
+Any root in integers would reduce modulo \(3\) to a root in remainders modulo \(3\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:reciprocal}.}
+\((m-1)(m-1)=m^2-2m+1=1\) up to multiples of \(m\).
+Careful: the following proof is not going to work. You might try to write that \((m-1)^{-1}\cong (-1)^{-1}\cong -1\) mod \(m\).
+This doesn't work because you are assuming that \((-1)^{-1}\) can be calculated modulo \(m\) just as if it were being calculated first in the integers, and then reduced modulo \(m\). But the \(()^{-1}\) operation doesn't work like that: it doesn't commute with reduction modulo an integer.
+Also, this incorrect attempt at a proof assumes that there is a reciprocal.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular.arithmetic:reciprocals}.}
 \begin{enumerate}
 \item
@@ -364,6 +388,18 @@ x&=r_1u_1v_1+r_2u_2v_2,\\
  &=(4)(858)+398,\\
  &=398.
 \end{align*}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:CRT.4.5.17}.}
+Moduli \(m_1,m_2,m_3=4,5,17\), so \(u_1,u_2,u_3=85,68,20\).
+Reduce modulo those to get to \(1,3,3\); we only need reciprocals of these remainders.
+Easily see that we can take \(v_1,v_2,v_3=1,2,6\) as reciprocals of those remainders.
+We have \(r_1,r_2,r_3=3,4,0\).
+Modulo \(4\cdot5\cdot 17=340\),
+\begin{align*}
+x&=r_1u_1v_1+r_2u_2v_2,\\
+&=799,\\
+&=119
+\end{align*}
+modulo \(340\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:modular:use.totient}.}
 Factor \(120 =2^3 \, 3^1 \, 5^1\).
 So Euler's totient is \(\phi(120)=(2^3-2^2)(3^1-3^0)(5^1-5^0)=32\).
@@ -412,6 +448,32 @@ As they are coprime, no prime occurs in both factorizations.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:int.values}.}
 Take the polynomial \(b(x)=(1/2)x(x+1)=(1/2)x^2+(1/2)x\).
 If \(x\) is an odd integer, then \(x+1\) is even, and vice versa, so \(b(x)\) is an integer for any integer \(x\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Bezout}.}
+First we apply the Euclidean algorithm: division with remainder
+\begin{align*}
+x^3-x^2-x-2&=1(x^3+x^2+x)+(-2x^2-2x-2),\\
+x^3+x^2+x&=-\frac{x}{2}(-2x^2-2x-2)+0.
+\end{align*}
+Next, find the B\'ezout coefficients.
+\begin{align*}
+& \begin{pmatrix}
+    1 & 0 & x^3+x^2+x \\
+    0 & 1 & x^3-x^2-x-2
+  \end{pmatrix} \text{ add $-$row 1 to row 2},
+  \\
+& \begin{pmatrix}
+    1 & 0 & x^3+x^2+x \\
+    -1 & 1 & -2x^2-2x-2
+  \end{pmatrix} \text{ add $-(x/2)$row 2 to row 1},
+  \\
+& \begin{pmatrix}
+    1+\frac{x}{2} & -\frac{x}{2} & 0 \\
+    -1 & 1 & -2x^2-2x-2
+  \end{pmatrix}
+\end{align*}
+\[
+(-1)b(x)+(1)c(x)=-2x^2-2x-2.
+\]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Bezout.mod.3}.}
 Keep in mind that, modulo \(3\), \(-1=2,-2=1\), \(1^{-1}=1\), \(2^{-1}=2\), so
 \begin{align*}
@@ -445,7 +507,7 @@ We can check: expand out
 (x^3+x)(x^3+x)+(1+2x^2)(x^4+1)=(x^6+2x^4+x^2)+(2x^6+x^4+2x^2+1)=1.
 \]
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:not.prime.characteristic}.}
-roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)\).
+roots: 0, 1, 3, 4; factorizations: \((x+2)(x+3)=x(x+5)=(5x)(5x+1)\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rsa:nuke}.}
 Pick a large prime number $p$.
 Pick a random polynomial $b(t)$ of degree $k$ with coefficients in $\mathbb{Z}/p\mathbb{Z}$.
@@ -483,6 +545,30 @@ These have values at \(x=-2\) of \(7, -24, 2, -24, -7/8\), and at \(x=1\) they h
 There are two roots in that interval:
 \begin{center}
 \sageplot[width=6cm]{plot(2*x^4+4*x^3+2*x^2-1,(x,-2,1))}
+\end{center}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.example.5}.}
+Clearly \(p'(x)=5x^4+20x^3\).
+Compute:
+\[
+\begin{array}{r@{}lcc}
+\toprule
+&&x=0&x=1\\
+\midrule
+p_0(x)&=x^5+5x^4-1&-1&5\\
+p_1(x)&=5x^4+20x^3&0&25\\
+p_2(x)&=4x^3+1&1&5\\
+p_3(x)&=\frac{5}{4}x+5&5&\frac{25}{4}\\
+p_4(x)&=255&255&255\\
+\hline
+&&1&0\\
+\bottomrule
+\end{array}
+\]
+so \(1-0=1\) zeroes.
+(We can cheat to guess the right answer: since \(p'(x)=5x^4+20x^3=x^3(5x+20)\ge 0\) for \(0\le x\le 1\), and \(>0\) for \(0<x\le 1\), we see that \(p(x)\) is strictly increasing, so can have at most one root.
+But \(p(0)=-1<0\) and \(p(1)=5>0\), so one root.)
+\begin{center}
+\sageplot[width=6cm]{plot(x^5+5*x^4-1,(x,0,1))}
 \end{center}
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:real.polynomials:Sturm.test.quadratic}.}
 Each pattern of signs in the Sturm sequence, followed by a picture of parabolas with that pattern, indicating whether the point where we calculate the Sturm sequence gives a positive or negative value of the quadratic function, whether the point is to the left or right of the vertex of the parabola, and whether the discriminant is positive or negative:
@@ -585,10 +671,6 @@ Pick any integer \(N\) larger than any of the roots of \(p(x)\).
 In particular, \(p(N)>0\).
 For any integer \(\ell\), if we set \(x=N+\ell p(N)\), then expanding out \(x^k=N^k+\dots\), the \(\dots\) terms all contain a factor of \(p(N)\), so \(p(x)=p(N)+\dots\), where again the \(\dots\) terms all contain a factor of \(p(N)\).
 So \(p(x)=0\) modulo \(p(N)\) for all of the infinitely many integers \(x=N+\ell p(N)\).
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.2}.}
-Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
-Note that \(p(y)^2=y^2+1\).
-So Eisenstein applies: \(a(x,y)\) is irreducible.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:polynomials:Eisenstein.cyclotomic}.}
 By problem~\vref{problem:induction:cyclotomic},
 \begin{align*}
@@ -615,6 +697,10 @@ It follows that \(b(x,y)\) is irreducible over the rationals, because rationals 
 The coefficients of \(b(x,y)\) are coprime, so \(b(x,y)\) is irreducible over the integers.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.xy}.}
 Eisenstein with \(p=3\), \(111=(3)(37)\), and \(37\) is not divisible by 3, so \(q(x)\) is irreducible.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.2}.}
+Take \(p(y)=y+1\), clearly irreducible since linear and not constant.
+Note that \(p(y)^2=y^2+1\).
+So Eisenstein applies: \(a(x,y)\) is irreducible.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:factoring:Eisen.poly.xy}.}
 This \(b(x,y)\) is irreducible, by Eisenstein's criterion, with with \(p(y)=y^2+y+1\).
 We need to know that \(p(y)\) is irreducible, and to see this: any reducible quadratic, having degree 2, splits into irreducibles of degrees 1 each, so linear.
@@ -749,6 +835,19 @@ since \(-1=2\).
 1+\alpha   \\
 \end{array}
 \]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:two.vars}.}
+For a polynomial in one variable, each root yields a linear factor, so the number of roots is at most the degree, unless the polynomial is the zero polynomial; see corollary~\vref{corollary:degree.factors}.
+Vanishing at \(d+1\) distinct points \(x=a_0,a_1,\dots,a_d\) ensures the zero polynomial.
+Suppose by induction our result is established for all polynomials in any number of variables up to \(n-1\).
+If \(p(x_1,\dots,x_n)\) can be written using only \(n-1\) or fewer of the variables then \(p=0\) by induction.
+We can replace each variable \(x_i\) by \(x_i=X_i+a_0\) to permit us to assume \(a_0=0\).
+Treat \(p(x_1,\dots,x_n)\) as a polynomial in \(x_1\) with coefficients polynomial in \(x_2,\dots,x_n\):
+\[
+p(x_1,\dots,x_n)=P_0(x_2,\dots,x_n)+x_1P_1(x_2,\dots,x_n)+\dots+x_1^kP_k(x_2,\dots,x_n).
+\]
+Setting \(x_1\) to zero, by induction \(P_0(x_2,\dots,x_n)\) vanishes for all \(x_2,\dots,x_n\) among our various \(a_0,\dots,a_d\), so is the zero polynomial.
+If one of \(P_1,P_2,\dots,P_k\) doesn't vanish for some values \((x_2,\dots,x_n)=(c_2,\dots,c_n)\), with each \(c_i\) among our various \(a_j\), then we plug these into \(p(x_1,c_2,\dots,c_n)\), a nonconstant polynomial in one variable, hence nonzero somewhere, a contradiction.
+By induction, each of those coefficient polynomials is the zero polynomial, so \(p(x_1,\dots,x_n)\) is the zero polynomial.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:newton:one.minus.x}.}
 Let's be very careful.
 The formal definition of the product is
@@ -821,20 +920,6 @@ r_0(x)-r_1(x)=(q_1(x)-q_0(x))c(x).
 \]
 Every term agrees.
 But every term on the left hand side has degree less than the lowest order of \(c(x)\), while every term on the right hand side has degree at least that.
-\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:reduce.curve}.}
-If \(y^2-f(x)\) is reducible, each factor is linear in \(y\), or else one is constant in \(y\) and the other quadratic.
-In the second case: the factor constant in \(x\) is multiplied by a quadratic in \(x\), coefficients polynomial in \(y\), giving \(x^2+\dots\), constant in \(y\), so the factor constant in \(x\) and \(y\).
-In the first case: each linear factor has, up to rescaling, a unit coefficient in front of \(x\)
-\[
-x^2-f(y)=(x+b(y))(x+c(y))=x^2+x(b(y)+c(y))+b(y)c(y),
-\]
-so that \(c(y)=-b(y)\), and then \(x^2-f(y)=x^2-b(y)^2=(x+b(y))(x-b(y))\).
-Clearly \(y^2(1+y)\) is not a square, because it has odd degree.
-But over formal power series,
-\[
-x^2-y^2(1+y)=(x-y\sqrt{1+y})(x+y\sqrt{1+y})
-\]
-where \(\sqrt{1+y}\) means that we apply our previous results to construct the unique square root of \(1+y\) for which we take \(\sqrt{1}\) to be \(1\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:Laurent.field}.}
 Each nonzero formal Laurent series is uniquely expressed as
 \[
@@ -1059,6 +1144,38 @@ There are \(n(n-1)/2)\) choices of \(i < j\), so finally
 \[
 \Delta_{p(x)}=(-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2.
 \]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:Bezouty}.}
+To have double roots, the derivative has to have a root at the same point, i.e.
+\[
+mx^{m-1}=n(x+1)^{n-1},
+\]
+which we multiply by \(x+1\) to find
+\[
+mx^{m-1}(x+1)=n(x+1)^n=nx^m,
+\]
+so that \(x=0\) or \(m(x+1)=nx\).
+But \(x=0\) doesn't satisfy \(x^m=(x+1)^n\).
+So \(m(x+1)=nx\).
+Since our field has characteristic zero, \(n-m\ne 0\) so we can divide: \(x=m/(n-m)\).
+Now \(x\) sits inside the rational numbers (recalling that these sit inside any field of characteristic zero as the ratios \(p/q\) for integers \(p,q\) with \(q\ne 0\)).
+Expand out \(x^m=(x+1)^n\) to find
+\[
+\left(\frac{m}{n-m}\right)^m=\left(\frac{n}{n-m}\right)^n.
+\]
+If \(m<n\), divide by the right hand side:
+\[
+\left(\frac{m}{n}\right)^m\left(\frac{n-m}{n}\right)^{n-m}=1,
+\]
+impossible since the rational numbers on the left are smaller than \(1\).
+If \(m>n\), divide by the left hand side:
+\[
+1=\left(\frac{n}{m}\right)^n\left(\frac{m}{n-m}\right)^m.
+\]
+Divide by \(m^m\) and multiply by \((-1)^{m-n}\):
+\[
+(-1)^{m-n}=\left(\frac{n}{m}\right)^n\left(\frac{m-n}{m}\right)^{m-n}.
+\]
+Take absolute values and again note that the rational numbers on the right are smaller than \(1\), and positive.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:resultants:eliminate}.}
 Write these equations as polynomials in increasing powers of \(t\), with coefficients rational in \(x,y\):
 \begin{align*}
@@ -1163,6 +1280,64 @@ By theorem~\vref{theorem:adjugate}, \(A^{-1}=(\det A)^{-1}\adj{A}\), so
 A^{-1}_{ij} = \frac{(-1)^{i+j}\det (A \text{ with row \(j\) and column \(i\) deleted})}{\det A},
 \]
 rational functions of the entries of \(A\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:solve.by.res}.}
+The resultant in \(y\) involves determinant of smaller matrix than that in \(x\), because the degrees are smaller:
+\begin{align*}
+r(y)
+&=
+\det
+\begin{pmatrix}
+1&0&1&0\\
+x^{10}&1&2x^{13}&1\\
+x&x^{10}&-x&2x^{13}\\
+0&x&0X-x
+\end{pmatrix},
+\\
+&=
+4x^{27}-4x^{24} + x^{21},
+\\
+&=
+x^{21}(2x^3-1)^2,
+\end{align*}
+so
+\[
+x=0\text{ or }x=\frac{1}{\sqrt[3]{2}}.
+\]
+If we let \(x=0\) we have no solutions.
+(This ``false solution'' is caused by dropping of degree of both \(b(x,y)\) and \(c(x,y)\), which invalidates the method we are using, since the resultant of lower order polynomials has a different expression.)
+If \(x=1/\sqrt[3]{2}\), look at \(0=b+c\) to see
+\[
+y=-\frac{2}{x^{10}+2x^{13}}=\frac{1}{\sqrt[3]{2}^2}.
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:permuting.roots:plane.algebraic.curves}.}
+\[
+\det
+\begin{pmatrix}
+y^2&0&y^4+1&0\\
+0&y^2&0&y^4+1\\
+1&0&1&0\\
+0&1&0&1
+\end{pmatrix}
+=(y^4-y^2+1)^2
+\]
+vanishes just at values of \(y=y_0\) for which there are common factors in \(b(x,y_0),c(x,y_0)\) as polynomials in \(x\), and in particular drops if there is common root.
+There are at most \(4\) roots \(y=y_0\) of \(y^4-y^2+1=0\) in any field.
+At each of these there are at most \(4\) roots of \(b(x,y)\), so at most \(4\cdot 4=16\) intersection points in total.
+To be more precise, in a field not of characteristic \(2\),
+\[
+(x,y)=
+(\pm i \omega, \pm \omega),
+\]
+where
+\[
+\omega=
+\sqrt{
+-\frac{1\pm\sqrt{3}i}{2}
+}
+\]
+if the relevant square roots exist in the field.
+For example, none of these exist over \(k=\Q{}\) or \(k=\R{}\), but all do over \(k=\C{}\).
+In a field of characteristic \(2\), we can let \(u=y^2\), and find that \(u^2=1\), so \(u=1\), a double root, and then \(y^2=1\) so \(y=1\), a double root, and then \(x^2+1=0\), so \(x^2=1\), but also \(x^2+1+1=0\) so \(x^2=0\), a contradiction, so there are no intersection points of \(B\) and \(C\) if our field \(k\) has characteristic \(2\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:rings:kernel.subring}.}
 If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
 So if \(r_0, r_1\) belong to \(K\), then \(r_0+r_1\) has \(f(r_0+r_1)=f(r_0)+f(r_1)=0+0=0\), so \(r_0+r_1\) belongs to \(K\); similarly for \(r_0-r_1\) and for \(r_0r_1\).
@@ -1194,6 +1369,95 @@ A different proof: all of \(\alpha_1,\dots,\alpha_n\) belong to the splitting fi
 So we can assume without loss of generality that \(K\) is the splitting field of \(p(x)\).
 The Galois group of \(K/k\) acts as permutations of \(\alpha_1,\dots,\alpha_n\), fixing \(k\), so fixes \(q(\alpha_1,\dots,\alpha_n)\).
 But \(K\) is a Galois extension of \(k\), so the fixed elements under the Galois group are precisely the elements of \(k\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:plane.algebraic.curves:line.intersection}.}
+We can replace our field by its algebraic closure without affecting the result, so suppose that the field is algebraically closed.
+By linear change of variables, arrange that the line is \(y=0\).
+Then the equation \(0=p(x,y)\) of our curve \(C=(0=p(x,y))\) becomes \(0=p(x,0)\), of degree at most \(d\), or else there is a factor of \(y\) in \(p(x,y)\), i.e. \(C\) is reducible with our line as a component.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:plane.algebraic.curves:inverse.morphism}.}
+Suppose that \(C\) has equation \(c(x,y)=0\) and \(D\) has equation \(d(s,t)=0\).
+Take an algebra isomorphism \(\Phi\colon k[C]\to k[D]\).
+This map \(\Phi\) is uniquely determined by \(\Phi(x),\Phi(y)\), because after that every polynomial \(f(x,y)\) is mapped to \(\Phi(f(x,y))=f(\Phi(x),\Phi(y))\), as the algebra morphism preserves the addition and multiplication operations by which we construct polynomials.
+Pick polynomials \(x(s,t),y(s,t)\) so that, in \(k[D]\), \(x(s,t)=\Phi(x)\) and \(y(s,t)=\Phi(y)\).
+Let
+\[
+\psi\colon (s,t)\in\bar{k}^2\mapsto(x,y)=(x(s,t),y(s,t))\in\bar{k}^2.
+\]
+Two polynomials agree along the \(\bar{k}\)-points of the curve \(D\) just when their difference vanishes at those points, so just when their difference is divisible by \(d(s,t)\), by irreducibility of \(d(s,t)\).
+So these \(x(s,t),y(s,t)\) are determined only up to multiples of the irreducible \(d(s,t)\).
+
+Since \(\Phi\) is an isomorphism, it has an inverse isomorphism \(\Phi^{-1}\), and so we can similarly find polynomials \(s(x,y),t(x,y)\), defined up to adding multiples of \(c(x,y)\), so that \(s(x,y)=\Phi^{-1}s,t(x,y)=\Phi^{-1}t\) in \(k[C]\).
+Define a map
+\[
+\varphi\colon (x,y)\in\bar{k}^2\mapsto(s,t)=(s(x,y),t(x,y))\in\bar{k}^2.
+\]
+Extend \(\Phi\) to a map \(k[x,y]\to k[s,t]\) by
+\[
+\Phi(x)=x(s,t), \Phi(y)=y(s,t)
+\]
+and similarly extend \(\Phi^{-1}\) to a map \(\Psi\colon k[s,t]\to k[x,y]\) by
+\[
+\Psi(s)=s(x,y), \Psi(t)=t(x,y).
+\]
+
+On any polynomial \(f(x,y)\),
+\begin{align*}
+f(\psi(s,t))
+&=
+f(x(s,t),y(s,t)),
+\\
+&=
+f(\Phi(x),\Phi(y)),
+\\
+&=
+\Phi(f(x,y)).
+\end{align*}
+Similarly, for any polynomial \(f(s,t)\),
+\[
+f(\varphi(x,y))=\Psi(f(s,t)).
+\]
+But \(\Psi\circ\Phi\) reduces to the identity on \(k[C]\to k[C]\), so on polynomials,
+\begin{align*}
+\Psi\circ\Phi(x)&=x+a(x,y)c(x,y),\\
+\Psi\circ\Phi(y)&=y+b(x,y)c(x,y)
+\end{align*}
+for some polynomials \(a(x,y),b(x,y)\).
+Similarly
+\begin{align*}
+\Phi\circ\Psi(s)&=s+A(s,t)d(s,t),\\
+\Phi\circ\Psi(t)&=t+B(s,t)d(s,t)
+\end{align*}
+for some polynomials \(A(s,t),B(s,t)\).
+Composing,
+\begin{align*}
+\psi(\varphi(x,y))
+&=
+(x(\varphi(x,y)),y(\varphi(x,y))),
+\\
+&=
+(\Psi(x(s,t)),\Psi(y(s,t))),
+\\
+&=
+(\Psi(\Phi(x)),\Psi(\Phi(y))),
+\\
+&=
+(x+a(x,y)c(x,y),y+b(x,y)c(x,y)),
+\end{align*}
+Similarly the other way around
+\[
+\varphi(\psi(s,t))=(s+A(s,t)d(s,t),t+B(s,t)d(s,t)).
+\]
+So on the \(\bar{k}\)-points of the curves, these are inverses of one another.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:rat.reg}.}
+Suppose our curve is \(C=(0=c(x,y))\).
+The denominator of a rational function \(p/q\), in lowest terms, is a polynomial, so vanishes on a curve \(Q=(0=q(x,y))\).
+If the resultant of \(c,q\) has positive degree, then in some finite field extension \(c\) and \(q\) have a common root, i.e. \(q=0\) at some point of \(C\), even in lowest terms, so \(p/q\) is not regular there.
+If the resultant is the zero polynomial, \(C\) and \(Q\) have a common component, so \(q=0\) on a component of \(C\), so \(p/q\) is not a rational function.
+So we can suppose that the resultant is not the zero polynomial, but has degree zero, i.e. a nonzero constant, which we scale to be \(1\): \(uc+vq=1\).
+Solve for \(q\) and plug in to \(p/q\) to find
+\[
+\frac{p}{q}=\frac{pv}{1-uc},
+\]
+on the \(xy\)-plane, and so on the curve \(C\), this function is equal \(pv\), so is regular, since \(p\) and \(v\) are polynomials.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:simplify.integral}.}
 \begin{align*}
 2 \int \pr{t^2-1}^2 \, dt
@@ -1250,6 +1514,59 @@ rewrites the integral in terms of \(t\).
 \int f\left(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}\right)\frac{2}{1+t^2}dt.
 \end{align*}
 Take a partial fraction decomposition as in the proof of corollary~\vref{corollary:rational.function.integral}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:fermat}.}
+Take some point \((x,y)=(x_0,y_0)\) on \(F\).
+Write every point \((x,y)\) of the plane as \((x,y)=(x_0+X,y_0+Y)\) for some \(X,Y\).
+The equation of the Fermat curve: \(0=-1+x^n+y^n\) expands out, by the binomial theorem, to
+\[
+0=-1+x_0^n+nx_0^{n-1}X+\dots+y_0^n+ny_0^{n-1}Y+\dots,
+\]
+and we then cancel out \(0=-1+x_0^n+y_0^n\) to give
+\[
+0=n(x_0^{n-1}X+y_0^{n-1}Y)+\dots,
+\]
+so the linear terms vanish just when \(nx_0^{n-1}=0\) and \(ny_0^{n-1}=0\).
+Since the characteristic does not divide \(n\), \(n\ne 0\) in our field, so we divide to find \(0=x_0=y_0\).
+But this is not a point of \(F\), since \(x_0^n+y_0^n\) is then not \(1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:Hasse.curve}.}
+Homogenize to
+\[
+0=x^3+y^3+z^3-3axyz.
+\]
+Differentiate to find
+\[
+x^2=ayz, y^2=axz, z^2=axy.
+\]
+Multiply the first equation by \(x\), the second by \(y\), the third by \(z\):
+\[
+x^3=y^3=z^3=axyz.
+\]
+Multiply these together
+\[
+x^3y^3z^3=a^3x^3y^3z^3.
+\]
+So \(x=0\) or \(y=0\) or \(z=0\) or \(a^3=1\).
+If \(x=0\), then \(y^2=axz=0\) and \(z^2=axy=0\), impossible since \(x,y,z\) can't all vanish for a point of the projective plane.
+Similarly if \(y=0\) or if \(z=0\).
+So finally \(a^3=1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:formal.power.series:reduce.curve}.}
+If \(y^2-f(x)\) is reducible, each factor is linear in \(y\), or else one is constant in \(y\) and the other quadratic.
+In the second case: the factor constant in \(x\) is multiplied by a quadratic in \(x\), coefficients polynomial in \(y\), giving \(x^2+\dots\), constant in \(y\), so the factor constant in \(x\) and \(y\).
+In the first case: each linear factor has, up to rescaling, a unit coefficient in front of \(x\)
+\[
+x^2-f(y)=(x+b(y))(x+c(y))=x^2+x(b(y)+c(y))+b(y)c(y),
+\]
+so that \(c(y)=-b(y)\), and then \(x^2-f(y)=x^2-b(y)^2=(x+b(y))(x-b(y))\).
+Clearly \(y^2(1+y)\) is not a square, because it has odd degree.
+But over formal power series,
+\[
+x^2-y^2(1+y)=(x-y\sqrt{1+y})(x+y\sqrt{1+y})
+\]
+where \(\sqrt{1+y}\) means that we apply our previous results to construct the unique square root of \(1+y\) for which we take \(\sqrt{1}\) to be \(1\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:local.param}.}
+\(T=t^k F\) for some \(F\ne 0\) regular near \(p_0\), and reciprocally \(t=T^{\ell} G\) for some \(G\ne 0\) regular near \(p_0\).
+Being both regular, \(k,\ell\ge 0\).
+So \(T=t^k F=T^{k\ell} G^k F\), and uniqueness forces \(k\ell=1\) so \(k=\ell=1\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:algebraic.curves:reg.fns}.}
 If \(c(x,y)\) divides \(p(x,y)\), clearly \(p(x,y)=0\) on every \(\bar{k}\)-point where \(c(x,y)=0\).
 Suppose that \(p(x,y)=0\) on those points.
@@ -1257,6 +1574,117 @@ For any constant value of \(x\) or \(y\) in \(\bar{k}\), there are points where 
 So the resultant vanishes for infinitely many values, so vanishes everywhere.
 So \(p(x,y),c(x,y)\) have a common factor in \(k[x,y]\).
 Recall that \(c(x,y)\) is irreducible.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:nonzero.somewhere}.}
+Extend to make the number of elements of the field so large that it exceeds the degree of the polynomial in all of the variables.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:nonzero.somewhere.2}.}
+If it takes on the same value at all points, even after any finite extension of the field, subtract that value and apply problem~\vref{problem:intersecting.curves:nonzero.somewhere}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:nonzero.somewhere.3}.}
+From problem~\vref{problem:intersecting.curves:nonzero.somewhere.2}, there are two points, say \(x=a\) and \(x=b\), where the polynomial, say \(p(x)\), takes on different values, after perhaps a finite field extension.
+So the polynomial \(t\mapsto p((1-t)a+tb)\) is not constant, a polynomial in one variable, hence splits after a finite field extension.
+Hence \(p(x)\) has roots on the line through \(a\) and \(b\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:nonzero.somewhere.4}.}
+We can replace the field by its algebraic closure, so suppose it is algebraically closed, hence infinite.
+Following the solution to problem~\vref{problem:intersecting.curves:nonzero.somewhere.3}, pick points \(x=a\) and \(x=b\) where \(p(a)\ne p(b)\).
+Since there are two or more variables, we can take in addition some point \(x=c\) not on the line through \(a\) and \(b\).
+Let \(x(t)=(1-t)a+tb\).
+There are only finitely many values of \(t\) at which the nonconstant polynomial \(p(x(t))-p(c)\) vanishes.
+Ignoring those, there are infinitely many points \(x=d\) of the line through \(a\) and \(b\) on which \(p(d)\ne p(c)\).
+For each of those infinitely many points \(d\), on the line through \(c\) and \(d\), the polynomial \(t\mapsto p((1-t)c+td)\) in one variable \(t\) is not constant.
+If \(p(c)=0\), replace \(c\) by one such point of that line on which \(p\ne 0\), and which is not the point \(d\).
+So we can assume that \(p(c)\ne 0\).
+Again, for each of those infinitely many points \(d\), on the line through \(c\) and \(d\), the polynomial \(t\mapsto p((1-t)c+td)\) in one variable \(t\) is not constant, so has roots in the algebraic closure.
+Since \(p(c)\ne 0\), none of those roots lie at \(t=0\).
+If we change the choice of \(d\), the old line from \(c\) to \(d\) and the new one only overlap on the point \(c\), which is not where the roots of \(p(x)\) lie.
+So a distinct root for each of infinitely many choices of \(d\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:polys.take.values}.}
+Replace the field by its algebraic closure, without loss of generality, so we can assume our field is algebraically closed.
+Writing our variables as \(x=(x_1,\dots,x_n)\), and our polynomial as \(p(x)\),  take a value \(c\) in the field, and replace \(p(x)\) by \(p(x)-c\): it suffices to prove the result for \(c=0\); apply problem~\vref{problem:intersecting.curves:nonzero.somewhere.3}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:try.a.shear}.}
+The resultant is
+\[
+r(x)=
+\det
+\begin{pmatrix}
+0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 1 & 0 \\
+x & 1 & 0 & x & 1 & 1 \\
+\lambda & x & 1 & \lambda & x & 1 \\
+0 & \lambda & x & 0 & \lambda & x \\
+0 & 0 & \lambda & 0 & 0 & \lambda
+\end{pmatrix}
+=
+-\lambda^3.
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersection.curves:million}.}
+Write out \(m\) distinct elements of \(k\), say
+\[
+b_1,b_2,\dots,b_m,
+\]
+and \(n\) distinct elements of \(k\), say
+\[
+c_1,c_2,\dots,c_n,
+\]
+and let
+\begin{align*}
+B&=(0=(x-b_1)(x-b_2)\dots(x-b_m)=0),\\
+C&=(0=(y-c_1)(y-c_2)\dots(y-c_n)=0).
+\end{align*}
+Then \(B\) intersects \(C\) precisely at points \((x,y)=(b_i,c_j)\) for any \(i=1,2,\dots,m\) and \(j=1,2,\dots,n\), so \(mn\) points of intersection.
+More generally, we can let \(B\) consist of \(m\) distinct lines, and \(C\) also, but so that every line of \(B\) is not parallel to any line of \(C\), so \(mn\) intersections.
+An irreducible example is more difficult.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:stay.away.irred}.}
+If the curve is irreducible, shear it to have the form \(B=(y^n+\dots)\), where \(\dots\) are lower order in \(y\).
+On the line \((x=0)\), this equation is not everywhere satisfied, i.e. that vertical line is not a component of \(B\), and the equation of \(B\) becomes a polynomial in \(y\), not the zero polynomial, so having finitely many roots in the algebraic closure.
+Pick any value \(y=y_0\) which is not one of those roots.
+(To find one, if the field is finite, you might have to extend to create more than \(n\) elements in the field.)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:stay.away}.}
+We can assume the curve is not irreducible, by problem~\vref{problem:intersecting.curves:stay.away.irred}.
+Suppose that the curve has components \(B_i=(0=b_i(x,y))\), finitely many.
+Take all resultants \(r_{ij}(x)=\resultant{b_i,b_j}(x)\).
+Each vanishes at only finitely many values of \(x\) by proposition~\vref{proposition:resultant.degree}.
+Even in the algebraic closure, each resultant has still only finitely many roots.
+So we can finitely extend our field, if it is finite, to have some element \(x=x_0\) not a root of any \(r_{ij}(x)\).
+On the vertical line \(x=x_0\), no two of these \(b_i(x_0,y)\) have a common factor, and in particular none of them are zero.
+So altogether finitely many \(y=y_0\) can be a root of one of these \(b_i(x_0,y)\).
+Pick some \(y=y_0\) not a root of any of them, again perhaps after some finite extension of our field if it is a finite field.
+Then \((x_0,y_0)\) is not on the curve.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:rational.fns}.}
+We can assume that \(C\) is irreducible.
+Suppose that \(C=(0=c(x,y))\).
+For a rational morphism, we only have to show that its constituent rational functions are defined except perhaps at finitely many points.
+So suppose that
+\[
+f(x,y)=\frac{p(x,y)}{q(x,y)},
+\]
+is a rational function, determined up to adding multiples of \(c(x,y)\) to its numerator and denominator.
+The denominator \(q(x,y)\) is not a multiple of \(c(x,y)\), since the rational function is defined somewhere and \(c(x,y)\) is irreducible.
+There are finitely many points where the curve \(C\) intersects the curve \((q(x,y)=0)\), by corollary~\vref{corollary:finite.intersection}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:W}.}
+e can assume that our curve, call it \(B=(0=b(x,y))\), is irreducible, and that our field is algebraically closed.
+Pick an element \(c_0\) of the field.
+Our rational function is
+\[
+f(x,y)=\frac{p(x,y)}{q(x,y)}
+\]
+as ratios of polynomials in lowest terms.
+Since \(f(x,y)\) is not constant on \(B\), \(p(x,y),q(x,y)\) are not both constant.
+The equations
+\begin{align*}
+0&=b(x,y), \\
+c_0q(x,y)&=p(x,y)
+\end{align*}
+are satisfied just by values of \(x,y\) for which \((x,y)\) lies on \(B\) and either \(f(x,y)=c_0\) or both \(p(x,y)\) and \(q(x,y)\) vanish.
+Since \(p(x,y),q(x,y)\) are not both constant and have no common factor, the second equation also cuts out a plane algebraic curve \(C\).
+By corollary~\vref{corollary:finite.intersection}, \(B\) and \(C\) have finitely many points of intersection, or else they share a component, which must then be \(B\) since \(B\) is irreducible.
+But if they share \(B\) as a component, then \(c_0q(x,y)=p(x,y)\) everywhere on \(B\), i.e. \(f\) is constant on \(B\).
+For a rational map (instead of a rational function): its components are rational functions.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:partials}.}
+Expand into the usual finite sum of monomials:
+\[
+b(x,y)=\sum_{k,\ell\ge 0} b_{k\ell} x^ky^{\ell}.
+\]
+The partial derivative \(\pderiv{b}{x}\) arises from \(b(x,y)\) by replacing every monomial \(x^k y^{\ell}\) by \(kx^ky^{\ell}\).
+Ignoring the constant term, these are all distinct monomials still, and vanish only if \(k\) is divisible by \(p\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:fields:double}.}
 Let \(k_1 \subset k_2 \subset k_3 \dots\) be finite fields of orders \(2,4,8\) and so on.
 Our result is clear if \(k=k_1=\Zmod{2}\).
@@ -1276,6 +1704,196 @@ But then taking quotient and remainder, we see that this is not possible.
 Hence \(K\) has a basis over \(k\) consisting of the images of \(1,x,x^2,\dots,x^{n-1}\) in \(k[x]\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:homog}.}
 \(P(x,y)=x^4+xy^3+y^4\)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:join.points}.}
+A point of the projective plane is precisely a line through the vantage point in \(3\)-dimensional space \(\R{3}\).
+A pair of distinct points in the projective plane is a pair of distinct lines through the vantage point.
+Take the vantage point to be the origin, for simplicity of notation.
+Clearly these lines span a unique plane in \(\R{3}\), i.e. the two points in the projective plane lie in a unique projective line.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:intersecting.lines}.}
+Our two lines in the projective plane are precisely two planes through the vantage point in our \(3\)-dimensional space \(\R{3}\).
+Take the vantage point to be the origin, for simplicity of notation.
+The intersection of linear subspaces is a linear subspace.
+The dimension of a linear subspace is smaller than that of any linear subspace containing it, unless the two linear subspaces are equal.
+So these planes intersect in a plane (if they are equal), or in a line, or just at the origin.
+We wish to rule out this last possibility.
+The dimension formula from linear algebra says that any two linear subspaces \(V,W\) satisfy
+\[
+\dim*{V+W}+\dim*{V\cap W}=\dim{V}+\dim{W}.
+\]
+Our planes have dimension \(2\), and sit in \(\R{3}\), which has dimension \(3\), so
+\[
+3+\dim*{V\cap W}\ge\dim*{V+W}+\dim*{V\cap W}=2+2.
+\]
+So \(\dim*{V\cap W}\ge 1\), i.e. our planes meet along a line or else they are equal.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:scaling.matrices}.}
+Suppose that \(A\) is \(n \times n\).
+If \(n=1\) then every square matrix is a constant scalar, so suppose that \(n \ge 2\).
+Write our vectors as \(x=\sum_j x_j e_j\) in the standard basis of \(\R{n}\) and calculate
+\begin{align*}
+Ax
+&=
+\lambda\of{x} x,
+\\
+&=
+\sum_j \lambda\of{x} x_j e_j,
+\\
+&=
+\sum_j x_j ge_j,
+\\
+&=
+\sum_j x_j \lambda\of{e_j} e_j.
+\end{align*}
+So for any \(x\) with \(x_j\ne 0\), we have \(\lambda(x)=\lambda\of{e_j}\).
+In particular, if \(x=e_1+e_2+\dots+e_n\), we have
+\[
+\lambda\of{e_1}=\dots=\lambda\of{e_n}.
+\]
+So if \(x\ne 0\) then \(\lambda(x)=\lambda\of{e_1}\).
+So \(\lambda\) is a constant.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:aut.gl}.}
+Let \(C\defeq B^{-1}A\), so that \([C]=[B]^{-1}[A]\) and \([C]\) fixes every point of the projective plane just when \(C\) rescales every vector in \(\R{3}\) by  a scalar.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.plane:bases}.}
+We turn the problem into linear algebra.
+Each point \(p_i\) in our projective plane is some
+\[
+p_i=
+\begin{bmatrix}
+x_i\\
+y_i\\
+z_i
+\end{bmatrix}
+\]
+line through the origin and some vector
+\[
+v_i=
+\begin{pmatrix}
+x_i\\
+y_i\\
+z_i
+\end{pmatrix}.
+\]
+Any three of these four vectors \(v_0,v_1,v_2,v_3\) are linearly independent, i.e. don't lie in the same plane through the origin.
+So \(v_1,v_2,v_3\) is a basis and we can somehow write
+\[
+v_0=c_1v_1+c_2v_2+c_3v_3,
+\]
+for some \(c_1,c_2,c_3\) in our field.
+If \(c_1=0\) then this is a linear relation
+\[
+v_0=c_2v_2+c_3v_3,
+\]
+between three of our vectors, so they are linearly independent, so they lie in a plane, so \(p_0,p_2,p_3\) lie in a projective line, a contradiction.
+Hence \(c_1\ne 0\).
+By the same argument, \(c_1,c_2,c_3\) are all nonzero.
+We can replace \(v_1,v_2,v_3\) by \(c_1v_1,c_2v_2,c_3v_3\) if we like, so we can assume that \(1=c_1=c_2=c_3\):
+\[
+v_0=v_1+v_2+v_3.
+\]
+Say that \(v_0,v_1,v_2,v_3\) are \emph{normalized} if this equation holds.
+
+Claim: a normalized set of vectors is unique up to rescaling all of them by the same factor.
+Proof: Suppose that instead we had chosen some other normalized vectors, say \(v_0',v_1',v_2',v_3'\) with  each \(v_i'\) also in the line represented by \(p_i\).
+So then \(v_i'=a_i v_i\) for some constants \(a_i\ne 0\).
+Then
+\[
+v_0=\frac{v_0'}{a_0}=\frac{v_1'+v_2'+v_3'}{a_0}=\frac{a_1}{a_0}v_0+\frac{a_2}{a_0}v_2+\frac{a_3}{a_0}v_3,
+\]
+but
+\[
+v_0=v_1+v_2+v_3.
+\]
+Since \(v_1,v_2,v_3\) is a basis, expansion in a basis is unique, so
+\[
+a_0=a_1=a_2=a_3.
+\]
+
+Pick some normalized \(v_0,v_1,v_2,v_3\) for a basis \(p_0,p_1,p_2,p_3\) and \(w_0,w_1,w_2,w_3\) for a basis \(q_0,q_1,q_2,q_3\).
+From linear algebra, we know that there is a unique invertible \(3\times 3\) matrix \(A\) which linearly transforms vectors by \(x\mapsto Ax\), taking \(v_1,v_2,v_3\) to \(w_1,w_2,w_3\).
+But then
+\[
+v_0=v_1+v_2+v_3
+\]
+ensures that
+\[
+Av_0=Av_1+Av_2+Av_3=w_1+w_2+w_3=w_0.
+\]
+So \([A]\) takes \(p_0,p_1,p_2,p_3\) to \(q_0,q_1,q_2,q_3\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:rat.proj.trans}.}
+Each invertible matrix
+\[
+A=
+\begin{pmatrix}
+a_{00} & a_{01} & a_{02} \\
+a_{10} & a_{11} & a_{12} \\
+a_{20} & a_{21} & a_{22}
+\end{pmatrix}.
+\]
+yields a linear transformation
+\begin{align*}
+\begin{pmatrix}
+X\\
+Y\\
+Z
+\end{pmatrix}
+&=
+\begin{pmatrix}
+a_{00} & a_{01} & a_{02} \\
+a_{10} & a_{11} & a_{12} \\
+a_{20} & a_{21} & a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+a_{00}x+a_{01}y+a_{02}z \\
+a_{10}x+a_{11}y+a_{12}z \\
+a_{20}x+a_{21}y+a_{22}z
+\end{pmatrix}
+\end{align*}
+which induces the projective transformation
+\begin{align*}
+\begin{bmatrix}
+X\\
+Y\\
+Z
+\end{bmatrix}
+&=
+\begin{bmatrix}
+a_{00} & a_{01} & a_{02} \\
+a_{10} & a_{11} & a_{12} \\
+a_{20} & a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+a_{00}x+a_{01}y+a_{02}z \\
+a_{10}x+a_{11}y+a_{12}z \\
+a_{20}x+a_{21}y+a_{22}z
+\end{bmatrix}.
+\end{align*}
+We can rescale.
+Scaling to get \(z=1\), and to get \(Z=1\), by dividing \(x,y,z\) by \(z\) and \(X,Y,Z\) by \(Z\), we find that in the affine planes \((z=1)\) and \((Z=1)\),
+\[
+\begin{pmatrix}
+X\\[5pt]
+Y
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{a_{00}x+a_{01}y+a_{02}}{a_{20}x+a_{21}y+a_{22}} \\[5pt]
+\frac{a_{10}x+a_{11}y+a_{12}}{a_{20}x+a_{21}y+a_{22}}
+\end{pmatrix},
+\]
+a rational map.
+The inverse is also rational, using the entries of \(A^{-1}\) in place of those of \(A\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:find.the.points}.}
 Homogenize to \(x^3+x^2y+xy^2+y^3+x^2z=z^3\), and then set \(z=0\) to get the homogeneous equation \(x^3+x^2y+xy^2+y^3=0\).
 Factor: \((x+y)(x^2+y^2)=0\).
@@ -1307,10 +1925,536 @@ Note that \(0^2=0, 1^2=1, 2^2=4, 3^2=9=4, 4^2=16=1\), so only \(0,1,4\) have squ
 We still need the points ``at infinity''.
 Homogenize: \(y^2z+yz^2=x^3+xz^2+z^3\), and set \(z=0\): \(0=x^3\), so \(x=0\), i.e. \([x,y,z]=[0,y,0]\), and rescale \(y\) to \([0,1,0]\).
 Final answer: \([0,2,1], [2,2,1], [3,2,1], [0,1,0]\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:intersecting.curves:irred.inter}.}
+Take resultant
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^m & 0  & \dots & \dots & 0 & -(x+1) \\
+    1&-x^m& 0     & \dots & 0 & 0 \\
+     &   1& -x^m  & \dots & 0 & 0 \\
+     &    & \ddots& \ddots & \vdots & \vdots \\
+     &    &       & 1      & -x^m & 0 \\
+     &    &       &        &  1 & 1
+\end{pmatrix},\\
+&=
+-x^m
+\det
+\begin{pmatrix}
+-x^m& 0     & \dots & 0 & 0 \\
+   1& -x^m  & \dots & 0 & 0 \\
+    & \ddots& \ddots & \vdots & \vdots \\
+    &       & 1      & -x^m & 0 \\
+    &       &        &  1 & 1
+\end{pmatrix}\\
+&\quad+
+(-1)^n(-(x+1))
+\det
+\begin{pmatrix}
+    1&-x^m& 0     & \dots & 0 \\
+     &   1& -x^m  & \dots & 0 \\
+     &    & \ddots& \ddots & \vdots \\
+     &    &       & 1      & -x^m \\
+     &    &       &        &  1
+\end{pmatrix},\\
+&=
+(-1)^n(x^m-x-1)).
+\end{align*}
+To have a double root or higher, we need \(x^m=x+1\), and also vanishing of the derivative \(mx^{m-1}=1\), so \(x^m=x/m=x+1\), so \(x=m/(m-1)\) is rational, so lies inside the rational numbers in our field.
+But then we need \(x^{m-1}=1/m\), so \(m^m=(m-1)^{m-1}\), clearly impossible in usual rational numbers because \(m>m-1\) so \(m^m>(m-1)^{m-1}\).
+So our resultant has only single roots, i.e. intersections arise at only one point each.
+The reader can prove that the curves are irreducible.
+The curves reach the line at infinity at \(0=x^m\) and \(0=y^n\), i.e \([x,y,z]=[0,1,0]\) and \([x,y,z]=[1,0,0]\), so not intersection points at infinity.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:do.intersect}.}
+Homogenize their equations.
+Proposition~\vref{proposition:resultant.degree} shows that either they have a common component or the equations have nonzero resultant, a homogeneous polynomial of degree
+exactly the product of their degrees, say \(m\) and \(n\).
+After a shearing, we can arrange that the resultant has highest terms with nonzero pure power \(x^{mn}\).
+Dehomogenize by setting \(x=1\).
+The degree of the resultant doesn't go down, so is positive.
+The curves now intersect, after some finite field extension to introduce roots to the resultant.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:counting.intersections:finiteness}.}
+There are finitely many intersection points of \(B\) and \(C\) in the affine \(xy\)-plane by corollary~\vref{corollary:finite.intersection}.
+There are finitely many more on the line at infinity by lemma~\vref{lemma:one.variable.splits.3}.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.curves:finite.image}.}
+We can assume, perhaps after a finite field extension and a projective automorphism, that none of these finitely many points is at infinity.
+For simplicity of notation, we only prove the case of \(n=2\), i.e. rational morphisms to the projective plane, say
+\[
+(X,Y)=f(x,y)=(X(x,y),Y(x,y)),
+\]
+with rational functions \(X=X(x,y), Y=Y(x,y)\), mapping to the affine plane.
+First suppose that \(B\) is irreducible.
+Suppose that \(f\) maps to some points \((X,Y)=(X_1,Y_1),\dots,(X_n,Y_n)\).
+The polynomial \(p(X,Y)=(X-X_1)\dots(X-X_n)\) vanishes on these points, so \(p\circ f=0\), i.e. the rational function
+\[
+p(X(x,y),Y(x,y))
+\]
+vanishes, so its numerator vanishes.
+It is a product of the rational functions
+\[
+X(x,y)-X_1, X(x,y)-X_2,\dots,X(x,y)-X_n,
+\]
+so the numerator of at least one of these vanishes, i.e \(X(x,y)\) is constant.
+Similarly for \(Y(x,y)\).
+Next suppose that \(B\) is reducible.
+So our map is constant on each component of \(B\), and hence regular everywhere.
+Any two components meet by problem~\vref{problem:projective.curves:do.intersect}.
+Our map is regular at the intersection points, so the constants agree.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:counting:algebraic.desc}.}
+Suppose that our two curves have affine plane equations \(B=(b(x,y)=0)\) and \(C=(c(x,y)=0)\).
+The lines through \(q=(0,\infty)\) are the vertical lines in the affine plane.
+The standard triangle is generic just when
+\begin{enumerate}
+\item
+\(q=(0,\infty)=[0,1,0]\) is not on \(B\) or \(C\), and
+\item
+no vertical line connects two intersection points of \(B\) and \(C\).
+\end{enumerate}
+Asking that \(q=[0,1,0]\) is not on \(B\) is precisely asking that \(b(0,1,0)\ne 0\), i.e. that that highest terms of \(b(x,y,0)\) are not divisible by \(x\).
+So the standard triangle is generic just when
+\begin{enumerate}
+\item
+the highest degree terms of \(b(x,y)\) and \(c(x,y)\) are not all divisible by \(x\) and
+\item
+for any constant \(x=x_0\), \(b(x_0,y)\) and \(c(x_0,y)\) have at most one common root in \(y\) in the algebraic closure of our field.
+\end{enumerate}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:counting.intersections:when.very}.}
+\begin{itemize}
+\item
+there is no zero of the homogeneous polynomials \(b(x,y,z)\), \(c(x,y,z)\) on the line at infinity, i.e.
+\item
+the line \(z=0\), i.e.
+\item
+the highest order terms of \(b(x,y,0)\) and \(c(x,y,0)\) have no common root in \(\Proj^1\), i.e.
+\item
+they have no common linear factor over the algebraic closure i.e.
+\item
+their resultant is not the zero polynomial i.e.
+\item
+their resultant is a homogeneous nonzero polynomial of degree \(\degree{B}\degree{C}\), by proposition~\vref{proposition:resultant.degree}.
+\end{itemize}
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:counting.intersections:two.conics.example}.}
+As curves in the affine \(xy\) plane, over the real numbers, they look like:
+\[
+\includegraphics[width=4cm]{transverse-conic-intersection}
+\]
+Homogenize: \(yz=x^2\) and \(yz=(x-z)^2\).
+Claim: the intersection points in the projective plane are
+\[
+[x,y,z]=[0,1,0],[2,1,4].
+\]
+Find intersections: \(x^2=(x-z)^2\), \(0=-2xz+z^2=z(-2x+z)\), so \(z=0\) or \(z=2x\).
+If \(z=0\), then \(x=0\), so \([x,y,z]=[0,1,0]\) (remember we can't have all of \(x,y,z\) zero in the projective plane, and if \(y\ne 0\), we can rescale \(y\) to \(y=1\)).
+If \(z=2x\), then \(2xy=x^2\), so \(x=0\) or \(2y=x\), so \([x,y,z]=[0,1,0]\) or \([x,y,z]=[2,1,4]\).
+Now to compute resultants.
+In the affine \(xy\) plane, \(z=1\), we find the intersection point
+\[
+[x,y,z]=[2,1,4]=[1/2,1/4,1].
+\]
+The coefficients are:
+\[
+\begin{array}{ccc}
+-x^2&+&y\\
+-x^2&,&1\\[10pt]
+-(x-1)^2&+&y\\
+-(x-1)^2&,&1
+\end{array}
+\]
+So the resultant is
+\[
+r(x)=
+\det
+\begin{pmatrix}
+-x^2 & -(x-1)^2\\
+1&1
+\end{pmatrix}=-2x+1,
+\]
+so the intersection multiplicity at \([x,y,z]=[1/2,1/4,1]\) is \(1\).
+At \([x,y,z]=[0,1,0]\), we compute in the affine \((y=1)\) plane, where our curves are \(z=x^2\) and \(z=(x-z)^2=x^2-2xz+z^2\).
+\[
+\includegraphics[width=4cm]{triple-conic-intersection}
+\]
+Expand in \(z\):
+\[
+0=-x^2+z \text{ and } 0=x^2-(1+2x)z+z^2,
+\]
+so coefficients
+\[
+\begin{array}{ccccc}
+-x^2&+&z\\
+-x^2&,&1\\[10pt]
+x^2&-&(1+2x)z&+&z^2\\
+x^2&,&-(1+2x)&,&1
+\end{array}
+\]
+The resultant is
+\[
+r(x)=
+\det
+\begin{pmatrix}
+-x^2&0&x^2\\
+1&-x^2&-(1+2x)\\
+0&1&1
+\end{pmatrix}
+=
+x^4-2x^3=x^3(x-2),
+\]
+with roots at \(x=0\) and \(x=2\), corresponding to \([x,y,z]=[0,1,0]\) and \([x,y,z]=[2,1,4]\), with intersection multiplcities \(1,3\).
+So these two conics intersect in the affine \(xy\)-plane at \([x,y,z]=[2,1,4]\) transversely (i.e. with intersection multiplicity \(1\)) and then again on the projective line at infinity at \([x,y,z]=[0,1,0]\), with an intersection multiplicity of \(3\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:proj.curves:poles}.}
+Every nonconstant rational function in the projective plane has poles along a curve, and curves intersect (at points over the algebraic closure of the field, at least), by B\'ezout's theorem.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:proj.curves:degree}.}
+The linear functions of the affine plane sit in the algebra of regular functions of the curve.
+By B\'ezout's theorem, the linear functions not everywhere vanishing on any component are precisely those regular functions which vanish at a number of points equal to the degree of the curve.
+So these functions are preserved, and they span the linear functions.
+The linear functions generate the algebra of regular functions, i.e. every regular function is a polynomial expression in the linear functions.
+The degree of the curve is the smallest positive degree for which there is a polynomial relation, inside the regular functions, among the linear functions.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:counting.intersections:real.circle}.}
+Take any algebraic curve \(C\) of even degree, for example the circle, and any algebraic curve \(B=(0=p(x,y))\) of any degree.
+By B\'ezout's theorem, they have an even number of complex intersections, counting multiplicities.
+Each intersection point has a complex conjugation intersection point, i.e. with coordinates the complex conjugate, with equal multiplicity.
+Each intersection point which is not real is different from its conjugate, so in total the intersection points which are not real arise with an even sum of multiplicities.
+So the total number of real intersection points, counting multiplicity, is the total number of complex intersection points minus the total number of complex but not real intersection points, so is a difference of even integers.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:tangents:conics}.}
+The point might not belong to the conics, giving zero.
+Smooth curves are irreducible.
+The two conics might agree on a component, but being irreducible, they must then be equal since they are irreducible, and then all of their points have intersection multiplicity \(\infty\).
+There is a unique tangent line at each point, by smoothness.
+The order of each point is the number of tangent lines: \(1\).
+By theorem~\vref{theorem:multiplicity.submultiplicative}, the intersection multiplicity is at least \(1\) at any intersection point, with equality just when the tangents are distinct.
+For example, two conics with distinct tangents at the origin: \(y=x^2\) and \(x=y^2\).
+The tangents (drop higher order terms): \(y=0\), \(x=0\).
+Resultant
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&0&-x\\
+1&-x^2&0\\
+0&1&1
+\end{pmatrix},
+\\
+&=
+-x^2
+\det
+\begin{pmatrix}
+-x^2&0\\
+1&1
+\end{pmatrix}
+-x
+\det
+\begin{pmatrix}
+1&-x^2\\
+0&1
+\end{pmatrix},
+\\
+&=
+-x^2(-x^2)-x(1),
+\\
+&=
+-x^4-x,
+\\
+&=-x(x^3+1).
+\end{align*}
+The resultant vanishes at \(x=0\) and at the three roots of \(x^3+1=0\).
+At the origin, the intersection multiplicity is \(1\).
+Finally, suppose we face two conics tangent at some point.
+By our classification of conics, we can assume that our first curve, after projective transformation, is \(y=x^2\).
+Our second has to intersect at the origin with the same tangent line.
+Writing its equation as
+\[
+0=ax^2+bxy+cy^2+dx+ey+f,
+\]
+note that passing through the origin forces precisely \(f=0\).
+To have tangent \(y=0\), we need lowest order terms to be \(d=0\), \(e\ne 0\).
+Rescale to get \(e=1\):
+\[
+0=ax^2+(bx+1)y+cy^2.
+\]
+Suppose that \(c\ne 0\).
+Now take resultant for our equations \(0=y-x^2\) and this one above:
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&0&ax^2\\
+1&-x^2&bx+1\\
+0&1&c
+\end{pmatrix},
+\\
+&=
+-x^2
+\begin{pmatrix}
+-x^2&bx+1\\
+1&c
+\end{pmatrix}
++ax^2
+\begin{pmatrix}
+1&-x^2\\
+0&1
+\end{pmatrix},
+\\
+&=
+-x^2(-cx^2-bx-1)+ax^2,
+\\
+&=
+cx^4+bx^3+(a+1)x^2,
+\\
+&=
+x^2(cx^2+bx+(a+1)).
+\end{align*}
+So the intersection multiplicity at \(x=0\) is \(2\) unless \(a=-1\), i.e.
+\[
+y=x^2-bxy-cy^2,
+\]
+for which the intersection multiplicity is \(3\).
+If \(c=0\),
+\[
+0=ax^2+(bx+1)y,
+\]
+the resultant is
+\begin{align*}
+r(x)
+&=
+\det
+\begin{pmatrix}
+-x^2&ax^2\\
+1&bx+1
+\end{pmatrix},
+\\
+&=
+-x^2(bx+1)-ax^2,
+\\
+&=
+-x^2(bx+1+a).
+\end{align*}
+So again the intersection multiplicity at \(x=0\) is \(2\), unless \(a=-1\),
+\[
+y=x^2-bxy.
+\]
+for which the intersection multiplicity is \(3\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:tangents:cubic}.}
+If a cubic curve \(C\) has two singular points \(p_0,p_1\), then the line \(\ell\) between them has \(\order{p}{C}\le \multiplicity{p}{C}{\ell}\), equality just when \(\ell\) is not tangent to \(C\) at \(p\), for each of the points \(p=p_0,p_1\).
+To be singular \(\order{p}{C}\ge 2\), so adding up over \(p=p_0,p_1\), the intersection number of \(C\) and \(L\) is at least \(4\), contradicting B\'ezout's theorem.
+(We have seen, or can check by differentiating, that the symmetric cubic curve
+\[
+x^3+y^3+1=3axy
+\]
+over any field of characteristic not \(3\), with \(a^3\ne 1\), is smooth, so there are cubic curves with no singular point over any such field.)
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:inflection.points:Hessian.example}.}
+Let \(b(x,y)=y^2-x^3-x^2\), so homogenized: \(b(x,y,z)=y^2z-x^3-x^2z\).
+\begin{align*}
+b_x&=-3x^2-2xz,\\
+b_y&=2yz,\\
+b_z&=y^2-x^2,\\
+\end{align*}
+\begin{align*}
+b''&=
+\begin{pmatrix}
+b_{xx}&b_{xy}&b_{xz}\\
+b_{yx}&b_{yy}&b_{yz}\\
+b_{zx}&b_{zy}&b_{zz}
+\end{pmatrix},
+\\
+&=
+\begin{pmatrix}
+-6x-2z&0&-2x\\
+0&2z&2y\\
+-2x&2y&0
+\end{pmatrix}
+\end{align*}
+Let
+\begin{align*}
+h(x,y,z)
+&=
+\det b''(x,y,z),
+\\
+&=
+(-6x-2z)
+\det
+\begin{pmatrix}
+2z&2y\\
+2y&0
+\end{pmatrix}
+-2x
+\det
+\begin{pmatrix}
+0&2z\\
+-2x&2y
+\end{pmatrix},
+\\
+&=
+(-6x-2z)(-4y^2)-2x(4z^2),
+\\
+&=
+24xy^2+8y^2z-8xz^2,
+\\
+&=
+8(y^2(3x+z)-xz^2).
+\end{align*}
+There is a Hessian curve just when this is not a constant, i.e. just when the field has characteristic not equal to \(2\).
+Dehomogenize to \(z=1\): \(h(x,y)=8(y^2(3x+1)-x)\).
+So \(H=(0=h(x,y)=(y^2(3x+1)=x)\).
+Over the real numbers, we draw this as
+\[
+y=\pm\sqrt{\frac{x}{3x+1}},
+\]
+which has a vertical asymptote at \(x=-1/3\), and horizontal asymptotes at \(y=\pm 1/\sqrt{3}\).
+It has no real points for \(-1/3<x<0\):
+\[
+\includegraphics[width=5cm]{cuspidal-cubic-hessian}
+\]
+From the picture, there is clearly an inflection point at \(x=0\), and one positive real value of \(x\) where we find two inflection points.
+Plugging in \(0=b=h\), we find
+\[
+(x^3+x^2)(3x+1)=x,
+\]
+so \(x=0\) or
+\[
+(x^2+x)(3x+1)=1.
+\]
+For \(x=0\), the left hand side is too small, but for \(x=1/2\) too large, it is too large, so by continuity, there is a root \(x\) with \(0<x<1/2\).
+Expand out to find
+\[
+3x^3+4x^2+x=1.
+\]
+By Eisenstein's criterion, there are no rational roots.
+The discriminant is negative, so there are two complex conjugate roots and there is one real root.
+So in the affine \(xy\)-plane, there are two complex conjugate inflection points, one inflection point at the origin, and one real inflection point.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:inflection.points}.}
+Homogenize:
+\[
+b(x,y,z)=x^3+y^3+z^3-3axyz,
+\]
+and take Hessian
+\[
+b''(x,y,z)
+=
+\begin{pmatrix}
+6x&-3az&-3ay\\
+-3az&6y&-3ax\\
+-3ay&-3ax&6z\\
+\end{pmatrix}
+\]
+so
+\[
+\det b''(x,y,z)=-54(a^2(x^3+y^3+z^3)-(4-a^3)xyz).
+\]
+So the homogeneous equation of the Hessian curve of the Hesse curve is
+\[
+a^2(x^3+y^3+z^3)=(4-a^3)xyz.
+\]
+We get
+\[
+3a^3xyz=(4-a^3)xyz,
+\]
+and if \(x,y,z\ne 0\) this gives \(4a^3=4\) so \(a^3=1\), singular.
+So \(x=0\) or \(y=0\) or \(z=0\), and then \(x^3+y^3+z^3=0\).
+Trying each case, and recalling that rescaling a solution gives the same point of the projective plane, and writing the roots in \(\bar{k}\) of the equation \(\omega^3=-1\) as \(-1,\alpha,\beta\), we find that, up to permuting arbitrarily \(x,y,z\), our \(9\) distinct inflection points are
+\[
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+1\\
+-1
+\end{bmatrix},
+\begin{bmatrix}
+0\\
+1\\
+\alpha
+\end{bmatrix},
+\begin{bmatrix}
+0\\
+1\\
+\beta
+\end{bmatrix},
+\begin{bmatrix}
+-1\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+\alpha\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+\beta\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+-1\\
+0
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+\alpha\\
+0
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+\beta\\
+0
+\end{bmatrix}.
+\]
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:inflection.points:why.Hessian.1}.}
+In a Taylor series
+\[
+b(x+y)=b(x)+\text{linear terms in \(y\)}+\text{quadratic terms in \(y\)}+\dots,
+\]
+with finitely many terms, because it is a polynomial.
+The quadratic terms are of course \(y^tb''(x)y\) so ignoring terms of all degrees but quadratic:
+\[
+b(x+y)=\dots+y^t b''(x_0,y_0,z_0)y+\dots.
+\]
+In the same way,
+\[
+c(X+Y)=\dots+
+Y^t
+c''(X)
+Y+\dots.
+\]
+But \(b(x)=c(X)\) and \(X=Ax\) and so \(Y=Ay\) giving
+\[
+y^tb''(x)y=(Ay)^tc''(x)Ay=y^tA^tc''(x)Ay.
+\]
+This holds for all \(y\) and the matrices are symmetric; expand out in entries of \(y\) to find
+\[
+b''(x)=A^tc''(x)A.
+\]
+Take determinants to find
+\[
+\det b''(x)=(\det A)^2\det c''(X),
+\]
+and so \(0=\det c''(X)\) just when \(0=\det b''(x)\).
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:inflection.points:cubic.9}.}
+Our curve is not reducible, being smooth, so by lemma~\vref{lemma:vanishing.Hessian}, the Hessian curve is defined, by lemma~\vref{lemma:H.zero.at.flex} it passes through all flexes, and by lemma~\vref{lemma:Hessian.multiplicity} intersects with some multiplicity \(r\) just at points where the tangent line meets with multiplicity \(r+2\).
+So it meets with multiplicity \(2\) or more just at points where the tangent line meets with multiplicity \(4\) or more, i.e. terms in the Taylor series around that point start at degree \(4\) or more.
+Being cubic, all terms in the Taylor series have degree at most \(3\), so the multiplicity of intersection of Hessian with cubic curve is at most \(1\).
+The Hessian curve has degree \(3(n-2)=3(3-2)=3\), also a cubic.
+By B\'ezout's theorem, it has \(9\) intersection points with our original cubic curve, counting multiplicity.
+Since each intersection multiplicity is \(1\), there are \(9\) distinct intersection points, i.e. \(9\) distinct flexes.
+\vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:inflection.points:real.cubic}.}
+There are \(9\) complex flexes, permuted by complex conjugation.
+Complex conjugation applied twice returns each to where it was.
+So if a complex flex moves to another one, think of them as dance partners.
+Since \(9\) is odd, they can't all pair up into dance partners.
+So one of them dances alone: stays where it was under complex conjugation.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellensatz:closed.image}.}
 \(p(x,y)=(1-xy)^2+x^2\) over the field \(k=\R{}\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:projective.varieties:irred.hyp}.}
-By the nullstellensatz, \(X\) is irreducible in \(U\), since splitting \(X\) into a union of distinct subvarieties \(X_1,X_2\), each would satisfy an equation not satisfied on the other, say \(f_1=0\) and \(f_2=0\).
+By the Nullstellensatz, \(X\) is irreducible in \(U\), since splitting \(X\) into a union of distinct subvarieties \(X_1,X_2\), each would satisfy an equation not satisfied on the other, say \(f_1=0\) and \(f_2=0\).
 But then \(f=0\) lies inside \(f_1f_2=0\), so \(f\) divides \(f_1\) or \(f_2\).
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:nullstellansatz:linear.proj}.}
 The projection consists of the points \((x,-1,z)\) for which \(t(x,-1,z)\) satisfies our equations for some \(t\).

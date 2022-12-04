@@ -1,7 +1,11 @@
 \chapter{Resultants and discriminants}\label{chapter:resultants}
-
+\epigraph[author={I.~M.~Gelfand, M.~.M.~Kapranov, A.~M.~Zelevinsky}, source={Discriminants, Resultants and Multidimensional Determinants}]%
+{We found that Cayley and other mathematicians of the period understood
+many of the concepts which today are commonly thought of as modern and quite
+recent. Thus, in an 1848 note on the resultant, Cayley in fact laid out the foundations
+of modern homological algebra. We were happy to enter into spiritual contact with
+this great mathematician.}\SubIndex{Cayley, Arthur}\SubIndex{Gelfand, I.~M.}\SubIndex{Kapranov, M.~M.}\SubIndex{Zelevinsky, A.~M.}
 \section{The resultant}
-
 For any polynomial 
 \[
 b(x) = b_0 + b_1 x + \dots + b_m x^m,
@@ -438,7 +442,7 @@ Prove that
 \]
 \end{problem}
 \begin{lemma}\label{lemma:resultants.multiply}
-For any polynomials \(b(x), c(x), d(x)\),
+For any polynomials \(b(x), c(x), d(x)\) over any field,
 \[
 \resultant{bd}{c}=\resultant{b}{c}\resultant{d}{c}.
 \]
@@ -463,7 +467,7 @@ Prove that
 \[
 \resultant{b+dc}{c}=\resultant{b}{c}
 \]
-for any polynomials \(c(x)\) and \(d(x)\).
+for any polynomials \(b(x)\) and \(d(x)\).
 A surprise: note that the degree of \(b+dc\) could be either that of \(b\) or that of \(dc\), or something smaller than either, as any number of terms in \(b+dc\) might cancel one another.
 But surprisingly, we don't need to know the degree of \(b+dc\).
 \end{problem}
@@ -800,6 +804,42 @@ There are \(n(n-1)/2)\) choices of \(i < j\), so finally
 \Delta_{p(x)}=(-1)^{n(n-1)/2}\prod_{i<j}(x_i-x_j)^2.
 \]
 \end{answer}
+\begin{problem}{resultants:Bezouty}
+Prove that, over any field of characteristic zero, there are no double roots of \(x^m=(x+1)^n\).
+\end{problem}
+\begin{answer}{resultants:Bezouty}
+To have double roots, the derivative has to have a root at the same point, i.e. 
+\[
+mx^{m-1}=n(x+1)^{n-1},
+\]
+which we multiply by \(x+1\) to find
+\[
+mx^{m-1}(x+1)=n(x+1)^n=nx^m,
+\]
+so that \(x=0\) or \(m(x+1)=nx\).
+But \(x=0\) doesn't satisfy \(x^m=(x+1)^n\).
+So \(m(x+1)=nx\).
+Since our field has characteristic zero, \(n-m\ne 0\) so we can divide: \(x=m/(n-m)\).
+Now \(x\) sits inside the rational numbers (recalling that these sit inside any field of characteristic zero as the ratios \(p/q\) for integers \(p,q\) with \(q\ne 0\)).
+Expand out \(x^m=(x+1)^n\) to find 
+\[
+\left(\frac{m}{n-m}\right)^m=\left(\frac{n}{n-m}\right)^n.
+\]
+If \(m<n\), divide by the right hand side:
+\[
+\left(\frac{m}{n}\right)^m\left(\frac{n-m}{n}\right)^{n-m}=1,
+\]
+impossible since the rational numbers on the left are smaller than \(1\).
+If \(m>n\), divide by the left hand side:
+\[
+1=\left(\frac{n}{m}\right)^n\left(\frac{m}{n-m}\right)^m.
+\]
+Divide by \(m^m\) and multiply by \((-1)^{m-n}\):
+\[
+(-1)^{m-n}=\left(\frac{n}{m}\right)^n\left(\frac{m-n}{m}\right)^{m-n}.
+\]
+Take absolute values and again note that the rational numbers on the right are smaller than \(1\), and positive.
+\end{answer}
 
 \section{Sage}
 Sage computes discriminants:
@@ -809,7 +849,7 @@ R.<t> = PolynomialRing(QQ)
 \end{sageblock}
 yields \(\sage{(t^2-t+7).discriminant()}\).
 
-\section{Parameterization}
+\section{Equations of parameterized curves}\label{section:parameterized}
 \begin{example}
 Take the curve in the plane parameterized by
 \[
@@ -835,7 +875,7 @@ The resultant vanishes just at those points \((x,y)\) where the two polynomials 
 If there is a common factor of two polynomials, that factor has a root over \(\bar{k}\), so there is a common root \(t\) of both polynomials, in other words a value of \(t\) where \(x=p(t)/q(t)\) and \(y=u(t)/v(t)\).
 On the other hand, a common root gives a common linear factor. 
 So the resultant vanishes just along the image of the curve in the ``plane''. 
-Careful: \(k=\R{}\) then this ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
+Careful: if \(k=\R{}\) then this ``plane'' has points given as pairs \((x,y)\) of complex numbers, so it is not the complex plane, but two copies of the complex plane.
 \end{proof}
 \begin{example}
 For the curve in the plane parameterized by
@@ -857,7 +897,8 @@ as a polynomial in \(t\); treat \(x\) and \(y\) as constants:
        &        & -1     &   & 1
 \end{pmatrix}=y^2-x^2-x^3
 \]
-So the curve is precisely the set of points \((x,y)\) so that \(y^2=x^2+x^3\).
+So the curve lies among the set of points \((x,y)\) so that \(y^2=x^2+x^3\).
+We will see that the curve consists precisely of those points.
 \end{example}
 \begin{example}
 For real variables, the curve \(x=t^2, y=t^4\) has both \(x \ge 0\) and \(y \ge 0\) since \(t^2 \ge 0\) and \(t^4\ge 0\).

@@ -21,13 +21,65 @@ where
 b_{xy} \defeq \pderiv{b}{x,y}
 \]
 and so on.
-So if \(b(x,y,z)\) is homogeneous of degree \(n\), then \(b_{xy}\) is homogeneous of degree \(n-2\), so \(\Hessian{b}(x,y,z)\) is homogeneous of degree \(3(n-2)\).
-If \(b(x,y,z)\) has degree \(2\), so that the associated curve is a conic, then \(\Hessian{b}(x,y,z)\) is a constant, the determinant of the symmetric matrix of coefficients of \(b(x,y,z)\). 
-So \(\Hessian{b}(x,y,z)\) is a nonzero constant, i.e. \(H\) is empty, just when \(b(x,y,z)\) is a smooth conic.
-Similarly, \(\Hessian{b}(x,y,z)\) vanishes everywhere for a line or a singular conic (a pair of lines).
-
-If the Hessian is not constant, the \emph{Hessian curve}\define{Hessian!curve} of the curve \(B=(0=b(x,y,z))\) is the curve \(H=(0=\Hessian{b}(x,y,z))\).
-
+If \(b(x,y,z)\) is homogeneous of degree \(n\), then \(b_{xy}\) is homogeneous of degree \(n-2\), so \(\Hessian{b}(x,y,z)\) is homogeneous of degree \(3(n-2)\).
+\begin{example}
+Take a conic \(B=(0=b(x,y,z))\), so \(b(x,y,z)\) has degree \(2\).
+Then \(\Hessian{b}(x,y,z)\) is a constant, the determinant of the symmetric matrix of coefficients of \(b(x,y,z)\). 
+Check that 
+\[
+2b(x,y,z)=
+(x,y,z)
+\begin{pmatrix}
+b_{xx} & b_{xy} & b_{xz} \\
+b_{xy} & b_{yy} & b_{yz} \\
+b_{xz} & b_{yz} & b_{zz} 
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}.
+\]
+This determinant vanishes just when the matrix has a nonzero null vector, i.e. eigenvector of eigenvalue zero; arrange by linear change of \(x,y,z\) variables that this is \((0,0,1)\).
+The Hessian matrix now has all second derivatives in \(z\) vanishing.
+Suppose that the field is not of characteristic \(2\).
+Then \(b(x,y,z)\) is independent of \(z\), so splits into linear factors over the algebraic closure by lemma~\vref{lemma:one.variable.splits}, i.e. into two linear factors, a pair of lines or a double line.
+So over any field of characteristic \(2\), \(\Hessian{b}(x,y,z)\) is a nonzero constant just when \(b(x,y,z)\) is a smooth conic.
+\end{example}
+\begin{example}
+Similarly, \(\Hessian{b}(x,y,z)\) vanishes everywhere for a double line or a pair of lines.
+\end{example}
+If the Hessian is not constant, the \emph{Hessian curve}\define{Hessian!curve} of the curve \(B=(0=b(x,y,z))\) is the curve \(H=(0=\Hessian{b}(x,y,z))\) of degree \(3(n-2)\).
+\begin{example}
+The Fermat curve \(F=(1=x^n+y^n)\) can be written homogenized as \((z^n=x^n+y^n)\), so as \((0=f)\) where 
+\[
+f(x,y,z)=x^n+y^n-z^n.
+\]
+The first derivatives are
+\[
+f_x=nx^{n-1},
+f_y=ny^{n-1},
+f_z=nz^{n-1}.
+\]
+Its Hessian is
+\begin{align*}
+\det f''(x,y,z)
+&=
+\det
+\begin{pmatrix}
+n(n-1)x^{n-2}&0&0\\
+0&n(n-1)y^{n-2}&0\\
+0&0&n(n-1)z^{n-2}
+\end{pmatrix}
+\\
+&=n^3(n-1)^3(xyz)^{n-2},
+\end{align*}
+so vanishes exactly on the lines \((x=0)\), \((y=0)\), \((z=0)\).
+The affine \(xy\)-plane picture for \(n=5\) is 
+\includegraphicsinexample[width=4cm]{fermat5flexes}
+and for \(n=6\):
+\includegraphicsinexample[width=4cm]{fermat6flexes}
+\end{example}
 Sage can compute Hessians for us:
 \begin{sageblock}
 P.<x,y,z> = PolynomialRing(QQ)
@@ -38,11 +90,262 @@ Hb = matrix([[diff(b,x,x),diff(b,x,y),diff(b,x,z)],
 factor(Hb.det())
 \end{sageblock}
 yields \(\sage{latex(factor(Hb.det()))}\).
-
 \begin{example}
 Working over any field of characteristic \(3\), the polynomial \(b(x,y,z)\defeq x^3+y^3-z^3\) has derivatives \(0=b_x=b_y=b_z\), and so has Hessian \(\Hessian{b}(x,y,z)=0\).
 \end{example}
-
+\begin{problem}{inflection.points:Hessian.example}
+Compute the Hessian of the curve \(y^2=x^3+x^2\) over any field.
+For which characteristics is there are Hessian curve?
+Very roughly, draw the curve and its Hessian curve, if the field is the real numbers.
+\end{problem}
+\begin{answer}{inflection.points:Hessian.example}
+Let \(b(x,y)=y^2-x^3-x^2\), so homogenized: \(b(x,y,z)=y^2z-x^3-x^2z\).
+\begin{align*}
+b_x&=-3x^2-2xz,\\
+b_y&=2yz,\\
+b_z&=y^2-x^2,\\
+\end{align*}
+\begin{align*}
+b''&=
+\begin{pmatrix}
+b_{xx}&b_{xy}&b_{xz}\\
+b_{yx}&b_{yy}&b_{yz}\\
+b_{zx}&b_{zy}&b_{zz}
+\end{pmatrix},
+\\
+&=
+\begin{pmatrix}
+-6x-2z&0&-2x\\
+0&2z&2y\\
+-2x&2y&0
+\end{pmatrix}
+\end{align*}
+Let 
+\begin{align*}
+h(x,y,z)
+&=
+\det b''(x,y,z),
+\\
+&=
+(-6x-2z)
+\det
+\begin{pmatrix}
+2z&2y\\
+2y&0
+\end{pmatrix}
+-2x
+\det
+\begin{pmatrix}
+0&2z\\
+-2x&2y
+\end{pmatrix},
+\\
+&=
+(-6x-2z)(-4y^2)-2x(4z^2),
+\\
+&=
+24xy^2+8y^2z-8xz^2,
+\\
+&=
+8(y^2(3x+z)-xz^2).
+\end{align*}
+There is a Hessian curve just when this is not a constant, i.e. just when the field has characteristic not equal to \(2\).
+Dehomogenize to \(z=1\): \(h(x,y)=8(y^2(3x+1)-x)\).
+So \(H=(0=h(x,y)=(y^2(3x+1)=x)\).
+Over the real numbers, we draw this as
+\[
+y=\pm\sqrt{\frac{x}{3x+1}},
+\]
+which has a vertical asymptote at \(x=-1/3\), and horizontal asymptotes at \(y=\pm 1/\sqrt{3}\).
+It has no real points for \(-1/3<x<0\):
+\[
+\includegraphics[width=5cm]{cuspidal-cubic-hessian}
+\]
+From the picture, there is clearly an inflection point at \(x=0\), and one positive real value of \(x\) where we find two inflection points.
+Plugging in \(0=b=h\), we find 
+\[
+(x^3+x^2)(3x+1)=x,
+\]
+so \(x=0\) or 
+\[
+(x^2+x)(3x+1)=1.
+\]
+For \(x=0\), the left hand side is too small, but for \(x=1/2\) too large, it is too large, so by continuity, there is a root \(x\) with \(0<x<1/2\).
+Expand out to find
+\[
+3x^3+4x^2+x=1.
+\]
+By Eisenstein's criterion, there are no rational roots.
+The discriminant is negative, so there are two complex conjugate roots and there is one real root.
+So in the affine \(xy\)-plane, there are two complex conjugate inflection points, one inflection point at the origin, and one real inflection point. 
+\end{answer}
+\begin{problem}{inflection.points}
+Find the inflection points of the symmetric cubic curve, whose affine equation is
+\[
+x^3+y^3+1=3axy,
+\]
+over any field not of characteristic \(2\) or \(3\) and for \(a^3\ne 1\) (i.e. smooth).
+\end{problem}
+\begin{answer}{inflection.points}
+Homogenize:
+\[
+b(x,y,z)=x^3+y^3+z^3-3axyz,
+\]
+and take Hessian
+\[
+b''(x,y,z)
+=
+\begin{pmatrix}
+6x&-3az&-3ay\\
+-3az&6y&-3ax\\
+-3ay&-3ax&6z\\
+\end{pmatrix}
+\]
+so
+\[
+\det b''(x,y,z)=-54(a^2(x^3+y^3+z^3)-(4-a^3)xyz).
+\]
+So the homogeneous equation of the Hessian curve of the Hesse curve is
+\[
+a^2(x^3+y^3+z^3)=(4-a^3)xyz.
+\]
+We get
+\[
+3a^3xyz=(4-a^3)xyz,
+\]
+and if \(x,y,z\ne 0\) this gives \(4a^3=4\) so \(a^3=1\), singular.
+So \(x=0\) or \(y=0\) or \(z=0\), and then \(x^3+y^3+z^3=0\).
+Trying each case, and recalling that rescaling a solution gives the same point of the projective plane, and writing the roots in \(\bar{k}\) of the equation \(\omega^3=-1\) as \(-1,\alpha,\beta\), we find that, up to permuting arbitrarily \(x,y,z\), our \(9\) distinct inflection points are
+\[
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+1\\
+-1
+\end{bmatrix},
+\begin{bmatrix}
+0\\
+1\\
+\alpha
+\end{bmatrix},
+\begin{bmatrix}
+0\\
+1\\
+\beta
+\end{bmatrix},
+\begin{bmatrix}
+-1\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+\alpha\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+\beta\\
+0\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+-1\\
+0
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+\alpha\\
+0
+\end{bmatrix},
+\begin{bmatrix}
+1\\
+\beta\\
+0
+\end{bmatrix}.
+\]
+\end{answer}
+\begin{problem}{inflection.points:why.Hessian.1}
+Take a projective transformation given by an invertible \(3\times 3\) matrix \(A\), over a field not of characteristic \(2\).
+It is convenient to have a vector notation, say
+\[
+x=
+\begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix}
+\]
+Take any homogeneous polynomial \(b(x)\), say of degree \(d\).
+Make new variables 
+\[
+X=
+\begin{pmatrix}
+X_0\\
+X_1\\
+X_2
+\end{pmatrix}
+\]
+by
+\[
+\begin{pmatrix}
+X_0\\
+X_1\\
+X_2
+\end{pmatrix}
+=
+A
+\begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix}.
+\]
+Let \(c(X)=b(x)\).
+So \(c(X)=0\) just where \(b(x)=0\), i.e. the plane algebraic curve \(C=(0=c(X))\) is just the image under the projective transformation of the curve \(B=(0=b(x))\); write this as \(C=A(B)\).
+Show that the matrices of second derivatives at corresponding points are related by
+\[
+c''(X)=\left(A^{-1}\right)^tb''(x)A,
+\]
+(where \({}^t\) means transpose).
+Show that the Hessian curves are also related by \(H_C=A(H_B)\).
+\end{problem}
+\begin{answer}{inflection.points:why.Hessian.1}
+In a Taylor series
+\[
+b(x+y)=b(x)+\text{linear terms in \(y\)}+\text{quadratic terms in \(y\)}+\dots,
+\]
+with finitely many terms, because it is a polynomial.
+The quadratic terms are of course \(y^tb''(x)y\) so ignoring terms of all degrees but quadratic:
+\[
+b(x+y)=\dots+y^t b''(x_0,y_0,z_0)y+\dots.
+\]
+In the same way,
+\[
+c(X+Y)=\dots+
+Y^t
+c''(X)
+Y+\dots.
+\]
+But \(b(x)=c(X)\) and \(X=Ax\) and so \(Y=Ay\) giving
+\[
+y^tb''(x)y=(Ay)^tc''(x)Ay=y^tA^tc''(x)Ay.
+\]
+This holds for all \(y\) and the matrices are symmetric; expand out in entries of \(y\) to find
+\[
+b''(x)=A^tc''(x)A.
+\]
+Take determinants to find
+\[
+\det b''(x)=(\det A)^2\det c''(X),
+\]
+and so \(0=\det c''(X)\) just when \(0=\det b''(x)\).
+\end{answer}
 \begin{lemma}[Euler]\label{lemma:Euler}\SubIndex{lemma!Euler}\SubIndex{Euler!lemma}
 Every homogeneous polynomial \(b(x,y,z)\), say of degree \(n\), over any commutative ring with identity, satisfies
 \[
@@ -52,9 +355,8 @@ nb(x,y,z)=x \pderiv{b}{x} + y \pderiv{b}{y} + z \pderiv{b}{z}.
 \begin{proof}
 Since \(b(x,y,z)\) is a sum of homogeneous terms, it is enough to check one such term, which is easy for the reader to check.
 \end{proof}
-
-\begin{lemma}
-The Hessian \(\Hessian{b}(x,y,z)\) vanishes at a smooth point of a plane algebraic curve \(B=(0=b(x,y,z))\) just when the tangent line at that point meets the curve to order \(3\) or more.
+\begin{lemma}\label{lemma:H.zero.at.flex}
+The Hessian \(\Hessian{b}(x,y,z)\) vanishes at a smooth point of a plane algebraic curve \(B=(0=b(x,y,z))\) just when that point is a flex of \(B\).
 \end{lemma}
 \begin{proof}
 Euler's lemma:
@@ -140,9 +442,9 @@ b(x,y)&=b(x_0+\Delta x,y_0+y_0' \Delta x),
 So the Hessian vanishes just where the tangent line meets the curve to order \(3\) or more, and this occurs just where \(y''=0\).
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:vanishing.Hessian}
 Take a plane algebraic curve \(B=(0=b(x,y,z))\).
-Suppose that the characteristic of the field is coprime to the exponents appearing in all terms of \(b(x,y,z)\).
+Suppose that the characteristic of the field is zero or coprime to the exponents appearing in all terms of \(b(x,y,z)\).
 Then \(b(x,y,z)\) has vanishing Hessian just when \(B\) is a union of lines.
 In other words, \(B\) has Hessian curve \(H\) defined just when \(B\) is not a union of lines.
 \end{lemma}
@@ -163,11 +465,11 @@ So at any point where \(0=b=b_x\) we also have \(0=b=b_x=b_{xx}=\dots\).
 Because the exponents arising in the terms of \(b(x,y,z)\) are coprime to the characteristic of the field, the vanishing of derivatives \(b_x,b_{xx},\dots\) implies that the coefficients of \(x,x^2,\dots\) in \(b(x,y,1)\) are zero.
 Every term in \(b\) contains a factor of \(y\), so \(b=0\) along the line \(y=0\).
 \end{proof}
-
-\begin{lemma}
-Take a plane algebraic curve \(B=(0=b(x,y,z))\), which has Hessian curve \(H\).
+\begin{lemma}\label{lemma:Hessian.multiplicity}
+Take a plane algebraic curve \(B=(0=b(x,y,z))\) with Hessian curve \(H\).
+Let \(n\) be the degree of \(B\).
 Then \(H\) passes through all singular points of \(B\), intersecting \(B\) at \(3n(n-2)\) points at most, counting with multiplicity.
-The curves \(H\) and \(B\) meet at finitely many points.
+The curves \(H\) and \(B\) share no component.
 Moreover, \(H\) meets \(B\) at a smooth point of \(B\) with multiplicity \(r\) just when the tangent line at that point meets \(B\) with multiplicity \(r+2\).
 \end{lemma}
 \begin{proof}
@@ -276,7 +578,7 @@ z=var('z')
 r=var('r')
 f = function('f')(x,y,z)
 g = function('g')(x,z)
-b(x,y,z) = y * f(x,y,z) + x^(r+2)*g(x,z)
+b(x,y,z) = y * f + x^(r+2)*g
 m=matrix([
         [diff(b(x,y,z),x,x),diff(b(x,y,z),x,y),diff(b(x,y,z),x,z)],
         [diff(b(x,y,z),x,y),diff(b(x,y,z),y,y),diff(b(x,y,z),y,z)],
@@ -384,11 +686,32 @@ This intersection point is on the line between \((0,1)\) and \((0,0)\), a contra
 So the \(x^r\) term in \(R(x)\) doesn't vanish, i.e. the order of intersection \(\multiplicity{p}{B}{H}\) is \(r\).
 \end{proof}
 
-
 \begin{corollary}
 A smooth plane algebraic curve of degree \(n\) with a defined Hessian curve has exactly \(3n(n-2)\) inflection points, counting multiplicities, in some algebraic extension field.
 \end{corollary}
 \begin{proof}
-Follows from by B\'ezout's theorem (theorem~\vref{theorem:B\'ezout}) and the degree of the Hessian being \(3(n-2)\) as above.
+Follows from by B\'ezout's theorem (theorem~\vref{theorem:Bezout}) and the degree of the Hessian being \(3(n-2)\) as above.
 \end{proof}
+\begin{problem}{inflection.points:cubic.9}
+Prove that every smooth cubic curve, over any field of characteristic not \(2\) or \(3\), has exactly \(9\) flex points.
+\end{problem}
+\begin{answer}{inflection.points:cubic.9}
+Our curve is not reducible, being smooth, so by lemma~\vref{lemma:vanishing.Hessian}, the Hessian curve is defined, by lemma~\vref{lemma:H.zero.at.flex} it passes through all flexes, and by lemma~\vref{lemma:Hessian.multiplicity} intersects with some multiplicity \(r\) just at points where the tangent line meets with multiplicity \(r+2\).
+So it meets with multiplicity \(2\) or more just at points where the tangent line meets with multiplicity \(4\) or more, i.e. terms in the Taylor series around that point start at degree \(4\) or more.
+Being cubic, all terms in the Taylor series have degree at most \(3\), so the multiplicity of intersection of Hessian with cubic curve is at most \(1\).
+The Hessian curve has degree \(3(n-2)=3(3-2)=3\), also a cubic.
+By B\'ezout's theorem, it has \(9\) intersection points with our original cubic curve, counting multiplicity.
+Since each intersection multiplicity is \(1\), there are \(9\) distinct intersection points, i.e. \(9\) distinct flexes.
+\end{answer}
+\begin{problem}{inflection.points:real.cubic}
+Prove that every smooth real cubic curve (i.e. defined over the real numbers) has a real flex point.
+\end{problem}
+\begin{answer}{inflection.points:real.cubic}
+There are \(9\) complex flexes, permuted by complex conjugation.
+Complex conjugation applied twice returns each to where it was.
+So if a complex flex moves to another one, think of them as dance partners.
+Since \(9\) is odd, they can't all pair up into dance partners.
+So one of them dances alone: stays where it was under complex conjugation.
+\end{answer}
+
 

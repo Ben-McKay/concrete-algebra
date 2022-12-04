@@ -13,10 +13,10 @@
 \input{preamble}
 
 \begin{document}%
-\includegraphics[width=.94\textwidth]{brunnian-ring.pdf}
+\includegraphics[width=.94\textwidth]{BogdanovBelsky_UstnySchet.jpg}
 \input{preface}
 \afterpreface
-% The chapters
+%%% The chapters
 \input{integers}
 \input{induction}
 \input{euclidean-algorithm}
@@ -44,6 +44,7 @@
 \input{varieties}
 \input{projective-plane}
 \input{projective-curves}
+\input{counting-intersections}
 \input{families}
 \input{elliptic-curves}
 \input{tangents}
@@ -55,14 +56,29 @@
 \input{Schubert-calculus}
 \input{more-projective-planes}
 \newpage
+%\begin{epigraphs}
+%\qitem[author={\Chinese{庄周} (Zhuang Zhou)}, source={\Chinese{莊子} (Zhuangzi), \Chinese{列御寇} (Lie Yu-kou)}]%
+%{
+%\Chinese{朱泙漫學屠龍於支離益，}\\ 
+%\Chinese{單千金之家，}\\
+%\Chinese{三年技成，}\\
+%\Chinese{而無所用其巧。}\\
+%\\
+%There once lived a man \\
+%who learned how to slay dragons \\
+%and gave all he possessed \\
+%to mastering the art. \\
+%\\
+%After three years \\
+%he was fully prepared but, \\
+%alas, he found no opportunity \\
+%to practise his skills.}
+%\qitem[author={René Thom}]{As a result he began \\
+%to teach how to slay dragons.}
+%\end{epigraphs}\SubIndex{Zhou, Zhuang}\SubIndex{dragon}\SubIndex{Zhuangzi}\SubIndex{Thom, René}
 \begin{epigraphs}
-\qitem[author={\Chinese{庄周} (Zhuang Zhou)}, source={\Chinese{莊子} (Zhuangzi), \Chinese{列御寇} (Lie Yu-kou)}]%
+\qitem[author={Zhuang Zhou}, source={Zhuangzi, Lie Yu-kou}]%
 {
-\Chinese{朱泙漫學屠龍於支離益，}\\ 
-\Chinese{單千金之家，}\\
-\Chinese{三年技成，}\\
-\Chinese{而無所用其巧。}\\
-\\
 There once lived a man \\
 who learned how to slay dragons \\
 and gave all he possessed \\
@@ -78,6 +94,10 @@ to teach how to slay dragons.}
 \begin{center}
 \includegraphics[width=5cm]{15_Order_Dragon_Curve}
 \end{center}
-\RenewDocumentCommand\bibliographyPreamble{}{\epigraph[author={Omar}]{If those books are in agreement with the Quran, we have no need of them; and if these are opposed to the Quran, destroy them.}}
+\RenewDocumentCommand\bibliographyPreamble{}{\begin{epigraphs}
+\qitem[author={Omar}]{If those books are in agreement with the Quran, we have no need of them; and if these are opposed to the Quran, destroy them.}
+\qitem[source={Qumran Scrolls 4Q418 69 ii 13-14}]{We are tired of works of truth.}
+\epigraph[author={Wolfgang Amadeus Mozart}]{It is a mistake to think that the practice of my art has become easy to me. I assure you, dear friend, no one has given so much care to the study of composition as I. There is scarcely a famous master in music whose works I have not frequently and diligently studied.}\SubIndex{Mozart, Wolfgang Amadeus}
+\end{epigraphs}}
 \nocite{*}
 \end{document}

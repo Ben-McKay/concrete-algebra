@@ -23,7 +23,7 @@ all \(8\) of the points lie on a conic.
 If \(7\) of the points lie on a conic, then by B\'ezout's theorem that conic lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
 If \(4\) of the points lie on a line, then by B\'ezout's theorem that line lies in both \(C_1\) and \(C_2\), so \(C_1\) and \(C_2\) have infinitely many points in common, a contradiction.
 So all \(8\) points inmpose independent conditions, i.e. the projective space of cubics through all \(8\) points has dimension \(3^*-8=1\).
-Since \(C_1 \ne C_2\), the projective space of cubics through all \(9\) points has dimension at least 1: the pencil through \(C_1\) and \(C_2\) is 1-dimensional.
+Since \(C_1 \ne C_2\), the projective space of cubics through all \(9\) points has dimension at least \(1\): the pencil through \(C_1\) and \(C_2\) is 1-dimensional.
 But the family through all \(9\) points is a projective subspace of the family through all \(8\) points.
 Both projective spaces have the same dimension, hence these two projective spaces are equal.
 \end{proof}
@@ -78,14 +78,14 @@ The tangent line to \(C\) at \(p\) intersects \(C\) at some point not equal to \
 Any elliptic curve is an abelian group under the addition operation.
 \end{theorem}
 \begin{proof}
-If \(p,q,r\) are the points at which a line intersects a cubic \(C\), then so are \(q,p,r\), and so \(p+q=\bar{r}=q+p\).
+Commutativity: If \(p,q,r\) are the points at which a line intersects a cubic \(C\), then so are \(q,p,r\), and so \(p+q=\bar{r}=q+p\).
 By definition, \(p,o,\bar{p}\) are on a line, so \(\bar{\bar{p}}=p\) and so \(p+o=\bar{\bar{p}}=p\).
 
-Consider the point \(\bar{o}\), i.e. so that the line \(\bar{o}o\) is the tangent line to \(C\) at \(o\).
+Inverses: Consider the point \(\bar{o}\), i.e. so that the line \(\bar{o}o\) is the tangent line to \(C\) at \(o\).
 Let \(-p=\overline{p+\bar{o}}\), i.e. \(-p,p,\bar{o}\) are on a line.
 So then \(p+(-p)=\bar{\bar{o}}=o\).
 
-Any equation like \(r+q=p+q\) forces the points \(r,q,\overline{r+q}\) to be \(r,q,\overline{p+q}\), and hence to be \(p,q,\overline{p+q}\), so \(p=r\), we can cancel.
+Cancellation: Any equation like \(r+q=p+q\) forces the points \(r,q,\overline{r+q}\) to be \(r,q,\overline{p+q}\), and hence to be \(p,q,\overline{p+q}\), so \(p=r\), we can cancel.
 
 By definition of addition, for any two points \(p,q\) of \(C\),
 \[
@@ -105,11 +105,10 @@ i.e.
 \]
 a ``funny cancellation''.
 
-Take three points \(p,q,r\) of \(C\).
+Associativity: Take three points \(p,q,r\) of \(C\).
 We want to prove that \(p+(q+r)=(p+q)+r\).
-Suppose that \(p=o\) or \(q=o\) or \(r=o\) or \(p=r\).
-The equation \(p+(q+r)=(p+q)+r\) follows from any of these.
-So we can suppose that none of these is satisfied.
+If \(p=o\) or \(q=o\) or \(r=o\) or \(p=r\) then plug in to find that \(p+(q+r)=(p+q)+r\).
+So we can suppose that none of \(p,q,r\) is \(o\), and that \(p\ne r\).
 
 Define lines
 \begin{align*}

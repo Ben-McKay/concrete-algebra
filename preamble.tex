@@ -1,9 +1,20 @@
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+\Title{Concrete Algebra}
+\Author{Benjamin McKay}
+\Language{en-GB}
+\Subject{A textbook in undergraduate algebra.}
+\Keywords{algebra\sep plane algebraic curves\sep Chinese remainder theorem}
+\end{filecontents*}
 \documentclass%[ContainsChinese]
 {willowtreebook}
 \Title{Concrete Algebra}
 \Subtitle{With a View Toward Abstract Algebra}
 \Author{\texorpdfstring{Benjamin \scotsMc{}Kay}{Benjamin McKay}}
 \BibliographyFile{algebra}
+\usepackage[UKenglish]{babel}
+\usepackage{colorprofiles}
+\usepackage[mathxmp]{pdfx}[2018/12/22]
+\hypersetup{pdfstartview=}
 \usepackage{longdivision}
 \usepackage{standalone}
 \usepackage{xstring}
@@ -47,9 +58,15 @@ through
 \NewDocumentCommand\regYoungBox{}{\Yfillcolour{gray!20}}
 \usepackage{stackengine}
 \usepackage{tensor}
+\NewDocumentCommand\map{mmm}{{#2}\xrightarrow{#1}{#3}}
 \DeclarePairedDelimiter\braDelim{\langle}{\rvert}
 \DeclarePairedDelimiter\ketDelim{\lvert}{\rangle}
 \DeclarePairedDelimiterX\braketDelim[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
+\DeclarePairedDelimiter\ringGeneratedBy{[}{]}
+\NewDocumentCommand\ringgen{mm}%
+{%
+#1\ringGeneratedBy{#2}%
+}%
 \usepackage{epigraph-keys}	% Handles epigraphs at the start of each chapter.
 \usepackage{sagetex}
 \vrefwarning
@@ -211,7 +228,85 @@ through
 }
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This code is a slight modification of Hendrik Vogt's \widebar %%
+%% See: https://tex.stackexchange.com/questions/16337            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\let\save@mathaccent\mathaccent
+\newcommand*\if@single[3]{%
+  \setbox0\hbox{${\mathaccent"0362{#1}}^H$}%
+  \setbox2\hbox{${\mathaccent"0362{\kern0pt#1}}^H$}%
+  \ifdim\ht0=\ht2 #3\else #2\fi
+  }
+%The bar will be moved to the right by a half of \macc@kerna, which is computed by amsmath:
+\newcommand*\rel@kern[1]{\kern#1\dimexpr\macc@kerna}
+%If there's a superscript following the bar, then no negative kern may follow the bar;
+%an additional {} makes sure that the superscript is high enough in this case:
+\newcommand*\wideaccent[2]{\@ifnextchar^{{\wide@accent{#1}{#2}{0}}}{\wide@accent{#1}{#2}{1}}}
+%Use a separate algorithm for single symbols:
+\newcommand*\wide@accent[3]{\if@single{#2}{\wide@accent@{#1}{#2}{#3}{1}}{\wide@accent@{#1}{#2}{#3}{2}}}
+\newcommand*\wide@accent@[4]{%
+  \begingroup
+  \def\mathaccent##1##2{%
+%Enable nesting of accents:
+    \let\mathaccent\save@mathaccent
+%If there's more than a single symbol, use the first character instead (see below):
+    \if#42 \let\macc@nucleus\first@char \fi
+%Determine the italic correction:
+    \setbox\z@\hbox{$\macc@style{\macc@nucleus}_{}$}%
+    \setbox\tw@\hbox{$\macc@style{\macc@nucleus}{}_{}$}%
+    \dimen@\wd\tw@
+    \advance\dimen@-\wd\z@
+%Now \dimen@ is the italic correction of the symbol.
+    \divide\dimen@ 3
+    \@tempdima\wd\tw@
+    \advance\@tempdima-\scriptspace
+%Now \@tempdima is the width of the symbol.
+    \divide\@tempdima 10
+    \advance\dimen@-\@tempdima
+%Now \dimen@ = (italic correction / 3) - (Breite / 10)
+    \ifdim\dimen@>\z@ \dimen@0pt\fi
+%The bar will be shortened in the case \dimen@<0 !
+    \rel@kern{0.6}\kern-\dimen@
+    \if#41
+      #1{\rel@kern{-0.6}\kern\dimen@\macc@nucleus\rel@kern{0.4}\kern\dimen@}%
+      \advance\dimen@0.4\dimexpr\macc@kerna
+%Place the combined final kern (-\dimen@) if it is >0 or if a superscript follows:
+      \let\final@kern#3%
+      \ifdim\dimen@<\z@ \let\final@kern1\fi
+      \if\final@kern1 \kern-\dimen@\fi
+    \else
+      #1{\rel@kern{-0.6}\kern\dimen@#2}%
+    \fi
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+%The following initialises \macc@kerna and calls \mathaccent:
+  \if#41
+    \macc@nested@a\relax111{#2}%
+  \else
+%If the argument consists of more than one symbol, and if the first token is
+%a letter, use that letter for the computations:
+    \def\gobble@till@marker##1\endmarker{}%
+    \futurelet\first@char\gobble@till@marker#2\endmarker
+    \ifcat\noexpand\first@char A\else
+      \def\first@char{}%
+    \fi
+    \macc@nested@a\relax111{\first@char}%
+  \fi
+  \endgroup
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\doubleoverline[1]{\overline{\overline{#1}}}
+
+\newcommand\widebar{\wideaccent\overline}
+\newcommand\widebarbar{\wideaccent\doubleoverline}
+
 \input{colorScheme}
-
-
 

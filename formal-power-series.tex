@@ -192,7 +192,7 @@ Similarly, an infinite product
 \[
 f_1(x)f_2(x)\dots
 \]
-is defined as long as the lowest order of each \(f_j(x)\) goes to \(\infty\) with \(j\).
+is defined as long as all but finitely many \(f_j(x)\) start as \(1+\dots\) and the order of the \(\dots\) terms goes to \(\infty\) with \(j\).
 \begin{example}
 If
 \begin{align*}
@@ -259,7 +259,7 @@ But every term on the left hand side has degree less than the lowest order of \(
 \section{Composition}
 When we compose polynomial functions \(y=f(x)\) and \(z=g(y)\), we obtain a polynomial function \(z=g(f(x))=(g\circ f)(x)\).
 Note that \(g(f(x))\) has constant term \(g(f(0))\).
-So we cannot hope to extend composition to formal power series, since \(g(y)\) might not make sense with \(x\) is replaced by \(f(0)\).
+So we cannot hope to extend composition to formal power series, since \(g(y)\) might not make sense with \(x\) replaced by \(f(0)\).
 So we will need to assume that \(g(y)\) is a polynomial or that \(f(0)=0\).
 On the other hand, if \(f(0)=0\), then \(g(f(0))=g(0)\) is defined.
 For polynomials, the degree of the composition is at most the product of the degrees, since the highest possible term in \(g(f(x))\) comes from taking that in \(f(x)\) and plugging into that of \(g(y)\).

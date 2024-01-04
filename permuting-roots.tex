@@ -158,7 +158,7 @@ x^{n-j}.
 \end{proof}
 
 \section{Symmetric polynomials}
-A polynomial \(f\left(t_1,t_2,\dots,t_n\right)\) is \emph{symmetric}\define{symmetric!polynomial}\define{polynomial!symmetri c} if it is unchanged by permuting the variables \(t_1, t_2, \dots, t_n\).
+A polynomial \(f(t_1,t_2,\dots,t_n)\) is \emph{symmetric}\define{symmetric!polynomial}\define{polynomial!symmetri c} if it is unchanged by permuting the variables \(t_1, t_2, \dots, t_n\).
 \begin{example}
 \(t_1+t_2+\dots+t_n\) is symmetric.
 \end{example}
@@ -184,7 +184,7 @@ in its splitting field.
 By proposition~\vref{proposition:vieta}, \(P_r(x)\) has coefficients precisely the same as those of \(P(x)\), i.e. \(P_r(x)=P(x)\).
 \end{proof}
 \begin{lemma}
-Given some variables over a field, if there are more elements of the field than variables, then there is no nontrivial polynomial equation satisfied by the elementary symmetric polynomials.
+Given some variables over a field, if there are more elements of the field than variables, then there is no nontrivial polynomial equation satisfied by the elementary symmetric polynomials over that field.
 \end{lemma}
 Consequently, any such polynomial relation disappears after some field extension.
 \begin{proof}
@@ -245,7 +245,7 @@ f=3e_3e_1+5e_2.
 
 If \(a=\pr{a_1,a_2,\dots,a_n}\), write \(t^a\)\Notation{xa}{x^a}{multivariable exponent} to mean
 \(t_1^{a_1} t_2^{a_2} \dots t_n^{a_n}\). 
-Order terms by ``alphabetical'' order, also called \emph{weight}\define{weight}: order monomials by the order in \(t_1\); if two monomials have the same order in \(t_1\), break the tie by looking at the order in \(t_2\), and so on.
+Order terms by ``alphabetical'' order, also called \emph{weight}\define{weight}: order monomials by how much \(t_1\); if two monomials have the same number of \(t_1\) factors, break the tie by looking at \(t_2\) factors, and so on.
 \begin{example}
 The term
 \[
@@ -257,7 +257,7 @@ t_1^3 t_2^5, t_1^5 t_2^2, 1, \text{ and } t_2^{1000}.
 \]
 \end{example}
 \begin{example}
-Showing the highest order term, and writing dots to indicate lower order terms,
+Showing the highest weight term, and writing dots to indicate lower order terms,
 \begin{align*}
 e_1(t)&=t_1 + \dots, \\
 e_2(t)&=t_1t_2 + \dots, \\
@@ -284,14 +284,14 @@ e_1(x,y,z)&=x+y+z=x+\dots, \\
 e_2(x,y,z)&=xy+xz+yz=xz + \dots, \\
 e_3(x,y,z)&=xyz.
 \end{align*}
-Imagine a term in \(f\): if the highest power in that term is in \(y\) or \(z\), permute the variables to get that highest power into \(x\), giving a higher weight term in \(f\).
+Imagine any term in \(f\): if the highest power in that term is in \(y\) or \(z\), permute the variables to get that highest power into \(x\), giving a higher weight term in \(f\).
 So the highest weight term contains the variables \(x, y, z\), with highest power in \(x\) and successively lower powers in each of \(y,z\).
 By the same reasoning, inside the highest weight term, each of \(x,y,z\) appears to at least to the power of the \(z\) variable: in this case, at least to a power of \(7\).
 Factor out \(7\) powers of each variable; we underline that factored out part so you can see it:
 \[
 f=6 x^9 y^2 \underline{\pr{x y z}^7} + \dots
 \]
-In the remaining factors, there are now no \(z\) variables, and each variable appears at least to a power of \(2\), so we factor out 2 of each:
+In the remaining factors, there are now no \(z\) variables, and each variable appears at least to a power of \(2\), so we factor out \(2\) of each:
 \[
 f=6 x^7 \underline{\pr{xy}^2} \pr{xyz}^7 + \dots
 \]
@@ -305,44 +305,6 @@ f = 6 e_1^7 e_2^2 e_3^7 + \dots
 \]
 up to terms of lower weight.
 \end{example}
-
-%If we pick integers \(d_1, d_2, \dots, d_n \ge 0\),
-%\begin{align*}
-%e_1(t)^{d_1} e_2(t)^{d_2} \dots e_n(t)^{d_n}
-%&=
-%t_1^{d_1} \pr{t_1t_2}^{d_2} \dots \pr{t_1t_2\dots t_n}^{d_n} + \dots,
-%\\
-%&=
-%t_1^{d_1+d_2+\dots+d_n} t_2^{d_2+d_3+\dots+d_n} \dots 
-%t_n^{d_n} + \dots.
-%\end{align*}
-%Write this more neatly as
-%\[
-%e(t)^d = t^a+\dots
-%\]
-%where
-%\begin{align*}
-%a_1&\defeq d_1+d_2+d_3+\dots+d_n, \\ 
-%a_2&\defeq d_2+d_3+\dots+d_n, \\
-%a_3&\defeq d_3+\dots+d_n
-%& \vdotswithin{\defeq} \\
-%a_n&\defeq d_n.
-%\end{align*}
-%
-%On the other hand, given a decreasing sequence of nonnegative integers 
-%\[
-%a=\pr{a_1,a_2,\dots,a_n}
-%\]
-%calculate \(d\) by
-%\begin{align*}
-%d_1&\defeq a_1-a_2, \\
-%d_2&\defeq a_2-a_3, \\
-%& \vdotswithin{\defeq} \\
-%d_n&\defeq a_n
-%\end{align*}
-%and then \(e(t)^d=t^a+\dots\).
-%So for each decreasing sequence \(a=\pr{a_1,a_2,\dots,a_n}\), we have \(t^a=e(t)^d+\dots\).
-
 \begin{theorem}\label{theorem:symmetric.polynomials.algebra}
 Every symmetric polynomial over any commutative ring has exactly one expression as a polynomial in the elementary symmetric polynomials.
 \end{theorem}
@@ -355,11 +317,11 @@ If \(a_1\) is smaller than \(a_2\), swap \(t_1\) with \(t_2\) to get a higher we
 In the same way, \(a_1 \ge a_2 \ge a_3 \ge \dots \ge a_n\).
 Let 
 \begin{align*}
-d_1&\defeq a_1-a_2,\\
-d_2&\defeq a_2-a_3,\\
-&\vdotswithin{\defeq}\\
+d_n&\defeq a_n,\\
 d_{n-1}&\defeq a_{n-1}-a_n,\\
-d_n&\defeq a_n.
+&\vdotswithin{\defeq}\\
+d_2&\defeq a_2-a_3,\\
+d_1&\defeq a_1-a_2.
 \end{align*}
 Let's search for the highest weight term in \(e^d\):
 \begin{align*}
@@ -379,8 +341,8 @@ t_1^{a_1} t_2^{a_2} \dots t_n^{a_n} +\dots
 &=
 t^a+\dots
 \end{align*}
-So whatever coefficient of \(t^a\) we find in our given polynomial, subtract that multiple of \(e^d\) from the polynomial, and we reduce the weight.
-By induction, we can somehow write the lower weight terms as polynomials in the elementary symmetric polynomials.
+So whatever coefficient of \(t^a\) we find in our given polynomial, subtract that multiple of \(e^d\) from the polynomial, and we reduce the weight, so we found exactly the unique choice of coefficient to get rid of that highest weight term.
+By induction, we can uniquely write the lower weight terms as polynomials in the elementary symmetric polynomials.
 \end{proof}
 \begin{example}
 The sum of squares of two variables is symmetric: 
@@ -443,7 +405,7 @@ Prove that every symmetric function over any field is a ratio of polynomials in 
 \end{problem}
 \begin{answer}{permutions:rationals}
 We will prove that any symmetric function has an expression \(b(e_1,\dots,e_n)/c(e_1,\dots,e_n)\) as a ratio of polynomials with no common nonconstant factor, expressed in the elementary symmetric polynomials, unique up to rescaling numerator and denominator by the same nonzero constant.
-If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}).
+If there were two such, cross multiply and apply unique factorisation of polynomials (theorem~\vref{theorem:ufd}) to find that the two agree.
 To see that there is one such, write out the function as \(p(t_1,\dots,t_n)/q(t_1,\dots,t_n)\).
 Apply a permutation of the variables, and the solution of problem~\vref{problem:factoring:rationals}, to see that each permutation alters the numerator by a nonzero constant multiple, and the denominator by the same multiple.
 Swapping two variables gives some multiple, and repeating that swap gives the same multiple squared, but returns to the original order of the variables.
@@ -452,7 +414,7 @@ Replace our expression for our rational function by
 \[
 \frac{p(t_1,\dots,t_n)q(t_1,\dots,t_n)}{q(t_1,\dots,t_n)^2}.
 \]
-So there is an expression in symmetric polynomials.
+This ensures that the sign doesn't change under permutation, so the numerator and denominator are each invariant under permutation of the varibles, so there is an expression in symmetric polynomials.
 Factor out any common factors.
 Apply theorem~\vref{theorem:symmetric.polynomials.algebra}.
 \end{answer}
@@ -563,8 +525,8 @@ We can solve recursively for the sums of powers in terms of the elementary symme
 \end{proof}
 
 \section{The invariants of a square matrix}\label{pg:linear.invariants}
-Over any field, a rational function \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f\left(FAF^{-1}\right)=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
-An invariant is independent of change of basis: if \(T \colon V \to V\) is a linear map on an \(n\)-dimensional vector space, we can define the value \(f(T)\) of any invariant \(f\) of \(n \times n\) matrices, by letting \(f(T)\defeq f(A)\) where \(A\) is the matrix associated to \(T\) in some basis of \(V\).
+Over any field, a rational function \(f(A)\) in the entries of a square matrix \(A\), with coefficients in the field, is \emph{invariant}\define{invariant!of square matrix} if \(f(FAF^{-1})=f(A)\) for any invertible matrix \(F\) with coefficients in the field.
+An invariant is independent of change of basis: if \(\map{T}{V}{V}\) is a linear map on an \(n\)-dimensional vector space, we can define the value \(f(T)\) of any invariant \(f\) of \(n \times n\) matrices, by letting \(f(T)\defeq f(A)\) where \(A\) is the matrix associated to \(T\) in some basis of \(V\).
 \begin{example}
 The determinant is an invariant of square matrices.
 \end{example}

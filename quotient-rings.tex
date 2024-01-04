@@ -200,7 +200,7 @@ S.<a,b> = R.quotient_ring(I)
 \end{sageblock}
 which yields \(\sage{(a+b)^4}\).
 
-We can define \(R=\Q{}[x,y]\), \(I=(y^2)\), \(S=R/I\) where we label \(x+I, y+I\) as \(a,b\), \(T=\Q{}[z]\) and define a morphism \(\phi \colon S \to T\) by  \(\phi(a)=z^3, \phi(b)=0\):
+We can define \(R=\Q{}[x,y]\), \(I=(y^2)\), \(S=R/I\) where we label \(x+I, y+I\) as \(a,b\), \(T=\Q{}[z]\) and define a morphism \(\map{\varphi}{S}{T}\) by  \(\phi(a)=z^3, \phi(b)=0\):
 \begin{sageblock}
 R.<x,y> = PolynomialRing(QQ)
 I = R.ideal([y^2])

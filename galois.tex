@@ -40,7 +40,7 @@ So \(\sqrt{2}\mapsto-\sqrt{2}\), applied to all entries in the first eigenvector
 \begin{example}
 By the same argument, the eigenvalues and eigenvectors of any real matrix need not be real, but are interchanged by complex conjugation. 
 \end{example}
-An \emph{automorphism}\define{automorphism} of a ring \(R\) is a morphism \(f \colon R \to R\) which has an inverse \(f^{-1} \colon R \to R\), which is also a morphism.
+An \emph{automorphism}\define{automorphism} of a ring \(R\) is a morphism \(\map{f}{R}{R}\) which has an inverse \(\map{f^{-1}}{R}{R}\), which is also a morphism.
 \begin{problem}{galois:aut.gp}
 Prove that the set of all automorphisms of any ring \(R\) is a group, the \emph{automorphism group}\define{automorphism!group}\define{group!automorphism} of \(R\).
 \end{problem}
@@ -80,7 +80,7 @@ is an automorphism, i.e. a morphism of the field to itself.
 Note that \(f^{-1}=f\).
 \end{example}
 \begin{problem}{galois:preserve.minus}
-Prove that every morphism \(f \colon R \to S\) of rings preserves subtraction.
+Prove that every morphism \(\map{f}{R}{S}\) of rings preserves subtraction.
 \end{problem}
 \begin{answer}{galois:preserve.minus}
 If \(z=x-y\) then \(f(x)=f(y+z)=f(y)+f(z)\) so \(f(z)=f(x)-f(y)\).
@@ -89,7 +89,7 @@ Suppose that \(R\) is a ring.
 Suppose that, for any elements \(b,c\) of \(R\) with \(c\ne 0\), there is a unique element \(d\) of \(R\) so that \(dc=b\).
 Write this element as \(d=b/c\) and say that \(R\) has \emph{right inverses}.
 \begin{lemma}
-Every morphism \(f \colon R \to S\) of rings with right inverses preserves right inverses.
+Every morphism \(\map{f}{R}{S}\) of rings with right inverses preserves right inverses.
 \end{lemma}
 \begin{proof}
 If \(d=b/c\) then \(dc=b\) so \(f(dc)=f(b)=f(d)f(c)\) so \(f(d)=f(b)/f(c)\).
@@ -100,13 +100,13 @@ Every automorphism of a ring with identity preserves the identity element.
 \end{lemma}
 \begin{proof}
 Every element \(b\) of \(R\) satisfies \(b=0+b=b+0\).
-Any automorphism \(h \colon R \to R\) satisfies \(h(b)=h(0+b)=h(0)+h(b)=h(b+0)=h(b)+h(0)\) for all \(b \in R\).
+Any automorphism \(\map{h}{R}{R}\) satisfies \(h(b)=h(0+b)=h(0)+h(b)=h(b+0)=h(b)+h(0)\) for all \(b \in R\).
 Since \(h\) has an inverse, \(h\) is one-to-one and onto, so every element \(c\) of \(R\) has the form \(c=h(b)\) for some \(b \in R\).
 So \(c=h(0)+c=c+h(0)\) for all \(c\) in \(R\).
 In particular, taking \(c=0\), \(0=h(0)+0=h(0)\).
 
 Every element \(b\) of \(R\) satisfies \(b=1b=b1\).
-Any automorphism \(h \colon R \to R\) satisfies \(h(b)=h(1b)=h(1)h(b)=h(b1)=h(b)h(1)\) for all \(b \in R\).
+Any automorphism \(\map{h}{R}{R}\) satisfies \(h(b)=h(1b)=h(1)h(b)=h(b1)=h(b)h(1)\) for all \(b \in R\).
 Since \(h\) has an inverse, \(h\) is one-to-one and onto, so every element \(c\) of \(R\) has the form \(c=h(b)\) for some \(b \in R\).
 So \(c=h(1)c=ch(1)\) for all \(c\) in \(R\).
 In particular, taking \(c=1\), \(1=h(1)1=h(1)\).
@@ -116,7 +116,7 @@ The only automorphism of any of the fields \(\Q{},\R{}\) or \(\Zmod{p}\) is the 
 \end{lemma}
 \begin{proof}
 Suppose that \(k=\Q{}\) or \(k=\R{}\) or \(k=\Zmod{p}\).
-If \(f \colon k \to k\) is an automorphism, then \(f(1)=1\).
+If \(\map{f}{k}{k}\) is an automorphism, then \(f(1)=1\).
 Therefore \(f(1+1)=f(1)+f(1)=1+1\).
 Similarly \(f(1+1+1)=1+1+1\), and so on.
 Therefore if \(k=\Zmod{p}\) we have exhausted all elements of \(k\) and \(f(b)=b\) for every element \(b\) of \(k\).
@@ -255,7 +255,8 @@ Once we take the root \(\omega=e^{2\pi i/p}\) to some other root, \(\omega^n\), 
 The Galois group is thus given by automorphisms \(\phi_n(\omega)=\omega^n\), which clearly commute, forming the cyclic group of order \(p\).
 \end{example}
 \begin{problem}{galois:symmetric.polynomials}
-Suppose that \(p(x)\) is a polynomial with coefficients in a field \(k\), and with roots in some extension \(K\) of \(k\), say \(\alpha_1,\alpha_2,\dots,\alpha_n\).
+Suppose that \(p(x)\) is a polynomial with coefficients in a field \(k\).
+Suppose that \(\alpha_1,\alpha_2,\dots,\alpha_n\) are the roots of \(p(x)\) in some extension \(K\) of \(k\).
 Prove that, for any symmetric polynomial \(q\) with coefficients in \(k\), \(q(\alpha_1,\dots,\alpha_n)\) belongs to \(k\).
 \end{problem}
 \begin{answer}{galois:symmetric.polynomials}
@@ -412,7 +413,7 @@ So then \(\beta/\alpha\) is a \(p^{\text{th}}\) root of \(1\).
 Suppose that every \(p^{\text{th}}\) root of \(1\) in \(k(\alpha)\) already lies in \(k\), so \(\beta/\alpha\in k\).
 We associate to each element \(g\) of the Galois group our root of \(1\): let
 \[
-\varphi\colon g\in\Gal{k}{K}\mapsto\frac{g\alpha}{\alpha}\in 
+g\in\Gal{k}{K}\xmapsto{\varphi}\frac{g\alpha}{\alpha}\in 
 \set{\gamma\in k^{\times}|\gamma^p=1}\subseteq
 k^{\times}.
 \]

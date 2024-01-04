@@ -14,7 +14,7 @@
 \begin{example}
 Alice\SubIndex{Alice} wants to send a message to Bob,\SubIndex{Bob} but she doesn't want Eve\SubIndex{Eve} to read it.
 She first writes the message down in a computer, as a collection of \(0\)'s and \(1\)'s.
-She can think of these \(0\)'s and \(1\)'s as binary digits of some large integer \(x\), or as binary digits of some \emph{remainder}\SubIndex{remainder} \(x\) modulo some large integer \(m\).
+She can think of these \(0\)'s and \(1\)'s as binary digits of some large integer \(x\), or as binary digits of some \emph{remainder}\SubIndex{remainder} \(x\) modulo some even larger integer \(m\).
 Alice takes her message \(x\) and turns it into a secret coded message by sending Bob not the original \(x\), but instead sending him \(x^d\) modulo \(m\), for some integer \(d\).
 This will scramble up the digits of \(x\) unrecognizably, if \(d\) is chosen ``at random''.
 For random enough \(d\), and suitably chosen positive integer \(m\), Bob can unscramble the digits of \(x^d\) to find \(x\).

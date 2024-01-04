@@ -91,6 +91,7 @@
 \indexentry{odd integer|FancyIndexEntry}{26}
 \indexentry{Euler, Leonhard|hyperpage}{27}
 \indexentry{Gauss, Carl Friedrich|hyperpage}{29}
+\indexentry{modular arithmetic|FancyIndexEntry}{31}
 \indexentry{zero divisor|hyperpage}{33}
 \indexentry{multiplicative inverse|FancyIndexEntry}{33}
 \indexentry{unit|FancyIndexEntry}{34}
@@ -160,9 +161,9 @@
 \indexentry{Sturm!sequence|FancyIndexEntry}{68}
 \indexentry{roots!expected number|FancyIndexEntry}{68}
 \indexentry{expected number of distinct roots|FancyIndexEntry}{68}
-\indexentry{Mencken, H.\nobreakspace  {}L.|hyperpage}{72}
-\indexentry{partial fraction|FancyIndexEntry}{73}
-\indexentry{partial fraction!decomposition|FancyIndexEntry}{73}
+\indexentry{Mencken, H.~L.|hyperpage}{73}
+\indexentry{partial fraction|FancyIndexEntry}{74}
+\indexentry{partial fraction!decomposition|FancyIndexEntry}{74}
 \indexentry{Williams, Tennessee|hyperpage}{77}
 \indexentry{Gauss's lemma|FancyIndexEntry}{77}
 \indexentry{irreducible!polynomial|FancyIndexEntry}{78}
@@ -187,12 +188,12 @@
 \indexentry{associative law!multiplication|FancyIndexEntry}{86}
 \indexentry{distributive law|FancyIndexEntry}{86}
 \indexentry{polynomial|FancyIndexEntry}{86}
-\indexentry{rational!function|FancyIndexEntry}{87}
-\indexentry{function!rational|FancyIndexEntry}{87}
 \indexentry{isomorphism|FancyIndexEntry}{88}
 \indexentry{isomorphic|FancyIndexEntry}{88}
-\indexentry{identity law!multiplication|FancyIndexEntry}{89}
-\indexentry{commutative law!multiplication|FancyIndexEntry}{89}
+\indexentry{identity law!multiplication|FancyIndexEntry}{88}
+\indexentry{commutative law!multiplication|FancyIndexEntry}{88}
+\indexentry{rational!function|FancyIndexEntry}{89}
+\indexentry{function!rational|FancyIndexEntry}{89}
 \indexentry{unit!ring|FancyIndexEntry}{89}
 \indexentry{field|FancyIndexEntry}{90}
 \indexentry{characteristic|FancyIndexEntry}{90}
@@ -230,9 +231,9 @@
 \indexentry{formal Laurent series|FancyIndexEntry}{115}
 \indexentry{Puiseaux series|FancyIndexEntry}{115}
 \indexentry{Cayley, Arthur|hyperpage}{117}
-\indexentry{Gelfand, I.\nobreakspace  {}M.|hyperpage}{117}
-\indexentry{Kapranov, M.\nobreakspace  {}M.|hyperpage}{117}
-\indexentry{Zelevinsky, A.\nobreakspace  {}M.|hyperpage}{117}
+\indexentry{Gelfand, I.~M.|hyperpage}{117}
+\indexentry{Kapranov, M.~M.|hyperpage}{117}
+\indexentry{Zelevinsky, A.~M.|hyperpage}{117}
 \indexentry{resultant|FancyIndexEntry}{118}
 \indexentry{derivative|FancyIndexEntry}{125}
 \indexentry{discriminant|FancyIndexEntry}{125}
@@ -377,7 +378,7 @@
 \indexentry{counting correctly|FancyIndexEntry}{185}
 \indexentry{shear|FancyIndexEntry}{187}
 \indexentry{intersection multiplicity|FancyIndexEntry}{190}
-\indexentry{Somerville, E.\nobreakspace  {}\OE .|hyperpage}{193}
+\indexentry{Somerville, E.~\OE .|hyperpage}{193}
 \indexentry{Ross, Martin|hyperpage}{193}
 \indexentry{quotient ring|FancyIndexEntry}{194}
 \indexentry{prime ideal|FancyIndexEntry}{194}

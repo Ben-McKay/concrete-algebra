@@ -1,3 +1,4 @@
+\babel@toc {UKenglish}{}\relax
 \contentsline {chapter}{\chapternumberline {1}The integers}{1}{chapter.1}%
 \contentsline {section}{Notation}{1}{section*.3}%
 \contentsline {section}{The laws of integer arithmetic}{1}{section*.4}%
@@ -47,10 +48,10 @@
 \contentsline {section}{Counting positive roots}{66}{section*.39}%
 \contentsline {section}{Sage}{67}{section*.40}%
 \contentsline {section}{Counting roots of a real polynomial in an interval}{68}{section*.41}%
-\contentsline {section}{Factoring complex polynomials}{72}{section*.42}%
-\contentsline {section}{Factoring real polynomials}{72}{section*.43}%
-\contentsline {section}{Partial fractions}{73}{section*.44}%
-\contentsline {section}{Integrals}{74}{section*.45}%
+\contentsline {section}{Factoring complex polynomials}{73}{section*.42}%
+\contentsline {section}{Factoring real polynomials}{73}{section*.43}%
+\contentsline {section}{Partial fractions}{74}{section*.44}%
+\contentsline {section}{Integrals}{75}{section*.45}%
 \contentsline {chapter}{\chapternumberline {11}Factoring polynomials}{77}{chapter.11}%
 \contentsline {section}{Factoring with integer coefficients}{77}{section*.46}%
 \contentsline {section}{Eisenstein's criterion: checking that there are no more factors}{79}{section*.47}%
@@ -60,7 +61,7 @@
 \contentsline {chapter}{\chapternumberline {12}Fields}{85}{chapter.12}%
 \contentsline {section}{Names for our favourite sets}{85}{section*.51}%
 \contentsline {section}{Rings}{86}{section*.52}%
-\contentsline {section}{Special types of rings}{89}{section*.53}%
+\contentsline {section}{Special types of rings}{88}{section*.53}%
 \contentsline {section}{Fields}{89}{section*.54}%
 \contentsline {section}{Linear algebra}{92}{section*.55}%
 \contentsline {section}{Factoring in many variables}{92}{section*.56}%
@@ -212,5 +213,5 @@
 \contentsline {section}{Coordinates}{319}{section*.179}%
 \contentsline {chapter}{Hints}{323}{chapter*.180}%
 \contentsline {chapter}{Bibliography}{369}{chapter*.181}%
-\contentsline {chapter}{List of notation}{371}{section*.183}%
+\contentsline {chapter}{Glossary}{371}{section*.183}%
 \contentsline {chapter}{Index}{373}{section*.184}%

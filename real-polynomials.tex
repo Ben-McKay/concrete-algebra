@@ -18,8 +18,9 @@ Prove that the equation
 \[
 394x^3-92843x^2+209374x-2830
 \]
-has a real number solution \(x\).
-More generally, prove that any odd-order polynomial equation in a real variable has a real solution.
+has a real root \(x\).
+More generally, prove that any odd-order polynomial equation in a real variable has a real root.
+Try letting \(u=-x\); plug in to see if has any negative real root.
 \end{problem}
 \section{Counting positive roots}
 \epigraph{A biologist, a physicist and a mathematician drink coffee and watch a house across the street from them. They see two people walk into the house.
@@ -40,7 +41,11 @@ b(x)=12x^7+x^5-x^3-x^2+x+1
 \]
 has coefficients with signs \(++--++\).
 We ignore the zero coefficients, for example in front of \(x^6\) and \(x^4\).
-So as we travel along the signs, they change twice, once from \(+\) to neighboring \(-\), and once from \(-\) to neighboring \(+\).
+So as we travel along the signs, they change twice:
+\[
+\input{sign-changes}
+\]
+once from \(+\) to neighboring \(-\), and once from \(-\) to neighboring \(+\).
 So this \(b(x)\) has at most \(2\) roots \(x>0\), and the number of roots with \(x>0\) is even.
 So there are either \(2\) positive roots or none.
 \end{example}
@@ -66,7 +71,7 @@ For large positive numbers \(x\), \(b(x)\) has the same sign as \(b_n\):
 
 Suppose that \(b(x)\) has no positive roots.
 By the intermediate value theorem, \(b(x)\) stays that same sign for all \(x>0\).
-For \(x=0\), this sign is \(b(x)=b_0\), while for \(x\) large it is the sign of \(b_n\).
+For \(x=0\), this sign is the sign of \(b(x)=b_0\), while for \(x\) large it is the sign of \(b_n\).
 So if \(b(x)\) has no positive roots, then \(b_0\) and \(b_n\) have the same sign, so there are an even number of sign changes, to start and end at the same sign.
 In particular, the theorem is true for any polynomial \(b(x)\) with no positive roots.
 

@@ -63,12 +63,26 @@ m_1 m_2 \dots m_n.
 \]
 \end{theorem}
 \begin{proof}
-All of \(m_1, m_2, \dots, m_n\) divide \(u_i\), except \(m_i\).
-So if \(j \ne i\) then modulo \(m_j\), \(u_i=0\).
-All of the other \(m_j\) are coprime to \(m_i\), so their product is coprime to \(m_i\), so has a reciprocal modulo \(m_i\).
-Then modulo \(m_i\), \(x=r_i\).
+If there are two choices for such an integer \(x\), then their difference vanishes modulo all of the \(m_i\), so is a multiple of every one of the \(m_i\), which are coprime, so is a multiple of their product \(m\).
+So there is at most one solution \(x\), modulo \(m\).
+
+Note that \(u_2\) has no factor of \(m_2\), but has a factor of \(m_1\).
+So modulo \(m_1\), \(u_2=0\).
+So modulo \(m_1\), \(r_2u_2v_2=0\).
+The same holds for \(r_3u_3v_3\), and so on.
+So modulo \(m_1\), all terms in \(x\) drop out except maybe \(r_1u_1v_1\).
+All of the other \(m_j\) are coprime to \(m_1\), so their product is coprime to \(m_1\), i.e. \(u_1\) is coprime to \(m_1\), so has a reciprocal modulo \(m_1\): so \(v_i\) exists.
+But then modulo \(m_1\), \(r_1u_1v_1=r_1\).
+So modulo \(m_1\):
+\[
+\begin{array}{@{}l@{\,}c@{\,}l@{\,}l@{\,}l@{\,}l@{}}\\
+x&=&r_1 u_1 v_1 &+ r_2 u_2 v_2 &+ \dots &+ r_n u_n v_n,\\
+ &=&r_1         &+ 0           &+ \dots &+ 0,\\
+ &=&r_1.        &              &  
+\end{array}
+\]
+The same holds replacing \(m_1\) by \(m_2\), and so on.
 So the recipe gives the required integer \(x\).
-If there are two, then their difference vanishes modulo all of the \(m_i\), so is a multiple of every one of the \(m_i\), which are coprime, so is a multiple of their product \(m\).
 \end{proof}
 \begin{example}
 Let's find an integer \(x\) so that 
@@ -376,17 +390,18 @@ Then
 \begin{proof}
 If \(m\) is prime, this follows from problem~\vref{problem:modular.arithmetic:prime.phi}.
 
+If \(b,c\) are coprime integers \(\ge 2\), then corollary~\vref{corollary:CRT} maps units modulo \(bc\) to pairs of a unit modulo \(b\) and a unit modulo \(c\), and is one-to-one and onto.
+Therefore counting units: \(\phi(bc)=\phi(b)\phi(c)\).
+Apply this repeatedly, by induction, to reduce to \(m\) having a single prime factor.
+
 Suppose that \(m\) has just one prime factor, or in other words that \(m=p^a\) for some prime number \(p\) and integer \(a\).
 It is tricky to count the remainders coprime to \(m\), but easier to count those not coprime, i.e. those which have a factor of \(p\).
 Clearly these are the multiples of \(p\) between \(0\) and \(p^a-p\), so the numbers \(pj\) for \(0 \le j \le p^{a-1}-1\).
 So there are \(p^{a-1}\) such remainders.
 We take these out and we are left with \(p^a-p^{a-1}\) remainders left, i.e. coprime.
-
-If \(b,c\) are coprime integers \(\ge 2\), then corollary~\vref{corollary:CRT} maps units modulo \(bc\) to pairs of a unit modulo \(b\) and a unit modulo \(c\), and is one-to-one and onto.
-Therefore counting units: \(\phi(bc)=\phi(b)\phi(c)\).
 \end{proof}
 \begin{theorem}[Euler]\label{theorem:Euler}
-For any positive integer \(m\) and any integer \(b\) coprime to \(m\), 
+For any positive integer \(m\) and any integer \(b\), \(b\) is coprime to \(m\) just when
 \[
 \congmod[m]{b^{\phi(m)}}{1}.
 \]
@@ -415,7 +430,7 @@ Then multiplying by \(b\) scrambles these units into a different order:
 \[
 bu_1, bu_2, \dots, bu_q.
 \]
-But multiplying by \(b\) just scrambles the order of the roots, so if we multiply them all, and then scramble them back into order:
+If we multiply them all, and then scramble them back into order:
 \[
 \pr{bu_1}\pr{bu_2} \dots \pr{bu_q}= u_1 u_2 \dots u_q.
 \]
@@ -439,7 +454,7 @@ According to Euler's theorem, since \(19\) is prime, modulo \(19\):
 \[
 b^{19-1} = 1
 \]
-for any remainder \(b\).
+for any remainder \(b\ne 0\).
 In particular, modulo \(19\),
 \[
 14^{18}=1.

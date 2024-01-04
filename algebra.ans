@@ -1375,12 +1375,12 @@ By linear change of variables, arrange that the line is \(y=0\).
 Then the equation \(0=p(x,y)\) of our curve \(C=(0=p(x,y))\) becomes \(0=p(x,0)\), of degree at most \(d\), or else there is a factor of \(y\) in \(p(x,y)\), i.e. \(C\) is reducible with our line as a component.
 \vspace \smallskipamount \newparagraph \noindent \textbf {\ref{problem:plane.algebraic.curves:inverse.morphism}.}
 Suppose that \(C\) has equation \(c(x,y)=0\) and \(D\) has equation \(d(s,t)=0\).
-Take an algebra isomorphism \(\Phi\colon k[C]\to k[D]\).
+Take an algebra isomorphism \(\map{\Phi}{k[C]}{k[D]}\).
 This map \(\Phi\) is uniquely determined by \(\Phi(x),\Phi(y)\), because after that every polynomial \(f(x,y)\) is mapped to \(\Phi(f(x,y))=f(\Phi(x),\Phi(y))\), as the algebra morphism preserves the addition and multiplication operations by which we construct polynomials.
 Pick polynomials \(x(s,t),y(s,t)\) so that, in \(k[D]\), \(x(s,t)=\Phi(x)\) and \(y(s,t)=\Phi(y)\).
 Let
 \[
-\psi\colon (s,t)\in\bar{k}^2\mapsto(x,y)=(x(s,t),y(s,t))\in\bar{k}^2.
+(s,t)\in\bar{k}^2\xmapsto{\psi}(x,y)=(x(s,t),y(s,t))\in\bar{k}^2.
 \]
 Two polynomials agree along the \(\bar{k}\)-points of the curve \(D\) just when their difference vanishes at those points, so just when their difference is divisible by \(d(s,t)\), by irreducibility of \(d(s,t)\).
 So these \(x(s,t),y(s,t)\) are determined only up to multiples of the irreducible \(d(s,t)\).
@@ -1388,13 +1388,13 @@ So these \(x(s,t),y(s,t)\) are determined only up to multiples of the irreducibl
 Since \(\Phi\) is an isomorphism, it has an inverse isomorphism \(\Phi^{-1}\), and so we can similarly find polynomials \(s(x,y),t(x,y)\), defined up to adding multiples of \(c(x,y)\), so that \(s(x,y)=\Phi^{-1}s,t(x,y)=\Phi^{-1}t\) in \(k[C]\).
 Define a map
 \[
-\varphi\colon (x,y)\in\bar{k}^2\mapsto(s,t)=(s(x,y),t(x,y))\in\bar{k}^2.
+(x,y)\in\bar{k}^2\xmapsto{\varphi}(s,t)=(s(x,y),t(x,y))\in\bar{k}^2.
 \]
 Extend \(\Phi\) to a map \(k[x,y]\to k[s,t]\) by
 \[
 \Phi(x)=x(s,t), \Phi(y)=y(s,t)
 \]
-and similarly extend \(\Phi^{-1}\) to a map \(\Psi\colon k[s,t]\to k[x,y]\) by
+and similarly extend \(\Phi^{-1}\) to a map \(\map{\Psi}{k[s,t]}{k[x,y]}\) by
 \[
 \Psi(s)=s(x,y), \Psi(t)=t(x,y).
 \]
@@ -2416,11 +2416,12 @@ b(x+y)=b(x)+\text{linear terms in \(y\)}+\text{quadratic terms in \(y\)}+\dots,
 with finitely many terms, because it is a polynomial.
 The quadratic terms are of course \(y^tb''(x)y\) so ignoring terms of all degrees but quadratic:
 \[
-b(x+y)=\dots+y^t b''(x_0,y_0,z_0)y+\dots.
+b(x+y)=\dots+\frac{1}{2}y^t b''(x_0,y_0,z_0)y+\dots.
 \]
 In the same way,
 \[
 c(X+Y)=\dots+
+\frac{1}{2}
 Y^t
 c''(X)
 Y+\dots.

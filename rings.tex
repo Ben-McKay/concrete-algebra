@@ -1,20 +1,20 @@
 \chapter{Morphisms}
 \epigraph[author={Robert Frost}, source={The Secret Sits, A Witness Tree, 1942}]{We dance round in a ring and suppose, but the secret sits in the middle and knows.}\SubIndex{Frost, Robert}
 \section{Definition}
-A \emph{morphism}\define{morphism!ring} of rings \(f \colon R \to S\) is a map \(f\) taking elements of a ring \(R\) to elements of a ring \(S\), so that \(f(a+b)=f(a)+f(b)\) and \(f(ab)=f(a)f(b)\) for all elements \(b, c\) of \(R\).
+A \emph{morphism}\define{morphism!ring} of rings \(\map{f}{R}{S}\) is a map \(f\) taking elements of a ring \(R\) to elements of a ring \(S\), so that \(f(a+b)=f(a)+f(b)\) and \(f(ab)=f(a)f(b)\) for all elements \(b, c\) of \(R\).
 (Morphisms are also often called \emph{homomorphisms}.\define{homomorphism})
 \begin{example}
-The map \(f \colon \Z{} \to \Zmod{m}\), \(f(b)=\bar{b}\), remainder modulo \(m\), is a morphism.
+The map \(\map{f}{\Z{}}{\Zmod{m}}\), \(f(b)=\bar{b}\), remainder modulo \(m\), is a morphism.
 \end{example}
 \begin{problem}{rings:check.morphism}
-Prove that the map \(f \colon \Zmod{3} \to \Zmod{6}\), \(f(b)=4b\) is a morphism.
+Prove that the map \(\map{f}{\Zmod{3}}{\Zmod{6}}\), \(f(b)=4b\) is a morphism.
 Draw pictures to explain it.
 \end{problem}
 \begin{problem}{rings:find.morphisms}
-Find all morphisms \(f \colon \Zmod{p} \to \Zmod{q}\), where \(p\) and \(q\) are prime numbers and \(p \ne q\).
+Find all morphisms \(\map{f}{\Zmod{p}}{\Zmod{q}}\), where \(p\) and \(q\) are prime numbers and \(p \ne q\).
 \end{problem}
 \section{Sage}
-We define \(R=\Q{}[x,y]\) and \(T=\Q{}[z]\) and define a morphism \(\phi \colon R \to S\) by \(\phi(x)=z^3\) and \(\phi(y)=0\):
+We define \(R=\Q{}[x,y]\) and \(T=\Q{}[z]\) and define a morphism \(\map{\phi}{R}{S}\) by \(\phi(x)=z^3\) and \(\phi(y)=0\):
 \begin{sageblock}
 R.<x,y> = PolynomialRing(QQ)
 T.<z> = PolynomialRing(QQ)
@@ -24,7 +24,7 @@ phi(x^2+y^2)
 yielding \(\phi(x^2+y^2)=\sage{phi(x^2+y^2)}\).
 
 \section{Kernel and image of a morphism}
-If \(f \colon R \to S\) is a morphism of rings, the \emph{kernel}\define{kernel!ring morphism} of \(f\) is the set 
+If \(\map{f}{R}{S}\) is a morphism of rings, the \emph{kernel}\define{kernel!ring morphism} of \(f\) is the set 
 \[
 \ker{f} \defeq \Set{r \in R|f(r)=0}.\Notation{ker f}{\ker{f}}{kernel of a ring morphism}
 \]
@@ -40,7 +40,7 @@ The morphism \(x \in \R{} \mapsto x+0i \in \C{}\) has kernel \(\Set{0}\) and ima
 The morphism \(a \in \Z{} \mapsto \bar{a} \in \Zmod{m}\) has kernel \(m\Z{}\).
 \end{example}
 \begin{problem}{rings:kernel.subring}
-Prove that the kernel of a morphism \(f \colon R \to S\) of rings is a subring of \(R\), while the image is a subring of \(S\).
+Prove that the kernel of a morphism \(\map{f}{R}{S}\) of rings is a subring of \(R\), while the image is a subring of \(S\).
 \end{problem}
 \begin{answer}{rings:kernel.subring}
 If \(K\) is the kernel, an element \(r\) of \(R\) belongs to \(K\) just when \(f(r)=0\).
@@ -56,14 +56,14 @@ Prove that the morphism \(p(x) \in \R{}[x] \mapsto p(i) \in \C{}\) has kernel co
 for any polynomial \(p(x)\).
 \end{problem}
 \begin{problem}{rings:rational.morphism}
-Suppose that \(R\) is a ring and that \(f, g \colon \Q{} \to R\) are morphisms and that \(f(1)=g(1)\).
+Suppose that \(R\) is a ring and that \(\map{f,g}{\Q{}}{R}\) are morphisms and that \(f(1)=g(1)\).
 Prove that \(f=g\).
 \end{problem}
-A morphism \(f \colon R \to S\) with kernel \(0\) is \emph{injective}\define{injective!morphism}\define{morphism!injective}, also called \emph{one-to-one}\define{one-to-one!morphism}\define{morphism!one-to-one}, while a morphism \(f \colon R \to S\) with image \(f(R)=S\) is \emph{surjective}\define{surjective!morphism}\define{morphism!surjective} or \emph{onto}\define{morphism!onto}\define{onto!morphism}.
+A morphism \(\map{f}{R}{S}\) with kernel \(0\) is \emph{injective}\define{injective!morphism}\define{morphism!injective}, also called \emph{one-to-one}\define{one-to-one!morphism}\define{morphism!one-to-one}, while a morphism \(\map{f}{R}{S}\) with image \(f(R)=S\) is \emph{surjective}\define{surjective!morphism}\define{morphism!surjective} or \emph{onto}\define{morphism!onto}\define{onto!morphism}.
 A surjective and injective morphism is an \emph{isomorphism}\define{isomorphism!ring}.
 If there is an isomorphism between rings \(R\) and \(S\), they are \emph{isomorphic}\define{isomorphic!rings}, denoted \(R \cong S\).\Notation{R=S}{R \cong S}{isomorphic rings}
 If two rings are isomorphic, then they are identical for all practical purposes.
-An isomorphism \(f \colon R \to  R\) from a ring to itself is an \emph{automorphism}.\define{automorphism!ring}
+An isomorphism \(\map{f}{R}{R}\) from a ring to itself is an \emph{automorphism}.\define{automorphism!ring}
 \begin{example}
 Take some positive integers \(m_1, m_2, \dots, m_n\).
 Let 
@@ -81,7 +81,7 @@ S\defeq\pr{\Zmod{m_1}} \oplus \pr{\Zmod{m_2}} \oplus \dots \oplus  \pr{\Zmod{m_n
 \]
 Map
 \(
-f \colon \Zmod{m} \to S
+\map{f}{\Zmod{m}}{S}
 \)
 by 
 \(
@@ -151,7 +151,7 @@ Prove that a nonempty subset \(I\) of a commutative ring \(R\) is an ideal just 
 The kernel of any morphism of rings is an ideal.
 \end{lemma}
 \begin{proof}
-Take a ring morphism \(f \colon R \to S\) and let \(I \defeq \ker{f}\).
+Take a ring morphism \(\map{f}{R}{S}\) and let \(I \defeq \ker{f}\).
 Pick any \(i\) in \(I\) and any \(r\) in \(R\).
 We need to prove that \(ir\) is in \(I\), i.e. that \(f\) kills \(ir\), i.e. that \(0=f(ir)\).
 But \(f(ir)=f(i)f(r)=0f(r)=0\). 
@@ -248,7 +248,7 @@ The reciprocal in \(k\) is easy to find:
 if \(a \ne 0\) and \(b \ne 0\).
 Map \(R\) to \(k\) by \(a \mapsto \frac{a}{1}\).
 Check that this map is injective.
-Given a ring morphism \(f \colon R \to K\) to a field, extend by 
+Given a ring morphism \(\map{f}{R}{K}\) to a field, extend by 
 \[
 f\of{\frac{a}{b}} = \frac{f(a)}{f(b)}.
 \]

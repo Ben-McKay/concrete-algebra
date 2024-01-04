@@ -4,7 +4,7 @@
 \glossaryentry{029@ {\memgloterm{\(\bar  {b}\)}}{\memglodesc{congruence class of \(b\)}} {\memgloref{}}|hyperpage}{29}
 \glossaryentry{041@ {\memgloterm{\(\phi (m)\)}}{\memglodesc{Euler's totient function}} {\memgloref{}}|hyperpage}{41}
 \glossaryentry{053@ {\memgloterm{\("| "| {z}"| "| \)}}{\memglodesc{modulus of a complex number}} {\memgloref{}}|hyperpage}{53}
-\glossaryentry{087@ {\memgloterm{\(R(x)\)}}{\memglodesc{the field of rational functions with coefficients in a ring \(R\)}} {\memgloref{}}|hyperpage}{87}
+\glossaryentry{088@ {\memgloterm{\(R(x)\)}}{\memglodesc{the field of rational functions with coefficients in a ring \(R\)}} {\memgloref{}}|hyperpage}{89}
 \glossaryentry{102@ {\memgloterm{\(\bar  {k}\)}}{\memglodesc{algebraic closure}} {\memgloref{}}|hyperpage}{102}
 \glossaryentry{118@ {\memgloterm{\(\ensuremath  {\operatorname  {res}_{b,c}} \)}}{\memglodesc{resultant of polynomials \(b(x), c(x)\)}} {\memgloref{}}|hyperpage}{118}
 \glossaryentry{125@ {\memgloterm{\(p'(x)\)}}{\memglodesc{derivative of polynomial}} {\memgloref{}}|hyperpage}{125}

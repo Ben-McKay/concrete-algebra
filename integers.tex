@@ -335,7 +335,8 @@ But any integer \(c\) satisfies this equation, so there is no way to pick out on
 \end{answer}
 We already noted that \(3/2\) is \emph{not} an integer.
 At the moment, we are trying to work with integers only.
-An integer \(b\) \emph{divides} an integer \(c\) if \(c/b\) is an integer; we also say that \(b\) is a \emph{divisor}\define{divisor} of \(c\).
+An integer \(b\) \emph{divides} an integer \(c\) if there is an integer \(q\) so that \(qp=c\); we also say that \(b\) is a \emph{divisor}\define{divisor} of \(c\).
+So \(b\ne 0\) just when there is either one such \(q\) or no such; if there one such, call it \(q=c/b\).
 \begin{problem}{integers:divide.zero}
 Explain why every integer divides into zero.
 \end{problem}
@@ -359,6 +360,8 @@ Take any two integers \(b\) and \(c\).
 If \(b\) divides \(c\), then \(|b| < |c|\) or \(b=c\) or \(b=-c\).
 \end{proposition}
 \begin{proof}
+If \(b=0\) and \(b\) divides \(c\) then \(c=bq=0q=0\).
+So we can assume that \(b\ne 0\).
 By the solution of the last problem, we can assume that \(b\) and \(c\) are positive.
 If \(b=c\) the proposition holds, so suppose that \(b>c\); write \(b=c+k\) for some \(k>0\).
 Since \(b\) divides \(c\), say \(c=qb\) for some integer \(q\).
